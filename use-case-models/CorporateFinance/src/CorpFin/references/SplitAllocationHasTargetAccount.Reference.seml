@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: SplitAllocationHasTargetAccount
+_type: Reference
+label: Split Allocation Has Target Account
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.SplitAllocation.SplitAllocation
+fromRoleLabel: Split Allocation
+fromRoleName: splitAllocation
+fromRolePluralLabel: Split Allocations
+physicalName: SPLIT_HAS_TARGET_ACCOUNT
+fromNavigable: true
+
+toEntity: CorpFin.entities.Account.Account
+toRoleLabel: Target Account
+toRoleName: targetAccount
+toRolePhysicalName: TARGET_ACCOUNT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: targetAccount
+  label: Target Account ID
+  physicalName: TARGET_ACCOUNT_ID
+  searchable: true
+  entity: CorpFin.entities.Account.Account

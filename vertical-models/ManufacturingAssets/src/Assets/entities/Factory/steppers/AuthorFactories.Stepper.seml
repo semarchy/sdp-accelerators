@@ -1,0 +1,273 @@
+_package: Assets.entities.Factory.steppers
+_type: Stepper
+_name: AuthorFactories
+entity: Assets.entities.Factory.Factory
+label: Factories
+modelJob: Assets.model_jobs.FactoryStepperJob
+rootStep:
+  _type: CollectionStep
+  _name: Factories
+  label: Factories
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Assets.entities.Factory.collection_views.FactoryCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Factory
+      label: Factory
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Assets.entities.Factory.forms.FactoryForm.Factory
+      formStepEnrichers:
+        - enricher: Assets.entities.Factory.enrichers.RegionNormalization
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: MANDATORY
+          attribute: Assets.entities.Factory.Factory.Name
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: MANDATORY
+          attribute: Assets.entities.Factory.Factory.Address
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: FOREIGN
+          attribute: Assets.references.FactoryOperationalStatus.OperationalStatus
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: MANDATORY
+          attribute: Assets.references.FactoryOperationalStatus.OperationalStatus
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: FOREIGN
+          attribute: Assets.references.FactoryTypeFactory.FactoryType
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: MANDATORY
+          attribute: Assets.references.FactoryTypeFactory.FactoryType
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: Assets.entities.Factory.validations.SizeMinValue
+
+      stepTransitionValidations:
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Assets.entities.Factory.Factory.Name
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Assets.entities.Factory.Factory.Address
+        - onStepExit: BLOCK
+          validationType: FOREIGN
+          attribute: Assets.references.FactoryOperationalStatus.OperationalStatus
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Assets.references.FactoryOperationalStatus.OperationalStatus
+        - onStepExit: BLOCK
+          validationType: FOREIGN
+          attribute: Assets.references.FactoryTypeFactory.FactoryType
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Assets.references.FactoryTypeFactory.FactoryType
+        - onStepExit: BLOCK
+          validationType: CHECK
+          validator: Assets.entities.Factory.validations.SizeMinValue
+    - _type: CollectionStep
+      _name: ProductionLines
+      oneToManyReference: Assets.references.ProductionLineFactory
+      label: Production Lines
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      collectionView: Assets.entities.ProductionLine.collection_views.ProductionLineCollectionView
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: true
+      enableChildImportOnParentEdit: true
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      manyToManyCustomSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      childSteps:
+        - _type: FormStep
+          _name: ProductionLine
+          label: Production Line
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          formFieldsMode: AUTO
+          enableMasterValuePicking: false
+          formTab: Assets.entities.ProductionLine.forms.ProductionLineForm.ProductionLine
+          formStepValidations:
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: Assets.entities.ProductionLine.ProductionLine.Name
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: Assets.entities.ProductionLine.ProductionLine.Code
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: FOREIGN
+              attribute: Assets.references.ProductionLineStatus.ProductionLineStatus
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: FOREIGN
+              attribute: Assets.references.ProductionLineLineType.LineType
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: FOREIGN
+              attribute: Assets.references.ProductionLineFactory.Factory
+          stepTransitionValidations:
+            - onStepExit: BLOCK
+              validationType: MANDATORY
+              attribute: Assets.entities.ProductionLine.ProductionLine.Name
+            - onStepExit: BLOCK
+              validationType: MANDATORY
+              attribute: Assets.entities.ProductionLine.ProductionLine.Code 
+            - onStepExit: BLOCK
+              validationType: FOREIGN
+              attribute: Assets.references.ProductionLineStatus.ProductionLineStatus
+            - onStepExit: BLOCK
+              validationType: FOREIGN
+              attribute: Assets.references.ProductionLineLineType.LineType     
+        - _type: CollectionStep
+          _name: Machines
+          label: Machines
+          canFinishSubLevel: true
+          childDeleteType: HARD_DELETE
+          childImportModeOnParentEdit: CREATE_AND_UPDATE
+          collectionView: Assets.entities.Machine.collection_views.MachineCollectionView
+          oneToManyReference: Assets.references.MachineProductionLine
+          createChildUsingManyToManyPicker: false
+          customSortEnabled: false
+          defaultDisplayType: TABLE
+          displayGridAllowed: false
+          displayListAllowed: true
+          displayTableAllowed: true
+          enableChildCopyOnParentCreate: true
+          enableChildCopyOnParentEdit: true
+          enableChildCreationOnParentCreate: true
+          enableChildCreationOnParentEdit: true
+          enableChildDeleteOnParentEdit: true
+          enableChildEditOnParentCreate: true
+          enableChildEditOnParentEdit: true
+          enableChildExport: false
+          enableChildImportOnParentCreate: true
+          enableChildImportOnParentEdit: true
+          enableChildRemoveOnParentCreate: true
+          enableChildRemoveOnParentEdit: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          formFieldsMode: AUTO
+          linear: false
+          manyToManyCustomSortEnabled: true
+          manyToManyDefaultDisplayType: TABLE
+          manyToManyDisplayGridAllowed: true
+          manyToManyDisplayListAllowed: true
+          manyToManyDisplayTableAllowed: true
+          manyToManyUserDefinedSortEnabled: true
+          skipToChildCreationOnParentCreate: true
+          skipToChildEditingOnParentEdit: true
+          useCustomCollectionLabel: false
+          userDefinedSortEnabled: true
+          childSteps:
+            - _type: FormStep
+              _name: Machine
+              label: Machine
+              canFinishSubLevel: true
+              enabledOnParentCreate: true
+              enabledOnParentEdit: true
+              formFieldsMode: AUTO
+              enableMasterValuePicking: false
+              formTab: Assets.entities.Machine.forms.MachineForm.Machine
+              formStepValidations:
+                - executedOnDataChange: true
+                  executedOnFormOpen: true
+                  validationType: MANDATORY
+                  attribute: Assets.entities.Machine.Machine.SerialNumber
+                - executedOnDataChange: true
+                  executedOnFormOpen: true
+                  validationType: MANDATORY
+                  attribute: Assets.entities.Machine.Machine.TypeModel
+                - executedOnDataChange: true
+                  executedOnFormOpen: true
+                  validationType: MANDATORY
+                  attribute: Assets.entities.Machine.Machine.Manufacturer
+                - executedOnDataChange: true
+                  executedOnFormOpen: true
+                  validationType: FOREIGN
+                  attribute: Assets.references.MachineStatus.MachineStatus
+                - executedOnDataChange: true
+                  executedOnFormOpen: true
+                  validationType: FOREIGN
+                  attribute: Assets.references.MachineCriticalityLevel.CriticalityLevel
+                - executedOnDataChange: true
+                  executedOnFormOpen: true
+                  validationType: FOREIGN
+                  attribute: Assets.references.MachineProductionLine.ProductionLine
+              stepTransitionValidations:
+                - onStepExit: BLOCK
+                  validationType: MANDATORY
+                  attribute: Assets.entities.Machine.Machine.SerialNumber
+                - onStepExit: BLOCK
+                  validationType: MANDATORY
+                  attribute: Assets.entities.Machine.Machine.TypeModel
+                - onStepExit: BLOCK
+                  validationType: MANDATORY
+                  attribute: Assets.entities.Machine.Machine.Manufacturer
+                - onStepExit: BLOCK
+                  validationType: FOREIGN
+                  attribute: Assets.references.MachineStatus.MachineStatus
+                - onStepExit: BLOCK
+                  validationType: FOREIGN
+                  attribute: Assets.references.MachineCriticalityLevel.CriticalityLevel
+                - onStepExit: BLOCK
+                  validationType: FOREIGN
+                  attribute: Assets.references.MachineProductionLine.ProductionLine
+
+
+
+

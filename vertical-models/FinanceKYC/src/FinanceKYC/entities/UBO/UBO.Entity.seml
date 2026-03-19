@@ -1,0 +1,76 @@
+_package: FinanceKYC.entities.UBO
+_type: Entity
+_name: UBO
+label: UBO
+pluralLabel: UBO
+entityType: BASIC
+physicalTableName: UBO
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: UBOID
+    _type: EntityAttribute
+    label: UBOID
+    physicalName: UBOID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: UBOName
+    _type: EntityAttribute
+    label: UBO Name
+    physicalName: UBO_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+
+  - _name: OwnershipPercentage
+    _type: EntityAttribute
+    label: Ownership Percentage
+    physicalName: OWNERSHIP_PERCENTAGE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: CountryOfResidence
+    _type: EntityAttribute
+    label: Country Of Residence
+    physicalName: COUNTRY_OF_RESIDENCE
+    dataType: String
+    length: 128
+    mandatory: false
+
+  - _name: DateOfBirth
+    _type: EntityAttribute
+    label: Date Of Birth
+    physicalName: DATE_OF_BIRTH
+    dataType: Date
+    mandatory: false
+
+  - _name: IsPEP
+    _type: EntityAttribute
+    label: Is PEP
+    physicalName: IS_PEP
+    dataType: Boolean
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    physicalName: NOTES
+    dataType: String
+    length: 255
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.UBO.UBO.UBOID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

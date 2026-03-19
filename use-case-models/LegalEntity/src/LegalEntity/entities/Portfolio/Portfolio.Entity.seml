@@ -1,0 +1,73 @@
+## This file defines the Portfolio entity for the Legal Entity application.
+## It includes attributes and properties for managing portfolio values.
+_package: LegalEntity.entities.Portfolio
+_type: Entity
+_name: Portfolio
+label: Portfolio
+pluralLabel: Portfolios
+iconUrl: images://le-img-lib/briefcase-variant-outline.svg
+description: Represents a collection of assets or investments managed by a legal entity, used for financial analysis and reporting.
+documentation: The Portfolio entity defines the portfolios relevant to legal entities, supporting business operations, investment management, and reporting.
+enableDelete: true
+attributes: 
+  - _name: ID
+    dataType: LongInteger
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    physicalName: ID
+    label: ID
+    description: Unique identifier for the portfolio.
+    documentation: This attribute stores the unique ID for each portfolio, ensuring distinct identification.
+  - _name: Name
+    dataType: String
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: NAME
+    label: Name
+    description: The name of the portfolio.
+    documentation: This attribute stores the portfolio name, which is used to identify and distinguish portfolios.
+  - _name: Description
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: DESCRIPTION
+    label: Description
+    description: Detailed information about the portfolio.
+    documentation: This attribute stores additional context or notes about the portfolio, such as its objectives or scope.
+  - _name: ChainID
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    description: Identifier for the portfolio chain.
+    documentation: This attribute stores the chain ID, which is used for linking portfolios in a chain or hierarchy.
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: CHAIN_ID
+    label: Chain ID
+  
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: PORTFOLIO
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100
+primaryKey: LegalEntity.entities.Portfolio.Portfolio.ID
+

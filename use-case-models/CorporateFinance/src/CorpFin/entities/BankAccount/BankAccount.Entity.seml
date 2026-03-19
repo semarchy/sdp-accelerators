@@ -1,0 +1,101 @@
+_package: CorpFin.entities.BankAccount
+_type: Entity
+_name: BankAccount
+label: Bank Account
+pluralLabel: Bank Accounts
+entityType: BASIC
+physicalTableName: BANK_ACCOUNT
+iconUrl: images://mdi/piggy-bank.svg
+description: "Banking coordinates associated with a counterparty."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: BankAccountID
+    label: Bank Account ID
+    description: Surrogate identifier for bank account
+    documentation: ""
+    physicalName: BANK_ACCOUNT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: BankName
+    label: Bank Name
+    description: Legal name of the bank
+    documentation: ""
+    physicalName: BANK_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: IBAN
+    label: IBAN
+    description: International Bank Account Number
+    documentation: ""
+    physicalName: IBAN
+    dataType: String
+    length: 34
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedIBAN
+    label: Normalized IBAN
+    description: Trimmed and uppercased IBAN for validation
+    documentation: ""
+    physicalName: NORMALIZED_IBAN
+    dataType: String
+    length: 34
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SWIFT
+    label: SWIFT
+    description: SWIFT/BIC code
+    documentation: ""
+    physicalName: SWIFT
+    dataType: String
+    length: 11
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedSWIFT
+    label: Normalized SWIFT
+    description: Trimmed and uppercased SWIFT/BIC code
+    documentation: ""
+    physicalName: NORMALIZED_SWIFT
+    dataType: String
+    length: 11
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: AccountType
+    label: Account Type
+    description: Usage classification (AP, AR, Escrow)
+    documentation: ""
+    physicalName: ACCOUNT_TYPE
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: DefaultFlag
+    label: Default Flag
+    description: Indicates if this is the default payout account
+    documentation: ""
+    physicalName: DEFAULT_FLAG
+    dataType: Boolean
+    mandatory: false
+
+primaryKey: CorpFin.entities.BankAccount.BankAccount.BankAccountID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

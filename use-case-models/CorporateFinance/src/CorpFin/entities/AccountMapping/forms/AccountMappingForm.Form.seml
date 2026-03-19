@@ -1,0 +1,180 @@
+_package: CorpFin.entities.AccountMapping.forms
+_type: Form
+_name: AccountMappingForm
+
+entity: CorpFin.entities.AccountMapping.AccountMapping
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: AccountMapping
+    label: Account Mapping
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/arrow-right-bold.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: COLUMN
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: ROW
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_mappingSet
+                    value: FDN_mappingSet
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.MappingSet.MappingSet
+                  - _type: IdField
+                    _name: AccountMappingID
+                    value: AccountMappingID
+                    label: Mapping ID
+                    useCustomLabel: true
+                    dataType: STRING
+                  - _type: TextField
+                    _name: ReportingPnLCategoryCode
+                    value: ReportingPnLCategoryCode
+                    label: P&L Category
+                    useCustomLabel: true
+                    dataType: STRING
+
+              - _type: FormSection
+                _name: AdditionalInformation
+                label: Additional Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: TextField
+                  _name: Priority
+                  value: Priority
+                  useCustomLabel: false
+                  dataType: INTEGER
+                - _type: TextField
+                  _name: Justification
+                  value: Justification
+                  useCustomLabel: false
+                  dataType: STRING
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: ROW
+
+            content:
+              - _type: FormSection
+                _name: MappingDetails
+                label: Mapping Details
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_sourceAccount
+                    value: FDN_sourceAccount
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.Account.Account
+
+                  - _type: ReferenceField
+                    _name: FDN_mappingType
+                    value: FDN_mappingType
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.MappingType.MappingType
+
+              - _type: FormSection
+              # Visible if mapping HAS a unique target account
+                _name: TargetAccount
+                label: Target Account
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: FDN_targetAccount is not null or FDN_mappingType <> 'ONE_TO_MANY'
+                visibleValueInterpreter: SEMQL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_targetAccount
+                    value: FDN_targetAccount
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.Account.Account
+
+              - _type: FormSection
+              # Visible if mapping does NOT have a unique target account
+                _name: SplitRule
+                label: Split Rule
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: FDN_targetAccount is null and FDN_mappingType = 'ONE_TO_MANY'
+                # visibleValue: any splitAllocation has (1=1)
+                visibleValueInterpreter: SEMQL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_mappingRule
+                    value: FDN_mappingRule
+                    label: Mapping Rule Description
+                    useCustomLabel: true
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.MappingRule.MappingRule
+                    
+
+          # - _type: FormContainer
+          #   _name: Container4
+          #   layoutDirection: COLUMN
+
+          #   content:
+          #     - _type: FormSection
+          #       _name: SplitSection
+          #       label: Split
+          #       labelWidth: 200px
+          #       layoutDirection: COLUMN
+          #       visibleValueInterpreter: SEMQL
+
+          #       content:
+          #         - _type: ReferenceField
+          #           _name: FDN_mappingRule
+          #           value: FDN_mappingRule
+          #           label: Mapping Rule Description
+          #           useCustomLabel: true
+          #           dataType: STRING
+          #           referencedEntity: CorpFin.entities.MappingRule.MappingRule
+
+                  # - _type: FormCollection
+                  #   _name: Split
+                  #   targetEntity: CorpFin.entities.SplitAllocation.SplitAllocation
+                  #   collection: CorpFin.entities.SplitAllocation.collection_views.SplitAllocationCollectionView
+                  #   # label: Split Details
+                  #   # pluralLabel: Split
+                  #   displayRecordCount: ALWAYS
+                  #   enableUserDefinedSort: true
+                  #   filter: ''
+                  #   gridAllowed: false
+                  #   listAllowed: true
+                  #   sortExpression: EntityID
+                  #   tableAllowed: true
+                  #   transitionPath: splitAllocation                    
+                  #   useCustomLabel: false
+                  #   visibleValue: "1"
+                  #   visibleValueInterpreter: LITERAL 

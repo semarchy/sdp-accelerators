@@ -1,0 +1,22 @@
+_package: CorpFin.entities.Counterparty.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DefaultRule
+entity: CorpFin.entities.Counterparty.Counterparty
+label: Default Rule
+description: ""
+documentation: ""
+defaultRule: true
+consolidationStrategy: PREFERRED_PUBLISHER
+consolidationSkipNulls: false
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+
+attributes:
+  - attributeName: LegalName
+  
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: CorpFin.publishers.ERP
+  - _type: ConsoPublisherRanking
+    publisher: CorpFin.publishers.HR
+  - _type: ConsoPublisherRanking
+    publisher: CorpFin.publishers.CRM

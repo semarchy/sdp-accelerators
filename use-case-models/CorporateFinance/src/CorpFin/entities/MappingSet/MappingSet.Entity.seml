@@ -1,0 +1,63 @@
+_package: CorpFin.entities.MappingSet
+_type: Entity
+_name: MappingSet
+label: Mapping Set
+pluralLabel: Mapping Sets
+entityType: BASIC
+physicalTableName: MAPPING_SET
+iconUrl: images://mdi/clipboard-text-multiple-outline.svg
+description: "Defines mapping scopes between charts of accounts."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: MappingSetID
+    label: Mapping Set ID
+    description: Surrogate identifier for mapping scope
+    documentation: ""
+    physicalName: MAPPING_SET_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: MappingSetName
+    label: Mapping Set Name
+    description: Mapping set name (e.g., FY2026 Group)
+    documentation: ""
+    physicalName: MAPPING_SET_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedMappingSetName
+    label: Normalized Mapping Set Name
+    description: Trimmed and uppercased mapping set name
+    documentation: ""
+    physicalName: NORM_MAPSET_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Purpose
+    label: Purpose
+    description: Purpose (Consolidation, Migration, Reporting)
+    documentation: ""
+    physicalName: PURPOSE
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+primaryKey: CorpFin.entities.MappingSet.MappingSet.MappingSetID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

@@ -1,0 +1,78 @@
+Entity,EntityType,Attribute,DataType,Mandatory,Description,ReferenceTo
+CounterpartyGroup,BASIC,CounterpartyGroupID,String,Y,"Surrogate identifier for counterparty group",
+CounterpartyGroup,BASIC,GroupName,String,Y,"Counterparty group display name",
+CounterpartyGroup,BASIC,NormalizedGroupName,String,N,"Trimmed and uppercased group name for matching",
+CounterpartyGroup,BASIC,PhonetizedGroupName,String,N,"Phonetic representation of group name for fuzzy matching",
+CounterpartyGroup,BASIC,DUNSNumber,String,N,"Global DUNS or external registry number",
+CounterpartyGroup,BASIC,NormalizedDUNSNumber,String,N,"Trimmed and uppercased DUNS/registration identifier",
+CounterpartyGroup,BASIC,UltimateParentFlag,Boolean,N,"Indicates whether the group is the top of hierarchy",
+CounterpartyGroup,BASIC,ParentGroupID,String,N,"Parent group ID","CounterpartyGroup"
+CounterpartyGroup,BASIC,HeadquartersCountry,String,N,"Headquarters country","Country"
+CounterpartyGroup,BASIC,Sector,String,N,"Industry sector",
+Counterparty,FUZZY_MATCHED,CounterpartyID,LongInteger,Y,"Surrogate identifier for the counterparty master",
+Counterparty,FUZZY_MATCHED,LegalName,String,Y,"Official registered name",
+Counterparty,FUZZY_MATCHED,NormalizedLegalName,String,N,"Trimmed and uppercased legal name for matching",
+Counterparty,FUZZY_MATCHED,PhonetizedLegalName,String,N,"Phonetic representation of legal name for fuzzy matching",
+Counterparty,FUZZY_MATCHED,ParentGroupID,String,N,"Parent group ID","CounterpartyGroup"
+Counterparty,FUZZY_MATCHED,TaxID,String,N,"Primary tax identification number",
+Counterparty,FUZZY_MATCHED,NormalizedTaxID,String,N,"Trimmed and uppercased tax identifier",
+Counterparty,FUZZY_MATCHED,CurrencyCode,String,N,"Currency code","Currency"
+Counterparty,FUZZY_MATCHED,CountryCode,String,Y,"Country code","Country"
+Counterparty,FUZZY_MATCHED,IsCustomer,Boolean,N,"Flag indicating customer role",
+Counterparty,FUZZY_MATCHED,IsSupplier,Boolean,N,"Flag indicating supplier role",
+Counterparty,FUZZY_MATCHED,IsInternalEntity,Boolean,N,"Indicates the counterparty is part of our corporate group",
+Customer,BASIC,CustomerID,String,Y,"Source-system customer identifier",
+Customer,BASIC,CounterpartyID,String,Y,"Counterparty ID","Counterparty"
+Customer,BASIC,CustomerType,String,N,"Business classification (B2B, B2C, etc.)",
+Customer,BASIC,PaymentTerms,String,N,"Standard AR payment terms",
+Customer,BASIC,NormalizedPaymentTerms,String,N,"Trimmed and uppercased payment terms for standardization",
+Customer,BASIC,CreditLimit,Decimal(18,2),N,"Maximum credit exposure",
+Customer,BASIC,CreditRating,String,N,"Internal or external credit score",
+Customer,BASIC,PreferredInvoicingCurrency,String,N,"Preferred invoicing currency","Currency"
+Supplier,BASIC,SupplierID,String,Y,"Source-system supplier identifier",
+Supplier,BASIC,CounterpartyID,String,Y,"Counterparty ID","Counterparty"
+Supplier,BASIC,PaymentTerms,String,N,"Standard AP payment terms",
+Supplier,BASIC,NormalizedPaymentTerms,String,N,"Trimmed and uppercased payment terms for standardization",
+Supplier,BASIC,LeadTimeDays,Integer,N,"Average lead time in days for fulfillment",
+Supplier,BASIC,DefaultBankAccountID,String,N,"Default bank account ID","BankAccount"
+BankAccount,BASIC,BankAccountID,String,Y,"Surrogate identifier for bank account",
+BankAccount,BASIC,CounterpartyID,String,Y,"Counterparty ID","Counterparty"
+BankAccount,BASIC,BankName,String,Y,"Legal name of the bank",
+BankAccount,BASIC,IBAN,String,Y,"International Bank Account Number",
+BankAccount,BASIC,NormalizedIBAN,String,N,"Trimmed and uppercased IBAN for validation",
+BankAccount,BASIC,SWIFT,String,N,"SWIFT/BIC code",
+BankAccount,BASIC,NormalizedSWIFT,String,N,"Trimmed and uppercased SWIFT/BIC code",
+BankAccount,BASIC,AccountCurrency,String,Y,"Account currency","Currency"
+BankAccount,BASIC,AccountType,String,N,"Usage classification (AP, AR, Escrow)",
+BankAccount,BASIC,DefaultFlag,Boolean,N,"Indicates if this is the default payout account",
+ContactInformation,BASIC,ContactID,String,Y,"Surrogate identifier for contact record",
+ContactInformation,BASIC,CounterpartyID,String,Y,"Counterparty ID","Counterparty"
+ContactInformation,BASIC,ContactType,String,Y,"Role of the contact (Primary, Billing, Technical)",
+ContactInformation,BASIC,FullName,String,Y,"Contact person full name",
+ContactInformation,BASIC,Email,String,Y,"Email address",
+ContactInformation,BASIC,Phone,String,Y,"Primary phone number",
+ContactInformation,BASIC,Role,String,N,"Job role or title",
+ContactInformation,BASIC,PreferredLanguage,String,N,"Language preference for communications",
+RiskComplianceProfile,BASIC,RiskProfileID,String,Y,"Surrogate identifier for risk profile",
+RiskComplianceProfile,BASIC,CounterpartyID,String,Y,"Counterparty ID","Counterparty"
+RiskComplianceProfile,BASIC,ScreeningDate,Date,N,"Date of latest sanction/AML screening",
+RiskComplianceProfile,BASIC,SanctionListFlag,Boolean,N,"Indicates presence on a sanction list",
+RiskComplianceProfile,BASIC,RiskScore,Decimal(5,2),N,"Calculated compliance risk score",
+RiskComplianceProfile,BASIC,RiskCategory,String,N,"Risk category (Low, Medium, High)",
+RiskComplianceProfile,BASIC,NormalizedRiskCategory,String,N,"Trimmed and uppercased risk category",
+RiskComplianceProfile,BASIC,LastCheckedDate,Date,N,"Date of last automated monitoring check",
+RiskComplianceProfile,BASIC,Notes,String,N,"Additional review notes",
+Address,BASIC,AddressID,String,Y,"Surrogate identifier for the address record",
+Address,BASIC,Line1,String,Y,"Primary address line",
+Address,BASIC,Line2,String,N,"Secondary address line",
+Address,BASIC,City,String,Y,"City name",
+Address,BASIC,NormalizedCity,String,N,"Trimmed and uppercased city name for matching",
+Address,BASIC,PostalCode,String,N,"Postal or ZIP code",
+Address,BASIC,NormalizedPostalCode,String,N,"Trimmed and uppercased postal code for matching",
+Address,BASIC,CountryCode,String,Y,"Country code","Country"
+Address,BASIC,Region,String,N,"State or region name",
+Address,BASIC,NormalizedRegion,String,N,"Trimmed and uppercased region/state value",
+CounterpartyAddress,BASIC,CounterpartyAddressID,String,Y,"Surrogate identifier for counterparty address",
+CounterpartyAddress,BASIC,CounterpartyID,String,Y,"Counterparty ID","Counterparty"
+CounterpartyAddress,BASIC,AddressID,String,Y,"Address ID","Address"
+CounterpartyAddress,BASIC,AddressType,String,Y,"Usage classification (Billing, Shipping, Registered)",

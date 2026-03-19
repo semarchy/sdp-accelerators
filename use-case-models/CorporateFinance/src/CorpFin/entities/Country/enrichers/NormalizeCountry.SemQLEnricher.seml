@@ -1,0 +1,16 @@
+_package: CorpFin.entities.Country.enrichers
+_name: NormalizeCountry
+_type: SemQLEnricher
+entity: CorpFin.entities.Country.Country
+label: Normalize Country
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedCountryCode
+    expression: "RTRIM(LTRIM(UPPER(CountryCode)))"
+  - attributeName: NormalizedCountryName
+    expression: "RTRIM(LTRIM(UPPER(CountryName)))"
+  - attributeName: NormalizedISOAlpha2
+    expression: "RTRIM(LTRIM(UPPER(ISOAlpha2)))"
+  - attributeName: NormalizedISOAlpha3
+    expression: "RTRIM(LTRIM(UPPER(ISOAlpha3)))"

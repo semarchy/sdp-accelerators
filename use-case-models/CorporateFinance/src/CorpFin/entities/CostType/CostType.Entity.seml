@@ -1,0 +1,72 @@
+_package: CorpFin.entities.CostType
+_type: Entity
+_name: CostType
+label: Cost Type
+pluralLabel: Cost Types
+entityType: BASIC
+physicalTableName: COST_TYPE
+iconUrl: images://mdi/cash-multiple.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CostTypeID
+    label: Cost Type ID
+    description: Surrogate identifier for cost type
+    documentation: ""
+    physicalName: COST_TYPE_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CostTypeCode
+    label: Cost Type Code
+    description: Business key or ERP cost type code
+    documentation: ""
+    physicalName: COST_TYPE_CODE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Description of the cost type
+    documentation: ""
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: AccountType
+    label: Account Type
+    description: Account type the cost type belongs to
+    documentation: ""
+    physicalName: ACCOUNT_TYPE
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ExpenseGroup
+    label: Expense Group
+    description: Expense grouping
+    documentation: ""
+    physicalName: EXPENSE_GROUP
+    dataType: String
+    length: 100
+    mandatory: false
+
+primaryKey: CorpFin.entities.CostType.CostType.CostTypeID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

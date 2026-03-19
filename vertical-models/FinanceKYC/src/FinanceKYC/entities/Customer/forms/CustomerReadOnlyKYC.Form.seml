@@ -1,0 +1,125 @@
+_package: FinanceKYC.entities.Customer.forms
+_type: Form
+_name: CustomerReadOnlyKYC
+entity: FinanceKYC.entities.Customer.Customer
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Customer
+    label: Customer
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/account-multiple.svg
+    content:
+      - _type: IdField
+        _name: CustomerID
+        value: CustomerID
+        useCustomLabel: false
+        dataType: STRING
+        authoringMode: READ_ONLY
+        authoringModeValueInterpreter: LITERAL
+      - _type: TextField
+        _name: CustomerType
+        value: CustomerType
+        useCustomLabel: false
+        dataType: STRING
+        authoringMode: READ_ONLY
+        authoringModeValueInterpreter: LITERAL
+      - _type: TextField
+        _name: Status
+        value: Status
+        useCustomLabel: false
+        dataType: STRING
+        authoringMode: READ_ONLY
+        authoringModeValueInterpreter: LITERAL
+      - _type: TextField
+        _name: SourceSystem
+        value: SourceSystem
+        useCustomLabel: false
+        dataType: STRING
+        authoringMode: READ_ONLY
+        authoringModeValueInterpreter: LITERAL
+      - _type: TextField
+        _name: Segment
+        value: Segment
+        useCustomLabel: false
+        dataType: STRING
+        authoringMode: READ_ONLY
+        authoringModeValueInterpreter: LITERAL
+      - _type: TextField
+        _name: CommunicationLanguage
+        value: CommunicationLanguage
+        useCustomLabel: false
+        dataType: STRING
+        authoringMode: READ_ONLY
+        authoringModeValueInterpreter: LITERAL
+      - _type: TextField
+        _name: Notes
+        value: Notes
+        useCustomLabel: false
+        dataType: STRING
+        authoringMode: READ_ONLY
+        authoringModeValueInterpreter: LITERAL
+      - _type: CheckboxField
+        _name: IsActive
+        value: IsActive
+        useCustomLabel: false
+        dataType: BOOLEAN
+        authoringMode: READ_ONLY
+        authoringModeValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: KYCReview
+    label: KYC Review
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/seal-variant.svg
+    content:
+      - _type: FormCollection
+        _name: KYCReview
+        targetEntity: FinanceKYC.entities.KYCReview.KYCReview
+        collection: FinanceKYC.entities.KYCReview.collection_views.KYCReviewCollectionView
+        label: KYC Reviews
+        pluralLabel: KYC Reviews
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: KYCReviewID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: check
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: KYCCheck
+    label: KYC Check
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/seal-variant.svg
+    content:
+      - _type: FormCollection
+        _name: KYCCheck
+        targetEntity: FinanceKYC.entities.KYCCheck.KYCCheck
+        collection: FinanceKYC.entities.KYCCheck.collection_views.KYCCheckCollectionView
+        label: KYC Checks
+        pluralLabel: KYC Checks
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: KYCCheckID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: check
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL

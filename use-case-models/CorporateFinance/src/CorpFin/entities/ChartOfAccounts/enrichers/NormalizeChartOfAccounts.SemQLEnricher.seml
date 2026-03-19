@@ -1,0 +1,10 @@
+_package: CorpFin.entities.ChartOfAccounts.enrichers
+_name: NormalizeChartOfAccounts
+_type: SemQLEnricher
+entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+label: Normalize Chart Of Accounts
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedName
+    expression: "RTRIM(LTRIM(UPPER(Name)))"

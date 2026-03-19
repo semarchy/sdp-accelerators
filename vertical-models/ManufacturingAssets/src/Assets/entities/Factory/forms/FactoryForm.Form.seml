@@ -1,0 +1,106 @@
+_package: Assets.entities.Factory.forms
+_type: Form
+_name: FactoryForm
+entity: Assets.entities.Factory.Factory
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Factory
+    label: Factory
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/factory.svg
+    labelWidth: '150'
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                layoutDirection: ROW
+                content:
+                  - _type: IdField
+                    _name: FactoryID
+                    value: FactoryID
+                    useCustomLabel: false
+                    dataType: STRING
+                  - _type: TextField
+                    _name: Name
+                    value: Name
+                    useCustomLabel: false
+                    dataType: STRING
+                  - _type: ReferenceField
+                    _name: FDN_FactoryType
+                    value: FDN_FactoryType
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: Assets.entities.FactoryType.FactoryType
+              - _type: FormSection
+                _name: OperationalInformation
+                label: Operational Information
+                layoutDirection: ROW
+                content:
+                  - _type: TextField
+                    _name: FactorySize
+                    value: FactorySize
+                    useCustomLabel: true
+                    label: Factory Size (sq ft)
+                    dataType: DECIMAL
+                  - _type: TextField
+                    _name: NumberOfEmployees
+                    value: NumberOfEmployees
+                    useCustomLabel: false
+                    dataType: INTEGER
+                  - _type: ReferenceField
+                    _name: FDN_OperationalStatus
+                    value: FDN_OperationalStatus
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: Assets.entities.OperationalStatus.OperationalStatus
+          - _type: FormSection
+            _name: LocationAndContactInformation
+            label: Location and Contact Information
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: Address
+                value: Address
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: Region
+                value: Region
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: ReferenceField
+                _name: FDN_Country
+                value: FDN_Country
+                useCustomLabel: false
+                dataType: STRING
+                referencedEntity: Assets.entities.Country.Country
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: ContactInformation
+                value: ContactInformation
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+          

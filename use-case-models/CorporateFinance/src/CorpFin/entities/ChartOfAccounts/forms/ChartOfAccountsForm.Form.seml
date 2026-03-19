@@ -1,0 +1,100 @@
+_package: CorpFin.entities.ChartOfAccounts.forms
+_type: Form
+_name: ChartOfAccountsForm
+entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+default: true
+formTabs:
+  - _type: FormTab
+    _name: ChartOfAccounts
+    label: Chart Of Accounts
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: BasicInformation
+                label: Basic Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: Name
+                    value: Name
+                    useCustomLabel: false
+                    dataType: STRING
+                  - _type: TextField
+                    _name: NormalizedName
+                    value: NormalizedName
+                    useCustomLabel: false
+                    dataType: STRING
+                  - _type: TextField
+                    _name: Description
+                    value: Description
+                    useCustomLabel: false
+                    dataType: STRING
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: CoAGovernance
+                label: CoA Governance
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: CheckboxField
+                    _name: IsGroupCoA
+                    value: IsGroupCoA
+                    useCustomLabel: false
+                    dataType: BOOLEAN
+                  - _type: ReferenceField
+                    _name: FDN_orgUnit
+                    value: FDN_orgUnit
+                    useCustomLabel: true
+                    label: Governing Org Unit
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.OrgUnit.OrgUnit
+
+              - _type: FormSection
+                _name: AdditionalDetails
+                label: Additional Details
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: AccountingStandard
+                    value: AccountingStandard
+                    useCustomLabel: false
+                    dataType: STRING
+                  - _type: ReferenceField
+                    _name: FDN_currency
+                    value: FDN_currency
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.Currency.Currency
+
+
+
+

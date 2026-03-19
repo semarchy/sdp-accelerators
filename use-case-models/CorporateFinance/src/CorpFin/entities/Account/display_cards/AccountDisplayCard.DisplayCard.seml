@@ -1,0 +1,35 @@
+_package: CorpFin.entities.Account.display_cards
+_type: DisplayCard
+_name: AccountDisplayCard
+entity: CorpFin.entities.Account.Account
+default: true
+primaryTextExpression: NormalizedAccountCode || ' - ' || NormalizedAccountName
+# primaryTextExpression: AccountName
+
+primaryImageValueInterpreter: LITERAL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+primaryImageSourceType: URL
+
+avatarImageSourceType: URL
+avatarImageValueInterpreter: LITERAL
+# avatarImageValueInterpreter: SEMQL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT
+avatarImageValue: images://mdi/text-box-minus-outline.svg
+# avatarImageValue: case when (isChanged='1' or any Enfant has (isChanged='1')  then 'images://ODIN/circle-edit-outline-red.svg' else 'images://ODIN/checkbox-marked-circle-outline-green.svg' end
+# WORKS avatarImageValue: case when (NormalizedAccountName='BR CASH') then 'images://mdi/text-box-remove.svg' else 'images://mdi/text-box-minus-outline.svg' end
+# WORKS avatarImageValue: case when (chartOfAccounts.Name='Brazil Local CoA') then 'images://mdi/text-box-remove.svg' else 'images://mdi/text-box-minus-outline.svg' end
+# WORKS avatarImageValue: case when (any chartOfAccounts.mappingSetOrigSRC has (sourceChartOfAccounts.Name='Brazil Local CoA')) then 'images://mdi/text-box-remove.svg' else 'images://mdi/text-box-minus-outline.svg' end
+# WORKS avatarImageValue: case when (ANY chartOfAccounts.mappingSetOrigSRC HAS (MappingSetName='BR Local to Group')) then 'images://mdi/text-box-minus-outline.svg' else 'images://mdi/text-box-remove.svg' end
+# WORKS avatarImageValue: case when (ALL chartOfAccounts.mappingSetOrigSRC HAVE (ANY accountMapping has (AccountMappingID='MAP-COA-BR-6010'))) then 'images://mdi/text-box-minus-outline.svg' else 'images://mdi/text-box-remove.svg' end
+# WORKS avatarImageValue: case when (ALL chartOfAccounts.mappingSetOrigSRC HAVE (ANY accountMapping has (sourceAccount.AccountID='COA-BR-6010'))) then 'images://mdi/text-box-minus-outline.svg' else 'images://mdi/text-box-remove.svg' end
+# avatarImageValue: case when (ALL chartOfAccounts.mappingSetOrigSRC HAVE (ANY accountMapping has (FID_sourceAccount=ParentRecord.ParentRecord.AccountID))) then 'images://mdi/text-box-minus-outline.svg' else 'images://mdi/text-box-remove.svg' end
+# avatarImageValue: case when (ANY chartOfAccounts.mappingSetOrigSRC HAS (ANY accountMapping has (1=1))) then 'images://mdi/text-box-minus-outline.svg' else 'images://mdi/text-box-remove.svg' end
+# avatarImageValue: case when (ANY chartOfAccounts.mappingSetOrigSRC HAS (ANY accountMapping has (FID_sourceAccount=ParentRecord.MappingSetID))) then 'images://mdi/text-box-minus-outline.svg' else 'images://mdi/text-box-remove.svg' end
+      # (any accountMapping has (accountMappingOrigSRC.NormalizedAccountName='BR CASH'))
+    
+    
+

@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: AccountMappingUsesRule
+_type: Reference
+label: Account Mapping Uses Rule
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.AccountMapping.AccountMapping
+fromRoleLabel: Account Mapping
+fromRoleName: accountMapping
+fromRolePluralLabel: Account Mappings
+physicalName: ACCOUNTMAPPING_HAS_RULE
+fromNavigable: true
+
+toEntity: CorpFin.entities.MappingRule.MappingRule
+toRoleLabel: Mapping Rule
+toRoleName: mappingRule
+toRolePhysicalName: RULE_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: mappingRule
+  label: Rule ID
+  physicalName: RULE_ID
+  searchable: true
+  entity: CorpFin.entities.MappingRule.MappingRule

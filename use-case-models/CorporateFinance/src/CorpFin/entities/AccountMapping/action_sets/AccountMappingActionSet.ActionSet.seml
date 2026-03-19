@@ -1,0 +1,63 @@
+_package: CorpFin.entities.AccountMapping.action_sets
+_type: ActionSet
+_name: AccountMappingActionSet
+entity: CorpFin.entities.AccountMapping.AccountMapping
+label: Account Mapping Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorAccountMappings
+    label: Create
+    useCustomLabel: true
+    stepper: CorpFin.entities.AccountMapping.steppers.AuthorAccountMappings
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: true
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorAccountMappings
+    label: Edit
+    useCustomLabel: true
+    stepper: CorpFin.entities.AccountMapping.steppers.AuthorAccountMappings
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: true
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorAccountMappings
+    label: Mass Update
+    useCustomLabel: true
+    stepper: CorpFin.entities.AccountMapping.steppers.AuthorAccountMappings
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: true
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: true
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorAccountMappings
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: CorpFin.entities.AccountMapping.steppers.ImportAccountMappings
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

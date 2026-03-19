@@ -1,0 +1,88 @@
+_package: FinanceKYC.entities.KYCReview
+_type: Entity
+_name: KYCReview
+label: KYCReview
+pluralLabel: KYCReview
+entityType: BASIC
+physicalTableName: KYCREVIEW
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: KYCReviewID
+    _type: EntityAttribute
+    label: KYCReview ID
+    physicalName: KYCREVIEW_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: ReviewDate
+    _type: EntityAttribute
+    label: Review Date
+    physicalName: REVIEW_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Review Date is required.
+
+  - _name: ReviewerName
+    _type: EntityAttribute
+    label: Reviewer Name
+    physicalName: REVIEWER_NAME
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Reviewer Name is required.
+
+  - _name: ReviewResult
+    _type: EntityAttribute
+    label: Review Result
+    physicalName: REVIEW_RESULT
+    dataType: String
+    length: 20
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: KYC Review Result is required.
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    physicalName: NOTES
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _name: IsAutomated
+    _type: EntityAttribute
+    label: Is Automated
+    physicalName: IS_AUTOMATED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: IsPassed
+    _type: EntityAttribute
+    label: Is Passed
+    physicalName: IS_PASSED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: NextReviewDate
+    _type: EntityAttribute
+    label: Next Review Date
+    physicalName: NEXT_REVIEW_DATE
+    dataType: Date
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.KYCReview.KYCReview.KYCReviewID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

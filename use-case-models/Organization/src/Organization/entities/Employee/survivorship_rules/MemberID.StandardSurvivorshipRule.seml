@@ -1,0 +1,20 @@
+# This file defines the survivorship rule for MemberID in Employee entities.
+# It specifies the attributes to consider, the consolidation strategy, and the publisher rankings for survivorship
+# It also includes an override strategy for handling changes until the data is consolidated.
+_package: Organization.entities.Employee.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: MemberID
+label: Member ID
+consolidationSkipNulls: true
+defaultRule: false
+entity: Organization.entities.Employee.Employee
+description: This rule defines how to handle the survivorship of MemberID attributes in Employee entities.
+attributes:
+  - attributeName: MemberID
+consolidationStrategy: PREFERRED_PUBLISHER
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: Organization.publishers.MainHRMS
+  - _type: ConsoPublisherRanking
+    publisher: Organization.publishers.SecondaryHRMS
+overrideStrategy: NO_OVERRIDE

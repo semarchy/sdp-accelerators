@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: CounterpartyHasCurrency
+_type: Reference
+label: Counterparty Has Currency
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Counterparty.Counterparty
+fromRoleLabel: Counterparty
+fromRoleName: counterparty
+fromRolePluralLabel: Counterparties
+physicalName: COUNTERPARTY_HAS_CURRENCY
+fromNavigable: true
+
+toEntity: CorpFin.entities.Currency.Currency
+toRoleLabel: Currency
+toRoleName: currency
+toRolePhysicalName: CURRENCY_CODE
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: currency
+  label: Currency Code
+  physicalName: CURRENCY_CODE
+  searchable: true
+  entity: CorpFin.entities.Currency.Currency

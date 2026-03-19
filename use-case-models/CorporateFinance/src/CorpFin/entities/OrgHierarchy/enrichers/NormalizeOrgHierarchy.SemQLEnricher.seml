@@ -1,0 +1,12 @@
+_package: CorpFin.entities.OrgHierarchy.enrichers
+_name: NormalizeOrgHierarchy
+_type: SemQLEnricher
+entity: CorpFin.entities.OrgHierarchy.OrgHierarchy
+label: Normalize Org Hierarchy
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedName
+    expression: "RTRIM(LTRIM(UPPER(Name)))"
+  - attributeName: NormalizedHierarchyType
+    expression: "RTRIM(LTRIM(UPPER(HierarchyType)))"

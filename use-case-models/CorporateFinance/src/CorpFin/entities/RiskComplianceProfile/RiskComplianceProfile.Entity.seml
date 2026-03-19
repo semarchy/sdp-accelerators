@@ -1,0 +1,98 @@
+_package: CorpFin.entities.RiskComplianceProfile
+_type: Entity
+_name: RiskComplianceProfile
+label: Risk Compliance Profile
+pluralLabel: Risk Compliance Profiles
+entityType: BASIC
+physicalTableName: RISK_COMPLIANCE_PROFILE
+iconUrl: images://mdi/shield-account.svg
+description: "Captures sanction and AML monitoring details."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: RiskProfileID
+    label: Risk Profile ID
+    description: Surrogate identifier for risk profile
+    documentation: ""
+    physicalName: RISK_PROFILE_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: ScreeningDate
+    label: Screening Date
+    description: Date of latest sanction/AML screening
+    documentation: ""
+    physicalName: SCREENING_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SanctionListFlag
+    label: Sanction List Flag
+    description: Indicates presence on a sanction list
+    documentation: ""
+    physicalName: SANCTION_LIST_FLAG
+    dataType: Boolean
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RiskScore
+    label: Risk Score
+    description: Calculated compliance risk score
+    documentation: ""
+    physicalName: RISK_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RiskCategory
+    label: Risk Category
+    description: Risk category (Low, Medium, High)
+    documentation: ""
+    physicalName: RISK_CATEGORY
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedRiskCategory
+    label: Normalized Risk Category
+    description: Trimmed and uppercased risk category
+    documentation: ""
+    physicalName: NORMALIZED_RISK_CATEGORY
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: LastCheckedDate
+    label: Last Checked Date
+    description: Date of last automated monitoring check
+    documentation: ""
+    physicalName: LAST_CHECKED_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    description: Additional review notes
+    documentation: ""
+    physicalName: NOTES
+    dataType: String
+    length: 1000
+    mandatory: false
+
+primaryKey: CorpFin.entities.RiskComplianceProfile.RiskComplianceProfile.RiskProfileID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

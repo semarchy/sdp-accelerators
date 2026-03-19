@@ -1,0 +1,28 @@
+_package: FinanceKYC.references
+_name: InsuranceContractHasProduct
+_type: Reference
+label: Insurance Contract Has Product
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.InsuranceContract.InsuranceContract
+fromRoleLabel: Insurance Contract
+fromRoleName: insuranceContract
+fromRolePluralLabel: Insurance Contracts
+physicalName: INS_CON_HAS_PRD
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.InsuranceProduct.InsuranceProduct
+toRoleLabel: Product
+toRoleName: Product
+toRolePhysicalName: PRD_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Product
+  label: Product
+  physicalName: PRODUCT
+  searchable: true
+  entity: FinanceKYC.entities.InsuranceContract.InsuranceContract

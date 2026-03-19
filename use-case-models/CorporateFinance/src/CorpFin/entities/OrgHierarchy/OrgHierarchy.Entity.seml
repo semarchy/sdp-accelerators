@@ -1,0 +1,102 @@
+_package: CorpFin.entities.OrgHierarchy
+_type: Entity
+_name: OrgHierarchy
+label: Org Hierarchy
+pluralLabel: Org Hierarchy
+entityType: BASIC
+physicalTableName: ORG_HIERARCHY
+iconUrl: images://mdi/file-tree.svg
+description: "Organizational hierarchy definition."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: OrgHierarchyID
+    label: Org Hierarchy ID
+    description: Surrogate identifier for an organizational hierarchy
+    documentation: ""
+    physicalName: ORG_HIERARCHY_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    description: Hierarchy name (e.g., FY2026 Managerial)
+    documentation: ""
+    physicalName: NAME
+    dataType: String
+    length: 200
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: EffectiveStartDate
+    label: Effective Start Date
+    description: Effective start date
+    documentation: ""
+    physicalName: EFF_START_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: EffectiveEndDate
+    label: Effective End Date
+    description: Effective end date
+    documentation: ""
+    physicalName: EFF_END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedName
+    label: Normalized Name
+    description: Trimmed and uppercased hierarchy name
+    documentation: ""
+    physicalName: NORMALIZED_NAME
+    dataType: String
+    length: 200
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: HierarchyType
+    label: Hierarchy Type
+    description: Type of hierarchy (Operational, Managerial, Statutory, Group)
+    documentation: ""
+    physicalName: HIERARCHY_TYPE
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedHierarchyType
+    label: Normalized Hierarchy Type
+    description: Trimmed and uppercased hierarchy type
+    documentation: ""
+    physicalName: NORMALIZED_HIERARCHY_TYPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Additional context for the hierarchy
+    documentation: ""
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    mandatory: false
+
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+primaryKey: CorpFin.entities.OrgHierarchy.OrgHierarchy.OrgHierarchyID

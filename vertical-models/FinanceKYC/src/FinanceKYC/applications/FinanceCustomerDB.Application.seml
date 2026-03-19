@@ -1,0 +1,463 @@
+_package: FinanceKYC.applications
+_name: FinanceCustomerDB
+_type: Application
+label: Finance Customer Database
+applicationTitle: Finance Customer Database
+
+visibility: VISIBLE
+avatarImageUrl: images://finance-KYC/appFinanceCustomerDB_icon.jpg
+logoUrl: images://finance-KYC/appFinanceCustomerDB_iconcolor_small.png
+coverImageUrl: images://finance-KYC/AppFinanceCustomerDB.png
+favIcon: images://finance-KYC/appFinanceCustomerDB_iconcolor_small.png
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+
+defaultAction: FinanceKYC.applications.FinanceCustomerDB.Root.TopActions.BrowseCustomers
+
+documentationConfig:
+  documentation: ''
+  documentationConfigDiagrams:
+    - _name: Diagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: FinanceKYC.model_diagrams.FinanceKYCDiagram
+      label: Finance KYC Diagram
+
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+
+
+  globalSearchBusinessViews:
+    - _name: Address
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.Address.business_views.AddressBusinessView
+      searchTypeConfig: FinanceKYC.entities.Address.business_views.AddressBusinessView.Address.TextConfig
+
+    - _name: ContactInformation
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.ContactInformation.business_views.ContactInformationBusinessView
+      searchTypeConfig: FinanceKYC.entities.ContactInformation.business_views.ContactInformationBusinessView.ContactInformation.TextConfig
+
+    - _name: CorporateEntity
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityBusinessView
+      searchTypeConfig: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityBusinessView.CorporateEntity.TextConfig
+
+    - _name: Customer
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.Customer.business_views.CustomerBusinessView
+      searchTypeConfig: FinanceKYC.entities.Customer.business_views.CustomerBusinessView.Customer.TextConfig
+
+    - _name: IndividualPerson
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.IndividualPerson.business_views.IndividualPerson
+      searchTypeConfig: FinanceKYC.entities.IndividualPerson.business_views.IndividualPerson.IndividualPerson.TextConfig
+
+
+rootFolder:
+  _name: Root
+  _type: FolderAction
+  label: Top
+  description: Top level of application hierarchy
+  icon: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+
+  appActions:
+    - _name: TopActions
+      _type: FolderAction
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+
+      appActions:
+      - _name: GlobalSearchConfig
+        _type: GlobalSearchAction
+        icon: images://mdi/magnify.svg
+        iconColor: md:blue
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        label: Search
+
+      - _type: MyTasksAction
+        _name: MyTasks
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        badgeVisible: false
+        
+      - _name: BrowseCustomers
+        _type: BrowseBusinessViewAction
+        label: Customers
+        businessView: FinanceKYC.entities.Customer.business_views.CustomerDatabaseView
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        nbRecordsBadgeBackgroundColor: '#FF9800'
+        iconColor: '#FF9800'
+        icon: images://mdi/account-multiple.svg 
+
+      - _name: Errors
+        _type: FolderAction
+        icon: images://mdi/alert-octagon.svg
+        iconColor: md:red
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        label: Browse Errors
+
+        appActions:
+          - _name: AddressErrors
+            _type: BrowseBusinessViewAction
+            icon: images://mdi/alert-outline.svg
+            iconColor: md:red
+            image: images://finance-KYC/Address_image.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FILL
+            label: Address Errors
+            nbRecordsBadgeVisible: true
+            useSearchOnOpen: false
+            viewType: SDWE
+            businessView: FinanceKYC.entities.Address.business_views.AddressBusinessView
+
+          - _name: ContactInformationErrors
+            _type: BrowseBusinessViewAction
+            icon: images://mdi/alert-outline.svg
+            iconColor: md:red
+            image: images://finance-KYC/ContactInfo_image.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FILL
+            label: Contact Information Errors
+            nbRecordsBadgeVisible: true
+            useSearchOnOpen: false
+            viewType: SAWE
+            businessView: FinanceKYC.entities.ContactInformation.business_views.ContactInformationBusinessView
+
+          - _name: CorporateEntityErrors
+            _type: BrowseBusinessViewAction
+            icon: images://mdi/alert-outline.svg
+            iconColor: md:red
+            image: images://finance-KYC/CorporateEntity_image.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FILL
+            label: Corporate Entity Errors
+            nbRecordsBadgeVisible: true
+            useSearchOnOpen: false
+            viewType: SDWE
+            businessView: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityBusinessView
+
+          - _name: CustomerErrors
+            _type: BrowseBusinessViewAction
+            icon: images://mdi/alert-outline.svg
+            iconColor: md:red
+            image: images://finance-KYC/Customer_image.jpg
+            imageAlign: MIDDLE_CENTER
+            imageMode: FILL
+            label: Customer Errors
+            nbRecordsBadgeVisible: true
+            useSearchOnOpen: false
+            viewType: SAWE
+            businessView: FinanceKYC.entities.Customer.business_views.CustomerBusinessView
+
+          - _name: IndividualPersonErrors
+            _type: BrowseBusinessViewAction
+            icon: images://mdi/alert-outline.svg
+            iconColor: md:red
+            image: images://finance-KYC/IndividualPerson_image.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FILL
+            label: Individual Person Errors
+            nbRecordsBadgeVisible: true
+            useSearchOnOpen: false
+            viewType: SDWE
+            businessView: FinanceKYC.entities.IndividualPerson.business_views.IndividualPerson
+
+    - _name: StewardActions
+      _type: FolderAction
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+
+      appActions:
+      - _name: QuickActionsAddress
+        _type: FolderAction
+        label: Addresses
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+
+        appActions:
+          - _name: ConfirmMatchesAddress
+            _type: BrowseBusinessViewAction
+            label: Confirm Matches
+            businessView: FinanceKYC.entities.Address.business_views.AddressConfirmMatches
+            nbRecordsBadgeVisible: true
+            icon: images://mdi/map-marker-check-outline.svg
+            iconColor: "#065084"
+            labelColor: "#065084"
+            viewType: GD
+
+          - _name: SuggestedMatchesAddress
+            _type: BrowseBusinessViewAction
+            label: Review Suggestions
+            businessView: FinanceKYC.entities.Address.business_views.AddressReviewSuggestions
+            nbRecordsBadgeVisible: true
+            icon: images://mdi/map-marker-alert-outline.svg
+            iconColor: "#065084"
+            labelColor: "#065084"
+            viewType: GD
+
+      - _name: QuickActionsCorporate
+        _type: FolderAction
+        label: Corporate Entities
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+
+        appActions:
+          - _name: ConfirmMatchesCorporate
+            _type: BrowseBusinessViewAction
+            label: Confirm Matches
+            businessView: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityConfirmMatches
+            nbRecordsBadgeVisible: true
+            icon: images://finance-KYC/store-check.svg
+            iconColor: "#33A1E0"
+            labelColor: "#33A1E0"
+            viewType: GD
+
+          - _name: SuggestedMatchesCorporate
+            _type: BrowseBusinessViewAction
+            label: Review Suggestions
+            businessView: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityReviewSuggestions
+            nbRecordsBadgeVisible: true
+            icon: images://finance-KYC/store-alert.svg
+            iconColor: "#33A1E0"
+            labelColor: "#33A1E0"
+            viewType: GD
+      
+      - _name: QuickActionsIndiv
+        _type: FolderAction
+        label: Individual Persons
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+
+        appActions:
+          - _name: ConfirmMatchesIndiv
+            _type: BrowseBusinessViewAction            
+            label: Confirm Matches
+            businessView: FinanceKYC.entities.IndividualPerson.business_views.IndividualPersonConfirmMatches
+            nbRecordsBadgeVisible: true
+            icon: images://mdi/account-check.svg
+            iconColor: "#124170"
+            labelColor: "#124170"
+            viewType: GD
+
+          - _name: SuggestedMatchesIndiv
+            _type: BrowseBusinessViewAction
+            label: Review Suggestions
+            businessView: FinanceKYC.entities.IndividualPerson.business_views.IndividualPersonReviewSuggestions
+            nbRecordsBadgeVisible: true
+            icon: images://mdi/account-alert.svg
+            iconColor: "#124170"
+            labelColor: "#124170"
+            viewType: GD  
+
+    - _name: MoreActions
+      _type: FolderAction
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Admin & Documentation
+
+      appActions:
+        - _name: OpenModelDoc
+          _type: OpenDocumentationAction
+          label: Model Documentation
+
+        - _type: FolderAction
+          _name: ImportData
+          icon: images://mdi/database-import.svg
+          image: images://default/folder-item-import.png
+          iconColor: md:grey
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Import Data
+          requiredRole: SemAdmin         
+
+          appActions:
+            - _type: ImportDataAppAction
+              _name: ImportBankingProductCategories
+              label: 01-Import BankingProductCategories
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.BankingProductCategory.action_sets.BankingProductCategoryActionSet.ImportAuthorBankingProductCategories
+            - _type: ImportDataAppAction
+              _name: ImportCustomers
+              label: 02-Import Customers
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.Customer.action_sets.CustomerActionSet.ImportAuthorCustomers
+            - _type: ImportDataAppAction
+              _name: ImportInsuranceProductCategories
+              label: 03-Import InsuranceProductCategories
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.InsuranceProductCategory.action_sets.InsuranceProductCategoryActionSet.ImportAuthorInsuranceProductCategories
+            - _type: ImportDataAppAction
+              _name: ImportAddresses
+              label: 04- Import Addresses
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.Address.action_sets.AddressActionSet.ImportAuthorAddresses
+            - _type: ImportDataAppAction
+              _name: ImportBankAccounts
+              label: 05-Import BankAccounts
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.BankAccount.action_sets.BankAccountActionSet.ImportAuthorBankAccounts
+            - _type: ImportDataAppAction
+              _name: ImportBankingProducts
+              label: 06-Import BankingProducts
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.BankingProduct.action_sets.BankingProductActionSet.ImportAuthorBankingProducts
+            - _type: ImportDataAppAction
+              _name: ImportContactInformations
+              label: 07-Import ContactInformations
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.ContactInformation.action_sets.ContactInformationActionSet.ImportAuthorContactInformations
+            - _type: ImportDataAppAction
+              _name: ImportCorporateEntities
+              label: 08-Import CorporateEntities
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.CorporateEntity.action_sets.CorporateEntityActionSet.ImportAuthorCorporateEntities
+            - _type: ImportDataAppAction
+              _name: ImportCustomerRiskProfiles
+              label: 09-Import CustomerRiskProfiles
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.CustomerRiskProfile.action_sets.CustomerRiskProfileActionSet.ImportAuthorCustomerRiskProfiles
+            - _type: ImportDataAppAction
+              _name: ImportIdDocuments
+              label: 10-Import IdDocuments
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.IdDocument.action_sets.IdDocumentActionSet.ImportAuthorIdDocuments
+            - _type: ImportDataAppAction
+              _name: ImportIndividualPeople
+              label: 11-Import IndividualPeople
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.IndividualPerson.action_sets.IndividualPersonActionSet.ImportAuthorIndividualPeople
+            - _type: ImportDataAppAction
+              _name: ImportInsuranceProducts
+              label: 12-Import InsuranceProducts
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.InsuranceProduct.action_sets.InsuranceProductActionSet.ImportAuthorInsuranceProducts
+            - _type: ImportDataAppAction
+              _name: ImportKYCChecks
+              label: 13-Import KYCChecks
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.KYCCheck.action_sets.KYCCheckActionSet.ImportAuthorKYCChecks
+            - _type: ImportDataAppAction
+              _name: ImportKYCReviews
+              label: 14-Import KYCReviews
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.KYCReview.action_sets.KYCReviewActionSet.ImportAuthorKYCReviews
+            - _type: ImportDataAppAction
+              _name: ImportRelationships
+              label: 15-Import Relationships
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.Relationship.action_sets.RelationshipActionSet.ImportAuthorRelationships
+            - _type: ImportDataAppAction
+              _name: ImportBankingContracts
+              label: 16-Import BankingContracts
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.BankingContract.action_sets.BankingContractActionSet.ImportAuthorBankingContracts
+            - _type: ImportDataAppAction
+              _name: ImportEmployments
+              label: 17-Import Employments
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.Employment.action_sets.EmploymentActionSet.ImportAuthorEmployments
+            - _type: ImportDataAppAction
+              _name: ImportInsuranceContracts
+              label: 18-Import InsuranceContracts
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.InsuranceContract.action_sets.InsuranceContractActionSet.ImportAuthorInsuranceContracts
+            - _type: ImportDataAppAction
+              _name: ImportUBOS
+              label: 19-Import UBOS
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.UBO.action_sets.UBOActionSet.ImportAuthorUBOS
+            - _type: ImportDataAppAction
+              _name: ImportBankingContractRoles
+              label: 20-Import BankingContractRoles
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.BankingContractRole.action_sets.BankingContractRoleActionSet.ImportAuthorBankingContractRoles
+            - _type: ImportDataAppAction
+              _name: ImportInsuranceContractRoles
+              label: 21-Import InsuranceContractRoles
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: FinanceKYC.entities.InsuranceContractRole.action_sets.InsuranceContractRoleActionSet.ImportAuthorInsuranceContractRoles
+navDrawer:
+  - _name: TopActionsGroup
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: FinanceKYC.applications.FinanceCustomerDB.Root.TopActions
+
+  - _name: AddressActionsGroup
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: FinanceKYC.applications.FinanceCustomerDB.Root.StewardActions.QuickActionsAddress
+    
+  - _name: CorporateActionsGroup
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: FinanceKYC.applications.FinanceCustomerDB.Root.StewardActions.QuickActionsCorporate
+    
+  - _name: IndivPersonActionsGroup
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: FinanceKYC.applications.FinanceCustomerDB.Root.StewardActions.QuickActionsIndiv
+
+  - _name: MoreActions
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: FinanceKYC.applications.FinanceCustomerDB.Root.MoreActions

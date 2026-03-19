@@ -1,0 +1,81 @@
+_package: CorpFin.entities.Customer
+_type: Entity
+_name: Customer
+label: Customer
+pluralLabel: Customers
+entityType: BASIC
+physicalTableName: CUSTOMER
+iconUrl: images://mdi/cart-variant.svg
+description: "Customer-specific view of the counterparty."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CustomerID
+    label: Customer ID
+    description: Source-system customer identifier
+    documentation: ""
+    physicalName: CUSTOMER_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CustomerType
+    label: Customer Type
+    description: Business classification (B2B, B2C, etc.)
+    documentation: ""
+    physicalName: CUSTOMER_TYPE
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: PaymentTerms
+    label: Payment Terms
+    description: Standard AR payment terms
+    documentation: ""
+    physicalName: PAYMENT_TERMS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedPaymentTerms
+    label: Normalized Payment Terms
+    description: Trimmed and uppercased payment terms for standardization
+    documentation: ""
+    physicalName: NORMALIZED_PAYMENT_TERMS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: CreditLimit
+    label: Credit Limit
+    description: Maximum credit exposure
+    documentation: ""
+    physicalName: CREDIT_LIMIT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: CreditRating
+    label: Credit Rating
+    description: Internal or external credit score
+    documentation: ""
+    physicalName: CREDIT_RATING
+    dataType: String
+    length: 20
+    mandatory: false
+
+primaryKey: CorpFin.entities.Customer.Customer.CustomerID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

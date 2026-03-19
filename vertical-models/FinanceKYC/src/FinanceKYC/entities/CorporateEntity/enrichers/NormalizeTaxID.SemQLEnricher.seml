@@ -1,0 +1,11 @@
+_package: FinanceKYC.entities.CorporateEntity.enrichers
+_name: NormalizeTaxID
+_type: SemQLEnricher
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Normalize Corporate Entity Tax ID
+description: Currently a placeholder expression. Replace with the actual normalization logic as needed.
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedTaxID
+    expression: "RTRIM(LTRIM(UPPER(RIGHT(TaxID, 7))))"

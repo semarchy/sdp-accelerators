@@ -1,0 +1,114 @@
+_package: CorpFin.entities.OrgUnit.forms
+_type: Form
+_name: OrgUnitForm
+entity: CorpFin.entities.OrgUnit.OrgUnit
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: OrgUnit
+    label: Org Unit
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/domain.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                labelWidth: 200px
+                layoutDirection: ROW
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: OrgUnitID
+                    value: OrgUnitID
+                    useCustomLabel: false
+                    dataType: STRING
+                    
+                  - _type: TextField
+                    _name: OrgUnitBusinessCode
+                    value: OrgUnitBusinessCode
+                    useCustomLabel: false
+                    dataType: STRING
+
+                  - _type: TextField
+                    _name: OrgUnitName
+                    value: OrgUnitName
+                    useCustomLabel: false
+                    dataType: STRING
+
+                  - _type: TextField
+                    _name: Description
+                    value: Description
+                    useCustomLabel: false
+                    dataType: STRING
+            
+              - _type: FormSection
+                _name: LegalInformation
+                label: Legal Information
+                labelWidth: 200px
+                layoutDirection: ROW
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_orgUnitType
+                    value: FDN_orgUnitType
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.OrgUnitType.OrgUnitType
+
+                  - _type: ReferenceField
+                    _name: FDN_counterparty
+                    value: FDN_counterparty
+                    label: Associated Counterparty
+                    useCustomLabel: true
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.Counterparty.Counterparty
+                    visibleValue: FDN_orgUnitType = 'LegalEntity'
+                    visibleValueInterpreter: SEMQL
+
+          - _type: FormSection
+            _name: Enrichments
+            label: Enrichments
+            labelWidth: 250px
+            layoutDirection: COLUMN
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL
+
+            content:
+              - _type: TextField
+                _name: NormalizedOrgUnitBusinessCode
+                value: NormalizedOrgUnitBusinessCode
+                useCustomLabel: false
+                dataType: STRING
+
+              - _type: TextField
+                _name: NormalizedOrgUnitName
+                value: NormalizedOrgUnitName
+                useCustomLabel: false
+                dataType: STRING
+
+              - _type: TextField
+                _name: PhonetizedOrgUnitName
+                value: PhonetizedOrgUnitName
+                useCustomLabel: false
+                dataType: STRING
+

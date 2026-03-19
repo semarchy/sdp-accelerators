@@ -1,0 +1,12 @@
+_package: CorpFin.entities.CounterpartyGroup.enrichers
+_name: NormalizeCounterpartyGroup
+_type: SemQLEnricher
+entity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+label: Normalize Counterparty Group
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedGroupName
+    expression: "RTRIM(LTRIM(UPPER(GroupName)))"
+  - attributeName: NormalizedDUNSNumber
+    expression: "RTRIM(LTRIM(UPPER(DUNSNumber)))"

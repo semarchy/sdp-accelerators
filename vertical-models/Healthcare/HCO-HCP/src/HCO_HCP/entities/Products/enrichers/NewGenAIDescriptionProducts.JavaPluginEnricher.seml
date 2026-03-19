@@ -1,0 +1,26 @@
+_type: JavaPluginEnricher
+_package: HCO_HCP.entities.Products.enrichers
+_name: NewGenAIDescriptionProducts
+entity: HCO_HCP.entities.Products.Products
+label: Gen AI Description Products
+pluginId: com.semarchy.engine.plugins.genai.openai.simple
+batchUpdateSize: 1000
+numberOfRetry: 0
+onErrorBehavior: SKIP_TASK
+enricherExecutionScope: NONE
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_API_KEY
+    value: INSERT_YOUR_API_KEY
+  - paramName: PARAM_MODEL
+    value: gpt-4
+  - paramName: PARAM_MAX_TOKENS
+    value: '1500'
+pluginInputs:
+  - inputName: IN_USER_PROMPT
+    expression: SEM_CONCAT(' ','Give me a marketing description to describe this product with the following properties ', TradeName,' by ' , FDN_Sponsor, ' in form of ', FDN_Form, ' for the therapeutic area of ', FDN_TherapeauticArea, ' and the administration of ', FDN_Administration,'. Do not provide any feedback on the request itself, just give directly the marketing description in your answer. The description must be close to 1400 characters and should fully use the allowed length without exceeding it.')
+pluginOutputs:
+  - outputName: OUT_RESPONSE
+    attributeName: GEN_AIDescription
+afterEnrichers: HCO_HCP.entities.Products.enrichers.UpperAttributes

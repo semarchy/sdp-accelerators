@@ -1,0 +1,886 @@
+_package: HCO_HCP.applications
+_name: HCO_HCP
+_type: Application
+applicationTitle: Healthcare Demo
+avatarImageUrl: images://HCO_HCP/healthcarelogo.png
+coverImageUrl: images://HCO_HCP/healthcarelogo.png
+favIcon: images://HCO_HCP/healthcarelogo.png
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ""
+logoUrl: images://HCO_HCP/healthcarelogo.png
+visibility: VISIBLE
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: Main
+      _type: DocumentationConfigDiagram
+      modelDiagram: HCO_HCP.model_diagrams.Main
+      label: Main
+    - _name: ICD
+      _type: DocumentationConfigDiagram
+      modelDiagram: HCO_HCP.model_diagrams.ICD
+      label: ICD
+label: Healthcare Demo
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: Products
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: HCO_HCP.entities.Products.business_views.Products
+      maxResults: 5
+      searchTypeConfig: HCO_HCP.entities.Products.business_views.Products.ProductsEO.TextConfig
+    - _name: HCO
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: HCO_HCP.entities.HCO.business_views.HCO
+      maxResults: 5
+      searchTypeConfig: HCO_HCP.entities.HCO.business_views.HCO.HCOEO.TextConfig
+    - _name: Member
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: HCO_HCP.entities.Member.business_views.Member
+      maxResults: 5
+      searchTypeConfig: HCO_HCP.entities.Member.business_views.Member.MemberEO.Encounters.Encounter.TextConfig
+    - _name: HCP
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: HCO_HCP.entities.HCP.business_views.HCP
+      maxResults: 5
+      searchTypeConfig: HCO_HCP.entities.HCP.business_views.HCP.HCPEO.TextConfig
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: QuickLinks
+      label: Quick Links
+      labelColor: md:black
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: Inbox
+          label: My Tasks
+          labelColor: md:black
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: MyTasksAction
+          badgeVisible: true
+        - _name: GlobalSearchConfig
+          label: Global Search
+          labelColor: md:black
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: GlobalSearchAction
+    - _name: HealthcareParties
+      label: Healthcare Parties
+      # labelColor: md:blue
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseHCP
+          label: Providers (HCP)
+          labelColor: md:blue
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          iconColor: md:blue
+          _type: BrowseBusinessViewAction
+          businessView: HCO_HCP.entities.HCP.business_views.HCP
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseHCO
+          label: Organization (HCO)
+          labelColor: md:blue
+          iconColor: md:blue
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: HCO_HCP.entities.HCO.business_views.HCO
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseSpecialty
+          icon: images://mdi/medical-bag.svg
+          image: images://mdi/medical-bag.svg
+          label: Specialities
+          labelColor: md:blue
+          iconColor: md:blue
+          imageAlign: MIDDLE_CENTER
+          imageMode: CONTAIN
+          _type: BrowseBusinessViewAction
+          businessView: HCO_HCP.entities.Specialty.business_views.Specialty
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+    - _name: HealthcareProducts
+      label: Healthcare Products
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: Products
+          label: Products
+          labelColor: md:orange
+          iconColor: md:orange
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: HCO_HCP.entities.Products.business_views.Products
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: ProductReferenceData
+          label: Reference Data
+          imageAlign: MIDDLE_CENTER
+          labelColor: md:orange
+          iconColor: md:orange
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: TherapeauticArea
+              icon: images://HCO_HCP/HealthcareTherapeutic.png
+              label: Therapeutic Areas
+              labelColor: md:blue
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.TherapeauticArea.business_views.TherapeauticArea
+              image: images://HCO_HCP/HealthcareTherapeutic.png
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseSponsor
+              icon: images://HCO_HCP/HospitalBuilding.png
+              image: images://HCO_HCP/HospitalBuilding.png
+              label: Sponsor
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Sponsor.business_views.Sponsor
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseAdministration
+              icon: images://HCO_HCP/HealthcareAdmin.png
+              image: images://HCO_HCP/HealthcareAdmin.png
+              iconColor: md:grey
+              label: Administration
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Administration.business_views.Administration
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseForm
+              image: images://HCO_HCP/drugs.png
+              label: Form
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Form.business_views.Form
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    - _name: HealthcarePatients
+      label: Healthcare Patients
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseMembers
+          label: Members
+          labelColor: md:green
+          iconColor: md:green
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: HCO_HCP.entities.Member.business_views.Member
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseInsuranceCompany
+          icon: images://mdi/domain.svg
+          image: images://mdi/domain.svg
+          labelColor: md:green
+          iconColor: md:green
+          label: Insurance Companies
+          imageAlign: MIDDLE_CENTER
+          imageMode: CONTAIN
+          _type: BrowseBusinessViewAction
+          businessView: HCO_HCP.entities.InsuranceCompany.business_views.InsuranceCompany
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+    - _name: HealthcareTaxonomy
+      label: Healthcare Taxonomy
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseTaxonomyGrouping
+          icon: images://mdi/file-tree.svg
+          label: Taxonomy Grouping
+          labelColor: md:grey
+          iconColor: md:grey
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: HCO_HCP.entities.TaxonomyGrouping.business_views.TaxonomyGrouping
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseTaxonomySpecialization
+          icon: images://mdi/certificate.svg
+          label: Taxonomy Specialization
+          labelColor: md:grey
+          iconColor: md:grey
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: HCO_HCP.entities.TaxonomySpecialization.business_views.TaxonomySpecialization
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+    - _name: Administration
+      label: Administration
+      labelColor: md:orange
+      requiredRole: DataSteward
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: StartHere
+          icon: images://mdi/arrow-right-thick.svg
+          iconColor: md:green
+          label: Start here!
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: ImportAdministration
+              label: Import Administrations
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Administration.action_sets.AdministrationActionSet.ImportAuthorAdministrations
+            - _name: ImportForm
+              label: Import Forms
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Form.action_sets.FormActionSet.ImportAuthorForms
+            - _name: ImportHCO
+              label: Import HCOs
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.HCO.action_sets.HCOActionSet.ImportAuthorHCOs
+            - _name: ImportICD10CM
+              label: Import ICD-10-CM
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.ICD10CM.action_sets.ICD10CMActionSet.ImportAuthorICD10CMs
+            - _name: ImportICD9CM
+              label: Import ICD-9-CM
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.ICD9CM.action_sets.ICD9CMActionSet.ImportAuthorICD9CMs
+            - _name: ImportICDMapping
+              label: Import ICD Mappings
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.ICDMapping.action_sets.ICDMappingActionSet.ImportAuthorICDMappings
+            - _name: ImportInsuranceCompany
+              label: Import Insurance Companies
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.InsuranceCompany.action_sets.InsuranceCompanyActionSet.ImportAuthorInsuranceCompanys
+            - _name: ImportSpecialty
+              label: Import Specialties
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Specialty.action_sets.SpecialtyActionSet.ImportAuthorSpecialtys
+            - _name: ImportSponsor
+              label: Import Sponsors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Sponsor.action_sets.SponsorActionSet.ImportAuthorSponsors
+            - _name: ImportTaxonomyGrouping
+              label: Import Taxonomy Groupings
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.TaxonomyGrouping.action_sets.TaxonomyGroupingActionSet.ImportAuthorTaxonomyGroupings
+            - _name: ImportTaxonomyClassification
+              label: Import Taxonomy Classifications
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.TaxonomyClassification.action_sets.TaxonomyClassificationActionSet.ImportAuthorTaxonomyClassifications
+            - _name: ImportTaxonomySpecialization
+              label: Import Taxonomy Specializations
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.TaxonomySpecialization.action_sets.TaxonomySpecializationActionSet.ImportAuthorTaxonomySpecializations
+            - _name: ImportTaxonomyClassificationSpecialization
+              label: Import Taxonomy Classification Specializations
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.TaxonomyClassificationSpecialization.action_sets.TaxonomyClassificationSpecializationActionSet.ImportAuthorTaxonomyClassificationSpecializations
+            - _name: ImportHCP
+              label: Import HCPs
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.HCP.action_sets.HCPActionSet.ImportAuthorHCPs
+            - _name: ImportHCPSpecialty
+              label: Import HCP Specialties
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.HCPSpecialty.action_sets.HPCSpecialtyActionSet.ImportAuthorHPCSpecialtys
+            - _name: ImportMember
+              label: Import Members
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Member.action_sets.MemberActionSet.ImportAuthorMembers
+            - _name: ImportCoverage
+              label: Import Coverage
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Coverage.action_sets.MemberInsuranceCompanyActionSet.ImportAuthorMemberInsuranceCompanys
+            - _name: ImportEncounter
+              label: Import Encounters
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Encounter.action_sets.EncounterActionSet.ImportAuthorEncounters
+            - _name: ImportTherapeauticArea
+              label: Import Therapeautic Areas
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.TherapeauticArea.action_sets.TherapeauticAreaActionSet.ImportAuthorTherapeauticAreas
+            - _name: ImportProducts
+              label: Import Products
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Products.action_sets.ProductsActionSet.ImportAuthorProducts
+            - _name: ImportStrength
+              label: Import Strengths
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: HCO_HCP.entities.Strength.action_sets.StrengthActionSet.ImportAuthorStrengths
+        - _name: Entities
+          label: Browse All Data
+          iconColor: md:green
+          requiredRole: DataSteward
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseEntitiesFolderAction
+          lineageEnabled: true
+    - _name: DataStewardship
+      label: Data Stewardship
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: DuplicateManagement
+          label: Duplicate management
+          imageAlign: MIDDLE_CENTER
+          iconColor: md:red
+          labelColor: md:red
+          imageMode: FIT
+          icon: images://mdi/account-multiple-check-outline.svg
+          _type: FolderAction
+          appActions:
+            - _name: UnconfirmedHCOs
+              label: Unconfirmed HCOs
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.HCO.business_views.ConfirmDuplicateHCO
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: DupHCO
+              label: Review HCO Suggestions
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.HCO.business_views.ReviewHCOSuggestions
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Review HCO Suggestions
+              businessViewRootLabelOverride: Review HCO Suggestions
+              businessViewRootPluralLabelOverride: Review HCO Suggestions
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: UnconfirmedHCPs
+              label: Unconfirmed HCPs
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.HCP.business_views.ConfirmDuplicateHCP
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: DupHCP
+              label: Review HCP Suggestions
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.HCP.business_views.ReviewHCPSuggestions
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Review HCP Suggestions
+              businessViewRootLabelOverride: Review HCP Suggestions
+              businessViewRootPluralLabelOverride: Review HCP Suggestions
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: UnconfirmedMembers
+              label: Unconfirmed Members
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Member.business_views.ManageDupMembers
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: DupMember
+              label: Review Member Suggestions
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Member.business_views.ManageSuggestionMembers
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Review Member Suggestions
+              businessViewRootLabelOverride: Review Member Suggestions
+              businessViewRootPluralLabelOverride: Review Member Suggestions
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: UnconfirmedProducts
+              label: Unconfirmed Products
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Products.business_views.ReviewDuplicateProducts
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: DupProduct
+              label: Review Product Suggestions
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Products.business_views.ReviewSuggestionProducts
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Review Product Suggestions
+              businessViewRootLabelOverride: Review Product Suggestions
+              businessViewRootPluralLabelOverride: Review Product Suggestions
+              useSearchOnOpen: false
+              viewType: GD
+        - _name: ErrorManagement
+          label: Error Management
+          iconColor: md:red
+          labelColor: md:red
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          icon: images://mdi/alert-circle-outline.svg
+          _type: FolderAction
+          appActions:
+            - _name: HCOwithErrors
+              label: Source HCOs with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.HCO.business_views.HCO
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source HCOs with Errors
+              businessViewRootLabelOverride: Source HCOs with Errors
+              businessViewRootPluralLabelOverride: Source HCOs with Errors
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: HCPwithErrors
+              label: Source HCPs with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.HCP.business_views.HCP
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source HCPs with Errors
+              businessViewRootLabelOverride: Source HCPs with Errors
+              businessViewRootPluralLabelOverride: Source HCPs with Errors
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: MemberswithErrors
+              label: Source Members with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Member.business_views.Member
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Members with Errors
+              businessViewRootLabelOverride: Source Members with Errors
+              businessViewRootPluralLabelOverride: Source Members with Errors
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: ProductswithErrors
+              label: Source Products with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Products.business_views.Products
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Products with Errors
+              businessViewRootLabelOverride: Source Products with Errors
+              businessViewRootPluralLabelOverride: Source Products with Errors
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: AdministrationwithErrors
+              label: Source Administration with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Administration.business_views.Administration
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Administration with Errors
+              businessViewRootLabelOverride: Source Administration with Errors
+              businessViewRootPluralLabelOverride: Source Administration with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: CoveragewithErrors
+              label: Source Member Coverage with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Coverage.business_views.MemberCoverage
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Member Coverage with Errors
+              businessViewRootLabelOverride: Source Member Coverage with Errors
+              businessViewRootPluralLabelOverride: Source Member Coverage with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: EncounterwithErrors
+              label: Source Encounters with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Encounter.business_views.Encounter
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Encounters with Errors
+              businessViewRootLabelOverride: Source Encounters with Errors
+              businessViewRootPluralLabelOverride: Source Encounters with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: FormwithErrors
+              label: Source Forms with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Form.business_views.Form
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Forms with Errors
+              businessViewRootLabelOverride: Source Forms with Errors
+              businessViewRootPluralLabelOverride: Source Forms with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: HCPSpecialtywithErrors
+              label: Source HCP Specialties with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.HCPSpecialty.business_views.HCPSpecialty
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source HCP Specialties with Errors
+              businessViewRootLabelOverride: Source HCP Specialties with Errors
+              businessViewRootPluralLabelOverride: Source HCP Specialties with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: ICD10CMwithErrors
+              label: Source ICD-10-CM (diagnosis) with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.ICD10CM.business_views.ICD10CM
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source ICD-10-CM (diagnosis) with Errors
+              businessViewRootLabelOverride: Source ICD-10-CM (diagnosis) with Errors
+              businessViewRootPluralLabelOverride: Source ICD-10-CM (diagnosis) with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: ICD9CMwithErrors
+              label: Source ICD-9-CM (diagnosis) with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.ICD9CM.business_views.ICD9CM
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source ICD-9-CM (diagnosis) with Errors
+              businessViewRootLabelOverride: Source ICD-9-CM (diagnosis) with Errors
+              businessViewRootPluralLabelOverride: Source ICD-9-CM (diagnosis) with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: ICDMappingwithErrors
+              label: Source ICD Mappings with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.ICDMapping.business_views.ICDMapping
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source ICD Mappings with Errors
+              businessViewRootLabelOverride: Source ICD Mappings with Errors
+              businessViewRootPluralLabelOverride: Source ICD Mappings with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: InsuranceCompanywithErrors
+              label: Source Insurance Companies with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.InsuranceCompany.business_views.InsuranceCompany
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Insurance Companies with Errors
+              businessViewRootLabelOverride: Source Insurance Companies with Errors
+              businessViewRootPluralLabelOverride: Source Insurance Companies with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: SpecialtywithErrors
+              label: Source Specialties with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Specialty.business_views.Specialty
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Specialties with Errors
+              businessViewRootLabelOverride: Source Specialties with Errors
+              businessViewRootPluralLabelOverride: Source Specialties with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: SponsorwithErrors
+              label: Source Sponsors with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Sponsor.business_views.Sponsor
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Sponsors with Errors
+              businessViewRootLabelOverride: Source Sponsors with Errors
+              businessViewRootPluralLabelOverride: Source Sponsors with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: StrengthwithErrors
+              label: Source Strength with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.Strength.business_views.Strength
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Strength with Errors
+              businessViewRootLabelOverride: Source Strength with Errors
+              businessViewRootPluralLabelOverride: Source Strength with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: TaxonomyGroupingwithErrors
+              label: Source Taxonomy Groupings with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.TaxonomyGrouping.business_views.TaxonomyGrouping
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Taxonomy Groupings with Errors
+              businessViewRootLabelOverride: Source Taxonomy Groupings with Errors
+              businessViewRootPluralLabelOverride: Source Taxonomy Groupings with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: TaxonomySpecializationwithErrors
+              label: Source Taxonomy Specializations with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.TaxonomySpecialization.business_views.TaxonomySpecialization
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Taxonomy Specializations with Errors
+              businessViewRootLabelOverride: Source Taxonomy Specializations with Errors
+              businessViewRootPluralLabelOverride: Source Taxonomy Specializations with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: TaxonomyClassificationwithErrors
+              label: Source Taxonomy Classifications with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.TaxonomyClassification.business_views.TaxonomyClassification
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+
+              businessViewLabelOverride: Source Taxonomy Classifications with Errors
+              businessViewRootLabelOverride: Source Taxonomy Classifications with Errors
+              businessViewRootPluralLabelOverride: Source Taxonomy Classifications with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: TaxonomyClassificationSpecializationwithErrors
+              label: Source Taxonomy Classification Specializations with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.TaxonomyClassificationSpecialization.business_views.TaxonomyClassificationSpecialization
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Taxonomy Classification Specializations with Errors
+              businessViewRootLabelOverride: Source Taxonomy Classification Specializations with Errors
+              businessViewRootPluralLabelOverride: Source Taxonomy Classification Specializations with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: TherapeauticAreawithErrors
+              label: Source Therapeautic Areas with Errors
+              labelColor: md:orange
+              requiredRole: DataSteward
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: HCO_HCP.entities.TherapeauticArea.business_views.TherapeauticArea
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:orange
+              businessViewLabelOverride: Source Therapeautic Areas with Errors
+              businessViewRootLabelOverride: Source Therapeautic Areas with Errors
+              businessViewRootPluralLabelOverride: Source Therapeautic Areas with Errors
+              useSearchOnOpen: false
+              viewType: SAWE
+
+defaultAction: HCO_HCP.applications.HCO_HCP.Root.QuickLinks.GlobalSearchConfig
+navDrawer:
+  - _name: QuickLinks
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: HCO_HCP.applications.HCO_HCP.Root.QuickLinks
+  - _name: HealthcareParties
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: HCO_HCP.applications.HCO_HCP.Root.HealthcareParties
+  - _name: HealthcareProducts
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: HCO_HCP.applications.HCO_HCP.Root.HealthcareProducts
+  - _name: HealthcarePatients
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: HCO_HCP.applications.HCO_HCP.Root.HealthcarePatients
+  - _name: HealthcareTaxonomy
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: HCO_HCP.applications.HCO_HCP.Root.HealthcareTaxonomy
+  - _name: DataStewardship
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: HCO_HCP.applications.HCO_HCP.Root.DataStewardship
+  - _name: Administration
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: HCO_HCP.applications.HCO_HCP.Root.Administration

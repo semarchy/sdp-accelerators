@@ -1,0 +1,105 @@
+_package: FinanceKYC.entities.Customer.steppers
+_name: KYCCheck
+_type: Stepper
+entity: FinanceKYC.entities.Customer.Customer
+rootStep:
+  _type: CollectionStep
+  _name: Customers
+  label: Customers
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: FinanceKYC.entities.Customer.collection_views.CustomerCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Customer
+      label: Customer
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: FinanceKYC.entities.Customer.forms.CustomerReadOnlyKYC.Customer
+    - _type: CollectionStep
+      _name: KYCChecks
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: KYC Checks
+      linear: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      manyToManyUserDefinedSortEnabled: false
+      skipToChildCreationOnParentCreate: true
+      skipToChildEditingOnParentEdit: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: false
+      collectionView: FinanceKYC.entities.KYCCheck.collection_views.KYCCheckCollectionView
+      oneToManyReference: FinanceKYC.references.KYCCheckHasCustomer
+      childSteps:
+        - _type: FormStep
+          _name: KYCReview
+          label: KYC Review
+          canFinishSubLevel: true
+          enableMasterValuePicking: false
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          formFieldsMode: AUTO
+          formTab: FinanceKYC.entities.KYCCheck.forms.KYCCheckForm.KYCCheck
+          formStepEnrichers:
+          - enricher: FinanceKYC.entities.KYCCheck.enrichers.EnrichKYCCheck
+            executedOnButtonClick: false
+            executedOnDataChange: false
+            executedOnFormOpen: true
+          formStepValidations:
+          - executedOnDataChange: true
+            executedOnFormOpen: true
+            validationType: MANDATORY
+            attribute: FinanceKYC.entities.KYCCheck.KYCCheck.CheckType
+          - executedOnDataChange: true
+            executedOnFormOpen: true
+            validationType: MANDATORY
+            attribute: FinanceKYC.entities.KYCCheck.KYCCheck.CheckDate
+          - executedOnDataChange: true
+            executedOnFormOpen: true
+            validationType: MANDATORY
+            attribute: FinanceKYC.entities.KYCCheck.KYCCheck.Result
+          - executedOnDataChange: true
+            executedOnFormOpen: true
+            validationType: MANDATORY
+            attribute: FinanceKYC.entities.KYCCheck.KYCCheck.PerformedBy
+

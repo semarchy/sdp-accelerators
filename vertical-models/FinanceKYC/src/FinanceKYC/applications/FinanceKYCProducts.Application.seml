@@ -1,0 +1,125 @@
+_package: FinanceKYC.applications
+_type: Application
+_name: FinanceKYCProducts
+label: Finance KYC Products
+applicationTitle: Finance KYC Products
+
+visibility: VISIBLE
+avatarImageUrl: images://finance-KYC/appFinanceProducts_icon.jpg
+logoUrl: images://finance-KYC/appFinanceProducts_icon.jpg
+coverImageUrl: images://finance-KYC/appFinanceProducts_image.png
+favIcon: images://finance-KYC/appFinanceProducts_iconcolor_small.png
+
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+defaultAction: FinanceKYC.applications.FinanceKYCProducts.Root.GlobalSearch
+
+documentationConfig:
+  documentation: ""
+  
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: SearchBankingProducts
+      viewType: GD
+      businessView: FinanceKYC.entities.BankingProduct.business_views.BankingProductBusinessView
+      searchTypeConfig: FinanceKYC.entities.BankingProduct.business_views.BankingProductBusinessView.BankingProduct.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: SearchInsuranceProducts
+      viewType: GD
+      businessView: FinanceKYC.entities.InsuranceProduct.business_views.InsuranceProductBusinessView
+      searchTypeConfig: FinanceKYC.entities.InsuranceProduct.business_views.InsuranceProductBusinessView.InsuranceProduct.TextConfig
+      maxResults: 5
+
+navDrawer:
+  
+  - _type: NavigationGroup
+    _name: StartHere
+    label: Start Here
+    dividerVisible: false
+    labelVisible: false
+    actions:
+    - appAction: FinanceKYC.applications.FinanceKYCProducts.Root.MyTasks
+    - appAction: FinanceKYC.applications.FinanceKYCProducts.Root.GlobalSearch
+  
+  - _type: NavigationGroup
+    _name: Products
+    label: Products
+    dividerVisible: true
+    labelVisible: true
+    actions:
+    - appAction: FinanceKYC.applications.FinanceKYCProducts.Root.BankingProducts
+    - appAction: FinanceKYC.applications.FinanceKYCProducts.Root.ProductCategory
+    - appAction: FinanceKYC.applications.FinanceKYCProducts.Root.InsuranceProducts
+    - appAction: FinanceKYC.applications.FinanceKYCProducts.Root.InsuranceProductCategory
+    
+
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+
+  appActions:
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+
+    - _type: MyTasksAction
+      _name: MyTasks
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: false
+      
+    - _type: BrowseEntitiesFolderAction
+      _name: Entities
+      lineageEnabled: true
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+    
+    - _type: BrowseBusinessViewAction
+      _name: BankingProducts
+      businessView: FinanceKYC.entities.BankingProduct.business_views.BankingProductBusinessView
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      icon: images://mdi/bank.svg
+      iconColor: "#124170"
+      labelColor: "#124170"
+
+    - _type: BrowseBusinessViewAction
+      _name: ProductCategory
+      businessView: FinanceKYC.entities.BankingProductCategory.business_views.BankingProductCategoryBusinessView
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      icon: images://finance-KYC/BankingProductCategories2.png
+      iconColor: "#124170"
+      labelColor: "#124170"
+
+    - _type: BrowseBusinessViewAction
+      _name: InsuranceProducts
+      businessView: FinanceKYC.entities.InsuranceProduct.business_views.InsuranceProductBusinessView
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      icon: images://mdi/shield-check.svg
+      iconColor: "#33A1E0"
+      labelColor: "#33A1E0"
+    
+    - _type: BrowseBusinessViewAction
+      _name: InsuranceProductCategory
+      businessView: FinanceKYC.entities.InsuranceProductCategory.business_views.InsuranceProductCategoryBusinessView
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      icon: images://finance-KYC/InsuranceProductCategories2.png
+      iconColor: "#33A1E0"
+      labelColor: "#33A1E0"

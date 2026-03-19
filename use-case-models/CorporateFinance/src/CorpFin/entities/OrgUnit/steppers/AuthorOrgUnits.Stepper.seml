@@ -1,0 +1,135 @@
+_package: CorpFin.entities.OrgUnit.steppers
+_type: Stepper
+_name: AuthorOrgUnits
+entity: CorpFin.entities.OrgUnit.OrgUnit
+label: Org Units
+
+# handles multi-entities: orgUnit and orgHierarchyNode
+modelJob: CorpFin.model_jobs.OrgUnitStepperJob
+
+rootStep:
+  _type: CollectionStep
+  _name: OrgUnits
+  label: Org Units
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: CorpFin.entities.OrgUnit.collection_views.OrgUnitCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+
+  childSteps:
+    - _type: FormStep
+      _name: OrgUnit
+      label: Org Unit
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CorpFin.entities.OrgUnit.forms.OrgUnitForm.OrgUnit
+
+      formStepEnrichers:
+        - enricher: CorpFin.entities.OrgUnit.enrichers.NormalizeOrgUnit
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: CorpFin.entities.OrgUnit.enrichers.PhonetizeOrgUnit
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: MANDATORY
+          attribute: CorpFin.entities.OrgUnit.OrgUnit.OrgUnitBusinessCode
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: MANDATORY
+          attribute: CorpFin.entities.OrgUnit.OrgUnit.OrgUnitName
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: FOREIGN
+          attribute: CorpFin.references.OrgUnitHasType.orgUnitType
+
+      stepTransitionValidations:
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: CorpFin.entities.OrgUnit.OrgUnit.OrgUnitBusinessCode
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: CorpFin.entities.OrgUnit.OrgUnit.OrgUnitName
+        - onStepExit: BLOCK
+          validationType: FOREIGN
+          attribute: CorpFin.references.OrgUnitHasType.orgUnitType
+
+    - _type: CollectionStep
+      _name: OrgHierarchyNodes
+      oneToManyReference: CorpFin.references.OrgHierarchyNodeHasOrgUnit
+      label: Org Hierarchy Nodes
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      collectionView: CorpFin.entities.OrgHierarchyNode.collection_views.OrgHierarchyNodeCollectionView
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: true
+      enableChildImportOnParentEdit: true
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      manyToManyCustomSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: true
+      skipToChildEditingOnParentEdit: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      
+      childSteps:
+        - _type: FormStep
+          _name: OrgHierarchyNode
+          label: Org Hierarchy Node
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          formFieldsMode: AUTO
+          enableMasterValuePicking: false
+          formTab: CorpFin.entities.OrgHierarchyNode.forms.OrgHierarchyNodeForm.OrgHierarchyNode
+
+          referenceFormFieldConfigs:
+            - enableUserSort: true          
+          #     # Field pointing to parent Node:
+              fdnFormField: CorpFin.entities.OrgHierarchyNode.forms.OrgHierarchyNodeForm.OrgHierarchyNode.Container1.Container3.LinkageInformation.FDN_parentNode
+              referencePickerType: AUTO_COMPLETE                         
+          #     # Must point to same hierarchy selected above
+              referenceFilter: Referenced.parentNode.FID_orgHierarchy = Record.FID_orgHierarchy
+
+        

@@ -1,0 +1,26 @@
+_package: CorpFin.entities.OrgUnit.enrichers
+_name: PhonetizeOrgUnit
+_type: JavaPluginEnricher
+entity: CorpFin.entities.OrgUnit.OrgUnit
+label: Phonetize Org Unit Name
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+afterEnrichers: 
+  CorpFin.entities.OrgUnit.enrichers.NormalizeOrgUnit
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedOrgUnitName
+
+pluginOutputs:
+  - attributeName: PhonetizedOrgUnitName
+    outputName: OUT_TRANSFORMED_TEXT

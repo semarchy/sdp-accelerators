@@ -1,0 +1,121 @@
+_package: FinanceKYC.entities.BankingProduct
+_type: Entity
+_name: BankingProduct
+label: Banking Product
+pluralLabel: Banking Product
+entityType: BASIC
+physicalTableName: BANKING_PRODUCT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: BankingProductID
+    _type: EntityAttribute
+    label: Banking Product ID
+    description: Unique identifier for the banking product
+    documentation: ''
+    physicalName: BANKING_PRODUCT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    valueSeparator: ''
+    searchable: true
+
+  - _name: ProductName
+    _type: EntityAttribute
+    label: Product Name
+    description: Name of the banking product
+    documentation: ''
+    physicalName: PRODUCT_NAME
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Banking product name is required
+    valueSeparator: ','
+    searchable: true
+    length: 100
+
+  - _name: ProductType
+    _type: EntityAttribute
+    label: Product Type
+    description: Type of product
+    documentation: ''
+    physicalName: PRODUCT_TYPE
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Product type is required
+    valueSeparator: ','
+    searchable: true
+    length: 30
+
+  - _name: Currency
+    _type: EntityAttribute
+    label: Currency
+    description: Currency
+    documentation: ''
+    physicalName: CURRENCY
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Currency is required
+    valueSeparator: ','
+    searchable: true
+    length: 10
+
+  - _name: IsActive
+    _type: EntityAttribute
+    label: Is Active
+    description: Active flag
+    documentation: ''
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 1
+
+  - _name: StartDate
+    _type: EntityAttribute
+    label: Start Date
+    description: Start date
+    documentation: ''
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Start date is required
+    valueSeparator: ','
+    searchable: true
+
+  - _name: EndDate
+    _type: EntityAttribute
+    label: End Date
+    description: End date
+    documentation: ''
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    description: Additional notes
+    documentation: ''
+    physicalName: NOTES
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 255
+    
+primaryKey: FinanceKYC.entities.BankingProduct.BankingProduct.BankingProductID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

@@ -1,0 +1,19 @@
+# This file defines a plugin validation for checking the validity of email addresses in Employee entities.
+# Email is considered valid if it matches the specified valid domains.
+_package: Organization.entities.Employee.validations
+_type: PluginValidation
+_name: InvalidEmail
+label: Invalid Email
+entity: Organization.entities.Employee.Employee
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.email
+threadPoolSize: 1
+validationLabel: This email from the source system is invalid. Check it for errors.
+validationScope: NONE
+pluginParams:
+  - paramName: VALIDATOR_ACCEPTED_DOMAINS
+    value: VALID_DOMAINS
+pluginInputs:
+  - expression: SourceEmail
+    inputName: EMAIL_ADDRESS

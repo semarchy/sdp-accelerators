@@ -1,0 +1,146 @@
+_package: FinanceKYC.entities.CorporateEntity.forms
+_type: Form
+_name: CorporateEntityForm
+
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: CorporateEntity
+    label: Corporate Entity
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/store.svg
+    displayFormTabAs: ICON_LABEL
+    visibleValueInterpreter: LITERAL
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: GeneralInfo
+                label: General Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: IdField
+                  _name: EntityID
+                  value: EntityID
+                  useCustomLabel: false
+                  dataType: LONG_INTEGER
+
+                - _type: TextField
+                  _name: EntityName
+                  value: EntityName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: DateField
+                  _name: IncorporationDate
+                  value: IncorporationDate
+                  useCustomLabel: false
+                  dataType: DATE
+
+                - _type: TextField
+                  _name: CountryOfIncorporation
+                  value: CountryOfIncorporation
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: Industry
+                  value: Industry
+                  useCustomLabel: false
+                  dataType: STRING
+                  
+                - _type: ReferenceField
+                  _name: FDN_Customer
+                  value: FDN_Customer
+                  referencedEntity: FinanceKYC.entities.Customer.Customer
+                  useCustomLabel: false
+                  dataType: STRING
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: LegalStatus
+                label: Legal Status
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+                visibleValue: '1'
+
+                content:
+                - _type: TextField
+                  _name: RegistrationNumber
+                  value: RegistrationNumber
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: TaxID
+                  value: TaxID
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: LegalForm
+                  value: LegalForm
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: CheckboxField
+                  _name: IsListed
+                  value: IsListed
+                  useCustomLabel: false
+                  dataType: BOOLEAN
+
+              - _type: FormSection
+                _name: Enrichment
+                label: Enrichments
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+                visibleValue: '1'
+
+                content:
+                - _type: TextField
+                  _name: NormalizedCorpName
+                  value: NormalizedCorpName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: PhonetizedCorpName
+                  value: PhonetizedCorpName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: NormalizedRegistrationNum
+                  value: NormalizedRegistrationNum
+                  useCustomLabel: true
+                  label: Normalized Registration Number
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: NormalizedTaxID
+                  value: NormalizedTaxID
+                  useCustomLabel: true
+                  label: Normalized Tax ID
+                  dataType: STRING

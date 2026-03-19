@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: BankAccountHasCounterparty
+_type: Reference
+label: Bank Account Has Counterparty
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.BankAccount.BankAccount
+fromRoleLabel: Bank Account
+fromRoleName: bankAccount
+fromRolePluralLabel: Bank Accounts
+physicalName: BANKACCT_HAS_CP
+fromNavigable: true
+
+toEntity: CorpFin.entities.Counterparty.Counterparty
+toRoleLabel: Counterparty
+toRoleName: counterparty
+toRolePhysicalName: COUNTERPARTY_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: counterparty
+  label: Counterparty ID
+  physicalName: COUNTERPARTY_ID
+  searchable: true
+  entity: CorpFin.entities.Counterparty.Counterparty
+
+

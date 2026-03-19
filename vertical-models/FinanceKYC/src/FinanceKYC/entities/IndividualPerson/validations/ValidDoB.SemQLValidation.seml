@@ -1,0 +1,8 @@
+_package: FinanceKYC.entities.IndividualPerson.validations
+_name: ValidDoB
+_type: SemQLValidation
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+label: Date of Birth must be valid
+description: Date of Birth must be in the past, but not too far in the past
+condition: DateOfBirth > MAKE_DATE(1900, 01, 01) AND DateOfBirth < CURRENT_DATE()
+validationScope: PRE_CONSO

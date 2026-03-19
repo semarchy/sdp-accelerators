@@ -1,0 +1,10 @@
+_package: FinanceKYC.entities.CorporateEntity.enrichers
+_name: NormalizeCorpName
+_type: SemQLEnricher
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Normalize Corporate Entity Name
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedCorpName
+    expression: "RTRIM(LTRIM(UPPER(EntityName)))"

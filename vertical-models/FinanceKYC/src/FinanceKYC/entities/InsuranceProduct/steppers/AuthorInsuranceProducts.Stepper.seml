@@ -1,0 +1,54 @@
+_package: FinanceKYC.entities.InsuranceProduct.steppers
+_type: Stepper
+_name: AuthorInsuranceProducts
+entity: FinanceKYC.entities.InsuranceProduct.InsuranceProduct
+label: Insurance Products
+rootStep:
+  _type: CollectionStep
+  _name: InsuranceProducts
+  label: Insurance Products
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: FinanceKYC.entities.InsuranceProduct.collection_views.InsuranceProductCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: InsuranceProduct
+      label: Insurance Product
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: FinanceKYC.entities.InsuranceProduct.forms.InsuranceProductForm.InsuranceProduct
+      formStepValidations:
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: FinanceKYC.entities.InsuranceProduct.InsuranceProduct.ProductName
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: FinanceKYC.entities.InsuranceProduct.InsuranceProduct.ProductType
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: FinanceKYC.entities.InsuranceProduct.InsuranceProduct.StartDate
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: FinanceKYC.entities.InsuranceProduct.InsuranceProduct.Currency
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: CHECK
+              validator: FinanceKYC.entities.InsuranceProduct.validations.ValidateCategory

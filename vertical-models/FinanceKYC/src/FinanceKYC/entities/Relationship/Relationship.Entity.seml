@@ -1,0 +1,67 @@
+_package: FinanceKYC.entities.Relationship
+_type: Entity
+_name: Relationship
+label: Relationship
+pluralLabel: Relationship
+entityType: BASIC
+physicalTableName: RELATIONSHIP
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: RelationshipID
+    _type: EntityAttribute
+    label: Relationship ID
+    physicalName: RELATIONSHIP_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: RelationshipType
+    _type: EntityAttribute
+    label: Relationship Type
+    physicalName: RELATIONSHIP_TYPE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: StartDate
+    _type: EntityAttribute
+    label: Start Date
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: EndDate
+    _type: EntityAttribute
+    label: End Date
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: IsActive
+    _type: EntityAttribute
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    physicalName: NOTES
+    dataType: String
+    length: 255
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.Relationship.Relationship.RelationshipID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

@@ -1,0 +1,12 @@
+_package: FinanceKYC.entities.IndividualPerson.enrichers
+_name: EnrichNames
+_type: SemQLEnricher
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+label: Enrich Individual Person Names
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedFirstName
+    expression: "RTRIM(LTRIM(UPPER(FirstName)))"
+  - attributeName: NormalizedLastName
+    expression: "RTRIM(LTRIM(UPPER(LastName)))"

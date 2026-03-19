@@ -1,0 +1,10 @@
+_package: CorpFin.entities.MappingSet.enrichers
+_name: NormalizeMappingSet
+_type: SemQLEnricher
+entity: CorpFin.entities.MappingSet.MappingSet
+label: Normalize Mapping Set
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedMappingSetName
+    expression: "RTRIM(LTRIM(UPPER(MappingSetName)))"

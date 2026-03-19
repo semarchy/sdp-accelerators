@@ -1,0 +1,101 @@
+_package: CorpFin.entities.MappingSet.business_views
+_type: BusinessView
+_name: MappingSetBusinessView
+
+entity: CorpFin.entities.MappingSet.MappingSet
+rootLabel: Mapping Set
+rootPluralLabel: Mapping Sets
+rootIconUrl: images://mdi/clipboard-text-multiple-outline.svg
+displayRootNodeAs: ICON_LABEL
+label: Mapping Sets
+
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: MappingSet
+  entity: CorpFin.entities.MappingSet.MappingSet
+  actionSet: CorpFin.entities.MappingSet.action_sets.MappingSetActionSet
+  collection: CorpFin.entities.MappingSet.collection_views.MappingSetCollectionView
+  form: CorpFin.entities.MappingSet.forms.MappingSetForm
+  displayCard: CorpFin.entities.MappingSet.display_cards.MappingSetDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  # transitions:
+  #   - _name: ToAccountMappings
+  #     _type: BusinessViewTransition
+  #     transitionType: FULLY_QUALIFIED
+  #     displayFormTabAs: ICON_LABEL
+  #     displayTransitionNodeAs: ICON_LABEL
+  #     iconUrl: images://mdi/arrow-right-bold.svg
+  #     useCustomLabel: false
+
+  #     transitionPath: accountMapping
+  #     visibleInFormTabCondition: any accountMapping has (1 = 1)
+      
+  #     businessViewEntity:
+  #       _name: ToAccountMappings
+  #       _type: BusinessViewEntity
+
+  #       entity: CorpFin.entities.AccountMapping.AccountMapping
+  #       form: CorpFin.entities.AccountMapping.forms.AccountMappingForm
+  #       displayCard: CorpFin.entities.AccountMapping.display_cards.AccountMappingDisplayCard
+  #       collection: CorpFin.entities.AccountMapping.collection_views.AccountMappingCollectionView        
+  #       displayRecordCount: ALWAYS
+  #       enableUserDefinedSort: true
+  #       gridAllowed: true
+  #       listAllowed: true
+  #       outlineVisible: false
+  #       overrideDefaultSort: false
+  #       # sortExpression: ''
+  #       tableAllowed: true
+
+    # - _name: ToSourceAccounts
+    #   _type: BusinessViewTransition
+    #   transitionType: FULLY_QUALIFIED
+    #   displayFormTabAs: ICON_LABEL
+    #   displayTransitionNodeAs: ICON_LABEL
+    #   iconUrl: images://mdi/text-box-minus-outline.svg
+    #   useCustomLabel: false
+
+    #   transitionPath: FDN_SourceChartOfAccounts
+    #   visibleInFormTabCondition: any accountMapping has (1 = 1)
+      
+    #   businessViewEntity:
+    #     _name: ToAccountMappings
+    #     _type: BusinessViewEntity
+
+    #     collection: CorpFin.entities.AccountMapping.collection_views.AccountMappingCollectionView
+    #     displayRecordCount: ALWAYS
+    #     enableUserDefinedSort: true
+    #     entity: CorpFin.entities.AccountMapping.AccountMapping
+    #     form: CorpFin.entities.AccountMapping.forms.AccountMappingForm
+    #     displayCard: CorpFin.entities.AccountMapping.display_cards.AccountMappingDisplayCard
+    #     gridAllowed: true
+    #     listAllowed: true
+    #     outlineVisible: false
+    #     overrideDefaultSort: false
+    #     sortExpression: ''
+    #     tableAllowed: true

@@ -1,0 +1,28 @@
+_package: FinanceKYC.references
+_name: IndividualHasCustomer
+_type: Reference
+label: Individual Has Customer
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+fromRoleLabel: Individual
+fromRoleName: individual
+fromRolePluralLabel: Individuals
+physicalName: IND_HAS_CUS
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.Customer.Customer
+toRoleLabel: Customer
+toRoleName: Customer
+toRolePhysicalName: CUS_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Customer
+  label: Customer
+  physicalName: CUSTOMER
+  searchable: true
+  entity: FinanceKYC.entities.IndividualPerson.IndividualPerson

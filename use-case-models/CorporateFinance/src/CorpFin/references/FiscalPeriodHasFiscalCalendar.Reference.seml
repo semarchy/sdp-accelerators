@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_type: Reference
+_name: FiscalPeriodHasFiscalCalendar
+label: Fiscal Period Has Fiscal Calendar
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.FiscalPeriod.FiscalPeriod
+fromRoleLabel: Fiscal Period
+fromRoleName: fiscalPeriod
+fromRolePluralLabel: Fiscal Periods
+physicalName: FISCALPERIOD_HAS_CALENDAR
+fromNavigable: true
+
+toEntity: CorpFin.entities.FiscalCalendar.FiscalCalendar
+toRoleLabel: Fiscal Calendar
+toRoleName: fiscalCalendar
+toRolePhysicalName: CALENDAR_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: fiscalCalendar
+  label: Calendar ID
+  physicalName: CALENDAR_ID
+  searchable: true
+  entity: CorpFin.entities.FiscalCalendar.FiscalCalendar

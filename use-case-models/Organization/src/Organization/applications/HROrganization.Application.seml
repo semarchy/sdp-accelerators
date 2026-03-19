@@ -1,0 +1,278 @@
+# This is the main application definition for the Default Application in the Organization domain.
+# It includes metadata, navigation structure, and global search configuration.
+_package: Organization.applications
+_type: Application
+_name: HROrganization
+label: HR Organization
+visibility: VISIBLE
+applicationTitle: HR Organization
+avatarImageUrl: images://hr-img-lib/account-tie.svg
+logoUrl: images://hr-img-lib/logo.png
+coverImageUrl: images://hr-img-lib/cover.png
+favIcon: images://hr-img-lib/human-queue.svg
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+defaultAction: Organization.applications.HROrganization.Root.GeneralActions.GlobalSearch
+documentationConfig:
+  documentation: This application is used to manage the HR organization structure, including employees, companies, and positions.
+  documentationConfigDiagrams:
+    - _name: Diagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: Organization.model_diagrams.Organization
+      label: HR Organization Diagram
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: Employees
+      businessView: Organization.entities.Employee.business_views.Employee
+      searchTypeConfig: Organization.entities.Employee.business_views.Employee.Employee.TextConfig
+      viewType: GD
+      maxResults: 10
+navDrawer:
+  - _type: FolderNavGroup
+    _name: GeneralActions
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: Organization.applications.HROrganization.Root.GeneralActions
+  - _type: FolderNavGroup
+    _name: RefDataFolder
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: Organization.applications.HROrganization.Root.RefData
+  - _type: FolderNavGroup
+    _name: DocumentationFolder
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: Organization.applications.HROrganization.Root.Administration
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://hr-img-lib/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+    - _type: FolderAction
+      _name: GeneralActions
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+      - _type: GlobalSearchAction
+        _name: GlobalSearch
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        description: Search across all entities
+      - _type: MyTasksAction
+        _name: MyTasks
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        badgeVisible: false
+        description: View my tasks
+        image: images://hr-img-lib/inbox-multiple.svg
+      
+      - _name: StartHere
+        _type: FolderAction
+        label: Start Here
+        requiredRole: DataSteward
+        icon: images://mdi/arrow-right.svg
+        iconColor: md:green
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        appActions:
+          - _type: ImportDataAppAction
+            _name: ImportStudy
+            label: Import Study Types
+            importAction: Organization.entities.Study.action_sets.StudyActionSet.ImportAuthorStudies
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportContractType
+            label: Import Contract Types
+            importAction: Organization.entities.ContractType.action_sets.ContractTypeActionSet.ImportAuthorContractTypes
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportGender
+            label: Import Genders
+            importAction: Organization.entities.Gender.action_sets.GenderActionSet.ImportAuthorGenders
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportCountry
+            label: Import Countries
+            importAction: Organization.entities.Country.action_sets.CountryActionSet.ImportAuthorCountries
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportPosition
+            label: Import Positions
+            importAction: Organization.entities.Position.action_sets.PositionActionSet.ImportAuthorPositions
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportCompany
+            label: Import Companies
+            importAction: Organization.entities.Company.action_sets.CompanyActionSet.ImportAuthorCompanies
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportJobRole
+            label: Import Job Roles
+            importAction: Organization.entities.JobRole.action_sets.JobRoleActionSet.ImportAuthorJobRoles
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportAddress
+            label: Import Addresses
+            importAction: Organization.entities.Address.action_sets.AddressActionSet.ImportAuthorAddresses
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportDomain
+            label: Import Domains
+            importAction: Organization.entities.Domain.action_sets.DomainActionSet.ImportAuthorDomains
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportRegion
+            label: Import Regions
+            importAction: Organization.entities.Region.action_sets.RegionActionSet.ImportAuthorRegions
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportDivision
+            label: Import Divisions
+            importAction: Organization.entities.Division.action_sets.DivisionActionSet.ImportAuthorDivisions
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportEmployee
+            label: Import Employees
+            importAction: Organization.entities.Employee.action_sets.EmployeeGoldenActionSet.ImportAuthorEmployees
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportContract
+            label: Import Contracts
+            importAction: Organization.entities.Contract.action_sets.ContractActionSet.ImportAuthorContracts
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportCostCenter
+            label: Import Cost Centers
+            importAction: Organization.entities.CostCenter.action_sets.CostCenterActionSet.ImportAuthorCostCenters
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportContractCostCenter
+            label: Import Contract - Cost Center Relationships
+            importAction: Organization.entities.ContractCostCenter.action_sets.ContractCostCenterActionSet.ImportAuthorContractCostCenters
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+
+      - _type: BrowseBusinessViewAction
+        _name: BrowseEmployees
+        businessView: Organization.entities.Employee.business_views.Employee
+        label: Employees
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Employee records
+        image: images://hr-img-lib/account-group.svg
+      - _type: BrowseBusinessViewAction
+        _name: BrowseCompanies
+        businessView: Organization.entities.Company.business_views.CompanyBusinessView
+        label: Companies
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Company records
+        image: images://hr-img-lib/domain.svg
+      - _type: BrowseBusinessViewAction
+        _name: BrowseContracts
+        businessView: Organization.entities.Contract.business_views.ContractBusinessView
+        label: Contracts
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Contract records
+        image: images://hr-img-lib/file-sign.svg
+    - _type: FolderAction
+      _name: RefData
+      label: Reference Data
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Access reference data entities
+      image: images://hr-img-lib/bookshelf.svg
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseCountries
+          businessView: Organization.entities.Country.business_views.CountryBusinessView
+          label: Countries
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Country records
+          image: images://hr-img-lib/map.svg
+        - _type: BrowseBusinessViewAction
+          _name: BrowseRegions
+          businessView: Organization.entities.Region.business_views.RegionBusinessView
+          label: Regions
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Region records
+          image: images://hr-img-lib/map-marker-distance.svg
+        - _type: BrowseBusinessViewAction
+          _name: BrowsePositions
+          businessView: Organization.entities.Position.business_views.PositionBusinessView
+          label: Positions
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Position records
+          image: images://hr-img-lib/file-tree-outline.svg
+        - _type: BrowseBusinessViewAction
+          _name: BrowseJobRoles
+          businessView: Organization.entities.JobRole.business_views.JobRoleBusinessView
+          label: Job Roles
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Job Role records
+          image: images://hr-img-lib/file-tree.svg
+        - _type: BrowseBusinessViewAction
+          _name: BrowseStudies
+          businessView: Organization.entities.Study.business_views.StudyBusinessView
+          label: Studies
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Study records
+          image: images://hr-img-lib/school.svg
+    - _type: FolderAction
+      _name: Administration
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Administrative tasks
+      label: Administration
+      image: images://hr-img-lib/bookshelf.svg
+      appActions:
+        - _type: FolderAction
+          _name: AdministrationFolder
+          label: Admin & Documentation
+          image: images://hr-img-lib/bookshelf.svg
+          icon: images://hr-img-lib/bookshelf.svg
+          iconColor: md:grey
+          labelColor: md:grey
+          appActions:
+            - _type: OpenDocumentationAction
+              _name: OpenModelDoc
+              iconColor: md:grey
+              label: Model Documentation
+            - _type: BrowseEntitiesFolderAction
+              _name: Entities
+              lineageEnabled: true

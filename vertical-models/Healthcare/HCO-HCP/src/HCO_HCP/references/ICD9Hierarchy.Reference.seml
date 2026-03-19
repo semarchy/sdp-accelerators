@@ -1,0 +1,24 @@
+_name: ICD9Hierarchy
+_package: HCO_HCP.references
+_type: Reference
+physicalName: ICD9_HIER
+label: ICD-9 Hierarchy
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: CASCADE
+splitDuplicatePropagation: NONE
+fromEntity: HCO_HCP.entities.ICD9CM.ICD9CM
+fromRoleName: ChildIDC9
+fromRoleLabel: Child IDC-9
+fromRolePluralLabel: Child IDC-9s
+toEntity: HCO_HCP.entities.ICD9CM.ICD9CM
+toRoleName: ParentICD9
+toRoleLabel: Parent ICD-9
+toRolePhysicalName: PARENT_ICD9
+foreignAttribute:
+  _name: ParentICD9
+  _type: ForeignAttribute
+  physicalName: PARENT_ICD9
+  label: Parent ICD-9
+  searchable: true
+  entity: HCO_HCP.entities.ICD9CM.ICD9CM

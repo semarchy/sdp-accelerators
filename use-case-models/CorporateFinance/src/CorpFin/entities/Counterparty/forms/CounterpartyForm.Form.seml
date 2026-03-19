@@ -1,0 +1,136 @@
+_package: CorpFin.entities.Counterparty.forms
+_type: Form
+_name: CounterpartyForm
+
+entity: CorpFin.entities.Counterparty.Counterparty
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: Counterparty
+    label: Counterparty
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/hexagon.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: LegalInformation
+                label: Legal Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: LegalName
+                    value: LegalName
+                    useCustomLabel: false
+                    dataType: STRING
+
+                  - _type: TextField
+                    _name: TaxID
+                    value: TaxID
+                    useCustomLabel: false
+                    dataType: STRING
+
+                  - _type: ReferenceField
+                    _name: FDN_counterpartyGroup
+                    value: FDN_counterpartyGroup
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+
+              - _type: FormSection
+                _name: CounterpartyType
+                label: Counterparty Type
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: CheckboxField
+                    _name: IsCustomer
+                    value: IsCustomer
+                    useCustomLabel: false
+                    dataType: BOOLEAN
+
+                  - _type: CheckboxField
+                    _name: IsSupplier
+                    value: IsSupplier
+                    useCustomLabel: false
+                    dataType: BOOLEAN
+
+                  - _type: CheckboxField
+                    _name: IsInternalEntity
+                    value: IsInternalEntity
+                    useCustomLabel: false
+                    dataType: BOOLEAN
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: EnrichedInformation
+                label: Enriched Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: NormalizedLegalName
+                    value: NormalizedLegalName
+                    useCustomLabel: false
+                    dataType: STRING
+
+                  - _type: TextField
+                    _name: PhonetizedLegalName
+                    value: PhonetizedLegalName
+                    useCustomLabel: false
+                    dataType: STRING
+
+                  - _type: TextField
+                    _name: NormalizedTaxID
+                    value: NormalizedTaxID
+                    useCustomLabel: false
+                    dataType: STRING
+
+              - _type: FormSection
+                _name: AdditionalDetails
+                label: Additional Details
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_country
+                    value: FDN_country
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.Country.Country
+
+                  - _type: ReferenceField
+                    _name: FDN_currency
+                    value: FDN_currency
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.Currency.Currency

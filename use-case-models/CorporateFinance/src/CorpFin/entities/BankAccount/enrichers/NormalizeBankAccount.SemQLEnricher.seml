@@ -1,0 +1,12 @@
+_package: CorpFin.entities.BankAccount.enrichers
+_name: NormalizeBankAccount
+_type: SemQLEnricher
+entity: CorpFin.entities.BankAccount.BankAccount
+label: Normalize Bank Account
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedIBAN
+    expression: "RTRIM(LTRIM(UPPER(IBAN)))"
+  - attributeName: NormalizedSWIFT
+    expression: "RTRIM(LTRIM(UPPER(SWIFT)))"

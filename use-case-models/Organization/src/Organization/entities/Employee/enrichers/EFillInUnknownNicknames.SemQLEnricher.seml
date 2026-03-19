@@ -1,0 +1,16 @@
+# This is a SemQL enricher configuration file for filling in unknown nicknames for employees.
+# It uses a SemQL expression to set the nickname to the lowercase version of the first name
+# when the nickname is not already provided.
+# For more information, refer to the SemQL documentation: https://docs.semarchy.com/sdp/reference/dm/enrichers/seml-enricher
+_package: Organization.entities.Employee.enrichers
+_type: SemQLEnricher
+_name: EFillInUnknownNicknames
+label: Fill In unknown Nicknames
+description: In cases where a name doesn't have a nickname, take the original first
+  name, for matching reasons.
+condition: Nickname IS NULL
+enricherExecutionScope: PRE_CONSO
+entity: Organization.entities.Employee.Employee
+semQlEnricherExpressions:
+  - attributeName: Nickname
+    expression: LOWER ( FirstName )

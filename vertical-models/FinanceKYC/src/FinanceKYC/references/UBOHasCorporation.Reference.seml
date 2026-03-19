@@ -1,0 +1,28 @@
+_package: FinanceKYC.references
+_name: UBOHasCorporation
+_type: Reference
+label: UBO Has Corporate Entity
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.UBO.UBO
+fromRoleLabel: UBO
+fromRoleName: ubo
+fromRolePluralLabel: UBOs
+physicalName: UBO_HAS_CORP
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+toRoleLabel: Corporation
+toRoleName: Corporation
+toRolePhysicalName: CORP_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Corporation
+  label: Corporation
+  physicalName: CORPORATION
+  searchable: true
+  entity: FinanceKYC.entities.UBO.UBO

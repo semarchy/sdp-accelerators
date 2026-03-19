@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: AccountBelongsToChart
+_type: Reference
+label: Account Belongs To Chart
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Account.Account
+fromRoleLabel: Account
+fromRoleName: accountInCoA
+fromRolePluralLabel: Accounts
+physicalName: ACCOUNT_HAS_CHART
+fromNavigable: true
+
+toEntity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+toRoleLabel: Chart Of Accounts
+toRoleName: chartOfAccounts
+toRolePhysicalName: CHART_OF_ACCOUNTS_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: chartOfAccounts
+  label: Chart Of Accounts ID
+  physicalName: CHART_OF_ACCOUNTS_ID
+  searchable: true
+  entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts

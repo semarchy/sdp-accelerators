@@ -1,0 +1,26 @@
+_package: CorpFin.entities.CounterpartyGroup.enrichers
+_name: PhonetizeCounterpartyGroup
+_type: JavaPluginEnricher
+entity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+label: Phonetize Counterparty Group Name
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+afterEnrichers: 
+  CorpFin.entities.CounterpartyGroup.enrichers.NormalizeCounterpartyGroup
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedGroupName
+
+pluginOutputs:
+  - attributeName: PhonetizedGroupName
+    outputName: OUT_TRANSFORMED_TEXT

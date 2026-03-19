@@ -1,0 +1,139 @@
+#This file defines the Country entity in the Legal Entity application.
+# It includes attributes and properties for managing country values.
+_package: LegalEntity.entities.Country
+_type: Entity
+_name: Country
+label: Country
+iconUrl: images://le-img-lib/map-marker.svg
+pluralLabel: Countries
+description: This entity represents a country in the Legal Entity application. It is used to store and manage country codes and related information for compliance, reporting, and integration.
+documentation: The Country entity defines the structure for storing country records, including ISO codes and other identifiers. It supports business logic, reporting, and integration with external systems.
+enableDelete: true
+attributes: 
+    - _name: ID
+      dataType: String
+      _type: EntityAttribute
+      i18ned: false
+      length: 2
+      multiValued: false
+      mandatoryValidationScope: PRE_CONSO
+      searchable: true
+      physicalName: ID
+      label: ID
+      description: The unique identifier for the country.
+      documentation: A system-generated unique identifier for each country record.
+    - _name: Alpha2Code
+      dataType: String
+      _type: EntityAttribute
+      i18ned: false
+      length: 2
+      mandatory: false
+      multiValued: false
+      searchable: true
+      physicalName: ALPHA_2_CODE
+      label: ISO 3166-1 2-Letter Code
+      description: The ISO 3166-1 alpha-2 code for the country.
+      documentation: The two-letter ISO code representing the country, used for international standards and integration. This code (alpha-2) is recommended as the general-purpose code. [ISO 3166 Country Codes](https://www.iso.org/iso-3166-country-codes.html)
+    - _name: Alpha3Code
+      dataType: String
+      _type: EntityAttribute
+      i18ned: false
+      length: 3
+      mandatory: false
+      multiValued: false
+      searchable: true
+      physicalName: ALPHA_3_CODE
+      label: ISO 3166-1 3-Letter Code
+      description: The ISO 3166-1 alpha-3 code for the country.
+      documentation: The three-letter ISO code representing the country, used for international standards and integration. This code (alpha-3) is recommended as the general-purpose code. [ISO 3166 Country Codes](https://www.iso.org/iso-3166-country-codes.html)
+    - _name: NumericCode
+      dataType: String
+      _type: EntityAttribute
+      i18ned: false
+      length: 3
+      multiValued: false
+      mandatory: false
+      searchable: true
+      physicalName: NUMERIC_CODE
+      label: ISO 3166-1 Numeric Code
+      description: The ISO 3166-1 numeric code for the country.
+      documentation: The three-digit ISO code representing the country, used for international standards and integration. This code (numeric) is recommended as the general-purpose code. [ISO 3166 Country Codes](https://www.iso.org/iso-3166-country-codes.html)
+    - _name: URLWikipedia
+      dataType: String
+      _type: EntityAttribute
+      i18ned: false
+      length: 128
+      mandatory: false
+      multiValued: false
+      searchable: true
+      physicalName: URL_WIKIPEDIA
+      label: Wikipedia URL
+      description: The Wikipedia URL for the country.
+      documentation: The web address of the Wikipedia page for the country.
+    - _name: LocalShortName
+      dataType: String
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 128
+      multiValued: false
+      searchable: true
+      physicalName: LOCAL_SHORT_NAME
+      label: Local Short Name
+      description: The local short name of the country.
+      documentation: The short name of the country in the local language.
+    - _name: EnglishShortName
+      dataType: String
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 128
+      multiValued: false
+      searchable: true
+      physicalName: ENGLISH_SHORT_NAME
+      label: English Short Name
+      description: The English short name of the country.
+      documentation: The short name of the country in English.
+    - _name: EnglishFullName
+      dataType: String
+      _type: EntityAttribute
+      i18ned: false
+      length: 128
+      multiValued: false
+      searchable: true
+      mandatory: false
+      physicalName: ENGLISH_FULL_NAME
+      label: English Full Name
+      description: The English full name of the country.
+      documentation: The full name of the country in English.
+    - _name: FlagURL
+      dataType: String
+      _type: EntityAttribute
+      i18ned: false
+      length: 128
+      mandatory: false
+      multiValued: false
+      searchable: true
+      physicalName: FLAG_URL
+      label: Flag URL
+      description: The URL of the flag image for the country.
+      documentation: The web address of the flag image for the country.
+    - _name: IsoNumeric
+      dataType: String
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 3
+      multiValued: false
+      searchable: true
+      physicalName: ISO_NUMERIC
+      label: ISO Numeric Code
+      description: The ISO numeric code for the country.
+      documentation: ISO 3166-1 numeric code (kept as 3-digit, zero-padded)
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: COUNTRY
+primaryKey: LegalEntity.entities.Country.Country.ID
+sourceIdGeneration:
+  mode: MANUAL

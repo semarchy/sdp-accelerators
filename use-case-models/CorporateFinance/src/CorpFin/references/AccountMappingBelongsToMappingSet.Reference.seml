@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_type: Reference
+_name: AccountMappingBelongsToMappingSet
+label: Account Mapping Belongs To Mapping Set
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.AccountMapping.AccountMapping
+fromRoleLabel: Account Mapping
+fromRoleName: accountMapping
+fromRolePluralLabel: Account Mappings
+physicalName: ACMAP_BELONGS_TO_MAPSET
+fromNavigable: true
+
+toEntity: CorpFin.entities.MappingSet.MappingSet
+toRoleLabel: Mapping Set
+toRoleName: mappingSet
+toRolePhysicalName: MAPPING_SET_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: mappingSet
+  label: Mapping Set ID
+  physicalName: MAPPING_SET_ID
+  searchable: true
+  entity: CorpFin.entities.MappingSet.MappingSet

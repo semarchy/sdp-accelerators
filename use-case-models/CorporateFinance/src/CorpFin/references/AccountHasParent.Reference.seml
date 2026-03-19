@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: AccountHasParent
+_type: Reference
+label: Account Has Parent
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Account.Account
+fromRoleLabel: Account
+fromRoleName: childAccount
+fromRolePluralLabel: Accounts
+physicalName: ACCOUNT_HAS_PARENT
+fromNavigable: true
+
+toEntity: CorpFin.entities.Account.Account
+toRoleLabel: Parent Account
+toRoleName: parentAccount
+toRolePhysicalName: PARENT_ACCOUNT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: parentAccount
+  label: Parent Account ID
+  physicalName: PARENT_ACCOUNT_ID
+  searchable: true
+  entity: CorpFin.entities.Account.Account

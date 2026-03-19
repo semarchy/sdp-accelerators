@@ -1,0 +1,226 @@
+_name: CreateProduct
+_package: HCO_HCP.workflows
+_type: Workflow
+label: Create Product
+generalProperties:
+  attachmentMimeTypes: "*"
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+notifications:
+  workflowAdminOnDueDate: false
+dataScope:
+  - _name: Products
+    _type: RootEntity
+    cardinality: SINGLE_RECORD
+    displayCard: HCO_HCP.entities.Products.display_cards.ProductsDisplayCard
+    entity: HCO_HCP.entities.Products.Products
+    childEntities: []
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+steps:
+  - _name: Start
+    _type: StartFromEmptySelectionEvent
+    defaultPriority: NORMAL
+    position:
+      x: 200
+      y: -40
+    label: Start
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: HCO_HCP.workflows.CreateProduct.CreateProduct
+      bendPoints: []
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: true
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+    initiatorRequiredRole: BusinessUser
+  - _name: CreateProduct
+    _type: UserTask
+    label: Create Product
+    position:
+      x: 420
+      y: -40
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: HCO_HCP.applications.HCO_HCP
+    assigneeCondition: Username =
+      StepInstance.UserTaskInstance.StepInstance.WorkflowInstance.InitiatorName
+    assigneeRequiredRole: BusinessUser
+    entity: HCO_HCP.entities.Products.Products
+    stepper: HCO_HCP.entities.Products.steppers.AuthorProducts
+    transitions:
+      - _name: SendForApproval
+        _type: UserTaskTransition
+        label: Send For Approval
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: 210
+            y: -30
+        toStep: HCO_HCP.workflows.CreateProduct.ApproveProduct
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: REVERT_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: HCO_HCP.workflows.CreateProduct.Cancel
+  - _name: ApproveProduct
+    _type: UserTask
+    label: Approve Product
+    position:
+      x: 800
+      y: -30
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: HCO_HCP.applications.HCO_HCP
+    assigneeRequiredRole: DataSteward
+    entity: HCO_HCP.entities.Products.Products
+    stepper: HCO_HCP.entities.Products.steppers.AuthorProducts
+    transitions:
+      - _name: ApproveSubmit
+        _type: UserTaskTransition
+        label: Approve Submit
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: HCO_HCP.workflows.CreateProduct.Submit
+      - _name: AskForAFix
+        _type: UserTaskTransition
+        label: Ask For A Fix
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: -180
+            y: 40
+        icon: images://mdi/arrow-left-drop-circle-outline.svg
+        toStep: HCO_HCP.workflows.CreateProduct.CreateProduct
+      - _name: Reject
+        _type: UserTaskTransition
+        label: Reject
+        behaviorOnTransition: REVERT_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        icon: images://mdi/trash.svg
+        toStep: HCO_HCP.workflows.CreateProduct.Reject
+  - _name: End
+    _type: EndEvent
+    position:
+      x: 1130
+      y: -30
+  - _name: Cancel
+    _type: EndEvent
+    position:
+      x: 420
+      y: -130
+  - _name: Reject
+    _type: EndEvent
+    position:
+      x: 800
+      y: -120
+  - _name: Submit
+    _type: SubmitAutomation
+    label: Submit
+    position:
+      x: 1030
+      y: -30
+    integrationJob: HCO_HCP.model_jobs.Products
+    submitUserExpression: PreviousStep.UserTaskInstance.AssigneeName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: HCO_HCP.workflows.CreateProduct.End

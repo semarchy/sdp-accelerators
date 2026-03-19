@@ -1,0 +1,35 @@
+_package: CorpFin.entities.OrgUnit.steppers
+_type: Stepper
+_name: ImportOrgUnits
+entity: CorpFin.entities.OrgUnit.OrgUnit
+label: Org Units
+
+rootStep:
+  _type: CollectionStep
+  _name: OrgUnits
+  label: Org Units
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: CorpFin.entities.OrgUnit.collection_views.OrgUnitImportCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+
+  childSteps:
+    - _type: FormStep
+      _name: OrgUnit
+      label: Org Unit
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CorpFin.entities.OrgUnit.forms.OrgUnitForm.OrgUnit

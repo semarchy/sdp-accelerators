@@ -1,0 +1,73 @@
+# This file defines the action set for the Contract Cost Center entity in the Organization domain.
+# It includes various actions such as Create, Edit, Mass Update, Delete, Export, Import,
+# Browse Graph, and Copy, each with specific configurations for their behavior and visibility.
+_package: Organization.entities.ContractCostCenter.action_sets
+_type: ActionSet
+_name: ContractCostCenterActionSet
+entity: Organization.entities.ContractCostCenter.ContractCostCenter
+label: Contract Cost Center Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorContractCostCenters
+    label: Create
+    useCustomLabel: true
+    stepper: Organization.entities.ContractCostCenter.steppers.AuthorContractCostCenters
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorContractCostCenters
+    label: Edit
+    useCustomLabel: true
+    stepper: Organization.entities.ContractCostCenter.steppers.AuthorContractCostCenters
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorContractCostCenters
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Organization.entities.ContractCostCenter.steppers.AuthorContractCostCenters
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorContractCostCenters
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Organization.entities.ContractCostCenter.steppers.AuthorContractCostCenters
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: CopyAction
+    _name: CopyAuthorContractCostCenters
+    label: Copy
+    useCustomLabel: true
+    stepper: Organization.entities.ContractCostCenter.steppers.AuthorContractCostCenters
+    multipleSelectionAllowed: true
+    waitDialogEnabled: false

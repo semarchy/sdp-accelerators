@@ -1,0 +1,91 @@
+_package: FinanceKYC.entities.InsuranceProduct.forms
+_type: Form
+_name: InsuranceProductForm
+entity: FinanceKYC.entities.InsuranceProduct.InsuranceProduct
+default: true
+formTabs:
+  - _type: FormTab
+    _name: InsuranceProduct
+    label: Insurance Product
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: MainInformation
+        label: Main Information
+        labelWidth: 200px
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: Container1
+            layoutDirection: COLUMN
+            content:
+              - _type: IdField
+                _name: InsuranceProductID
+                value: InsuranceProductID
+                useCustomLabel: false
+                dataType: STRING
+              - _type: TextField
+                _name: ProductName
+                value: ProductName
+                useCustomLabel: false
+                dataType: STRING
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: ProductType
+                value: ProductType
+                useCustomLabel: false
+                dataType: STRING
+              - _type: TextField
+                _name: Currency
+                value: Currency
+                useCustomLabel: false
+                dataType: STRING
+      - _type: FormSection
+        _name: Availability
+        label: Availability
+        labelWidth: 200px
+        layoutDirection: ROW
+        content:
+          - _type: CheckboxField
+            _name: IsActive
+            value: IsActive
+            useCustomLabel: false
+            dataType: BOOLEAN
+          - _type: DateField
+            _name: StartDate
+            value: StartDate
+            useCustomLabel: false
+            dataType: DATE
+          - _type: DateField
+            _name: EndDate
+            value: EndDate
+            useCustomLabel: false
+            dataType: DATE
+      - _type: FormSection
+        _name: Other
+        label: Other
+        labelWidth: 200px
+        layoutDirection: ROW
+        content:
+          - _type: TextField
+            _name: Notes
+            value: Notes
+            useCustomLabel: false
+            dataType: STRING
+          - _type: ReferenceField
+            _name: FDN_Category
+            value: FDN_Category
+            referencedEntity: FinanceKYC.entities.InsuranceProductCategory.InsuranceProductCategory
+            useCustomLabel: false
+            dataType: STRING
+            componentProperties:
+              displayType: chip
+              displayTypeValueInterpreter: LITERAL
+              useAvatarInChip: "1"
+              useAvatarInChipValueInterpreter: LITERAL

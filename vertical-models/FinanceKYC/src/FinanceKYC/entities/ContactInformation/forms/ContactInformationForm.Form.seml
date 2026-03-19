@@ -1,0 +1,110 @@
+_package: FinanceKYC.entities.ContactInformation.forms
+_type: Form
+_name: ContactInformationForm
+
+entity: FinanceKYC.entities.ContactInformation.ContactInformation
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: ContactInformation
+    label: Contact Information
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: ContactInfo
+                label: Contact Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: IdField
+                  _name: ContactID
+                  value: ContactID
+                  useCustomLabel: false
+                  dataType: LONG_INTEGER
+
+                - _type: TextField
+                  _name: ContactType
+                  value: ContactType
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: ContactValue
+                  value: ContactValue
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: DateField
+                  _name: ValidFrom
+                  value: ValidFrom
+                  useCustomLabel: false
+                  dataType: DATE
+
+                - _type: DateField
+                  _name: ValidTo
+                  value: ValidTo
+                  useCustomLabel: false
+                  dataType: DATE
+
+                - _type: ReferenceField
+                  _name: FDN_Customer
+                  value: FDN_Customer
+                  referencedEntity: FinanceKYC.entities.Customer.Customer
+                  useCustomLabel: false
+                  dataType: STRING
+
+          - _type: FormContainer
+            _name: Container7
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: Preferences
+                label: Preferences
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+                visibleValue: '1'
+
+                content:
+                - _type: CheckboxField
+                  _name: IsPrimary
+                  value: IsPrimary
+                  useCustomLabel: false
+                  dataType: BOOLEAN
+
+                - _type: CheckboxField
+                  _name: IsVerified
+                  value: IsVerified
+                  useCustomLabel: false
+                  dataType: BOOLEAN
+
+                - _type: TextField
+                  _name: Notes
+                  value: Notes
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: CheckboxField
+                  _name: Preferred
+                  value: Preferred
+                  useCustomLabel: false
+                  dataType: BOOLEAN

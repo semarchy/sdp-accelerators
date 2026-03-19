@@ -1,0 +1,95 @@
+_package: CorpFin.entities.CounterpartyGroup.forms
+_type: Form
+_name: CounterpartyGroupForm
+
+entity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: CounterpartyGroup
+    label: Counterparty Group
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/hexagon-multiple.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px
+    
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: LegalInformation
+                label: Legal Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: TextField
+                  _name: GroupName
+                  value: GroupName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: DUNSNumber
+                  value: DUNSNumber
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: CheckboxField
+                  _name: UltimateParentFlag
+                  value: UltimateParentFlag
+                  useCustomLabel: false
+                  dataType: BOOLEAN
+                  visibleValue: '0'
+
+                - _type: ReferenceField
+                  _name: FDN_parentCounterpartyGroup
+                  value: FDN_parentCounterpartyGroup
+                  visibleValue: FDN_parentCounterpartyGroup is not null
+                  visibleValueInterpreter: SEMQL
+                  useCustomLabel: false
+                  dataType: STRING
+                  referencedEntity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: AdditionalInformation
+                label: Additional Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: TextField
+                  _name: Sector
+                  value: Sector
+                  useCustomLabel: false
+                  dataType: STRING
+                  
+                - _type: ReferenceField
+                  _name: FDN_headquartersCountry
+                  value: FDN_headquartersCountry
+                  useCustomLabel: false
+                  dataType: STRING
+                  referencedEntity: CorpFin.entities.Country.Country
+
+
+
+

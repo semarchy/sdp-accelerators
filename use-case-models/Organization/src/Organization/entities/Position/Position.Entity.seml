@@ -1,0 +1,52 @@
+# This file defines the Position entity in the Organization module.
+# It specifies the entity attributes, primary key, and source ID generation.
+# Position entities represent specific roles within an organization attributed to employees.
+_package: Organization.entities.Position
+_type: Entity
+_name: Position
+label: Position
+pluralLabel: Position
+entityType: BASIC
+physicalTableName: ENTERPRISE_POSITION
+iconUrl: images://hr-img-lib/file-tree-outline.svg
+description: This entity represents positions within the organization, which can be used for categorization and filtering of employees.
+documentation: This entity is used to define various positions, which can be referenced in other entities.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PositionID
+    label: Position ID
+    description: Unique identifier for the position.
+    documentation: This attribute is the primary key for the Position entity and is used to uniquely identify each record.
+    physicalName: POSITION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    description: Name of the position.
+    documentation: This attribute holds the name of the position, which is used for display purposes.
+    physicalName: NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Description of the position.
+    documentation: This attribute holds a detailed description of the position.
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 11
+primaryKey: Organization.entities.Position.Position.PositionID

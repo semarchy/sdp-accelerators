@@ -1,0 +1,12 @@
+_package: CorpFin.entities.Counterparty.enrichers
+_name: NormalizeCounterparty
+_type: SemQLEnricher
+entity: CorpFin.entities.Counterparty.Counterparty
+label: Normalize Counterparty
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedLegalName
+    expression: "RTRIM(LTRIM(UPPER(LegalName)))"
+  - attributeName: NormalizedTaxID
+    expression: "RTRIM(LTRIM(UPPER(TaxID)))"

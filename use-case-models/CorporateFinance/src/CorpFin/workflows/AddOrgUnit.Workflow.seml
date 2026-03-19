@@ -1,0 +1,254 @@
+_package: CorpFin.workflows
+_type: Workflow
+_name: AddOrgUnit
+label: Add Org Unit
+workflowAdminRole: SemarchyAdmin
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+  - entity: CorpFin.entities.OrgUnit.OrgUnit
+    _type: RootEntity
+    _name: OrgUnit
+    cardinality: SINGLE_RECORD
+    displayCard: CorpFin.entities.OrgUnit.display_cards.OrgUnitDisplayCard
+    childEntities:
+      - ref: CorpFin.references.OrgHierarchyNodeHasOrgUnit
+steps:
+  - _type: StartFromSelectionEvent
+    _name: StartFromExistingOrgUnit
+    position:
+      x: -480.61004198216096
+      y: -27.392107113501925
+    label: Start From Org Unit (Edit)
+    initiatorRequiredRole: DataSteward
+    defaultPriority: NORMAL
+    authoredEntity: CorpFin.entities.OrgUnit.OrgUnit
+    selectionSourceType: GOLDEN_DATA
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: CorpFin.workflows.AddOrgUnit.InitiateOrgUnit
+      bendPoints: []
+  - _type: StartFromEmptySelectionEvent
+    _name: StartFromScratch
+    position:
+      x: -484.0745712883969
+      y: -96.14416536678186
+    label: Start From Scratch
+    initiatorRequiredRole: DataSteward
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: CorpFin.workflows.AddOrgUnit.InitiateOrgUnit
+      bendPoints: []
+  - _type: UserTask
+    _name: InitiateOrgUnit
+    label: Initiate Org Unit
+    icon: images://mdi/account-edit.svg
+    position:
+      x: -339.93279549159007
+      y: -77.14765746488642
+    application: CorpFin.applications.CorpFinApplication
+    assigneeRequiredRole: DataSteward
+    assigneeCondition: Username=UserTaskInstance.StepInstance.WorkflowInstance.InitiatorName
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CorpFin.entities.OrgUnit.OrgUnit
+    stepper: CorpFin.entities.OrgUnit.steppers.AuthorOrgUnits
+    myTasksConfiguration:
+      collection: CorpFin.entities.OrgUnit.collection_views.OrgUnitCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ForReview
+        label: Send For Review
+        toStep: CorpFin.workflows.AddOrgUnit.ApproveOrgUnit
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+      - _type: UserTaskTransition
+        _name: Cancel
+        label: Cancel
+        toStep: CorpFin.workflows.AddOrgUnit.End
+        bendPoints:
+          - x: -120
+            y: -150
+          - x: 255
+            y: -150
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+  - _type: UserTask
+    _name: ApproveOrgUnit
+    label: Approve Org Unit
+    icon: images://mdi/account-edit.svg
+    position:
+      x: -52.74184000346801
+      y: -72.34927099011618
+    application: CorpFin.applications.CorpFinApplication
+    assigneeRequiredRole: BusinessUser
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CorpFin.entities.OrgUnit.OrgUnit
+    stepper: CorpFin.entities.OrgUnit.steppers.AuthorOrgUnits
+    myTasksConfiguration:
+      collection: CorpFin.entities.OrgUnit.collection_views.OrgUnitCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ApprovedNewOrgUnit
+        label: Proceed
+        toStep: CorpFin.workflows.AddOrgUnit.SubmitData
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+      - _type: UserTaskTransition
+        _name: SendBackForCorrection
+        label: Send Back For Correction
+        toStep: CorpFin.workflows.AddOrgUnit.InitiateOrgUnit
+        bendPoints:
+          - x: -15
+            y: 30
+          - x: -240
+            y: 30
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: true
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+      - _type: UserTaskTransition
+        _name: DiscardOrgUnit
+        label: Discard Org Unit
+        toStep: CorpFin.workflows.AddOrgUnit.End
+        bendPoints:
+          - x: 90
+            y: 30
+          - x: 360
+            y: 30
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 234.32076505161942
+      y: -77.74647070266366
+    integrationJob: CorpFin.model_jobs.INGEST_WKF
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: CorpFin.workflows.AddOrgUnit.End
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 450.6958227848101
+      y: -71.15265822784811

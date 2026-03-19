@@ -1,0 +1,81 @@
+_name: AuthorMemberInsuranceCompanys
+_package: HCO_HCP.entities.Coverage.steppers
+_type: Stepper
+entity: HCO_HCP.entities.Coverage.Coverage
+rootStep:
+  _name: MemberInsuranceCompanys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.Coverage.collection_views.ImportCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Member Insurance Companies
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.MemberInsuranceCompaniesInsuranceCompany.InsuranceCompany
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.MemberInsuranceCompaniesMember.Member
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.MemberInsuranceSubscriber.Subscriber
+  stepTriggers: []
+  childSteps:
+    - _name: MemberInsuranceCompany
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Member Insurance Company
+      formTab: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.MemberInsuranceCompaniesInsuranceCompany.InsuranceCompany
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.MemberInsuranceSubscriber.Subscriber
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.MemberInsuranceCompaniesMember.Member
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.MemberInsuranceSubscriber.Subscriber
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.MemberInsuranceCompaniesMember.Member
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.MemberInsuranceCompaniesInsuranceCompany.InsuranceCompany
+      stepTriggers: []
+label: Author Member Insurance Companies
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.MemberInsuranceCompaniesMember.Member
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.MemberInsuranceSubscriber.Subscriber
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.MemberInsuranceCompaniesInsuranceCompany.InsuranceCompany
+triggers: []

@@ -1,0 +1,12 @@
+_package: CorpFin.entities.Region.enrichers
+_name: NormalizeRegion
+_type: SemQLEnricher
+entity: CorpFin.entities.Region.Region
+label: Normalize Region
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedRegionName
+    expression: "RTRIM(LTRIM(UPPER(RegionName)))"
+  - attributeName: NormalizedISOCode
+    expression: "RTRIM(LTRIM(UPPER(ISOCode)))"

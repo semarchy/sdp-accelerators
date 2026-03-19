@@ -1,0 +1,87 @@
+_package: FinanceKYC.entities.Customer.business_views
+_name: Customer360View
+_type: BusinessView
+entity: FinanceKYC.entities.Customer.Customer
+rootLabel: Customers
+label: Customer
+rootPluralLabel: Customers
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Customer360
+  entity: FinanceKYC.entities.Customer.Customer
+  actionSet: FinanceKYC.entities.Customer.action_sets.CustomerActionSet
+  collection: FinanceKYC.entities.Customer.collection_views.CustomerCollectionView
+  form: FinanceKYC.entities.Customer.forms.Customer360
+  displayCard: FinanceKYC.entities.Customer.display_cards.CustomerDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL 
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  embeddedCollectionNavigations:
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Individual.IndividualPerson
+      form: FinanceKYC.entities.IndividualPerson.forms.IndividualPersonForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.RiskProfile.CustomerRiskProfile
+      form: FinanceKYC.entities.CustomerRiskProfile.forms.CustomerRiskProfileForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.CorporateEntity.CorporateEntity
+      form: FinanceKYC.entities.CorporateEntity.forms.CorporateEntityForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Contact.ContactInformation
+      form: FinanceKYC.entities.ContactInformation.forms.ContactInformationForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Contact.Addresses
+      form: FinanceKYC.entities.Address.forms.AddressForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.IDAndAccount.Document
+      form: FinanceKYC.entities.IdDocument.forms.IdDocumentForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.IDAndAccount.BankAccount
+      form: FinanceKYC.entities.BankAccount.forms.BankAccountForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.KYC.KYCCheck
+      form: FinanceKYC.entities.KYCCheck.forms.KYCCheckForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.KYC.KYCReview
+      form: FinanceKYC.entities.KYCReview.forms.KYCReviewForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Contracts.Container1.Container2.BankingContract
+      form: FinanceKYC.entities.BankingContract.forms.BankingContractForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Contracts.Container1.Container2.BankingContractRole
+      form: FinanceKYC.entities.BankingContractRole.forms.BankingContractRoleForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Contracts.Container1.Container3.InsuranceContract
+      form: FinanceKYC.entities.InsuranceContract.forms.InsuranceContractForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Contracts.Container1.Container3.InsuranceContractRole
+      form: FinanceKYC.entities.InsuranceContractRole.forms.InsuranceContractRoleForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Relationship.CustomerRelationshipsTo
+      form: FinanceKYC.entities.Relationship.forms.RelationshipForm
+    - browsingTarget: MODAL_FORM
+      formCollection: FinanceKYC.entities.Customer.forms.Customer360.Relationship.CustomerRelationshipsFrom
+      form: FinanceKYC.entities.Relationship.forms.RelationshipForm
+      
+enableHierarchyView: false
+useHierarchyOnOpen: false
+description: ''

@@ -1,0 +1,92 @@
+_package: CorpFin.entities.SplitAllocation.forms
+_type: Form
+_name: SplitAllocationForm
+
+entity: CorpFin.entities.SplitAllocation.SplitAllocation
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: SplitAllocation
+    label: Split Allocation
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px 
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: COLUMN
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: MappingSetInformation
+                label: Mapping Set Information
+                labelWidth: 200px
+                layoutDirection: ROW
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: IdField
+                    _name: SplitAllocationID
+                    value: SplitAllocationID
+                    useCustomLabel: false
+                    dataType: STRING
+
+                  - _type: ReferenceField
+                    _name: FDN_accountMapping
+                    value: FDN_accountMapping
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.AccountMapping.AccountMapping
+
+                  - _type: ReferenceField
+                    _name: mappingSet
+                    value: accountMapping.FDN_mappingSet
+                    useCustomLabel: true
+                    label: Mapping Set
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.MappingSet.MappingSet
+        
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: TargetAccountInformation
+                label: Target Account Information
+                labelWidth: 200px
+                layoutDirection: ROW
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_targetAccount
+                    value: FDN_targetAccount
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.Account.Account
+
+                  - _type: TextField
+                    _name: SplitPercent
+                    value: SplitPercent
+                    useCustomLabel: false
+                    dataType: DECIMAL
+
+                  - _type: TextField
+                    _name: Sequence
+                    value: Sequence
+                    useCustomLabel: false
+                    dataType: INTEGER
+
+

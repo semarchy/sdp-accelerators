@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: CounterpartyAddressHasCounterparty
+_type: Reference
+label: Counterparty Address Has Counterparty
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.CounterpartyAddress.CounterpartyAddress
+fromRoleLabel: Address
+fromRoleName: counterpartyAddress
+fromRolePluralLabel: Addresses
+physicalName: CPADDR_HAS_CP
+fromNavigable: true
+
+toEntity: CorpFin.entities.Counterparty.Counterparty
+toRoleLabel: Counterparty
+toRoleName: counterparty
+toRolePhysicalName: COUNTERPARTY_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: counterparty
+  label: Counterparty ID
+  physicalName: COUNTERPARTY_ID
+  searchable: true
+  entity: CorpFin.entities.Counterparty.Counterparty
+
+

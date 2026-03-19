@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: CostTypeHasParent
+_type: Reference
+label: Cost Type Has Parent
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.CostType.CostType
+fromRoleLabel: Cost Type
+fromRoleName: costType
+fromRolePluralLabel: Cost Types
+physicalName: COSTTYPE_HAS_PARENT
+fromNavigable: true
+
+toEntity: CorpFin.entities.CostType.CostType
+toRoleLabel: Parent Cost Type
+toRoleName: parentCostType
+toRolePhysicalName: PARENT_COST_TYPE_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: parentCostType
+  label: Parent Cost Type ID
+  physicalName: PARENT_COST_TYPE_ID
+  searchable: true
+  entity: CorpFin.entities.CostType.CostType

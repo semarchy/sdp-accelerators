@@ -1,0 +1,10 @@
+_package: LegalEntity.entities.LegalEntity.enrichers
+_name: SetStatusPendingValidation
+_type: SemQLEnricher
+entity: LegalEntity.entities.LegalEntity.LegalEntity
+label: Set Status Pending Validation
+description: ''
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_Status
+    expression: Case when 1=1 then 'Pending Validation' else null end

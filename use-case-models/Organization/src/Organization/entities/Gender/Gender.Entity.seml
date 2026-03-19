@@ -1,0 +1,52 @@
+# This file defines an entity for Gender types accepted in the organization.
+# It specifies the entity attributes, primary key, and source ID generation.
+_package: Organization.entities.Gender
+_type: Entity
+_name: Gender
+label: Gender
+pluralLabel: Gender
+entityType: BASIC
+physicalTableName: GENDER
+iconUrl: images://hr-img-lib/account-circle.svg
+description: This entity represents the Gender types within the organization, which can be used for categorization and filtering of employees.
+documentation: This entity is used to define Gender types, which can be referenced in other entities.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: GenderID
+    label: Gender ID
+    physicalName: GENDER_ID
+    description: Unique identifier
+    documentation: This attribute is the primary key for the Gender entity and is used to uniquely identify each record
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: Label
+    label: Label
+    description: Label
+    documentation: This attribute holds the label for Gender
+    physicalName: LABEL
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: Code
+    label: Code
+    description: Code
+    documentation: This attribute holds the code for Gender
+    physicalName: CODE
+    dataType: String
+    length: 10
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 10
+primaryKey: Organization.entities.Gender.Gender.GenderID

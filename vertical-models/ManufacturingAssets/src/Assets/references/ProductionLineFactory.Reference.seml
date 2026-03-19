@@ -1,0 +1,30 @@
+_package: Assets.references
+_type: Reference
+label: Production Line Factory
+_name: ProductionLineFactory
+description: Foreign key reference for Factory in Production Line
+documentation: This reference links Production Lines to their respective Factories
+deletePropagation: RESTRICT
+fromEntity: Assets.entities.ProductionLine.ProductionLine
+fromRoleName: ProductionLine
+fromRoleLabel: Production Line
+fromRolePluralLabel: Production Lines
+physicalName: PRODUCTION_LINE_FACTORY
+# Reference to Factory
+# FactoryID is the referenced attribute
+# ProductionLine.FactoryID is the foreign key
+# Factory.FactoryID is the primary key
+toEntity: Assets.entities.Factory.Factory
+# Role name for the referenced entity
+# Use Factory2 to avoid name collision if needed
+toRoleName: Factory
+toRolePhysicalName: FACTORY
+# Label for the referenced entity
+toRoleLabel: Factory
+validationScope: PRE_CONSO
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Factory
+  label: Factory
+  physicalName: FACTORY
+  searchable: true

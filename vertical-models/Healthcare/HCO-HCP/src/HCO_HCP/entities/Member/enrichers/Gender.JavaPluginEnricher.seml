@@ -1,0 +1,27 @@
+_type: JavaPluginEnricher
+_package: HCO_HCP.entities.Member.enrichers
+_name: Gender
+entity: HCO_HCP.entities.Member.Member
+label: Gender
+pluginId: com.semarchy.engine.plugins.convergence.personname.personNameEnricher
+batchUpdateSize: 1000
+condition: Gender IS NULL
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: SURNAME_POSITION
+    value: SURNAME_FIRST
+  - paramName: CASE_TRANSFORMATION
+    value: NONE
+pluginInputs:
+  - inputName: COUNTRY_CODE
+    expression: "'US'"
+  - inputName: PERSON_NAME
+    expression: FirstName || ' ' || LastName
+pluginOutputs:
+  - outputName: GENDER
+    attributeName: Gender
+afterEnrichers: HCO_HCP.entities.Member.enrichers.FindPCPSourceID

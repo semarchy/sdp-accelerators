@@ -1,0 +1,23 @@
+# This is a Semarchy plugin enricher configuration file for cleansing email addresses.
+# It uses a Java plugin to cleanse email addresses, ensuring they are valid and standardized.
+# The plugin processes the email address and outputs a cleansed version along with a valid domain flag.
+# For more information, refer to the Semarchy documentation: https://docs.semarchy.com/sdp/reference/dm/enrichers/plugin-enricher
+_package: Organization.entities.Employee.enrichers
+_type: JavaPluginEnricher
+_name: GCleanseEmail
+label: Cleanse Email
+enricherExecutionScope: PRE_CONSO
+entity: Organization.entities.Employee.Employee
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.email
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - expression: SourceEmail
+    inputName: IN_EMAIL_ADDRESS
+pluginOutputs:
+  - attributeName: CleansedEmail
+    outputName: OUT_CLEANSED_EMAIL
+  - attributeName: ValidEmailDomain
+    outputName: OUT_CLEANSED_HOST_VALID

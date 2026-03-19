@@ -1,0 +1,146 @@
+_package: CorpFin.entities.OrgHierarchyNode.forms
+_type: Form
+_name: OrgHierarchyNodeForm
+
+entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: OrgHierarchyNode
+    label: Org Unit
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/domain.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: OrgUnitInformation
+                label: Org Unit Information
+                labelWidth: 200px
+                layoutDirection: ROW
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: OrgHierarchyNodeID
+                    value: OrgHierarchyNodeID
+                    useCustomLabel: false
+                    dataType: STRING
+                    
+                  - _type: ReferenceField
+                    _name: FDN_orgUnit
+                    label: Org Unit Details
+                    value: FDN_orgUnit
+                    useCustomLabel: true
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.OrgUnit.OrgUnit
+                    componentProperties:
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      useAvatarInChip: "0"
+                      useAvatarInChipValueInterpreter: LITERAL
+
+                  - _type: ReferenceField
+                    _name: CounterpartyName
+                    value: orgUnit.FDN_counterparty
+                    useCustomLabel: true
+                    label: Associated Counterparty
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.Counterparty.Counterparty
+                    visibleValue: orgUnit.FDN_counterparty IS NOT NULL
+                    visibleValueInterpreter: SEMQL
+                    componentProperties:
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      useAvatarInChip: "0"
+                      useAvatarInChipValueInterpreter: LITERAL
+
+                  - _type: ReferenceField
+                    _name: OrgUnitType
+                    value: orgUnit.FDN_orgUnitType
+                    useCustomLabel: true
+                    label: Org Unit Type
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.OrgUnitType.OrgUnitType
+
+              - _type: FormSection
+                _name: DateInformation
+                label: Effective Window
+                labelWidth: 200px
+                layoutDirection: ROW
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: DateField
+                    _name: EffectiveStartDate
+                    value: EffectiveStartDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                  - _type: DateField
+                    _name: EffectiveEndDate
+                    value: EffectiveEndDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: LinkageInformation
+                label: Linked To
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: ReferenceField
+                  _name: FDN_orgHierarchy
+                  value: FDN_orgHierarchy
+                  label: Hierarchy
+                  useCustomLabel: true
+                  dataType: STRING
+                  referencedEntity: CorpFin.entities.OrgHierarchy.OrgHierarchy
+
+                - _type: ReferenceField
+                  _name: FDN_parentNode
+                  label: Parent Company/Unit
+                  value: FDN_parentNode                  
+                  useCustomLabel: true
+                  dataType: STRING
+                  referencedEntity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+
+                - _type: TextField
+                  _name: RelationshipType
+                  label: Relationship
+                  value: RelationshipType
+                  useCustomLabel: true
+                  dataType: STRING           
+
+                - _type: TextField
+                  _name: Sequence
+                  value: Sequence
+                  useCustomLabel: false
+                  dataType: INTEGER
+                  visibleValue: Sequence IS NOT NULL
+                  visibleValueInterpreter: SEMQL
+        

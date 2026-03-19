@@ -1,0 +1,351 @@
+_package: LegalEntity.workflows
+_type: Workflow
+_name: AddContact4Eye
+label: Add Contact
+workflowAdminRole: DataSteward
+notifications:
+  workflowAdminOnDueDate: false
+dataScope:
+  - entity: LegalEntity.entities.Contact.Contact
+    _type: RootEntity
+    _name: Contact
+    cardinality: SINGLE_RECORD
+    displayCard: LegalEntity.entities.Contact.display_cards.ContactDisplayCard
+steps:
+  - _type: StartFromEmptySelectionEvent
+    _name: Start
+    position:
+      x: -474
+      y: -68
+    label: Start
+    initiatorRequiredRole: BusinessUser
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: LegalEntity.workflows.AddContact4Eye.CreateContact
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 735.3344924158675
+      y: -55.21731591237917
+  - _type: UserTask
+    _name: CreateContact
+    label: Create Contact
+    icon: images://le-img-lib/account-edit.svg
+    position:
+      x: -272
+      y: -80
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    application: LegalEntity.applications.LegalEntities
+    assigneeRequiredRole: BusinessUser
+    assigneeCondition: Username=UserTaskInstance.StepInstance.WorkflowInstance.InitiatorName
+    assigneeCanRelease: true
+    taskType: DATA_AUTHORING
+    entity: LegalEntity.entities.Contact.Contact
+    stepper: LegalEntity.entities.Contact.steppers.AuthorContacts
+    myTasksConfiguration:
+      collection: LegalEntity.entities.Contact.collection_views.ContactCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: SendToReview
+        label: Send To Review
+        toStep: LegalEntity.workflows.AddContact4Eye.ApprovalSteps
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+      - _type: UserTaskTransition
+        _name: Cancel
+        label: Cancel
+        toStep: LegalEntity.workflows.AddContact4Eye.End
+        bendPoints:
+          - x: -195
+            y: -150
+          - x: 735
+            y: -150
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 436.4468954314042
+      y: -70.07002987031987
+    integrationJob: LegalEntity.model_jobs.ALL
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: LegalEntity.workflows.AddContact4Eye.End
+      bendPoints: []
+  - _type: ParallelBlock
+    transition:
+      _type: ParallelBlockTransition
+      _name: FinishValidation
+      toStep: LegalEntity.workflows.AddContact4Eye.AllApproved
+      bendPoints:
+        - x: 285
+          y: -45
+    _name: ApprovalSteps
+    label: Validations
+    position:
+      x: 44.24504672897196
+      y: -116.7699065420561
+    branches:
+      - _type: Branch
+        index: 0
+        icon: images://mdi/account-check.svg
+        _name: MarketingValidation
+        label: Marketing Validation
+        steps:
+          - _type: BranchStartEvent
+            _name: StartMarketingValiation
+            position:
+              x: -257.15614617940196
+              y: 365.65740057780505
+            transition:
+              _type: StartEventTransition
+              _name: StartMarketingValiationOutgoing
+              toStep: LegalEntity.workflows.AddContact4Eye.ApprovalSteps.MarketingValidation.MarketingApproval
+          - _type: UserTask
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            myTasksConfiguration:
+              collection: LegalEntity.entities.Contact.collection_views.ContactCollectionView
+            entity: LegalEntity.entities.Contact.Contact
+            stepper: LegalEntity.entities.Contact.steppers.AuthorContacts
+            taskType: DATA_AUTHORING
+            application: LegalEntity.applications.LegalEntities
+            assigneeCanRelease: true
+            notificationsOnTaskAssignment:
+              toAssignee: true
+              toCandidates: true
+            notificationsOnTaskExpiration:
+              toAdmin: true
+              toCandidatesOrAssignee: true
+              toRole: DataSteward
+              taskMaxDuration: 30
+            assigneeCondition: Username='benoit.lerest'
+            _name: MarketingApproval
+            label: Marketing Approval
+            icon: images://le-img-lib/account-check.svg
+            position:
+              x: -100
+              y: 350
+            transitions:
+              - _type: UserTaskTransition
+                _name: RejectMarketing
+                label: Reject
+                toStep: LegalEntity.workflows.AddContact4Eye.ApprovalSteps.MarketingValidation.EndMarketingValiation
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  attachmentParamRequired: false
+                  attachmentParamSupported: true
+                  commentParamRequired: false
+                  commentParamSupported: true
+                  descriptionParamSupported: true
+                  dueDateParamRequired: false
+                  dueDateParamSupported: false
+                  nextTaskAssigneeRequired: false
+                  nextTaskAssigneeSupported: false
+                  priorityParamSupported: true
+                userTaskCompletionRequired: true
+                bendPoints: []
+              - _type: UserTaskTransition
+                _name: ValidateMarketing
+                label: Validate
+                toStep: LegalEntity.workflows.AddContact4Eye.ApprovalSteps.MarketingValidation.EndMarketingValiation
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  attachmentParamRequired: false
+                  attachmentParamSupported: true
+                  commentParamRequired: false
+                  commentParamSupported: true
+                  descriptionParamSupported: true
+                  dueDateParamRequired: false
+                  dueDateParamSupported: false
+                  nextTaskAssigneeRequired: false
+                  nextTaskAssigneeSupported: false
+                  priorityParamSupported: true
+                userTaskCompletionRequired: true
+                bendPoints: []
+          - _type: BranchEndEvent
+            _name: EndMarketingValiation
+            position:
+              x: 248.64507481148866
+              y: 362.2270764119602
+      - _type: Branch
+        _name: LegalValidation
+        label: Legal Validation
+        index: 1
+        icon: images://mdi/gavel
+        steps:
+          - _type: BranchStartEvent
+            _name: StartLegalValiation
+            position:
+              x: 185.7109634551495
+              y: 67.87292358803985
+            transition:
+              _type: StartEventTransition
+              _name: StartLegalValiationOutgoing
+              toStep: LegalEntity.workflows.AddContact4Eye.ApprovalSteps.LegalValidation.LegalApproval
+                    
+          - _type: UserTask
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            myTasksConfiguration:
+              collection: LegalEntity.entities.Contact.collection_views.ContactCollectionView
+            _name: LegalApproval
+            label: Legal Approval
+            icon: images://le-img-lib/account-check.svg
+            position:
+              x: 297.879900332226
+              y: 59.21810631229238
+            assigneeCondition: ""
+            assigneeRequiredRole: Legal
+            assigneeCanRelease: true
+            taskType: DATA_AUTHORING
+            entity: LegalEntity.entities.Contact.Contact
+            stepper: LegalEntity.entities.Contact.steppers.AuthorContacts
+            application: LegalEntity.applications.LegalEntities
+            notificationsOnTaskAssignment:
+              toAssignee: true
+              toCandidates: true
+            notificationsOnTaskExpiration:
+              toAdmin: true
+              toCandidatesOrAssignee: true
+              toRole: DataSteward
+              taskMaxDuration: 30
+            transitions:
+              - _type: UserTaskTransition
+                _name: ValidateLegal
+                label: Validate
+                toStep: LegalEntity.workflows.AddContact4Eye.ApprovalSteps.LegalValidation.EndLegalValiation
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  attachmentParamRequired: false
+                  attachmentParamSupported: true
+                  commentParamRequired: false
+                  commentParamSupported: true
+                  descriptionParamSupported: true
+                  dueDateParamRequired: false
+                  dueDateParamSupported: false
+                  nextTaskAssigneeRequired: false
+                  nextTaskAssigneeSupported: false
+                  priorityParamSupported: true
+                userTaskCompletionRequired: true
+                bendPoints: []
+              - _type: UserTaskTransition
+                _name: RejectLegal
+                toStep: LegalEntity.workflows.AddContact4Eye.ApprovalSteps.LegalValidation.EndLegalValiation
+                label: Reject
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  attachmentParamRequired: false
+                  attachmentParamSupported: true
+                  commentParamRequired: false
+                  commentParamSupported: true
+                  descriptionParamSupported: true
+                  dueDateParamRequired: false
+                  dueDateParamSupported: false
+                  nextTaskAssigneeRequired: false
+                  nextTaskAssigneeSupported: false
+                  priorityParamSupported: true
+                userTaskCompletionRequired: true
+                bendPoints: []
+          - _type: BranchEndEvent
+            _name: EndLegalValiation
+            position:
+              x: 551.5938367950562
+              y: 66.44401993355481
+  - _type: Router
+    routes:
+      - _type: Route
+        _name: AllApproved
+        condition: not any PreviousStep.ParallelBlockInstance.Branches.Steps has
+          (SelectedTransitionName='Reject')
+        label: Valid
+        index: 0
+        bendPoints: []
+        toStep: LegalEntity.workflows.AddContact4Eye.SubmitData
+      - _type: Route
+        _name: AnyRejected
+        condition: any PreviousStep.ParallelBlockInstance.Branches.Steps has
+          (SelectedTransitionName='Reject')
+        toStep: LegalEntity.workflows.AddContact4Eye.CreateContact
+        label: Not Valid
+        index: 1
+        bendPoints:
+          - x: 360
+            y: 60
+          - x: 285
+            y: 60
+          - x: 135
+            y: 60
+          - x: 60
+            y: 60
+          - x: -195
+            y: 60
+    _name: AllApproved
+    label: Merge Approvals
+    position:
+      x: 341.1272504944122
+      y: -62.28736246699742
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER

@@ -1,0 +1,125 @@
+_package: CorpFin.model_diagrams
+_name: CorpFinRefData
+_type: ModelDiagram
+attributeNameFormat: NAME
+description: Visual map of the Corporate Finance data model and its relationships.
+entityNameFormat: LABEL
+label: Reference Data sub-Model
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    entity: CorpFin.entities.Region.Region
+    _name: Region
+    borderColor: "#8064A2"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 40
+      y: -200
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Country.Country
+    _name: Country
+    borderColor: "#9BBB59"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 383.3644111580718
+      y: 19.112946093905578
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Currency.Currency
+    _name: Currency
+    borderColor: "#C0504D"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 21.41768876047601
+      y: 203.07352085452578
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.TaxCode.TaxCode
+    _name: TaxCode
+    borderColor: "#F79646"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 680.5540758810434
+      y: -253.71603587796608
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.CostType.CostType
+    _name: CostType
+    borderColor: "#4BACC6"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1080
+      y: -200
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.FiscalCalendar.FiscalCalendar
+    _name: FiscalCalendar
+    borderColor: "#1F497D"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 705.4246149419881
+      y: 105.68353682009854
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.FiscalPeriod.FiscalPeriod
+    _name: FiscalPeriod
+    borderColor: "#C00000"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 998.7565270421927
+      y: 152.6217364789037
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.StatusCode.StatusCode
+    _name: StatusCode
+    borderColor: "#4F81BD"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 366.02077854453654
+      y: -335.12946093905515
+    width: -1
+referenceLinks:
+  - bendPoints:
+      - x: 975
+        y: -45
+      - x: 975
+        y: -285
+      - x: 1155
+        y: -285
+    fromEntityShape: CorpFin.model_diagrams.CorpFinRefData.CostType
+    reference: CorpFin.references.CostTypeHasParent
+    toEntityShape: CorpFin.model_diagrams.CorpFinRefData.CostType
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinRefData.TaxCode
+    reference: CorpFin.references.TaxCodeHasCountry
+    toEntityShape: CorpFin.model_diagrams.CorpFinRefData.Country
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinRefData.Country
+    reference: CorpFin.references.CountryHasRegion
+    toEntityShape: CorpFin.model_diagrams.CorpFinRefData.Region
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinRefData.Country
+    reference: CorpFin.references.CountryHasCurrency
+    toEntityShape: CorpFin.model_diagrams.CorpFinRefData.Currency
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinRefData.FiscalPeriod
+    reference: CorpFin.references.FiscalPeriodHasFiscalCalendar
+    toEntityShape: CorpFin.model_diagrams.CorpFinRefData.FiscalCalendar
+inheritLinks: []

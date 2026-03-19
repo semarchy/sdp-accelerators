@@ -1,0 +1,120 @@
+{
+  "name" : "NPPESRestAPI",
+  "label" : "NPPES Rest API",
+  "description" : "Provider Details with NPI Number",
+  "errorSelector" : null,
+  "timeout" : 5000,
+  "maxRetries" : 0,
+  "successStatusCodes" : "2xx",
+  "httpMethod" : "GET",
+  "requestUrl" : "https://npiregistry.cms.hhs.gov/api/?number=${NPI}&version=2.1",
+  "requestHeaders" : "Content-Type: application/json",
+  "requestBodyFormat" : "NONE",
+  "requestBody" : "",
+  "requestInputs" : [ {
+    "name" : "NPI",
+    "label" : "NPI",
+    "description" : null,
+    "dataType" : "STRING"
+  } ],
+  "responseOutputs" : [ {
+    "name" : "address_1",
+    "label" : "address_1",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].addresses[0].address_1",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "address_purpose",
+    "label" : "address_purpose",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].addresses[0].address_purpose",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "city",
+    "label" : "city",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].addresses[0].city",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "country_code",
+    "label" : "country_code",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].addresses[0].country_code",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "credential",
+    "label" : "credential",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].basic.credential",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "first_name",
+    "label" : "first_name",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].basic.first_name",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "last_name",
+    "label" : "last_name",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].basic.last_name",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "phone",
+    "label" : "phone",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].addresses[0].telephone_number",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "state",
+    "label" : "state",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].addresses[0].state",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "taxonomy_code",
+    "label" : "taxonomy_code",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].taxonomies[0].code",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  }, {
+    "name" : "zip",
+    "label" : "zip",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].addresses[0].postal_code",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : null
+  } ]
+}

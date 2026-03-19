@@ -1,0 +1,93 @@
+_package: FinanceKYC.entities.BankAccount
+_type: Entity
+_name: BankAccount
+label: Bank Account
+pluralLabel: Bank Account
+entityType: BASIC
+physicalTableName: BANK_ACCOUNT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: BankAccountID
+    _type: EntityAttribute
+    label: Bank Account ID
+    physicalName: BANK_ACCOUNT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: BankName
+    _type: EntityAttribute
+    label: Bank Name
+    physicalName: BANK_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: AccountNumber
+    _type: EntityAttribute
+    label: Account Number
+    physicalName: ACCOUNT_NUMBER
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: IBAN
+    _type: EntityAttribute
+    label: IBAN
+    physicalName: IBAN
+    dataType: String
+    length: 34
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: AccountType
+    _type: EntityAttribute
+    label: Account Type
+    physicalName: ACCOUNT_TYPE
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _name: Currency
+    _type: EntityAttribute
+    label: Currency
+    physicalName: CURRENCY
+    dataType: String
+    length: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: OpenDate
+    label: Open Date
+    physicalName: OPEN_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: CloseDate
+    label: Close Date
+    physicalName: CLOSE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    
+primaryKey: FinanceKYC.entities.BankAccount.BankAccount.BankAccountID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

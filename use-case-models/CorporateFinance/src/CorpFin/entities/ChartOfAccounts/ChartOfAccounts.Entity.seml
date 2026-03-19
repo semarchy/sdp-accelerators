@@ -1,0 +1,82 @@
+_package: CorpFin.entities.ChartOfAccounts
+_type: Entity
+_name: ChartOfAccounts
+label: Chart Of Accounts
+pluralLabel: Chart Of Accounts
+entityType: BASIC
+physicalTableName: CHART_OF_ACCOUNTS
+iconUrl: images://mdi/clipboard-list-outline.svg
+description: "Defines a chart of accounts for operational, statutory, or group reporting."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: ChartOfAccountsID
+    label: Chart Of Accounts ID
+    description: Surrogate identifier for the chart of accounts
+    documentation: ""
+    physicalName: CHART_OF_ACCOUNTS_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    description: Chart of accounts display name
+    documentation: ""
+    physicalName: NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedName
+    label: Normalized Name
+    description: Trimmed and uppercased chart of accounts name
+    documentation: ""
+    physicalName: NORMALIZED_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Description or usage context
+    documentation: ""
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: AccountingStandard
+    label: Accounting Standard
+    description: Accounting framework (Local GAAP, IFRS, etc.)
+    documentation: ""
+    physicalName: ACCOUNTING_STANDARD
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsGroupCoA
+    label: Is Group CoA
+    description: Indicates if this is the corporate/group CoA
+    documentation: ""
+    physicalName: IS_GROUP_COA
+    dataType: Boolean
+    mandatory: false
+
+primaryKey: CorpFin.entities.ChartOfAccounts.ChartOfAccounts.ChartOfAccountsID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

@@ -1,0 +1,409 @@
+_package: FinanceKYC.entities.Customer.forms
+_type: Form
+_name: Customer360
+entity: FinanceKYC.entities.Customer.Customer
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Customer
+    label: Customer
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/account-multiple.svg
+    content:
+      - _type: IdField
+        _name: CustomerID
+        value: CustomerID
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: CustomerType
+        value: CustomerType
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: Status
+        value: Status
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: SourceSystem
+        value: SourceSystem
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: Segment
+        value: Segment
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: CommunicationLanguage
+        value: CommunicationLanguage
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: Notes
+        value: Notes
+        useCustomLabel: false
+        dataType: STRING
+      - _type: CheckboxField
+        _name: IsActive
+        value: IsActive
+        useCustomLabel: false
+        dataType: BOOLEAN
+  - _type: FormTab
+    _name: Individual
+    label: Individual Persons
+    documentationInterpreter: LITERAL
+    visibleValue: any individual has (1=1)
+    visibleValueInterpreter: SEMQL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/account-circle.svg
+    content:
+      - _type: FormCollection
+        _name: IndividualPerson
+        targetEntity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+        collection: FinanceKYC.entities.IndividualPerson.collection_views.IndividualPersonCollectionView
+        label: Individual Persons
+        pluralLabel: Individual Persons
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: PersonID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: individual
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: CorporateEntity
+    label: Corporate Entities
+    documentationInterpreter: LITERAL
+    visibleValue: any corporation has (1=1)
+    visibleValueInterpreter: SEMQL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/office-building.svg
+    content:
+      - _type: FormCollection
+        _name: CorporateEntity
+        targetEntity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+        collection: FinanceKYC.entities.CorporateEntity.collection_views.CorporateEntityCollectionView
+        label: Corporate Entities
+        pluralLabel: Corporate Entities
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: EntityID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: corporation
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: Contact
+    label: Contacts
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/map-legend.svg
+    content:
+      - _type: FormCollection
+        _name: ContactInformation
+        targetEntity: FinanceKYC.entities.ContactInformation.ContactInformation
+        collection: FinanceKYC.entities.ContactInformation.collection_views.ContactInformationCollectionView
+        label: Customers Contacts
+        pluralLabel: Customers Contacts
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: ContactID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: contact
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+      - _type: FormCollection
+        _name: Addresses
+        targetEntity: FinanceKYC.entities.Address.Address
+        collection: FinanceKYC.entities.Address.collection_views.AddressCollectionView
+        label: Customers Addresses
+        pluralLabel: Customers Adresses
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: AddressID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: address
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: IDAndAccount
+    label: IDs & Accounts
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/badge-account-horizontal-outline.svg
+    content:
+      - _type: FormCollection
+        _name: Document
+        targetEntity: FinanceKYC.entities.IdDocument.IdDocument
+        collection: FinanceKYC.entities.IdDocument.collection_views.IdDocumentCollectionView
+        label: Customers Documents
+        pluralLabel: Customers Documents
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: DocumentID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: document
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+      - _type: FormCollection
+        _name: BankAccount
+        targetEntity: FinanceKYC.entities.BankAccount.BankAccount
+        collection: FinanceKYC.entities.BankAccount.collection_views.BankAccountCollectionView
+        label: Bank Accounts
+        pluralLabel: Bank Accounts
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: BankAccountID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: account
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: KYC
+    label: KYC
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/seal-variant.svg
+    content:
+      - _type: FormCollection
+        _name: KYCCheck
+        targetEntity: FinanceKYC.entities.KYCCheck.KYCCheck
+        collection: FinanceKYC.entities.KYCCheck.collection_views.KYCCheckCollectionView
+        label: KYC Checks
+        pluralLabel: KYC Checks
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: KYCCheckID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: check
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+      - _type: FormCollection
+        _name: KYCReview
+        targetEntity: FinanceKYC.entities.KYCReview.KYCReview
+        collection: FinanceKYC.entities.KYCReview.collection_views.KYCReviewCollectionView
+        label: KYC Reviews
+        pluralLabel: KYC Reviews
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: KYCReviewID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: review
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: RiskProfile
+    label: Risk Profile
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/skull-scan-outline.svg
+    content:
+      - _type: FormCollection
+        _name: CustomerRiskProfile
+        targetEntity: FinanceKYC.entities.CustomerRiskProfile.CustomerRiskProfile
+        collection: FinanceKYC.entities.CustomerRiskProfile.collection_views.CustomerRiskProfileCollectionView
+        label: Risk Profile
+        pluralLabel: Risk Profiles
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: RiskProfileID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: profile
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: Contracts
+    label: Contracts
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/file-document-edit-outline.svg
+    content:
+          - _type: FormContainer
+            _name: Container1
+            layoutDirection: COLUMN
+            content:
+            - _type: FormContainer
+              _name: Container2
+              layoutDirection: ROW
+              content:
+                - _type: FormCollection
+                  _name: BankingContract
+                  targetEntity: FinanceKYC.entities.BankingContract.BankingContract
+                  collection: FinanceKYC.entities.BankingContract.collection_views.BankingContractCollectionView
+                  label: Banking Contracts
+                  pluralLabel: Banking Contracts
+                  displayRecordCount: ALWAYS
+                  enableUserDefinedSort: true
+                  filter: '1=1'
+                  gridAllowed: false
+                  listAllowed: true
+                  # sortExpression: BankingContractID
+                  sortExpression: '1'
+                  tableAllowed: true
+                  transitionPath: bankingContract
+                  useCustomLabel: true
+                  visibleValue: "1"
+                  visibleValueInterpreter: LITERAL
+                - _type: FormCollection
+                  _name: BankingContractRole
+                  targetEntity: FinanceKYC.entities.BankingContractRole.BankingContractRole
+                  collection: FinanceKYC.entities.BankingContractRole.collection_views.BankingContractRoleCollectionView
+                  label: Contract roles
+                  pluralLabel: Contract roles
+                  displayRecordCount: ALWAYS
+                  enableUserDefinedSort: true
+                  filter: '1=1'
+                  gridAllowed: false
+                  listAllowed: true
+                  # sortExpression: ContractRoleID
+                  sortExpression: '1'
+                  tableAllowed: true
+                  transitionPath: bankingContractRole
+                  useCustomLabel: true
+                  visibleValue: "1"
+                  visibleValueInterpreter: LITERAL
+            - _type: FormContainer
+              _name: Container3
+              layoutDirection: ROW
+              content:
+                - _type: FormCollection
+                  _name: InsuranceContract
+                  targetEntity: FinanceKYC.entities.InsuranceContract.InsuranceContract
+                  collection: FinanceKYC.entities.InsuranceContract.collection_views.InsuranceContractCollectionView
+                  label: Insurance Contracts
+                  pluralLabel: Insurance Contracts
+                  displayRecordCount: ALWAYS
+                  enableUserDefinedSort: true
+                  filter: '1=1'
+                  gridAllowed: false
+                  listAllowed: true
+                  # sortExpression: InsuranceContractID
+                  sortExpression: '1'
+                  tableAllowed: true
+                  transitionPath: insuranceContract
+                  useCustomLabel: true
+                  visibleValue: "1"
+                  visibleValueInterpreter: LITERAL
+                - _type: FormCollection
+                  _name: InsuranceContractRole
+                  targetEntity: FinanceKYC.entities.InsuranceContractRole.InsuranceContractRole
+                  collection: FinanceKYC.entities.InsuranceContractRole.collection_views.InsuranceContractRoleCollectionView
+                  label: Contract roles
+                  pluralLabel: Contract roles
+                  displayRecordCount: ALWAYS
+                  enableUserDefinedSort: true
+                  filter: '1=1'
+                  gridAllowed: false
+                  listAllowed: true
+                  # sortExpression: ContractRoleID
+                  sortExpression: '1'
+                  tableAllowed: true
+                  transitionPath: insuranceContractRole
+                  useCustomLabel: true
+                  visibleValue: "1"
+                  visibleValueInterpreter: LITERAL
+  - _type: FormTab
+    _name: Relationship
+    label: Customer Relationships
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/handshake-outline.svg
+    content:
+      - _type: FormCollection
+        _name: CustomerRelationshipsTo
+        targetEntity: FinanceKYC.entities.Relationship.Relationship
+        collection: FinanceKYC.entities.Relationship.collection_views.RelationshipCollectionView
+        label: Customer Relationships to Other Customers
+        pluralLabel: Customer Relationships to Other Customers
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: RelationshipID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: relationshipToCustomer
+        useCustomLabel: true
+        visibleValue: any relationshipToCustomer has (1=1)
+        visibleValueInterpreter: SEMQL
+      - _type: FormCollection
+        _name: CustomerRelationshipsFrom
+        targetEntity: FinanceKYC.entities.Relationship.Relationship
+        collection: FinanceKYC.entities.Relationship.collection_views.RelationshipCollectionView
+        label: Customer Relationships from Other Customers
+        pluralLabel: Customer Relationships from Other Customers
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: RelationshipID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: relationshipFromCustomer
+        useCustomLabel: true
+        visibleValue: any relationshipFromCustomer has (1=1)
+        visibleValueInterpreter: SEMQL

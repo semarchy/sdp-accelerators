@@ -1,0 +1,5213 @@
+{
+  "action": "CREATE_LOAD_AND_SUBMIT",
+  "programName": "curl",
+  "loadDescription": "Init Load CorpFin",
+  "jobName": "INTEGRATE_ALL",
+  "persistOptions": {
+    "responsePayload": "SUMMARY",
+    "persistMode": "ALWAYS",
+    "missingIdBehavior": "GENERATE",
+    "optionsPerEntity": {}
+  },
+  "persistRecords": {
+    "StatusCode": [
+      {
+        "StatusCode": "ACTIVE",
+        "Label": "Active",
+        "Description": "",
+        "Category": "Lifecycle",
+        "Sequence": 1
+      },
+      {
+        "StatusCode": "INACTIVE",
+        "Label": "Inactive",
+        "Description": "",
+        "Category": "Lifecycle",
+        "Sequence": 2
+      },
+      {
+        "StatusCode": "DRAFT",
+        "Label": "Draft",
+        "Description": "",
+        "Category": "Workflow",
+        "Sequence": 3
+      }
+    ],
+    "OrgUnitType": [
+      {
+        "OrgUnitTypeID": "OUT-COSTCENTER",
+        "Type": "CostCenter",
+        "Description": "Operational unit used to track costs"
+      },
+      {
+        "OrgUnitTypeID": "OUT-PROFITCENTER",
+        "Type": "ProfitCenter",
+        "Description": "Unit responsible for revenue and profit"
+      },
+      {
+        "OrgUnitTypeID": "OUT-BUSINESSUNIT",
+        "Type": "BusinessUnit",
+        "Description": "Line of business or operational segment"
+      },
+      {
+        "OrgUnitTypeID": "OUT-LEGALENTITY",
+        "Type": "LegalEntity",
+        "Description": "Registered legal entity for reporting and compliance"
+      },
+      {
+        "OrgUnitTypeID": "OUT-GROUP",
+        "Type": "Group",
+        "Description": "Parent or corporate group aggregation"
+      }
+    ],
+    "Currency": [
+      {
+        "CurrencyID": "CURR-USD",
+        "CurrencyCode": "USD",
+        "CurrencyName": "US Dollar",
+        "Symbol": "USD",
+        "DecimalPrecision": 2,
+        "ExchangeRateSource": "FED"
+      },
+      {
+        "CurrencyID": "CURR-CAD",
+        "CurrencyCode": "CAD",
+        "CurrencyName": "Canadian Dollar",
+        "Symbol": "CAD",
+        "DecimalPrecision": 2,
+        "ExchangeRateSource": "BoC"
+      },
+      {
+        "CurrencyID": "CURR-GBP",
+        "CurrencyCode": "GBP",
+        "CurrencyName": "British Pound",
+        "Symbol": "GBP",
+        "DecimalPrecision": 2,
+        "ExchangeRateSource": "BoE"
+      },
+      {
+        "CurrencyID": "CURR-EUR",
+        "CurrencyCode": "EUR",
+        "CurrencyName": "Euro",
+        "Symbol": "EUR",
+        "DecimalPrecision": 2,
+        "ExchangeRateSource": "ECB"
+      },
+      {
+        "CurrencyID": "CURR-SGD",
+        "CurrencyCode": "SGD",
+        "CurrencyName": "Singapore Dollar",
+        "Symbol": "SGD",
+        "DecimalPrecision": 2,
+        "ExchangeRateSource": "MAS"
+      },
+      {
+        "CurrencyID": "CURR-BRL",
+        "CurrencyCode": "BRL",
+        "CurrencyName": "Brazilian Real",
+        "Symbol": "BRL",
+        "DecimalPrecision": 2,
+        "ExchangeRateSource": "BCB"
+      }
+    ],
+    "Region": [
+      {
+        "RegionID": "REG-AMER",
+        "RegionName": "Americas",
+        "ISOCode": "AMER",
+        "ReportingZone": "AMER"
+      },
+      {
+        "RegionID": "REG-EMEA",
+        "RegionName": "Europe, Middle East & Africa",
+        "ISOCode": "EMEA",
+        "ReportingZone": "EMEA"
+      },
+      {
+        "RegionID": "REG-APAC",
+        "RegionName": "Asia Pacific",
+        "ISOCode": "APAC",
+        "ReportingZone": "APAC"
+      }
+    ],
+    "CostType": [
+      {
+        "CostTypeID": "COST-PAY",
+        "CostTypeCode": "PAYROLL",
+        "Description": "Employee payroll",
+        "AccountType": "Expense",
+        "ExpenseGroup": "Personnel",
+        "FDN_parentCostType": ""
+      },
+      {
+        "CostTypeID": "COST-MKT",
+        "CostTypeCode": "MARKETING",
+        "Description": "Marketing activity",
+        "AccountType": "Expense",
+        "ExpenseGroup": "Commercial",
+        "FDN_parentCostType": ""
+      },
+      {
+        "CostTypeID": "COST-COGS",
+        "CostTypeCode": "COGS",
+        "Description": "Cost of goods sold",
+        "AccountType": "Expense",
+        "ExpenseGroup": "Operations",
+        "FDN_parentCostType": ""
+      },
+      {
+        "CostTypeID": "COST-RND",
+        "CostTypeCode": "RND",
+        "Description": "Research and development",
+        "AccountType": "Expense",
+        "ExpenseGroup": "Innovation",
+        "FDN_parentCostType": ""
+      },
+      {
+        "CostTypeID": "COST-CAP",
+        "CostTypeCode": "CAPEX",
+        "Description": "Capital expenditures",
+        "AccountType": "Asset",
+        "ExpenseGroup": "Capital",
+        "FDN_parentCostType": ""
+      }
+    ],
+    "FiscalCalendar": [
+      {
+        "CalendarID": "FCAL-FY25",
+        "CalendarCode": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodCount": 12,
+        "StartDate": "2025-01-01",
+        "EndDate": "2025-12-31",
+        "IsStandard": true,
+        "Description": "Globex Corporate Calendar FY2025"
+      }
+    ],
+    "Country": [
+      {
+        "CountryID": "CTRY-USA",
+        "CountryCode": "USA",
+        "CountryName": "United States",
+        "ISOAlpha2": "US",
+        "ISOAlpha3": "USA",
+        "GeoZone": "REG-AMER",
+        "ReportingZone": "NA",
+        "FDN_region": "REG-AMER",
+        "FDN_currency": "CURR-USD"
+      },
+      {
+        "CountryID": "CTRY-CAN",
+        "CountryCode": "CAN",
+        "CountryName": "Canada",
+        "ISOAlpha2": "CA",
+        "ISOAlpha3": "CAN",
+        "GeoZone": "REG-AMER",
+        "ReportingZone": "NA",
+        "FDN_region": "REG-AMER",
+        "FDN_currency": "CURR-CAD"
+      },
+      {
+        "CountryID": "CTRY-GBR",
+        "CountryCode": "GBR",
+        "CountryName": "United Kingdom",
+        "ISOAlpha2": "GB",
+        "ISOAlpha3": "GBR",
+        "GeoZone": "REG-EMEA",
+        "ReportingZone": "EU",
+        "FDN_region": "REG-EMEA",
+        "FDN_currency": "CURR-GBP"
+      },
+      {
+        "CountryID": "CTRY-DEU",
+        "CountryCode": "DEU",
+        "CountryName": "Germany",
+        "ISOAlpha2": "DE",
+        "ISOAlpha3": "DEU",
+        "GeoZone": "REG-EMEA",
+        "ReportingZone": "EU",
+        "FDN_region": "REG-EMEA",
+        "FDN_currency": "CURR-EUR"
+      },
+      {
+        "CountryID": "CTRY-SGP",
+        "CountryCode": "SGP",
+        "CountryName": "Singapore",
+        "ISOAlpha2": "SG",
+        "ISOAlpha3": "SGP",
+        "GeoZone": "REG-APAC",
+        "ReportingZone": "AP",
+        "FDN_region": "REG-APAC",
+        "FDN_currency": "CURR-SGD"
+      },
+      {
+        "CountryID": "CTRY-BRA",
+        "CountryCode": "BRA",
+        "CountryName": "Brazil",
+        "ISOAlpha2": "BR",
+        "ISOAlpha3": "BRA",
+        "GeoZone": "REG-AMER",
+        "ReportingZone": "LATAM",
+        "FDN_region": "REG-AMER",
+        "FDN_currency": "CURR-BRL"
+      }
+    ],
+    "FiscalPeriod": [
+      {
+        "PeriodID": "FP-2025-01",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 1,
+        "PeriodLabel": "FY2025-P01",
+        "StartDate": "2025-01-01",
+        "EndDate": "2025-01-31",
+        "Quarter": "Q1"
+      },
+      {
+        "PeriodID": "FP-2025-02",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 2,
+        "PeriodLabel": "FY2025-P02",
+        "StartDate": "2025-02-01",
+        "EndDate": "2025-02-28",
+        "Quarter": "Q1"
+      },
+      {
+        "PeriodID": "FP-2025-03",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 3,
+        "PeriodLabel": "FY2025-P03",
+        "StartDate": "2025-03-01",
+        "EndDate": "2025-03-31",
+        "Quarter": "Q1"
+      },
+      {
+        "PeriodID": "FP-2025-04",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 4,
+        "PeriodLabel": "FY2025-P04",
+        "StartDate": "2025-04-01",
+        "EndDate": "2025-04-30",
+        "Quarter": "Q2"
+      },
+      {
+        "PeriodID": "FP-2025-05",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 5,
+        "PeriodLabel": "FY2025-P05",
+        "StartDate": "2025-05-01",
+        "EndDate": "2025-05-31",
+        "Quarter": "Q2"
+      },
+      {
+        "PeriodID": "FP-2025-06",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 6,
+        "PeriodLabel": "FY2025-P06",
+        "StartDate": "2025-06-01",
+        "EndDate": "2025-06-30",
+        "Quarter": "Q2"
+      },
+      {
+        "PeriodID": "FP-2025-07",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 7,
+        "PeriodLabel": "FY2025-P07",
+        "StartDate": "2025-07-01",
+        "EndDate": "2025-07-31",
+        "Quarter": "Q3"
+      },
+      {
+        "PeriodID": "FP-2025-08",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 8,
+        "PeriodLabel": "FY2025-P08",
+        "StartDate": "2025-08-01",
+        "EndDate": "2025-08-31",
+        "Quarter": "Q3"
+      },
+      {
+        "PeriodID": "FP-2025-09",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 9,
+        "PeriodLabel": "FY2025-P09",
+        "StartDate": "2025-09-01",
+        "EndDate": "2025-09-30",
+        "Quarter": "Q3"
+      },
+      {
+        "PeriodID": "FP-2025-10",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 10,
+        "PeriodLabel": "FY2025-P10",
+        "StartDate": "2025-10-01",
+        "EndDate": "2025-10-31",
+        "Quarter": "Q4"
+      },
+      {
+        "PeriodID": "FP-2025-11",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 11,
+        "PeriodLabel": "FY2025-P11",
+        "StartDate": "2025-11-01",
+        "EndDate": "2025-11-30",
+        "Quarter": "Q4"
+      },
+      {
+        "PeriodID": "FP-2025-12",
+        "FDN_fiscalCalendar": "FCAL-FY25",
+        "FiscalYear": "2025",
+        "PeriodNumber": 12,
+        "PeriodLabel": "FY2025-P12",
+        "StartDate": "2025-12-01",
+        "EndDate": "2025-12-31",
+        "Quarter": "Q4"
+      }
+    ],
+    "TaxCode": [
+      {
+        "TaxCodeID": "TAX-US-SALES",
+        "Name": "US Sales Tax",
+        "Description": "US Sales Tax applicable in USA",
+        "TaxRate": 7.25,
+        "FDN_country": "CTRY-USA",
+        "JurisdictionType": "State"
+      },
+      {
+        "TaxCodeID": "TAX-CA-GST",
+        "Name": "Canada GST",
+        "Description": "Canada GST applicable in CAN",
+        "TaxRate": 5.0,
+        "FDN_country": "CTRY-CAN",
+        "JurisdictionType": "Federal"
+      },
+      {
+        "TaxCodeID": "TAX-UK-VAT",
+        "Name": "UK VAT",
+        "Description": "UK VAT applicable in GBR",
+        "TaxRate": 20.0,
+        "FDN_country": "CTRY-GBR",
+        "JurisdictionType": "National"
+      },
+      {
+        "TaxCodeID": "TAX-DE-VAT",
+        "Name": "Germany VAT",
+        "Description": "Germany VAT applicable in DEU",
+        "TaxRate": 19.0,
+        "FDN_country": "CTRY-DEU",
+        "JurisdictionType": "National"
+      },
+      {
+        "TaxCodeID": "TAX-SG-GST",
+        "Name": "Singapore GST",
+        "Description": "Singapore GST applicable in SGP",
+        "TaxRate": 8.0,
+        "FDN_country": "CTRY-SGP",
+        "JurisdictionType": "National"
+      },
+      {
+        "TaxCodeID": "TAX-BR-IPI",
+        "Name": "Brazil IPI",
+        "Description": "Brazil IPI applicable in BRA",
+        "TaxRate": 15.0,
+        "FDN_country": "CTRY-BRA",
+        "JurisdictionType": "Federal"
+      }
+    ],
+    "CounterpartyGroup": [
+      {
+        "CounterpartyGroupID": "CPG-APEX",
+        "GroupName": "Apex Retail Group",
+        "DUNSNumber": "786579303",
+        "UltimateParentFlag": true,
+        "FID_parentCounterpartyGroup": "",
+        "FDN_headquartersCountry": "CTRY-USA",
+        "Sector": "Multi-industry"
+      },
+      {
+        "CounterpartyGroupID": "CPG-NOVA",
+        "GroupName": "Nova Manufacturing Holdings",
+        "DUNSNumber": "219540831",
+        "UltimateParentFlag": true,
+        "FID_parentCounterpartyGroup": "",
+        "FDN_headquartersCountry": "CTRY-USA",
+        "Sector": "Multi-industry"
+      },
+      {
+        "CounterpartyGroupID": "CPG-NOVA-SUB1",
+        "GroupName": "Nova Components & Metals",
+        "DUNSNumber": "559201234",
+        "UltimateParentFlag": false,
+        "FID_parentCounterpartyGroup": "CPG-NOVA",
+        "FDN_headquartersCountry": "CTRY-USA",
+        "Sector": "Industrial manufacturing"
+      },
+      {
+        "CounterpartyGroupID": "CPG-TERA",
+        "GroupName": "Terra Global Group",
+        "DUNSNumber": "126855092",
+        "UltimateParentFlag": true,
+        "FID_parentCounterpartyGroup": "",
+        "FDN_headquartersCountry": "CTRY-USA",
+        "Sector": "Multi-industry"
+      }
+    ],
+    "Counterparty": [
+      {
+        "LegalName": "Globex Holdings",
+        "TaxID": "896233790",
+        "IsCustomer": false,
+        "IsSupplier": false,
+        "IsInternalEntity": true,
+        "PublisherID": "ERP",
+        "SourceID": "CP-GLOBEX",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Globex US Inc.",
+        "TaxID": "395310485",
+        "IsCustomer": false,
+        "IsSupplier": false,
+        "IsInternalEntity": true,
+        "PublisherID": "ERP",
+        "SourceID": "CP-GLOBEX-US",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Globex Canada Ltd.",
+        "TaxID": "362950628",
+        "IsCustomer": false,
+        "IsSupplier": false,
+        "IsInternalEntity": true,
+        "PublisherID": "ERP",
+        "SourceID": "CP-GLOBEX-CA",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Globex UK PLC",
+        "TaxID": "339670711",
+        "IsCustomer": false,
+        "IsSupplier": false,
+        "IsInternalEntity": true,
+        "PublisherID": "ERP",
+        "SourceID": "CP-GLOBEX-UK",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-GBP",
+        "FID_country": "CTRY-GBR"
+      },
+      {
+        "LegalName": "Globex Germany GmbH",
+        "TaxID": "249827706",
+        "IsCustomer": false,
+        "IsSupplier": false,
+        "IsInternalEntity": true,
+        "PublisherID": "ERP",
+        "SourceID": "CP-GLOBEX-DE",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Globex Singapore Pte Ltd",
+        "TaxID": "890779946",
+        "IsCustomer": false,
+        "IsSupplier": false,
+        "IsInternalEntity": true,
+        "PublisherID": "ERP",
+        "SourceID": "CP-GLOBEX-SG",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Globex Brazil SA",
+        "TaxID": "210053353",
+        "IsCustomer": false,
+        "IsSupplier": false,
+        "IsInternalEntity": true,
+        "PublisherID": "ERP",
+        "SourceID": "CP-GLOBEX-BR",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Apex Retailers",
+        "TaxID": "895285932",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-001",
+        "FID_counterpartyGroup": "CPG-APEX",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "BlueWave Markets",
+        "TaxID": "642621108",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-002",
+        "FID_counterpartyGroup": "CPG-NOVA-SUB1",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "MetroSteel Fabrication",
+        "TaxID": "715283940",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-031",
+        "FID_counterpartyGroup": "CPG-NOVA-SUB1",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Cedar Outfitters",
+        "TaxID": "914763202",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-003",
+        "FID_counterpartyGroup": "CPG-TERA",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Delta Health Stores",
+        "TaxID": "199585092",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-004",
+        "FID_counterpartyGroup": "CPG-APEX",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Evergreen Foods",
+        "TaxID": "184611066",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-005",
+        "FID_counterpartyGroup": "CPG-NOVA",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Frontier Logistics",
+        "TaxID": "810026086",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-006",
+        "FID_counterpartyGroup": "CPG-TERA",
+        "FID_currency": "",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Harbor Industrial",
+        "TaxID": "995619255",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-007",
+        "FID_counterpartyGroup": "CPG-APEX",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Inspire Electronics",
+        "TaxID": "",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-008",
+        "FID_counterpartyGroup": "CPG-NOVA-SUB1",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Skyline Assemblers",
+        "TaxID": "830112455",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-032",
+        "FID_counterpartyGroup": "CPG-NOVA-SUB1",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Jetstream Travel",
+        "TaxID": "448195935",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-009",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Keystone Home Goods",
+        "TaxID": "709004943",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-010",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Lumina Fashion",
+        "TaxID": "384412919",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-011",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Mosaic Furniture",
+        "TaxID": "335493870",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-012",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-GBP",
+        "FID_country": "CTRY-GBR"
+      },
+      {
+        "LegalName": "Northwind Traders",
+        "TaxID": "553290810",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-013",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Orion Digital",
+        "TaxID": "873869166",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-014",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Pinnacle Hospitality",
+        "TaxID": "103484630",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-015",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Quasar Motors",
+        "TaxID": "645098869",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-016",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Riverbend Energy",
+        "TaxID": "448059918",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-017",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Summit Healthcare",
+        "TaxID": "885879795",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-018",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": ""
+      },
+      {
+        "LegalName": "Terra Agriculture",
+        "TaxID": "666585408",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-019",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-GBP",
+        "FID_country": "CTRY-GBR"
+      },
+      {
+        "LegalName": "Urban Outfitters APAC",
+        "TaxID": "655742829",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-020",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Veridian Supply",
+        "TaxID": "336456621",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-021",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Westward Tools",
+        "TaxID": "176082500",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-022",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-GBP",
+        "FID_country": ""
+      },
+      {
+        "LegalName": "Yellowstone Equipments",
+        "TaxID": "942478695",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-023",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Zenith Airlines",
+        "TaxID": "541417711",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-024",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Arbor Telecom",
+        "TaxID": "366992705",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-025",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Bayshore Retail",
+        "TaxID": "180943908",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-026",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Cascade Outdoors",
+        "TaxID": "909134796",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-027",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Driftline Marine",
+        "TaxID": "276777762",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-028",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Equinox Apparel",
+        "TaxID": "303901283",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-029",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Frostline Sporting",
+        "TaxID": "611947770",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-030",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Oreon Digital",
+        "TaxID": "873853166",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-031",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Reaver band Energy",
+        "TaxID": "448059918",
+        "IsCustomer": true,
+        "IsSupplier": false,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-CUST-032",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Nova Components",
+        "TaxID": "738914080",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-001",
+        "FID_counterpartyGroup": "CPG-APEX",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Terra Metals",
+        "TaxID": "738360085",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-002",
+        "FID_counterpartyGroup": "CPG-NOVA-SUB1",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Nova Metals Trading",
+        "TaxID": "287450199",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-031",
+        "FID_counterpartyGroup": "CPG-NOVA-SUB1",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Helios Plastics",
+        "TaxID": "319321646",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-003",
+        "FID_counterpartyGroup": "CPG-TERA",
+        "FID_currency": "CURR-GBP",
+        "FID_country": "CTRY-GBR"
+      },
+      {
+        "LegalName": "Vector Logistics",
+        "TaxID": "793101194",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-004",
+        "FID_counterpartyGroup": "CPG-APEX",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Polar Manufacturing",
+        "TaxID": "677280546",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-005",
+        "FID_counterpartyGroup": "CPG-NOVA",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Everest Chemicals",
+        "TaxID": "",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-006",
+        "FID_counterpartyGroup": "CPG-TERA",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Mariner Textiles",
+        "TaxID": "977358886",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-007",
+        "FID_counterpartyGroup": "CPG-APEX",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Quantum Circuits",
+        "TaxID": "223940587",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-008",
+        "FID_counterpartyGroup": "CPG-NOVA",
+        "FID_currency": "CURR-GBP",
+        "FID_country": "CTRY-GBR"
+      },
+      {
+        "LegalName": "Redwood Packaging",
+        "TaxID": "",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-009",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Sierra Foods",
+        "TaxID": "199104722",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-010",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Titan Steel",
+        "TaxID": "381272327",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-011",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Umbra Energy",
+        "TaxID": "180792472",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-012",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Vista Glass",
+        "TaxID": "236843584",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-013",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Wavecrest IT",
+        "TaxID": "367930513",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-014",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Zenith Parts",
+        "TaxID": "904745462",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-015",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Aurora Paper",
+        "TaxID": "890880074",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-016",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Beacon Freight",
+        "TaxID": "270937380",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-017",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-GBP",
+        "FID_country": "CTRY-GBR"
+      },
+      {
+        "LegalName": "Crimson Electronics",
+        "TaxID": "976803188",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-018",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-CAD",
+        "FID_country": "CTRY-CAN"
+      },
+      {
+        "LegalName": "Denali Agriculture",
+        "TaxID": "452468587",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-019",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Eclipse Semiconductors",
+        "TaxID": "675757257",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-020",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Falcon Automation",
+        "TaxID": "216396351",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-021",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Glacier Mining",
+        "TaxID": "649136331",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-022",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Horizon Apparel",
+        "TaxID": "658260221",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-023",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Imperial Plastics",
+        "TaxID": "563102056",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-024",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-GBP",
+        "FID_country": "CTRY-GBR"
+      },
+      {
+        "LegalName": "Jade Pharma",
+        "TaxID": "422468580",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-025",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Kodiak Motors",
+        "TaxID": "236674237",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-026",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Lunar Optics",
+        "TaxID": "711072118",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-027",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Mercury Raw",
+        "TaxID": "943702118",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-028",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-EUR",
+        "FID_country": "CTRY-DEU"
+      },
+      {
+        "LegalName": "Nimbus Rubber",
+        "TaxID": "329460134",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-029",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-BRL",
+        "FID_country": "CTRY-BRA"
+      },
+      {
+        "LegalName": "Obsidian Industrial",
+        "TaxID": "812807629",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-030",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      },
+      {
+        "LegalName": "Bacon Fright",
+        "TaxID": "270937380",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-031",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-GBP",
+        "FID_country": "CTRY-GBR"
+      },
+      {
+        "LegalName": "Falk-On Automatons",
+        "TaxID": "216348391",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-032",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Umbrella Energized",
+        "TaxID": "180794872",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-033",
+        "FID_counterpartyGroup": "",
+        "FID_currency": "CURR-USD",
+        "FID_country": "CTRY-USA"
+      },
+      {
+        "LegalName": "Tear Metals",
+        "TaxID": "738360085",
+        "IsCustomer": false,
+        "IsSupplier": true,
+        "IsInternalEntity": false,
+        "PublisherID": "ERP",
+        "SourceID": "CP-SUP-034",
+        "FID_counterpartyGroup": "CPG-NOVA-SUB1",
+        "FID_currency": "CURR-SGD",
+        "FID_country": "CTRY-SGP"
+      }
+    ],
+    "Address": [
+      {
+        "AddressID": "1001",
+        "Line1": "923 Main St",
+        "Line2": "Suite 658",
+        "City": "New York",
+        "PostalCode": "87397",
+        "FDN_country": "CTRY-BRA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1002",
+        "Line1": "626 Main St",
+        "Line2": "Suite 127",
+        "City": "Singapore",
+        "PostalCode": "36062",
+        "FDN_country": "CTRY-CAN",
+        "Region": ""
+      },
+      {
+        "AddressID": "1003",
+        "Line1": "835 Main St",
+        "Line2": "Suite 263",
+        "City": "Sao Paulo",
+        "PostalCode": "65392",
+        "FDN_country": "CTRY-USA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1004",
+        "Line1": "399 Main St",
+        "Line2": "Suite 199",
+        "City": "London",
+        "PostalCode": "55082",
+        "FDN_country": "CTRY-USA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1005",
+        "Line1": "575 Main St",
+        "Line2": "Suite 400",
+        "City": "Sao Paulo",
+        "PostalCode": "91070",
+        "FDN_country": "CTRY-DEU",
+        "Region": ""
+      },
+      {
+        "AddressID": "1006",
+        "Line1": "243 Main St",
+        "Line2": "Suite 891",
+        "City": "London",
+        "PostalCode": "20458",
+        "FDN_country": "CTRY-USA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1007",
+        "Line1": "383 Main St",
+        "Line2": "Suite 266",
+        "City": "London",
+        "PostalCode": "56566",
+        "FDN_country": "CTRY-BRA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1008",
+        "Line1": "185 Main St",
+        "Line2": "Suite 646",
+        "City": "Sao Paulo",
+        "PostalCode": "42087",
+        "FDN_country": "CTRY-SGP",
+        "Region": ""
+      },
+      {
+        "AddressID": "1009",
+        "Line1": "873 Main St",
+        "Line2": "Suite 886",
+        "City": "New York",
+        "PostalCode": "40021",
+        "FDN_country": "CTRY-BRA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1010",
+        "Line1": "907 Main St",
+        "Line2": "Suite 835",
+        "City": "London",
+        "PostalCode": "37869",
+        "FDN_country": "CTRY-CAN",
+        "Region": ""
+      },
+      {
+        "AddressID": "1011",
+        "Line1": "152 Main St",
+        "Line2": "Suite 352",
+        "City": "Sao Paulo",
+        "PostalCode": "83579",
+        "FDN_country": "CTRY-CAN",
+        "Region": ""
+      },
+      {
+        "AddressID": "1012",
+        "Line1": "151 Main St",
+        "Line2": "Suite 621",
+        "City": "Berlin",
+        "PostalCode": "21915",
+        "FDN_country": "CTRY-GBR",
+        "Region": ""
+      },
+      {
+        "AddressID": "1013",
+        "Line1": "620 Main St",
+        "Line2": "Suite 165",
+        "City": "Berlin",
+        "PostalCode": "60019",
+        "FDN_country": "CTRY-BRA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1014",
+        "Line1": "127 Main St",
+        "Line2": "Suite 798",
+        "City": "Singapore",
+        "PostalCode": "44973",
+        "FDN_country": "CTRY-BRA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1015",
+        "Line1": "986 Main St",
+        "Line2": "Suite 839",
+        "City": "Sao Paulo",
+        "PostalCode": "44522",
+        "FDN_country": "CTRY-DEU",
+        "Region": ""
+      },
+      {
+        "AddressID": "1016",
+        "Line1": "633 Main St",
+        "Line2": "Suite 303",
+        "City": "Toronto",
+        "PostalCode": "59009",
+        "FDN_country": "CTRY-BRA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1017",
+        "Line1": "510 Main St",
+        "Line2": "Suite 119",
+        "City": "New York",
+        "PostalCode": "57576",
+        "FDN_country": "CTRY-SGP",
+        "Region": ""
+      },
+      {
+        "AddressID": "1018",
+        "Line1": "507 Main St",
+        "Line2": "Suite 935",
+        "City": "New York",
+        "PostalCode": "79822",
+        "FDN_country": "CTRY-USA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1019",
+        "Line1": "903 Main St",
+        "Line2": "Suite 721",
+        "City": "Berlin",
+        "PostalCode": "37760",
+        "FDN_country": "CTRY-GBR",
+        "Region": ""
+      },
+      {
+        "AddressID": "1020",
+        "Line1": "472 Main St",
+        "Line2": "Suite 223",
+        "City": "Toronto",
+        "PostalCode": "39451",
+        "FDN_country": "CTRY-DEU",
+        "Region": ""
+      },
+      {
+        "AddressID": "1021",
+        "Line1": "17 Main St",
+        "Line2": "Suite 172",
+        "City": "Sao Paulo",
+        "PostalCode": "92719",
+        "FDN_country": "CTRY-SGP",
+        "Region": ""
+      },
+      {
+        "AddressID": "1022",
+        "Line1": "536 Main St",
+        "Line2": "Suite 343",
+        "City": "London",
+        "PostalCode": "97684",
+        "FDN_country": "CTRY-GBR",
+        "Region": ""
+      },
+      {
+        "AddressID": "1023",
+        "Line1": "494 Main St",
+        "Line2": "Suite 926",
+        "City": "Berlin",
+        "PostalCode": "34957",
+        "FDN_country": "CTRY-CAN",
+        "Region": ""
+      },
+      {
+        "AddressID": "1024",
+        "Line1": "488 Main St",
+        "Line2": "Suite 984",
+        "City": "Sao Paulo",
+        "PostalCode": "17100",
+        "FDN_country": "CTRY-DEU",
+        "Region": ""
+      },
+      {
+        "AddressID": "1025",
+        "Line1": "206 Main St",
+        "Line2": "Suite 294",
+        "City": "Singapore",
+        "PostalCode": "68800",
+        "FDN_country": "CTRY-USA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1026",
+        "Line1": "463 Main St",
+        "Line2": "Suite 927",
+        "City": "Singapore",
+        "PostalCode": "22833",
+        "FDN_country": "CTRY-CAN",
+        "Region": ""
+      },
+      {
+        "AddressID": "1027",
+        "Line1": "879 Main St",
+        "Line2": "Suite 342",
+        "City": "Toronto",
+        "PostalCode": "63269",
+        "FDN_country": "CTRY-USA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1028",
+        "Line1": "398 Main St",
+        "Line2": "Suite 102",
+        "City": "Berlin",
+        "PostalCode": "44760",
+        "FDN_country": "CTRY-USA",
+        "Region": ""
+      },
+      {
+        "AddressID": "1029",
+        "Line1": "313 Main St",
+        "Line2": "Suite 322",
+        "City": "New York",
+        "PostalCode": "85914",
+        "FDN_country": "CTRY-CAN",
+        "Region": ""
+      },
+      {
+        "AddressID": "1030",
+        "Line1": "524 Main St",
+        "Line2": "Suite 973",
+        "City": "Singapore",
+        "PostalCode": "30635",
+        "FDN_country": "CTRY-SGP",
+        "Region": ""
+      }
+    ],
+    "Customer": [
+      {
+        "CustomerID": "CUST001",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-001",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 54469.58,
+        "CreditRating": "A-",
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "CustomerID": "CUST002",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-002",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 117381.36,
+        "CreditRating": "BBB",
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "CustomerID": "CUST003",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-003",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET45",
+        "CreditLimit": 73321.92,
+        "CreditRating": "BBB",
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "CustomerID": "CUST004",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-004",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 159459.77,
+        "CreditRating": "A",
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "CustomerID": "CUST005",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-005",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 78843.29,
+        "CreditRating": "A",
+        "FID_currency": "CURR-EUR"
+      },
+      {
+        "CustomerID": "CUST006",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-006",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 107018.93,
+        "CreditRating": "BB",
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "CustomerID": "CUST007",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-007",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 90046.67,
+        "CreditRating": "A",
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "CustomerID": "CUST008",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-008",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET45",
+        "CreditLimit": 106918.32,
+        "CreditRating": "A-",
+        "FID_currency": "CURR-SGD"
+      },
+      {
+        "CustomerID": "CUST009",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-009",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET45",
+        "CreditLimit": 110174.72,
+        "CreditRating": "A",
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "CustomerID": "CUST010",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-010",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET45",
+        "CreditLimit": 182702.47,
+        "CreditRating": "BB",
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "CustomerID": "CUST011",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-011",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 137687.9,
+        "CreditRating": "BB",
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "CustomerID": "CUST012",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-012",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 72926.2,
+        "CreditRating": "A-",
+        "FID_currency": "CURR-GBP"
+      },
+      {
+        "CustomerID": "CUST013",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-013",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 87712.12,
+        "CreditRating": "A",
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "CustomerID": "CUST014",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-014",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 94025.02,
+        "CreditRating": "A-",
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "CustomerID": "CUST015",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-015",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 186894.18,
+        "CreditRating": "BBB",
+        "FID_currency": "CURR-EUR"
+      },
+      {
+        "CustomerID": "CUST016",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-016",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 193024.96,
+        "CreditRating": "A",
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "CustomerID": "CUST017",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-017",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 58688.77,
+        "CreditRating": "A",
+        "FID_currency": "CURR-SGD"
+      },
+      {
+        "CustomerID": "CUST018",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-018",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 148962.62,
+        "CreditRating": "A-",
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "CustomerID": "CUST019",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-019",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 96757.44,
+        "CreditRating": "BBB",
+        "FID_currency": "CURR-GBP"
+      },
+      {
+        "CustomerID": "CUST020",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-020",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET45",
+        "CreditLimit": 53155.14,
+        "CreditRating": "A-",
+        "FID_currency": "CURR-EUR"
+      },
+      {
+        "CustomerID": "CUST021",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-021",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 60110.05,
+        "CreditRating": "A",
+        "FID_currency": "CURR-SGD"
+      },
+      {
+        "CustomerID": "CUST022",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-022",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 130885.09,
+        "CreditRating": "BB",
+        "FID_currency": "CURR-GBP"
+      },
+      {
+        "CustomerID": "CUST023",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-023",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 148847.41,
+        "CreditRating": "BBB",
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "CustomerID": "CUST024",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-024",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET30",
+        "CreditLimit": 110393.19,
+        "CreditRating": "BBB",
+        "FID_currency": "CURR-EUR"
+      },
+      {
+        "CustomerID": "CUST025",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-025",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET45",
+        "CreditLimit": 77523.21,
+        "CreditRating": "BB",
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "CustomerID": "CUST026",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-026",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 199892.37,
+        "CreditRating": "A",
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "CustomerID": "CUST027",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-027",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET45",
+        "CreditLimit": 82062.09,
+        "CreditRating": "BB",
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "CustomerID": "CUST028",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-028",
+        "CustomerType": "B2C",
+        "PaymentTerms": "NET45",
+        "CreditLimit": 113451.12,
+        "CreditRating": "BB",
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "CustomerID": "CUST029",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-029",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 97040.72,
+        "CreditRating": "A",
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "CustomerID": "CUST030",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-030",
+        "CustomerType": "B2B",
+        "PaymentTerms": "NET60",
+        "CreditLimit": 62016.72,
+        "CreditRating": "A-",
+        "FID_currency": "CURR-SGD"
+      }
+    ],
+    "Supplier": [
+      {
+        "SupplierID": "SUP001",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-001",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 53
+      },
+      {
+        "SupplierID": "SUP002",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-002",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 49
+      },
+      {
+        "SupplierID": "SUP003",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-003",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 55
+      },
+      {
+        "SupplierID": "SUP004",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-004",
+        "PaymentTerms": "NET15",
+        "LeadTimeDays": 39
+      },
+      {
+        "SupplierID": "SUP005",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-005",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 42
+      },
+      {
+        "SupplierID": "SUP006",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-006",
+        "PaymentTerms": "NET15",
+        "LeadTimeDays": 20
+      },
+      {
+        "SupplierID": "SUP007",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-007",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 29
+      },
+      {
+        "SupplierID": "SUP008",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-008",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 57
+      },
+      {
+        "SupplierID": "SUP009",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-009",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 53
+      },
+      {
+        "SupplierID": "SUP010",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-010",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 37
+      },
+      {
+        "SupplierID": "SUP011",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-011",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 57
+      },
+      {
+        "SupplierID": "SUP012",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-012",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 19
+      },
+      {
+        "SupplierID": "SUP013",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-013",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 29
+      },
+      {
+        "SupplierID": "SUP014",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-014",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 16
+      },
+      {
+        "SupplierID": "SUP015",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-015",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 25
+      },
+      {
+        "SupplierID": "SUP016",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-016",
+        "PaymentTerms": "NET15",
+        "LeadTimeDays": 60
+      },
+      {
+        "SupplierID": "SUP017",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-017",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 16
+      },
+      {
+        "SupplierID": "SUP018",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-018",
+        "PaymentTerms": "NET15",
+        "LeadTimeDays": 32
+      },
+      {
+        "SupplierID": "SUP019",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-019",
+        "PaymentTerms": "NET15",
+        "LeadTimeDays": 14
+      },
+      {
+        "SupplierID": "SUP020",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-020",
+        "PaymentTerms": "NET15",
+        "LeadTimeDays": 11
+      },
+      {
+        "SupplierID": "SUP021",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-021",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 37
+      },
+      {
+        "SupplierID": "SUP022",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-022",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 34
+      },
+      {
+        "SupplierID": "SUP023",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-023",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 53
+      },
+      {
+        "SupplierID": "SUP024",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-024",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 52
+      },
+      {
+        "SupplierID": "SUP025",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-025",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 29
+      },
+      {
+        "SupplierID": "SUP026",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-026",
+        "PaymentTerms": "NET30",
+        "LeadTimeDays": 36
+      },
+      {
+        "SupplierID": "SUP027",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-027",
+        "PaymentTerms": "NET15",
+        "LeadTimeDays": 35
+      },
+      {
+        "SupplierID": "SUP028",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-028",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 48
+      },
+      {
+        "SupplierID": "SUP029",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-029",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 40
+      },
+      {
+        "SupplierID": "SUP030",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-030",
+        "PaymentTerms": "NET45",
+        "LeadTimeDays": 49
+      }
+    ],
+    "ContactInformation": [
+      {
+        "ContactID": "CON-CP-CUST-001",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-001",
+        "ContactType": "Technical",
+        "FullName": "James Patel",
+        "Email": "cp-cust-001@example.com",
+        "Phone": "+1-555-4680",
+        "Role": "Controller",
+        "PreferredLanguage": "French"
+      },
+      {
+        "ContactID": "CON-CP-CUST-002",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-002",
+        "ContactType": "Technical",
+        "FullName": "Alex Chen",
+        "Email": "cp-cust-002@example.com",
+        "Phone": "+1-555-8461",
+        "Role": "AP Manager",
+        "PreferredLanguage": "French"
+      },
+      {
+        "ContactID": "CON-CP-CUST-003",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-003",
+        "ContactType": "Billing",
+        "FullName": "Maria Rodriguez",
+        "Email": "cp-cust-003@example.com",
+        "Phone": "+1-555-3417",
+        "Role": "Sales Director",
+        "PreferredLanguage": "English"
+      },
+      {
+        "ContactID": "CON-CP-CUST-004",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-004",
+        "ContactType": "Primary",
+        "FullName": "Laura Wong",
+        "Email": "cp-cust-004@example.com",
+        "Phone": "+1-555-1822",
+        "Role": "Sales Director",
+        "PreferredLanguage": "French"
+      },
+      {
+        "ContactID": "CON-CP-CUST-005",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-005",
+        "ContactType": "Technical",
+        "FullName": "James Patel",
+        "Email": "cp-cust-005@example.com",
+        "Phone": "+1-555-8251",
+        "Role": "Sales Director",
+        "PreferredLanguage": "Portuguese"
+      },
+      {
+        "ContactID": "CON-CP-CUST-006",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-006",
+        "ContactType": "Technical",
+        "FullName": "Laura Wong",
+        "Email": "cp-cust-006@example.com",
+        "Phone": "+1-555-8373",
+        "Role": "AP Manager",
+        "PreferredLanguage": "French"
+      },
+      {
+        "ContactID": "CON-CP-CUST-007",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-007",
+        "ContactType": "Billing",
+        "FullName": "Maria Rodriguez",
+        "Email": "cp-cust-007@example.com",
+        "Phone": "+1-555-5499",
+        "Role": "AP Manager",
+        "PreferredLanguage": "English"
+      },
+      {
+        "ContactID": "CON-CP-CUST-008",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-008",
+        "ContactType": "Billing",
+        "FullName": "James Patel",
+        "Email": "cp-cust-008@example.com",
+        "Phone": "+1-555-9849",
+        "Role": "Controller",
+        "PreferredLanguage": "French"
+      },
+      {
+        "ContactID": "CON-CP-CUST-009",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-009",
+        "ContactType": "Primary",
+        "FullName": "Maria Rodriguez",
+        "Email": "cp-cust-009@example.com",
+        "Phone": "+1-555-2052",
+        "Role": "AP Manager",
+        "PreferredLanguage": "Portuguese"
+      },
+      {
+        "ContactID": "CON-CP-CUST-010",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-010",
+        "ContactType": "Primary",
+        "FullName": "Maria Rodriguez",
+        "Email": "cp-cust-010@example.com",
+        "Phone": "+1-555-7883",
+        "Role": "AP Manager",
+        "PreferredLanguage": "English"
+      },
+      {
+        "ContactID": "CON-CP-SUP-001",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-001",
+        "ContactType": "Billing",
+        "FullName": "James Patel",
+        "Email": "cp-sup-001@example.com",
+        "Phone": "+1-555-7389",
+        "Role": "AP Manager",
+        "PreferredLanguage": "French"
+      },
+      {
+        "ContactID": "CON-CP-SUP-002",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-002",
+        "ContactType": "Billing",
+        "FullName": "Alex Chen",
+        "Email": "cp-sup-002@example.com",
+        "Phone": "+1-555-7371",
+        "Role": "AP Manager",
+        "PreferredLanguage": "Portuguese"
+      },
+      {
+        "ContactID": "CON-CP-SUP-003",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-003",
+        "ContactType": "Primary",
+        "FullName": "Alex Chen",
+        "Email": "cp-sup-003@example.com",
+        "Phone": "+1-555-7455",
+        "Role": "Sales Director",
+        "PreferredLanguage": "English"
+      },
+      {
+        "ContactID": "CON-CP-SUP-004",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-004",
+        "ContactType": "Billing",
+        "FullName": "Maria Rodriguez",
+        "Email": "cp-sup-004@example.com",
+        "Phone": "+1-555-1823",
+        "Role": "AP Manager",
+        "PreferredLanguage": "Portuguese"
+      },
+      {
+        "ContactID": "CON-CP-SUP-005",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-005",
+        "ContactType": "Billing",
+        "FullName": "Laura Wong",
+        "Email": "cp-sup-005@example.com",
+        "Phone": "+1-555-5558",
+        "Role": "AP Manager",
+        "PreferredLanguage": "German"
+      },
+      {
+        "ContactID": "CON-CP-SUP-006",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-006",
+        "ContactType": "Technical",
+        "FullName": "Alex Chen",
+        "Email": "cp-sup-006@example.com",
+        "Phone": "+1-555-6733",
+        "Role": "Controller",
+        "PreferredLanguage": "English"
+      },
+      {
+        "ContactID": "CON-CP-SUP-007",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-007",
+        "ContactType": "Primary",
+        "FullName": "Maria Rodriguez",
+        "Email": "cp-sup-007@example.com",
+        "Phone": "+1-555-1333",
+        "Role": "Sales Director",
+        "PreferredLanguage": "French"
+      },
+      {
+        "ContactID": "CON-CP-SUP-008",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-008",
+        "ContactType": "Primary",
+        "FullName": "Maria Rodriguez",
+        "Email": "cp-sup-008@example.com",
+        "Phone": "+1-555-8619",
+        "Role": "Sales Director",
+        "PreferredLanguage": "German"
+      },
+      {
+        "ContactID": "CON-CP-SUP-009",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-009",
+        "ContactType": "Technical",
+        "FullName": "Alex Chen",
+        "Email": "cp-sup-009@example.com",
+        "Phone": "+1-555-3683",
+        "Role": "AP Manager",
+        "PreferredLanguage": "English"
+      },
+      {
+        "ContactID": "CON-CP-SUP-010",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-010",
+        "ContactType": "Technical",
+        "FullName": "Laura Wong",
+        "Email": "cp-sup-010@example.com",
+        "Phone": "+1-555-7498",
+        "Role": "Sales Director",
+        "PreferredLanguage": "French"
+      }
+    ],
+    "CounterpartyAddress": [
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-001",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-001",
+        "AddressType": "Billing",
+        "FID_address": "1001"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-002",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-002",
+        "AddressType": "Billing",
+        "FID_address": "1002"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-003",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-003",
+        "AddressType": "Billing",
+        "FID_address": "1003"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-004",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-004",
+        "AddressType": "Billing",
+        "FID_address": "1004"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-005",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-005",
+        "AddressType": "Billing",
+        "FID_address": "1005"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-006",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-006",
+        "AddressType": "Billing",
+        "FID_address": "1006"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-007",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-007",
+        "AddressType": "Billing",
+        "FID_address": "1007"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-008",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-008",
+        "AddressType": "Billing",
+        "FID_address": "1008"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-009",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-009",
+        "AddressType": "Billing",
+        "FID_address": "1009"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-010",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-010",
+        "AddressType": "Billing",
+        "FID_address": "1010"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-011",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-011",
+        "AddressType": "Billing",
+        "FID_address": "1011"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-012",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-012",
+        "AddressType": "Billing",
+        "FID_address": "1012"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-013",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-013",
+        "AddressType": "Billing",
+        "FID_address": "1013"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-014",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-014",
+        "AddressType": "Billing",
+        "FID_address": "1014"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-015",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-015",
+        "AddressType": "Billing",
+        "FID_address": "1015"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-016",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-016",
+        "AddressType": "Billing",
+        "FID_address": "1016"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-017",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-017",
+        "AddressType": "Billing",
+        "FID_address": "1017"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-018",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-018",
+        "AddressType": "Billing",
+        "FID_address": "1018"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-019",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-019",
+        "AddressType": "Billing",
+        "FID_address": "1019"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-020",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-020",
+        "AddressType": "Billing",
+        "FID_address": "1020"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-021",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-021",
+        "AddressType": "Billing",
+        "FID_address": "1021"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-022",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-022",
+        "AddressType": "Billing",
+        "FID_address": "1022"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-023",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-023",
+        "AddressType": "Billing",
+        "FID_address": "1023"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-024",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-024",
+        "AddressType": "Billing",
+        "FID_address": "1024"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-025",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-025",
+        "AddressType": "Billing",
+        "FID_address": "1025"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-026",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-026",
+        "AddressType": "Billing",
+        "FID_address": "1026"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-027",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-027",
+        "AddressType": "Billing",
+        "FID_address": "1027"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-028",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-028",
+        "AddressType": "Billing",
+        "FID_address": "1028"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-029",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-029",
+        "AddressType": "Billing",
+        "FID_address": "1029"
+      },
+      {
+        "CounterpartyAddressID": "ADDR-CP-CUST-030",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-030",
+        "AddressType": "Billing",
+        "FID_address": "1030"
+      }
+    ],
+    "BankAccount": [
+      {
+        "BankAccountID": "BANK-001",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-001",
+        "BankName": "Global Trust",
+        "IBAN": "IBAN9481143585301386",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "BankAccountID": "BANK-002",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-002",
+        "BankName": "Global Trust",
+        "IBAN": "IBAN6257253247097746",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-SGD"
+      },
+      {
+        "BankAccountID": "BANK-003",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-003",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN4564922780733457",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-GBP"
+      },
+      {
+        "BankAccountID": "BANK-004",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-004",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN5127867338391411",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "BankAccountID": "BANK-005",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-005",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN4143593651476030",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "BankAccountID": "BANK-006",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-006",
+        "BankName": "Continental Bank",
+        "IBAN": "IBAN3724833353478467",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "BankAccountID": "BANK-007",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-007",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN8909465481131886",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "BankAccountID": "BANK-008",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-008",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN3537832920423641",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-GBP"
+      },
+      {
+        "BankAccountID": "BANK-009",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-009",
+        "BankName": "Global Trust",
+        "IBAN": "IBAN5400303539649777",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "BankAccountID": "BANK-010",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-010",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN4004406948191950",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "BankAccountID": "BANK-011",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-011",
+        "BankName": "Continental Bank",
+        "IBAN": "IBAN4852262277816124",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "BankAccountID": "BANK-012",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-012",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN4325605351785707",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "BankAccountID": "BANK-013",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-013",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN4222861420424384",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-EUR"
+      },
+      {
+        "BankAccountID": "BANK-014",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-014",
+        "BankName": "Continental Bank",
+        "IBAN": "IBAN8878713279948508",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "BankAccountID": "BANK-015",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-015",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN4713621488336400",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-SGD"
+      },
+      {
+        "BankAccountID": "BANK-016",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-016",
+        "BankName": "Continental Bank",
+        "IBAN": "IBAN7620811762027719",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "BankAccountID": "BANK-017",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-017",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN5239600265249911",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-GBP"
+      },
+      {
+        "BankAccountID": "BANK-018",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-018",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN1213147299447959",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-CAD"
+      },
+      {
+        "BankAccountID": "BANK-019",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-019",
+        "BankName": "Global Trust",
+        "IBAN": "IBAN5588320612427189",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-EUR"
+      },
+      {
+        "BankAccountID": "BANK-020",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-020",
+        "BankName": "Global Trust",
+        "IBAN": "IBAN6229484227075803",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "BankAccountID": "BANK-021",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-021",
+        "BankName": "Continental Bank",
+        "IBAN": "IBAN3825357419043683",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "BankAccountID": "BANK-022",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-022",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN1399798124773004",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-SGD"
+      },
+      {
+        "BankAccountID": "BANK-023",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-023",
+        "BankName": "Continental Bank",
+        "IBAN": "IBAN7040483825352833",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-USD"
+      },
+      {
+        "BankAccountID": "BANK-024",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-024",
+        "BankName": "Continental Bank",
+        "IBAN": "IBAN6975262929667718",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-GBP"
+      },
+      {
+        "BankAccountID": "BANK-025",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-025",
+        "BankName": "Global Trust",
+        "IBAN": "IBAN4624498532235524",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "BankAccountID": "BANK-026",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-026",
+        "BankName": "Global Trust",
+        "IBAN": "IBAN7738596143084908",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-SGD"
+      },
+      {
+        "BankAccountID": "BANK-027",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-027",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN3584287422103479",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-SGD"
+      },
+      {
+        "BankAccountID": "BANK-028",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-028",
+        "BankName": "Global Trust",
+        "IBAN": "IBAN4979254837114697",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-EUR"
+      },
+      {
+        "BankAccountID": "BANK-029",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-029",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN1763772569022808",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "Treasury",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-BRL"
+      },
+      {
+        "BankAccountID": "BANK-030",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-030",
+        "BankName": "First National Bank",
+        "IBAN": "IBAN9574849886991140",
+        "SWIFT": "FTNBUS33",
+        "AccountType": "AP",
+        "DefaultFlag": true,
+        "FID_currency": "CURR-SGD"
+      }
+    ],
+    "RiskComplianceProfile": [
+      {
+        "RiskProfileID": "RCP-CP-CUST-001",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-001",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 13.23,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-002",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-002",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": true,
+        "RiskScore": 58.74,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-003",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-003",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 64.49,
+        "RiskCategory": "Low",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-004",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-004",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 41.95,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-005",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-005",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": true,
+        "RiskScore": 41.21,
+        "RiskCategory": "Low",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-006",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-006",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": true,
+        "RiskScore": 29.41,
+        "RiskCategory": "High",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-007",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-007",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": true,
+        "RiskScore": 30.0,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-008",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-008",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 26.19,
+        "RiskCategory": "High",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-009",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-009",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 47.98,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-CUST-010",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-CUST-010",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": true,
+        "RiskScore": 36.63,
+        "RiskCategory": "Low",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-001",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-001",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 25.36,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-002",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-002",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": true,
+        "RiskScore": 21.55,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-003",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-003",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 54.99,
+        "RiskCategory": "Low",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-004",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-004",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 24.82,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-005",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-005",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 42.92,
+        "RiskCategory": "High",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-006",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-006",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": true,
+        "RiskScore": 12.82,
+        "RiskCategory": "Low",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-007",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-007",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 18.84,
+        "RiskCategory": "High",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-008",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-008",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 21.75,
+        "RiskCategory": "High",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-009",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-009",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": true,
+        "RiskScore": 11.8,
+        "RiskCategory": "Medium",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      },
+      {
+        "RiskProfileID": "RCP-CP-SUP-010",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-SUP-010",
+        "ScreeningDate": "2024-11-01",
+        "SanctionListFlag": false,
+        "RiskScore": 51.45,
+        "RiskCategory": "High",
+        "LastCheckedDate": "2024-12-15",
+        "Notes": "Automated screening completed"
+      }
+    ],
+    "OrgUnit": [
+      {
+        "OrgUnitID": "OU-GLOBEX",
+        "OrgUnitBusinessCode": "OU-GLOBEX",
+        "OrgUnitName": "Globex Holdings",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-GLOBEX",
+        "Description": "Global corporate parent",
+        "FID_orgUnitType": "OUT-GROUP"
+      },
+      {
+        "OrgUnitID": "OU-US-LE",
+        "OrgUnitBusinessCode": "OU-US-LE",
+        "OrgUnitName": "Globex US Inc.",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-GLOBEX-US",
+        "Description": "United States legal entity",
+        "FID_orgUnitType": "OUT-LEGALENTITY"
+      },
+      {
+        "OrgUnitID": "OU-CA-LE",
+        "OrgUnitBusinessCode": "OU-CA-LE",
+        "OrgUnitName": "Globex Canada Ltd.",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-GLOBEX-CA",
+        "Description": "Canada legal entity",
+        "FID_orgUnitType": "OUT-LEGALENTITY"
+      },
+      {
+        "OrgUnitID": "OU-UK-LE",
+        "OrgUnitBusinessCode": "OU-UK-LE",
+        "OrgUnitName": "Globex UK PLC",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-GLOBEX-UK",
+        "Description": "UK legal entity",
+        "FID_orgUnitType": "OUT-LEGALENTITY"
+      },
+      {
+        "OrgUnitID": "OU-DE-LE",
+        "OrgUnitBusinessCode": "OU-DE-LE",
+        "OrgUnitName": "Globex Germany GmbH",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-GLOBEX-DE",
+        "Description": "Germany legal entity",
+        "FID_orgUnitType": "OUT-LEGALENTITY"
+      },
+      {
+        "OrgUnitID": "OU-SG-LE",
+        "OrgUnitBusinessCode": "OU-SG-LE",
+        "OrgUnitName": "Globex Singapore Pte",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-GLOBEX-SG",
+        "Description": "Singapore legal entity",
+        "FID_orgUnitType": "OUT-LEGALENTITY"
+      },
+      {
+        "OrgUnitID": "OU-BR-LE",
+        "OrgUnitBusinessCode": "OU-BR-LE",
+        "OrgUnitName": "Globex Brazil SA",
+        "PublisherID_counterparty": "ERP",
+        "SourceID_counterparty": "CP-GLOBEX-BR",
+        "Description": "Brazil legal entity",
+        "FID_orgUnitType": "OUT-LEGALENTITY"
+      },
+      {
+        "OrgUnitID": "OU-US-CS",
+        "OrgUnitBusinessCode": "OU-US-CS",
+        "OrgUnitName": "US Consumer Solutions BU",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-BUSINESSUNIT"
+      },
+      {
+        "OrgUnitID": "OU-US-ENT",
+        "OrgUnitBusinessCode": "OU-US-ENT",
+        "OrgUnitName": "US Enterprise Services BU",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-BUSINESSUNIT"
+      },
+      {
+        "OrgUnitID": "OU-CA-NORTH",
+        "OrgUnitBusinessCode": "OU-CA-NORTH",
+        "OrgUnitName": "Canada North BU",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-BUSINESSUNIT"
+      },
+      {
+        "OrgUnitID": "OU-UK-RETL",
+        "OrgUnitBusinessCode": "OU-UK-RETL",
+        "OrgUnitName": "UK EMEA Retail BU",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-BUSINESSUNIT"
+      },
+      {
+        "OrgUnitID": "OU-DE-AUTO",
+        "OrgUnitBusinessCode": "OU-DE-AUTO",
+        "OrgUnitName": "Germany Automotive BU",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-BUSINESSUNIT"
+      },
+      {
+        "OrgUnitID": "OU-SG-DIG",
+        "OrgUnitBusinessCode": "OU-SG-DIG",
+        "OrgUnitName": "APAC Digital BU",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-BUSINESSUNIT"
+      },
+      {
+        "OrgUnitID": "OU-BR-MFG",
+        "OrgUnitBusinessCode": "OU-BR-MFG",
+        "OrgUnitName": "LATAM Manufacturing BU",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-BUSINESSUNIT"
+      },
+      {
+        "OrgUnitID": "OU-US-CS-MKT",
+        "OrgUnitBusinessCode": "OU-US-CS-MKT",
+        "OrgUnitName": "US Consumer Solutions MKT",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-US-CS-OPS",
+        "OrgUnitBusinessCode": "OU-US-CS-OPS",
+        "OrgUnitName": "US Consumer Solutions OPS",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-US-ENT-MKT",
+        "OrgUnitBusinessCode": "OU-US-ENT-MKT",
+        "OrgUnitName": "US Enterprise Services MKT",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-US-ENT-OPS",
+        "OrgUnitBusinessCode": "OU-US-ENT-OPS",
+        "OrgUnitName": "US Enterprise Services OPS",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-CA-NORTH-MKT",
+        "OrgUnitBusinessCode": "OU-CA-NORTH-MKT",
+        "OrgUnitName": "Canada North MKT",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-CA-NORTH-OPS",
+        "OrgUnitBusinessCode": "OU-CA-NORTH-OPS",
+        "OrgUnitName": "Canada North OPS",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-UK-RETL-MKT",
+        "OrgUnitBusinessCode": "OU-UK-RETL-MKT",
+        "OrgUnitName": "UK EMEA Retail MKT",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-UK-RETL-OPS",
+        "OrgUnitBusinessCode": "OU-UK-RETL-OPS",
+        "OrgUnitName": "UK EMEA Retail OPS",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-DE-AUTO-MKT",
+        "OrgUnitBusinessCode": "OU-DE-AUTO-MKT",
+        "OrgUnitName": "Germany Automotive MKT",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-DE-AUTO-OPS",
+        "OrgUnitBusinessCode": "OU-DE-AUTO-OPS",
+        "OrgUnitName": "Germany Automotive OPS",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-SG-DIG-MKT",
+        "OrgUnitBusinessCode": "OU-SG-DIG-MKT",
+        "OrgUnitName": "APAC Digital MKT",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-SG-DIG-OPS",
+        "OrgUnitBusinessCode": "OU-SG-DIG-OPS",
+        "OrgUnitName": "APAC Digital OPS",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-BR-MFG-MKT",
+        "OrgUnitBusinessCode": "OU-BR-MFG-MKT",
+        "OrgUnitName": "LATAM Manufacturing MKT",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      },
+      {
+        "OrgUnitID": "OU-BR-MFG-OPS",
+        "OrgUnitBusinessCode": "OU-BR-MFG-OPS",
+        "OrgUnitName": "LATAM Manufacturing OPS",
+        "PublisherID_counterparty": "",
+        "SourceID_counterparty": "",
+        "Description": "Operational unit",
+        "FID_orgUnitType": "OUT-COSTCENTER"
+      }
+    ],
+    "OrgHierarchy": [
+      {
+        "OrgHierarchyID": "OHV-BUD-2025",
+        "Name": "FY2025-Budget",
+        "HierarchyType": "Managerial",
+        "Description": "Budget view of the FY2025 organization",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31"
+      },
+      {
+        "OrgHierarchyID": "OHV-ACT-2025",
+        "Name": "FY2025-Actual",
+        "HierarchyType": "Managerial",
+        "Description": "Actual view of the FY2025 organization",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31"
+      },
+      {
+        "OrgHierarchyID": "OHV-BUD-2026",
+        "Name": "FY2026-Budget",
+        "HierarchyType": "Managerial",
+        "Description": "Budget view of the FY2026 organization",
+        "EffectiveStartDate": "2026-01-01",
+        "EffectiveEndDate": "2026-12-31"
+      },
+      {
+        "OrgHierarchyID": "OHV-ACT-2026",
+        "Name": "FY2026-Actual",
+        "HierarchyType": "Managerial",
+        "Description": "Actual view of the FY2026 organization",
+        "EffectiveStartDate": "2026-01-01",
+        "EffectiveEndDate": "2026-12-31"
+      }
+    ],
+    "OrgHierarchyNode": [
+      {
+        "OrgHierarchyNodeID": "REL-055",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "",
+        "FID_orgUnit": "OU-GLOBEX"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-022",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-055",
+        "FID_orgUnit": "OU-US-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-023",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-055",
+        "FID_orgUnit": "OU-CA-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-024",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-055",
+        "FID_orgUnit": "OU-UK-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-025",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-055",
+        "FID_orgUnit": "OU-DE-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-026",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-055",
+        "FID_orgUnit": "OU-SG-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-027",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-055",
+        "FID_orgUnit": "OU-BR-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-001",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-022",
+        "FID_orgUnit": "OU-US-CS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-002",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-022",
+        "FID_orgUnit": "OU-US-ENT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-003",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-023",
+        "FID_orgUnit": "OU-CA-NORTH"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-004",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-024",
+        "FID_orgUnit": "OU-UK-RETL"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-005",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-025",
+        "FID_orgUnit": "OU-DE-AUTO"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-006",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-026",
+        "FID_orgUnit": "OU-SG-DIG"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-007",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-027",
+        "FID_orgUnit": "OU-BR-MFG"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-008",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-06-30",
+        "FID_parentNode": "REL-001",
+        "FID_orgUnit": "OU-US-CS-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-009",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-07-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-001",
+        "FID_orgUnit": "OU-US-CS-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-010",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-002",
+        "FID_orgUnit": "OU-US-ENT-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-011",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-002",
+        "FID_orgUnit": "OU-US-ENT-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-012",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-003",
+        "FID_orgUnit": "OU-CA-NORTH-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-013",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-003",
+        "FID_orgUnit": "OU-CA-NORTH-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-014",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-004",
+        "FID_orgUnit": "OU-UK-RETL-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-015",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-004",
+        "FID_orgUnit": "OU-UK-RETL-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-016",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-005",
+        "FID_orgUnit": "OU-DE-AUTO-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-017",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-005",
+        "FID_orgUnit": "OU-DE-AUTO-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-018",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-006",
+        "FID_orgUnit": "OU-SG-DIG-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-019",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-006",
+        "FID_orgUnit": "OU-SG-DIG-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-020",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-007",
+        "FID_orgUnit": "OU-BR-MFG-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-021",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-BUD-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-007",
+        "FID_orgUnit": "OU-BR-MFG-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-056",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "",
+        "FID_orgUnit": "OU-GLOBEX"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-049",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-056",
+        "FID_orgUnit": "OU-US-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-050",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-056",
+        "FID_orgUnit": "OU-CA-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-051",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-056",
+        "FID_orgUnit": "OU-UK-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-052",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-056",
+        "FID_orgUnit": "OU-DE-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-053",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-056",
+        "FID_orgUnit": "OU-SG-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-054",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-056",
+        "FID_orgUnit": "OU-BR-LE"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-028",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-049",
+        "FID_orgUnit": "OU-US-CS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-029",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-049",
+        "FID_orgUnit": "OU-US-ENT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-030",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-050",
+        "FID_orgUnit": "OU-CA-NORTH"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-031",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-051",
+        "FID_orgUnit": "OU-UK-RETL"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-032",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-052",
+        "FID_orgUnit": "OU-DE-AUTO"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-033",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-053",
+        "FID_orgUnit": "OU-SG-DIG"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-034",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-054",
+        "FID_orgUnit": "OU-BR-MFG"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-035",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-028",
+        "FID_orgUnit": "OU-US-CS-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-036",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-028",
+        "FID_orgUnit": "OU-US-CS-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-037",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-029",
+        "FID_orgUnit": "OU-US-ENT-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-038",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-029",
+        "FID_orgUnit": "OU-US-ENT-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-039",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-030",
+        "FID_orgUnit": "OU-CA-NORTH-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-040",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-030",
+        "FID_orgUnit": "OU-CA-NORTH-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-041",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-031",
+        "FID_orgUnit": "OU-UK-RETL-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-042",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-031",
+        "FID_orgUnit": "OU-UK-RETL-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-043",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-032",
+        "FID_orgUnit": "OU-DE-AUTO-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-044",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-032",
+        "FID_orgUnit": "OU-DE-AUTO-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-045",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-033",
+        "FID_orgUnit": "OU-SG-DIG-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-046",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-033",
+        "FID_orgUnit": "OU-SG-DIG-OPS"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-047",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-034",
+        "FID_orgUnit": "OU-BR-MFG-MKT"
+      },
+      {
+        "OrgHierarchyNodeID": "REL-048",
+        "RelationshipType": "ReportsTo",
+        "Sequence": null,
+        "FID_orgHierarchy": "OHV-ACT-2025",
+        "EffectiveStartDate": "2025-01-01",
+        "EffectiveEndDate": "2025-12-31",
+        "FID_parentNode": "REL-034",
+        "FID_orgUnit": "OU-BR-MFG-OPS"
+      }
+    ],
+    "ChartOfAccounts": [
+      {
+        "ChartOfAccountsID": "COA-GRP",
+        "Name": "Group IFRS CoA 2025",
+        "Description": "Globex Group IFRS consolidation chart",
+        "AccountingStandard": "IFRS",
+        "IsGroupCoA": true,
+        "FID_currency": "CURR-USD",
+        "FID_orgUnit": "OU-GLOBEX"
+      },
+      {
+        "ChartOfAccountsID": "COA-GRP-RPT",
+        "Name": "Group IFRS Reporting CoA",
+        "Description": "IFRS reporting presentation layout",
+        "AccountingStandard": "IFRS",
+        "IsGroupCoA": true,
+        "FID_currency": "CURR-USD",
+        "FID_orgUnit": "OU-GLOBEX"
+      },
+      {
+        "ChartOfAccountsID": "COA-USA",
+        "Name": "US Local CoA",
+        "Description": "US GAAP ledger",
+        "AccountingStandard": "US GAAP",
+        "IsGroupCoA": false,
+        "FID_currency": "CURR-USD",
+        "FID_orgUnit": "OU-US-LE"
+      },
+      {
+        "ChartOfAccountsID": "COA-CAN",
+        "Name": "Canada Local CoA",
+        "Description": "Canada IFRS ledger",
+        "AccountingStandard": "IFRS",
+        "IsGroupCoA": false,
+        "FID_currency": "CURR-CAD",
+        "FID_orgUnit": "OU-CA-LE"
+      },
+      {
+        "ChartOfAccountsID": "COA-UK",
+        "Name": "UK Local CoA",
+        "Description": "UK IFRS ledger",
+        "AccountingStandard": "IFRS",
+        "IsGroupCoA": false,
+        "FID_currency": "CURR-GBP",
+        "FID_orgUnit": "OU-UK-LE"
+      },
+      {
+        "ChartOfAccountsID": "COA-DE",
+        "Name": "Germany Local CoA",
+        "Description": "German HGB ledger",
+        "AccountingStandard": "HGB",
+        "IsGroupCoA": false,
+        "FID_currency": "CURR-EUR",
+        "FID_orgUnit": "OU-DE-LE"
+      },
+      {
+        "ChartOfAccountsID": "COA-SG",
+        "Name": "Singapore Local CoA",
+        "Description": "Singapore SFRS ledger",
+        "AccountingStandard": "SFRS",
+        "IsGroupCoA": false,
+        "FID_currency": "CURR-SGD",
+        "FID_orgUnit": "OU-SG-LE"
+      },
+      {
+        "ChartOfAccountsID": "COA-BR",
+        "Name": "Brazil Local CoA",
+        "Description": "Brazil BR GAAP ledger",
+        "AccountingStandard": "BR GAAP",
+        "IsGroupCoA": false,
+        "FID_currency": "CURR-BRL",
+        "FID_orgUnit": "OU-BR-LE"
+      }
+    ],
+    "Account": [
+      {
+        "AccountID": "COA-USA-1010",
+        "AccountCode": "1010",
+        "AccountName": "US Cash",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-USA",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-USA-4010",
+        "AccountCode": "4010",
+        "AccountName": "US Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-USA",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-USA-5010",
+        "AccountCode": "5010",
+        "AccountName": "US COGS",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-USA",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-USA-6010",
+        "AccountCode": "6010",
+        "AccountName": "US Payroll",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-USA",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-USA-6110",
+        "AccountCode": "6110",
+        "AccountName": "US Marketing",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-USA",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-USA-7210",
+        "AccountCode": "7210",
+        "AccountName": "US Marketing Split",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-USA",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-CAN-1010",
+        "AccountCode": "1010",
+        "AccountName": "CA Cash",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-CAN",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-CAN-4010",
+        "AccountCode": "4010",
+        "AccountName": "CA Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-CAN",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-CAN-5010",
+        "AccountCode": "5010",
+        "AccountName": "CA COGS",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-CAN",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-CAN-6010",
+        "AccountCode": "6010",
+        "AccountName": "CA Payroll",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-CAN",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-CAN-6110",
+        "AccountCode": "6110",
+        "AccountName": "CA Marketing",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-CAN",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-UK-1010",
+        "AccountCode": "1010",
+        "AccountName": "UK Cash",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-UK",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-UK-4010",
+        "AccountCode": "4010",
+        "AccountName": "UK Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-UK",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-UK-5010",
+        "AccountCode": "5010",
+        "AccountName": "UK COGS",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-UK",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-UK-6010",
+        "AccountCode": "6010",
+        "AccountName": "UK Payroll",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-UK",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-UK-6110",
+        "AccountCode": "6110",
+        "AccountName": "UK Marketing",
+        "AccountType": "Expense",
+        "IsPosting": null,
+        "FID_chartOfAccounts": "COA-UK",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-DE-1010",
+        "AccountCode": "1010",
+        "AccountName": "DE Cash",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-DE",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-DE-4010",
+        "AccountCode": "4010",
+        "AccountName": "DE Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-DE",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-DE-5010",
+        "AccountCode": "5010",
+        "AccountName": "DE COGS",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-DE",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-DE-6010",
+        "AccountCode": "6010",
+        "AccountName": "DE Payroll",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-DE",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-DE-6110",
+        "AccountCode": "6110",
+        "AccountName": "DE Marketing",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-DE",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-SG-1010",
+        "AccountCode": "1010",
+        "AccountName": "SG Cash",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-SG",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-SG-4010",
+        "AccountCode": "4010",
+        "AccountName": "SG Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-SG",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-SG-5010",
+        "AccountCode": "5010",
+        "AccountName": "SG COGS",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-SG",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-SG-6010",
+        "AccountCode": "6010",
+        "AccountName": "SG Payroll",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-SG",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-SG-6110",
+        "AccountCode": "6110",
+        "AccountName": "SG Marketing",
+        "AccountType": "",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-SG",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-BR-1010",
+        "AccountCode": "1010",
+        "AccountName": "BR Cash",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-BR",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-BR-4010",
+        "AccountCode": "4010",
+        "AccountName": "BR Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-BR",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-BR-5010",
+        "AccountCode": "5010",
+        "AccountName": "BR COGS",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-BR",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-BR-6010",
+        "AccountCode": "6010",
+        "AccountName": "BR Payroll",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-BR",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-BR-6110",
+        "AccountCode": "6110",
+        "AccountName": "BR Marketing",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-BR",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-1000",
+        "AccountCode": "1000",
+        "AccountName": "Assets",
+        "AccountType": "Asset",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-1100",
+        "AccountCode": "1100",
+        "AccountName": "Cash and Cash Equivalents",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-1000"
+      },
+      {
+        "AccountID": "COA-GRP-1200",
+        "AccountCode": "1200",
+        "AccountName": "Trade Receivables",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-1000"
+      },
+      {
+        "AccountID": "COA-GRP-1300",
+        "AccountCode": "1300",
+        "AccountName": "Property, Plant and Equipment",
+        "AccountType": "Asset",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-1000"
+      },
+      {
+        "AccountID": "COA-GRP-2000",
+        "AccountCode": "2000",
+        "AccountName": "Liabilities",
+        "AccountType": "Liability",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-2100",
+        "AccountCode": "2100",
+        "AccountName": "Trade Payables",
+        "AccountType": "Liability",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-2000"
+      },
+      {
+        "AccountID": "COA-GRP-2200",
+        "AccountCode": "2200",
+        "AccountName": "Accrued Liabilities",
+        "AccountType": "Liability",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-2000"
+      },
+      {
+        "AccountID": "COA-GRP-3000",
+        "AccountCode": "3000",
+        "AccountName": "Equity",
+        "AccountType": "Equity",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-3100",
+        "AccountCode": "3100",
+        "AccountName": "Share Capital",
+        "AccountType": "Equity",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-3000"
+      },
+      {
+        "AccountID": "COA-GRP-3200",
+        "AccountCode": "3200",
+        "AccountName": "Retained Earnings",
+        "AccountType": "Equity",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-3000"
+      },
+      {
+        "AccountID": "COA-GRP-4000",
+        "AccountCode": "4000",
+        "AccountName": "Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-4100",
+        "AccountCode": "4100",
+        "AccountName": "Product Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-4000"
+      },
+      {
+        "AccountID": "COA-GRP-4200",
+        "AccountCode": "4200",
+        "AccountName": "Service Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-4000"
+      },
+      {
+        "AccountID": "COA-GRP-5000",
+        "AccountCode": "5000",
+        "AccountName": "Cost of Sales",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-6000",
+        "AccountCode": "6000",
+        "AccountName": "Operating Expenses",
+        "AccountType": "Expense",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-6100",
+        "AccountCode": "6100",
+        "AccountName": "Payroll Expense",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-6000"
+      },
+      {
+        "AccountID": "COA-GRP-6110",
+        "AccountCode": "6110",
+        "AccountName": "Selling and Marketing Expense",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-6000"
+      },
+      {
+        "AccountID": "COA-GRP-6120",
+        "AccountCode": "6120",
+        "AccountName": "General and Administrative Expense",
+        "AccountType": "Expense",
+        "IsPosting": true,
+        "FID_chartOfAccounts": "COA-GRP",
+        "FID_parentAccount": "COA-GRP-6000"
+      },
+      {
+        "AccountID": "COA-GRP-RPT-R100",
+        "AccountCode": "R100",
+        "AccountName": "Balance Sheet - Assets",
+        "AccountType": "Asset",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP-RPT",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-RPT-R200",
+        "AccountCode": "R200",
+        "AccountName": "Balance Sheet - Liabilities",
+        "AccountType": "Liability",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP-RPT",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-RPT-R300",
+        "AccountCode": "R300",
+        "AccountName": "Balance Sheet - Equity",
+        "AccountType": "Equity",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP-RPT",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-RPT-R400",
+        "AccountCode": "R400",
+        "AccountName": "Income Statement - Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP-RPT",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-RPT-R410",
+        "AccountCode": "R410",
+        "AccountName": "Income Statement - Product Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP-RPT",
+        "FID_parentAccount": "COA-GRP-RPT-R400"
+      },
+      {
+        "AccountID": "COA-GRP-RPT-R420",
+        "AccountCode": "R420",
+        "AccountName": "Income Statement - Service Revenue",
+        "AccountType": "Revenue",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP-RPT",
+        "FID_parentAccount": "COA-GRP-RPT-R400"
+      },
+      {
+        "AccountID": "COA-GRP-RPT-R500",
+        "AccountCode": "R500",
+        "AccountName": "Income Statement - Cost of Sales",
+        "AccountType": "Expense",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP-RPT",
+        "FID_parentAccount": ""
+      },
+      {
+        "AccountID": "COA-GRP-RPT-R600",
+        "AccountCode": "R600",
+        "AccountName": "Income Statement - Operating Expenses",
+        "AccountType": "Expense",
+        "IsPosting": false,
+        "FID_chartOfAccounts": "COA-GRP-RPT",
+        "FID_parentAccount": ""
+      }
+    ],
+    "MappingSet": [
+      {
+        "MappingSetID": "MAPSET-USA",
+        "MappingSetName": "USA Local to Group",
+        "Purpose": "LocalToGroup",
+        "FID_sourceChartOfAccounts": "COA-USA",
+        "FID_targetChartOfAccounts": "COA-GRP",
+        "FID_orgUnit": "OU-US-LE"
+      },
+      {
+        "MappingSetID": "MAPSET-CAN",
+        "MappingSetName": "CAN Local to Group",
+        "Purpose": "LocalToGroup",
+        "FID_sourceChartOfAccounts": "COA-CAN",
+        "FID_targetChartOfAccounts": "COA-GRP",
+        "FID_orgUnit": "OU-CA-LE"
+      },
+      {
+        "MappingSetID": "MAPSET-UK",
+        "MappingSetName": "UK Local to Group",
+        "Purpose": "LocalToGroup",
+        "FID_sourceChartOfAccounts": "COA-UK",
+        "FID_targetChartOfAccounts": "COA-GRP",
+        "FID_orgUnit": "OU-UK-LE"
+      },
+      {
+        "MappingSetID": "MAPSET-DE",
+        "MappingSetName": "DE Local to Group",
+        "Purpose": "LocalToGroup",
+        "FID_sourceChartOfAccounts": "COA-DE",
+        "FID_targetChartOfAccounts": "COA-GRP",
+        "FID_orgUnit": "OU-DE-LE"
+      },
+      {
+        "MappingSetID": "MAPSET-SG",
+        "MappingSetName": "SG Local to Group",
+        "Purpose": "LocalToGroup",
+        "FID_sourceChartOfAccounts": "COA-SG",
+        "FID_targetChartOfAccounts": "COA-GRP",
+        "FID_orgUnit": "OU-SG-LE"
+      },
+      {
+        "MappingSetID": "MAPSET-BR",
+        "MappingSetName": "BR Local to Group",
+        "Purpose": "LocalToGroup",
+        "FID_sourceChartOfAccounts": "COA-BR",
+        "FID_targetChartOfAccounts": "COA-GRP",
+        "FID_orgUnit": "OU-BR-LE"
+      },
+      {
+        "MappingSetID": "MAPSET-GRP-RPT",
+        "MappingSetName": "Group CoA to Reporting",
+        "Purpose": "GroupToReporting",
+        "FID_sourceChartOfAccounts": "COA-GRP",
+        "FID_targetChartOfAccounts": "COA-GRP-RPT",
+        "FID_orgUnit": "OU-GLOBEX"
+      }
+    ],
+    "MappingRule": [
+      {
+        "RuleID": "RULE-US-MKT-SPLIT",
+        "RuleName": "US Marketing Digital vs Events",
+        "RuleType": "Split",
+        "RuleDescription": "Allocate 60% to Digital Marketing and 40% to Event Marketing."
+      },
+      {
+        "RuleID": "RULE-GENERIC-50-SPLIT",
+        "RuleName": "Generic rule for 50-50 split across 2 Target Accounts",
+        "RuleType": "Split",
+        "RuleDescription": "Allocate 50% to Target Account #1 and 50% to Target Account #2."
+      }
+    ],
+    "MappingType": [
+      {
+        "MappingTypeID": "MTP-ONE_TO_ONE",
+        "Type": "ONE_TO_ONE",
+        "Description": "One source account maps to one target account"
+      },
+      {
+        "MappingTypeID": "MTP-MANY_TO_ONE",
+        "Type": "MANY_TO_ONE",
+        "Description": "Multiple source accounts map to one target account"
+      },
+      {
+        "MappingTypeID": "MTP-ONE_TO_MANY",
+        "Type": "ONE_TO_MANY",
+        "Description": "One source account maps to multiple target accounts"
+      }
+    ],
+    "AccountMapping": [
+      {
+        "AccountMappingID": "MAP-COA-USA-1010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R100",
+        "FID_mappingSet": "MAPSET-USA",
+        "FID_sourceAccount": "COA-USA-1010",
+        "FID_targetAccount": "COA-GRP-1100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-USA-4010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R420",
+        "FID_mappingSet": "MAPSET-USA",
+        "FID_sourceAccount": "COA-USA-4010",
+        "FID_targetAccount": "COA-GRP-4200",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-USA-5010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R500",
+        "FID_mappingSet": "MAPSET-USA",
+        "FID_sourceAccount": "COA-USA-5010",
+        "FID_targetAccount": "COA-GRP-5000",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-USA-6010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-USA",
+        "FID_sourceAccount": "COA-USA-6010",
+        "FID_targetAccount": "COA-GRP-6100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-USA-6110",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-USA",
+        "FID_sourceAccount": "COA-USA-6110",
+        "FID_targetAccount": "COA-GRP-6110",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-USA-7210",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-USA",
+        "FID_sourceAccount": "COA-USA-7210",
+        "FID_targetAccount": "",
+        "FID_mappingRule": "RULE-US-MKT-SPLIT",
+        "FID_mappingType": "MTP-ONE_TO_MANY"
+      },
+      {
+        "AccountMappingID": "MAP-COA-CAN-4010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R420",
+        "FID_mappingSet": "MAPSET-CAN",
+        "FID_sourceAccount": "COA-CAN-4010",
+        "FID_targetAccount": "COA-GRP-4200",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-CAN-6010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-CAN",
+        "FID_sourceAccount": "COA-CAN-6010",
+        "FID_targetAccount": "COA-GRP-6100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-UK-1010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R100",
+        "FID_mappingSet": "MAPSET-UK",
+        "FID_sourceAccount": "COA-UK-1010",
+        "FID_targetAccount": "COA-GRP-1100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-UK-4010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R420",
+        "FID_mappingSet": "MAPSET-UK",
+        "FID_sourceAccount": "COA-UK-4010",
+        "FID_targetAccount": "COA-GRP-4200",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-UK-5010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R500",
+        "FID_mappingSet": "MAPSET-UK",
+        "FID_sourceAccount": "COA-UK-5010",
+        "FID_targetAccount": "COA-GRP-5000",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-UK-6010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-UK",
+        "FID_sourceAccount": "COA-UK-6010",
+        "FID_targetAccount": "COA-GRP-6100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-UK-6110",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-UK",
+        "FID_sourceAccount": "COA-UK-6110",
+        "FID_targetAccount": "COA-GRP-6110",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-DE-1010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R100",
+        "FID_mappingSet": "MAPSET-DE",
+        "FID_sourceAccount": "COA-DE-1010",
+        "FID_targetAccount": "COA-GRP-1100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-DE-4010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R420",
+        "FID_mappingSet": "MAPSET-DE",
+        "FID_sourceAccount": "COA-DE-4010",
+        "FID_targetAccount": "COA-GRP-4200",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-DE-5010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R500",
+        "FID_mappingSet": "MAPSET-DE",
+        "FID_sourceAccount": "COA-DE-5010",
+        "FID_targetAccount": "COA-GRP-5000",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-DE-6010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-DE",
+        "FID_sourceAccount": "COA-DE-6010",
+        "FID_targetAccount": "COA-GRP-6100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-DE-6110",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-DE",
+        "FID_sourceAccount": "COA-DE-6110",
+        "FID_targetAccount": "COA-GRP-6110",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-SG-1010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R100",
+        "FID_mappingSet": "MAPSET-SG",
+        "FID_sourceAccount": "COA-SG-1010",
+        "FID_targetAccount": "COA-GRP-1100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-SG-4010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R420",
+        "FID_mappingSet": "MAPSET-SG",
+        "FID_sourceAccount": "COA-SG-4010",
+        "FID_targetAccount": "COA-GRP-4200",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-SG-5010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R500",
+        "FID_mappingSet": "MAPSET-SG",
+        "FID_sourceAccount": "COA-SG-5010",
+        "FID_targetAccount": "COA-GRP-5000",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-SG-6010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-SG",
+        "FID_sourceAccount": "COA-SG-6010",
+        "FID_targetAccount": "COA-GRP-6100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-SG-6110",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-SG",
+        "FID_sourceAccount": "COA-SG-6110",
+        "FID_targetAccount": "COA-GRP-6110",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-BR-5010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R500",
+        "FID_mappingSet": "MAPSET-BR",
+        "FID_sourceAccount": "COA-BR-5010",
+        "FID_targetAccount": "COA-GRP-5000",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-BR-6010",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-BR",
+        "FID_sourceAccount": "COA-BR-6010",
+        "FID_targetAccount": "COA-GRP-6100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-1100",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R100",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-1100",
+        "FID_targetAccount": "COA-GRP-RPT-R100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-1200",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R100",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-1200",
+        "FID_targetAccount": "COA-GRP-RPT-R100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-1300",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R100",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-1300",
+        "FID_targetAccount": "COA-GRP-RPT-R100",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-2100",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R200",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-2100",
+        "FID_targetAccount": "COA-GRP-RPT-R200",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-2200",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R200",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-2200",
+        "FID_targetAccount": "COA-GRP-RPT-R200",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-3100",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R300",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-3100",
+        "FID_targetAccount": "COA-GRP-RPT-R300",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-3200",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R300",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-3200",
+        "FID_targetAccount": "COA-GRP-RPT-R300",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-4100",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R410",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-4100",
+        "FID_targetAccount": "COA-GRP-RPT-R410",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-4200",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R420",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-4200",
+        "FID_targetAccount": "COA-GRP-RPT-R420",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-5000",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R500",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-5000",
+        "FID_targetAccount": "COA-GRP-RPT-R500",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-6100",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-6100",
+        "FID_targetAccount": "COA-GRP-RPT-R600",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-6110",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-6110",
+        "FID_targetAccount": "COA-GRP-RPT-R600",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      },
+      {
+        "AccountMappingID": "MAP-COA-GRP-RPT-6120",
+        "Priority": 1,
+        "Justification": "",
+        "ReportingPnLCategoryCode": "R600",
+        "FID_mappingSet": "MAPSET-GRP-RPT",
+        "FID_sourceAccount": "COA-GRP-6120",
+        "FID_targetAccount": "COA-GRP-RPT-R600",
+        "FID_mappingRule": "",
+        "FID_mappingType": "MTP-ONE_TO_ONE"
+      }
+    ],
+    "SplitAllocation": [
+      {
+        "SplitAllocationID": "SPLIT-MAP-COA-USA-7210-1",
+        "SplitPercent": 60.0,
+        "Sequence": 1,
+        "FID_accountMapping": "MAP-COA-USA-7210",
+        "FID_targetAccount": "COA-GRP-6110"
+      },
+      {
+        "SplitAllocationID": "SPLIT-MAP-COA-USA-7210-2",
+        "SplitPercent": 40.0,
+        "Sequence": 2,
+        "FID_accountMapping": "MAP-COA-USA-7210",
+        "FID_targetAccount": "COA-GRP-6120"
+      }
+    ],
+    "OrgUnitCoAAssignment": [
+      {
+        "CoAAssignmentID": "COAASSIGN-01",
+        "UsageScope": "Group",
+        "Notes": "",
+        "FID_orgUnit": "OU-GLOBEX",
+        "FID_chartOfAccounts": "COA-GRP"
+      },
+      {
+        "CoAAssignmentID": "COAASSIGN-02",
+        "UsageScope": "Statutory",
+        "Notes": "",
+        "FID_orgUnit": "OU-US-LE",
+        "FID_chartOfAccounts": "COA-USA"
+      },
+      {
+        "CoAAssignmentID": "COAASSIGN-03",
+        "UsageScope": "Statutory",
+        "Notes": "",
+        "FID_orgUnit": "OU-CA-LE",
+        "FID_chartOfAccounts": "COA-CAN"
+      },
+      {
+        "CoAAssignmentID": "COAASSIGN-04",
+        "UsageScope": "Statutory",
+        "Notes": "",
+        "FID_orgUnit": "OU-UK-LE",
+        "FID_chartOfAccounts": "COA-UK"
+      },
+      {
+        "CoAAssignmentID": "COAASSIGN-05",
+        "UsageScope": "Statutory",
+        "Notes": "",
+        "FID_orgUnit": "OU-DE-LE",
+        "FID_chartOfAccounts": "COA-DE"
+      },
+      {
+        "CoAAssignmentID": "COAASSIGN-06",
+        "UsageScope": "Statutory",
+        "Notes": "",
+        "FID_orgUnit": "OU-SG-LE",
+        "FID_chartOfAccounts": "COA-SG"
+      },
+      {
+        "CoAAssignmentID": "COAASSIGN-07",
+        "UsageScope": "Statutory",
+        "Notes": "",
+        "FID_orgUnit": "OU-BR-LE",
+        "FID_chartOfAccounts": "COA-BR"
+      }
+    ],
+    "OrgUnitMappingCoverage": [
+      {
+        "MappingCoverageID": "COV-01",
+        "CoverageScope": "Local->Group",
+        "Comments": "",
+        "FID_orgUnit": "OU-US-LE",
+        "FID_mappingSet": "MAPSET-USA"
+      },
+      {
+        "MappingCoverageID": "COV-02",
+        "CoverageScope": "Local->Group",
+        "Comments": "",
+        "FID_orgUnit": "OU-CA-LE",
+        "FID_mappingSet": "MAPSET-CAN"
+      },
+      {
+        "MappingCoverageID": "COV-03",
+        "CoverageScope": "Local->Group",
+        "Comments": "",
+        "FID_orgUnit": "OU-UK-LE",
+        "FID_mappingSet": "MAPSET-UK"
+      },
+      {
+        "MappingCoverageID": "COV-04",
+        "CoverageScope": "Local->Group",
+        "Comments": "",
+        "FID_orgUnit": "OU-DE-LE",
+        "FID_mappingSet": "MAPSET-DE"
+      },
+      {
+        "MappingCoverageID": "COV-05",
+        "CoverageScope": "Local->Group",
+        "Comments": "",
+        "FID_orgUnit": "OU-SG-LE",
+        "FID_mappingSet": "MAPSET-SG"
+      },
+      {
+        "MappingCoverageID": "COV-06",
+        "CoverageScope": "Local->Group",
+        "Comments": "",
+        "FID_orgUnit": "OU-BR-LE",
+        "FID_mappingSet": "MAPSET-BR"
+      }
+    ]
+  }
+}

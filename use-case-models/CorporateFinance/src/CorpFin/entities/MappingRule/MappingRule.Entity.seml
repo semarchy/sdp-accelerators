@@ -1,0 +1,84 @@
+_package: CorpFin.entities.MappingRule
+_type: Entity
+_name: MappingRule
+label: Mapping Rule
+pluralLabel: Mapping Rules
+entityType: BASIC
+physicalTableName: MAPPING_RULE
+iconUrl: images://mdi/relation-one-or-many-to-one-or-many.svg
+description: "Defines conditional or split logic for account mappings."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: RuleID
+    label: Rule ID
+    description: Surrogate identifier for mapping rule
+    documentation: ""
+    physicalName: RULE_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: RuleName
+    label: Rule Name
+    description: Rule label
+    documentation: ""
+    physicalName: RULE_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedRuleName
+    label: Normalized Rule Name
+    description: Trimmed and uppercased rule name
+    documentation: ""
+    physicalName: NORMALIZED_RULE_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: RuleType
+    label: Rule Type
+    description: Rule classification (Split, Conditional, Override)
+    documentation: ""
+    physicalName: RULE_TYPE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedRuleType
+    label: Normalized Rule Type
+    description: Trimmed and uppercased rule type
+    documentation: ""
+    physicalName: NORMALIZED_RULE_TYPE
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RuleDescription
+    label: Rule Description
+    description: Plain-language description of the split or condition
+    documentation: ""
+    physicalName: RULE_DESCRIPTION
+    dataType: String
+    length: 1000
+    mandatory: false
+
+primaryKey: CorpFin.entities.MappingRule.MappingRule.RuleID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

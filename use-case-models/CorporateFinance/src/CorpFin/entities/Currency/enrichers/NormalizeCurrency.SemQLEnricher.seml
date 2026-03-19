@@ -1,0 +1,12 @@
+_package: CorpFin.entities.Currency.enrichers
+_name: NormalizeCurrency
+_type: SemQLEnricher
+entity: CorpFin.entities.Currency.Currency
+label: Normalize Currency
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedCurrencyCode
+    expression: "RTRIM(LTRIM(UPPER(CurrencyCode)))"
+  - attributeName: NormalizedCurrencyName
+    expression: "RTRIM(LTRIM(UPPER(CurrencyName)))"
