@@ -1,0 +1,31 @@
+# Description: Reference linking `Merchant` to `Industry`.
+# Contains mapping to classify legal entities by industry and related validation.
+# Role: Enables industry classification of legal entities for reporting and rules.
+_package: Merchant.references
+_type: Reference
+_name: MerchantHasIndustry
+label: Merchant - Industry
+description: Maps Merchant.IndustryID to Industry.IndustryID
+physicalName: MERCHANT_HAS_INDUSTRY
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.Merchant.Merchant
+fromRoleName: Merchant
+fromRoleLabel: Merchant
+fromRolePluralLabel: Merchants
+
+toEntity: Merchant.entities.Industry.Industry
+toRoleName: Industry
+toRoleLabel: Industry
+toRolePhysicalName: INDUSTRY
+
+validationScope: PRE_CONSO
+mandatoryValidationLabel: Industry is required
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Industry
+  label: Industry
+  physicalName: INDUSTRY
+  searchable: true
+

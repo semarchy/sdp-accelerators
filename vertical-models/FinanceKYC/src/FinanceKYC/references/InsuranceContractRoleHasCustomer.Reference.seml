@@ -1,0 +1,28 @@
+_package: FinanceKYC.references
+_name: InsuranceContractRoleHasCustomer
+_type: Reference
+label: Insurance Contract Role Has Customer
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.InsuranceContractRole.InsuranceContractRole
+fromRoleLabel: Insurance Contract Role
+fromRoleName: insuranceContractRole
+fromRolePluralLabel: Insurance Contract Roles
+physicalName: INS_CON_ROL_HAS_CUS
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.Customer.Customer
+toRoleLabel: Customer
+toRoleName: Customer
+toRolePhysicalName: CUS_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Customer
+  label: Customer
+  physicalName: CUSTOMER
+  searchable: true
+  entity: FinanceKYC.entities.InsuranceContractRole.InsuranceContractRole

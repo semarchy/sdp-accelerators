@@ -1,0 +1,13 @@
+# It is an enricher for the industry entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that sets the IndustryName attribute to uppercase.
+# This enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.Industry.enrichers
+_name: IndustryName
+entity: sales360.entities.Industry.Industry
+label: Industry Name
+description: Enricher to standardize Industry Name to uppercase
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: IndustryName
+    expression: UPPER(IndustryName)

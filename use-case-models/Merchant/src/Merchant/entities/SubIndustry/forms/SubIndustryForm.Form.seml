@@ -1,0 +1,43 @@
+ # Description: Form layout for the `SubIndustry` entity (create/edit UI).
+ # Contains: Fields and tabs for maintaining sub-industry records.
+ # Role: User interface for SubIndustry master data maintenance.
+_package: Merchant.entities.SubIndustry.forms
+# Description: Form definition for `SubIndustry` used to create and edit sub-industry records.
+# Contains form structure, fields and reference configuration to `Industry`.
+# Role: Drives the UI for creating and maintaining sub-industry values.
+_type: Form
+_name: SubIndustryForm
+entity: Merchant.entities.SubIndustry.SubIndustry
+default: true
+formTabs:
+  - _type: FormTab
+    _name: SubIndustry
+    label: Sub Industry
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: TextField
+        _name: SubIndustryName
+        value: SubIndustryName
+        useCustomLabel: false
+        dataType: STRING
+      - _type: ReferenceField
+        _name: FDN_Industry
+        value: FDN_Industry
+        useCustomLabel: false
+        dataType: STRING
+        referencedEntity: Merchant.entities.Industry.Industry
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        authoringMode: auto
+        componentProperties:
+          textAlign: left
+          textTypography: body-1
+          displayType: hyperlink
+        labelProperties:
+          alignment: right
+          position: left
+          typography: caption
+          isVisible: '1'

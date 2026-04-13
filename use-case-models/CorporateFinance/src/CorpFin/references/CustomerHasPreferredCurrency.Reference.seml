@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: CustomerHasPreferredCurrency
+_type: Reference
+label: Customer Has Preferred Currency
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Customer.Customer
+fromRoleLabel: Customer
+fromRoleName: customer
+fromRolePluralLabel: Customers
+physicalName: CUSTOMER_HAS_PREF_CUR
+fromNavigable: true
+
+toEntity: CorpFin.entities.Currency.Currency
+toRoleLabel: Currency
+toRoleName: currency
+toRolePhysicalName: PREF_INV_CURRENCY
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: currency
+  label: Preferred Invoicing Currency
+  physicalName: PREF_INV_CURRENCY
+  searchable: true
+  entity: CorpFin.entities.Currency.Currency
+
+

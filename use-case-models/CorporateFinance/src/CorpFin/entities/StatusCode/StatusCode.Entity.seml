@@ -1,0 +1,75 @@
+_package: CorpFin.entities.StatusCode
+_type: Entity
+_name: StatusCode
+label: Status Code
+pluralLabel: Status Codes
+entityType: BASIC
+physicalTableName: STATUS_CODE
+iconUrl: images://mdi/label.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: StatusCode
+    label: Status Code
+    description: Unique lifecycle code
+    documentation: ""
+    physicalName: STATUS_CODE
+    dataType: String
+    length: 30
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Label
+    label: Label
+    description: Display label for the status
+    documentation: ""
+    physicalName: LABEL
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Status description
+    documentation: ""
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Category
+    label: Category
+    description: Category of entities using the status
+    documentation: ""
+    physicalName: CATEGORY
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Sequence
+    label: Sequence
+    description: Ordering sequence
+    documentation: ""
+    physicalName: SEQUENCE
+    dataType: Integer
+    precision: 3
+    mandatory: false
+    searchable: true
+
+primaryKey: CorpFin.entities.StatusCode.StatusCode.StatusCode
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

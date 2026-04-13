@@ -1,0 +1,171 @@
+# This is the AuthorCampaignMembers Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing campaign members within the Salesforce context.
+_name: AuthorCampaignMembers
+_package: sales360.entities.CampaignMember.steppers
+_type: Stepper
+entity: sales360.entities.CampaignMember.CampaignMember
+description: Stepper for managing campaign members within the Salesforce Accelerator application
+rootStep:
+  _name: CampaignMembers
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.CampaignMember.collection_views.CampaignMemberCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Campaign Members
+  description: Step to manage campaign members
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.CampaignMemberAsLead.Leads
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.CampaignMemberAsContact.Contact
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.CampaignMembersLeadSource.LeadSource
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.CampaignMembersStatus.Status
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.CampaignMembersCampaign.Campaign
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sales360.entities.CampaignMember.CampaignMember.SemlQLMatcherCampaignMember
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: sales360.entities.CampaignMember.CampaignMember.Type
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for campaign member details
+      formTab: sales360.entities.CampaignMember.forms.CampaignMemberDataEntryForm.Main
+      formStepEnrichers:
+        - enricher: sales360.entities.CampaignMember.enrichers.Type
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.CampaignMember.enrichers.HasResponded
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.CampaignMember.forms.CampaignMemberDataEntryForm.Main.FDN_Leads
+          referencePickerCollectionView: sales360.entities.Leads.collection_views.LeadsCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.CampaignMember.forms.CampaignMemberDataEntryForm.Main.FDN_Campaign
+          referencePickerCollectionView: sales360.entities.Campaign.collection_views.CampaignCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.CampaignMember.forms.CampaignMemberDataEntryForm.Main.FDN_Contact
+          referencePickerCollectionView: sales360.entities.Contact.collection_views.ContactCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.CampaignMember.forms.CampaignMemberDataEntryForm.Main.FDN_Status
+          referencePickerCollectionView: sales360.entities.CampaignMemberStatus.collection_views.CampaignMemberStatusCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.CampaignMember.forms.CampaignMemberDataEntryForm.Main.FDN_LeadSource
+          referencePickerCollectionView: sales360.entities.LeadSource.collection_views.LeadSourceCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sales360.references.CampaignMemberAsContact.Contact
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.CampaignMemberAsLead.Leads
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.CampaignMembersLeadSource.LeadSource
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.CampaignMembersStatus.Status
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.CampaignMembersCampaign.Campaign
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: sales360.entities.CampaignMember.CampaignMember.Type
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.CampaignMembersStatus.Status
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.CampaignMemberAsContact.Contact
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.CampaignMemberAsLead.Leads
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.CampaignMember.CampaignMember.SemlQLMatcherCampaignMember
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.CampaignMembersCampaign.Campaign
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.CampaignMembersLeadSource.LeadSource
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.CampaignMember.CampaignMember.Type
+      stepTriggers: []
+label: Author Campaign Members
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.CampaignMemberAsLead.Leads
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: sales360.entities.CampaignMember.CampaignMember.Type
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.CampaignMembersStatus.Status
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.CampaignMemberAsContact.Contact
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.CampaignMembersLeadSource.LeadSource
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.CampaignMembersCampaign.Campaign
+triggers: []

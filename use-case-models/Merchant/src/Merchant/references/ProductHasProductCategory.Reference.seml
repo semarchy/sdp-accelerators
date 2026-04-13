@@ -1,0 +1,30 @@
+# Description: Reference linking `Product` to `ProductCategory`.
+# Contains mapping information and cardinality for product → category relationships.
+# Role: Organizes products into categories for classification and reporting.
+_package: Merchant.references
+_name: ProductHasProductCategory
+_type: Reference
+label: Product Category Reference
+description: Reference linking Product to ProductCategory
+physicalName: PRODUCT_HAS_PRODUCT_CAT
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.Product.Product
+fromRoleLabel: Product
+fromRoleName: Product
+fromRolePluralLabel: Products
+
+toEntity: Merchant.entities.ProductCategory.ProductCategory
+toRoleLabel: Product Category
+toRoleName: ProductCategory
+toRolePhysicalName: PRODUCT_CATEGORY_ID
+
+validationScope: PRE_CONSO
+mandatoryValidationLabel: Product Category is required
+
+foreignAttribute:
+ _type: ForeignAttribute
+ _name: ProductCategory
+ label: Product Category
+ physicalName: PRODUCT_CATEGORY
+ searchable: true

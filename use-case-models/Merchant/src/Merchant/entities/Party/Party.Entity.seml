@@ -1,0 +1,131 @@
+# Description: Entity definition for `Party`.
+# Contains attributes and configuration for the Party record used as a common base for persons and organizations.
+# Role: A foundational entity representing parties (people or organizations) referenced by other master entities.
+ # Description: Entity definition for `Party` (person or organization linked to merchants).
+ # Contains: Attributes for names, identifiers, types, and relationships (contacts/addresses).
+ # Role: Master entity representing parties used across references and relationships.
+_package: Merchant.entities.Party
+_type: Entity
+_name: Party
+label: Party
+pluralLabel: Party
+entityType: FUZZY_MATCHED
+physicalTableName: PARTY
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PartyID
+    label: Party ID
+    physicalName: PARTY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+    description: "Master key for the Party entity"
+
+  - _type: EntityAttribute
+    _name: PartyType
+    label: Party Type
+    physicalName: PARTY_TYPE
+    dataType: Merchant.list_of_values.PartyType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "High-level type: ORGANIZATION or PERSON"
+
+  - _type: EntityAttribute
+    _name: PartyRoleType
+    label: Party Role Type
+    physicalName: PARTY_ROLE_TYPE
+    dataType: Merchant.list_of_values.PartyRoleType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Optional role type (Merchant, Supplier, Customer, Partner)"
+    
+  - _type: EntityAttribute
+    _name: PartyStatus
+    label: Party Status
+    physicalName: PARTY_STATUS
+    dataType: Merchant.list_of_values.PartyStatus
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: false
+    description: "Lifecycle status: Active, Inactive, Suspended"
+
+  - _type: EntityAttribute
+    _name: DisplayName
+    label: Display Name
+    physicalName: DISPLAY_NAME
+    dataType: String
+    length: 200
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary UI / business name"
+
+  - _type: EntityAttribute
+    _name: NormalizedName
+    label: Normalized Name
+    physicalName: NORMALIZED_NAME
+    dataType: String
+    length: 200
+    mandatory: false
+    searchable: true
+    description: "Uppercase, cleaned name for matching"
+
+  - _type: EntityAttribute
+    _name: AlternateName
+    label: Alternate Name
+    physicalName: ALTERNATE_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "DBA / Trade name"
+
+  - _type: EntityAttribute
+    _name: LegalName
+    label: Legal Name
+    physicalName: LEGAL_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Registered legal name (if applicable)"
+
+
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+primaryKey: Merchant.entities.Party.Party.PartyID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: PartySemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameLEName
+      label: Same Name and Legal Entity Name
+      condition: Record1.NormalizedName = Record2.NormalizedName AND Record1.LegalName = Record2.LegalName
+      matchScore: 100
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 0
+  mergeThresholdMergingUnconfirmed: 0
+  mergeThresholdMergingConfirmed: 0
+  mergeThresholdMergingConfirmedWithUnconfirmed: 0
+  mergeThresholdMergingUnconfirmedWithNewMasters: 0
+  mergeThresholdMergingConfirmedWithNewMasters: 0
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false

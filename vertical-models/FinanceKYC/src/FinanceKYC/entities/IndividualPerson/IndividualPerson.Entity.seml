@@ -1,0 +1,178 @@
+_package: FinanceKYC.entities.IndividualPerson
+_type: Entity
+_name: IndividualPerson
+label: Individual Person
+pluralLabel: Individual Person
+entityType: FUZZY_MATCHED
+physicalTableName: INDIVIDUAL_PERSON
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: PersonID
+    _type: EntityAttribute
+    label: Person ID
+    physicalName: PERSON_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _name: FirstName
+    _type: EntityAttribute
+    label: First Name
+    physicalName: FIRST_NAME
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: NormalizedFirstName
+    _type: EntityAttribute
+    label: Normalized First Name
+    physicalName: NORMALIZED_FIRST_NAME
+    dataType: String
+    length: 50
+    mandatory: false
+  
+  - _name: PhonetizedFirstName
+    _type: EntityAttribute
+    label: Phonetized First Name
+    physicalName: PHONETIZED_FIRST_NAME
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _name: LastName
+    _type: EntityAttribute
+    label: Last Name
+    physicalName: LAST_NAME
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: NormalizedLastName
+    _type: EntityAttribute
+    label: Normalized Last Name
+    physicalName: NORMALIZED_LAST_NAME
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _name: PhonetizedLastName
+    _type: EntityAttribute
+    label: Phonetized Last Name
+    physicalName: PHONETIZED_LAST_NAME
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _name: DateOfBirth
+    _type: EntityAttribute
+    label: Date of Birth
+    physicalName: DATE_OF_BIRTH
+    dataType: Date
+    mandatory: false
+
+  - _name: Nationality
+    _type: EntityAttribute
+    label: Nationality
+    physicalName: NATIONALITY
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Gender
+    label: Gender
+    physicalName: GENDER
+    dataType: String
+    length: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: MaritalStatus
+    label: Marital Status
+    physicalName: MARITAL_STATUS
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Occupation
+    label: Occupation
+    physicalName: OCCUPATION
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: TaxID
+    label: Tax ID
+    physicalName: TAX_ID
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsPEP
+    label: Is PEP
+    physicalName: IS_PEP
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.IndividualPerson.IndividualPerson.PersonID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: IndividualPersonMatcher
+  description: Strategies for matching Individual Persons
+
+  matchRules:
+    - _name: NormalizedNameDOBNationalityGenderTaxID
+      _type: SemQLMatchRule
+      label: Normalized Full Name, Date of Birth, Nationality, Gender and Tax ID
+      documentation: 'Exact match on Normalized Full Name, Date of Birth, Nationality, Gender and Tax ID.'
+      color: md:purple 900
+      condition: Record1.NormalizedFirstName = Record2.NormalizedFirstName AND Record1.NormalizedLastName = Record2.NormalizedLastName AND Record1.DateOfBirth = Record2.DateOfBirth AND Record1.Nationality = Record2.Nationality AND Record1.Gender = Record2.Gender AND Record1.TaxID = Record2.TaxID
+      matchScore: 95
+
+    - _name: PhoneticNameDOBNationalityGenderTaxID
+      _type: SemQLMatchRule
+      label: Phonetized Full Name, Date of Birth, Nationality, Gender and Tax ID
+      documentation: 'Exact match on Phonetic Full Name, Date of Birth, Nationality, Gender and Tax ID.'
+      color: md:purple 700
+      condition: Record1.PhonetizedFirstName = Record2.PhonetizedFirstName AND Record1.PhonetizedLastName = Record2.PhonetizedLastName AND Record1.DateOfBirth = Record2.DateOfBirth AND Record1.Nationality = Record2.Nationality AND Record1.Gender = Record2.Gender AND Record1.TaxID = Record2.TaxID
+      matchScore: 88
+
+    - _name: PhoneticName
+      _type: SemQLMatchRule
+      label: Phonetized Full Name
+      documentation: 'Match Only on Phonetized First Name and Phonetized Last Name. So this is a weak rule and must be reviewed by a DataSteward'
+      color: md:purple 400
+      condition: Record1.PhonetizedFirstName = Record2.PhonetizedFirstName AND Record1.PhonetizedLastName = Record2.PhonetizedLastName
+      matchScore: 65
+    
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 95
+  autoConfirmSingletons: false

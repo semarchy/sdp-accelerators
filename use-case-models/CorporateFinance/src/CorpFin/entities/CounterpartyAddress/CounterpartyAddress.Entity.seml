@@ -1,0 +1,41 @@
+_package: CorpFin.entities.CounterpartyAddress
+_type: Entity
+_name: CounterpartyAddress
+label: Counterparty Address
+pluralLabel: Counterparty Addresses
+entityType: BASIC
+physicalTableName: COUNTERPARTY_ADDRESS
+iconUrl: images://mdi/map-marker-account-outline.svg
+description: "Associates a counterparty to a mastered address."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CounterpartyAddressID
+    label: Counterparty Address ID
+    description: Surrogate identifier for counterparty address
+    documentation: ""
+    physicalName: COUNTERPARTY_ADDRESS_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AddressType
+    label: Address Type
+    description: Usage classification (Billing, Shipping, Registered)
+    documentation: ""
+    physicalName: ADDRESS_TYPE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+primaryKey: CorpFin.entities.CounterpartyAddress.CounterpartyAddress.CounterpartyAddressID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

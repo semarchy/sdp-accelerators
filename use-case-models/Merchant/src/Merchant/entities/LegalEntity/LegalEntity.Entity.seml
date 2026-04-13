@@ -1,0 +1,156 @@
+# Description: Entity definition for `LegalEntity`.
+# Contains attributes and matching rules for legal entities (companies, organizations).
+# Role: Represents legal entities which can be linked to parties and merchants.
+ # Description: Entity definition for `LegalEntity` (companies and legal organizations).
+ # Contains: Legal identifiers, names, registration metadata and links to Party.
+ # Role: Represents legal entities associated with merchants and other parties.
+_package: Merchant.entities.LegalEntity
+_type: Entity
+_name: LegalEntity
+label: Legal Entity
+pluralLabel: Legal Entity
+entityType: FUZZY_MATCHED
+physicalTableName: LEGAL_ENTITY
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: LegalEntityID
+    label: Legal Entity ID
+    physicalName: LEGAL_ENTITY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: LegalEntityType
+    label: Legal Entity Type
+    physicalName: LEGAL_ENTITY_TYPE
+    dataType: Merchant.list_of_values.LegalEntityType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Legal entity legal form (Corporation, LLP, Partnership, Sole Proprietor, Trust)"
+  - _type: EntityAttribute
+    _name: LegalName
+    label: Legal Name
+    physicalName: LEGAL_NAME
+    dataType: String
+    length: 256
+    mandatory: false
+    searchable: true
+    description: "Official registered name of the legal entity"
+  - _type: EntityAttribute
+    _name: NormalizedLegalName
+    label: Normalized Legal Name
+    physicalName: NORMALIZED_LEGAL_NAME
+    dataType: String
+    length: 256
+    mandatory: false
+    searchable: true
+    description: "Standardized name used for matching and deduplication"
+  - _type: EntityAttribute
+    _name: AlternateLegalName
+    label: Alternate Legal Name
+    physicalName: ALTERNATE_LEGAL_NAME
+    dataType: String
+    length: 256
+    mandatory: false
+    searchable: true
+    description: "Previous or alternate registered/legal name"
+  - _type: EntityAttribute
+    _name: RegistrationNumber
+    label: Registration Number
+    physicalName: REGISTRATION_NUMBER
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Company or registration number assigned by the registrar"
+  - _type: EntityAttribute
+    _name: RegistrationAuthority
+    label: Registration Authority
+    physicalName: REGISTRATION_AUTHORITY
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Registrar or issuing authority for the registration number"
+  - _type: EntityAttribute
+    _name: TaxIdentifier
+    label: Tax Identifier
+    physicalName: TAX_IDENTIFIER
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Tax identifier such as PAN, EIN, UTR, etc."
+  - _type: EntityAttribute
+    _name: TaxIdentifierType
+    label: Tax Identifier Type
+    physicalName: TAX_IDENTIFIER_TYPE
+    dataType: Merchant.list_of_values.TaxIdentifierType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: false
+    description: "Type of tax identifier (PAN, EIN, VAT, GSTIN, etc.)"
+  - _type: EntityAttribute
+    _name: RegulatoryIdentifier
+    label: Regulatory Identifier
+    physicalName: REGULATORY_IDENTIFIER
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Sector-specific regulatory identifier if applicable"
+  - _type: EntityAttribute
+    _name: RegulatoryAuthority
+    label: Regulatory Authority
+    physicalName: REGULATORY_AUTHORITY
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Issuing regulator for the regulatory identifier"
+  - _type: EntityAttribute
+    _name: IncorporationDate
+    label: Incorporation Date
+    physicalName: INCORPORATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: false
+    description: "Date of legal formation/incorporation"
+     
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+primaryKey: Merchant.entities.LegalEntity.LegalEntity.LegalEntityID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: LegalEntitySemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: TaxID
+      label: Tax Identifier Match Rule
+      condition: Record1.TaxIdentifier = Record2.TaxIdentifier
+      matchScore: 100
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 0
+  mergeThresholdMergingUnconfirmed: 0
+  mergeThresholdMergingConfirmed: 0
+  mergeThresholdMergingConfirmedWithUnconfirmed: 0
+  mergeThresholdMergingUnconfirmedWithNewMasters: 0
+  mergeThresholdMergingConfirmedWithNewMasters: 0
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false

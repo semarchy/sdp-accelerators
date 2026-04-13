@@ -1,0 +1,30 @@
+# Description: Self-reference linking a `Merchant` to its parent `Merchant` (hierarchy).
+# Contains configuration for parent-child merchant relationships and propagation rules.
+# Role: Supports merchant hierarchy modeling for corporate structures or branches.
+_package: Merchant.references
+_name: MerchantHasParent
+_type: Reference
+label: Parent Merchant Reference
+description: Reference linking a Merchant to its parent merchant
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.Merchant.Merchant
+fromRoleLabel: Subsidiary
+fromRoleName: subsidiary
+fromRolePluralLabel: Subsidiaries
+physicalName: MERCHANT_PARENT
+
+toEntity: Merchant.entities.Merchant.Merchant
+toRoleLabel: Parent Merchant
+toRoleName: ParentMerchant
+toRolePhysicalName: PARENT_MERCHANT_ID
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: ParentMerchant
+  label: Parent Merchant ID
+  physicalName: PARENT_MERCHANT_ID
+  searchable: true
+  description: "Reference to parent merchant"

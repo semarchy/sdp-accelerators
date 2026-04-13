@@ -1,0 +1,34 @@
+# Description: Reference linking `PartyContact` to `Party`.
+# Contains navigation, foreign attribute and validation for contact→party relationship.
+# Role: Associates contact records with their parent party in the model.
+_package: Merchant.references
+_name: PartyHasContact
+_type: Reference
+label: Party Contact Reference
+description: Reference linking Contact to its Party
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.PartyContact.PartyContact
+fromRoleLabel: Contact
+fromRoleName: contact
+fromRolePluralLabel: Contacts
+physicalName: PARTY_CONTACT
+
+toEntity: Merchant.entities.Party.Party
+toRoleLabel: Party
+toRoleName: Party
+toRolePhysicalName: PARTY_ID
+validationScope: PRE_CONSO
+mandatoryValidationLabel: Party is required for contact
+oneToMany: true
+splitDuplicatePropagation: NONE
+fromNavigable: true
+toNavigable: true
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Party
+  label: Party ID
+  physicalName: PARTY_ID
+  searchable: true
+  description: "Reference to party associated with contact"

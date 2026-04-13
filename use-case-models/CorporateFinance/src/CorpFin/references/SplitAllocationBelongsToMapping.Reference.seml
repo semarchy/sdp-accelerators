@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: SplitAllocationBelongsToMapping
+_type: Reference
+label: Split Allocation Belongs To Mapping
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.SplitAllocation.SplitAllocation
+fromRoleLabel: Split Allocation
+fromRoleName: splitAllocation
+fromRolePluralLabel: Split Allocations
+physicalName: SPLIT_HAS_ACCOUNTMAPPING
+fromNavigable: true
+
+toEntity: CorpFin.entities.AccountMapping.AccountMapping
+toRoleLabel: Account Mapping
+toRoleName: accountMapping
+toRolePhysicalName: ACCOUNT_MAPPING_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: accountMapping
+  label: Account Mapping ID
+  physicalName: ACCOUNT_MAPPING_ID
+  searchable: true
+  entity: CorpFin.entities.AccountMapping.AccountMapping

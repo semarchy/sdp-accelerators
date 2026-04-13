@@ -1,0 +1,86 @@
+_package: Assets.entities.ProductionLine
+_type: Entity
+_name: ProductionLine
+label: Production Line
+pluralLabel: Production Line
+entityType: BASIC
+physicalTableName: PRODUCTION_LINE
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductionLineID
+    label: Production Line ID
+    physicalName: PRODUCTION_LINE_ID
+    dataType: String
+    length: 5
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: Production line identifier
+    documentation: Production line identifier
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    physicalName: NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: Production line name
+    documentation: Production line name
+  - _type: EntityAttribute
+    _name: Code
+    label: Code
+    physicalName: CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: Unique code for the production line
+    documentation: Unique code for the production line
+  - _type: EntityAttribute
+    _name: Capacity
+    label: Capacity
+    physicalName: CAPACITY
+    dataType: Integer
+    length: 7
+    precision: 7
+    mandatory: false
+    searchable: true
+    description: Capacity in units per hour
+    documentation: Capacity in units per hour
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: Start date
+    documentation: Start date
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: End date
+    documentation: End date
+  - _type: EntityAttribute
+    _name: Location
+    label: Location
+    dataType: Assets.complex_types.AssetLocation
+    goldenAttribute: true
+    physicalName: LOC
+    searchable: true
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: Assets.entities.ProductionLine.ProductionLine.ProductionLineID

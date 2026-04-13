@@ -1,0 +1,92 @@
+_package: FinanceKYC.entities.IdDocument
+_type: Entity
+_name: IdDocument
+label: Id Document
+pluralLabel: Id Document
+entityType: BASIC
+physicalTableName: ID_DOCUMENT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: DocumentID
+    _type: EntityAttribute
+    label: Id Document ID
+    physicalName: ID_DOCUMENT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+    documentation: Unique identifier for the document
+
+  - _name: DocumentType
+    _type: EntityAttribute
+    label: Document Type
+    physicalName: DOCUMENT_TYPE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: DocumentNumber
+    _type: EntityAttribute
+    label: Document Number
+    physicalName: DOCUMENT_NUMBER
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _name: IssueDate
+    _type: EntityAttribute
+    label: Issue Date
+    physicalName: ISSUE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: ExpiryDate
+    _type: EntityAttribute
+    label: Expiry Date
+    physicalName: EXPIRY_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: IssuingCountry
+    _type: EntityAttribute
+    label: Issuing Country
+    physicalName: ISSUING_COUNTRY
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IssuingAuthority
+    label: Issuing Authority
+    physicalName: ISSUING_AUTHORITY
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsVerified
+    label: Is Verified
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.IdDocument.IdDocument.DocumentID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

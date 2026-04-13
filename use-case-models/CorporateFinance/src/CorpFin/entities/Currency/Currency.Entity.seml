@@ -1,0 +1,106 @@
+_package: CorpFin.entities.Currency
+_type: Entity
+_name: Currency
+label: Currency
+pluralLabel: Currencies
+entityType: BASIC
+physicalTableName: CURRENCY
+iconUrl: images://corpfin/multi_currencies.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CurrencyID
+    label: Currency ID
+    description: Surrogate identifier for currency
+    documentation: ""
+    physicalName: CURRENCY_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: Currency Code
+    description: ISO 4217 currency code
+    documentation: ""
+    physicalName: CURRENCY_CODE
+    dataType: String
+    length: 3
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedCurrencyCode
+    label: Normalized Currency Code
+    description: Trimmed and uppercased currency code
+    documentation: ""
+    physicalName: NORMALIZED_CURRENCY_CODE
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CurrencyName
+    label: Currency Name
+    description: Currency full name
+    documentation: ""
+    physicalName: CURRENCY_NAME
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedCurrencyName
+    label: Normalized Currency Name
+    description: Trimmed and uppercased currency name
+    documentation: ""
+    physicalName: NORMALIZED_CURRENCY_NAME
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Symbol
+    label: Symbol
+    description: Currency symbol
+    documentation: ""
+    physicalName: SYMBOL
+    dataType: String
+    length: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: DecimalPrecision
+    label: Decimal Precision
+    description: Number of decimals used
+    documentation: ""
+    physicalName: DECIMAL_PRECISION
+    dataType: Integer
+    precision: 2
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ExchangeRateSource
+    label: Exchange Rate Source
+    description: Source of exchange rate
+    documentation: ""
+    physicalName: EXCHANGE_RATE_SOURCE
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CorpFin.entities.Currency.Currency.CurrencyID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

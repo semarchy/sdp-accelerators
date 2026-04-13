@@ -1,0 +1,47 @@
+# This is the AuthorSalutations Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing salutations within the Salesforce context.
+_name: AuthorSalutations
+_package: sales360.entities.Salutation.steppers
+_type: Stepper
+entity: sales360.entities.Salutation.Salutation
+description: Stepper for managing Salutations in Salesforce Accelerator
+rootStep:
+  _name: Salutations
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Salutation.collection_views.SalutationCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Salutations
+  description: Manage Salutations
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main Salutation Details
+      formTab: sales360.entities.Salutation.forms.SalutationForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Salutations
+stepperFinishValidations: []
+triggers: []

@@ -1,0 +1,92 @@
+_package: FinanceKYC.entities.ContactInformation
+_type: Entity
+_name: ContactInformation
+label: Contact Information
+pluralLabel: Contact Information
+entityType: BASIC
+physicalTableName: CONTACT_INFORMATION
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: ContactID
+    _type: EntityAttribute
+    label: Contact Information ID
+    physicalName: CONTACT_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _name: ContactType
+    _type: EntityAttribute
+    label: Contact Type
+    physicalName: CONTACT_TYPE
+    dataType: String
+    length: 20
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: ContactValue
+    _type: EntityAttribute
+    label: Contact Value
+    physicalName: CONTACT_VALUE
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: IsPrimary
+    _type: EntityAttribute
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: IsVerified
+    _type: EntityAttribute
+    label: Is Verified
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: ValidFrom
+    _type: EntityAttribute
+    label: Valid From
+    physicalName: VALID_FROM
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ValidTo
+    label: Valid To
+    physicalName: VALID_TO
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    physicalName: NOTES
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Preferred
+    label: Preferred
+    physicalName: PREFERRED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.ContactInformation.ContactInformation.ContactID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

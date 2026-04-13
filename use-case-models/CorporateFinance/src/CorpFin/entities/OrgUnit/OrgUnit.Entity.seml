@@ -1,0 +1,107 @@
+_package: CorpFin.entities.OrgUnit
+_type: Entity
+_name: OrgUnit
+label: Org Unit
+pluralLabel: Org Units
+entityType: BASIC
+physicalTableName: ORG_UNIT
+iconUrl: images://mdi/domain.svg
+description: "Master list of cost centers, profit centers, business units, and legal entities."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: OrgUnitID
+    label: Org Unit ID
+    description: Surrogate identifier for organizational unit
+    documentation: ""
+    physicalName: ORG_UNIT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: OrgUnitBusinessCode
+    label: Org Unit Business Code
+    description: External or ERP code for the unit
+    documentation: ""
+    physicalName: ORG_UNIT_BUSINESS_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedOrgUnitBusinessCode
+    label: Normalized Org Unit Business Code
+    description: Trimmed and uppercased business code for matching
+    documentation: ""
+    physicalName: NORM_OU_BUS_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: OrgUnitName
+    label: Org Unit Name
+    description: Display name of the organizational unit
+    documentation: ""
+    physicalName: ORG_UNIT_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedOrgUnitName
+    label: Normalized Org Unit Name
+    description: Trimmed and uppercased organizational unit name for matching
+    documentation: ""
+    physicalName: NORMALIZED_ORG_UNIT_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhonetizedOrgUnitName
+    label: Phonetized Org Unit Name
+    description: Phonetic representation of the org unit name for fuzzy matching
+    documentation: ""
+    physicalName: PHONETIZED_ORG_UNIT_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  # - _type: EntityAttribute
+  #   _name: OrgUnitType
+  #   label: Org Unit Type
+  #   description: Classification (CostCenter, ProfitCenter, BusinessUnit, LegalEntity, Group)
+  #   documentation: ""
+  #   physicalName: ORG_UNIT_TYPE
+  #   dataType: String
+  #   length: 30
+  #   mandatory: true
+  #   mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Narrative description of responsibilities or scope
+    documentation: ""
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    mandatory: false
+
+primaryKey: CorpFin.entities.OrgUnit.OrgUnit.OrgUnitID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

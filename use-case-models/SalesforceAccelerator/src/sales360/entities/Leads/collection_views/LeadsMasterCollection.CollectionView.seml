@@ -1,0 +1,142 @@
+# This is the LeadsMasterCollection collection view used in the Salesforce Accelerator application.
+# It defines how leads are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.Leads.collection_views
+_name: LeadsMasterCollection
+_type: CollectionView
+entity: sales360.entities.Leads.Leads
+default: false
+displayCard: sales360.entities.Leads.display_cards.LeadDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Leads
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: PublisherID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PublisherID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FirstName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FirstName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LastName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LastName
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_Status
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Status
+    visibleByDefault: true
+    defaultWidth: 200
+    displayCard: sales360.entities.LeadStatus.display_cards.LeadStatusDisplayCard
+    referencedEntity: sales360.entities.LeadStatus.LeadStatus
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Title
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Title
+    visibleByDefault: true
+    defaultWidth: 150
+  - _type: TextColumn
+    _name: Company
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Company
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: ReferenceColumn
+    _name: FDN_Industry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Industry
+    visibleByDefault: true
+    referencedEntity: sales360.entities.Industry.Industry
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Phone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: Phone
+    useCustomLabel: true
+    value: Phone.StandardizedPhoneNumber
+    visibleByDefault: true
+  - _type: HyperlinkColumn
+    _name: CleansedEmail
+    columnAlign: LEFT
+    dataType: STRING
+    label: Email
+    useCustomLabel: true
+    value: SEM_CONCAT('','1', 'mailto://', CleansedEmail)
+    visibleByDefault: true
+    defaultWidth: 200
+    componentProperties:
+      linkDisplayText: CleansedEmail
+      linkDisplayTextValueInterpreter: SEMQL
+      linkTarget: new-window
+      linkTargetValueInterpreter: LITERAL
+      linkSourceType: url
+      linkSourceTypeValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Address_GeoStreetNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: Address
+    useCustomLabel: true
+    value: SEM_CONCAT(' ','1', Address.GeoStreetNumber, Address.GeoStreetName,
+      Address.GeoLocality, Address.GeoPostalCode, Address.GeoState,
+      Address.GeoCountryShort)
+    visibleByDefault: true
+    defaultWidth: 500
+  - _type: TextColumn
+    _name: Website
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Website
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: AnnualRevenue
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: AnnualRevenue
+    visibleByDefault: true

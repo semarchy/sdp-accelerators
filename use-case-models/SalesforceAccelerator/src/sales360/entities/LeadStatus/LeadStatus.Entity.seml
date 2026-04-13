@@ -1,0 +1,65 @@
+# This file defines the LeadStatus entity in the Salesforce Accelerator application.
+# It includes attributes such as LeadStatusID, LeadStatusType, and LeadStatusValue,
+# along with their properties and validations.
+# The entity is used to manage lead status information within the application.
+_name: LeadStatus
+_package: sales360.entities.LeadStatus
+_type: Entity
+primaryKey: sales360.entities.LeadStatus.LeadStatus.LeadStatusID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: LeadStatusType
+label: Lead Status
+documentation: Status code for converted lead
+description: Status code for converted lead
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Lead Statuses
+historizeGolden: true
+historizeMaster: false
+physicalTableName: LEAD_STATUS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: LeadStatusID
+    physicalName: LEAD_STATUS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Status ID
+    documentation: Unique identifier for the Lead Status
+    description: Unique identifier for the Lead Status
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LeadStatusType
+    physicalName: LEAD_STATUS_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Status Type
+    documentation: Type of the Lead Status
+    description: Type of the Lead Status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LeadStatusValue
+    physicalName: LEAD_STATUS_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Status Value
+    documentation: Value representing the Lead Status
+    description: Value representing the Lead Status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

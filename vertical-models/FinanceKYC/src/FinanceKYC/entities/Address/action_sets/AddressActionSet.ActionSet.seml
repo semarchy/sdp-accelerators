@@ -1,0 +1,112 @@
+_package: FinanceKYC.entities.Address.action_sets
+_type: ActionSet
+_name: AddressActionSet
+
+entity: FinanceKYC.entities.Address.Address
+label: Address Action Set
+defaultActionSet: true
+
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorAddresses
+    label: Create
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.Address.steppers.AuthorAddresses
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+
+  - _type: EditAction
+    _name: EditAuthorAddresses
+    label: Edit
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.Address.steppers.AuthorAddresses
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorAddresses
+    label: Mass Update
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.Address.steppers.AuthorAddresses
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+
+  - _type: ImportAction
+    _name: ImportAuthorAddresses
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: FinanceKYC.entities.Address.steppers.AuthorAddresses
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: false
+    waitDialogEnabled: false
+
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnAddress
+    label: Review and Confirm Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.Address.dups_managers.ReviewSuggestionsOnAddress
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnAddress
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.Address.dups_managers.ReviewSuggestionsOnAddress
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnAddress
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.Address.dups_managers.ReviewSuggestionsOnAddress
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false
+    
+  - _type: ExplainRecordAction
+    _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    displayCard: FinanceKYC.entities.Address.display_cards.AddressDisplayCard
+    formTab: FinanceKYC.entities.Address.forms.AddressForm.Address
+    waitDialogEnabled: false

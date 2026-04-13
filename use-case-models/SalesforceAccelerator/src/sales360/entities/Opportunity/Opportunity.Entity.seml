@@ -1,0 +1,448 @@
+# This file defines the Opportunity entity in the Salesforce Accelerator application.
+# It includes attributes such as OpportunityID, LastStageChangeDate, ContactId, IsWon, Amount,
+# FiscalQuarter, CloseDate, and FiscalYear, along with their properties and validations.
+# The entity is used to manage opportunity information within the application.
+_name: Opportunity
+_package: sales360.entities.Opportunity
+_type: Entity
+primaryKey: sales360.entities.Opportunity.Opportunity.OpportunityID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: UUID
+  
+label: Opportunity
+documentation: Represents an opportunity, which is a sale or pending deal.
+description: Represents an opportunity, which is a sale or pending deal.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/book.svg
+pluralLabel: Opportunities
+historizeGolden: true
+historizeMaster: true
+physicalTableName: OPPORTUNITY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: OpportunityID
+    physicalName: OPPORTUNITY_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Opportunity ID
+    documentation: Unique identifier for the opportunity
+    description: Unique identifier for the opportunity
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastStageChangeDate
+    physicalName: LAST_STAGE_CHANGE_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Last Stage Change Date
+    documentation: The date of the last change made to the Stage field on this
+      opportunity record
+    description: The date of the last change made to the Stage field on this
+      opportunity record
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ContactId
+    physicalName: CONTACT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Contact Id
+    documentation: ID of the contact associated with this opportunity, set as the
+      primary contact
+    description: ID of the contact associated with this opportunity, set as the
+      primary contact
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsWon
+    physicalName: IS_WON
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Won
+    documentation: Based on the Stage indicates if the opportunity has been won
+    description: Based on the Stage indicates if the opportunity has been won
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Amount
+    physicalName: AMOUNT
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Amount
+    documentation: Estimated total sale amount
+    description: Estimated total sale amount
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FiscalQuarter
+    physicalName: FISCAL_QUARTER
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Fiscal Quarter
+    documentation: Represents the fiscal quarter
+    description: Represents the fiscal quarter
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CloseDate
+    physicalName: CLOSE_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Close Date
+    documentation: Date when the opportunity is expected to close
+    description: Date when the opportunity is expected to close
+    mandatory: true
+    length: 0
+    mandatoryValidationLabel: Close date is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FiscalYear
+    physicalName: FISCAL_YEAR
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Fiscal Year
+    documentation: Represents the fiscal year
+    description: Represents the fiscal year
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HasOpportunityLineItem
+    physicalName: HAS_OPPORTUNITY_LINE_ITEM
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Has Opportunity Line Item
+    documentation: Indicates whether the opportunity has associated line items
+    description: Indicates whether the opportunity has associated line items
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HasOverdueTask
+    physicalName: HAS_OVERDUE_TASK
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Has Overdue Task
+    documentation: Indicates whether an opportunity has an overdue task
+    description: Indicates whether an opportunity has an overdue task
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Fiscal
+    physicalName: FISCAL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Fiscal
+    documentation: The name of the fiscal quarter or period in which the opportunity
+      CloseDate falls
+    description: The name of the fiscal quarter or period in which the opportunity
+      CloseDate falls
+    mandatory: false
+    length: 6
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrivate
+    physicalName: IS_PRIVATE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Private
+    documentation: Indicates whether the opportunity is private
+    description: Indicates whether the opportunity is private
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PushCount
+    physicalName: PUSH_COUNT
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Push Count
+    documentation: The number of times an opportunity's close date has been pushed out by one calendar month
+    description: The number of times an opportunity's close date has been pushed out by one calendar month
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TotalOpportunityQuantity
+    physicalName: TOTAL_OPPORTUNITY_QUANTIT
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Total Opportunity Quantity
+    documentation: Number of items included in this opportunity
+    description: Number of items included in this opportunity
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ExpectedRevenue
+    physicalName: EXPECTED_REVENUE
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Expected Revenue
+    documentation: The product of the opportunity Amount field and the Probability
+    description: The product of the opportunity Amount field and the Probability
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsClosed
+    physicalName: IS_CLOSED
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Closed
+    documentation: Based on the Stage indicates if the opportunity has been closed
+    description: Based on the Stage indicates if the opportunity has been closed
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Territory2Id
+    physicalName: TERRITORY2ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Territory2 Id
+    documentation: ID of the Territory2 associated with this opportunity
+    description: ID of the Territory2 associated with this opportunity
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPriorityRecord
+    physicalName: IS_PRIORITY_RECORD
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Priority Record
+    documentation: Shows whether the user has marked the opportunity as important
+    description: Shows whether the user has marked the opportunity as important
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Pricebook2Id
+    physicalName: PRICEBOOK2ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Pricebook2 Id
+    documentation: ID of the Pricebook2 associated with this opportunity
+    description: ID of the Pricebook2 associated with this opportunity
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastActivityDate
+    physicalName: LAST_ACTIVITY_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Last Activity Date
+    documentation: The most recent date and time when an activity related to
+      the opportunity was marked complete
+    description: The most recent date and time when an activity related to
+      the opportunity was marked complete
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Text description of the opportunity
+    description: Text description of the opportunity
+    mandatory: false
+    length: 4000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HasOpenActivity
+    physicalName: HAS_OPEN_ACTIVITY
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Has Open Activity
+    documentation: Indicates whether an opportunity has an open event or task
+    description: Indicates whether an opportunity has an open event or task
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    documentation: A name for this opportunity
+    description: A name for this opportunity
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Opportunity name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastActivityInDays
+    physicalName: LAST_ACTIVITY_IN_DAYS
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Last Activity In Days
+    documentation: The number of days since the last activity on the opportunity
+    description: The number of days since the last activity on the opportunity
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsExcludedFromTerritory2Filter
+    physicalName: IS_EXCLUDED_FROM_TERRITOR
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Excluded From Territory2 Filter
+    documentation: Indicates whether the opportunity is excluded from Territory2 filtering
+    description: Indicates whether the opportunity is excluded from Territory2 filtering
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NextStep
+    physicalName: NEXT_STEP
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Next Step
+    documentation: Description of next task in closing opportunity
+    description: Description of next task in closing opportunity
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Probability
+    physicalName: PROBABILITY
+    dataType: ByteInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Probability
+    documentation: Percentage of estimated confidence in closing the opportunity
+    description: Percentage of estimated confidence in closing the opportunity
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherOpportunity
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 0
+  mergeThresholdMergingConfirmedWithNewMasters: 0
+  mergeThresholdMergingConfirmedWithUnconfirmed: 0
+  mergeThresholdMergingUnconfirmed: 0
+  mergeThresholdMergingUnconfirmedWithNewMasters: 0
+  mergeThresholdNewGroup: 0
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactName
+      condition: Record1.Name  = Record2.Name
+      label: Exact Name
+      description: Matches when the Name fields are exactly the same
+      matchScore: 100
+      usingMatchOn: false

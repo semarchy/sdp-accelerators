@@ -1,0 +1,29 @@
+# This is a plugin enricher configuration file for normalizing employee names.
+# It uses the Semarchy Convergence person name plugin to normalize names for matching.  
+# For more information, refer to the plugin documentation: https://docs.semarchy.com/sdp/reference/dm/enrichers/person-name-enricher
+_package: Organization.entities.Employee.enrichers
+_type: JavaPluginEnricher
+_name: CNormalizeName
+label: Normalize Name
+enricherExecutionScope: PRE_CONSO
+entity: Organization.entities.Employee.Employee
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.personname.personNameEnricher
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CASE_TRANSFORMATION
+    value: LOWER_CASE
+  - paramName: PARAM_SURNAME_POSITION
+    value: SURNAME_LAST
+pluginInputs:
+  - inputName: COUNTRY_CODE
+    expression: COALESCE( Address.Country, 'US' )
+  - expression: FirstName || ' ' || LastName
+    inputName: Employee_NAME
+pluginOutputs:
+  - attributeName: NormalizedFirstName
+    outputName: GIVEN_NAME
+  - attributeName: NormalizedLastName
+    outputName: SURNAME

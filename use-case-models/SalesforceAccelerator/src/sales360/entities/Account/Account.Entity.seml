@@ -1,0 +1,930 @@
+# This file defines the Account entity for the Salesforce Accelerator application.
+# It includes attributes and properties for managing accounts and their details.
+_name: Account
+_package: sales360.entities.Account
+_type: Entity
+primaryKey: sales360.entities.Account.Account.AccountID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: UUID
+label: Account
+documentation: Represents an individual account, which is an organization (such
+  as customers, competitors, and partners).
+description: Represents an individual account, which is an organization (such as
+  customers, competitors, and partners).
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/book.svg
+pluralLabel: Accounts
+historizeGolden: true
+historizeMaster: true
+physicalTableName: ACCOUNT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AccountID
+    physicalName: ACCOUNT_ID
+    dataType: LongInteger
+    documentation: Unique identifier for the Account record
+    description: Golden ID
+    goldenAttribute: true
+    i18ned: false
+    label: Account ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValidEmailDomain
+    physicalName: VALID_EMAIL_DOMAIN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Valid Email Domain
+    documentation: The domain part of the email address, used for email validation
+    description:  Domain part of email address
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CleansedPersonEmail
+    physicalName: CLEANSED_EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Cleansed Email
+    documentation: The cleansed email address of the person account
+    description: Cleansed email address
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPersonAccount
+    physicalName: IS_PERSON_ACCOUNT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Person Account
+    documentation: Indicates whether the account is a person account
+    description: Indicates if account is a person account
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BusinessShippingAddressSame
+    physicalName: BSNS_SHING_ADR_SAME
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Business Shipping Address Same
+    documentation: Flag used to indicate that the Business and Shipping addresses are the same
+    description: Flag set to true if Business and Shipping addresses are the same
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DAndBCompanyid
+    physicalName: D_AND_B_COMPANYID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: D And B Companyid
+    documentation: Dun & Bradstreet company record ID
+    description: Dun & Bradstreet Company ID
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonEmailBouncedDate
+    physicalName: PERSON_EMAIL_BOUNCED_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Person Email Bounced Date
+    documentation: The date when the person's email address bounced
+    description: Date when person's email bounced
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedWebsite
+    physicalName: NORMALIZED_WEBSITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Website
+    documentation: The enriched website of this account
+    description: Enriched Website
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: YearStarted
+    physicalName: YEAR_STARTED
+    dataType: ShortInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Year Started
+    mandatory: false
+    length: 0
+    documentation: The date when an org was legally established. Available on
+      business accounts, not person accounts
+    description: Year when the account was started for business accounts
+    multiValued: false
+    precision: 5
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NickName
+    physicalName: NICK_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Nick Name
+
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NumberOfEmployees
+    physicalName: NUMBER_OF_EMPLOYEES
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Number Of Employees
+    documentation: Number of employees working at the company represented by this account
+    description: Number of employees working at the account
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonTitle
+    physicalName: PERSON_TITLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Person Title
+    documentation: The job title of the person for a person account
+    description: Job title of the person account
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedLastName
+    physicalName: NORMALIZED_LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Last Name
+    documentation: Enriched Last name
+    description: Enriched Last name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneticAccountName
+    physicalName: PHONETIC_ACCOUNT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Phonetic Account Name
+    documentation: The phonetic representation of the account name
+    description: Phonetic representation of account name
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Website
+    physicalName: WEBSITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Website
+    documentation: The website of this account
+    description: Website of the account
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MergedInCRM
+    physicalName: MERGED_IN_CRM
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Merged In CRM
+    documentation: Indicates whether this account has been merged in the CRM system
+    description: Indicates if account has been merged in CRM
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonDepartment
+    physicalName: PERSON_DEPARTMENT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Person Department
+    documentation: The department of the person for a person account
+    description: Department of the person account
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneticFirstName
+    physicalName: PHONETIC_FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Phonetic First Name
+    documentation: The phonetic representation of the first name
+    description: Phonetic representation of first name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: sales360.list_of_values.ActiveLOV
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the account is active or inactive.
+    description: Indicates if account is active or inactive
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: JigsawCompanyId
+    physicalName: JIGSAW_COMPANY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Jigsaw Company Id
+    documentation: References the ID of a company in Data.com. If an account has
+      a value in this field, it means that the account was imported from Data.com
+    description: Data.com Company ID
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountSite
+    physicalName: ACCOUNT_SITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Account Site
+    documentation: Name of the account's location
+    description: Account Site
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedFirstName
+    physicalName: NORMALIZED_FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized First Name
+    documentation: Enriched First name
+    description: Enriched First name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CustomerPriority
+    physicalName: CUSTOMER_PRIORITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Customer Priority
+    documentation: The priority level of the account as a customer.
+    description: Priority level of the account as a customer
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Rating
+    physicalName: RATING
+    dataType: sales360.list_of_values.RatingLOV
+    goldenAttribute: true
+    i18ned: false
+    label: Rating
+    documentation: The account's prospect rating.
+    description: Prospect rating of the account
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NumberOfLocations
+    physicalName: NUMBER_OF_LOCATIONS
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Number Of Locations
+    documentation: The number of locations associated with this account
+    description: Number of locations associated with the account
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordTypeId
+    physicalName: RECORD_TYPE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Record Type Id
+    documentation: ID of the record type assigned to this object in Salesforce
+    description: Record Type ID
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonLastCURequestDate
+    physicalName: PERSON_LAST_CU_REQUEST_DA
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Person Last CU Request Date
+    documentation: The last date that this person account was requested
+    description: Last date this person account was requested
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3    
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Jigsaw
+    physicalName: JIGSAW
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Jigsaw
+    documentation: References the ID of a company in Data.com. If an account has a
+      value in this field, it means that the account was imported from Data.com
+    description: Data.com Jigsaw ID
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedAccountName
+    physicalName: NORMALIZED_ACCOUNT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Account Name
+    documentation: Enriched Account name
+    description: Enriched Account name
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LocalizedAccountName
+    physicalName: LOCALIZED_ACCOUNT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Localized Account Name
+    documentation: Localized Account name
+    description: Localized Account name
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DunsNumber
+    physicalName: DUNS_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Duns Number
+    documentation: The Data Universal Numbering System (D-U-N-S) number is a unique,
+      nine-digit number assigned to every business location in the Dun &
+      Bradstreet database that has a unique, separate, and distinct operation.
+      D-U-N-S numbers are used by industries and organizations around the world
+      as a global standard for business identification and tracking
+    description: D-U-N-S Number
+    mandatory: false
+    length: 9
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: A description of the account
+    description: Description of the account
+    mandatory: false
+    length: 2000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AnnualRevenue
+    physicalName: ANNUAL_REVENUE
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Annual Revenue
+    documentation: Estimated annual revenue of the account
+    description: Estimated annual revenue of the account
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountName
+    physicalName: ACCOUNT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Account Name
+    documentation: Name of the account. If a Person this value is the concatenation
+      of the FirstName, MiddleName, LastName, and Suffix of the associated
+      person contact.
+    description: Name of the account
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    length: 255
+    mandatoryValidationLabel: Account name is mandatory
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastName
+    physicalName: LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Last Name
+    documentation: Last name of the person for a person account. Required if the
+      record type is a person account record type
+    description: Last name of the person account
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonContactId
+    physicalName: PERSON_CONTACT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Person Contact Id
+    documentation: ID of the contact record associated with this person's account
+    description: Contact ID of the person account
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonEmail
+    physicalName: PERSON_EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Person Email
+    documentation: The email address of the person for a person account
+    description: Email address of the person account
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FirstName
+    physicalName: FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: First Name
+    documentation: First name of the person for a person account.
+    description: First name of the person account
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: UpsellOpportunity
+    physicalName: UPSELL_OPPORTUNITY
+    dataType: sales360.list_of_values.UpsellOppLOV
+    goldenAttribute: true
+    i18ned: false
+    label: Upsell Opportunity
+    documentation: Indicates whether this account is an upsell opportunity.
+    description: Indicates if account is an upsell opportunity
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TradeStyle
+    physicalName: TRADE_STYLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Trade Style
+    documentation: A name, different from its legal name, that an org may use for
+      conducting business
+    description: Alternate business name for the account
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonEmailBouncedReason
+    physicalName: PERSON_EMAIL_BOUNCED_REAS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Person Email Bounced Reason
+    documentation: The reason why the person's email address bounced
+    description: Reason why person's email bounced
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Fax
+    physicalName: FAX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Fax
+    documentation: Fax number of this account
+    description: Fax number of the account
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneticLastName
+    physicalName: PHONETIC_LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Phonetic Last Name
+    documentation: The phonetic representation of the last name
+    description: Phonetic representation of last name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonLastCUUpdateDate
+    physicalName: PERSON_LAST_CU_UPD_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Person Last CU Update Date
+    documentation: The last date a person account was updated
+    description: Last date a person account was updated
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TickerSymbol
+    physicalName: TICKER_SYMBOL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Ticker Symbol
+    documentation: The stock market symbol for this account. This field is available
+      on business accounts, not person accounts.
+    description: Stock market symbol for the account
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Salutation
+    physicalName: SALUTATION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Salutation
+    documentation: Honorific added to the name for use in letters, etc.
+    description: Honorific for the person account
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonIndividualId
+    physicalName: PERSON_INDIVIDUAL_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Person Individual Id
+    documentation: ID of the data privacy record associated with this person's account
+    description: Data privacy record ID of the person account
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonBirthDate
+    physicalName: PERSON_BIRTH_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Person Birth Date
+    documentation: The birth date of the person for a person account
+    description: Birth date of the person account
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountNumber
+    physicalName: ACCOUNT_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Account Number
+    documentation: Account number assigned to this account
+    description: Account number of the account
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhotoUrl
+    physicalName: PHOTO_URL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Photo Url
+    documentation: Social network image URL
+    description: URL of the photo for the account
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PersonAssistantName
+    physicalName: PERSON_ASSISTANT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Person Assistant Name
+    documentation: The name of the assistant for the person for a person account
+    description: Name of the assistant for the person account
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _name: Phone
+    _type: EntityAttribute
+    documentation: Phone number of this account
+    description: Phone number of the account
+    label: Phone
+    physicalName: PHO
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: PersonMailingAddress
+    _type: EntityAttribute
+    label: Person Mailing Address
+    documentation: The mailing address of the person for a person account
+    description: Mailing address of the person account
+    physicalName: PML
+    dataType: sales360.complex_types.StandardizedAddressType
+  - _name: PersonAssitantPhone
+    _type: EntityAttribute
+    label: Person Assitant Phone
+    documentation: The phone number of the assistant for the person for a person account
+    description: Phone number of the assistant for the person account
+    physicalName: PAP
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: ShippingAddress
+    _type: EntityAttribute
+    label: Shipping Address
+    documentation: Shiiping address for this account
+    description: Shipping address of the account
+    physicalName: SHP
+    dataType: sales360.complex_types.StandardizedAddressType
+  - _name: PersonMobilePhone
+    _type: EntityAttribute
+    label: Person Mobile Phone
+    documentation: The mobile phone number of the person for a person account
+    description: Mobile phone number of the person account
+    physicalName: PMP
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: BillingAddress
+    _type: EntityAttribute
+    label: Billing Address
+    documentation: Billing address for this account
+    description: Billing address of the account
+    physicalName: BIL
+    dataType: sales360.complex_types.StandardizedAddressType
+  - _name: PersonHomePhone
+    _type: EntityAttribute
+    label: Person Home Phone
+    documentation: The home phone number of the person for a person account
+    description: Home phone number of the person account
+    physicalName: PHP
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: PersonOtherAddress
+    _type: EntityAttribute
+    label: Person Other Address
+    documentation: The other address of the person for a person account
+    description: Other address of the person account
+    physicalName: POT
+    dataType: sales360.complex_types.StandardizedAddressType
+  - _name: PersonOtherPhone
+    _type: EntityAttribute
+    label: Person Other Phone
+    documentation: The other phone number of the person for a person account
+    description: Other phone number of the person account
+    physicalName: POP
+    dataType: sales360.complex_types.StandardizedPhoneType
+matcher:
+  _name: SemlQLMatcherAccount
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 91
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 75
+  mergeThresholdMergingConfirmedWithUnconfirmed: 75
+  mergeThresholdMergingUnconfirmed: 75
+  mergeThresholdMergingUnconfirmedWithNewMasters: 75
+  mergeThresholdNewGroup: 75
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Account Match Rules
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactNameEnrichedAddress
+      condition: >-
+        /* Match conditions for Business Accounts */
+
+        COALESCE(SEM_BOOLEAN_TO_CHAR(Record1.IsPersonAccount),'false') =
+        'false' 
+
+        and COALESCE(SEM_BOOLEAN_TO_CHAR(Record2.IsPersonAccount),'false') =
+        'false' 
+
+
+        /* Exact match using name and geocoded address */
+
+        and Record1.NormalizedAccountName = Record2.NormalizedAccountName 
+
+        and (Record1.BillingAddress.GeoStreetNumber =
+        Record2.BillingAddress.GeoStreetNumber 
+
+        and Record1.BillingAddress.GeoStreetName =
+        Record2.BillingAddress.GeoStreetName 
+
+        and Record2.BillingAddress.GeoLocality =
+        Record2.BillingAddress.GeoLocality ) 
+
+        or
+
+        (Record1.BillingAddress.GeoStreetNumber =
+        Record2.BillingAddress.GeoStreetNumber 
+
+        and Record1.BillingAddress.GeoStreetName =
+        Record2.BillingAddress.GeoStreetName 
+
+        and Record1.BillingAddress.GeoPostalCode =
+        Record2.BillingAddress.GeoPostalCode )
+      label: Exact Name Enriched Address
+      matchScore: 98
+      color: md:green 800
+      documentation: Check exact match on the Account name and enriched address
+      description: Check exact match on the Account name and enriched address
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: PhoneticNameMatch
+      condition: >-
+        /* Match conditions for Business Accounts */
+
+        COALESCE(SEM_BOOLEAN_TO_CHAR(Record1.IsPersonAccount),'false') =
+        'false' 
+
+        and COALESCE(SEM_BOOLEAN_TO_CHAR(Record2.IsPersonAccount),'false') =
+        'false' 
+
+
+        and Record1.PhoneticAccountName = Record2.PhoneticAccountName 
+
+        and Record1.BillingAddress.GeoPostalCode =
+        Record2.BillingAddress.GeoPostalCode
+      label: Phonetic Name Match
+      documentation: Check Phonetcic Name and Postal Code
+      description: Check Phonetcic Name and Postal Code
+      matchScore: 90
+      color: md:green 700
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: WebsiteAndParentMatch
+      condition: >-
+        /* Match conditions for Business Accounts */
+
+        COALESCE(SEM_BOOLEAN_TO_CHAR(Record1.IsPersonAccount),'false') =
+        'false' 
+
+        and COALESCE(SEM_BOOLEAN_TO_CHAR(Record2.IsPersonAccount),'false') =
+        'false' 
+
+
+        and Record1.NormalizedWebsite = Record2.NormalizedWebsite
+
+        and( Record1.ParentAccount.NormalizedAccountName =
+        Record2.ParentAccount.NormalizedAccountName 
+                 or( Record1.ParentAccount.NormalizedAccountName IS NULL and Record1.ParentAccount.NormalizedAccountName IS NULL ) 
+                 )
+      label: Website And Parent Match
+      documentation: Check a match on website and Patrent account
+      description: Check a match on website and Patrent account
+      matchScore: 60
+      color: md:green 300
+      usingMatchOn: false

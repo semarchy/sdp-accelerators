@@ -1,0 +1,121 @@
+_package: FinanceKYC.entities.InsuranceProduct
+_type: Entity
+_name: InsuranceProduct
+label: Insurance Product
+pluralLabel: Insurance Product
+entityType: BASIC
+physicalTableName: INSURANCE_PRODUCT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: InsuranceProductID
+    _type: EntityAttribute
+    label: Insurance Product ID
+    description: Unique identifier for the insurance product
+    documentation: ''
+    physicalName: INSURANCE_PRODUCT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    valueSeparator: ''
+    searchable: true
+
+  - _name: ProductName
+    _type: EntityAttribute
+    label: Product Name
+    description: Name of the insurance product
+    documentation: ''
+    physicalName: PRODUCT_NAME
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Product Name is required
+    valueSeparator: ','
+    searchable: true
+    length: 100
+
+  - _name: ProductType
+    _type: EntityAttribute
+    label: Product Type
+    description: Type of product
+    documentation: ''
+    physicalName: PRODUCT_TYPE
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Product Type is required
+    valueSeparator: ','
+    searchable: true
+    length: 30
+
+  - _name: Currency
+    _type: EntityAttribute
+    label: Currency
+    description: Currency
+    documentation: ''
+    physicalName: CURRENCY
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Currency is required
+    valueSeparator: ','
+    searchable: true
+    length: 10
+
+  - _name: IsActive
+    _type: EntityAttribute
+    label: Is Active
+    description: Active flag
+    documentation: ''
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 1
+
+  - _name: StartDate
+    _type: EntityAttribute
+    label: Start Date
+    description: Start date
+    documentation: ''
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationLabel: Start Date is required
+    mandatoryValidationScope: PRE_CONSO
+    valueSeparator: ','
+    searchable: true
+
+  - _name: EndDate
+    _type: EntityAttribute
+    label: End Date
+    description: End date
+    documentation: ''
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    description: Additional notes
+    documentation: ''
+    physicalName: NOTES
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 255
+
+primaryKey: FinanceKYC.entities.InsuranceProduct.InsuranceProduct.InsuranceProductID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

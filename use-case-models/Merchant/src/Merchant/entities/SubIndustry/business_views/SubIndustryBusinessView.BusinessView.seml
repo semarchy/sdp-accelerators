@@ -1,0 +1,47 @@
+ # Description: Business view for `SubIndustry` providing navigation and actions.
+ # Contains: Business node linking to form, collection and action set for SubIndustry.
+ # Role: Integrates SubIndustry into the model navigation UI.
+_package: Merchant.entities.SubIndustry.business_views
+# Description: Business view for `SubIndustry` that integrates forms, collections and actions.
+# Contains the configured business entity (display card, form, collection) for sub-industries.
+# Role: Exposes sub-industry data in the application navigation and search features.
+_type: BusinessView
+_name: SubIndustryBusinessView
+label: Sub Industry Business View
+entity: Merchant.entities.SubIndustry.SubIndustry
+
+rootLabel: Sub Industries
+rootPluralLabel: Sub Industries
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: SubIndustry
+  displayCard: Merchant.entities.SubIndustry.display_cards.SubIndustryDisplayCard
+  entity: Merchant.entities.SubIndustry.SubIndustry
+  actionSet: Merchant.entities.SubIndustry.action_sets.SubIndustryActionSet
+  collection: Merchant.entities.SubIndustry.collection_views.SubIndustryCollectionView
+  form: Merchant.entities.SubIndustry.forms.SubIndustryForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

@@ -1,0 +1,64 @@
+_package: FinanceKYC.entities.IndividualPerson.business_views
+_type: BusinessView
+_name: IndividualPersonConfirmMatches
+
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+label: Confirm Matches
+rootLabel: Confirm Match
+rootPluralLabel: Confirm Matches
+rootFilter: MastersCount > 1 AND ConfirmationStatus != 'CONFIRMED'
+rootIconUrl: images://mdi/account-check.svg
+rootDescription: ''
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: IndividualPerson
+  entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+
+  actionSet: FinanceKYC.entities.IndividualPerson.action_sets.IndividualPersonConfirmMatchesActionSet
+  collection: FinanceKYC.entities.IndividualPerson.collection_views.IndividualPersonConfirmMatchesCollectionView
+  form: FinanceKYC.entities.IndividualPerson.forms.IndividualPersonForm
+  displayCard: FinanceKYC.entities.IndividualPerson.display_cards.IndividualPersonDisplayCard
+
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+      businessViewEntity: 
+        _type: BusinessViewEntityReference
+        ref: FinanceKYC.entities.IndividualPerson.business_views.IndividualPersonConfirmMatches.IndividualPerson
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  # sortExpression: ''
+
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

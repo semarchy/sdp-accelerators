@@ -1,0 +1,11 @@
+_package: Merchant.entities.LegalEntity.enrichers
+_name: NormalizeLegalName
+_type: SemQLEnricher
+description: "Normalizes `LegalName` to create `NormalizedLegalName` for matching"
+label: "Normalize Legal Name"
+entity: Merchant.entities.LegalEntity.LegalEntity
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedLegalName
+    expression: UPPER(RTRIM(LTRIM(LegalName)))

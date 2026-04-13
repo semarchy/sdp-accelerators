@@ -1,0 +1,295 @@
+_package: FinanceKYC.applications
+_name: FinanceAdmin
+_type: Application
+label: Finance Administration Actions
+applicationTitle: Finance Admin
+
+visibility: VISIBLE
+avatarImageUrl: images://finance-KYC/appFinanceCustomerDB_icon.jpg
+logoUrl: images://finance-KYC/appFinanceCustomerDB_iconcolor_small.png
+coverImageUrl: images://finance-KYC/AppFinanceCustomerDB.png
+favIcon: images://finance-KYC/appFinanceCustomerDB_iconcolor_small.png
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+
+defaultAction: FinanceKYC.applications.FinanceAdmin.Root.GeneralActions.MyTasks
+
+documentationConfig:
+  documentation: ''
+  documentationConfigDiagrams:
+    - _name: Diagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: FinanceKYC.model_diagrams.FinanceKYCDiagram
+      label: Finance KYC Diagram
+
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+
+
+  globalSearchBusinessViews:
+    - _name: Address
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.Address.business_views.AddressBusinessView
+      searchTypeConfig: FinanceKYC.entities.Address.business_views.AddressBusinessView.Address.TextConfig
+
+    - _name: ContactInformation
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.ContactInformation.business_views.ContactInformationBusinessView
+      searchTypeConfig: FinanceKYC.entities.ContactInformation.business_views.ContactInformationBusinessView.ContactInformation.TextConfig
+
+    - _name: CorporateEntity
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityBusinessView
+      searchTypeConfig: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityBusinessView.CorporateEntity.TextConfig
+
+    - _name: Customer
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.Customer.business_views.CustomerBusinessView
+      searchTypeConfig: FinanceKYC.entities.Customer.business_views.CustomerBusinessView.Customer.TextConfig
+
+    - _name: IndividualPerson
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: FinanceKYC.entities.IndividualPerson.business_views.IndividualPerson
+      searchTypeConfig: FinanceKYC.entities.IndividualPerson.business_views.IndividualPerson.IndividualPerson.TextConfig
+
+navDrawer:
+  - _type: FolderNavGroup
+    _name: GeneralActions
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: FinanceKYC.applications.FinanceAdmin.Root.GeneralActions
+  - _type: FolderNavGroup
+    _name: DocumentationFolder
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: FinanceKYC.applications.FinanceAdmin.Root.Administration
+
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+    - _type: FolderAction
+      _name: GeneralActions
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Quick links
+      appActions:
+        - _type: GlobalSearchAction
+          _name: GlobalSearch
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          description: Search across all entities
+          iconColor: md:green
+        - _type: MyTasksAction
+          _name: MyTasks
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          badgeVisible: true
+          description: View my tasks
+          image: images://mdi/inbox-multiple.svg
+          iconColor: md:green
+
+    - _type: FolderAction
+      _name: Administration
+      
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Administrative tasks
+      label: Administration
+      image: images://mdi/bookshelf.svg
+      appActions:
+        - _type: FolderAction
+          _name: AdministrationFolder
+          label: Admin & Documentation
+          image: images://mdi/bookshelf.svg
+          icon: images://mdi/bookshelf.svg
+          iconColor: md:grey
+          labelColor: md:grey
+          appActions:
+            - _type: OpenDocumentationAction
+              _name: OpenModelDoc
+              iconColor: md:grey
+              label: Model Documentation
+            - _type: BrowseEntitiesFolderAction
+              _name: Entities
+              lineageEnabled: true
+            - _type: FolderAction
+              _name: ImportData
+              icon: images://mdi/database-import.svg
+              image: images://default/folder-item-import.png
+              iconColor: md:grey
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              label: Import Data
+              requiredRole: SemAdmin
+              appActions:
+                - _type: ImportDataAppAction
+                  _name: BankingProductCategories
+                  label: Import Banking Product Categories
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.BankingProductCategory.action_sets.BankingProductCategoryActionSet.ImportAuthorBankingProductCategories
+
+                - _type: ImportDataAppAction
+                  _name: ImportCustomer
+                  label: Import Customer
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.Customer.action_sets.CustomerActionSet.ImportAuthorCustomers
+
+                - _type: ImportDataAppAction
+                  _name: InsuranceProductCategories
+                  label: Import Insurance Product Categories
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.InsuranceProductCategory.action_sets.InsuranceProductCategoryActionSet.ImportAuthorInsuranceProductCategories
+
+                - _type: ImportDataAppAction
+                  _name: ImportAddress
+                  label: Import Address
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.Address.action_sets.AddressActionSet.ImportAuthorAddresses
+
+                - _type: ImportDataAppAction
+                  _name: ImportBankAccount
+                  label: Import Bank Account
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.BankAccount.action_sets.BankAccountActionSet.ImportAuthorBankAccounts
+
+                - _type: ImportDataAppAction
+                  _name: ImportBankingProducts
+                  label: Import Banking Products
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.BankingProduct.action_sets.BankingProductActionSet.ImportAuthorBankingProducts
+
+                - _type: ImportDataAppAction
+                  _name: ImportContactInformation
+                  label: Import Contact Information
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.ContactInformation.action_sets.ContactInformationActionSet.ImportAuthorContactInformations
+
+                - _type: ImportDataAppAction
+                  _name: ImportCustomerRiskProfile
+                  label: Import Customer Risk Profile
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.CustomerRiskProfile.action_sets.CustomerRiskProfileActionSet.ImportAuthorCustomerRiskProfiles
+
+                - _type: ImportDataAppAction
+                  _name: ImportIdDocument
+                  label: Import Id Document
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.IdDocument.action_sets.IdDocumentActionSet.ImportAuthorIdDocuments
+
+                - _type: ImportDataAppAction
+                  _name: ImportIndividualPerson
+                  label: Import Individual Person
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.IndividualPerson.action_sets.IndividualPersonActionSet.ImportAuthorIndividualPeople
+
+                - _type: ImportDataAppAction
+                  _name: ImportInsuranceProducts
+                  label: Import Insurance Products
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.InsuranceProduct.action_sets.InsuranceProductActionSet.ImportAuthorInsuranceProducts
+
+                - _type: ImportDataAppAction
+                  _name: ImportKYCCheck
+                  label: Import  KYC Check
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.KYCCheck.action_sets.KYCCheckActionSet.ImportAuthorKYCChecks
+
+                - _type: ImportDataAppAction
+                  _name: ImportKYCReview
+                  label: Import KYC Review
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.KYCReview.action_sets.KYCReviewActionSet.ImportAuthorKYCReviews
+
+                - _type: ImportDataAppAction
+                  _name: ImportRelationship
+                  label: Import Relationship
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.Relationship.action_sets.RelationshipActionSet.ImportAuthorRelationships
+
+                - _type: ImportDataAppAction
+                  _name: ImportBankingContract
+                  label: Import Banking Contract
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.BankingContract.action_sets.BankingContractActionSet.ImportAuthorBankingContracts
+
+                - _type: ImportDataAppAction
+                  _name: ImportEmployment
+                  label: Import Employment
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.Employment.action_sets.EmploymentActionSet.ImportAuthorEmployments
+
+                - _type: ImportDataAppAction
+                  _name: ImportInsuranceContract
+                  label: Import Insurance Contract
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.InsuranceContract.action_sets.InsuranceContractActionSet.ImportAuthorInsuranceContracts
+
+                - _type: ImportDataAppAction
+                  _name: ImportUBO
+                  label: Import UBO
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.UBO.action_sets.UBOActionSet.ImportAuthorUBOS
+
+                - _type: ImportDataAppAction
+                  _name: ImportBankingContractRole
+                  label: Import Banking Contract Role
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.BankingContractRole.action_sets.BankingContractRoleActionSet.ImportAuthorBankingContractRoles
+
+                - _type: ImportDataAppAction
+                  _name: ImportInsuranceContractRole
+                  label: Import Insurance Contract Role
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: FinanceKYC.entities.InsuranceContractRole.action_sets.InsuranceContractRoleActionSet.ImportAuthorInsuranceContractRoles

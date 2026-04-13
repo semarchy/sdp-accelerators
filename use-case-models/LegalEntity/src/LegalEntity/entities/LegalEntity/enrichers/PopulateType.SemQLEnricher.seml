@@ -1,0 +1,10 @@
+_package: LegalEntity.entities.LegalEntity.enrichers
+_name: PopulateType
+_type: SemQLEnricher
+entity: LegalEntity.entities.LegalEntity.LegalEntity
+label: Autopopulate Type
+description: ''
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_EntityType
+    expression: "case when  REGEXP_LIKE(NormalizedName, '[PSG]{3}') then 'Internal' else 'Investor' end"

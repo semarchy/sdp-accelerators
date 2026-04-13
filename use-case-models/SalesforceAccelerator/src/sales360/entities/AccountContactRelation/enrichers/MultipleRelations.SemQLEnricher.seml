@@ -1,0 +1,17 @@
+# It is an enricher for the AccountContactRelation entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that handles multiple relations by checking for semicolon-separated values
+# in the FID_Role and MultipleRoles attributes.
+# The enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.AccountContactRelation.enrichers
+_name: MultipleRelations
+entity: sales360.entities.AccountContactRelation.AccountContactRelation
+label: Multiple Relations
+description: Handles multiple relations by checking for semicolon-separated values in the FID_Role and MultipleRoles attributes.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_Role
+    expression: CASE WHEN FID_Role LIKE '%;%' THEN NULL ELSE FID_Role END
+  - attributeName: MultipleRoles
+    expression: CASE WHEN MultipleRoles LIKE '%;%' THEN MultipleRoles ELSE NULL END
+afterEnrichers: sales360.entities.AccountContactRelation.enrichers.AccountID

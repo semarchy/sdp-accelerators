@@ -1,0 +1,39 @@
+# This file defines the action set for confirming matches on Employee entities in the Organization domain.
+# It includes actions for reviewing and confirming duplicates, direct confirmation,
+# and merging or splitting duplicates. Each action is configured with specific properties
+# such as labels, dups manager associations, and item limits.
+_package: Organization.entities.Employee.action_sets
+_type: ActionSet
+entity: Organization.entities.Employee.Employee
+_name: EmployeeConfirmMatchesActionSet
+label: Employee Confirm Matches Action Set
+description: ''
+defaultActionSet: false
+actions:
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Review And Confirm Matches
+    description: ''
+    dupsManager: Organization.entities.Employee.dups_managers.ConfirmMatchesOnEmployee
+    enableEdit: true
+    itemsLimit: 1000
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    useCustomLabel: true
+    label: Single-Click Confirm
+    description: ''
+    waitDialogEnabled: false
+    itemsLimit: 1000
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Merge Or Split Duplicates
+    description: ''
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    itemsLimit: 1000
+    waitDialogEnabled: false
+

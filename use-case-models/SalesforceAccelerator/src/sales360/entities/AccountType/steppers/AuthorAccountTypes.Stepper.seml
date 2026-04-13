@@ -1,0 +1,47 @@
+# This is the AuthorAccountTypes Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing account types within the Salesforce context.
+_name: AuthorAccountTypes
+_package: sales360.entities.AccountType.steppers
+_type: Stepper
+entity: sales360.entities.AccountType.AccountType
+description: Stepper for managing Author Account Types in Salesforce Accelerator
+rootStep:
+  _name: AccountTypes
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.AccountType.collection_views.AccountTypeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Account Types
+  description: Manage Author Account Types
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Author Account Types
+      formTab: sales360.entities.AccountType.forms.AccountTypeForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Account Types
+stepperFinishValidations: []
+triggers: []

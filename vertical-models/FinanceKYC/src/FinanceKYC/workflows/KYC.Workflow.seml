@@ -1,0 +1,231 @@
+_package: FinanceKYC.workflows
+_name: KYC
+_type: Workflow
+label: KYC Workflow
+workflowAdminRole: semarchyAdmin
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+  - entity: FinanceKYC.entities.Customer.Customer
+    _type: RootEntity
+    _name: Customer
+    cardinality: SINGLE_RECORD
+    displayCard: FinanceKYC.entities.Customer.display_cards.CustomerDisplayCard
+    childEntities:
+      - ref: FinanceKYC.references.KYCCheckHasCustomer
+      - ref: FinanceKYC.references.KYCReviewHasCustomer
+steps:
+  - _type: StartFromSelectionEvent
+    authoredEntity: FinanceKYC.entities.Customer.Customer
+    selectionSourceType: GOLDEN_DATA
+    conditionOnSelection: 1=1
+    _name: Start
+    position:
+      x: -475.4180206794682
+      y: -64.72673559822746
+    label: Start
+    initiatorRequiredRole: BusinessUser
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: FinanceKYC.workflows.KYC.InitiateWFKYC
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 440
+      y: -80
+  - _type: UserTask
+    _name: InitiateWFKYC
+    label: Initiate KYC Workflow
+    icon: images://mdi/account-edit.svg
+    position:
+      x: -270
+      y: -80
+    application: FinanceKYC.applications.FinanceKYCCustomer360
+    assigneeRequiredRole: BusinessUser
+    assigneeCondition: Username=UserTaskInstance.StepInstance.WorkflowInstance.InitiatorName
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: FinanceKYC.entities.Customer.Customer
+    stepper: FinanceKYC.entities.Customer.steppers.KYCReview
+    myTasksConfiguration:
+      collection: FinanceKYC.entities.Customer.collection_views.CustomerCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: SendToReview
+        label: Send To Review
+        toStep: FinanceKYC.workflows.KYC.KYCCheck
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+      - _type: UserTaskTransition
+        _name: Cancel
+        label: Cancel
+        toStep: FinanceKYC.workflows.KYC.End
+        bendPoints:
+          - x: -150
+            y: -180
+          - x: 405
+            y: -180
+        userTaskCompletionRequired: true
+        behaviorOnTransition: REVERT_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+  - _type: UserTask
+    _name: KYCCheck
+    label: KYC Check
+    icon: images://mdi/account-check.svg
+    position:
+      x: 50
+      y: -80
+    application: FinanceKYC.applications.FinanceKYCCustomer360
+    assigneeRequiredRole: DataSteward
+    assigneeCanRelease: true
+    taskType: DATA_AUTHORING
+    entity: FinanceKYC.entities.Customer.Customer
+    stepper: FinanceKYC.entities.Customer.steppers.KYCCheck
+    myTasksConfiguration:
+      collection: FinanceKYC.entities.Customer.collection_views.CustomerCollectionView
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    transitions:
+      - _type: UserTaskTransition
+        _name: ApproveNewPartner
+        label: Approve
+        toStep: FinanceKYC.workflows.KYC.SubmitData
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+      - _type: UserTaskTransition
+        _name: SendBackForCorrection
+        label: Send Back For Correction
+        toStep: FinanceKYC.workflows.KYC.InitiateWFKYC
+        bendPoints:
+          - x: 60
+            y: 90
+          - x: -165
+            y: 90
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: true
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+      - _type: UserTaskTransition
+        _name: DiscardProduct
+        label: Discard Product
+        toStep: FinanceKYC.workflows.KYC.End
+        bendPoints:
+          - x: 165
+            y: 90
+          - x: 405
+            y: 90
+        userTaskCompletionRequired: true
+        behaviorOnTransition: REVERT_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 300
+      y: -80
+    integrationJob: FinanceKYC.model_jobs.INTEGRATE_ALL
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: FinanceKYC.workflows.KYC.End
+      bendPoints: []

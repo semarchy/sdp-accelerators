@@ -1,0 +1,44 @@
+ # Description: Business view for `Country` providing navigation and actions.
+ # Contains: Business entity nodes, collection/form/actionSet links.
+ # Role: Exposes Country master data in the model navigation and UI.
+_package: Merchant.entities.Country.business_views
+_type: BusinessView
+_name: CountryBusinessView
+label: Countries
+entity: Merchant.entities.Country.Country
+
+rootLabel: Countries
+rootPluralLabel: Countries
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Country
+  displayCard: Merchant.entities.Country.display_cards.CountryDisplayCard
+  entity: Merchant.entities.Country.Country
+  actionSet: Merchant.entities.Country.action_sets.CountryActionSet
+  collection: Merchant.entities.Country.collection_views.CountryCollectionView
+  form: Merchant.entities.Country.forms.CountryForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

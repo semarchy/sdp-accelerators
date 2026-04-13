@@ -1,0 +1,49 @@
+# It is a Java Plugin enricher for the Account entity in the Salesforce Accelerator application.
+# This enricher uses Google Map API to get enriched geocoded Billing address for the
+# addresses coming from source or authored data.
+# This enricher scope is NONE and can be updated as per use case.
+_type: JavaPluginEnricher
+_package: sales360.entities.Account.enrichers
+_name: GeocodedBillingAddress
+entity: sales360.entities.Account.Account
+label: Geocoded Billing Address
+description: Use Google Map API to get enriched geocoded address for the
+  addresses coming from source or authored data
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+pluginInputs:
+  - inputName: IN_COUNTRY
+    expression: BillingAddress.InpCountry
+  - inputName: IN_ADDRESSLINE
+    expression: BillingAddress.InpAddressLine
+  - inputName: IN_POSTALCODE
+    expression: BillingAddress.InpZipCode
+  - inputName: IN_CITY
+    expression: BillingAddress.InpCity
+pluginOutputs:
+  - outputName: COUNTRY_LONGNAME
+    attributeName: BillingAddress.GeoCountry
+  - outputName: ADM_AREA_LEV1_SHORTNAME
+    attributeName: BillingAddress.GeoState
+  - outputName: COORDINATES_LONGITUDE
+    attributeName: BillingAddress.GeoLongitude
+  - outputName: ROUTE_LONGNAME
+    attributeName: BillingAddress.GeoStreetName
+  - outputName: COUNTRY_SHORTNAME
+    attributeName: BillingAddress.GeoCountryShort
+  - outputName: LOCALITY_LONGNAME
+    attributeName: BillingAddress.GeoLocality
+  - outputName: POSTALCODE_LONGNAME
+    attributeName: BillingAddress.GeoPostalCode
+  - outputName: COORDINATES_LATITUDE
+    attributeName: BillingAddress.GeoLatitude
+  - outputName: STREETNUMBER_LONGNAME
+    attributeName: BillingAddress.GeoStreetNumber
+afterEnrichers: sales360.entities.Account.enrichers.PhoneticAccountName

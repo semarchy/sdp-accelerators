@@ -1,0 +1,83 @@
+_package: FinanceKYC.entities.InsuranceProductCategory
+_type: Entity
+_name: InsuranceProductCategory
+label: Insurance Product Category
+pluralLabel: Insurance Product Categories
+entityType: BASIC
+physicalTableName: INS_PRODUCT_CAT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: CategoryID
+    _type: EntityAttribute
+    label: Insurance Product Category ID
+    description: Unique identifier for the Insurance product category
+    documentation: ''
+    physicalName: INS_PROD_CAT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    valueSeparator: ''
+    searchable: true
+
+  - _name: CategoryName
+    _type: EntityAttribute
+    label: Category Name
+    description: Name of the product category
+    documentation: ''
+    physicalName: CAT_NAME
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Insurance product category name is required
+    valueSeparator: ','
+    searchable: true
+    length: 50
+
+  - _name: Description
+    _type: EntityAttribute
+    label: Description
+    description: Category description
+    documentation: ''
+    physicalName: DESCR
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Description is required
+    valueSeparator: ','
+    searchable: true
+    length: 255
+
+  - _name: IsActive
+    _type: EntityAttribute
+    label: Is Active
+    description: Active flag
+    documentation: ''
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 1
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    description: Additional notes
+    documentation: ''
+    physicalName: NOTES
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 255
+
+primaryKey: FinanceKYC.entities.InsuranceProductCategory.InsuranceProductCategory.CategoryID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

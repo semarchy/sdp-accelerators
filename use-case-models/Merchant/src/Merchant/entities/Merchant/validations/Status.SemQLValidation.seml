@@ -1,0 +1,9 @@
+_package: Merchant.entities.Merchant.validations
+_name: Status
+_type: SemQLValidation
+entity: Merchant.entities.Merchant.Merchant
+label: Validate Merchant Status
+# Status must be provided and not empty/whitespace
+condition: Status IS NOT NULL AND LENGTH(LTRIM(RTRIM(Status))) > 0
+validationScope: PRE_CONSO
+validationLabel: Status must not be null or empty

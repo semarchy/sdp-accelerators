@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: AccountMappingHasTargetAccount
+_type: Reference
+label: Account Mapping Has Target Account
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.AccountMapping.AccountMapping
+fromRoleLabel: Account Mapping
+fromRoleName: accountMappingOrigTGT
+fromRolePluralLabel: Account Mappings
+physicalName: ACCOUNTMAPPING_HAS_TARGET
+fromNavigable: true
+
+toEntity: CorpFin.entities.Account.Account
+toRoleLabel: Target Account
+toRoleName: targetAccount
+toRolePhysicalName: TARGET_ACCOUNT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: targetAccount
+  label: Target Account ID
+  physicalName: TARGET_ACCOUNT_ID
+  searchable: true
+  entity: CorpFin.entities.Account.Account

@@ -1,0 +1,545 @@
+# This file defines the Leads entity in the Salesforce Accelerator application.
+# It includes attributes such as LeadID, PhoneticCompany, Fax, CleansedEmail, Name,
+# Title, DAndBCompanyId, Jigsaw, NumberOfEmployees, Description,
+# along with their properties and validations.
+# The entity is used to manage lead information within the application.
+_name: Leads
+_package: sales360.entities.Leads
+_type: Entity
+primaryKey: sales360.entities.Leads.Leads.LeadID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: UUID
+label: Leads
+documentation: Represents a prospect or lead.
+description: Represents a prospect or lead.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/book.svg
+pluralLabel: Leads
+historizeGolden: true
+historizeMaster: true
+physicalTableName: LEADS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: LeadID
+    physicalName: LEAD_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Lead ID
+    documentation: Unique identifier for the lead
+    description: Unique identifier for the lead
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneticCompany
+    physicalName: PHONETIC_COMPANY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Phonetic Company
+    documentation: Phonetic representation of the lead's company name
+    description: Phonetic representation of the lead's company name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Fax
+    physicalName: FAX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Fax
+    documentation: The lead's fax number
+    description: The lead's fax number
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CleansedEmail
+    physicalName: CLEANSED_EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Cleansed Email
+    documentation: The lead's enriched email address
+    description: The lead's enriched email address
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    documentation: Concatenation of FirstName, MiddleName, LastName, and Suffix
+    description: Concatenation of FirstName, MiddleName, LastName, and Suffix
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Title
+    physicalName: TITLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Title
+    documentation: Title for the lead
+    description: Title for the lead
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DAndBCompanyId
+    physicalName: D_AND_B_COMPANY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: D And B Company Id
+    documentation: Dun & Bradstreet (D&B) D-U-N-S® Number for the lead's company
+    description: Dun & Bradstreet (D&B) D-U-N-S® Number for the lead's company
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Jigsaw
+    physicalName: JIGSAW
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Jigsaw
+    documentation: References the ID of a contact in Data.com
+    description: References the ID of a contact in Data.com
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NumberOfEmployees
+    physicalName: NUMBER_OF_EMPLOYEES
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Number Of Employees
+    documentation: Number of employees in the lead's company
+    description: Number of employees in the lead's company
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: The lead's description
+    description: The lead's description
+    mandatory: false
+    length: 4000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsUnreadByOwner
+    physicalName: IS_UNREAD_BY_OWNER
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Unread By Owner
+    documentation: Indicates whether the lead has been read by the owner
+    description: Indicates whether the lead has been read by the owner
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Company
+    physicalName: COMPANY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Company
+    documentation: The lead's company
+    description: The lead's company
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Company is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Email
+    physicalName: EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Email
+    documentation: The lead's email address from source
+    description: The lead's email address from source
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsConverted
+    physicalName: IS_CONVERTED
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Converted
+    documentation: Indicates whether the lead has been converted
+    description: Indicates whether the lead has been converted
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EmailBouncedReason
+    physicalName: EMAIL_BOUNCED_REASON
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Email Bounced Reason
+    documentation: If bounce management is activated and an email sent to the lead
+      bounced, the reason for the bounce
+    description: If bounce management is activated and an email sent to the lead
+      bounced, the reason for the bounce
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ConvertedDate
+    physicalName: CONVERTED_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Converted Date
+    documentation: Date on which this lead was converted
+    description: Date on which this lead was converted
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Website
+    physicalName: WEBSITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Website
+    documentation: Website for the lead
+    description: Website for the lead
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CompanyDunsNumber
+    physicalName: COMPANY_DUNS_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Company Duns Number
+    documentation: The Data Universal Numbering System (D-U-N-S) number
+    description: The Data Universal Numbering System (D-U-N-S) number
+    mandatory: false
+    length: 9
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedCompany
+    physicalName: NORMALIZED_COMPANY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Company
+    documentation: Enriched Company name for the lead
+    description: Enriched Company name for the lead
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastName
+    physicalName: LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Last Name
+    documentation: Last name of the lead
+    description: Last name of the lead
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Last Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IndividualId
+    physicalName: INDIVIDUAL_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Individual Id
+    documentation: ID of the data privacy record associated with this lead
+    description: ID of the data privacy record associated with this lead
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhotoUrl
+    physicalName: PHOTO_URL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Photo URL
+    documentation: URL of the lead's photo
+    description: URL of the lead's photo
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EmailBouncedDate
+    physicalName: EMAIL_BOUNCED_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Email Bounced Date
+    documentation: If bounce management is activated and an email sent to the lead
+      bounced, the date and time of the bounce
+    description: If bounce management is activated and an email sent to the lead
+      bounced, the date and time of the bounce
+    mandatory: false
+    length: 0
+
+    multiValued: false
+    precision: 3
+    
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FirstName
+    physicalName: FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: First Name
+    documentation: The lead’s first name
+    description: The lead’s first name
+    mandatory: false
+    length: 40
+
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StandardizedWebsite
+    physicalName: STANDARDIZED_WEBSITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Standardized Website
+    documentation: Enriched Website for the lead
+    description: Enriched Website for the lead
+    mandatory: false
+    length: 128
+
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Jigsawcontactid
+    physicalName: JIGSAWCONTACTID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Jigsawcontactid
+    documentation: References the contact ID of a contact in Data.com
+    description: References the contact ID of a contact in Data.com
+    mandatory: false
+    length: 20
+
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Rating
+    physicalName: RATING
+    dataType: sales360.list_of_values.RatingLOV
+    goldenAttribute: true
+    i18ned: false
+    label: Rating
+    documentation: Rating of the lead
+    description: Rating of the lead
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedLastName
+    physicalName: NORMALIZED_LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Last Name
+    documentation: The lead’s enriched last name
+    description: The lead’s enriched last name
+    mandatory: false
+    length: 128
+
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AnnualRevenue
+    physicalName: ANNUAL_REVENUE
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Annual Revenue
+    documentation: Annual revenue for the lead’s company
+    description: Annual revenue for the lead’s company
+    mandatory: false
+    length: 0
+
+    multiValued: false
+    precision: 10
+    
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedFirstName
+    physicalName: NORMALIZED_FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized First Name
+    documentation: The lead’s enriched first name
+    description: The lead’s enriched first name
+    mandatory: false
+    length: 128
+
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _name: MobilePhone
+    _type: EntityAttribute
+    label: Mobile Phone
+    documentation: The lead’s mobile phone number
+    description: The lead’s mobile phone number
+    physicalName: MOB
+    dataType: sales360.complex_types.StandardizedPhoneType
+
+  - _name: Phone
+    _type: EntityAttribute
+    label: Phone
+    documentation: The lead’s phone number
+    description: The lead’s phone number
+    physicalName: PHO
+    dataType: sales360.complex_types.StandardizedPhoneType
+
+  - _name: Address
+    _type: EntityAttribute
+    label: Address
+    documentation: Complex attribute for the entire address of the lead
+    description: Complex attribute for the entire address of the lead
+    physicalName: ADD
+    dataType: sales360.complex_types.StandardizedAddressType
+
+matcher:
+  _name: SemlQLMatcherLeads
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 91
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 75
+  mergeThresholdMergingConfirmedWithUnconfirmed: 75
+  mergeThresholdMergingUnconfirmed: 75
+  mergeThresholdMergingUnconfirmedWithNewMasters: 75
+  mergeThresholdNewGroup: 75
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactNameCompany
+      condition: |-
+        Record1.NormalizedFirstName = Record2.NormalizedFirstName 
+        and Record1.NormalizedLastName = Record2.NormalizedLastName 
+        and Record1.NormalizedCompany  = Record2.NormalizedCompany 
+        and Record1.PhoneticCompany = Record2.PhoneticCompany
+      label: Exact Name Company
+      matchScore: 100
+      color: md:blue 900
+      documentation: Check Individual name and Company Name
+      description: Check Individual name and Company Name
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: ExactPhoneAddressCompany
+      condition: >-
+        Record1.NormalizedCompany = Record2.NormalizedCompany 
+
+        and Record1.Address.GeoStreetNumber  = Record2.Address.GeoStreetNumber
+
+        and Record1.Address.GeoStreetName  = Record2.Address.GeoStreetName
+
+        and Record1.Address.GeoLocality = Record2.Address.GeoLocality
+
+        and Record1.Address.GeoPostalCode  = Record2.Address.GeoLocality
+
+        and Record1.Address.GeoState = Record2.Address.GeoState
+
+        and Record1.Phone.StandardizedPhoneNumber =
+        Record2.Phone.StandardizedPhoneNumber
+
+        and Record1.CleansedEmail = Record2.CleansedEmail
+      label: Exact Phone Address Company
+      documentation: Check Address Phone and Email
+      description: Check Address Phone and Email
+      matchScore: 96
+      color: md:blue 700
+      usingMatchOn: false

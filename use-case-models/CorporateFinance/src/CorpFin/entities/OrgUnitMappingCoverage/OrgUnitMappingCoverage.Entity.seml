@@ -1,0 +1,61 @@
+_package: CorpFin.entities.OrgUnitMappingCoverage
+_type: Entity
+_name: OrgUnitMappingCoverage
+label: Org Unit Mapping Coverage
+pluralLabel: Org Unit Mapping Coverages
+entityType: BASIC
+physicalTableName: ORG_UNIT_MAPPING_COVERAGE
+iconUrl: images://mdi/clipboard-edit-outline.svg
+description: "Specifies which mapping sets/versions apply to an org unit."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: MappingCoverageID
+    label: Mapping Coverage ID
+    description: Surrogate identifier linking units to mappings
+    documentation: ""
+    physicalName: MAPPING_COVERAGE_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CoverageScope
+    label: Coverage Scope
+    description: Description of source->target scope (Local->Group, BU->Legal)
+    documentation: ""
+    physicalName: COVERAGE_SCOPE
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedCoverageScope
+    label: Normalized Coverage Scope
+    description: Trimmed and uppercased coverage scope
+    documentation: ""
+    physicalName: NORMALIZED_COVERAGE_SCOPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Comments
+    label: Comments
+    description: Business notes or approvals
+    documentation: ""
+    physicalName: COMMENTS
+    dataType: String
+    length: 1000
+    mandatory: false
+
+primaryKey: CorpFin.entities.OrgUnitMappingCoverage.OrgUnitMappingCoverage.MappingCoverageID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

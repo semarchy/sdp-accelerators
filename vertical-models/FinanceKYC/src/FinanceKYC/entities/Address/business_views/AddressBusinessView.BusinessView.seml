@@ -1,0 +1,90 @@
+_package: FinanceKYC.entities.Address.business_views
+_type: BusinessView
+_name: AddressBusinessView
+
+entity: FinanceKYC.entities.Address.Address
+label: Address
+rootLabel: Addresses
+rootPluralLabel: Addresses
+displayRootNodeAs: ICON_LABEL
+rootFilter: 1 = 1
+rootIconUrl: images://mdi/people.svg
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Address
+  entity: FinanceKYC.entities.Address.Address
+  actionSet: FinanceKYC.entities.Address.action_sets.AddressActionSet
+  collection: FinanceKYC.entities.Address.collection_views.AddressCollectionView
+  form: FinanceKYC.entities.Address.forms.AddressForm
+  displayCard: FinanceKYC.entities.Address.display_cards.AddressDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  
+  
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+
+      businessViewEntity:
+        _name: AddressMaster
+        _type: BusinessViewEntity
+
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+
+        collection: FinanceKYC.entities.Address.collection_views.AddressBrowseMasterCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: FinanceKYC.entities.Address.Address
+        form: FinanceKYC.entities.Address.forms.AddressForm
+        displayCard: FinanceKYC.entities.Address.display_cards.AddressDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        # sortExpression: ''
+        tableAllowed: true
+
+

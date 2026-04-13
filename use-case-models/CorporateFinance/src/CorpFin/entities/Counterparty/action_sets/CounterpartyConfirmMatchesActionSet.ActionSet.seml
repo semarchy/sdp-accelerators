@@ -1,0 +1,31 @@
+_package: CorpFin.entities.Counterparty.action_sets
+_type: ActionSet
+_name: CounterpartyConfirmMatchesActionSet
+
+entity: CorpFin.entities.Counterparty.Counterparty
+label: Counterparty Confirm Matches Action Set
+defaultActionSet: false
+
+actions:
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: false
+    waitDialogEnabled: false
+
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnCounterparty
+    label: Review and Confirm Duplicates
+    useCustomLabel: true
+    dupsManager: CorpFin.entities.Counterparty.dups_managers.ConfirmMatchesOnCounterparty
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnCounterparty
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: CorpFin.entities.Counterparty.dups_managers.ConfirmMatchesOnCounterparty
+    enableEdit: true
+    waitDialogEnabled: false

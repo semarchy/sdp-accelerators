@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: AccountMappingHasSourceAccount
+_type: Reference
+label: Account Mapping Has Source Account
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.AccountMapping.AccountMapping
+fromRoleLabel: Account Mapping
+fromRoleName: accountMappingOrigSRC
+fromRolePluralLabel: Account Mappings
+physicalName: ACCOUNTMAPPING_HAS_SOURCE
+fromNavigable: true
+
+toEntity: CorpFin.entities.Account.Account
+toRoleLabel: Source Account
+toRoleName: sourceAccount
+toRolePhysicalName: SOURCE_ACCOUNT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: sourceAccount
+  label: Source Account ID
+  physicalName: SOURCE_ACCOUNT_ID
+  searchable: true
+  entity: CorpFin.entities.Account.Account

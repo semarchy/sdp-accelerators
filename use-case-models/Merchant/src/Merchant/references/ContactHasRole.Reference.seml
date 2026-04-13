@@ -1,0 +1,35 @@
+# Description: Reference linking `PartyContact` to `ContactRole`.
+# Contains mapping to assign roles to contacts and validation for role consistency.
+# Role: Facilitates role-based classification of contacts used in forms and UI.
+_package: Merchant.references
+_name: ContactHasRole
+_type: Reference
+label: Contact Role
+documentation: Reference to the roles associated with a merchant contact
+description: Reference to the roles associated with a merchant contact
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.PartyContact.PartyContact
+fromRoleLabel: Party Contact
+fromRoleName: PartyContact
+fromRolePluralLabel: PartyContacts
+physicalName: CONTACT_ROLE
+fromNavigable: true
+
+toEntity: Merchant.entities.ContactRole.ContactRole
+toRoleLabel: Contact Role
+toRoleName: ContactRole
+toRolePhysicalName: CONTACT_ROLE
+toNavigable: true
+
+validationScope: PRE_CONSO
+mandatoryValidationLabel: Contact Role is required
+oneToMany: true
+splitDuplicatePropagation: NONE
+
+foreignAttribute:
+  _name: ContactRole
+  _type: ForeignAttribute
+  label: Contact Role ID
+  physicalName: CONTACT_ROLE_ID
+  searchable: true

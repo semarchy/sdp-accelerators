@@ -1,0 +1,129 @@
+# This is the AuthorOpportunityContactRoles Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing opportunity contact roles within the Salesforce context.
+_name: AuthorOpportunityContactRoles
+_package: sales360.entities.OpportunityContactRole.steppers
+_type: Stepper
+entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+rootStep:
+  _name: OpportunityContactRoles
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.OpportunityContactRole.collection_views.OpportunityContactRoleDefaultCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Opportunity Contact Roles
+  description: Manage Opportunity Contact Roles
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.ContactRoleInOpportunity.Role
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.ContactAssociatedToOpportunity.Contact
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.references.ContactAssociatedToOpportunity.Contact
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.references.OpportunityRelatedContact.Opportunity
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.OpportunityRelatedContact.Opportunity
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main Form Step
+      formTab: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Contact
+          referencePickerCollectionView: sales360.entities.Contact.collection_views.ContactCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Role
+          referencePickerCollectionView: sales360.entities.Role.collection_views.RoleCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Opportunity
+          referencePickerCollectionView: sales360.entities.Opportunity.collection_views.OpportunityCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: sales360.references.OpportunityRelatedContact.Opportunity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: sales360.references.ContactAssociatedToOpportunity.Contact
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.ContactRoleInOpportunity.Role
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.OpportunityRelatedContact.Opportunity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.ContactAssociatedToOpportunity.Contact
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.references.OpportunityRelatedContact.Opportunity
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ContactAssociatedToOpportunity.Contact
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.OpportunityRelatedContact.Opportunity
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.references.ContactAssociatedToOpportunity.Contact
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ContactRoleInOpportunity.Role
+      stepTriggers: []
+label: Author Opportunity Contact Roles
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.references.OpportunityRelatedContact.Opportunity
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.references.ContactAssociatedToOpportunity.Contact
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ContactAssociatedToOpportunity.Contact
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ContactRoleInOpportunity.Role
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.OpportunityRelatedContact.Opportunity
+triggers: []

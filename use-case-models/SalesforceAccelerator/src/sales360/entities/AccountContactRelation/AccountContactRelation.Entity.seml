@@ -1,0 +1,137 @@
+# This file defines the AccountContactRelation entity for the Salesforce Accelerator application.
+# It includes attributes and properties for managing account contact relations and their details.
+_name: AccountContactRelation
+_package: sales360.entities.AccountContactRelation
+_type: Entity
+primaryKey: sales360.entities.AccountContactRelation.AccountContactRelation.AccountContactRelationID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: UUID
+
+label: Account Contact Relation
+documentation: Represents a relationship between a contact and one or more accounts.
+description: Represents a relationship between a contact and one or more accounts.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/book.svg
+pluralLabel: Account Contact Relations
+historizeGolden: true
+historizeMaster: true
+physicalTableName: ACCOUNT_CONTACT_RELATION
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AccountContactRelationID
+    physicalName: ACCT_CNTCT_RELATION_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Account Contact Relation ID
+    documentation: Unique identifier for an account contact relation
+    description: Unique identifier for an account contact relation
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MultipleRoles
+    physicalName: MULTIPLE_ROLES
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Multiple Roles
+    documentation: Populated if a contact is playing multiple roles in an account
+    description: Populated if a contact is playing multiple roles in an account
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EndDate
+    physicalName: END_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: End Date
+    documentation: The date a relationship between a contact and account ended
+    description: The date a relationship between a contact and account ended
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StartDate
+    physicalName: START_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Start Date
+    documentation: The date a relationship between a contact and account began
+    description: The date a relationship between a contact and account began
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsDirect
+    physicalName: IS_DIRECT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Direct
+    documentation: Indicates whether the account associated with the contact is the
+      contact's primary account
+    description: Indicates whether the account associated with the contact is the 
+      contact's primary account
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsActive
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Active
+    documentation: Indicates whether relationship is active
+    description: Indicates whether relationship is active
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherAccountContactRelation
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 95
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameParent
+      condition: |-
+        Record1.FID_Account = Record2.FID_Account and
+        Record1.FID_Contact = Record2.FID_Contact
+      label: Same Direct Parent Or Relation
+      matchScore: 100
+      color: md:purple 900
+      documentation: Check same Account and Contact Parent
+      description: Check same Account and Contact Parent
+      usingMatchOn: false

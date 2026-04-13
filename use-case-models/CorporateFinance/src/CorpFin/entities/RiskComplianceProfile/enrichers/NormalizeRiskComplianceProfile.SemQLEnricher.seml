@@ -1,0 +1,10 @@
+_package: CorpFin.entities.RiskComplianceProfile.enrichers
+_name: NormalizeRiskComplianceProfile
+_type: SemQLEnricher
+entity: CorpFin.entities.RiskComplianceProfile.RiskComplianceProfile
+label: Normalize Risk Compliance Profile
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedRiskCategory
+    expression: "RTRIM(LTRIM(UPPER(RiskCategory)))"

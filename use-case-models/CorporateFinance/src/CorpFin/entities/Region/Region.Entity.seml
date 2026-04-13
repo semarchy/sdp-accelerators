@@ -1,0 +1,83 @@
+_package: CorpFin.entities.Region
+_type: Entity
+_name: Region
+label: Region
+pluralLabel: Regions
+entityType: BASIC
+physicalTableName: REGION
+iconUrl: images://mdi/map.svg
+description: "Geographical region or location."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: RegionID
+    label: Region ID
+    description: Unique region identifier
+    documentation: ""
+    physicalName: REGION_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: RegionName
+    label: Region Name
+    description: Region or location name
+    documentation: ""
+    physicalName: REGION_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedRegionName
+    label: Normalized Region Name
+    description: Trimmed and uppercased region name
+    documentation: ""
+    physicalName: NORMALIZED_REGION_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: ISOCode
+    label: ISO Code
+    description: Standardized ISO or internal region code
+    documentation: ""
+    physicalName: ISO_CODE
+    dataType: String
+    length: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedISOCode
+    label: Normalized ISO Code
+    description: Trimmed and uppercased ISO/internal region code
+    documentation: ""
+    physicalName: NORMALIZED_ISO_CODE
+    dataType: String
+    length: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ReportingZone
+    label: Reporting Zone
+    description: Internal reporting grouping
+    documentation: ""
+    physicalName: REPORTING_ZONE
+    dataType: String
+    length: 100
+    mandatory: false
+
+primaryKey: CorpFin.entities.Region.Region.RegionID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

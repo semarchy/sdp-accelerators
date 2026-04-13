@@ -1,0 +1,228 @@
+# This file is part of the Legal Entity module, defining a workflow for adding a contact.
+# It is a simple workflow that allows to create a contact, submit it for review, and approve it.
+_package: LegalEntity.workflows
+_type: Workflow
+_name: AddContact
+label: Add Contact
+workflowAdminRole: DataSteward
+notifications:
+  workflowAdminOnDueDate: false
+
+
+dataScope:
+  - entity: LegalEntity.entities.Contact.Contact
+    _type: RootEntity
+    _name: Contact
+    cardinality: SINGLE_RECORD
+    displayCard: LegalEntity.entities.Contact.display_cards.ContactDisplayCard
+steps:
+  - _type: StartFromEmptySelectionEvent
+    _name: Start
+    position:
+      x: -474
+      y: -68
+    label: Start
+    initiatorRequiredRole: BusinessUser
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: LegalEntity.workflows.AddContact.CreateContact
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 440
+      y: -80
+  - _type: UserTask
+    _name: CreateContact
+    label: Create Contact
+    icon: images://le-img-lib/account-edit.svg
+    position:
+      x: -272
+      y: -80
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    application: LegalEntity.applications.LegalEntities
+    assigneeRequiredRole: BusinessUser
+    assigneeCondition: Username=UserTaskInstance.StepInstance.WorkflowInstance.InitiatorName
+    assigneeCanRelease: true
+    taskType: DATA_AUTHORING
+    entity: LegalEntity.entities.Contact.Contact
+    stepper: LegalEntity.entities.Contact.steppers.AuthorContacts
+    myTasksConfiguration:
+      collection: LegalEntity.entities.Contact.collection_views.ContactCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: SendToReview
+        label: Send To Review
+        toStep: LegalEntity.workflows.AddContact.ApproveContact
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+      - _type: UserTaskTransition
+        _name: Cancel
+        label: Cancel
+        toStep: LegalEntity.workflows.AddContact.End
+        bendPoints:
+          - x: -195
+            y: -150
+          - x: 450
+            y: -150
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+  - _type: UserTask
+    _name: ApproveContact
+    label: Approve Contact
+    icon: images://le-img-lib/account-check.svg
+    position:
+      x: 50
+      y: -80
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    application: LegalEntity.applications.LegalEntities
+    assigneeRequiredRole: DataSteward
+    assigneeCanRelease: true
+    taskType: DATA_AUTHORING
+    entity: LegalEntity.entities.Contact.Contact
+    stepper: LegalEntity.entities.Contact.steppers.AuthorContacts
+    myTasksConfiguration:
+      collection: LegalEntity.entities.Contact.collection_views.ContactCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: SaveToxDM
+        label: Save To xDM
+        toStep: LegalEntity.workflows.AddContact.SubmitData
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+      - _type: UserTaskTransition
+        _name: SendBackForCorrection
+        label: Send Back For Correction
+        toStep: LegalEntity.workflows.AddContact.CreateContact
+        bendPoints:
+          - x: 60
+            y: 15
+          - x: -195
+            y: 15
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: true
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+      - _type: UserTaskTransition
+        _name: DiscardContact
+        label: Discard Contact
+        toStep: LegalEntity.workflows.AddContact.End
+        bendPoints:
+          - x: 180
+            y: 15
+          - x: 450
+            y: 15
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 300
+      y: -80
+    integrationJob: LegalEntity.model_jobs.ALL
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: LegalEntity.workflows.AddContact.End
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER

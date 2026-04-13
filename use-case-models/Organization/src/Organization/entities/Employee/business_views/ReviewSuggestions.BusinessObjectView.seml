@@ -1,0 +1,67 @@
+# This file defines the Review Suggestions business view for Employee entities in the Organization domain.
+# It includes configurations for the root node, such as filters, icons, and labels,
+# and specifies the business view entity, action set, and collection view.
+# This business view is designed to help users manage review suggestions for Employee records
+# based on specific criteria, such as having suggested merges and a confirmation status.
+_package: Organization.entities.Employee.business_views
+_type: BusinessView
+_name: ReviewSuggestions
+label: Review Suggestions
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Organization.entities.Employee.Employee
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: images://hr-img-lib/account-alert.svg
+rootDescription: ''
+rootLabel: Review Suggestions
+rootPluralLabel: Review Suggestions
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _name: Employee
+  _type: BusinessViewEntity
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: CustomFormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: Organization.entities.Employee.search_forms.EmployeeTypeSearchForm
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  actionSet: Organization.entities.Employee.action_sets.EmployeeReviewSuggestionsActionSet
+  collection: Organization.entities.Employee.collection_views.EmployeeReviewSuggestionsCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Organization.entities.Employee.Employee
+  form: Organization.entities.Employee.forms.EmployeeReviewSuggestionsForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  sortExpression: '1 desc'
+  tableAllowed: true
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://hr-img-lib/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: Organization.entities.Employee.business_views.ReviewSuggestions.Employee
+
+  displayCard: Organization.entities.Employee.display_cards.EmployeeDisplayCard

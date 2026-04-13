@@ -1,0 +1,57 @@
+# Description: Stepper definition for authoring `Merchant` records.
+# Contains the step-by-step UI flow used when creating or editing merchants.
+# Role: Provides guided input flow for merchant data maintenance in the application.
+_package: Merchant.entities.Merchant.steppers
+_type: Stepper
+_name: AuthorMerchants
+entity: Merchant.entities.Merchant.Merchant
+label: Merchants
+rootStep:
+  _type: CollectionStep
+  _name: Merchants
+  label: Merchants
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.Merchant.collection_views.MerchantCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Merchant
+      label: Merchant
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.Merchant.forms.MerchantForm.Overview
+      formStepValidations:
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: false
+          validator: Merchant.entities.Merchant.validations.MerchantName
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: false
+          validator: Merchant.entities.Merchant.validations.Status
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: false
+          validator: Merchant.entities.Merchant.validations.TerminationDate
+
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          fdnFormField: Merchant.entities.Merchant.forms.MerchantForm.Overview.Primary.PrimaryRow.RightCol.ParentMerchant
+          referencePickerType: AUTO_COMPLETE
+          referencePickerCollectionView: Merchant.entities.Merchant.collection_views.MerchantCollectionView
+        
+

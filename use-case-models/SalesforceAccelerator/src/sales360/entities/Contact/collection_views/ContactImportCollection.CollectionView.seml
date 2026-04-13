@@ -1,0 +1,304 @@
+# This is the ContactImportCollection collection view used in the Salesforce Accelerator application.
+# It defines how contacts are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.Contact.collection_views
+_name: ContactImportCollection
+_type: CollectionView
+entity: sales360.entities.Contact.Contact
+default: true
+displayCard: sales360.entities.Contact.display_cards.ContactDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Contact
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 250
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: true
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: FirstName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FirstName
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: LastName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LastName
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: FullName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Name
+    value: FullName
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Title
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Title
+    visibleByDefault: true
+    defaultWidth: 300
+  - _type: TextColumn
+    _name: Department
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Department
+    visibleByDefault: true
+    defaultWidth: 200
+
+  - _type: TextColumn
+    _name: Phone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: Phone
+    useCustomLabel: true
+    value: Phone.InpPhoneNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Email
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceEmail
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_LeadSource
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_LeadSource
+    visibleByDefault: true
+    displayCard: sales360.entities.LeadSource.display_cards.LeadSourceDisplayCard
+    referencedEntity: sales360.entities.LeadSource.LeadSource
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: ReportsToId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: ReportsToId
+    value: FDN_ReportsToId
+    visibleByDefault: false
+    referencedEntity: sales360.entities.Contact.Contact
+  - _type: ReferenceColumn
+    _name: Salutation
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Salutation
+    visibleByDefault: false
+    referencedEntity: sales360.entities.Salutation.Salutation
+  - _type: TextColumn
+    _name: HomePhone
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    label: HomePhone
+    value: HomePhone
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: OtherPhone
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    label: OtherPhone
+    value: OtherPhone
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Fax
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Fax
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: MailingStreet
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: MailingStreet
+    value: MailingAddress.InpAddressLine
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: MailingCity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: MailingCity
+    value: MailingAddress.InpCity
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: MailingState
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: MailingState
+    value: MailingAddress.InpState
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: MailingPostalCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: MailingPostalCode
+    value: MailingAddress.InpZipCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: MailingCountry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: MailingCountry
+    value: MailingAddress.InpCountry
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: OtherStreet
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: OtherStreet
+    value: OtherAddress.InpAddressLine
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: OtherCity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: OtherCity
+    value: OtherAddress.InpCity
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: OtherState
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: OtherState
+    value: OtherAddress.InpState
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: OtherPostalCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: OtherPostalCode
+    value: OtherAddress.InpZipCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: OtherCountry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: OtherCountry
+    value: OtherAddress.InpCountry
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Birthdate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: BirthDate
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Description
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Description
+    visibleByDefault: false
+  - _type: ReferenceColumn
+    _name: CleanStatus
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_CleanStatus
+    visibleByDefault: false
+    referencedEntity: sales360.entities.CleanStatus.CleanStatus
+    displayCard: sales360.entities.CleanStatus.display_cards.CleanStatusDisplayCard
+  - _type: TextColumn
+    _name: IsPersonAccount
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsPersonAccount
+    visibleByDefault: false
+  
+  - _type: TextColumn
+    _name: SourceID_Account
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: SourceID_Account
+    value: SourceID_Account
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: PublisherID_Account
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: PublisherID_Account
+    value: PublisherID_Account
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: SourceID_ReportsToId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: SourceID_ReportsToId
+    value: SourceID_ReportsToId
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: PublisherID_ReportsToId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: PublisherID_ReportsToId
+    value: PublisherID_ReportsToId
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: MobilePhone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: MobilePhone
+    useCustomLabel: true
+    value: MobilePhone.InpPhoneNumber
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: HomePhone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: HomePhone
+    useCustomLabel: true
+    value: HomePhone.InpPhoneNumber
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: OtherPhone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: OtherPhone
+    useCustomLabel: true
+    value: OtherPhone.InpPhoneNumber
+    visibleByDefault: true

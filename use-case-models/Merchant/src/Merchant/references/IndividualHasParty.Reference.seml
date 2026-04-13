@@ -1,0 +1,27 @@
+_package: Merchant.references
+_name: IndividualHasParty
+_type: Reference
+label: Individual Party
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.Individual.Individual
+fromRoleLabel: Individual
+fromRoleName: individual
+fromRolePluralLabel: Individuals
+physicalName: INDIVIDUAL
+
+toEntity: Merchant.entities.Party.Party
+toRoleLabel: Party
+toRoleName: Party
+toRolePhysicalName: PARTY
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Party
+  label: Party
+  physicalName: PARTY
+  searchable: true
+
+oneToMany: true
+mandatoryValidationLabel: Individual must be associated with a Party.

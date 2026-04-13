@@ -1,0 +1,65 @@
+# This file defines the Industry entity in the Salesforce Accelerator application.
+# It includes attributes such as IndustryID, IndustryLabel, and IndustryName,
+# along with their properties and validations.
+# The entity is used to manage industry information within the application.
+_name: Industry
+_package: sales360.entities.Industry
+_type: Entity
+primaryKey: sales360.entities.Industry.Industry.IndustryID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: IndustryLabel
+label: Industry
+documentation: List of all Industries
+description: List of all Industries
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Industries
+historizeGolden: true
+historizeMaster: false
+physicalTableName: INDUSTRY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: IndustryID
+    physicalName: INDUSTRY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry ID
+    documentation: Unique identifier for the Industry
+    description: Unique identifier for the Industry
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IndustryLabel
+    physicalName: INDUSTRY_LABEL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry Label
+    documentation: Label for the Industry
+    description: Label for the Industry
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IndustryName
+    physicalName: INDUSTRY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry Name
+    documentation: Name of the Industry
+    description: Name of the Industry
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

@@ -1,0 +1,67 @@
+#This file defines the Fund entity in the Legal Entity application.
+_package: LegalEntity.entities.Fund
+_type: Entity
+_name: Fund
+label: Fund
+pluralLabel: Funds
+iconUrl: images://le-img-lib/vector-square.svg
+description: This entity represents a fund in the Legal Entity application. It is used to store and manage fund information for business logic, reporting, and compliance.
+documentation: The Fund entity defines the structure for storing fund records, including names, descriptions, and identifiers. It supports business logic, reporting, and integration with external systems.
+enableDelete: true
+attributes: 
+  - _name: ID
+    dataType: LongInteger
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 0
+    precision: 10
+    multiValued: false
+    searchable: true
+    physicalName: ID
+    label: ID
+    description: The unique identifier for the fund.
+    documentation: A system-generated unique identifier for each fund record.
+  - _name: Name
+    dataType: String
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: NAME
+    label: Name
+    description: The name of the fund.
+    documentation: The official name or title of the fund.
+  - _name: Description
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    description: The description of the fund.
+    documentation: Additional details or notes about the fund.
+    physicalName: DESCRIPTION
+    label: Description
+  - _name: ChainID
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: CHAIN_ID
+    label: Chain ID
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: FUND
+primaryKey: LegalEntity.entities.Fund.Fund.ID
+sourceIdGeneration:
+  mode: MANUAL

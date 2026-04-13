@@ -1,0 +1,33 @@
+ # Description: Display card for `Party` entity used in lists and tiles.
+ # Contains: Primary, secondary and supporting text plus avatar/fallback images.
+ # Role: Provides a compact, attractive visual summary of a Party record.
+ _package: Merchant.entities.Party.display_cards
+ _type: DisplayCard
+ _name: Party
+ entity: Merchant.entities.Party.Party
+ default: true
+
+ # Primary line: user-friendly display name
+ primaryTextExpression: NormalizedName
+
+ # Secondary: show role and type when available
+ secondaryTextExpression: "CASE WHEN PartyRoleType IS NOT NULL AND PartyType IS NOT NULL THEN PartyRoleType || ' • ' || PartyType WHEN PartyRoleType IS NOT NULL THEN PartyRoleType WHEN PartyType IS NOT NULL THEN PartyType ELSE '' END"
+
+ # Supporting text: alternate or legal name for context
+ supportingTextExpression: "CASE WHEN AlternateName IS NOT NULL THEN AlternateName WHEN LegalName IS NOT NULL THEN LegalName ELSE '' END"
+
+ # Avatar: default person icon (falls back to domain icon for organizations)
+ avatarImageValue: images://mdi/account-circle.svg
+ avatarImageValueInterpreter: LITERAL
+ avatarImageSourceType: URL
+ avatarImageAlign: MIDDLE_CENTER
+ avatarImageMode: FIT
+
+ # Primary image fallback (used when an entity has a logo/image)
+ primaryImageValueInterpreter: LITERAL
+ primaryImageSourceType: URL
+ primaryImageAlign: MIDDLE_CENTER
+ primaryImageMode: FIT
+ primaryImageFallbackValue: images://mdi/domain.svg
+ primaryImageFallbackValueInterpreter: LITERAL
+ primaryImageFallbackSourceType: URL

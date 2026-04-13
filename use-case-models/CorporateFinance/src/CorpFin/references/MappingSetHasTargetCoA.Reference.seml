@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: MappingSetHasTargetCoA
+_type: Reference
+label: Mapping Set Has Target CoA
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.MappingSet.MappingSet
+fromRoleLabel: Mapping Set
+fromRoleName: mappingSetOrigTGT
+fromRolePluralLabel: Mapping Sets
+physicalName: MAPPINGSET_HAS_TARGET_COA
+fromNavigable: true
+
+toEntity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+toRoleLabel: Target CoA
+toRoleName: targetChartOfAccounts
+toRolePhysicalName: TARGET_COA_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: targetChartOfAccounts
+  label: Target CoA ID
+  physicalName: TARGET_COA_ID
+  searchable: true
+  entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts

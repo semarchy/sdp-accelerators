@@ -1,0 +1,126 @@
+_name: AuthorProducts
+_package: HCO_HCP.entities.Products.steppers
+_type: Stepper
+entity: HCO_HCP.entities.Products.Products
+rootStep:
+  _name: Productss
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.Products.collection_views.ProductsCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Productss
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.ProductsSponsor.Sponsor
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.ProductsAdministration.Administration
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: HCO_HCP.entities.Products.Products.SemlQLMatcherProducts
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.ProductsForm.Form
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.ProductsTherapeauticArea.TherapeauticArea
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: HCO_HCP.entities.Products.validations.ProductNameMandatory
+    
+  stepTriggers: []
+  childSteps:
+    - _name: Products
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Products
+      formTab: HCO_HCP.entities.Products.forms.ProductsForm.Products
+      formStepEnrichers:
+        - enricher: HCO_HCP.entities.Products.enrichers.NewGenAIDescriptionProducts
+          executedOnButtonClick: true
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: HCO_HCP.entities.Products.enrichers.Definition
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: HCO_HCP.entities.Products.enrichers.UpperAttributes
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: HCO_HCP.entities.Products.enrichers.url
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.ProductsTherapeauticArea.TherapeauticArea
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.ProductsAdministration.Administration
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.ProductsSponsor.Sponsor
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.ProductsForm.Form
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: HCO_HCP.entities.Products.validations.ProductNameMandatory
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.ProductsTherapeauticArea.TherapeauticArea
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: HCO_HCP.entities.Products.Products.SemlQLMatcherProducts
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.ProductsForm.Form
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.ProductsAdministration.Administration
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.ProductsSponsor.Sponsor
+      stepTriggers: []
+label: Author Products
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.ProductsTherapeauticArea.TherapeauticArea
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.ProductsAdministration.Administration
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.ProductsForm.Form
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.ProductsSponsor.Sponsor
+triggers: []

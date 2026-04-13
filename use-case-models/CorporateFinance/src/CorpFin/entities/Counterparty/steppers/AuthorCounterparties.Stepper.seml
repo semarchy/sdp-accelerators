@@ -1,0 +1,36 @@
+_package: CorpFin.entities.Counterparty.steppers
+_type: Stepper
+_name: AuthorCounterparties
+
+entity: CorpFin.entities.Counterparty.Counterparty
+label: Counterparties
+
+rootStep:
+  _type: CollectionStep
+  _name: Counterparties
+  label: Counterparties
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: CorpFin.entities.Counterparty.collection_views.CounterpartyImportMasterCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  
+  childSteps:
+    - _type: FormStep
+      _name: Counterparty
+      label: Counterparty
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CorpFin.entities.Counterparty.forms.CounterpartyForm.Counterparty

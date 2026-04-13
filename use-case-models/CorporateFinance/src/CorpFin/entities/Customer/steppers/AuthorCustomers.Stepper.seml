@@ -1,0 +1,34 @@
+_package: CorpFin.entities.Customer.steppers
+_type: Stepper
+_name: AuthorCustomers
+entity: CorpFin.entities.Customer.Customer
+label: Customers
+rootStep:
+  _type: CollectionStep
+  _name: Customers
+  label: Customers
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+#  collectionView: CorpFin.entities.Customer.collection_views.CustomerCollectionView
+  collectionView: CorpFin.entities.Customer.collection_views.CustomerImportCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Customer
+      label: Customer
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CorpFin.entities.Customer.forms.CustomerForm.Customer

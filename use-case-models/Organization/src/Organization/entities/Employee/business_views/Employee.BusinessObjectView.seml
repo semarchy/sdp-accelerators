@@ -1,0 +1,44 @@
+# This file defines the Employee business view in the Organization domain.
+# It includes configurations for the root node, such as filters, icons, and labels,
+# and specifies the business view entity, action set, and collection view.  
+_package: Organization.entities.Employee.business_views
+_type: BusinessView
+_name: Employee
+label: Employee
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: Organization.entities.Employee.Employee
+rootFilter: 1 = 1
+rootIconUrl: images://mdi/people.svg
+rootDescription: View and manage employee records.
+rootLabel: Employee
+rootPluralLabel: Employees
+useHierarchyOnOpen: false
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  entity: Organization.entities.Employee.Employee
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  _name: Employee
+  collection: Organization.entities.Employee.collection_views.EmployeeBrowseGoldenCollection
+  actionSet: Organization.entities.Employee.action_sets.EmployeeConfirmMatchesActionSet
+  form: Organization.entities.Employee.forms.EmployeeForm
+  displayRecordCount: ON_DEMAND
+  enableUserDefinedSort: true
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  displayCard: Organization.entities.Employee.display_cards.EmployeeDisplayCard

@@ -1,0 +1,92 @@
+_package: FinanceKYC.entities.CustomerRiskProfile
+_type: Entity
+_name: CustomerRiskProfile
+label: Customer Risk Profile
+pluralLabel: Customer Risk Profile
+entityType: BASIC
+physicalTableName: CUSTOMER_RISK_PROFILE
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: RiskProfileID
+    _type: EntityAttribute
+    label: Customer Risk Profile ID
+    physicalName: RISK_PROFILE_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: RiskLevel
+    _type: EntityAttribute
+    label: Risk Level
+    physicalName: RISK_LEVEL
+    dataType: String
+    length: 20
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: AssessmentDate
+    _type: EntityAttribute
+    label: Assessment Date
+    physicalName: ASSESSMENT_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: AssessedBy
+    _type: EntityAttribute
+    label: Assessed By
+    physicalName: ASSESSED_BY
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _name: Score
+    _type: EntityAttribute
+    label: Score
+    physicalName: SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: false
+
+  - _name: IsSanctioned
+    _type: EntityAttribute
+    label: Is Sanctioned
+    physicalName: IS_SANCTIONED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SanctionReason
+    label: Sanction Reason
+    physicalName: SANCTION_REASON
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ReviewFrequency
+    label: Review Frequency
+    physicalName: REVIEW_FREQUENCY
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NextReviewDate
+    label: Next Review Date
+    physicalName: NEXT_REVIEW_DATE
+    dataType: Date
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.CustomerRiskProfile.CustomerRiskProfile.RiskProfileID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

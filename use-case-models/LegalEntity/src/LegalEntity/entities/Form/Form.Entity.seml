@@ -1,0 +1,56 @@
+#This file defines the Form entity in the Legal Entity application.
+_package: LegalEntity.entities.Form
+_type: Entity
+_name: Form
+label: Form
+pluralLabel: Forms
+iconUrl: images://le-img-lib/bookshelf.svg
+description: This entity represents a form in the Legal Entity application. It is used to store and manage forms related to legal entities, such as applications, registrations, and compliance documents.
+documentation: The Form entity defines the structure for storing form records, including metadata, names, and descriptions. It supports business logic, reporting, and integration with external systems.
+enableDelete: true
+attributes: 
+  - _name: ID
+    dataType: String
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: ID
+    label: ID
+    description: The unique identifier for the form.
+    documentation: A system-generated unique identifier for each form record.
+  - _name: Name
+    dataType: String
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: NAME
+    label: Name
+    description: The name of the form.
+    documentation: The official name or title of the form.
+  - _name: Description
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 4000
+    multiValued: false
+    searchable: true
+    physicalName: DESCRIPTION
+    description: The description of the form.
+    documentation: Additional details or notes about the form.
+    label: Description
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: FORM
+primaryKey: LegalEntity.entities.Form.Form.ID
+sourceIdGeneration:
+  mode: MANUAL

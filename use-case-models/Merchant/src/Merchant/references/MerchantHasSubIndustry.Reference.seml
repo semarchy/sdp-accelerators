@@ -1,0 +1,30 @@
+# Description: Reference linking `Merchant` to `SubIndustry`.
+# Contains mapping details to associate legal entities with a more specific sub-industry.
+# Role: Supports fine-grained industry classification for legal entities.
+_package: Merchant.references
+_type: Reference
+_name: MerchantHasSubIndustry
+label: Merchant - Sub Industry
+description: Maps Merchant.SubIndustryID to SubIndustry.SubIndustryID
+physicalName: MERCHANT_HAS_SUB_INDUSTRY
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.Merchant.Merchant
+fromRoleName: Merchant
+fromRoleLabel: Merchant
+fromRolePluralLabel: Merchants
+
+toEntity: Merchant.entities.SubIndustry.SubIndustry
+toRoleName: SubIndustry
+toRoleLabel: Sub Industry
+toRolePhysicalName: SUB_INDUSTRY
+
+validationScope: PRE_CONSO
+mandatoryValidationLabel: "Sub Industry is required"
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: SubIndustry
+  label: Sub Industry
+  physicalName: SUB_INDUSTRY
+  searchable: true

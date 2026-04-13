@@ -1,0 +1,30 @@
+# Description: Reference linking `LegalEntity` to `Party`.
+# Contains mapping and foreign attribute definitions for LegalEntity→Party relationships.
+# Role: Associates legal entities to their underlying party records.
+_package: Merchant.references
+_name: LegalEntityHasParty
+_type: Reference
+label: Legal Entity Has Party
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.LegalEntity.LegalEntity
+fromRoleLabel: Legal Entity
+fromRoleName: LegalEntity
+fromRolePluralLabel: Legal Entities
+physicalName: LE_HAS_PARTY
+
+toEntity: Merchant.entities.Party.Party
+toRoleLabel: Party
+toRoleName: Party
+toRolePhysicalName: PARTY
+validationScope: PRE_POST
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Party
+  label: Party
+  physicalName: PARTY
+  searchable: true
+
+oneToMany: true
+mandatoryValidationLabel: Legal Entity must be associated with a Party.

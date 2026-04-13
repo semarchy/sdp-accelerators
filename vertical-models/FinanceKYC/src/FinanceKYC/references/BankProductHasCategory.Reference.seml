@@ -1,0 +1,33 @@
+_package: FinanceKYC.references
+_name: BankProductHasCategory
+_type: Reference
+label: Banking Product Has Category
+mandatoryValidationLabel: Category is required
+physicalName: BANK_PROD_HAS_CAT
+brokenValidationLabel: ''
+deletePropagation: RESTRICT
+splitDuplicatePropagation: NONE
+
+fromNavigable: true
+toNavigable: true
+
+validationScope: PRE_CONSO
+oneToMany: true
+
+fromEntity: FinanceKYC.entities.BankingProduct.BankingProduct
+fromRoleLabel: Banking Product
+fromRoleName: BankingProduct
+fromRolePluralLabel: Banking Products
+
+toEntity: FinanceKYC.entities.BankingProductCategory.BankingProductCategory
+toRoleLabel: Category
+toRoleName: Category
+toRolePhysicalName: CATEGORY
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Category
+  label: Category
+  physicalName: CATEGORY
+  searchable: true
+  entity: FinanceKYC.entities.BankingProduct.BankingProduct

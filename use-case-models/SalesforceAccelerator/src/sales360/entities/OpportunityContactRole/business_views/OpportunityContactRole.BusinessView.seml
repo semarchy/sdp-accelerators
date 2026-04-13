@@ -1,0 +1,129 @@
+# This is the OpportunityContactRoleBusinessView business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for opportunity contact roles,
+# including the root entity, labels, and display options.
+_name: OpportunityContactRole
+_package: sales360.entities.OpportunityContactRole.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+rootLabel: Opportunity Contact Role
+rootPluralLabel: Opportunity Contact Role
+useHierarchyOnOpen: false
+label: Opportunity Contact Role
+description: Business View for Opportunity Contact Role entity in Salesforce Accelerator
+rootBusinessViewEntity:
+  _name: OpportunityContactRole
+  _type: BusinessViewEntity
+  collection: sales360.entities.OpportunityContactRole.collection_views.OpportunityContactRoleDefaultCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+  form: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Contact
+      navigationMode: MODAL_FORM
+    - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Opportunity
+      navigationMode: MODAL_FORM
+    - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Role
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: OpportunityContactMaster
+        _type: BusinessViewEntity
+        collection: sales360.entities.OpportunityContactRole.collection_views.OpportunityContactRoleMasterCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+        form: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleMasterForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sales360.entities.OpportunityContactRole.action_sets.OpportunityContactRoleActionSet
+        displayCard: sales360.entities.OpportunityContactRole.display_cards.OpportunityContactRoleDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleMasterForm.Main.FDN_Opportunity
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleMasterForm.Main.FDN_Role
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleMasterForm.Main.FDN_Contact
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.OpportunityContactRole.business_views.OpportunityContactRole.OpportunityContactRole
+
+  displayCard: sales360.entities.OpportunityContactRole.display_cards.OpportunityContactRoleDisplayCard

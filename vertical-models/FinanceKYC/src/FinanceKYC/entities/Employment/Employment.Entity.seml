@@ -1,0 +1,77 @@
+_package: FinanceKYC.entities.Employment
+_type: Entity
+_name: Employment
+label: Employment
+pluralLabel: Employment
+entityType: BASIC
+physicalTableName: EMPLOYMENT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: EmploymentID
+    _type: EntityAttribute
+    label: Employment ID
+    physicalName: EMPLOYMENT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: EmployerName
+    _type: EntityAttribute
+    label: Employer Name
+    physicalName: EMPLOYER_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: JobTitle
+    _type: EntityAttribute
+    label: Job Title
+    physicalName: JOB_TITLE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: EmploymentType
+    _type: EntityAttribute
+    label: Employment Type
+    physicalName: EMPLOYMENT_TYPE
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _name: StartDate
+    _type: EntityAttribute
+    label: Start Date
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: EndDate
+    _type: EntityAttribute
+    label: End Date
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: IsCurrent
+    _type: EntityAttribute
+    label: Is Current
+    physicalName: IS_CURRENT
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.Employment.Employment.EmploymentID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

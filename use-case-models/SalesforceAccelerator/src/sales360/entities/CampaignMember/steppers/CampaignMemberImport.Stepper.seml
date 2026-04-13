@@ -1,0 +1,47 @@
+# Stepper to import data for Campaign Member
+_package: sales360.entities.CampaignMember.steppers
+_name: CampaignMemberImport
+_type: Stepper
+entity: sales360.entities.CampaignMember.CampaignMember
+description: Stepper for importing Campaign Member data
+rootStep:
+  _name: ImportCampaignMembers
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.CampaignMember.collection_views.CampaignMemberCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Import Campaign Members
+  description: Step for importing Campaign Member data
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for Campaign Member entity
+      formTab: sales360.entities.CampaignMember.forms.CampaignMemberDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Campaign Members
+stepperFinishValidations: []
+triggers: []
+

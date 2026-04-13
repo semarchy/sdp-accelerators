@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_type: Reference
+_name: CountryHasCurrency
+label: Country Has Currency
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Country.Country
+fromRoleLabel: Country
+fromRoleName: country
+fromRolePluralLabel: Countries
+physicalName: COUNTRY_HAS_CURRENCY
+fromNavigable: true
+
+toEntity: CorpFin.entities.Currency.Currency
+toRoleLabel: Currency
+toRoleName: currency
+toRolePhysicalName: CURRENCY_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: currency
+  label: Currency ID
+  physicalName: CURRENCY_ID
+  searchable: true
+  entity: CorpFin.entities.Currency.Currency

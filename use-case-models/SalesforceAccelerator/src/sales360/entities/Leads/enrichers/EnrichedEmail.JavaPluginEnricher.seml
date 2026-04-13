@@ -1,0 +1,23 @@
+# It is an enricher for the lead entity in the Salesforce Accelerator application.
+# It is a JavaPlugin enricher that enriches the email address using the Semarchy email enricher plugin.
+# This enricher is executed before the consumption of the entity data.
+_type: JavaPluginEnricher
+_package: sales360.entities.Leads.enrichers
+_name: EnrichedEmail
+entity: sales360.entities.Leads.Leads
+label: Enriched Email
+description: Enriches the email address using the Semarchy email enricher plugin.
+pluginId: com.semarchy.engine.plugins.convergence.email
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_EMAIL_ADDRESS
+    expression: Email
+pluginOutputs:
+  - outputName: OUT_CLEANSED_EMAIL
+    attributeName: CleansedEmail
+afterEnrichers: sales360.entities.Leads.enrichers.StandardizedPhone

@@ -1,0 +1,68 @@
+# This file defines the NAICCode entity in the Salesforce Accelerator application.
+# It includes attributes such as NAICCodeID, NAICCode, and NAICTitle, along with their properties and validations.
+# The entity is used to manage NAIC code information within the application.
+_name: NAICCode
+_package: sales360.entities.NAICCode
+_type: Entity
+primaryKey: sales360.entities.NAICCode.NAICCode.NAICCodeID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: NAICCode
+label: NAIC Code
+documentation: The six-digit North American Industry Classification System
+  (NAICS) code is the standard used by business and government to classify
+  business establishments into industries
+description: The six-digit North American Industry Classification System (NAICS)
+  code is the standard used by business and government to classify business
+  establishments into industries
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: NAIC Codes
+historizeGolden: true
+historizeMaster: false
+physicalTableName: NAIC_CODE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: NAICCodeID
+    physicalName: NAIC_CODE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: NAIC Code ID
+    documentation: Unique identifier for the NAIC Code
+    description: Unique identifier for the NAIC Code
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NAICCode
+    physicalName: NAIC_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: NAIC Code
+    documentation: The six-digit NAIC code
+    description: The six-digit NAIC code
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NAICTitle
+    physicalName: NAIC_TITLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: NAIC Title
+    documentation: The title associated with the NAIC code
+    description: The title associated with the NAIC code
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

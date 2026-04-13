@@ -1,0 +1,102 @@
+_package: CorpFin.entities.FiscalCalendar
+_type: Entity
+_name: FiscalCalendar
+label: Fiscal Calendar
+pluralLabel: Fiscal Calendars
+entityType: BASIC
+physicalTableName: FISCAL_CALENDAR
+iconUrl: images://mdi/calendar-range.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CalendarID
+    label: Calendar ID
+    description: Surrogate identifier for fiscal calendar
+    documentation: ""
+    physicalName: CALENDAR_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CalendarCode
+    label: Calendar Code
+    description: Business key for the fiscal calendar
+    documentation: ""
+    physicalName: CALENDAR_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: FiscalYear
+    label: Fiscal Year
+    description: Fiscal year represented
+    documentation: ""
+    physicalName: FISCAL_YEAR
+    dataType: String
+    length: 4
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: PeriodCount
+    label: Period Count
+    description: Number of periods in the fiscal year
+    documentation: ""
+    physicalName: PERIOD_COUNT
+    dataType: Integer
+    precision: 2
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    description: Fiscal year start date
+    documentation: ""
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    description: Fiscal year end date
+    documentation: ""
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: IsStandard
+    label: Is Standard
+    description: Flag indicating the corporate standard calendar
+    documentation: ""
+    physicalName: IS_STANDARD
+    dataType: Boolean
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Description of the fiscal calendar
+    documentation: ""
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 255
+    mandatory: false
+
+primaryKey: CorpFin.entities.FiscalCalendar.FiscalCalendar.CalendarID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

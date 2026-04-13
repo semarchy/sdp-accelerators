@@ -1,0 +1,12 @@
+_package: CorpFin.entities.Account.enrichers
+_name: NormalizeAccount
+_type: SemQLEnricher
+entity: CorpFin.entities.Account.Account
+label: Normalize Account
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedAccountCode
+    expression: "RTRIM(LTRIM(UPPER(AccountCode)))"
+  - attributeName: NormalizedAccountName
+    expression: "RTRIM(LTRIM(UPPER(AccountName)))"

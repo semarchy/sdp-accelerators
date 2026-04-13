@@ -1,0 +1,98 @@
+_package: FinanceKYC.entities.KYCCheck
+_type: Entity
+_name: KYCCheck
+label: KYCCheck
+pluralLabel: KYCCheck
+entityType: BASIC
+physicalTableName: KYCCHECK
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: KYCCheckID
+    _type: EntityAttribute
+    label: KYCCheck ID
+    physicalName: KYCCHECK_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: CheckType
+    _type: EntityAttribute
+    label: Check Type
+    physicalName: CHECK_TYPE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Check Type is required
+
+  - _name: CheckDate
+    _type: EntityAttribute
+    label: Check Date
+    physicalName: CHECK_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Check Date is required
+
+  - _name: Result
+    _type: EntityAttribute
+    label: Result
+    physicalName: CHECK_RESULT
+    dataType: String
+    length: 20
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: KYC Check Result is required
+
+  - _name: PerformedBy
+    _type: EntityAttribute
+    label: Performed By
+    physicalName: PERFORMED_BY
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: KYC  Check performer is required
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    physicalName: NOTES
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _name: IsAutomated
+    _type: EntityAttribute
+    label: Is Automated
+    physicalName: IS_AUTOMATED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsPassed
+    label: Is Passed
+    physicalName: IS_PASSED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NextCheckDate
+    label: Next Check Date
+    physicalName: NEXT_CHECK_DATE
+    dataType: Date
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.KYCCheck.KYCCheck.KYCCheckID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

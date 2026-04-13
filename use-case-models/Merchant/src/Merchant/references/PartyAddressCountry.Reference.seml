@@ -1,0 +1,35 @@
+# Description: Reference linking `PartyAddress` to `Country`.
+# Contains foreign key mapping and validation ensuring address country is valid.
+# Role: Provides country lookup for addresses and enforces country constraints.
+_package: Merchant.references
+_name: PartyAddressCountry
+_type: Reference
+label: Party Address Country Reference
+description: Reference linking Party Address to its Country
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.PartyAddress.PartyAddress
+fromRoleLabel: Party Address
+fromRoleName: PartyAddress
+fromRolePluralLabel: Party Addresses
+physicalName: MERCHANT_ADDRESS_COUNTRY
+
+toEntity: Merchant.entities.Country.Country
+toRoleLabel: Country
+toRoleName: Country
+toRolePhysicalName: COUNTRY_CODE
+
+validationScope: PRE_CONSO
+mandatoryValidationLabel: Country is required
+oneToMany: true
+splitDuplicatePropagation: NONE
+fromNavigable: true
+toNavigable: true
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Country
+  label: Country Code
+  physicalName: COUNTRY_CODE
+  searchable: true
+  description: "Reference to address country"

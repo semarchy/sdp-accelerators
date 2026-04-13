@@ -1,0 +1,151 @@
+_package: FinanceKYC.entities.IndividualPerson.forms
+_type: Form
+_name: IndividualPersonForm
+
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: IndividualPerson
+    label: Individual Person
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/account-circle.svg
+    displayFormTabAs: ICON_LABEL
+    visibleValueInterpreter: LITERAL
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: BasicInformation
+                label: Basic Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: IdField
+                  _name: PersonID
+                  value: PersonID
+                  useCustomLabel: false
+                  dataType: LONG_INTEGER
+
+                - _type: TextField
+                  _name: FirstName
+                  value: FirstName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: LastName
+                  value: LastName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: DateField
+                  _name: DateOfBirth
+                  value: DateOfBirth
+                  useCustomLabel: false
+                  dataType: DATE
+
+                - _type: TextField
+                  _name: Nationality
+                  value: Nationality
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: Gender
+                  value: Gender
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: ReferenceField
+                  _name: FDN_Customer
+                  value: FDN_Customer
+                  referencedEntity: FinanceKYC.entities.Customer.Customer
+                  useCustomLabel: false
+                  dataType: STRING
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: Status
+                label: Status
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+                visibleValue: '1'
+
+                content:
+                - _type: TextField
+                  _name: MaritalStatus
+                  value: MaritalStatus
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: Occupation
+                  value: Occupation
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: TaxID
+                  value: TaxID
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: CheckboxField
+                  _name: IsPEP
+                  value: IsPEP
+                  useCustomLabel: false
+                  dataType: BOOLEAN
+
+              - _type: FormSection
+                _name: NameEnrichment
+                label: Name Enrichment
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+                visibleValue: '1'
+
+                content:
+                - _type: TextField
+                  _name: NormalizedFirstName
+                  value: NormalizedFirstName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: PhonetizedFirstName
+                  value: PhonetizedFirstName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: NormalizedLastName
+                  value: NormalizedLastName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: PhonetizedLastName
+                  value: PhonetizedLastName
+                  useCustomLabel: false
+                  dataType: STRING
+

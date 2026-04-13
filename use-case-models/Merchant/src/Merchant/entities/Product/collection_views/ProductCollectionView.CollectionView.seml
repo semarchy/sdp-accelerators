@@ -1,0 +1,70 @@
+# Description: Collection view for `Product` providing list/grid configurations.
+# Contains display columns, filters and sorting for product collections.
+# Role: Enables browsing and managing product lists in the UI.
+_package: Merchant.entities.Product.collection_views
+_type: CollectionView
+_name: ProductCollectionView
+entity: Merchant.entities.Product.Product
+default: true
+displayCard: Merchant.entities.Product.display_cards.ProductDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Product
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: TextColumn
+    _name: ProductName
+    value: ProductName
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Description
+    value: Description
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: Category
+    value: FDN_ProductCategory
+    useCustomLabel: false
+    dataType: STRING
+    referencedEntity: Merchant.entities.ProductCategory.ProductCategory
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: Merchant
+    value: FDN_Merchant
+    useCustomLabel: false
+    dataType: STRING
+    referencedEntity: Merchant.entities.Merchant.Merchant
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: ProductStatus
+    value: ProductStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true

@@ -1,0 +1,21 @@
+_package: FinanceKYC.entities.IndividualPerson.enrichers
+_name: PhonetizeFirstName
+_type: JavaPluginEnricher
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+label: Phonetize First Name
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedFirstName
+pluginOutputs: 
+  - attributeName: PhonetizedFirstName
+    outputName: OUT_TRANSFORMED_TEXT

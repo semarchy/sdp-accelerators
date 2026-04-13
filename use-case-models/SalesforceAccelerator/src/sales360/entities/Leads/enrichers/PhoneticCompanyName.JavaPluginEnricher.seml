@@ -1,0 +1,27 @@
+# It is an enricher for the lead entity in the Salesforce Accelerator application.
+# It is a JavaPluginEnricher that generates a phonetic representation of the normalized company
+# name using the Metaphone algorithm.
+# This enricher is executed before the consumption of the entity data.
+_type: JavaPluginEnricher
+_package: sales360.entities.Leads.enrichers
+_name: PhoneticCompanyName
+entity: sales360.entities.Leads.Leads
+label: Phonetic Company Name
+description: Phonetic algorithms for indexing names by sound, as pronounced in English futher used for matching
+pluginId: com.semarchy.engine.plugins.convergence.text
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE 30
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedCompany
+pluginOutputs:
+  - outputName: OUT_TRANSFORMED_TEXT
+    attributeName: PhoneticCompany
+afterEnrichers: sales360.entities.Leads.enrichers.NormalizedCompany

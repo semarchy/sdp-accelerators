@@ -1,0 +1,59 @@
+# This is the StageNameActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on stage names, such as creating, editing,
+# deleting, exporting, importing stage names.
+
+_name: StageNameActionSet
+_package: sales360.entities.StageName.action_sets
+_type: ActionSet
+entity: sales360.entities.StageName.StageName
+label: Stage Name Action Set
+description: Action set for managing Stage Names in Salesforce Accelerator
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorStageNames
+    label: Create
+    description: Create new Stage Names
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.StageName.steppers.AuthorStageNames
+  - _name: EditAuthorStageNames
+    label: Edit
+    description: Edit existing Stage Names
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.StageName.steppers.AuthorStageNames
+  - _name: Delete
+    label: Delete
+    description: Delete selected Stage Names
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export Stage Names
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorStageNames
+    label: Import
+    description: Import Stage Names
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.StageName.steppers.AuthorStageNames

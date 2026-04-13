@@ -1,0 +1,35 @@
+# Description: Reference linking `Industry` to `SubIndustry`.
+# Contains mapping of industries to their subordinate sub-industries.
+# Role: Establishes the parent/child relationship for industry classification.
+_package: Merchant.references
+_name: IndustryHasSubIndustry
+_type: Reference
+label: Industry SubIndustry Reference
+description: Reference linking SubIndustry to its parent Industry
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.SubIndustry.SubIndustry
+fromRoleLabel: SubIndustry
+fromRoleName: SubIndustry
+fromRolePluralLabel: SubIndustries
+physicalName: FK_SUBINDUSTRY_INDUSTRY
+
+toEntity: Merchant.entities.Industry.Industry
+toRoleLabel: Industry
+toRoleName: Industry
+toRolePhysicalName: INDUSTRY_ID
+
+validationScope: PRE_CONSO
+mandatoryValidationLabel: Industry is required
+oneToMany: true
+splitDuplicatePropagation: NONE
+fromNavigable: true
+toNavigable: true
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Industry
+  label: Industry ID
+  physicalName: INDUSTRY_ID
+  searchable: true
+  description: "Reference to parent Industry"

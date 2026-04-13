@@ -1,0 +1,12 @@
+# It defines a validation rule for the 'EndDate' field in the 'Campaign' entity.
+# The rule ensures that the end date is not before the start date.
+
+_name: EndDate
+_package: sales360.entities.Campaign.validations
+entity: sales360.entities.Campaign.Campaign
+label: End Date
+description: End date should be greater than Start date
+validationScope: PRE_CONSO
+validationLabel: End date should not be before Start date OR both not defined
+_type: SemQLValidation
+condition: EndDate >= StartDate

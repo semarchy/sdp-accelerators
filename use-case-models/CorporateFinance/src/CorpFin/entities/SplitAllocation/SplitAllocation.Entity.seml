@@ -1,0 +1,63 @@
+_package: CorpFin.entities.SplitAllocation
+_type: Entity
+_name: SplitAllocation
+label: Split Allocation
+pluralLabel: Split Allocations
+entityType: BASIC
+physicalTableName: SPLIT_ALLOCATION
+iconUrl: images://mdi/call-split.svg
+description: "Breaks mapping amounts across multiple target accounts."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SplitAllocationID
+    label: Split Allocation ID
+    description: Surrogate identifier for split allocation
+    documentation: ""
+    physicalName: SPLIT_ALLOCATION_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: SplitPercent
+    label: Split Percent
+    description: Percentage of amount routed to the target
+    documentation: ""
+    physicalName: SPLIT_PERCENT
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedSplitPercent
+    label: Normalized Split Percent
+    description: Cleaned percentage for validation and capping
+    documentation: ""
+    physicalName: NORMALIZED_SPLIT_PERCENT
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Sequence
+    label: Sequence
+    description: Order of allocation evaluation
+    documentation: ""
+    physicalName: SEQUENCE
+    dataType: Integer
+    precision: 3
+    mandatory: false
+
+primaryKey: CorpFin.entities.SplitAllocation.SplitAllocation.SplitAllocationID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

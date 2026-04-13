@@ -1,0 +1,44 @@
+ # Description: Business view for `Industry` exposing navigation and actions.
+ # Contains: Business entity node linking to form, collection and actions.
+ # Role: Integrates Industry into the model navigation and UI.
+_package: Merchant.entities.Industry.business_views
+_type: BusinessView
+_name: IndustryBusinessView
+label: Industry Business View
+entity: Merchant.entities.Industry.Industry
+
+rootLabel: Industries
+rootPluralLabel: Industries
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Industry
+  displayCard: Merchant.entities.Industry.display_cards.IndustryDisplayCard
+  entity: Merchant.entities.Industry.Industry
+  actionSet: Merchant.entities.Industry.action_sets.IndustryActionSet
+  collection: Merchant.entities.Industry.collection_views.IndustryCollectionView
+  form: Merchant.entities.Industry.forms.IndustryForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

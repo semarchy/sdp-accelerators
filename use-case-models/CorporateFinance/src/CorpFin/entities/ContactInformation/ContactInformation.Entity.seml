@@ -1,0 +1,95 @@
+_package: CorpFin.entities.ContactInformation
+_type: Entity
+_name: ContactInformation
+label: Contact Information
+pluralLabel: Contact Information
+entityType: BASIC
+physicalTableName: CONTACT_INFORMATION
+iconUrl: images://mdi/badge-account-horizontal-outline.svg
+description: "Named contacts for a counterparty."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: ContactID
+    label: Contact ID
+    description: Surrogate identifier for contact record
+    documentation: ""
+    physicalName: CONTACT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: ContactType
+    label: Contact Type
+    description: Role of the contact (Primary, Billing, Technical)
+    documentation: ""
+    physicalName: CONTACT_TYPE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: FullName
+    label: Full Name
+    description: Contact person full name
+    documentation: ""
+    physicalName: FULL_NAME
+    dataType: String
+    length: 200
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Email
+    label: Email
+    description: Email address
+    documentation: ""
+    physicalName: EMAIL
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: Phone
+    label: Phone
+    description: Primary phone number
+    documentation: ""
+    physicalName: PHONE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: Role
+    label: Role
+    description: Job role or title
+    documentation: ""
+    physicalName: ROLE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: PreferredLanguage
+    label: Preferred Language
+    description: Language preference for communications
+    documentation: ""
+    physicalName: PREFERRED_LANGUAGE
+    dataType: String
+    length: 10
+    mandatory: false
+
+primaryKey: CorpFin.entities.ContactInformation.ContactInformation.ContactID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

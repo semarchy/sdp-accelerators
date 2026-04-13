@@ -1,0 +1,26 @@
+_package: FinanceKYC.entities.CorporateEntity.enrichers
+_name: PhonetizeCorpName
+_type: JavaPluginEnricher
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Phonetize Corporate Name
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+afterEnrichers: 
+  FinanceKYC.entities.CorporateEntity.enrichers.NormalizeCorpName
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedCorpName
+
+pluginOutputs:
+  - attributeName: PhonetizedCorpName
+    outputName: OUT_TRANSFORMED_TEXT

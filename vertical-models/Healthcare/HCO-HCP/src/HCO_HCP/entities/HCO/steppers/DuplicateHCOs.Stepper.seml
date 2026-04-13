@@ -1,0 +1,71 @@
+_name: DuplicateHCOs
+_package: HCO_HCP.entities.HCO.steppers
+_type: Stepper
+entity: HCO_HCP.entities.HCO.HCO
+rootStep:
+  _name: HCOs
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.HCO.collection_views.HCOCollectionMasters
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: HCOs
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: HCO_HCP.entities.HCO.HCO.SemlQLMatcherHCO
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+  stepTriggers: []
+  childSteps:
+    - _name: HCO
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: HCO
+      formTab: HCO_HCP.entities.HCO.forms.HCOForm.HCO
+      formStepEnrichers:
+        - enricher: HCO_HCP.entities.HCO.enrichers.RemoveBusinessEntityType
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: HCO_HCP.entities.HCO.enrichers.NormalizeName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: HCO_HCP.entities.HCO.HCO.SemlQLMatcherHCO
+      stepTriggers: []
+label: Duplicate HCOs
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

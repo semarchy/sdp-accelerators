@@ -1,0 +1,46 @@
+# Stepper to import data for Contact entity, with a collection step to import Contacts
+_package: sales360.entities.Contact.steppers
+_name: ContactImport
+_type: Stepper
+entity: sales360.entities.Contact.Contact
+description: Stepper for importing Contact data
+rootStep:
+  _name: ImportContacts
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Contact.collection_views.ContactImportCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Import Contacts
+  description: Step for importing Contact data
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for Contact entity
+      formTab: sales360.entities.Contact.forms.ContactDataEntryForm.Contact
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Contacts
+stepperFinishValidations: []
+triggers: []

@@ -1,0 +1,89 @@
+_package: Assets.entities.MaintenanceSchedule.forms
+_type: Form
+_name: MaintenanceScheduleForm
+entity: Assets.entities.MaintenanceSchedule.MaintenanceSchedule
+default: true
+formTabs:
+  - _type: FormTab
+    _name: MaintenanceSchedule
+    label: Maintenance Schedule
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/clipboard-clock-outline.svg
+    labelWidth: '150'
+    content:
+      - _type: FormContainer
+        _name: Container0
+        layoutDirection: COLUMN
+        content:
+        - _type: FormContainer
+          _name: Container1
+          layoutDirection: ROW
+          content:
+            - _type: FormContainer
+              _name: Container2
+              layoutDirection: COLUMN
+              labelWidth: "200"
+              content:
+                - _type: IdField
+                  _name: ScheduleID
+                  value: ScheduleID
+                  useCustomLabel: false
+                  dataType: STRING
+                - _type: ReferenceField
+                  _name: FDN_Machine2
+                  value: FDN_Machine2
+                  useCustomLabel: true
+                  label : Machine
+                  dataType: STRING
+                  referencedEntity: Assets.entities.Machine.Machine
+                - _type: TextField
+                  _name: MaintenanceType
+                  value: FDN_MaintenanceType
+                  useCustomLabel: false
+                  dataType: STRING
+                - _type: DateField
+                  _name: ScheduledDate
+                  value: ScheduledDate
+                  useCustomLabel: false
+                  dataType: DATE
+                - _type: DateField
+                  _name: PerformedDate
+                  value: PerformedDate
+                  useCustomLabel: false
+                  dataType: DATE
+                - _type: TextField
+                  _name: MaintenanceProvider
+                  value: MaintenanceProvider
+                  useCustomLabel: false
+                  dataType: STRING
+                - _type: TextField
+                  _name: MaintenanceCost
+                  value: MaintenanceCost
+                  useCustomLabel: true
+                  label: Maintenance Cost (USD)
+                  dataType: DECIMAL
+                - _type: TextField
+                  _name: DescriptionOfWork
+                  value: DescriptionOfWork
+                  useCustomLabel: false
+                  dataType: STRING
+        - _type: FormCollection
+          _name: SparePartsUsed
+          displayRecordCount: ON_DEMAND
+          enableUserDefinedSort: true
+          filter: '1=1'
+          gridAllowed: false
+          listAllowed: true
+          tableAllowed: true
+          transitionPath: MaintenanceScheduleSparePart.MaintenanceScheduleSparePart
+          useCustomLabel: true
+          sortExpression: '1'
+          targetEntity: Assets.entities.SparePart.SparePart
+          collection: Assets.entities.SparePart.collection_views.SparePartCollectionView
+          label: Spare Parts Used
+          pluralLabel: Spare Parts Used
+          visibleValue: "1"
+          visibleValueInterpreter: LITERAL

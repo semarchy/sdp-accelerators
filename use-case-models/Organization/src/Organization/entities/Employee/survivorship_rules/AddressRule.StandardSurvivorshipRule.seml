@@ -1,0 +1,26 @@
+# This survivorship rule defines how to handle the survivorship of Address attributes in Employee entities.
+# It specifies the attributes to consider, the consolidation strategy, and the publisher rankings for survivorship
+# It also includes an override strategy for handling changes until the data is consolidated.
+_package: Organization.entities.Employee.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: AddressRule
+label: Address Rule
+consolidationSkipNulls: false
+defaultRule: false
+entity: Organization.entities.Employee.Employee
+description: This rule defines how to handle the survivorship of Address attributes in Employee entities.
+attributes:
+  - attributeName: Address.City
+  - attributeName: Address.Country
+  - attributeName: Address.PostalCode
+  - attributeName: Address.State
+  - attributeName: Address.Street
+consolidationStrategy: PREFERRED_PUBLISHER
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: Organization.publishers.MainHRMS
+  - _type: ConsoPublisherRanking
+    publisher: Organization.publishers.IDP
+  - _type: ConsoPublisherRanking
+    publisher: Organization.publishers.PayrollSystem
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE

@@ -1,0 +1,28 @@
+_package: FinanceKYC.references
+_name: KYCReviewHasCustomer
+_type: Reference
+label: KYC Review Has Customer
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.KYCReview.KYCReview
+fromRoleLabel: Review
+fromRoleName: review
+fromRolePluralLabel: Reviews
+physicalName: KYC_R_HAS_CUS
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.Customer.Customer
+toRoleLabel: Customer
+toRoleName: Customer
+toRolePhysicalName: CUS_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Customer
+  label: Customer
+  physicalName: CUSTOMER
+  searchable: true
+  entity: FinanceKYC.entities.KYCReview.KYCReview

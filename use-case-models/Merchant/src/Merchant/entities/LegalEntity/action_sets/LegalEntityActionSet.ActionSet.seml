@@ -1,0 +1,73 @@
+ # Description: Action set for `LegalEntity` entity (create/edit/manage actions).
+ # Contains: Action definitions and steppers for LegalEntity workflows.
+ # Role: Controls available UI actions for LegalEntity master data.
+_package: Merchant.entities.LegalEntity.action_sets
+_type: ActionSet
+_name: LegalEntityActionSet
+entity: Merchant.entities.LegalEntity.LegalEntity
+label: Legal Entity Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateLegalEntity
+    label: Create
+    useCustomLabel: true
+    stepper: Merchant.entities.LegalEntity.steppers.AuthorLegalEntities
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditLegalEntity
+    label: Edit
+    useCustomLabel: true
+    stepper: Merchant.entities.LegalEntity.steppers.AuthorLegalEntities
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateLegalEntity
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Merchant.entities.LegalEntity.steppers.AuthorLegalEntities
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportLegalEntity
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Merchant.entities.LegalEntity.steppers.ImportLegalEntity
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ExplainRecordAction
+    _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    displayCard: Merchant.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+    formTab: Merchant.entities.LegalEntity.forms.LegalEntityForm.Overview
+    waitDialogEnabled: false

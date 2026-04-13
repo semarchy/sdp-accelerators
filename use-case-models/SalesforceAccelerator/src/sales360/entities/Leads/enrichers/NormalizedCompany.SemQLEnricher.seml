@@ -1,0 +1,13 @@
+# It is an enricher for the lead entity in the Salesforce Accelerator application.
+# It is a SemQLEnricher that normalizes the Company attribute by trimming spaces and converting to uppercase.
+# This enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.Leads.enrichers
+_name: NormalizedCompany
+entity: sales360.entities.Leads.Leads
+label: Normalized Company
+description: Enricher to normalize the Company attribute by trimming spaces and converting to uppercase.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedCompany
+    expression: LTRIM(RTRIM(UPPER(Company)))

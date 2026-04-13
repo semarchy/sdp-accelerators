@@ -1,0 +1,69 @@
+# This is the CampaignMemberActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on campaign members, such as creating, editing,
+# mass updating, deleting,exporting,importing campaign members.
+_name: CampaignMemberActionSet
+_package: sales360.entities.CampaignMember.action_sets
+_type: ActionSet
+entity: sales360.entities.CampaignMember.CampaignMember
+label: Campaign Member Action Set
+description: Action set for managing campaign members, including create, edit, mass update,
+  delete, export, and import actions
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorCampaignMembers
+    label: Create
+    description: Create a new campaign member
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.CampaignMember.steppers.AuthorCampaignMembers
+  - _name: EditAuthorCampaignMembers
+    label: Edit
+    description: Edit existing campaign members
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.CampaignMember.steppers.AuthorCampaignMembers
+  - _name: Delete
+    label: Delete
+    description: Delete selected campaign members
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export campaign members to a file
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorCampaignMembers
+    label: Import
+    description: Import campaign members from a file
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.CampaignMember.steppers.CampaignMemberImport
+  - _name: MassUpdateAuthorCampaignMembers
+    label: Mass Update
+    description: Mass update selected campaign members
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sales360.entities.CampaignMember.steppers.AuthorCampaignMembers

@@ -1,0 +1,50 @@
+{
+  "name" : "NPPESGetNPI",
+  "label" : "NPPES Get NPI",
+  "description" : null,
+  "errorSelector" : null,
+  "timeout" : 5000,
+  "maxRetries" : 0,
+  "successStatusCodes" : "2xx",
+  "httpMethod" : "GET",
+  "requestUrl" : "https://npiregistry.cms.hhs.gov/api/?first_name=${first_name}&last_name=${last_name}&city=${city}&state=${state}&postal_code=${postal_code}&limit=1&version=2.1",
+  "requestHeaders" : "Content-Type: application/json",
+  "requestBodyFormat" : "NONE",
+  "requestBody" : "",
+  "requestInputs" : [ {
+    "name" : "city",
+    "label" : "city",
+    "description" : null,
+    "dataType" : "STRING"
+  }, {
+    "name" : "first_name",
+    "label" : "first name",
+    "description" : null,
+    "dataType" : "STRING"
+  }, {
+    "name" : "last_name",
+    "label" : "last name",
+    "description" : null,
+    "dataType" : "STRING"
+  }, {
+    "name" : "postal_code",
+    "label" : "postal code",
+    "description" : null,
+    "dataType" : "STRING"
+  }, {
+    "name" : "state",
+    "label" : "state",
+    "description" : null,
+    "dataType" : "STRING"
+  } ],
+  "responseOutputs" : [ {
+    "name" : "NPI",
+    "label" : "NPI",
+    "description" : null,
+    "dataType" : "STRING",
+    "valueSelector" : "$.results[0].number",
+    "onAbsentValueBehavior" : "USE_DEFAULT_VALUE",
+    "onDataTypeMismatchBehavior" : "USE_DEFAULT_VALUE",
+    "defaultValue" : "NOT FOUND"
+  } ]
+}

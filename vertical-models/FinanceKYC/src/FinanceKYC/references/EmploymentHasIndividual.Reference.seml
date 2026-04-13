@@ -1,0 +1,28 @@
+_package: FinanceKYC.references
+_name: EmploymentHasIndividual
+_type: Reference
+label: Employment Has Individual
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.Employment.Employment
+fromRoleLabel: Employment
+fromRoleName: employment
+fromRolePluralLabel: Employments
+physicalName: EMP_HAS_IND
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+toRoleLabel: Individual
+toRoleName: Individual
+toRolePhysicalName: IND_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Individual
+  label: Individual
+  physicalName: INDIVIDUAL
+  searchable: true
+  entity: FinanceKYC.entities.Employment.Employment

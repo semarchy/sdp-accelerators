@@ -1,0 +1,41 @@
+_package: CorpFin.entities.OrgHierarchyNode.business_views
+_type: BusinessView
+_name: OrgHierarchyNodeBusinessView
+entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+rootLabel: Org Hierarchy Nodes
+rootPluralLabel: Org Hierarchy Nodes
+displayRootNodeAs: ICON_LABEL
+label: Org Hierarchy Nodes
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: OrgHierarchyNode
+  entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+  actionSet: CorpFin.entities.OrgHierarchyNode.action_sets.OrgHierarchyNodeActionSet
+  collection: CorpFin.entities.OrgHierarchyNode.collection_views.OrgHierarchyNodeCollectionView
+  form: CorpFin.entities.OrgHierarchyNode.forms.OrgHierarchyNodeForm
+  displayCard: CorpFin.entities.OrgHierarchyNode.display_cards.OrgHierarchyNodeDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

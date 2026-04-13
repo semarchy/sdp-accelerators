@@ -1,0 +1,62 @@
+ # Description: ActionSet for `Individual` defining available actions and steppers.
+ # Contains: Action declarations and references to steppers/forms for Individual entity.
+ # Role: Exposes actions used in the UI and business views for Individual records.
+_package: Merchant.entities.Individual.action_sets
+_name: Individual
+_type: ActionSet
+entity: Merchant.entities.Individual.Individual 
+label: Individual Actions
+defaultActionSet: true
+
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorIndividuals
+    label: Create
+    useCustomLabel: true
+    stepper: Merchant.entities.Individual.steppers.AuthorIndividuals
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorIndividuals
+    label: Edit
+    useCustomLabel: true
+    stepper: Merchant.entities.Individual.steppers.AuthorIndividuals
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorIndividuals
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Merchant.entities.Individual.steppers.AuthorIndividuals
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorIndividuals
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Merchant.entities.Individual.steppers.ImportIndividual
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true

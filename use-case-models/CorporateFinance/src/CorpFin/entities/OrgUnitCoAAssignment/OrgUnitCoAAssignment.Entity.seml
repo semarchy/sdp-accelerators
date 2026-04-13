@@ -1,0 +1,61 @@
+_package: CorpFin.entities.OrgUnitCoAAssignment
+_type: Entity
+_name: OrgUnitCoAAssignment
+label: Org Unit CoA Assignment
+pluralLabel: Org Unit CoA Assignments
+entityType: BASIC
+physicalTableName: ORG_UNIT_COA_ASSIGNMENT
+iconUrl: images://mdi/account-details.svg
+description: "Associates organizational units with charts of accounts."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CoAAssignmentID
+    label: CoA Assignment ID
+    description: Surrogate identifier for CoA usage
+    documentation: ""
+    physicalName: COA_ASSIGNMENT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: UsageScope
+    label: Usage Scope
+    description: Purpose of the assignment (Operational, Managerial, Statutory, Group)
+    documentation: ""
+    physicalName: USAGE_SCOPE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedUsageScope
+    label: Normalized Usage Scope
+    description: Trimmed and uppercased usage scope
+    documentation: ""
+    physicalName: NORMALIZED_USAGE_SCOPE
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    description: Additional context or restrictions
+    documentation: ""
+    physicalName: NOTES
+    dataType: String
+    length: 1000
+    mandatory: false
+
+primaryKey: CorpFin.entities.OrgUnitCoAAssignment.OrgUnitCoAAssignment.CoAAssignmentID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

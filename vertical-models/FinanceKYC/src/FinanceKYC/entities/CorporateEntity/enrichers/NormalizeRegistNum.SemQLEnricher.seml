@@ -1,0 +1,11 @@
+_package: FinanceKYC.entities.CorporateEntity.enrichers
+_name: NormalizeRegistNum
+_type: SemQLEnricher
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Normalize Corporate Entity Registration Number
+description: Currently a placeholder expression. Replace with the actual normalization logic as needed.
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedRegistrationNum
+    expression: "RTRIM(LTRIM(UPPER(RIGHT(RegistrationNumber, 7))))"

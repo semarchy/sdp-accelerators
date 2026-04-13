@@ -1,0 +1,104 @@
+_package: CorpFin.entities.CounterpartyGroup
+_type: Entity
+_name: CounterpartyGroup
+label: Counterparty Group
+pluralLabel: Counterparty Groups
+entityType: BASIC
+physicalTableName: COUNTERPARTY_GROUP
+iconUrl: images://mdi/hexagon-multiple.svg
+description: "Hierarchy of related counterparties."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CounterpartyGroupID
+    label: Counterparty Group ID
+    description: Surrogate identifier for counterparty group
+    documentation: ""
+    physicalName: COUNTERPARTY_GROUP_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: GroupName
+    label: Group Name
+    description: Counterparty group display name
+    documentation: ""
+    physicalName: GROUP_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedGroupName
+    label: Normalized Group Name
+    description: Trimmed and uppercased group name for matching
+    documentation: ""
+    physicalName: NORMALIZED_GROUP_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhonetizedGroupName
+    label: Phonetized Group Name
+    description: Phonetic representation of group name for fuzzy matching
+    documentation: ""
+    physicalName: PHONETIZED_GROUP_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: DUNSNumber
+    label: DUNS Number
+    description: Global DUNS or external registry number
+    documentation: ""
+    physicalName: DUNS_NUMBER
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedDUNSNumber
+    label: Normalized DUNS Number
+    description: Trimmed and uppercased DUNS/registration identifier
+    documentation: ""
+    physicalName: NORMALIZED_DUNS_NUMBER
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: UltimateParentFlag
+    label: Ultimate Parent Flag
+    description: Indicates whether the group is the top of hierarchy
+    documentation: ""
+    physicalName: ULTIMATE_PARENT_FLAG
+    dataType: Boolean
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Sector
+    label: Sector
+    description: Industry sector
+    documentation: ""
+    physicalName: SECTOR
+    dataType: String
+    length: 100
+    mandatory: false
+
+primaryKey: CorpFin.entities.CounterpartyGroup.CounterpartyGroup.CounterpartyGroupID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

@@ -1,0 +1,129 @@
+_package: FinanceKYC.entities.Address.forms
+_type: Form
+_name: AddressForm
+
+entity: FinanceKYC.entities.Address.Address
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: Address
+    label: Address
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/map-marker-outline.svg
+    displayFormTabAs: ICON_LABEL
+    visibleValueInterpreter: LITERAL
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: BasicInfo
+                label: Basic Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: IdField
+                  _name: AddressID
+                  value: AddressID
+                  useCustomLabel: false
+                  dataType: LONG_INTEGER
+
+                - _type: TextField
+                  _name: AddressType
+                  value: AddressType
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: Street
+                  value: Street
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: City
+                  value: City
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: PostalCode
+                  value: PostalCode
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: State
+                  value: State
+                  useCustomLabel: false
+                  dataType: STRING
+                  
+                - _type: TextField
+                  _name: Country
+                  value: Country
+                  useCustomLabel: false
+                  dataType: STRING
+
+          - _type: FormContainer
+            _name: Container7
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: AdditionalInfo
+                label: Additional Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+                visibleValue: '1'
+
+                content:
+                - _type: TextField
+                  _name: FullAddress
+                  value: FullAddress
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: EnrichedAddress
+                  value: EnrichedAddress
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: DateField
+                  _name: ValidFrom
+                  value: ValidFrom
+                  useCustomLabel: false
+                  dataType: DATE
+
+                - _type: DateField
+                  _name: ValidTo
+                  value: ValidTo
+                  useCustomLabel: false
+                  dataType: DATE
+
+                - _type: CheckboxField
+                  _name: IsCurrent
+                  value: IsCurrent
+                  useCustomLabel: false
+                  dataType: BOOLEAN
+
+                - _type: ReferenceField
+                  _name: FDN_Customer
+                  value: FDN_Customer
+                  referencedEntity: FinanceKYC.entities.Customer.Customer
+                  useCustomLabel: false
+                  dataType: STRING

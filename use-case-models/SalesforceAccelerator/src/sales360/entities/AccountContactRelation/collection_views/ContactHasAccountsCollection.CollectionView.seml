@@ -1,0 +1,123 @@
+# This is a Collection View definition for AccountContactRelation entity in Salesforce Accelerator application.
+# It defines how Contacts having Account records are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.AccountContactRelation.collection_views
+_name: ContactHasAccountsCollection
+_type: CollectionView
+entity: sales360.entities.AccountContactRelation.AccountContactRelation
+default: false
+displayCard: sales360.entities.AccountContactRelation.display_cards.RelationDisplayCard
+tableAllowed: true
+tableRowLines: 1
+tableDisplayCardColumnLabel: Account Relation
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_Account
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Account
+    visibleByDefault: true
+    defaultWidth: 350
+    displayCard: sales360.entities.Account.display_cards.AccountNameAddress
+    referencedEntity: sales360.entities.Account.Account
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: IdColumn
+    _name: Account_AccountID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    label: Account ID
+    useCustomLabel: true
+    value: Account.AccountID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Account_AccountNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: Account Number
+    useCustomLabel: true
+    value: Account.AccountNumber
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: Account_FDN_AccountType
+    columnAlign: LEFT
+    dataType: STRING
+    label: Account Type
+    useCustomLabel: true
+    value: Account.FDN_AccountType
+    visibleByDefault: true
+    defaultWidth: 200
+    displayCard: sales360.entities.AccountType.display_cards.AccountTypeDisplayCard
+    referencedEntity: sales360.entities.AccountType.AccountType
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: Account_FDN_Industry
+    columnAlign: LEFT
+    dataType: STRING
+    label: Industry
+    useCustomLabel: true
+    value: Account.FDN_Industry
+    visibleByDefault: true
+    displayCard: sales360.entities.Industry.display_cards.IndustryDisplayCard
+    referencedEntity: sales360.entities.Industry.Industry
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: Account_FDN_Ownership
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Account.FDN_Ownership
+    visibleByDefault: true
+    displayCard: sales360.entities.Ownership.display_cards.OwnershipDisplayCard
+    referencedEntity: sales360.entities.Ownership.Ownership
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Account_AnnualRevenue
+    columnAlign: LEFT
+    dataType: INTEGER
+    label: Annual revenue
+    useCustomLabel: true
+    value: Account.AnnualRevenue
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Account_Phone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: Phone
+    useCustomLabel: true
+    value: Account.Phone.StandardizedPhoneNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Account_Website
+    columnAlign: LEFT
+    dataType: STRING
+    label: Website
+    useCustomLabel: true
+    value: Account.Website
+    visibleByDefault: true
+    defaultWidth: 200

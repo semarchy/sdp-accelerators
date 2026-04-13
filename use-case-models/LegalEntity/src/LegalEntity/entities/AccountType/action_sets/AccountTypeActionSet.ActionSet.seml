@@ -1,0 +1,61 @@
+#This file defines the AccountTypeActionSet for the Legal Entity application.
+# It includes actions for creating, editing, mass updating, deleting, exporting, and importing account types.
+# The action set is used to manage account type information within the application.
+_package: LegalEntity.entities.AccountType.action_sets
+_type: ActionSet
+entity: LegalEntity.entities.AccountType.AccountType
+_name: AccountTypeActionSet
+label: Account Type Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAccountTypes
+    label: Create
+    useCustomLabel: true
+    stepper: LegalEntity.entities.AccountType.steppers.AuthorAccountTypes
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAccountTypes
+    label: Edit
+    useCustomLabel: true
+    stepper: LegalEntity.entities.AccountType.steppers.AuthorAccountTypes
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAccountTypes
+    label: Mass Update
+    useCustomLabel: true
+    stepper: LegalEntity.entities.AccountType.steppers.AuthorAccountTypes
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction 
+    _name: ImportAuthorAccountTypes
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: LegalEntity.entities.AccountType.steppers.AuthorAccountTypes
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true

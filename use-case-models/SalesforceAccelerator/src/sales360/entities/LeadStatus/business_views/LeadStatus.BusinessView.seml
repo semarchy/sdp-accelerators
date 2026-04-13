@@ -1,0 +1,69 @@
+# This is the LeadStatusBusinessView business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for lead statuses,
+# including the root entity, labels, and display options.
+_name: LeadStatus
+_package: sales360.entities.LeadStatus.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.LeadStatus.LeadStatus
+rootLabel: Lead Status
+rootPluralLabel: Lead Status
+useHierarchyOnOpen: false
+label: Lead Status
+description: Business view for Lead Status entity in Salesforce Accelerator
+rootBusinessViewEntity:
+  _name: LeadStatus
+  _type: BusinessViewEntity
+  collection: sales360.entities.LeadStatus.collection_views.LeadStatusCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.LeadStatus.LeadStatus
+  form: sales360.entities.LeadStatus.forms.LeadStatusForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.LeadStatus.action_sets.LeadStatusActionSet
+  displayCard: sales360.entities.LeadStatus.display_cards.LeadStatusDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.LeadStatus.business_views.LeadStatus.LeadStatus
+rootIconUrl: images://mdi/format-list-checkbox.svg

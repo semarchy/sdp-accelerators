@@ -1,0 +1,68 @@
+# This file defines the Role entity in the Salesforce Accelerator application.
+# It includes attributes such as RoleID, RoleCode, and RoleName, along with their properties and validations.
+# The entity is used to manage role information within the application.
+_name: Role
+_package: sales360.entities.Role
+_type: Entity
+primaryKey: sales360.entities.Role.Role.RoleID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: RoleCode
+label: Role
+documentation: A contact’s participating role in the account or opportunity
+description: A contact’s participating role in the account or opportunity
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Roles
+historizeGolden: true
+historizeMaster: false
+physicalTableName: CONTACT_ROLE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: RoleID
+    physicalName: ROLE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Role ID
+    documentation: Unique identifier for the Role entity
+    description: Unique identifier for the Role entity
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RoleCode
+    physicalName: ROLE_CODE
+    dataType: String
+    documentation: Role codes for the role a contact is playing an inccount or
+      opportunity like Evaluator, Decision Maker, etc.
+    description: Role codes for the role a contact is playing an inccount or
+      opportunity like Evaluator, Decision Maker, etc.
+    goldenAttribute: true
+    i18ned: false
+    label: Role Code
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RoleName
+    physicalName: ROLE_NAME
+    dataType: String
+    documentation: Role names for the role a contact is playing an inccount or
+      opportunity like Evaluator, Decision Maker, etc.
+    description: Role names for the role a contact is playing an inccount or
+      opportunity like Evaluator, Decision Maker, etc.
+    goldenAttribute: true
+    i18ned: false
+    label: Role Name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

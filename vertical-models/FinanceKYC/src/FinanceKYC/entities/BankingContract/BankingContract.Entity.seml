@@ -1,0 +1,115 @@
+_package: FinanceKYC.entities.BankingContract
+_type: Entity
+_name: BankingContract
+label: Banking Contract
+pluralLabel: Banking Contract
+entityType: BASIC
+physicalTableName: BANKING_CONTRACT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: BankingContractID
+    _type: EntityAttribute
+    label: Banking Contract ID
+    description: Unique identifier for the banking contract
+    documentation: ''
+    physicalName: BANKING_CONTRACT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    valueSeparator: ''
+    searchable: true
+
+  - _name: ContractName
+    _type: EntityAttribute
+    label: Contract Name
+    description: Name of the contract
+    documentation: ''
+    physicalName: CONTRACT_NAME
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    valueSeparator: ','
+    searchable: true
+    length: 100
+
+  - _name: StartDate
+    _type: EntityAttribute
+    label: Start Date
+    description: Contract start date
+    documentation: ''
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+
+  - _name: EndDate
+    _type: EntityAttribute
+    label: End Date
+    description: Contract end date
+    documentation: ''
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+
+  - _name: Status
+    _type: EntityAttribute
+    label: Status
+    description: Contract status
+    documentation: ''
+    physicalName: STATUS
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 20
+
+  - _name: Amount
+    _type: EntityAttribute
+    label: Amount
+    description: Contract amount
+    documentation: ''
+    physicalName: AMOUNT
+    dataType: Decimal
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    precision: 15
+    scale: 2
+
+  - _name: Currency
+    _type: EntityAttribute
+    label: Currency
+    description: Currency
+    documentation: ''
+    physicalName: CURRENCY
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 10
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    description: Additional notes
+    documentation: ''
+    physicalName: NOTES
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 255
+
+primaryKey: FinanceKYC.entities.BankingContract.BankingContract.BankingContractID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

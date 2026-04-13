@@ -1,0 +1,64 @@
+# This file defines the Contract Type entity in the Organization domain.
+# It includes attributes such as ContractTypeID, Name, and Description,
+# each with specific configurations for data type, visibility, and searchability.
+# This entity is used to manage different types of contracts within the organization and is used by the Contract entity.
+_package: Organization.entities.ContractType
+_type: Entity
+_name: ContractType
+label: Contract Type
+pluralLabel: Contract Types
+entityType: BASIC
+physicalTableName: CONTRACT_TYPE
+iconUrl: images://hr-img-lib/content-paste.svg
+description: This entity represents the different types of contracts that can be associated with employees or projects.
+documentation: This entity is used to define various contract types, which can be referenced in the Contract entity.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: ContractTypeID
+    label: Contract Type ID
+    physicalName: CONTRACT_TYPE_ID
+    description: Unique identifier for the contract type.
+    documentation: This attribute is the primary key for the Contract Type entity and is used to uniquely identify each contract type.
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: ContractTypeCode
+    label: Contract Type Code
+    description: Code of the contract type.
+    documentation: This attribute holds the code of the contract type, which is used for display purposes
+    physicalName: CONTRACT_TYPE_CODE
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    description: Name of the contract type.
+    documentation: This attribute holds the name of the contract type, which is used for display purposes
+    physicalName: NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Description of the contract type.
+    documentation: This attribute provides additional information about the contract type, which can be useful for understanding
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 1000
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100
+primaryKey: Organization.entities.ContractType.ContractType.ContractTypeID

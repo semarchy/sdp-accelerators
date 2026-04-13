@@ -1,0 +1,69 @@
+# This is the AccountContactRelationActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on account contact relations, such as creating, editing,
+# mass updating, deleting, exporting, importing account contact relations.
+_name: AccountContactRelationActionSet
+_package: sales360.entities.AccountContactRelation.action_sets
+_type: ActionSet
+entity: sales360.entities.AccountContactRelation.AccountContactRelation
+label: Account Contact Relation Action Set
+description: Action set for managing Account Contact Relations
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorAccountContactRelations
+    label: Create
+    description: Create a new Account Contact Relation
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.AccountContactRelation.steppers.AuthorAccountContactRelations
+  - _name: EditAuthorAccountContactRelations
+    label: Edit
+    description: Edit existing Account Contact Relations
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.AccountContactRelation.steppers.AuthorAccountContactRelations
+  - _name: Delete
+    label: Delete
+    description: Delete selected Account Contact Relations
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: MassUpdateAuthorAccountContactRelations
+    label: Mass Update
+    description: Mass update Account Contact Relations
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sales360.entities.AccountContactRelation.steppers.AuthorAccountContactRelations
+  - _name: Export
+    label: Export
+    description: Export Account Contact Relations
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorAccountContactRelations
+    label: Import
+    description: Import Account Contact Relations
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.AccountContactRelation.steppers.AccountContactRelationImport
+    

@@ -1,0 +1,31 @@
+# Description: Reference linking `Currency` to `Country`.
+# Contains the mapping that associates currencies with countries and related validation.
+# Role: Ensures currencies are tied to valid countries for localization and reporting.
+_package: Merchant.references
+_name: CurrencyHasCountry
+_type: Reference
+label: Currency Has Country
+description: "Associates currencies with the countries that use them"
+
+deletePropagation: RESTRICT
+fromEntity: Merchant.entities.Currency.Currency
+fromRoleLabel: Country Currency
+fromRoleName: CountryCurrency
+fromRolePluralLabel: CountryCurrencies
+
+physicalName: COUNTRY_CURRENCY
+fromNavigable: true
+
+toEntity: Merchant.entities.Country.Country
+toRoleLabel: Country
+toRoleName: Country
+toRolePhysicalName: COUNTRY_CODE
+toNavigable: true
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Country
+  label: Country
+  physicalName: COUNTRY_CODE
+  searchable: true

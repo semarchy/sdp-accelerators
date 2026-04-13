@@ -1,0 +1,73 @@
+_package: CorpFin.entities.TaxCode
+_type: Entity
+_name: TaxCode
+label: Tax Code
+pluralLabel: Tax Codes
+entityType: BASIC
+physicalTableName: TAX_CODE
+iconUrl: images://mdi/cash-register.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: TaxCodeID
+    label: Tax Code ID
+    description: Surrogate identifier for tax code
+    documentation: ""
+    physicalName: TAX_CODE_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    description: Name of the tax code
+    documentation: ""
+    physicalName: NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Description of the tax code
+    documentation: ""
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: TaxRate
+    label: Tax Rate
+    description: Tax rate percentage
+    documentation: ""
+    physicalName: TAX_RATE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: JurisdictionType
+    label: Jurisdiction Type
+    description: Jurisdiction type (federal, state, etc.)
+    documentation: ""
+    physicalName: JURISDICTION_TYPE
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CorpFin.entities.TaxCode.TaxCode.TaxCodeID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

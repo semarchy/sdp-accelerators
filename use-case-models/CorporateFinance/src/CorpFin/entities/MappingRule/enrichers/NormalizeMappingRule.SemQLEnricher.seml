@@ -1,0 +1,12 @@
+_package: CorpFin.entities.MappingRule.enrichers
+_name: NormalizeMappingRule
+_type: SemQLEnricher
+entity: CorpFin.entities.MappingRule.MappingRule
+label: Normalize Mapping Rule
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedRuleName
+    expression: "RTRIM(LTRIM(UPPER(RuleName)))"
+  - attributeName: NormalizedRuleType
+    expression: "RTRIM(LTRIM(UPPER(RuleType)))"

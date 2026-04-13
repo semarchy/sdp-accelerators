@@ -1,0 +1,22 @@
+_type: JavaPluginEnricher
+_package: HCO_HCP.entities.Member.enrichers
+_name: CleanseEmail
+entity: HCO_HCP.entities.Member.Member
+label: Cleanse Email
+pluginId: com.semarchy.engine.plugins.convergence.email
+batchUpdateSize: 1000
+condition: EmailAddress IS NOT NULL
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_EMAIL_ADDRESS
+    expression: EmailAddress
+pluginOutputs:
+  - outputName: OUT_CLEANSED_HOST_VALID
+    attributeName: ValidEmailDomain
+  - outputName: OUT_CLEANSED_EMAIL
+    attributeName: CleansedEmail
+afterEnrichers: HCO_HCP.entities.Member.enrichers.GeocodeUsingGoogle

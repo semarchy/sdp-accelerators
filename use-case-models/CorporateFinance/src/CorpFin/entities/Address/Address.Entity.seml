@@ -1,0 +1,112 @@
+_package: CorpFin.entities.Address
+_type: Entity
+_name: Address
+label: Address
+pluralLabel: Addresses
+entityType: BASIC
+physicalTableName: ADDRESS
+iconUrl: images://mdi/map-marker.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AddressID
+    label: Address ID
+    description: Surrogate identifier for the address record
+    documentation: ""
+    physicalName: ADDRESS_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Line1
+    label: Line 1
+    description: Primary address line
+    documentation: ""
+    physicalName: LINE1
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: Line2
+    label: Line 2
+    description: Secondary address line
+    documentation: ""
+    physicalName: LINE2
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: City
+    label: City
+    description: City name
+    documentation: ""
+    physicalName: CITY
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedCity
+    label: Normalized City
+    description: Trimmed and uppercased city name for matching
+    documentation: ""
+    physicalName: NORMALIZED_CITY
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: PostalCode
+    label: Postal Code
+    description: Postal or ZIP code
+    documentation: ""
+    physicalName: POSTAL_CODE
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedPostalCode
+    label: Normalized Postal Code
+    description: Trimmed and uppercased postal code for matching
+    documentation: ""
+    physicalName: NORMALIZED_POSTAL_CODE
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Region
+    label: Region
+    description: State or region name
+    documentation: ""
+    physicalName: REGION
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedRegion
+    label: Normalized Region
+    description: Trimmed and uppercased region/state value
+    documentation: ""
+    physicalName: NORMALIZED_REGION
+    dataType: String
+    length: 100
+    mandatory: false
+
+primaryKey: CorpFin.entities.Address.Address.AddressID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

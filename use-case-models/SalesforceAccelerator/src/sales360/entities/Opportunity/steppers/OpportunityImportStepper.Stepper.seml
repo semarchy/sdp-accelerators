@@ -1,0 +1,46 @@
+# Stepper to import data for Opportunities
+_package: sales360.entities.Opportunity.steppers
+_name: OpportunityImportStepper
+_type: Stepper
+entity: sales360.entities.Opportunity.Opportunity
+description: Stepper for importing Opportunity data
+rootStep:
+  _name: ImportOpportunities
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Opportunity.collection_views.OpportunityImportCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Import Opportunities
+  description: Step for importing Opportunity data
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for Opportunity entity
+      formTab: sales360.entities.Opportunity.forms.OpportunityBrowsingForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Opportunities
+stepperFinishValidations: []
+triggers: []

@@ -1,0 +1,14 @@
+_package: CorpFin.entities.Address.enrichers
+_name: NormalizeAddress
+_type: SemQLEnricher
+entity: CorpFin.entities.Address.Address
+label: Normalize Address
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedCity
+    expression: "RTRIM(LTRIM(UPPER(City)))"
+  - attributeName: NormalizedRegion
+    expression: "RTRIM(LTRIM(UPPER(Region)))"
+  - attributeName: NormalizedPostalCode
+    expression: "RTRIM(LTRIM(UPPER(PostalCode)))"

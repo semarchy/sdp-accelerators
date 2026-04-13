@@ -1,0 +1,47 @@
+# This is the AuthorNicknames Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing nicknames within the Salesforce context.
+_name: AuthorNicknames
+_package: sales360.entities.Nickname.steppers
+_type: Stepper
+entity: sales360.entities.Nickname.Nickname
+description: Stepper to author Nicknames in Salesforce Accelerator
+rootStep:
+  _name: Nicknames
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Nickname.collection_views.NicknameCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Nicknames
+  description: Manage Nicknames
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main information for Nickname
+      formTab: sales360.entities.Nickname.forms.NicknameForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Nicknames
+stepperFinishValidations: []
+triggers: []

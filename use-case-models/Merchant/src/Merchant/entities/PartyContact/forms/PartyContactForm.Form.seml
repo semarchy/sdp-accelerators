@@ -1,0 +1,79 @@
+ # Description: Form layout for the `PartyContact` entity (create/edit UI).
+ # Contains: Fields for email, phone, role and linked Party reference.
+ # Role: Provides the UI to create and edit PartyContact records.
+_package: Merchant.entities.PartyContact.forms
+_type: Form
+_name: PartyContactForm
+entity: Merchant.entities.PartyContact.PartyContact
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: PartyContact
+    label: Party Contact
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: ReferenceField
+        _name: FDN_Party
+        value: FDN_Party
+        useCustomLabel: true
+        label: Contact for Party
+        dataType: STRING
+        referencedEntity: Merchant.entities.Party.Party
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        authoringMode: auto
+        componentProperties:
+          displayType: chip
+          textAlign: left
+          useAvatarInChip: '1'
+          useSecondaryTextInChip: '1'
+          textTypography: body-1
+      - _type: TextField
+        _name: FirstName
+        value: FirstName
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: LastName
+        value: LastName
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: Email
+        value: Email
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: PhoneNumber
+        value: PhoneNumber
+        useCustomLabel: false
+        dataType: STRING
+      - _type: ReferenceField
+        _name: FDN_ContactRole
+        value: FDN_ContactRole
+        useCustomLabel: false
+        dataType: STRING
+        referencedEntity: Merchant.entities.PartyContact.PartyContact
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        authoringMode: auto
+        componentProperties:
+          displayType: chip
+          textAlign: left
+          useAvatarInChip: '1'
+          useSecondaryTextInChip: '1'
+          textTypography: body-1
+        labelProperties:
+          alignment: right
+          position: left
+          typography: caption
+          isVisible: '1'
+      - _type: MenuField
+        _name: ContactType
+        value: ContactType
+        useCustomLabel: false
+        dataType: STRING

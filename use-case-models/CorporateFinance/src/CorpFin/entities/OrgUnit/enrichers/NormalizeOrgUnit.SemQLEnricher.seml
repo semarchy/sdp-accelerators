@@ -1,0 +1,12 @@
+_package: CorpFin.entities.OrgUnit.enrichers
+_name: NormalizeOrgUnit
+_type: SemQLEnricher
+entity: CorpFin.entities.OrgUnit.OrgUnit
+label: Normalize Org Unit
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedOrgUnitBusinessCode
+    expression: "RTRIM(LTRIM(UPPER(OrgUnitBusinessCode)))"
+  - attributeName: NormalizedOrgUnitName
+    expression: "RTRIM(LTRIM(UPPER(OrgUnitName)))"

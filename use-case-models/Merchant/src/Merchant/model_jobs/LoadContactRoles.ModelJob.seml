@@ -1,0 +1,18 @@
+# Description: Model job for loading ContactRole reference data into the Merchant model.
+# Contains job settings and source definitions for contact role ingestion.
+# Role: Automates population of `ContactRole` reference values used across the model.
+_package: Merchant.model_jobs
+_name: LoadContactRoles
+_type: ModelJob
+jobType: INTEGRATION
+queueName: default
+modelTasks:
+  - _type: ModelJobTask
+    entity: Merchant.entities.ContactRole.ContactRole
+    _name: LoadContactRoles
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

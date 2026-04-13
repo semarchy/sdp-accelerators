@@ -1,0 +1,35 @@
+# Description: Reference linking `PartyAddress` to `Party` entities.
+# Contains mapping details, foreign attribute and cardinality for party addresses.
+# Role: Associates addresses with their parent party and supports address lookups.
+_package: Merchant.references
+_name: PartyAddress
+_type: Reference
+label: Party Address
+documentation: Reference to the addresses associated with a party
+description: Reference to the addresses associated with a party
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.PartyAddress.PartyAddress
+fromRoleLabel: Party Address
+fromRoleName: PartyAddress
+fromRolePluralLabel: PartyAddresses
+physicalName: MERCHANT_ADDRESS
+fromNavigable: true
+
+toEntity: Merchant.entities.Party.Party
+toRoleLabel: Party
+toRoleName: Party
+toRolePhysicalName: PARTY
+toNavigable: true
+
+validationScope: PRE_CONSO
+mandatoryValidationLabel: Party is required
+oneToMany: true
+splitDuplicatePropagation: NONE
+
+foreignAttribute:
+  _name: Party
+  _type: ForeignAttribute
+  label: Merchant ID
+  physicalName: MERCHANT_ID
+  searchable: true

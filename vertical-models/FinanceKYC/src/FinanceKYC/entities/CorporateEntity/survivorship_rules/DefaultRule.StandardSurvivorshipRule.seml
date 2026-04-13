@@ -1,0 +1,22 @@
+_package: FinanceKYC.entities.CorporateEntity.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DefaultRule
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Default Rule
+description: ""
+documentation: ""
+defaultRule: true
+consolidationStrategy: PREFERRED_PUBLISHER
+consolidationSkipNulls: false
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+
+attributes:
+  - attributeName: EntityName
+  
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: FinanceKYC.publishers.ERP
+  - _type: ConsoPublisherRanking
+    publisher: FinanceKYC.publishers.CRM
+  - _type: ConsoPublisherRanking
+    publisher: FinanceKYC.publishers.WEB

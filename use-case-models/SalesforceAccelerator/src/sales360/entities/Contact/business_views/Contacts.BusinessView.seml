@@ -1,0 +1,239 @@
+# This is the Contacts business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for contacts,
+# including the root entity, labels, and display options.
+_name: Contacts
+_package: sales360.entities.Contact.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.Contact.Contact
+rootLabel: Contact
+rootPluralLabel: Contacts
+useHierarchyOnOpen: false
+label: All Contacts
+description: Business view for all contacts
+rootBusinessViewEntity:
+  _name: Contact
+  _type: BusinessViewEntity
+  collection: sales360.entities.Contact.collection_views.ContactCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.Contact.Contact
+  form: sales360.entities.Contact.forms.ContactBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sales360.entities.Contact.action_sets.ContactActionSet
+  displayCard: sales360.entities.Contact.display_cards.ContactDisplayCard
+  sortExpression: NormalizedFirstName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sales360.entities.Contact.forms.ContactBrowsingForm.Details.GeneralInformation.Container.Container3.FDN_Account
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.Contact.business_views.Contacts.Contact
+    - _name: AccountContactRelations
+      _type: BusinessViewTransition
+      transitionPath: AccountContactRelations
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: COALESCE(SEM_BOOLEAN_TO_CHAR(IsDirect), 'false') = 'false'
+      iconUrl: images://mdi/office-building-outline.svg
+      label: Other Relation
+      pluralLabel: Other Relations
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: AccountContactRelation
+        _type: BusinessViewEntity
+        collection: sales360.entities.AccountContactRelation.collection_views.ContactHasAccountsCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sales360.entities.AccountContactRelation.AccountContactRelation
+        form: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sales360.entities.AccountContactRelation.action_sets.AccountContactRelationActionSet
+        displayCard: sales360.entities.AccountContactRelation.display_cards.RelationDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container2.FDN_Account
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container3.FDN_Contact
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container2.FDN_Role
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: ContactOpportunityRole
+      _type: BusinessViewTransition
+      transitionPath: ContactOpportunityRole
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/account-cash-outline.svg
+      label: Opportunities
+      pluralLabel: Opportunities
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: OpportunityContactRole
+        _type: BusinessViewEntity
+        collection: sales360.entities.OpportunityContactRole.collection_views.ContactOpportunityRoleCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+        form: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sales360.entities.OpportunityContactRole.action_sets.OpportunityContactRoleActionSet
+        displayCard: sales360.entities.OpportunityContactRole.display_cards.ContactOpportunityRoleDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Contact
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Opportunity
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Role
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ContactMaster
+        _type: BusinessViewEntity
+        collection: sales360.entities.Contact.collection_views.ContactMasterCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sales360.entities.Contact.Contact
+        form: sales360.entities.Contact.forms.ContactMasterForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sales360.entities.Contact.action_sets.ContactActionSet
+        displayCard: sales360.entities.Contact.display_cards.ContactDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sales360.entities.Contact.forms.ContactMasterForm.Details.GeneralInformation.Container.Container2.FDN_ReportsToId
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.Contact.forms.ContactMasterForm.Details.GeneralInformation.Container.Container3.FDN_Account
+            navigationMode: MODAL_FORM
+        transitions: []

@@ -1,0 +1,113 @@
+_name: HCOActionSet
+_package: HCO_HCP.entities.HCO.action_sets
+_type: ActionSet
+entity: HCO_HCP.entities.HCO.HCO
+label: HCO Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateHCOWorkflow
+    _type: StartWorkflowEntityAction
+    label: Create HCO Workflow
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: HCO_HCP.workflows.CreateOrEditOrganization.StartCreate
+  - _name: EditHCOWorkflow
+    _type: StartWorkflowEntityAction
+    label: Edit HCO Workflow
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: HCO_HCP.workflows.CreateOrEditOrganization.StartEdit
+  - _name: CreateAuthorHCOs
+    label: Direct Create HCO
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.HCO.steppers.AuthorHCOs
+  - _name: EditAuthorHCOs
+    label: Direct Edit HCO
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    itemsLimit: 1000
+    multipleSelectionAllowed: true
+    stepper: HCO_HCP.entities.HCO.steppers.AuthorHCOs
+  - _name: MassUpdateAuthorHCOs
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: HCO_HCP.entities.HCO.steppers.AuthorHCOs
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+    itemsLimit: 1000
+  - _name: ImportAuthorHCOs
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.HCO.steppers.AuthorHCOs
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnHCO
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: HCO_HCP.entities.HCO.dups_managers.ManageDuplicatesOnHCO
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnHCO
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: HCO_HCP.entities.HCO.dups_managers.ManageDuplicatesOnHCO
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnHCO
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: HCO_HCP.entities.HCO.dups_managers.ManageDuplicatesOnHCO
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: HCO_HCP.entities.HCO.display_cards.HCODisplayCard
+    formTab: HCO_HCP.entities.HCO.forms.HCOForm.HCO

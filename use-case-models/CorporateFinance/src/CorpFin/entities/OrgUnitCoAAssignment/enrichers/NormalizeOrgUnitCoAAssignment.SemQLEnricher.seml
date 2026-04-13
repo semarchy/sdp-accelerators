@@ -1,0 +1,10 @@
+_package: CorpFin.entities.OrgUnitCoAAssignment.enrichers
+_name: NormalizeOrgUnitCoAAssignment
+_type: SemQLEnricher
+entity: CorpFin.entities.OrgUnitCoAAssignment.OrgUnitCoAAssignment
+label: Normalize Org Unit CoA Assignment
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedUsageScope
+    expression: "RTRIM(LTRIM(UPPER(UsageScope)))"

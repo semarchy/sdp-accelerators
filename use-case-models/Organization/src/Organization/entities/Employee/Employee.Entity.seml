@@ -1,0 +1,399 @@
+_package: Organization.entities.Employee
+_type: Entity
+_name: Employee
+entityType: FUZZY_MATCHED
+physicalTableName: EMPLOYEE
+iconUrl: images://hr-img-lib/account-group.svg
+label: Employee
+pluralLabel: Employees
+description: This entity represents employees within the organization, used for
+  managing employee data and relationships.
+documentation: This entity is used to define various employees, which can be
+  referenced in other entities.
+enableDelete: true
+dataEntryAllowed: true
+historizeGolden: true
+historizeMaster: true
+matcher:
+  _name: EmployeeMatcher
+  _type: SemQLMatcher
+  description: Strategies for matching employee data
+  matchRules:
+    - _name: NormalizedLastNameMemberID
+      _type: SemQLMatchRule
+      label: Normalized Last Name Member ID
+      documentation: "In the best case scenario, we match people with this rule: match
+        on Name and Member ID across systems."
+      color: md:purple 900
+      condition: /*** Last Name exact match ***/  Record1.NormalizedLastName =
+        Record2.NormalizedLastName  /*** Social Security Number exact match ***/
+        AND Record1.MemberID = Record2.MemberID
+      matchScore: 100
+    - _name: NormalizedNameOrNicknameDOBEmail
+      _type: SemQLMatchRule
+      label: Normalized Name Or Nickname DOB Email
+      documentation: 'In the "Normal Ideal" case, we match people with this rule:
+        match on Name, Date of Birth, and Email, across systems.'
+      color: md:purple 700
+      condition: /*** Normalized Name or nickname exact match ***/ (
+        Record1.NormalizedFirstName = Record2.NormalizedFirstName    OR
+        Record1.Nickname = Record2.Nickname    OR Record1.NormalizedFirstName =
+        Record2.Nickname    OR Record1.Nickname =  Record2.NormalizedFirstName
+        )  AND Record1.NormalizedLastName = Record2.NormalizedLastName   /***
+        Date of birth exact match ***/ AND Record1.DateOfBirth =
+        Record2.DateOfBirth  /*** Email exact match ***/ AND
+        Record1.CleansedEmail = Record2.CleansedEmail
+      matchScore: 98
+    - _name: NormalizedNameOrNicknameDOBPhone
+      _type: SemQLMatchRule
+      label: Normalized Name Or Nickname DOB Phone
+      documentation: "In this match case scenario, we match people with this rule:
+        match on Name, Normalized Address, and Date of Birth across systems."
+      color: md:purple 400
+      condition: /*** Normalized Name or nickname exact match ***/ (
+        Record1.NormalizedFirstName = Record2.NormalizedFirstName    OR
+        Record1.Nickname = Record2.Nickname    OR Record1.NormalizedFirstName =
+        Record2.Nickname    OR Record1.Nickname =  Record2.NormalizedFirstName
+        )  AND Record1.NormalizedLastName = Record2.NormalizedLastName   /***
+        Date of birth exact match ***/ AND Record1.DateOfBirth =
+        Record2.DateOfBirth  /*** Address match ***/ AND
+        Record1.StandardizedPhone = Record2.StandardizedPhone
+      matchScore: 96
+    - _name: NormalizedNameOrNicknameAddressEmailPhone
+      _type: SemQLMatchRule
+      label: Normalized Name Or Nickname Address Email Phone
+      documentation: "In this match case scenario, we match people with this rule:
+        match on Name, Normalized Address, and Date of Birth across systems."
+      color: md:purple 400
+      condition: /*** Normalized Name or nickname exact match ***/ (
+        Record1.NormalizedFirstName = Record2.NormalizedFirstName    OR
+        Record1.Nickname = Record2.Nickname    OR Record1.NormalizedFirstName =
+        Record2.Nickname    OR Record1.Nickname =  Record2.NormalizedFirstName
+        )  AND Record1.NormalizedLastName = Record2.NormalizedLastName   /***
+        Address match ***/ AND Record1.NormalizedStreet =
+        Record2.NormalizedStreet AND Record1.NormalizedCity =
+        Record2.NormalizedCity AND Record1.NormalizedState =
+        Record2.NormalizedState AND coalesce(Record1.Address.PostalCode,
+        'default') = coalesce(Record2.Address.PostalCode, 'default') AND
+        Record1.Address.Country = Record2.Address.Country  /*** Cleansed contact
+        info ***/ AND Record1.StandardizedPhone = Record2.StandardizedPhone AND
+        Record1.CleansedEmail = Record2.CleansedEmail
+      matchScore: 94
+    - _name: PhoneticNameAddressEmailPhone
+      _type: SemQLMatchRule
+      label: Phonetic Name Address Email Phone
+      color: md:purple 200
+      condition: /*** Phonetic Name match ***/ Record1.PhoneticFirstName =
+        Record2.PhoneticFirstName AND Record1.PhoneticLastName =
+        Record2.PhoneticLastName  /*** Address match ***/
+        AND         (Record1.NormalizedStreet = Record2.NormalizedStreet AND
+        Record1.NormalizedCity = Record2.NormalizedCity AND
+        Record1.NormalizedState = Record2.NormalizedState AND
+        coalesce(Record1.Address.PostalCode, 'default') =
+        coalesce(Record2.Address.PostalCode, 'default') AND
+        Record1.Address.Country = Record2.Address.Country )  /*** Cleansed
+        contact info ***/ OR         (Record1.StandardizedPhone =
+        Record2.StandardizedPhone AND Record1.CleansedEmail =
+        Record2.CleansedEmail )
+      matchScore: 78
+    - _name: ExactEmailMatch
+      _type: SemQLMatchRule
+      label: Exact Email Match
+      documentation: We match people based on the same Email, across systems.
+      description: Email is a strong match because most employees have a unique email
+      color: md:purple 100
+      condition: Record1.CleansedEmail = Record2.CleansedEmail
+      matchScore: 68
+    - _name: SimilarLastNameAddress
+      _type: SemQLMatchRule
+      label: Similar Name Address
+      documentation: Fuzzy matching rule to catch typos with name and address data entry
+      color: md:purple 100
+      condition: /*** Matching on similar names, catching typos ***/
+        Record1.NormalizedFirstName = Record2.NormalizedFirstName AND
+        SEM_EDIT_DISTANCE_SIMILARITY( Record1.NormalizedLastName,
+        Record2.NormalizedLastName ) > 80   /*** Match on similar address ***/
+        AND  SEM_EDIT_DISTANCE_SIMILARITY( Record1.NormalizedStreet,
+        Record2.NormalizedStreet )  > 75  /*** Exact match on city, zip code,
+        state, and country ***/ AND Record1.NormalizedCity =
+        Record2.NormalizedCity AND Record1.NormalizedState =
+        Record2.NormalizedState AND coalesce(Record1.Address.PostalCode,
+        'default') = coalesce(Record2.Address.PostalCode, 'default') AND
+        Record1.Address.Country = Record2.Address.Country
+      matchScore: 68
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 95
+  autoConfirmSingletons: false
+attributes:
+  - _name: ID
+    _type: EntityAttribute
+    label: ID
+    description: MDM identifier of the employee
+    documentation: ""
+    physicalName: ID
+    dataType: LongInteger
+    precision: 38
+    length: 0
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    valueSeparator: ""
+    searchable: true
+  - _name: FirstName
+    _type: EntityAttribute
+    label: First Name
+    description: An employee given name
+    documentation: An employee given name
+    dataType: String
+    physicalName: FIRST_NAME
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: LastName
+    _type: EntityAttribute
+    label: Last Name
+    description: An employee's surname
+    documentation: An employee's surname
+    dataType: String
+    physicalName: LAST_NAME
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128 
+  - _name: FullName
+    _type: EntityAttribute
+    label: Full Name
+    description: An employee's full name
+    documentation: An employee's full name
+    dataType: String
+    physicalName: FULL_NAME
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 256
+  - _name: MiddleName
+    _type: EntityAttribute
+    label: Middle Name
+    description: An employee's middle name
+    documentation: An employee's middle name
+    dataType: String
+    physicalName: MIDDLE_NAME
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: PhoneticFirstName
+    _type: EntityAttribute
+    label: Phonetic First Name
+    description: First name transformed using the phonetic metaphone algorithm
+    documentation: First name transformed using the phonetic metaphone algorithm
+    dataType: String
+    physicalName: PHONETIC_FIRST_NAME
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: PhoneticLastName
+    _type: EntityAttribute
+    label: Phonetic Last Name
+    description: Last name transformed using the phonetic metaphone algorithm
+    documentation: Last name transformed using the phonetic metaphone algorithm
+    dataType: String
+    physicalName: PHONETIC_LAST_NAME
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: NormalizedFirstName
+    _type: EntityAttribute
+    label: Normalized First Name
+    description: Normalized first name for matching
+    documentation: Normalized first name for matching
+    dataType: String
+    physicalName: NORMALIZED_FIRST_NAME
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: NormalizedLastName
+    _type: EntityAttribute
+    label: Normalized Last Name
+    description: Normalized last name for matching
+    documentation: Normalized last name for matching
+    dataType: String
+    physicalName: NORMALIZED_LAST_NAME
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: Nickname
+    _type: EntityAttribute
+    label: Nickname
+    description: Most common nickname for this given name–used for matching
+    documentation: Most common nickname for this given name–used for matching
+    dataType: String
+    physicalName: NICKNAME
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: MemberID
+    _type: EntityAttribute
+    label: Member ID
+    description: Internal or national identifier of the employee
+    documentation: Internal or national identifier of the employee, used for matching purposes
+    dataType: String
+    physicalName: MEMBER_ID
+    length: 110
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+  - _name: DateOfBirth
+    _type: EntityAttribute
+    label: Date of Birth
+    description: Date of birth of the employee
+    documentation: Date of birth of the employee, used for sending birthday notifications
+    dataType: Date
+    physicalName: DATE_OF_BIRTH
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+  - _name: NormalizedStreet
+    _type: EntityAttribute
+    label: Normalized Street
+    description: Normalized street address for matching
+    documentation: Normalized street address for matching, cleaned up by removing
+      certain suffixes and standardizing abbreviations
+    dataType: String
+    physicalName: NORMALIZED_STREET
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: NormalizedCity
+    _type: EntityAttribute
+    label: Normalized City
+    description: Normalized city name for matching
+    documentation: Normalized city name for matching, converted to lowercase
+    dataType: String
+    physicalName: NORMALIZED_CITY
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: NormalizedState
+    _type: EntityAttribute
+    label: Normalized State
+    description: Normalized state name for matching
+    documentation: Normalized state name for matching, mapped to its full name in uppercase
+    dataType: String
+    physicalName: NORMALIZED_STATE
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: SourceEmail
+    _type: EntityAttribute
+    label: Source Email
+    description: Employee email address before cleansing
+    documentation: Employee email address before cleansing
+    dataType: String
+    physicalName: SOURCE_EMAIL
+    mandatory: true
+    mandatoryValidationLabel: ""
+    mandatoryValidationScope: PRE_CONSO
+    valueSeparator: ","
+    length: 128
+  - _name: CleansedEmail
+    _type: EntityAttribute
+    label: Cleansed Email
+    description: Employee email address after cleansing
+    documentation: Employee email address after cleansing, standardized and validated
+    dataType: String
+    physicalName: CLEANSED_EMAIL
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: ValidEmailDomain
+    _type: EntityAttribute
+    label: Valid Email Domain
+    description: Valid email domain flag
+    documentation: Valid email domain flag, true if the email domain is valid
+    dataType: String
+    physicalName: VALID_EMAIL_DOMAIN
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: SourcePhone
+    _type: EntityAttribute
+    label: Source Phone
+    description: Employee phone number
+    documentation: Employee phone number before standardization
+    dataType: String
+    physicalName: SOURCE_PHONE
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: StandardizedPhone
+    _type: EntityAttribute
+    label: Standardized Phone
+    description: Employee phone number after standardization
+    documentation: Employee phone number after standardization, formatted to a
+      standard pattern
+    dataType: String
+    physicalName: STANDARDIZED_PHONE
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: PhoneGeocodingData
+    _type: EntityAttribute
+    label: Phone Geocoding Data
+    description: Geocoding data for the phone number
+    documentation: Geocoding data for the phone number, used for location-based services
+    dataType: String
+    physicalName: PHONE_GEOCODING_DATA
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+    length: 128
+  - _name: EmployeeType
+    _type: EntityAttribute
+    label: Employee Type
+    description: Type of employee
+    documentation: Type of employee, such as full-time, part-time, or contractor
+    dataType: Organization.list_of_values.EmployeeType
+    physicalName: EMPLOYEE_TYPE
+    lovValidationScope: NONE
+    mandatory: false
+    mandatoryValidationLabel: ""
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Address
+    description: Employee address
+    label: Address
+    documentation: Employee address
+    physicalName: ADD
+    dataType: Organization.complex_types.SourceAddressType
+    mandatory: false
+primaryKey: Organization.entities.Employee.Employee.ID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 10001

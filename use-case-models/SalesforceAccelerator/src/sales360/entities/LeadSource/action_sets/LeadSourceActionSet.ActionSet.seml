@@ -1,0 +1,57 @@
+# This is the LeadSourceActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on lead sources, such as creating, editing,
+# deleting, exporting,importing lead sources.
+_name: LeadSourceActionSet
+_package: sales360.entities.LeadSource.action_sets
+_type: ActionSet
+entity: sales360.entities.LeadSource.LeadSource
+label: Lead Source Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorLeadSources
+    label: Create
+    description: Create a new Lead Source record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.LeadSource.steppers.AuthorLeadSources
+  - _name: EditAuthorLeadSources
+    label: Edit
+    description: Edit selected Lead Source record(s)
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.LeadSource.steppers.AuthorLeadSources
+  - _name: Delete
+    label: Delete
+    description: Delete selected Lead Source record(s)
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export Lead Source records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorLeadSources
+    label: Import
+    description: Import Lead Source records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.LeadSource.steppers.AuthorLeadSources

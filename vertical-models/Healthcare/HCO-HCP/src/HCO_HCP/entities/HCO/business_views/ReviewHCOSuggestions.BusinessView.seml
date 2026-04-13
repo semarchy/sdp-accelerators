@@ -1,0 +1,369 @@
+_name: ReviewHCOSuggestions
+_package: HCO_HCP.entities.HCO.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: HCO_HCP.entities.HCO.HCO
+rootLabel: HCO
+rootPluralLabel: HCOs
+useHierarchyOnOpen: false
+label: Review Organization Suggestions
+rootBusinessViewEntity:
+  _name: HCOEO
+  _type: BusinessViewEntity
+  collection: HCO_HCP.entities.HCO.collection_views.HCOCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: HCO_HCP.entities.HCO.HCO
+  displayCard: HCO_HCP.entities.HCO.display_cards.HCODisplayCard
+  form: HCO_HCP.entities.HCO.forms.HCOForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: HCO_HCP.entities.HCO.action_sets.HCOActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: Encounters
+      _type: BusinessViewTransition
+      transitionPath: Encounters
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/emoticon-happy.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Encounter
+        _type: BusinessViewEntity
+        collection: HCO_HCP.entities.Encounter.collection_views.EncountersForMember
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: HCO_HCP.entities.Encounter.Encounter
+        displayCard: HCO_HCP.entities.Encounter.display_cards.EncounterDisplayCard
+        form: HCO_HCP.entities.Encounter.forms.EncounterForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: HCO_HCP.entities.Encounter.forms.EncounterForm.Encounter.FDN_Member
+            navigationMode: MODAL_FORM
+          - formField: HCO_HCP.entities.Encounter.forms.EncounterForm.Encounter.FDN_HCO
+            navigationMode: MODAL_FORM
+          - formField: HCO_HCP.entities.Encounter.forms.EncounterForm.Encounter.FDN_HCP
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/puzzle.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: HCOMasterRecords
+        _type: BusinessViewEntity
+        collection: HCO_HCP.entities.HCO.collection_views.HCOCollectionMasters
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: HCO_HCP.entities.HCO.HCO
+        displayCard: HCO_HCP.entities.HCO.display_cards.HCODisplayCard
+        form: HCO_HCP.entities.HCO.forms.HCOForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: Hcps
+      _type: BusinessViewTransition
+      transitionPath: Hcps
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "1"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/doctor.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: HCP
+        _type: BusinessViewEntity
+        collection: HCO_HCP.entities.HCP.collection_views.HCPCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: HCO_HCP.entities.HCP.HCP
+        displayCard: HCO_HCP.entities.HCP.display_cards.HCPDisplayCard
+        form: HCO_HCP.entities.HCP.forms.HCPForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: HCO_HCP.entities.HCP.forms.HCPForm.HCP.Container415.BasicInformation.FDN_HCO
+            navigationMode: MODAL_FORM
+        transitions:
+          - _name: Members
+            _type: BusinessViewTransition
+            transitionPath: Members
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: "0"
+            enableHierarchyInterpreter: LITERAL
+            expandHierarchyByDefault: false
+            iconUrl: images://mdi/account-multiple-outline.svg
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _name: Member
+              _type: BusinessViewEntity
+              collection: HCO_HCP.entities.Member.collection_views.MemberCollection
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: HCO_HCP.entities.Member.Member
+              displayCard: HCO_HCP.entities.Member.display_cards.MemberDisplayCard
+              form: HCO_HCP.entities.Member.forms.MemberForm
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              businessEntityBuiltInFilters: []
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                  enabled: true
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                  enabled: true
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                  enabled: true
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+                  enabled: true
+              embeddedCollectionNavigations: []
+              referenceAttributeNavigationConfigs:
+                - formField: HCO_HCP.entities.Member.forms.MemberForm.Member.Container419.ContactSection.FDN_HCP
+                  navigationMode: MODAL_FORM
+              transitions:
+                - _name: MemberInsuranceCompanies
+                  _type: BusinessViewTransition
+                  transitionPath: MemberInsuranceCompanies
+                  transitionType: FULLY_QUALIFIED
+                  useCustomLabel: true
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  enableHierarchy: "0"
+                  enableHierarchyInterpreter: LITERAL
+                  expandHierarchyByDefault: false
+                  iconUrl: images://mdi/umbrella-outline.svg
+                  label: Coverage Info
+                  pluralLabel: Coverage Info
+                  transitionVisible: "1"
+                  transitionVisibleInterpreter: LITERAL
+                  businessViewEntity:
+                    _name: Coverage
+                    _type: BusinessViewEntity
+                    collection: HCO_HCP.entities.Coverage.collection_views.CoverageCollection
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: HCO_HCP.entities.Coverage.Coverage
+                    displayCard: HCO_HCP.entities.Coverage.display_cards.CoverageDisplayCard
+                    form: HCO_HCP.entities.Coverage.forms.CoverageInfo
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    tableAllowed: true
+                    businessEntityBuiltInFilters: []
+                    businessEntitySearchConfigs:
+                      - _name: TextConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: TEXT
+                        enabled: true
+                      - _name: FormConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: BY_FORM
+                        enabled: true
+                      - _name: AdvancedConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: ADVANCED
+                        enabled: true
+                      - _name: SemqlConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: SEMQL
+                        enabled: true
+                    embeddedCollectionNavigations: []
+                    referenceAttributeNavigationConfigs:
+                      - formField: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo.FDN_Member
+                        navigationMode: MODAL_FORM
+                      - formField: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo.FDN_InsuranceCompany
+                        navigationMode: MODAL_FORM
+                      - formField: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo.FDN_Subscriber
+                        navigationMode: MODAL_FORM
+                    transitions: []
+                - _name: MasterRecords
+                  _type: BusinessViewTransition
+                  transitionPath: MasterRecords
+                  transitionType: FULLY_QUALIFIED
+                  useCustomLabel: false
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  enableHierarchy: "0"
+                  enableHierarchyInterpreter: LITERAL
+                  expandHierarchyByDefault: false
+                  iconUrl: images://mdi/puzzle.svg
+                  transitionVisible: "1"
+                  transitionVisibleInterpreter: LITERAL
+                  businessViewEntity:
+                    _type: BusinessViewEntityReference
+                    ref: HCO_HCP.entities.HCO.business_views.ReviewHCOSuggestions.HCOEO.Hcps.HCP.Members.Member
+                - _name: Encounters
+                  _type: BusinessViewTransition
+                  transitionPath: Encounters
+                  transitionType: FULLY_QUALIFIED
+                  useCustomLabel: false
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  enableHierarchy: "0"
+                  enableHierarchyInterpreter: LITERAL
+                  expandHierarchyByDefault: false
+                  iconUrl: images://mdi/emoticon-happy.svg
+                  transitionVisible: "1"
+                  transitionVisibleInterpreter: LITERAL
+                  businessViewEntity:
+                    _type: BusinessViewEntityReference
+                    ref: HCO_HCP.entities.HCO.business_views.ReviewHCOSuggestions.HCOEO.Encounters.Encounter
+          - _name: Encounters
+            _type: BusinessViewTransition
+            transitionPath: Encounters
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: "0"
+            enableHierarchyInterpreter: LITERAL
+            expandHierarchyByDefault: false
+            iconUrl: images://mdi/emoticon-happy.svg
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _type: BusinessViewEntityReference
+              ref: HCO_HCP.entities.HCO.business_views.ReviewHCOSuggestions.HCOEO.Encounters.Encounter
+          - _name: MasterRecords
+            _type: BusinessViewTransition
+            transitionPath: MasterRecords
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: "0"
+            enableHierarchyInterpreter: LITERAL
+            expandHierarchyByDefault: false
+            iconUrl: images://mdi/puzzle.svg
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _type: BusinessViewEntityReference
+              ref: HCO_HCP.entities.HCO.business_views.ReviewHCOSuggestions.HCOEO.Hcps.HCP
+rootFilter: HasSuggestedMerge = '1'

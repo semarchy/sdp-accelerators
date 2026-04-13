@@ -1,0 +1,104 @@
+# This file defines the Account entity in the Legal Entity application.
+# It includes attributes such as AccountKey, AccountNumber, ChainID, ID, Name,
+# and RoutingNumber, along with their properties and validations.
+# The entity is used to manage account information within the application.
+_package: LegalEntity.entities.Account
+_type: Entity
+_name: Account
+label: Account
+iconUrl: images://le-img-lib/account-outline.svg
+description: This entity represents an account in the Legal Entity application.
+documentation: This entity represents an account in the Legal Entity application.
+enableDelete: true
+attributes:
+  - _name: AccountKey
+    _type: EntityAttribute
+    i18ned: false
+    dataType: String
+    length: 128
+    mandatory: false
+    multiValued: false
+    searchable: true
+    physicalName: ACCOUNT_KEY
+    label: Account Key
+    description: This is a calculated field by xDM according to a rule that
+      concatenates Fund, Portfolio and Account chain IDs
+    documentation: This is a calculated field by xDM according to a rule that
+      concatenates Fund, Portfolio and Account chain IDs
+  - dataType: String
+    goldenAttribute: true
+    i18ned: false
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    _type: EntityAttribute
+    _name: AccountNumber
+    physicalName: ACCOUNT_NUMBER
+    label: Account Number
+    description: Account Number
+    documentation: Account Number
+  - dataType: String
+    goldenAttribute: true
+    i18ned: false
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    _type: EntityAttribute
+    _name: ChainID
+    description: Chain ID of the Account
+    documentation: Chain ID of the Account
+    physicalName: CHAIN_ID
+    label: Chain ID
+  - dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    length: 0
+    mandatory: false
+    multiValued: false
+    searchable: true
+    _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    label: ID
+    description: Technical ID of the Account
+    documentation: Technical ID of the Account
+    precision: 38
+  - dataType: String
+    goldenAttribute: true
+    i18ned: false
+    length: 128
+    mandatory: false
+    multiValued: false
+    searchable: true
+    _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    label: Name
+    description: A calculated field that concatenates Legal Entity Name and Bank Name
+    documentation: Name
+  - dataType: String
+    goldenAttribute: true
+    i18ned: false
+    length: 128
+    mandatory: false
+    multiValued: false
+    searchable: true
+    _type: EntityAttribute
+    _name: RoutingNumber
+    physicalName: ROUTING_NUMBER
+    label: Routing Number
+    description: Routing Number
+    documentation: Routing Number
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: ACCOUNT
+primaryKey: LegalEntity.entities.Account.Account.ID
+pluralLabel: Accounts
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1

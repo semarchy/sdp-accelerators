@@ -1,0 +1,121 @@
+# This is the CampaignMemberForCampaignCollection collection view used in the Salesforce Accelerator application.
+# It defines how campaign members are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.CampaignMember.collection_views
+_name: CampaignMemberForCampaignCollection
+_type: CollectionView
+entity: sales360.entities.CampaignMember.CampaignMember
+default: false
+displayCard: sales360.entities.CampaignMember.display_cards.CampaignMemberDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Campaign Member
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 250
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: FDN_Leads
+    columnAlign: LEFT
+    dataType: STRING
+    label: Member
+    useCustomLabel: true
+    value: COALESCE(FDN_Contact, FDN_Leads)
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: Type
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Type
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_Status
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Status
+    visibleByDefault: true
+    displayCard: sales360.entities.CampaignMemberStatus.display_cards.CampaignMemberStatusDisplayCard
+    referencedEntity: sales360.entities.CampaignMemberStatus.CampaignMemberStatus
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_LeadSource
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_LeadSource
+    visibleByDefault: true
+    displayCard: sales360.entities.LeadSource.display_cards.LeadSourceDisplayCard
+    referencedEntity: sales360.entities.LeadSource.LeadSource
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: CompanyOrAccount
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CompanyOrAccount
+    visibleByDefault: true
+    defaultWidth: 300
+  - _type: CheckboxColumn
+    _name: HasResponded
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: HasResponded
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "0"
+      useSwitchValueInterpreter: LITERAL
+  - _type: DateColumn
+    _name: FirstRespondedDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: FirstRespondedDate
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: DoNotCall
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: DoNotCall
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: CheckboxColumn
+    _name: HasOptedOutOfEmail
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: HasOptedOutOfEmail
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: CheckboxColumn
+    _name: HasOptedOutOfFax
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: HasOptedOutOfFax
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL

@@ -1,0 +1,38 @@
+# This file defines the AuthorAccountTypes Stepper for the Legal Entity application.
+# It provides a structured way to manage account types, including their creation, editing, and deletion
+_package: LegalEntity.entities.AccountType.steppers
+_type: Stepper
+_name: AuthorAccountTypes
+entity: LegalEntity.entities.AccountType.AccountType
+label: Accounts
+rootStep:
+  _type: CollectionStep
+  _name: AuthorAccountTypesCollectionStep
+  label: AccountTypes
+  canFinishSubLevel: true
+  childDeleteType: SOFT_DELETE
+  collectionView: LegalEntity.entities.AccountType.collection_views.AccountTypeCollectionView
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  childSteps:
+    - _type: FormStep
+      _name: AuthorAccountFormStep
+      label: Account
+      canFinishSubLevel: true
+      formTab: LegalEntity.entities.AccountType.forms.AccountTypeForm.AccountType
+      formFieldsMode: AUTO
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      
+      
+      

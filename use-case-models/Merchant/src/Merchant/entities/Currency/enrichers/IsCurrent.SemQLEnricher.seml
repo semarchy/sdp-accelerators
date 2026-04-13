@@ -1,0 +1,13 @@
+_package: Merchant.entities.Currency.enrichers
+_name: IsCurrent
+_type: SemQLEnricher
+entity: Merchant.entities.Currency.Currency
+description: Set default value if IsCurrent is null
+label: Is Current?
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions: 
+  - attributeName: IsCurrent
+    expression: CASE 
+                  WHEN IsCurrent IS NULL THEN '1' 
+                  ELSE '0' 
+                END

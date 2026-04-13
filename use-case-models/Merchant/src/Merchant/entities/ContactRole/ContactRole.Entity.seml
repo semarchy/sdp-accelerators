@@ -1,0 +1,36 @@
+# Description: Entity definition for `ContactRole`.
+# Contains role definitions that can be assigned to party contacts (e.g., Billing, Technical).
+# Role: Reference domain for contact role values used across forms and validations.
+ # Description: Entity definition for `ContactRole` (types of contact relationships).
+ # Contains: Role codes and labels used to classify PartyContact records.
+ # Role: Reference data entity supporting contact role lookups and UI labels.
+_package: Merchant.entities.ContactRole
+_type: Entity
+_name: ContactRole
+label: Contact Role
+pluralLabel: Contact Role
+entityType: BASIC
+physicalTableName: CONTACT_ROLE
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute 
+    _name: Role
+    label: Role
+    physicalName: ROLE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Name of the contact role (for example: Billing, Technical, Primary)"
+
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: Merchant.entities.ContactRole.ContactRole.Role

@@ -1,0 +1,163 @@
+# This is the AuthorAccountContactRelations Stepper used in the Salesforce Accelerator application.
+# It defines the structure and steps for managing AccountContactRelation within salesforce context,
+_name: AuthorAccountContactRelations
+_package: sales360.entities.AccountContactRelation.steppers
+_type: Stepper
+entity: sales360.entities.AccountContactRelation.AccountContactRelation
+description: Stepper for managing AccountContactRelation entities within the Salesforce Accelerator application.
+rootStep:
+  _name: AccountContactRelations
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.AccountContactRelation.collection_views.AccountHasContactsCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Account Contact Relations
+  description: Manage Account Contact Relations
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.references.AccountContactRelations.Account
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.AccountContactRelations.Account
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.AccountContactRelationsRole.Role
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sales360.entities.AccountContactRelation.AccountContactRelation.SemlQLMatcherAccountContactRelation
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sales360.entities.AccountContactRelation.validations.EndDate
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.references.AccountContactRelationsContact.Contact
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.AccountContactRelationsContact.Contact
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Account Contact Relation
+      formTab: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main
+      formStepEnrichers:
+        - enricher: sales360.entities.AccountContactRelation.enrichers.IsDirect
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.AccountContactRelation.enrichers.AccountID
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: sales360.entities.AccountContactRelation.enrichers.MultipleRelations
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container3.FDN_Contact
+          referencePickerCollectionView: sales360.entities.Contact.collection_views.ContactCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container2.FDN_Role
+          referencePickerCollectionView: sales360.entities.Role.collection_views.RoleCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container2.FDN_Account
+          referencePickerCollectionView: sales360.entities.Account.collection_views.AccountCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelationsRole.Role
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: false
+          validator: sales360.entities.AccountContactRelation.validations.EndDate
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelationsContact.Contact
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelations.Account
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: sales360.references.AccountContactRelations.Account
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: sales360.references.AccountContactRelationsContact.Contact
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sales360.entities.AccountContactRelation.validations.EndDate
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelationsRole.Role
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelations.Account
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelationsContact.Contact
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.AccountContactRelation.AccountContactRelation.SemlQLMatcherAccountContactRelation
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.references.AccountContactRelationsContact.Contact
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.references.AccountContactRelations.Account
+      stepTriggers: []
+label: Author Account Contact Relations
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountContactRelations.Account
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.references.AccountContactRelationsContact.Contact
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountContactRelationsContact.Contact
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sales360.entities.AccountContactRelation.validations.EndDate
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.references.AccountContactRelations.Account
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountContactRelationsRole.Role
+triggers: []

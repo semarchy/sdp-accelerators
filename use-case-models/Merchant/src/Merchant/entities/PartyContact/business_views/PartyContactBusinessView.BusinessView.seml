@@ -1,0 +1,43 @@
+ # Description: Business view for `PartyContact` providing navigation and actions.
+ # Contains: Business node linking to form, collection and action set for contacts.
+ # Role: Integrates PartyContact into the model navigation UI.
+_package: Merchant.entities.PartyContact.business_views
+_type: BusinessView
+_name: PartyContactBusinessView
+label: Party Contact
+entity: Merchant.entities.PartyContact.PartyContact
+rootLabel: Party Contacts
+rootPluralLabel: Party Contacts
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PartyContact
+  displayCard: Merchant.entities.PartyContact.display_cards.PartyContactDisplayCard
+  entity: Merchant.entities.PartyContact.PartyContact
+  actionSet: Merchant.entities.PartyContact.action_sets.PartyContactActionSet
+  collection: Merchant.entities.PartyContact.collection_views.PartyContactCollectionView
+  form: Merchant.entities.PartyContact.forms.PartyContactForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

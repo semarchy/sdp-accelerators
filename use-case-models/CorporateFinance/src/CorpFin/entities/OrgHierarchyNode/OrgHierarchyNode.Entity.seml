@@ -1,0 +1,70 @@
+_package: CorpFin.entities.OrgHierarchyNode
+_type: Entity
+_name: OrgHierarchyNode
+label: Org Hierarchy Node
+pluralLabel: Org Hierarchy Nodes
+entityType: BASIC
+physicalTableName: ORG_HIERARCHY_NODE
+iconUrl: images://mdi/domain.svg
+description: "Nodes within an organizational hierarchy linked to org units."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: OrgHierarchyNodeID
+    label: Org Hierarchy Node ID
+    description: Surrogate identifier for a hierarchy node
+    documentation: ""
+    physicalName: ORG_HIERARCHY_NODE_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: EffectiveStartDate
+    label: Effective Start Date
+    description: Effective start date
+    documentation: ""
+    physicalName: EFF_START_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: EffectiveEndDate
+    label: Effective End Date
+    description: Effective end date
+    documentation: ""
+    physicalName: EFF_END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RelationshipType
+    label: Relationship Type
+    description: Relationship to the parent (ReportsTo, Owns, Consolidates)
+    documentation: ""
+    physicalName: RELATIONSHIP_TYPE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: Sequence
+    label: Sequence
+    description: Ordering of siblings under the same parent
+    documentation: ""
+    physicalName: SEQUENCE
+    dataType: Integer
+    precision: 4
+    mandatory: false
+
+primaryKey: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode.OrgHierarchyNodeID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

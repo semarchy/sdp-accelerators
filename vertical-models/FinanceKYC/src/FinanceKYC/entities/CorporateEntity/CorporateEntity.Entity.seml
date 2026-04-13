@@ -1,0 +1,181 @@
+_package: FinanceKYC.entities.CorporateEntity
+_type: Entity
+_name: CorporateEntity
+label: Corporate Entity
+pluralLabel: Corporate Entity
+entityType: FUZZY_MATCHED
+physicalTableName: CORPORATE_ENTITY
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: EntityID
+    _type: EntityAttribute
+    label: Corporate Entity ID
+    physicalName: CORPORATE_ENTITY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _name: EntityName
+    _type: EntityAttribute
+    label: Entity Name
+    physicalName: ENTITY_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: NormalizedCorpName
+    _type: EntityAttribute
+    label: Normalized Corporate Name
+    physicalName: NORMALIZED_CORP_NAME
+    dataType: String
+    length: 100
+    description: The normalized name of the corporate entity.
+    documentation: The standardized or normalized version of the corporate entity's name for matching and deduplication.
+    mandatory: false
+
+  - _name: PhonetizedCorpName
+    _type: EntityAttribute
+    label: Phonetized Corporate Name
+    physicalName: PHONETIZED_CORP_NAME
+    dataType: String
+    length: 100
+    description: The phonetized name of the corporate entity.
+    documentation: The phonetized version of the corporate entity's name for matching and deduplication.
+    mandatory: false
+
+  - _name: RegistrationNumber
+    _type: EntityAttribute
+    label: Registration Number
+    physicalName: REGISTRATION_NUMBER
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: NormalizedRegistrationNum
+    _type: EntityAttribute
+    label: Registration Number
+    physicalName: NORMALIZED_REGIST_NUM
+    dataType: String
+    length: 50
+    description: The normalized registration number of the corporate entity.
+    documentation: The standardized or normalized version of the corporate entity's registration number for matching and deduplication.
+    mandatory: false
+
+  - _name: IncorporationDate
+    _type: EntityAttribute
+    label: Incorporation Date
+    physicalName: INCORPORATION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: CountryOfIncorporation
+    _type: EntityAttribute
+    label: Country Of Incorporation
+    physicalName: COUNTRY_OF_INCORPORATION
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _name: TaxID
+    _type: EntityAttribute
+    label: Tax ID
+    physicalName: TAX_ID
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _name: NormalizedTaxID
+    _type: EntityAttribute
+    label: Tax ID
+    physicalName: NORMALIZED_TAX_ID
+    dataType: String
+    length: 30
+    description: The normalized tax ID of the corporate entity.
+    documentation: The standardized or normalized version of the corporate entity's tax ID for matching and deduplication.
+    mandatory: false
+
+  - _name: Industry
+    _type: EntityAttribute
+    label: Industry
+    physicalName: INDUSTRY
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _name: LegalForm
+    _type: EntityAttribute
+    label: Legal Form
+    physicalName: LEGAL_FORM
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _name: IsListed
+    _type: EntityAttribute
+    label: Is Listed
+    physicalName: IS_LISTED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.CorporateEntity.CorporateEntity.EntityID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: CorporateEntityMatcher
+  description: Strategies for matching Corporate Entities
+
+  matchRules:
+    - _name: NormalizedCorpNameRegistrationTaxIDCountry
+      _type: SemQLMatchRule
+      label: Normalized Corporate Entity Name, Normalized Registration Number, Normalized Tax ID, Country
+      documentation: 'In the best case scenario, we match Corporate Entities with this rule: match
+        on Name, registration number, tax-ID and country.'
+      color: md:purple 900
+      condition: /*** Corportate Entity Normalized Name match ***/ Record1.NormalizedCorpName = Record2.NormalizedCorpName /*** Registration Number exact match ***/ AND Record1.NormalizedRegistrationNum = Record2.NormalizedRegistrationNum /*** Tax ID exact match ***/ AND Record1.NormalizedTaxID = Record2.NormalizedTaxID /*** Country exact match ***/ AND Record1.CountryOfIncorporation = Record2.CountryOfIncorporation
+      matchScore: 95
+
+    - _name: PhoneticCorpNameRegistrationTaxIDCountry
+      _type: SemQLMatchRule
+      label: Phonetic Corporate Entity Name, Normalized Registration Number, Normalized Tax ID, Country
+      documentation: 'In the "Normal Ideal" case, we match Corporate Entities with this rule: match
+        on Phonetic Name, registration number, tax-ID and country.'
+      color: md:purple 700
+      condition: /*** Corportate Entity Phonetic Name match ***/ Record1.PhonetizedCorpName = Record2.PhonetizedCorpName /*** Registration Number exact match ***/ AND Record1.NormalizedRegistrationNum = Record2.NormalizedRegistrationNum /*** Tax ID exact match ***/ AND Record1.NormalizedTaxID = Record2.NormalizedTaxID /*** Country exact match ***/ AND Record1.CountryOfIncorporation = Record2.CountryOfIncorporation
+      matchScore: 88
+
+    - _name: PhoneticCorpNameCountry
+      _type: SemQLMatchRule
+      label: Phonetic Corporate Entity Name, Country
+      documentation: 'In this case, we match Corporate Entities with this rule: match
+        on Phonetic Name and Country.'
+      color: md:purple 400
+      condition: /*** Corportate Entity Name exact match ***/ Record1.PhonetizedCorpName = Record2.PhonetizedCorpName /*** Country exact match ***/ AND Record1.CountryOfIncorporation = Record2.CountryOfIncorporation
+      matchScore: 65
+    
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 95
+  autoConfirmSingletons: false

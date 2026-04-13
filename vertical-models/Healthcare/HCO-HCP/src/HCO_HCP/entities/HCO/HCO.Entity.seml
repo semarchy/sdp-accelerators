@@ -1,0 +1,215 @@
+_name: HCO
+_package: HCO_HCP.entities.HCO
+_type: Entity
+primaryKey: HCO_HCP.entities.HCO.HCO.ID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 50001
+sourceIdGeneration:
+  mode: MANUAL
+label: HCO
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/hospital-building.svg
+pluralLabel: HCOs
+historizeGolden: true
+historizeMaster: true
+physicalTableName: HCO
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ACTIVECODE
+    physicalName: ACTIVECODE
+    dataType: HCO_HCP.list_of_values.ACTIVECODE
+    goldenAttribute: true
+    i18ned: false
+    label: ACTIVECODE
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HospitalID
+    physicalName: HOSPITAL_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Hospital ID
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HospitalName
+    physicalName: HOSPITAL_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Hospital Name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: inpcity
+    physicalName: INPCITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: City
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: inpstreet
+    physicalName: INPSTREET
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Street
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: inpstate
+    physicalName: INPSTATE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: State
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HospitalNameNormalized
+    physicalName: HOSPITAL_NAME_NORMALIZED
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Hospital Name Normalized
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HospitalCCN
+    physicalName: HOSPITAL_CCN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Hospital CCN
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: inpcountry
+    physicalName: INPCOUNTRY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Country
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: inpzip
+    physicalName: INPZIP
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Zip
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _name: GeocodedAddress
+    _type: EntityAttribute
+    label: Geocoded Address
+    physicalName: GEO
+    dataType: HCO_HCP.complex_types.GeocodedAddressType
+matcher:
+  _name: SemlQLMatcherHCO
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 89
+  mergeThresholdMergingConfirmedWithNewMasters: 89
+  mergeThresholdMergingConfirmedWithUnconfirmed: 89
+  mergeThresholdMergingUnconfirmed: 89
+  mergeThresholdMergingUnconfirmedWithNewMasters: 89
+  mergeThresholdNewGroup: 89
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactIDMatch
+      condition: Record1.HospitalID = Record2.HospitalID
+      label: Exact ID Match
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: EnrichNameAndAddress
+      condition: >-
+        Record1.HospitalNameNormalized = Record2.HospitalNameNormalized 
+
+        AND
+
+        ( Record1.GeocodedAddress.StreetNumber 	=
+        Record2.GeocodedAddress.StreetNumber
+        	OR Record1.GeocodedAddress.Country = 'GB'
+        )
+
+        AND Record1.GeocodedAddress.StreetName 		=
+        Record2.GeocodedAddress.StreetName
+
+        AND Record1.GeocodedAddress.Locality 		=
+        Record2.GeocodedAddress.Locality
+
+        AND ( Record1.GeocodedAddress.State 		= Record2.GeocodedAddress.State 
+        	OR Record1.GeocodedAddress.State IS NULL
+        	OR Record2.GeocodedAddress.State IS NULL
+        )
+
+        AND Record1.GeocodedAddress.PostalCode		=
+        Record2.GeocodedAddress.PostalCode
+
+        AND Record1.GeocodedAddress.Country 		= Record2.GeocodedAddress.Country
+      label: Enrich Name And Address
+      matchScore: 95
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: NormalizedName
+      condition: Record1.HospitalNameNormalized = Record2.HospitalNameNormalized
+      label: Normalized Name
+      matchScore: 90
+      usingMatchOn: false

@@ -1,0 +1,22 @@
+# This is the default display card for AccountContactRelation entity in Salesforce Accelerator application.
+# It shows the Contact and Account names with an avatar indicating if the relation is direct or indirect.
+_name: DefaultDisplayCard
+_package: sales360.entities.AccountContactRelation.display_cards
+_type: DisplayCard
+entity: sales360.entities.AccountContactRelation.AccountContactRelation
+default: true
+primaryTextExpression: FDN_Contact
+secondaryTextExpression: FDN_Account
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: CASE WHEN SEM_BOOLEAN_TO_CHAR(IsDirect) = 'true' THEN
+  'images://mdi/account-arrow-left.svg' ELSE
+  'images://mdi/account-arrow-left-outline.svg' END
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

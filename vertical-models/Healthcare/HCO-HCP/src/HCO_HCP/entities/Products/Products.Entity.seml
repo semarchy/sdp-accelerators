@@ -1,0 +1,207 @@
+_name: Products
+_package: HCO_HCP.entities.Products
+_type: Entity
+primaryKey: HCO_HCP.entities.Products.Products.ID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: MANUAL
+label: Products
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/pill.svg
+pluralLabel: Products
+historizeGolden: true
+historizeMaster: true
+physicalTableName: PRODUCTS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TradeName
+    physicalName: TRADE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Trade Name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EnrichAdministration
+    physicalName: ENRICH_ADMINISTRATION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Enrich Administration
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Definition
+    physicalName: DEFINITION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Definition
+    mandatory: false
+    length: 2048
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductName
+    physicalName: PRODUCT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: url
+    physicalName: URL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: url
+    mandatory: false
+    length: 256
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EnrichForm
+    physicalName: ENRICH_FORM
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Enrich Form
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GenericName
+    physicalName: GENERIC_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Generic Name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Price
+    physicalName: PRICE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Price
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Image
+    physicalName: IMAGE
+    dataType: Binary
+    goldenAttribute: true
+    i18ned: false
+    label: Image
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NDCCode
+    physicalName: NDC_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: NDC Code
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Indication
+    physicalName: INDICATION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Indication
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GEN_AIDescription
+    physicalName: GEN_AI_DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: GEN AI Description
+    mandatory: false
+    length: 2048
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherProducts
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 95
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Product Matcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactTradeName
+      condition: |-
+        UPPER(Record1.TradeName) = UPPER(Record2.TradeName) AND
+        UPPER(Record1.ProductName) = UPPER(Record2.ProductName) AND
+        UPPER(Record1.GenericName) = UPPER(Record2.GenericName)
+      label: Exact Trade Name
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SimilarTradeName
+      condition: SEM_EDIT_DISTANCE_SIMILARITY(Record1.TradeName, Record2.TradeName ) > 90
+      label: Similar Trade Name
+      matchScore: 90
+      usingMatchOn: false

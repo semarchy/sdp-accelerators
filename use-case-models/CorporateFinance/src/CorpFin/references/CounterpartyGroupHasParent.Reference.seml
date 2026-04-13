@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: CounterpartyGroupHasParent
+_type: Reference
+label: Counterparty Group Has Parent
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+fromRoleLabel: Counterparty Group
+fromRoleName: counterpartyGroup
+fromRolePluralLabel: Counterparty Groups
+physicalName: CPGROUP_HAS_PARENT
+fromNavigable: true
+
+toEntity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+toRoleLabel: Parent Group
+toRoleName: parentCounterpartyGroup
+toRolePhysicalName: PARENT_GROUP_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: parentCounterpartyGroup
+  label: Parent Group ID
+  physicalName: PARENT_GROUP_ID
+  searchable: true
+  entity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+
+

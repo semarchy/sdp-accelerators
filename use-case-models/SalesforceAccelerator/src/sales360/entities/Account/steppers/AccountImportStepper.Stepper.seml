@@ -1,0 +1,46 @@
+# Stepper to import data for Account
+_package: sales360.entities.Account.steppers
+_name: AccountImportStepper
+_type: Stepper
+entity: sales360.entities.Account.Account
+description: Stepper for importing Account data
+rootStep:
+  _name: ImportAccounts
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Account.collection_views.AccountImportCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Import Accounts
+  description: Step for importing Account data
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for Account entity
+      formTab: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Accounts
+stepperFinishValidations: []
+triggers: []

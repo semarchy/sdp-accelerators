@@ -1,0 +1,67 @@
+# This file defines the Region entity in the Organization module.
+# It specifies the entity attributes, source ID generation, and primary key. 
+# Region entities represent geographical or administrative divisions within an organization.
+_package: Organization.entities.Region
+_type: Entity
+_name: Region
+label: Region
+pluralLabel: Region
+entityType: BASIC
+physicalTableName: REGION
+iconUrl: images://hr-img-lib/map-marker-distance.svg
+description: This entity represents regions within the organization, which can be used for categorization and filtering of employees.
+documentation: This entity is used to define various regions, which can be referenced in other entities.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: RegionID
+    label: Region ID
+    description: Unique identifier for the region.
+    documentation: This attribute is the primary key for the Region entity and is used to uniquely identify each record
+    physicalName: REGION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: RegionName
+    label: Region Name
+    description: Name of the region.
+    documentation: This attribute holds the name of the region, which is used for display purposes.
+    physicalName: REGION_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationLabel: ''
+    valueSeparator: ''
+    searchable: true
+  - _type: EntityAttribute
+    _name: RegionDescription
+    label: Region Description
+    description: Description of the region.
+    documentation: This attribute holds a detailed description of the region.
+    physicalName: REGION_DESCRIPTION
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationLabel: ''
+    valueSeparator: ''
+    searchable: true
+  - _type: EntityAttribute
+    _name: RegionCode
+    label: Region Code
+    description: Code for the region.
+    documentation: This attribute holds a code for the region.
+    physicalName: REGION_CODE
+    dataType: String
+    length: 32
+    mandatory: false
+    mandatoryValidationLabel: ''
+    valueSeparator: ''
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100
+primaryKey: Organization.entities.Region.Region.RegionID

@@ -1,0 +1,112 @@
+_package: FinanceKYC.entities.IndividualPerson.action_sets
+_type: ActionSet
+_name: IndividualPersonActionSet
+
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+label: Individual Person Action Set
+defaultActionSet: true
+
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorIndividualPeople
+    label: Create
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.IndividualPerson.steppers.AuthorIndividualPeople
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+
+  - _type: EditAction
+    _name: EditAuthorIndividualPeople
+    label: Edit
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.IndividualPerson.steppers.AuthorIndividualPeople
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorIndividualPeople
+    label: Mass Update
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.IndividualPerson.steppers.AuthorIndividualPeople
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+
+  - _type: ImportAction
+    _name: ImportAuthorIndividualPeople
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: FinanceKYC.entities.IndividualPerson.steppers.AuthorIndividualPeople
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: false
+    waitDialogEnabled: false
+
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnIndividualPerson
+    label: Review and Confirm Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.IndividualPerson.dups_managers.ReviewSuggestionsOnIndividualPerson
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnIndividualPerson
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.IndividualPerson.dups_managers.ReviewSuggestionsOnIndividualPerson
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnIndividualPerson
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.IndividualPerson.dups_managers.ReviewSuggestionsOnIndividualPerson
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false
+
+  - _type: ExplainRecordAction
+    _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    displayCard: FinanceKYC.entities.IndividualPerson.display_cards.IndividualPersonDisplayCard
+    formTab: FinanceKYC.entities.IndividualPerson.forms.IndividualPersonForm.IndividualPerson
+    waitDialogEnabled: false

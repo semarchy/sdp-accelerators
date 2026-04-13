@@ -1,0 +1,45 @@
+# It is the named query definition for Account entity
+# It is parameterized by batch ids to fetch records in batches for the batch id and filtered by PublisherID = 'CRM' 
+
+_name: Account
+_package: sales360.named_queries
+_type: NamedQuery
+active: true
+defaultLimit: 100
+description: Named query for Account to be used for Data Notification to send
+  enriched and merged information back to Salesforce. Can also be used for
+  Salesforce Merge (in xDI)
+filter: BatchID > :QUERY_PARAM_PREVIOU_BATCH and BatchID <=
+  :QUERY_PARAM_CURRENT_BATCH and PublisherID = 'CRM'
+queryObjects:
+  - _name: Account
+    _type: QueryObject
+    entity: sales360.entities.Account.Account
+    objectProperties:
+      - _name: AccountID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AccountID
+        targetObject: sales360.named_queries.Account.Account
+      - _name: Publisherid
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PublisherID
+        targetObject: sales360.named_queries.Account.Account
+      - _name: Sourceid
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: SourceID
+        targetObject: sales360.named_queries.Account.Account
+queryParameters:
+  - _name: CURRENT_BATCH
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_CURRENT_BATCH
+    dataType: NUMBER
+    mandatory: false
+  - _name: PREVIOUS_BATCH
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_PREVIOU_BATCH
+    dataType: NUMBER
+    mandatory: false
+rootQueryObject: sales360.named_queries.Account.Account

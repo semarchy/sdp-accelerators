@@ -1,0 +1,47 @@
+# This is the AuthorOpportunityTypes Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing opportunity types within the Salesforce context.
+_name: AuthorOpportunityTypes
+_package: sales360.entities.OpportunityType.steppers
+_type: Stepper
+entity: sales360.entities.OpportunityType.OpportunityType
+description: Stepper to author Opportunity Types in Salesforce Accelerator
+rootStep:
+  _name: OpportunityTypes
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.OpportunityType.collection_views.OpportunityTypeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Opportunity Types
+  description: Manage Opportunity Types
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main information for Opportunity Type
+      formTab: sales360.entities.OpportunityType.forms.OpportunityTypeForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Opportunity Types
+stepperFinishValidations: []
+triggers: []

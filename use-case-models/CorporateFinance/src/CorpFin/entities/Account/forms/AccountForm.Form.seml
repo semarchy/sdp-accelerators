@@ -1,0 +1,120 @@
+_package: CorpFin.entities.Account.forms
+_type: Form
+_name: AccountForm
+
+entity: CorpFin.entities.Account.Account
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: Account
+    label: Account
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/text-box-minus-outline.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: IdField
+                  _name: AccountID
+                  value: AccountID
+                  label: Account ID
+                  useCustomLabel: true
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: AccountCode
+                  value: AccountCode
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: AccountName
+                  value: AccountName
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: AccountType
+                  value: AccountType
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: CheckboxField
+                  _name: IsPosting
+                  value: IsPosting
+                  useCustomLabel: false
+                  dataType: BOOLEAN
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: EnrichedInformation
+                label: Enriched Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: TextField
+                  _name: NormalizedAccountCode
+                  value: NormalizedAccountCode
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: NormalizedAccountName
+                  value: NormalizedAccountName
+                  useCustomLabel: false
+                  dataType: STRING
+
+              - _type: FormSection
+                _name: CoAInformation
+                label: CoA Details
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: ReferenceField
+                  _name: FDN_parentAccount
+                  value: FDN_parentAccount
+                  useCustomLabel: false
+                  dataType: STRING
+                  referencedEntity: CorpFin.entities.Account.Account
+
+                - _type: ReferenceField
+                  _name: FDN_chartOfAccounts
+                  value: FDN_chartOfAccounts
+                  useCustomLabel: false
+                  dataType: STRING
+                  referencedEntity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+
+
+
+

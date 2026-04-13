@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: ChartOfAccountsHasCurrency
+_type: Reference
+label: Chart Of Accounts Has Currency
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+fromRoleLabel: Chart Of Accounts
+fromRoleName: chartOfAccounts
+fromRolePluralLabel: Chart Of Accounts
+physicalName: COA_HAS_CURRENCY
+fromNavigable: true
+
+toEntity: CorpFin.entities.Currency.Currency
+toRoleLabel: Currency
+toRoleName: currency
+toRolePhysicalName: CURRENCY_CODE
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: currency
+  label: Currency Code
+  physicalName: CURRENCY_CODE
+  searchable: true
+  entity: CorpFin.entities.Currency.Currency

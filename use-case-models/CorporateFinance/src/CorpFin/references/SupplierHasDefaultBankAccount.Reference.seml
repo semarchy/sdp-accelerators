@@ -1,0 +1,28 @@
+_package: CorpFin.references
+_name: SupplierHasDefaultBankAccount
+_type: Reference
+label: Supplier Has Default Bank Account
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Supplier.Supplier
+fromRoleLabel: Supplier
+fromRoleName: supplier
+fromRolePluralLabel: Suppliers
+physicalName: SUPPLIER_HAS_DEFAULT_BANK
+fromNavigable: true
+
+toEntity: CorpFin.entities.BankAccount.BankAccount
+toRoleLabel: Bank Account
+toRoleName: bankAccount
+toRolePhysicalName: DEFAULT_BANK_ACCOUNT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: bankAccount
+  label: Default Bank Account ID
+  physicalName: DEFAULT_BANK_ACCOUNT_ID
+  searchable: true
+  entity: CorpFin.entities.BankAccount.BankAccount

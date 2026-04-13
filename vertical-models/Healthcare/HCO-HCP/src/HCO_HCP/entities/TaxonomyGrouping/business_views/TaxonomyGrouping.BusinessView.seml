@@ -1,0 +1,196 @@
+_name: TaxonomyGrouping
+_package: HCO_HCP.entities.TaxonomyGrouping.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping
+rootLabel: Taxonomy Grouping
+rootPluralLabel: Taxonomy Groupings
+useHierarchyOnOpen: true
+label: Taxonomy Groupings
+rootBusinessViewEntity:
+  _name: TaxonomyGroupingEO
+  _type: BusinessViewEntity
+  collection: HCO_HCP.entities.TaxonomyGrouping.collection_views.TaxonomyGroupingCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping
+  displayCard: HCO_HCP.entities.TaxonomyGrouping.display_cards.TaxonomyGroupingDisplayCard
+  form: HCO_HCP.entities.TaxonomyGrouping.forms.TaxonomyGroupingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: HCO_HCP.entities.TaxonomyGrouping.action_sets.TaxonomyGroupingActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: Classifications
+      _type: BusinessViewTransition
+      transitionPath: Classifications
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: ANY Classifications HAVE ( ID IS NOT NULL )
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: true
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: TaxonomyClassification
+        _type: BusinessViewEntity
+        collection: HCO_HCP.entities.TaxonomyClassification.collection_views.TaxonomyClassificationCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: HCO_HCP.entities.TaxonomyClassification.TaxonomyClassification
+        displayCard: HCO_HCP.entities.TaxonomyClassification.display_cards.TaxonomyClassificationDisplayCard
+        form: HCO_HCP.entities.TaxonomyClassification.forms.TaxonomyClassificationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        sortExpression: Name
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: HCO_HCP.entities.TaxonomyClassification.forms.TaxonomyClassificationForm.TaxonomyClassification.FDN_Grouping
+            navigationMode: MODAL_FORM
+        transitions:
+          - _name: Specializations
+            _type: BusinessViewTransition
+            transitionPath: Specializations
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: ANY Specializations HAVE ( ID IS NOT NULL )
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: true
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _name: TaxonomyClassificationSpecialization
+              _type: BusinessViewEntity
+              collection: HCO_HCP.entities.TaxonomyClassificationSpecialization.collection_views.TaxonomyClassificationSpecializationCollection
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: HCO_HCP.entities.TaxonomyClassificationSpecialization.TaxonomyClassificationSpecialization
+              displayCard: HCO_HCP.entities.TaxonomyClassificationSpecialization.display_cards.TaxonomyClassificationSpecializationDisplayCard
+              form: HCO_HCP.entities.TaxonomyClassificationSpecialization.forms.TaxonomyClassificationSpecializationForm
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              businessEntityBuiltInFilters: []
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                  enabled: true
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                  enabled: true
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                  enabled: true
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+                  enabled: true
+              embeddedCollectionNavigations: []
+              referenceAttributeNavigationConfigs:
+                - formField: HCO_HCP.entities.TaxonomyClassificationSpecialization.forms.TaxonomyClassificationSpecializationForm.TaxonomyClassificationSpecialization.FDN_Classification
+                  navigationMode: MODAL_FORM
+                - formField: HCO_HCP.entities.TaxonomyClassificationSpecialization.forms.TaxonomyClassificationSpecializationForm.TaxonomyClassificationSpecialization.FDN_TaxonomySpecialization
+                  navigationMode: MODAL_FORM
+              transitions:
+                - _name: Hcps
+                  _type: BusinessViewTransition
+                  transitionPath: Hcps
+                  transitionType: FULLY_QUALIFIED
+                  useCustomLabel: false
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  enableHierarchy: ANY Hcps has  (1=1)
+                  enableHierarchyInterpreter: SEMQL
+                  expandHierarchyByDefault: false
+                  transitionVisible: "1"
+                  transitionVisibleInterpreter: LITERAL
+                  businessViewEntity:
+                    _name: HCP
+                    _type: BusinessViewEntity
+                    collection: HCO_HCP.entities.HCP.collection_views.HCPCollection
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: HCO_HCP.entities.HCP.HCP
+                    displayCard: HCO_HCP.entities.HCP.display_cards.HCPDisplayCard
+                    form: HCO_HCP.entities.HCP.forms.HCPForm
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    tableAllowed: true
+                    businessEntityBuiltInFilters: []
+                    businessEntitySearchConfigs:
+                      - _name: TextConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: TEXT
+                        enabled: true
+                      - _name: FormConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: BY_FORM
+                        enabled: true
+                      - _name: AdvancedConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: ADVANCED
+                        enabled: true
+                      - _name: SemqlConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: SEMQL
+                        enabled: true
+                    embeddedCollectionNavigations: []
+                    referenceAttributeNavigationConfigs:
+                      - formField: HCO_HCP.entities.HCP.forms.HCPForm.HCP.Container415.BasicInformation.FDN_HCO
+                        navigationMode: MODAL_FORM
+                    transitions: []

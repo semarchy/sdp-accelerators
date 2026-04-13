@@ -1,0 +1,41 @@
+# This is the AccountReviewSuggestionsActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on accounts, such as reviewing duplicate suggestions,
+# directly confirming duplicates, exporting accounts, and explaining records.
+_name: AccountReviewSuggestionsActionSet
+_package: sales360.entities.Account.action_sets
+_type: ActionSet
+entity: sales360.entities.Account.Account
+label: Account Review Suggestions Action Set
+description: Action set for reviewing duplicate suggestions and related actions for Account records in the Salesforce Accelerator application.
+defaultActionSet: false
+actions:
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicate Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnAccount
+    label: Review Duplicates Suggestions
+    description: Review duplicate suggestions for Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sales360.entities.Account.dups_managers.ManageDuplicatesOnAccount
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    description: Export selected Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ExplainRecord
+    label: Explain Record
+    description: Explain the details of an Account record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: sales360.entities.Account.display_cards.AccountNameAddress
+    formTab: sales360.entities.Account.forms.AccountBrowsingForm.Enrichments

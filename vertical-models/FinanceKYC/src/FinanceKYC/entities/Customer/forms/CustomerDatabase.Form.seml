@@ -1,0 +1,190 @@
+_package: FinanceKYC.entities.Customer.forms
+_type: Form
+_name: CustomerDatabase
+entity: FinanceKYC.entities.Customer.Customer
+default: true
+
+formTabs:
+
+  - _type: FormTab
+    _name: Customer
+    label: Customer
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/account-multiple.svg
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: ContactInfo
+                label: Contact Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                - _type: IdField
+                  _name: CustomerID
+                  value: CustomerID
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: CustomerType
+                  value: CustomerType
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: Status
+                  value: Status
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: SourceSystem
+                  value: SourceSystem
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: Segment
+                  value: Segment
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: CommunicationLanguage
+                  value: CommunicationLanguage
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: TextField
+                  _name: Notes
+                  value: Notes
+                  useCustomLabel: false
+                  dataType: STRING
+
+                - _type: CheckboxField
+                  _name: IsActive
+                  value: IsActive
+                  useCustomLabel: false
+                  dataType: BOOLEAN
+
+  - _type: FormTab
+    _name: Individual
+    label: Individual Persons
+    documentationInterpreter: LITERAL
+    visibleValue: any individual has (1=1)
+    visibleValueInterpreter: SEMQL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/account-circle.svg
+
+    content:
+      - _type: FormCollection
+        _name: IndividualPerson
+        targetEntity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+        collection: FinanceKYC.entities.IndividualPerson.collection_views.IndividualPersonCollectionView
+        label: Individual Persons
+        pluralLabel: Individual Persons
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: 'PersonID'
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: individual
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+
+  - _type: FormTab
+    _name: CorporateEntity
+    label: Corporate Entities
+    documentationInterpreter: LITERAL
+    visibleValue: any corporation has (1=1)
+    visibleValueInterpreter: SEMQL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/store.svg
+
+    content:
+      - _type: FormCollection
+        _name: CorporateEntity
+        targetEntity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+        collection: FinanceKYC.entities.CorporateEntity.collection_views.CorporateEntityCollectionView
+        label: Corporate Entities
+        pluralLabel: Corporate Entities
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: EntityID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: corporation
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+
+  - _type: FormTab
+    _name: Contact
+    label: Contacts
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/map-legend.svg
+
+    content:
+      - _type: FormCollection
+        _name: ContactInformation
+        targetEntity: FinanceKYC.entities.ContactInformation.ContactInformation
+        collection: FinanceKYC.entities.ContactInformation.collection_views.ContactInformationCollectionView
+        label: Customers Contacts
+        pluralLabel: Customers Contacts
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: ContactID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: contact
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+
+      - _type: FormCollection
+        _name: Addresses
+        targetEntity: FinanceKYC.entities.Address.Address
+        collection: FinanceKYC.entities.Address.collection_views.AddressCollectionView
+        label: Customers Addresses
+        pluralLabel: Customers Adresses
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        filter: '1=1'
+        gridAllowed: false
+        listAllowed: true
+        # sortExpression: AddressID
+        sortExpression: '1'
+        tableAllowed: true
+        transitionPath: address
+        useCustomLabel: true
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL

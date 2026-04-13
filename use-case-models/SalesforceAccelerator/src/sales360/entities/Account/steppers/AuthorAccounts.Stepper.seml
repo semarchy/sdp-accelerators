@@ -1,0 +1,975 @@
+# This is the AuthorAccounts Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing accounts within the Salesforce context.
+_name: AuthorAccounts
+_package: sales360.entities.Account.steppers
+_type: Stepper
+entity: sales360.entities.Account.Account
+description: Stepper for managing Account entities in Salesforce Accelerator.
+rootStep:
+  _name: Accounts
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Account.collection_views.AccountCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Accounts
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: sales360.entities.Account.Account.UpsellOpportunity
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.AccountsSicCode.SicCode
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.AccountNAICCode.NAICCode
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: sales360.entities.Account.Account.Active
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.entities.Account.Account.AccountName
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: sales360.entities.Account.Account.Rating
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sales360.entities.Account.Account.SemlQLMatcherAccount
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.AccountsCleanStatus.CleanStatus
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.AccountsFromSource.AccountSource
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.AccountsOwnership.Ownership
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.ParentCompany.ParentAccount
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: sales360.references.AccountsType.AccountType
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sales360.entities.Account.validations.YearStarted
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: sales360.references.AccountIndustry.Industry
+  stepTriggers: []
+  childSteps:
+    - _name: BuisnessAccount
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Business Account
+      description: Form step for entering business account details.
+      formTab: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount
+      formStepEnrichers:
+        - enricher: sales360.entities.Account.enrichers.BusinessShippingAdrSame2
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.BusinessShippingAdrSame
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.NormalizedWebsite
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.BusinessTypeNormializer
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.NormalizedAccountName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.StandardizePhone
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.GeocodedBillingAddress
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.PhoneticAccountName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.GeocodedShippingAddress
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount.AccountDetails.Container.Container3.FDN_Ownership
+          referencePickerCollectionView: sales360.entities.Ownership.collection_views.OwnershipCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount.AccountDetails.Container.Container3.FDN_Industry
+          referencePickerCollectionView: sales360.entities.Industry.collection_views.IndustryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount.AccountDetails.Container.Container3.FDN_CleanStatus
+          referencePickerCollectionView: sales360.entities.CleanStatus.collection_views.CleanStatusCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount.AccountDetails.Container.Container3.FDN_ParentAccount
+          referencePickerCollectionView: sales360.entities.Account.collection_views.AccountCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount.AccountDetails.Container.Container2.FDN_AccountSource
+          referencePickerCollectionView: sales360.entities.LeadSource.collection_views.LeadSourceCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount.AccountDetails.Container.Container2.FDN_AccountType
+          referencePickerCollectionView: sales360.entities.AccountType.collection_views.AccountTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount.AccountDetails.Container.Container2.FDN_SicCode
+          referencePickerCollectionView: sales360.entities.SicCode.collection_views.SicCodeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Account.forms.AccountDataEntryForm.BuisnessAccount.AccountDetails.Container.Container3.FDN_NAICCode
+          referencePickerCollectionView: sales360.entities.NAICCode.collection_views.NAICCodeCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsType.AccountType
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountIndustry.Industry
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsOwnership.Ownership
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: sales360.entities.Account.Account.Rating
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: sales360.entities.Account.Account.AccountName
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: sales360.entities.Account.Account.UpsellOpportunity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: sales360.entities.Account.Account.Active
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.ParentCompany.ParentAccount
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsCleanStatus.CleanStatus
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: sales360.entities.Account.validations.YearStarted
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsFromSource.AccountSource
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsSicCode.SicCode
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountNAICCode.NAICCode
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountNAICCode.NAICCode
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.Account.Account.SemlQLMatcherAccount
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsType.AccountType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsOwnership.Ownership
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sales360.entities.Account.validations.YearStarted
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.UpsellOpportunity
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.Active
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.Rating
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsSicCode.SicCode
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: sales360.entities.Account.Account.AccountName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountIndustry.Industry
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ParentCompany.ParentAccount
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsFromSource.AccountSource
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsCleanStatus.CleanStatus
+      stepTriggers: []
+    - _name: AccountAddress
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Account Address
+      description: Form step for entering account address details.
+      formTab: sales360.entities.Account.forms.AccountDataEntryForm.Address
+      formStepEnrichers:
+        - enricher: sales360.entities.Account.enrichers.BusinessShippingAdrSame2
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.BusinessShippingAdrSame
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.StandardizePhone
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.BusinessTypeNormializer
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.PhoneticAccountName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.GeocodedShippingAddress
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.GeocodedBillingAddress
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.NormalizedWebsite
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Account.enrichers.NormalizedAccountName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: LOV
+          attribute: sales360.entities.Account.Account.Active
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: sales360.entities.Account.Account.AccountName
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsSicCode.SicCode
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsCleanStatus.CleanStatus
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.ParentCompany.ParentAccount
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: CHECK
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          validator: sales360.entities.Account.validations.YearStarted
+        - validationType: LOV
+          attribute: sales360.entities.Account.Account.Rating
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountIndustry.Industry
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsType.AccountType
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: sales360.entities.Account.Account.UpsellOpportunity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountNAICCode.NAICCode
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsFromSource.AccountSource
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sales360.references.AccountsOwnership.Ownership
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountIndustry.Industry
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.UpsellOpportunity
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsSicCode.SicCode
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.Rating
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.Active
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ParentCompany.ParentAccount
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsOwnership.Ownership
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.Account.Account.SemlQLMatcherAccount
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountNAICCode.NAICCode
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sales360.entities.Account.validations.YearStarted
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsType.AccountType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsCleanStatus.CleanStatus
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.entities.Account.Account.AccountName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsFromSource.AccountSource
+      stepTriggers: []
+    - _name: DirectContacts
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: sales360.entities.Contact.collection_views.ContactCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Direct Contacts
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.Rating
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ContactsAccount.Account
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountNAICCode.NAICCode
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ContactsCleanStatus.CleanStatus
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsType.AccountType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsCleanStatus.CleanStatus
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsOwnership.Ownership
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ContactsSalutation.Salutation
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sales360.entities.Account.validations.YearStarted
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.Active
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsSicCode.SicCode
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.Contact.Contact.SemlQLMatcherContact
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ContactsLeadSource.LeadSource
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountIndustry.Industry
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.Account.Account.SemlQLMatcherAccount
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.entities.Account.Account.AccountName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ReportsToContact.ReportsToId
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsFromSource.AccountSource
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.UpsellOpportunity
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ParentCompany.ParentAccount
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.entities.Contact.Contact.LastName
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: sales360.references.ContactsAccount
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: BasicInformation
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Basic Information
+          description: Basic information form step for contacts.
+          formSection: sales360.entities.Contact.forms.ContactDataEntryForm.Contact.BasicInformation
+          formStepEnrichers:
+            - enricher: sales360.entities.Contact.enrichers.NormalizeName
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.Nickname
+              executedOnButtonClick: false
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.GecodedMailingAddress
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.StandardizeMobilePhone
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.GeocodedOtherAddress
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.StandardizePhone
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.CleansedEmail
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+          referenceFormFieldConfigs: []
+          formStepValidations:
+            - validationType: FOREIGN
+              attribute: sales360.references.ContactsLeadSource.LeadSource
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.ContactsCleanStatus.CleanStatus
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.ReportsToContact.ReportsToId
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.ContactsAccount.Account
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.ContactsSalutation.Salutation
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: sales360.entities.Contact.Contact.LastName
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: sales360.entities.Contact.Contact.LastName
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ContactsAccount.Account
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ContactsCleanStatus.CleanStatus
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ContactsLeadSource.LeadSource
+            - onStepExit: SKIP
+              validationType: DETECT_DUPS
+              matcher: sales360.entities.Contact.Contact.SemlQLMatcherContact
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ReportsToContact.ReportsToId
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ContactsSalutation.Salutation
+          stepTriggers: []
+        - _name: ContactAddress
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Contact Address
+          description: Contact address form step for contacts.
+          formSection: sales360.entities.Contact.forms.ContactDataEntryForm.Contact.Address
+          formStepEnrichers:
+            - enricher: sales360.entities.Contact.enrichers.CleansedEmail
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.Nickname
+              executedOnButtonClick: false
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.StandardizePhone
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.StandardizeMobilePhone
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.NormalizeName
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.GeocodedOtherAddress
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - enricher: sales360.entities.Contact.enrichers.GecodedMailingAddress
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+          referenceFormFieldConfigs: []
+          formStepValidations:
+            - validationType: FOREIGN
+              attribute: sales360.references.ReportsToContact.ReportsToId
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.ContactsSalutation.Salutation
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.ContactsAccount.Account
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: sales360.entities.Contact.Contact.LastName
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.ContactsLeadSource.LeadSource
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.ContactsCleanStatus.CleanStatus
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: DETECT_DUPS
+              matcher: sales360.entities.Contact.Contact.SemlQLMatcherContact
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ContactsLeadSource.LeadSource
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ContactsCleanStatus.CleanStatus
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ReportsToContact.ReportsToId
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ContactsSalutation.Salutation
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: sales360.references.ContactsAccount.Account
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: sales360.entities.Contact.Contact.LastName
+          stepTriggers: []
+    - _name: AccountContactRelation
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: sales360.entities.AccountContactRelation.collection_views.AccountContactRelationCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Other Contacts (& Relationships)
+      description: Manage additional contacts and their relationships to the account.
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.Account.Account.SemlQLMatcherAccount
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelationsRole.Role
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsOwnership.Ownership
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelations.Account
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsCleanStatus.CleanStatus
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.references.AccountContactRelationsContact.Contact
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountIndustry.Industry
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsType.AccountType
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.Rating
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsFromSource.AccountSource
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountNAICCode.NAICCode
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountsSicCode.SicCode
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.Active
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.AccountContactRelationsContact.Contact
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sales360.entities.Account.validations.YearStarted
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Account.Account.UpsellOpportunity
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ParentCompany.ParentAccount
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.entities.Account.Account.AccountName
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.AccountContactRelation.AccountContactRelation.SemlQLMatcherAccountContactRelation
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sales360.entities.AccountContactRelation.validations.EndDate
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.references.AccountContactRelations.Account
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: true
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyFdnAttribute: sales360.references.AccountContactRelationsContact.Contact
+      manyToManyPickerCollectionView: sales360.entities.Contact.collection_views.ContactCollection
+      oneToManyReference: sales360.references.AccountContactRelations
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: Main
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Main
+          description: Main form step for Account-Contact Relationship.
+          formTab: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main
+          formStepEnrichers:
+            - enricher: sales360.entities.AccountContactRelation.enrichers.AccountID
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - enricher: sales360.entities.AccountContactRelation.enrichers.IsDirect
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - enricher: sales360.entities.AccountContactRelation.enrichers.MultipleRelations
+              executedOnButtonClick: false
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          referenceFormFieldConfigs:
+            - enableCreateReference: false
+              enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container2.FDN_Role
+              referencePickerCollectionView: sales360.entities.Role.collection_views.RoleCollection
+              referencePickerSearchTypeConfigs: []
+            - enableCreateReference: false
+              enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container3.FDN_Contact
+              referencePickerCollectionView: sales360.entities.Contact.collection_views.ContactCollection
+              referencePickerSearchTypeConfigs: []
+            - enableCreateReference: false
+              enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: sales360.entities.AccountContactRelation.forms.AccountContactRelationForm.Main.Container.Container2.FDN_Account
+              referencePickerCollectionView: sales360.entities.Account.collection_views.AccountCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: MANDATORY
+              attribute: sales360.references.AccountContactRelationsContact.Contact
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.AccountContactRelations.Account
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: CHECK
+              executedOnDataChange: false
+              executedOnFormOpen: false
+              validator: sales360.entities.AccountContactRelation.validations.EndDate
+            - validationType: FOREIGN
+              attribute: sales360.references.AccountContactRelationsContact.Contact
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: sales360.references.AccountContactRelations.Account
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: sales360.references.AccountContactRelationsRole.Role
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: DETECT_DUPS
+              matcher: sales360.entities.AccountContactRelation.AccountContactRelation.SemlQLMatcherAccountContactRelation
+            - onStepExit: WARN
+              validationType: MANDATORY
+              attribute: sales360.references.AccountContactRelations.Account
+            - onStepExit: WARN
+              validationType: MANDATORY
+              attribute: sales360.references.AccountContactRelationsContact.Contact
+            - onStepExit: WARN
+              validationType: FOREIGN
+              attribute: sales360.references.AccountContactRelationsContact.Contact
+            - onStepExit: SKIP
+              validationType: CHECK
+              validator: sales360.entities.AccountContactRelation.validations.EndDate
+            - onStepExit: WARN
+              validationType: FOREIGN
+              attribute: sales360.references.AccountContactRelations.Account
+            - onStepExit: WARN
+              validationType: FOREIGN
+              attribute: sales360.references.AccountContactRelationsRole.Role
+          stepTriggers: []
+label: Author Accounts
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: BLOCK
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountsSicCode.SicCode
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ReportsToContact.ReportsToId
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: sales360.entities.Account.Account.UpsellOpportunity
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountsFromSource.AccountSource
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.entities.Contact.Contact.LastName
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountContactRelationsRole.Role
+  - onStepperFinish: BLOCK
+    validationType: FOREIGN
+    attribute: sales360.references.ParentCompany.ParentAccount
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ContactsCleanStatus.CleanStatus
+  - onStepperFinish: BLOCK
+    validationType: MANDATORY
+    attribute: sales360.entities.Account.Account.AccountName
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountsCleanStatus.CleanStatus
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.references.AccountContactRelationsContact.Contact
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountNAICCode.NAICCode
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ContactsSalutation.Salutation
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ContactsAccount.Account
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountContactRelationsContact.Contact
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: sales360.entities.Account.Account.Active
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: sales360.entities.Account.Account.Rating
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ContactsLeadSource.LeadSource
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sales360.entities.AccountContactRelation.validations.EndDate
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.references.AccountContactRelations.Account
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sales360.entities.Account.validations.YearStarted
+  - onStepperFinish: BLOCK
+    validationType: FOREIGN
+    attribute: sales360.references.AccountIndustry.Industry
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountContactRelations.Account
+  - onStepperFinish: BLOCK
+    validationType: FOREIGN
+    attribute: sales360.references.AccountsType.AccountType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.AccountsOwnership.Ownership
+triggers: []

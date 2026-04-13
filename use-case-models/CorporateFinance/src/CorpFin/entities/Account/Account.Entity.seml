@@ -1,0 +1,96 @@
+_package: CorpFin.entities.Account
+_type: Entity
+_name: Account
+label: Account
+pluralLabel: Accounts
+entityType: BASIC
+physicalTableName: ACCOUNT
+iconUrl: images://mdi/text-box-minus-outline.svg
+description: "Chart of accounts entry."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AccountID
+    label: Account ID
+    description: Surrogate identifier for account
+    documentation: ""
+    physicalName: ACCOUNT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AccountCode
+    label: Account Code
+    description: Unique code within the CoA
+    documentation: ""
+    physicalName: ACCOUNT_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedAccountCode
+    label: Normalized Account Code
+    description: Trimmed and uppercased account code
+    documentation: ""
+    physicalName: NORMALIZED_ACCOUNT_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AccountName
+    label: Account Name
+    description: Account label
+    documentation: ""
+    physicalName: ACCOUNT_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: NormalizedAccountName
+    label: Normalized Account Name
+    description: Trimmed and uppercased account name
+    documentation: ""
+    physicalName: NORMALIZED_ACCOUNT_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AccountType
+    label: Account Type
+    description: Classification (Asset, Liability, etc.)
+    documentation: ""
+    physicalName: ACCOUNT_TYPE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: IsPosting
+    label: Is Posting
+    description: Indicates if postings are allowed
+    documentation: ""
+    physicalName: IS_POSTING
+    dataType: Boolean
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+primaryKey: CorpFin.entities.Account.Account.AccountID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

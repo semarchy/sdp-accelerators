@@ -1,0 +1,48 @@
+_name: ReviewDuplicateProducts
+_package: HCO_HCP.entities.Products.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: HCO_HCP.entities.Products.Products
+rootLabel: Products
+rootPluralLabel: Products
+useHierarchyOnOpen: false
+label: Products
+rootBusinessViewEntity:
+  _name: ProductsEO
+  _type: BusinessViewEntity
+  collection: HCO_HCP.entities.Products.collection_views.ProductsCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: HCO_HCP.entities.Products.Products
+  displayCard: HCO_HCP.entities.Products.display_cards.ProductsDisplayCard
+  form: HCO_HCP.entities.Products.forms.ProductsForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: HCO_HCP.entities.Products.action_sets.ProductsActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []
+rootFilter: ConfirmationStatus != 'CONFIRMED' AND MastersCount > 1
+rootIconUrl: images://mdi/pill.svg

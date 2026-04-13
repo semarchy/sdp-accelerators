@@ -1,0 +1,47 @@
+# This is the AuthorLeadSources Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing lead sources within the Salesforce context.
+_name: AuthorLeadSources
+_package: sales360.entities.LeadSource.steppers
+_type: Stepper
+entity: sales360.entities.LeadSource.LeadSource
+description: Stepper for managing Lead Sources in Salesforce Accelerator
+rootStep:
+  _name: LeadSources
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.LeadSource.collection_views.LeadSourceCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Lead Sources
+  description: Manage Lead Sources
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main Lead Source Information
+      formTab: sales360.entities.LeadSource.forms.LeadSourceForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Lead Sources
+stepperFinishValidations: []
+triggers: []

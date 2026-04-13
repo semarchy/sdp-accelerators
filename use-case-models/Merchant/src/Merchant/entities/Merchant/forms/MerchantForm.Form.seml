@@ -1,0 +1,307 @@
+_package: Merchant.entities.Merchant.forms
+# Description: Form definition for `Merchant` used to create and edit merchant records.
+# Contains the form layout, reference fields (parent merchant, party) and validation hooks.
+# Role: Primary UI form for merchant data maintenance in the application.
+_type: Form
+_name: MerchantForm
+entity: Merchant.entities.Merchant.Merchant
+default: true
+
+# Multi-tab layout inspired by the Account form.
+# Labels are placed above values (position: top) so attribute name and value appear on separate lines.
+formTabs:
+  - _type: FormTab
+    _name: Overview
+    label: Overview
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/eye-outline.svg
+    content:
+      - _type: FormSection
+        _name: Primary
+        label: Primary
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PrimaryRow
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: LeftCol
+                layoutDirection: COLUMN
+                content:
+                  - _type: TextField
+                    _name: MerchantName
+                    value: MerchantName
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: headline-6
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: TextField
+                    _name: MerchantCode
+                    value: MerchantCode
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: MenuField
+                    _name: MerchantType
+                    value: MerchantType
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+              - _type: FormContainer
+                _name: RightCol
+                layoutDirection: COLUMN
+                content:
+                  - _type: ReferenceField
+                    _name: ParentMerchant
+                    value: FDN_ParentMerchant
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: Merchant.entities.Merchant.Merchant
+                    authoringMode: auto
+                    componentProperties:
+                      displayType: chip
+                      textAlign: left
+                      useAvatarInChip: '1'
+                      useSecondaryTextInChip: '1'
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: ReferenceField
+                    _name: Party
+                    value: FDN_Party
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: Merchant.entities.Party.Party
+                    authoringMode: auto
+                    componentProperties:
+                      displayType: chip
+                      textAlign: left
+                      useAvatarInChip: '1'
+                      useSecondaryTextInChip: '1'
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+              - _type: MenuField
+                _name: MerchantRelationshipType
+                value: MerchantRelationshipType
+                useCustomLabel: false
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                  textTypography: body-1
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+      - _type: FormSection
+        _name: Industry
+        label: Industry & Classification
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: IndustryCol1
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: Industry
+                layoutDirection: COLUMN
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_Industry
+                    value: FDN_Industry
+                    dataType: STRING
+                    useCustomLabel: false
+                    referencedEntity: Merchant.entities.Industry.Industry
+                    componentProperties:
+                      displayType: chip
+                      textAlign: left
+                      useAvatarInChip: '1'
+                      useSecondaryTextInChip: '1'
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+              - _type: FormContainer
+                _name: SubIndustry
+                layoutDirection: COLUMN
+                content:
+                  - _type: ReferenceField
+                    _name: SubIndustry
+                    value: FDN_SubIndustry
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: Merchant.entities.SubIndustry.SubIndustry
+                    authoringMode: auto
+                    componentProperties:
+                      displayType: chip
+                      textAlign: left
+                      useAvatarInChip: '1'
+                      useSecondaryTextInChip: '1'
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'          
+                    
+
+      - _type: FormSection
+        _name: Metadata
+        label: System Metadata
+        layoutDirection: COLUMN
+        content:
+          - _type: TextField
+            _name: RecordId
+            value: MerchantID
+            useCustomLabel: true
+            label: "Merchant ID"
+            dataType: LONG_INTEGER
+            componentProperties:
+              textAlign: left
+            labelProperties:
+              alignment: left
+              position: top
+              typography: caption
+              isVisible: '1'
+
+
+      - _type: FormSection
+        _name: Dates
+        label: Dates
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: DatesCol1
+            layoutDirection: COLUMN
+            content:
+              - _type: DateField
+                _name: OnboardingDate
+                value: OnboardingDate
+                useCustomLabel: false
+                dataType: DATE
+                componentProperties:
+                  textAlign: left
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+              - _type: DateField
+                _name: ActivationDate
+                value: ActivationDate
+                useCustomLabel: false
+                dataType: DATE
+                componentProperties:
+                  textAlign: left
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+          - _type: FormContainer
+            _name: DatesCol2
+            layoutDirection: COLUMN
+            content:
+              - _type: DateField
+                _name: TerminationDate
+                value: TerminationDate
+                useCustomLabel: false
+                dataType: DATE
+                componentProperties:
+                  textAlign: left                  
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+  - _type: FormTab
+    _name: Enrichment
+    label: Enrichment
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/silverware-clean.svg
+    content:
+      - _type: FormSection
+        _name: Enriched
+        label: Enriched Data
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: EnrichCol1
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: EnrichedMerchantName
+                value: EnrichedMerchantName
+                useCustomLabel: false
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                  textTypography: body-1
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+              - _type: TextField
+                _name: MerchantCodeNotes
+                value: MerchantCode
+                useCustomLabel: true
+                label: "Merchant code (display)"
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'

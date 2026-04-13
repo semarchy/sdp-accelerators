@@ -1,0 +1,127 @@
+_package: FinanceKYC.applications
+_name: FinanceKYCCustomer360
+_type: Application
+label: Finance KYC Customer 360
+visibility: VISIBLE
+applicationTitle: Finance KYC Customer 360
+avatarImageUrl: images://finance-KYC/appKYCcustomer360_icon.jpg
+logoUrl: images://finance-KYC/appKYCcustomer360_icon.jpg
+coverImageUrl: images://finance-KYC/appKYCcustomer360_image.png
+favIcon: images://finance-KYC/appKYCcustomer360_icon.jpg
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+defaultAction: FinanceKYC.applications.FinanceKYCCustomer360.Root.GlobalSearch
+
+documentationConfig:
+  documentation: ""
+  documentationConfigDiagrams:
+    - _type: DocumentationConfigDiagram
+      _name: Main
+      modelDiagram: FinanceKYC.model_diagrams.FinanceKYCDiagram
+  
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: SearchCustomers
+      viewType: GD
+      businessView: FinanceKYC.entities.Customer.business_views.Customer360View
+      searchTypeConfig: FinanceKYC.entities.Customer.business_views.Customer360View.Customer360.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: SearchIndividuals
+      viewType: GD
+      businessView: FinanceKYC.entities.IndividualPerson.business_views.IndividualPerson
+      searchTypeConfig: FinanceKYC.entities.IndividualPerson.business_views.IndividualPerson.IndividualPerson.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: SearchCorporateEntities
+      viewType: GD
+      businessView: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityBusinessView
+      searchTypeConfig: FinanceKYC.entities.CorporateEntity.business_views.CorporateEntityBusinessView.CorporateEntity.TextConfig
+      maxResults: 5
+
+navDrawer:
+  - _type: NavigationGroup
+    _name: startHere
+    label: Start Here
+    dividerVisible: true
+    labelVisible: true
+    actions:
+      - appAction: FinanceKYC.applications.FinanceKYCCustomer360.Root.MyTasks
+      - appAction: FinanceKYC.applications.FinanceKYCCustomer360.Root.GlobalSearch
+  - _type: NavigationGroup
+    _name: Customers
+    label: Customers
+    dividerVisible: true
+    labelVisible: true
+    actions:
+    - appAction: FinanceKYC.applications.FinanceKYCCustomer360.Root.Customers
+  - _type: NavigationGroup
+    _name: KYC
+    label: KYC
+    dividerVisible: true
+    labelVisible: true
+    actions:
+    - appAction: FinanceKYC.applications.FinanceKYCCustomer360.Root.KYCCheck
+    - appAction: FinanceKYC.applications.FinanceKYCCustomer360.Root.KYCReview
+
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+
+  appActions:
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+
+    - _type: MyTasksAction
+      _name: MyTasks
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: false
+      
+    - _type: BrowseEntitiesFolderAction
+      _name: Entities
+      lineageEnabled: true
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+    
+    - _type: BrowseBusinessViewAction
+      _name: Customers
+      businessView: FinanceKYC.entities.Customer.business_views.Customer360View
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      nbRecordsBadgeBackgroundColor: '#FF9800'
+      iconColor: "#124170"
+      labelColor: "#124170"
+      icon: images://mdi/account-multiple.svg 
+
+    - _type: BrowseBusinessViewAction
+      _name: KYCCheck
+      businessView: FinanceKYC.entities.KYCCheck.business_views.KYCCheckBusinessView
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      iconColor: "#33A1E0"
+      labelColor: "#33A1E0"
+      icon: images://mdi/check-circle-outline.svg
+
+    - _type: BrowseBusinessViewAction
+      _name: KYCReview
+      businessView: FinanceKYC.entities.KYCReview.business_views.KYCReviewBusinessView
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      iconColor: "#33A1E0"
+      labelColor: "#33A1E0"
+      icon: images://mdi/message-draw.svg
+    

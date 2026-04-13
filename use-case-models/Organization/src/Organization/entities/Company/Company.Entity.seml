@@ -1,0 +1,52 @@
+#This file defines the Company entity in the Organization domain.
+# It includes the entity's attributes, primary key, and configurations for data storage.
+# This entity is used to represent companies within the organization to which employees belong.
+_package: Organization.entities.Company
+_type: Entity
+_name: Company
+label: Company
+pluralLabel: Company
+entityType: BASIC
+physicalTableName: COMPANY
+iconUrl: images://hr-img-lib/domain.svg
+description: Company entity representing organizations within the system.
+documentation: This entity contains attributes related to companies, such as name, address, and contact information.
+  It is used to manage company-related data across various entities in the organization.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CompanyID
+    label: Company ID
+    description: Unique identifier for the company
+    documentation: Unique identifier for the company
+    physicalName: COMPANY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: Name
+    label: Company name
+    description: Name of the company
+    documentation: Name of the company
+    physicalName: COMPANY_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    label: Company description
+    description: Description of the company
+    documentation: Description of the company
+    physicalName: COMPANY_DESCRIPTION
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 11
+primaryKey: Organization.entities.Company.Company.CompanyID

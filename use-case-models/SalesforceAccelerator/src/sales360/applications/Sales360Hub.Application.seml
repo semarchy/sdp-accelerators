@@ -1,0 +1,690 @@
+# This is a main application definition file for Salesforce Accelerator application
+_package: sales360.applications
+_name: Sales360Hub
+_type: Application
+applicationTitle: Sales 360 Hub
+avatarImageUrl: images://sales-img-lib/logo.svg
+coverImageUrl: images://sales-img-lib/logo.svg
+favIcon: images://sales-img-lib/logo.svg
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ""
+logoUrl: images://sales-img-lib/logo.svg
+visibility: VISIBLE
+description: Sales 360 B2B Application to view and manage your business data
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: CoreEntities
+      _type: DocumentationConfigDiagram
+      modelDiagram: sales360.model_diagrams.CoreEntities
+      label: Core Entities
+    - _name: CampaignOpportunityLead
+      _type: DocumentationConfigDiagram
+      modelDiagram: sales360.model_diagrams.CampaignOpportunityLead
+      label: Campaign Opportunity Lead With Reference
+    - _name: AccountContact
+      _type: DocumentationConfigDiagram
+      modelDiagram: sales360.model_diagrams.AccountContact
+      label: Account Contact With Reference
+label: Sales 360 Hub
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: Accounts
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sales360.entities.Account.business_views.Account
+      label: Accounts
+      maxResults: 5
+      searchTypeConfig: sales360.entities.Account.business_views.Account.Account.TextConfig
+    - _name: Contacts
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sales360.entities.Contact.business_views.Contacts
+      label: Contacts
+      maxResults: 5
+      searchTypeConfig: sales360.entities.Contact.business_views.Contacts.Contact.TextConfig
+
+    - _name: Campaigns
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sales360.entities.Campaign.business_views.Campaign
+      maxResults: 5
+      searchTypeConfig: sales360.entities.Campaign.business_views.Campaign.Campaign.TextConfig
+    - _name: Leads
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sales360.entities.Leads.business_views.Leads
+      maxResults: 5
+      searchTypeConfig: sales360.entities.Leads.business_views.Leads.Leads.TextConfig
+    - _name: Opportunties
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sales360.entities.Opportunity.business_views.Opportunity
+      maxResults: 5
+      searchTypeConfig: sales360.entities.Opportunity.business_views.Opportunity.Opportunity.TextConfig
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  iconColor: md:dark-blue
+  label: Root Folder
+  labelColor: md:dark-blue
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: GlobalSearch
+      description: Search Account, Contact, etc. from here
+      iconColor: "#1A3772"
+      label: Global Search
+      labelColor: "#1A3772"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: GlobalSearchAction
+    - _name: MyTasks
+      icon: images://mdi/email-newsletter.svg
+      iconColor: "#1A3772"
+      image: images://mdi/email-newsletter.svg
+      label: Inbox
+      labelColor: "#1A3772"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: MyTasksAction
+      badgeVisible: false
+    - _name: Entities
+      description: Default access to all the entities
+      iconColor: "#1A3772"
+      label: Entities
+      labelColor: "#1A3772"
+      requiredRole: semarchyAdmin
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseEntitiesFolderAction
+      lineageEnabled: true
+
+    - _name: StartHere
+      _type: FolderAction
+      label: Start Here
+      icon: images://mdi/arrow-right.svg
+      image: images://mdi/arrow-right.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+
+      - _type: ImportDataAppAction
+        _name: ImportAccount
+        label: Import Accounts
+        importAction: sales360.entities.Account.action_sets.AccountActionSet.ImportAuthorAccounts
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+
+      - _type: ImportDataAppAction
+        _name: ImportContact
+        label: Import Contacts
+        importAction: sales360.entities.Contact.action_sets.ContactActionSet.ImportAuthorContacts
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+
+      - _type: ImportDataAppAction
+        _name: ImportAccountContactRelation
+        label: Import AccountContactRelation
+        importAction: sales360.entities.AccountContactRelation.action_sets.AccountContactRelationActionSet.ImportAuthorAccountContactRelations
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+
+      - _type: ImportDataAppAction
+        _name: ImportCampaign
+        label: Import Campaigns
+        importAction: sales360.entities.Campaign.action_sets.CampaignActionSet.ImportAuthorCampaigns
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+
+      - _type: ImportDataAppAction
+        _name: ImportCampaignMember
+        label: Import Campaign Member
+        importAction: sales360.entities.CampaignMember.action_sets.CampaignMemberActionSet.ImportAuthorCampaignMembers
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+
+      - _type: ImportDataAppAction
+        _name: ImportLead
+        label: Import Leads
+        importAction: sales360.entities.Leads.action_sets.LeadsActionSet.ImportAuthorLeads
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+
+      - _type: ImportDataAppAction
+        _name: ImportOpportunity
+        label: Import Opportunities
+        importAction: sales360.entities.Opportunity.action_sets.OpportunityActionSet.ImportAuthorOpportunities
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+
+      - _type: ImportDataAppAction
+        _name: ImportOpportunityContactRole
+        label: Import Opportunity Contact Role
+        importAction: sales360.entities.OpportunityContactRole.action_sets.OpportunityContactRoleActionSet.ImportAuthorOpportunityContactRoles
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+
+
+
+    - _name: SalesB2B
+      iconColor: "#1A3772"
+      label: Sales B2B
+      labelColor: "#1A3772"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: SalesB2BMain
+          description: View and manage all your business data
+          icon: images://mdi/office-building.svg
+          iconColor: "#1A3772"
+          label: Sales B2B Main
+          labelColor: "#1A3772"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: Accounts
+              description: All Business Accounts such as customers, competitors and partners
+              image: images://sales-img-lib/accounts.png
+              label: Accounts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Account.business_views.Account
+              nbRecordsBadgeVisible: false
+              businessViewLabelOverride: Accounts
+              businessViewRootLabelOverride: Accounts
+              businessViewRootPluralLabelOverride: Accounts
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: Contacts
+              description: All contacts, that is, the person associated with an account
+              image: images://sales-img-lib/contacts.png
+              label: Contacts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Contact.business_views.Contacts
+              nbRecordsBadgeVisible: false
+              businessViewIconOverride: images://mdi/account-card-details-outline.svg
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: AccountContactRelation
+              description: Relation of a contact with an account, direct or indirect
+              label: Account Contact Relation
+              image: images://sales-img-lib/account_contact_relation.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.AccountContactRelation.business_views.AccountContactRelation
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: Campaigns
+              description: All the upcoming, ongoing or previous marketing campaigns
+              image: images://sales-img-lib/Campaigns.svg
+              label: Campaigns
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Campaign.business_views.Campaign
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: CampaignMember
+              description: All the Leads or Contacts added as a member of a campaign
+              label: Campaign Member
+              image: images://sales-img-lib/CampaignMember.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.CampaignMember.business_views.CampaignMember
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+
+            - _name: Leads
+              description: All the leads or prospects
+              image: images://sales-img-lib/leads.svg
+              label: Leads
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Leads.business_views.Leads
+              nbRecordsBadgeVisible: false
+              businessViewLabelOverride: Leads
+              businessViewRootLabelOverride: Leads
+              useSearchOnOpen: false
+              viewType: GD
+
+            - _name: Opportunity
+              description: All the sale or pending deals
+              image: images://sales-img-lib/opportunities.png
+              label: Opportunities
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Opportunity.business_views.Opportunity
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: OpportunityContactRole
+              description: All the contacts that are playing a role in an opportunity
+              label: Opportunity Contact Role
+              image: images://sales-img-lib/opportunity_contact_role.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.OpportunityContactRole.business_views.OpportunityContactRole
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+        - _name: ReferenceData
+          description: All the reference data relevant for this domain
+          icon: images://mdi/book-open-page-variant-outline.svg
+          iconColor: "#1A3772"
+          label: Reference Data
+          labelColor: "#1A3772"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: AccountType
+              description: Types of account, for example, Customer, Competitor, or Partner
+              image: images://sales-img-lib/reference.png
+              label: Account Type
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.AccountType.business_views.AccountType
+              nbRecordsBadgeVisible: true
+              businessViewIconOverride: images://mdi/account-card-details-outline.svg
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: Industry
+              description: List of all Industries
+              image: images://sales-img-lib/reference.png
+              label: Industries
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Industry.business_views.Industry
+              nbRecordsBadgeVisible: true
+              businessViewIconOverride: images://mdi/office-building.svg
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: Roles
+              description: All the roles for a contact participating an account or opportunity
+              image: images://sales-img-lib/reference.png
+              label: Roles
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Role.business_views.Roles
+              nbRecordsBadgeVisible: true
+              businessViewIconOverride: images://mdi/account-circle-outline.svg
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: LeadSource
+              description: Sources of an account record
+              image: images://sales-img-lib/reference.png
+              label: Lead Source
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.LeadSource.business_views.LeadSource
+              nbRecordsBadgeVisible: true
+              businessViewRootLabelOverride: Lead Source
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: CleanStatus
+              description: Record’s clean statuses as compared with Data.com
+              image: images://sales-img-lib/reference.png
+              label: Clean Status
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.CleanStatus.business_views.CleanStatus
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: Ownership
+              description: Ownership types for the account, for e.g. Private, Public, or
+                Subsidiary
+              image: images://sales-img-lib/reference.png
+              label: Ownership
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Ownership.business_views.Ownership
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: SicCode
+              description: Standard Industrial Classification codes
+              image: images://sales-img-lib/reference.png
+              label: SIC Code
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.SicCode.business_views.SicCode
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: NAICCode
+              description: The six-digit North American Industry Classification System codes
+              image: images://sales-img-lib/reference.png
+              label: NAIC Code
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.NAICCode.business_views.NAICCode
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: Salutation
+              description: Honorific added to the name for use in letters, etc.
+              image: images://sales-img-lib/reference.png
+              label: Salutation
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Salutation.business_views.Salutation
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: CampaignType
+              description: Type of campaign, for example, Direct Mail or Referral Program
+              image: images://sales-img-lib/reference.png
+              label: Campaign Type
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.CampaignType.business_views.CampaignType
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: CampaignStatus
+              description: Status of the campaign, for example, Planned, In Progress
+              image: images://sales-img-lib/reference.png
+              label: Campaign Status
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.CampaignStatus.business_views.CampaignStatus
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: CampaignMemberStatus
+              description: All the statuses of the contact or lead added to a campaign
+              image: images://sales-img-lib/reference.png
+              label: Campaign Member Status
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.CampaignMemberStatus.business_views.CampaignMemberStatus
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: OpportunityType
+              description: Type of opportunity. For example, Existing Business or New Business
+              image: images://sales-img-lib/reference.png
+              label: Opportunity Type
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.OpportunityType.business_views.OpportunityType
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: StageName
+              description: List of all the Stages in an Opportunity
+              image: images://sales-img-lib/reference.png
+              label: Stage Name
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.StageName.business_views.StageName
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: ForecastCategory
+              description: All the forecast categories based on the Stage an Opportunity is in
+              image: images://sales-img-lib/reference.png
+              label: Forecast Category
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.ForecastCategory.business_views.ForecastCategory
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: LeadStatus
+              description: Status code for converted lead
+              image: images://sales-img-lib/reference.png
+              label: Lead Status
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.LeadStatus.business_views.LeadStatus
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: Nickname
+              description: List of all Nicknames
+              image: images://sales-img-lib/reference.png
+              label: Nickname
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Nickname.business_views.Nickname
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+    - _name: Manage
+      label: Manage
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: ReviewSuggestions
+          description: Review all the pending match suggestions
+          icon: images://mdi/message-question-outline.svg
+          iconColor: "#1A3772"
+          label: Match Suggestions
+          labelColor: "#1A3772"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: AccountSuggestions
+              image: images://sales-img-lib/match_suggestions.svg
+              label: Match Suggestions in Accounts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Account.business_views.AccountReviewSuggestion
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: ContactSuggestions
+              image: images://sales-img-lib/match_suggestions.svg
+              label: Match Suggestions in Contacts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Contact.business_views.ContactReviewSuggestions
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: OpportunitiesSuggestions
+              image: images://sales-img-lib/match_suggestions.svg
+              label: Match Suggestions in Opportunities
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Opportunity.business_views.OpportunitiesReviewSuggestions
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: LeadsSuggestions
+              image: images://sales-img-lib/match_suggestions.svg
+              label: Match Suggestions in Leads
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Leads.business_views.LeadsReviewSuggestions
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+        - _name: ManageErrors
+          description: Review and correct all Source Data Errors
+          icon: images://mdi/alert-decagram-outline.svg
+          iconColor: md:red 400
+          label: Source Errors
+          labelColor: md:red 400
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: AccountErrors
+              image: images://sales-img-lib/source_errors.svg
+              label: Source Errors in Accounts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Account.business_views.Account
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: ContactErrors
+              image: images://sales-img-lib/source_errors.svg
+              label: Source Errors in Contact
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Contact.business_views.Contacts
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: AccountContactRelationErrors
+              image: images://sales-img-lib/source_errors.svg
+              label: Source Errors in Account Contact Relation
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.AccountContactRelation.business_views.AccountContactRelation
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: CampaignErrors
+              image: images://sales-img-lib/source_errors.svg
+              label: Source Errors in Campaign
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Campaign.business_views.Campaign
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _name: CampaignMemberErrors
+              image: images://sales-img-lib/source_errors.svg
+              label: Source Errors in Campaign Member
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.CampaignMember.business_views.CampaignMember
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+
+            - _name: LeadErrors
+              image: images://sales-img-lib/source_errors.svg
+              label: Source Errors in Leads
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Leads.business_views.Leads
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+
+            - _name: OpportunitiesErrors
+              image: images://sales-img-lib/source_errors.svg
+              label: Source Errors in Opportunities
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.Opportunity.business_views.Opportunity
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: OpportunityContactRoleError
+              image: images://sales-img-lib/source_errors.svg
+              label: Source Error in Opportunity Contact Role
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: sales360.entities.OpportunityContactRole.business_views.OpportunityContactRole
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+    - _name: Documentation
+      label: Documentation
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: ModelDocumentation
+          description: View all the Data Model diagrams
+          icon: images://mdi/clipboard-flow-outline.svg
+          iconColor: "#1A3772"
+          label: Model Documentation
+          labelColor: "#1A3772"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: OpenDocumentationAction
+          
+          
+        - _name: SemarchyDocumentation
+          description: Access Semarchy online documentation
+          iconColor: "#1A3772"
+          label: Semarchy Documentation
+          labelColor: "#1A3772"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: UrlAction
+          url: https://docs.semarchy.com/sdp/platform
+          target: NEW_BROWSER_TAB
+defaultAction: sales360.applications.Sales360Hub.Root.GlobalSearch
+navDrawer:
+  - _name: PlatformActions
+    _type: NavigationGroup
+    dividerVisible: true
+    label: Platform Actions
+    labelVisible: true
+    actions:
+      - appAction: sales360.applications.Sales360Hub.Root.MyTasks
+      - appAction: sales360.applications.Sales360Hub.Root.GlobalSearch
+      - appAction: sales360.applications.Sales360Hub.Root.Entities
+      - appAction: sales360.applications.Sales360Hub.Root.StartHere
+  - _name: B2B
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sales360.applications.Sales360Hub.Root.SalesB2B
+  - _name: Manage
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sales360.applications.Sales360Hub.Root.Manage
+  - _name: Documentation
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sales360.applications.Sales360Hub.Root.Documentation

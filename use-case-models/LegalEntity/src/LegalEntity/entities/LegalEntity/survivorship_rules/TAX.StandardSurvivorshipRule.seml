@@ -1,0 +1,24 @@
+# This is a definition file for the TAX Standard Survivorship Rule in the Legal Entity application.
+# It defines the survivorship rule based on preferred publisher rankings: 1 - TAX, 2 - Investran, 3 - CRM.
+# It covers the following attributes: EnableTaxSoftware, FinalInTY22, FormADVPF, K1DueJune30, NewInTY22.
+_package: LegalEntity.entities.LegalEntity.survivorship_rules
+_name: TAX
+entity: LegalEntity.entities.LegalEntity.LegalEntity
+defaultRule: false
+consolidationSkipNulls: false
+_type: StandardSurvivorshipRule
+label: TAX
+attributes:
+  - attributeName: EnableTaxSoftware
+  - attributeName: FinalInTY22
+  - attributeName: K1DueJune30
+  - attributeName: NewInTY22
+consolidationStrategy: PREFERRED_PUBLISHER
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: LegalEntity.publishers.TAX
+  - _type: ConsoPublisherRanking
+    publisher: LegalEntity.publishers.Investran
+  - _type: ConsoPublisherRanking
+    publisher: LegalEntity.publishers.CRM
+

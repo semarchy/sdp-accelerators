@@ -1,0 +1,327 @@
+# This is the LeadsImportCollection collection view used in the Salesforce Accelerator application.
+# It defines how leads are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.Leads.collection_views
+_name: LeadsImportCollection
+_type: CollectionView
+entity: sales360.entities.Leads.Leads
+default: true
+displayCard: sales360.entities.Leads.display_cards.LeadDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Leads
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 350
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: LeadID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: LeadID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ConvertedDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: true
+    label: Converted Date
+    value: ConvertedDate
+    visibleByDefault: true  
+  - _type: TextColumn
+    _name: FirstName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FirstName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LastName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LastName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Title
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Title
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: Company
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Company
+    visibleByDefault: true
+    defaultWidth: 300
+  - _type: ReferenceColumn
+    _name: Status
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Status
+    visibleByDefault: true
+    defaultWidth: 200
+    displayCard: sales360.entities.LeadStatus.display_cards.LeadStatusDisplayCard
+    referencedEntity: sales360.entities.LeadStatus.LeadStatus
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: CheckboxColumn
+    _name: IsConverted
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsConverted
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: Industry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Industry
+    visibleByDefault: true
+    referencedEntity: sales360.entities.Industry.Industry
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Phone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: Phone
+    useCustomLabel: true
+    value: Phone.StandardizedPhoneNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Website
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Website
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: AnnualRevenue
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: AnnualRevenue
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: NumberOfEmployees
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: NumberOfEmployees
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: Fax
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Fax
+    visibleByDefault: true
+
+
+  - _type: TextColumn
+    _name: MobilePhone
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MobilePhone
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: Email
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Email
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: Street
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Street
+    value: Address.InpAddressLine
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: City
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: City
+    value: Address.InpCity
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: State
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: State
+    value: Address.InpState
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: PostalCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: PostalCode
+    value: Address.InpZipCode
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: Country
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Country
+    value: Address.InpCountry
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: LeadStatus
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Status
+    visibleByDefault: true
+    referencedEntity: sales360.entities.LeadStatus.LeadStatus
+
+  - _type: TextColumn
+    _name: Rating
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Rating
+    visibleByDefault: true
+
+  - _type: ReferenceColumn
+    _name: LeadSource
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_LeadSource
+    visibleByDefault: true
+    referencedEntity: sales360.entities.LeadSource.LeadSource
+
+  - _type: TextColumn
+    _name: Description
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Description
+    visibleByDefault: true
+
+  - _type: ReferenceColumn
+    _name: CleanStatus
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_CleanStatus
+    visibleByDefault: true
+    referencedEntity: sales360.entities.CleanStatus.CleanStatus
+  
+  - _type: ReferenceColumn
+    _name: Salutation
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Salutation
+    value: FDN_Salutation
+    visibleByDefault: true
+    referencedEntity: sales360.entities.Salutation.Salutation
+
+  - _type: TextColumn
+    _name: Name
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Name
+    visibleByDefault: true
+
+
+  - _type: TextColumn
+    _name: PublisherID_ConvertedAccount
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PublisherID_ConvertedAccount
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: SourceID_ConvertedAccount
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceID_ConvertedAccount
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: PublisherID_ConvertedContact
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PublisherID_ConvertedContact
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: SourceID_ConvertedContact
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceID_ConvertedContact
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: PublisherID_ConvertedOpportunity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PublisherID_ConvertedOpportunity
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: SourceID_ConvertedOpportunity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceID_ConvertedOpportunity
+    visibleByDefault: true
+    
+
+  - _type: TextColumn
+    _name: MobilePhone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: MobilePhone
+    useCustomLabel: true
+    value: MobilePhone.InpPhoneNumber
+    visibleByDefault: true
+
+  

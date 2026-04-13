@@ -1,0 +1,13 @@
+# It is a SemQL enricher for the Account entity in the Salesforce Accelerator application.
+# This enricher normalizes the Account Name by trimming spaces and converting to uppercase.
+# This enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.Account.enrichers
+_name: NormalizedAccountName
+entity: sales360.entities.Account.Account
+label: Normalized Account Name
+description: Normalize the Account Name by trimming spaces and converting to uppercase
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedAccountName
+    expression: LTRIM(RTRIM(UPPER(AccountName)))

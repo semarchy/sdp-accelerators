@@ -1,0 +1,60 @@
+_package: CorpFin.entities.Supplier
+_type: Entity
+_name: Supplier
+label: Supplier
+pluralLabel: Suppliers
+entityType: BASIC
+physicalTableName: SUPPLIER
+iconUrl: images://mdi/truck.svg
+description: "Supplier-specific view of the counterparty."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SupplierID
+    label: Supplier ID
+    description: Source-system supplier identifier
+    documentation: ""
+    physicalName: SUPPLIER_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PaymentTerms
+    label: Payment Terms
+    description: Standard AP payment terms
+    documentation: ""
+    physicalName: PAYMENT_TERMS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedPaymentTerms
+    label: Normalized Payment Terms
+    description: Trimmed and uppercased payment terms for standardization
+    documentation: ""
+    physicalName: NORMALIZED_PAYMENT_TERMS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: LeadTimeDays
+    label: Lead Time Days
+    description: Average lead time in days for fulfillment
+    documentation: ""
+    physicalName: LEAD_TIME_DAYS
+    dataType: Integer
+    precision: 5
+    mandatory: false
+
+primaryKey: CorpFin.entities.Supplier.Supplier.SupplierID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

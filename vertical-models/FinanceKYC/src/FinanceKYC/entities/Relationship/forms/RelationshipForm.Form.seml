@@ -1,0 +1,66 @@
+_package: FinanceKYC.entities.Relationship.forms
+_type: Form
+_name: RelationshipForm
+entity: FinanceKYC.entities.Relationship.Relationship
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Relationship
+    label: Relationship
+    labelWidth: 200px
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: IdField
+        _name: RelationshipID
+        value: RelationshipID
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: RelationshipType
+        value: RelationshipType
+        useCustomLabel: false
+        dataType: STRING
+      - _type: DateField
+        _name: StartDate
+        value: StartDate
+        useCustomLabel: false
+        dataType: DATE
+      - _type: DateField
+        _name: EndDate
+        value: EndDate
+        useCustomLabel: false
+        dataType: DATE
+      - _type: CheckboxField
+        _name: IsActive
+        value: IsActive
+        useCustomLabel: false
+        dataType: BOOLEAN
+      - _type: TextField
+        _name: Notes
+        value: Notes
+        useCustomLabel: false
+        dataType: STRING
+      - _type: ReferenceField
+        _name: FDN_FromCustomer
+        value: FDN_FromCustomer
+        referencedEntity: FinanceKYC.entities.Customer.Customer
+        componentProperties:
+          displayType: chip
+          useAvatarInChip: "1"
+        useCustomLabel: true
+        label: To Customer
+        dataType: STRING
+      - _type: ReferenceField
+        _name: FDN_ToCustomer
+        value: FDN_ToCustomer
+        referencedEntity: FinanceKYC.entities.Customer.Customer
+        componentProperties:
+          displayType: chip
+          useAvatarInChip: "1"
+        useCustomLabel: true
+        label: To Customer
+        dataType: STRING
+

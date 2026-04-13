@@ -1,0 +1,13 @@
+#This file defines the Autopopulate Site Phone enricher for the Contact entity in the Legal Entity application.
+# It automatically populates the Site Phone attribute based on the Standardized Phone of the Site.
+_package: LegalEntity.entities.Contact.enrichers
+_name: AutopopulateSitePhone
+_type: SemQLEnricher
+entity: LegalEntity.entities.Contact.Contact
+label: Autopopulate Site Phone
+description: ''
+condition: "Phone IS NULL OR Phone = ''"
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: Phone
+    expression: "Site.StandardizedPhone"

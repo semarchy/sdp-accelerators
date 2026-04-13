@@ -1,0 +1,111 @@
+_name: Products
+_package: HCO_HCP.entities.Products.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: HCO_HCP.entities.Products.Products
+rootLabel: Products
+rootPluralLabel: Products
+useHierarchyOnOpen: false
+label: Products
+rootBusinessViewEntity:
+  _name: ProductsEO
+  _type: BusinessViewEntity
+  collection: HCO_HCP.entities.Products.collection_views.ProductsCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: HCO_HCP.entities.Products.Products
+  displayCard: HCO_HCP.entities.Products.display_cards.ProductsDisplayCard
+  form: HCO_HCP.entities.Products.forms.ProductsForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: HCO_HCP.entities.Products.action_sets.ProductsActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Strengths
+      transitionPath: Strengths
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: Strengths
+        entity: HCO_HCP.entities.Strength.Strength
+        actionSet: HCO_HCP.entities.Strength.action_sets.StrengthActionSet
+        collection: HCO_HCP.entities.Strength.collection_views.StrengthCollection
+        form: HCO_HCP.entities.Strength.forms.StrengthForm
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        displayCard: HCO_HCP.entities.Strength.display_cards.StrengthDisplayCard
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true
+        referenceAttributeNavigationConfigs:
+          - formField: HCO_HCP.entities.Strength.forms.StrengthForm.Strength.FDN_Products
+            businessView: HCO_HCP.entities.Products.business_views.Products
+            form: HCO_HCP.entities.Products.forms.ProductsForm
+            navigationMode: BUSINESS_OBJECT_VIEW        
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      iconUrl: images://mdi/restore-clock.svg
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: HCO_HCP.entities.Products.business_views.Products.ProductsEO
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      iconUrl: images://mdi/puzzle.svg
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: HCO_HCP.entities.Products.business_views.Products.ProductsEO
+rootIconUrl: images://mdi/pill.svg

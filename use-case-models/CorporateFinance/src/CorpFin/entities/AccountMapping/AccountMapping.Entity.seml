@@ -1,0 +1,61 @@
+_package: CorpFin.entities.AccountMapping
+_type: Entity
+_name: AccountMapping
+label: Account Mapping
+pluralLabel: Account Mappings
+entityType: BASIC
+physicalTableName: ACCOUNT_MAPPING
+iconUrl: images://mdi/arrow-right-bold.svg
+description: "Links source accounts to target accounts or rules."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AccountMappingID
+    label: Account Mapping ID
+    description: Surrogate identifier for account mapping
+    documentation: ""
+    physicalName: ACCOUNT_MAPPING_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Priority
+    label: Priority
+    description: Order to evaluate when overlaps exist
+    documentation: ""
+    physicalName: PRIORITY
+    dataType: Integer
+    precision: 3
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Justification
+    label: Justification
+    description: Business justification or notes
+    documentation: ""
+    physicalName: JUSTIFICATION
+    dataType: String
+    length: 1000
+    mandatory: false
+    
+  - _type: EntityAttribute
+    _name: ReportingPnLCategoryCode
+    label: Reporting PnL Category Code
+    description: BI/reporting category to assign when applying this mapping
+    documentation: ""
+    physicalName: REPORTING_PNL_CAT_CODE
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+primaryKey: CorpFin.entities.AccountMapping.AccountMapping.AccountMappingID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

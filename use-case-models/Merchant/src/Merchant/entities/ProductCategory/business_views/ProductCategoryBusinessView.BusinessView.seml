@@ -1,0 +1,43 @@
+_package: Merchant.entities.ProductCategory.business_views
+# Description: Business view configuration for `ProductCategory` providing navigation and search views.
+# Contains business view entities, display cards and collection/form bindings used by the application.
+# Role: Exposes product category data in the application navigation and global search.
+_type: BusinessView
+_name: ProductCategoryBusinessView
+entity: Merchant.entities.ProductCategory.ProductCategory
+label: Product Categories
+
+rootLabel: Product Categories
+rootPluralLabel: Product Categories
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ProductCategory
+  displayCard: Merchant.entities.ProductCategory.display_cards.ProductCategoryDisplayCard
+  entity: Merchant.entities.ProductCategory.ProductCategory
+  actionSet: Merchant.entities.ProductCategory.action_sets.ProductCategoryActionSet
+  collection: Merchant.entities.ProductCategory.collection_views.ProductCategoryCollectionView
+  form: Merchant.entities.ProductCategory.forms.ProductCategoryForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

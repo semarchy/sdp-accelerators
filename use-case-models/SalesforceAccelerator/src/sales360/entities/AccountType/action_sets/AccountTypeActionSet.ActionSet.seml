@@ -1,0 +1,74 @@
+# This is the AccountTypeActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on account types, such as creating, editing,
+# mass updating, deleting, exporting,importing account types.
+_name: AccountTypeActionSet
+_package: sales360.entities.AccountType.action_sets
+_type: ActionSet
+entity: sales360.entities.AccountType.AccountType
+label: Account Type Action Set
+description: Action set for Account Type entity in Salesforce Accelerator
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorAccountTypes
+    label: Create
+    description: Create a new Author Account Type record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.AccountType.steppers.AuthorAccountTypes
+  - _name: EditAuthorAccountTypes
+    label: Edit
+    description: Edit existing Author Account Type records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.AccountType.steppers.AuthorAccountTypes
+  - _name: MassUpdateAuthorAccountTypes
+    label: Mass Update
+    description: Mass update Author Account Type records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sales360.entities.AccountType.steppers.AuthorAccountTypes
+  - _name: Delete
+    label: Delete
+    description: Delete selected Account Type records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export Account Type records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorAccountTypes
+    label: Import
+    description: Import Author Account Type records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.AccountType.steppers.AuthorAccountTypes
+  - _name: BrowseGraph
+    label: Browse Graph
+    description: Browse Account Type records in a graph view
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

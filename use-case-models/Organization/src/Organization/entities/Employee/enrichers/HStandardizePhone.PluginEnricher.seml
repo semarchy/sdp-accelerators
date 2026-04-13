@@ -1,0 +1,27 @@
+# This is a Semarchy plugin enricher configuration file for standardizing phone numbers in employee records.
+# For more information refer to the Semarchy documentation: https://docs.semarchy.com/sdp/reference/dm/enrichers/phone-enricher
+_package: Organization.entities.Employee.enrichers
+_type: JavaPluginEnricher
+_name: HStandardizePhone
+label: Standardize Phone
+enricherExecutionScope: PRE_CONSO
+entity: Organization.entities.Employee.Employee
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.phone
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_COUNTRY_CODE
+    expression: COALESCE( Address.Country, 'US' )
+  - expression: SourcePhone
+    inputName: IN_PHONE
+  - expression: "'NATIONAL'"
+    inputName: IN_PHONE_FORMAT
+  - expression: "'US'"
+    inputName: IN_REGION_CALLING_FROM
+pluginOutputs:
+  - attributeName: PhoneGeocodingData
+    outputName: GEOCODE_DATA
+  - attributeName: StandardizedPhone
+    outputName: ENRICHED_PHONE

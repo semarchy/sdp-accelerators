@@ -1,0 +1,89 @@
+_package: Assets.entities.MaintenanceSchedule
+_type: Entity
+_name: MaintenanceSchedule
+label: Maintenance Schedule
+pluralLabel: Maintenance Schedule
+entityType: BASIC
+physicalTableName: MAINTENANCE_SCHEDULE
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: ScheduleID
+    label: Schedule ID
+    physicalName: SCHEDULE_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: Unique identifier for the maintenance schedule
+    documentation: Unique identifier for the maintenance schedule
+  - _type: EntityAttribute
+    _name: ScheduledDate
+    label: Scheduled Date
+    physicalName: SCHEDULED_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: Scheduled date
+    documentation: Scheduled date
+  - _type: EntityAttribute
+    _name: PerformedDate
+    label: Performed Date
+    physicalName: PERFORMED_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: Performed date
+    documentation: Performed date
+  - _type: EntityAttribute
+    _name: MaintenanceProvider
+    label: Maintenance Provider
+    physicalName: MAINTENANCE_PROVIDER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+    description: Provider of maintenance service
+    documentation: Provider of maintenance service
+  - _type: EntityAttribute
+    _name: MaintenanceCost
+    label: Maintenance Cost
+    physicalName: MAINTENANCE_COST
+    dataType: Decimal
+    length: 10
+    precision: 9
+    scale: 4
+    mandatory: false
+    searchable: true
+    description: Cost of maintenance activity
+    documentation: Cost of maintenance activity
+  - _type: EntityAttribute
+    _name: DescriptionOfWork
+    label: Description of Work
+    physicalName: DESCRIPTION_OF_WORK
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: Description of maintenance work performed
+    documentation: Description of maintenance work performed
+  - _type: EntityAttribute
+    _name: PartsUsed
+    label: Parts Used
+    physicalName: PARTS_USED
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: Parts used during maintenance
+    documentation: Parts used during maintenance
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: Assets.entities.MaintenanceSchedule.MaintenanceSchedule.ScheduleID

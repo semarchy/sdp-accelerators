@@ -1,0 +1,35 @@
+# Description: Reference linking `MerchantProduct` to `Merchant`.
+# Contains relationship mapping for products associated with merchants.
+# Role: Enables navigation and aggregation of merchant products within the model.
+_package: Merchant.references
+_name: ProductsBelongToMerchant
+_type: Reference
+label: Merchant Product Reference
+description: Reference linking MerchantProduct to Merchant
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.Product.Product
+fromRoleLabel: Product
+fromRoleName: Product
+fromRolePluralLabel: Product
+physicalName: PRODUCT
+
+toEntity: Merchant.entities.Merchant.Merchant
+toRoleLabel: Merchant
+toRoleName: Merchant
+toRolePhysicalName: MERCHANT
+
+validationScope: PRE_CONSO
+mandatoryValidationLabel: Merchant is required for product
+oneToMany: true
+splitDuplicatePropagation: NONE
+fromNavigable: true
+toNavigable: true
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Merchant
+  label: Merchant
+  physicalName: MERCHANT
+  searchable: true
+  description: "Reference to merchant offering the product"

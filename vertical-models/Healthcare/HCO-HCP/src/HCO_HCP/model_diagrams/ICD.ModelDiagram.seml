@@ -1,0 +1,75 @@
+_type: ModelDiagram
+_package: HCO_HCP.model_diagrams
+_name: ICD
+attributeNameFormat: NAME
+entityNameFormat: NAME
+label: ICD
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: false
+showReferenceName: false
+showReferenceRoles: false
+entityShapes:
+  - _name: ICDMapping
+    _type: EntityShape
+    entity: HCO_HCP.entities.ICDMapping.ICDMapping
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 366
+      y: 212
+  - _name: ICD10CM
+    _type: EntityShape
+    entity: HCO_HCP.entities.ICD10CM.ICD10CM
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 639
+      y: 325
+  - _name: ICD9CM
+    _type: EntityShape
+    entity: HCO_HCP.entities.ICD9CM.ICD9CM
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 56
+      y: 251
+referenceLinks:
+  - reference: HCO_HCP.references.ICD9Mapping
+    fromEntityShape: HCO_HCP.model_diagrams.ICD.ICDMapping
+    toEntityShape: HCO_HCP.model_diagrams.ICD.ICD9CM
+    bendPoints: []
+  - reference: HCO_HCP.references.ICD10Hierarchy
+    fromEntityShape: HCO_HCP.model_diagrams.ICD.ICD10CM
+    toEntityShape: HCO_HCP.model_diagrams.ICD.ICD10CM
+    bendPoints:
+      - x: 100
+        y: 0
+      - x: 100
+        y: -100
+      - x: 0
+        y: -100
+  - reference: HCO_HCP.references.ICD10Mapping
+    fromEntityShape: HCO_HCP.model_diagrams.ICD.ICDMapping
+    toEntityShape: HCO_HCP.model_diagrams.ICD.ICD10CM
+    bendPoints: []
+  - reference: HCO_HCP.references.ICD9Hierarchy
+    fromEntityShape: HCO_HCP.model_diagrams.ICD.ICD9CM
+    toEntityShape: HCO_HCP.model_diagrams.ICD.ICD9CM
+    bendPoints:
+      - x: 100
+        y: 0
+      - x: 100
+        y: -100
+      - x: 0
+        y: -100

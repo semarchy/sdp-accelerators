@@ -1,0 +1,28 @@
+_package: FinanceKYC.references
+_name: InsuranceProductHasCategory
+_type: Reference
+label: Insurance Product Has Category
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.InsuranceProduct.InsuranceProduct
+fromRoleLabel: Product
+fromRoleName: product
+fromRolePluralLabel: Products
+physicalName: INS_PRD_HAS_CAT
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.InsuranceProductCategory.InsuranceProductCategory
+toRoleLabel: Category
+toRoleName: Category
+toRolePhysicalName: CAT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Category
+  label: Category
+  physicalName: CATEGORY
+  searchable: true
+  entity: FinanceKYC.entities.InsuranceProduct.InsuranceProduct

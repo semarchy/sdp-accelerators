@@ -1,0 +1,15 @@
+# It is an enricher for the account entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that separates single and multiple roles in the OpportunityContactRole entity.
+# This enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.OpportunityContactRole.enrichers
+_name: MultipleRoles
+entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+label: Multiple Roles
+description: Enricher to separate single and multiple roles in OpportunityContactRole entity
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_Role
+    expression: CASE WHEN FID_Role LIKE '%;%' THEN NULL ELSE FID_Role  END
+  - attributeName: MultipleRoles
+    expression: CASE WHEN MultipleRoles LIKE '%;%' THEN MultipleRoles  ELSE NULL END

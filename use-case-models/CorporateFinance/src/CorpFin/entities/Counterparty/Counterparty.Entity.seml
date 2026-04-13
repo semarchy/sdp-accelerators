@@ -1,0 +1,161 @@
+_package: CorpFin.entities.Counterparty
+_type: Entity
+_name: Counterparty
+label: Counterparty
+pluralLabel: Counterparties
+entityType: FUZZY_MATCHED
+physicalTableName: COUNTERPARTY
+iconUrl: images://mdi/hexagon.svg
+description: "Golden record for any customer or supplier organization."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CounterpartyID
+    label: Counterparty ID
+    description: Surrogate identifier for the counterparty master
+    documentation: ""
+    physicalName: COUNTERPARTY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: LegalName
+    label: Legal Name
+    description: Official registered name
+    documentation: ""
+    physicalName: LEGAL_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedLegalName
+    label: Normalized Legal Name
+    description: Trimmed and uppercased legal name for matching
+    documentation: ""
+    physicalName: NORMALIZED_LEGAL_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhonetizedLegalName
+    label: Phonetized Legal Name
+    description: Phonetic representation of legal name for fuzzy matching
+    documentation: ""
+    physicalName: PHONETIZED_LEGAL_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: TaxID
+    label: Tax ID
+    description: Primary tax identification number
+    documentation: ""
+    physicalName: TAX_ID
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedTaxID
+    label: Normalized Tax ID
+    description: Trimmed and uppercased tax identifier
+    documentation: ""
+    physicalName: NORMALIZED_TAX_ID
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: IsCustomer
+    label: Is Customer
+    description: Flag indicating customer role
+    documentation: ""
+    physicalName: IS_CUSTOMER
+    dataType: Boolean
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsSupplier
+    label: Is Supplier
+    description: Flag indicating supplier role
+    documentation: ""
+    physicalName: IS_SUPPLIER
+    dataType: Boolean
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsInternalEntity
+    label: Is Internal Entity
+    description: Indicates the counterparty is part of our corporate group
+    documentation: ""
+    physicalName: IS_INTERNAL_ENTITY
+    dataType: Boolean
+    mandatory: false
+
+primaryKey: CorpFin.entities.Counterparty.Counterparty.CounterpartyID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: CounterpartyMatcher
+  description: Strategies for matching Counterparties
+
+  matchRules:
+    - _name: NormalizedCounterpartyNameTaxIDCountry
+      _type: SemQLMatchRule
+      label: Normalized Counterparty Name, Normalized Tax ID, Country
+      documentation: 'In the best case scenario, we match Counterparties with this rule: match
+        on Name, tax-ID and country.'
+      color: md:purple 900
+      condition: /*** Counterparty Normalized Name match ***/ Record1.NormalizedLegalName = Record2.NormalizedLegalName /*** Tax ID exact match ***/ AND Record1.NormalizedTaxID = Record2.NormalizedTaxID /*** Country exact match ***/ AND Record1.FID_country = Record2.FID_country
+      matchScore: 95
+
+    - _name: PhoneticCounterpartyNameTaxIDCountry
+      _type: SemQLMatchRule
+      label: Phonetic Counterparty Name, Normalized Tax ID, Country
+      documentation: 'In the "Normal Ideal" case, we match Counterparties with this rule: match
+        on Phonetic Name, tax-ID and country.'
+      color: md:purple 700
+      condition: /*** Counterparty Phonetic Name match ***/ Record1.PhonetizedLegalName = Record2.PhonetizedLegalName /*** Tax ID exact match ***/ AND Record1.NormalizedTaxID = Record2.NormalizedTaxID /*** Country exact match ***/ AND Record1.FID_country = Record2.FID_country
+      matchScore: 88
+
+    - _name: PhoneticCounterpartyNameCountry
+      _type: SemQLMatchRule
+      label: Phonetic Counterparty Name, Country
+      documentation: 'In this case, we match Counterparties with this rule: match
+        on Phonetic Name and Country.'
+      color: md:purple 400
+      condition: /*** Counterparty Name exact match ***/ Record1.PhonetizedLegalName = Record2.PhonetizedLegalName /*** Country exact match ***/ AND Record1.FID_country = Record2.FID_country
+      matchScore: 65
+      
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  # autoConfirmGoldenThreshold: 95
+  autoConfirmGoldenThreshold: 87
+  autoConfirmSingletons: false

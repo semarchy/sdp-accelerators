@@ -1,0 +1,35 @@
+# It is a SemQL enricher for the Account entity in the Salesforce Accelerator application.
+# This enricher normalizes the Business Type from the NormalizedAccountName attribute.
+# It removes common business entity type suffixes from the end of the company name.
+# This enricher scope is NONE and can be updated as per use case.
+_type: SemQLEnricher
+_package: sales360.entities.Account.enrichers
+_name: BusinessTypeNormializer
+entity: sales360.entities.Account.Account
+label: Business Type Normializer
+description: Normalizes Business Type by removing common entity type suffixes from NormalizedAccountName,Applies only to  Oracle and Postgres
+enricherExecutionScope: NONE
+semQlEnricherExpressions:
+  - attributeName: NormalizedAccountName
+    expression: >-
+      /* Find these business entity type names along with preceding and trailing
+      commas, periods and spaces and only if the entity type shows up at the
+      end. */
+
+      /* Tested mostly for US business entity types. */
+
+
+      REGEXP_REPLACE (
+          NormalizedAccountName, /* NormalizedCompanyName should already be ALL CAPS */
+          '([^&])' /* if the name has '&' before the entity type then DO NOT strip off the entity type. For example: we want to keep ABC & CO and XYZ & ASSOC unmodified */
+           || '[\.,[:blank:]]+(' /* find any dot, comma, or spaces preceding the business entity type */
+           || 'CORPORATION|CORP|CO|COMPANY|INCORPORATED|INC|COMPANY,* INCORPORATED|COMPANY,* INC|LIMITED|LTD|ASSOCIATION|ASSOC|L\.*P|L\.*L\.*P|L\.*L\.*L\.*P|L\.*L\.*C|P\.*L\.*C|' /* Anglo entities */
+           || 'A\.*G|G\.*M\.*B\.*H|G\.*M\.*B\.*H *& *CO|G\.*M\.*B\.*H *[&+] *CO[\. ]*KG|' /* German entities */
+           || 'S\.*R\.*O|' /* Czech entities */
+           || 'S\.*A\.*R\.*L|S\.*A\.*S|' /* French entities */
+           || 'S\.*A|S\.*L|' /* Spanish entities */
+           || 'S\.*R\.*L|S\.*P\.*A' /* Italian entities */
+           || ')[\.,[:blank:]]*$',
+          '\1'  /* replace the business entity type with an empty string, but put back the final non-ampersand character of the company name */
+      )
+afterEnrichers: sales360.entities.Account.enrichers.NormalizedAccountName

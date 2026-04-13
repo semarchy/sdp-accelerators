@@ -1,0 +1,115 @@
+_package: FinanceKYC.entities.InsuranceContract
+_type: Entity
+_name: InsuranceContract
+label: Insurance Contract
+pluralLabel: Insurance Contract
+entityType: BASIC
+physicalTableName: INSURANCE_CONTRACT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: InsuranceContractID
+    _type: EntityAttribute
+    label: Insurance Contract ID
+    description: Unique identifier for the insurance contract
+    documentation: ''
+    physicalName: INSURANCE_CONTRACT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    valueSeparator: ''
+    searchable: true
+
+  - _name: ContractName
+    _type: EntityAttribute
+    label: Contract Name
+    description: Name of the contract
+    documentation: ''
+    physicalName: CONTRACT_NAME
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    valueSeparator: ','
+    searchable: true
+    length: 100
+
+  - _name: StartDate
+    _type: EntityAttribute
+    label: Start Date
+    description: Contract start date
+    documentation: ''
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+
+  - _name: EndDate
+    _type: EntityAttribute
+    label: End Date
+    description: Contract end date
+    documentation: ''
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+
+  - _name: Status
+    _type: EntityAttribute
+    label: Status
+    description: Contract status
+    documentation: ''
+    physicalName: STATUS
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 20
+
+  - _type: EntityAttribute
+    _name: Amount
+    label: Amount
+    description: Contract amount
+    documentation: ''
+    physicalName: AMOUNT
+    dataType: Decimal
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    precision: 15
+    scale: 2
+
+  - _type: EntityAttribute
+    _name: Currency
+    label: Currency
+    description: Currency
+    documentation: ''
+    physicalName: CURRENCY
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 10
+
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    description: Additional notes
+    documentation: ''
+    physicalName: NOTES
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 255
+
+primaryKey: FinanceKYC.entities.InsuranceContract.InsuranceContract.InsuranceContractID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

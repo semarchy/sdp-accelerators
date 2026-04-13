@@ -1,0 +1,214 @@
+_type: ModelDiagram
+_package: sales360.model_diagrams
+_name: AccountContact
+attributeNameFormat: NAME
+entityNameFormat: NAME
+label: Account Contact With Reference
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: true
+showReferenceCardinality: true
+showReferenceName: true
+showReferenceRoles: false
+entityShapes:
+  - _name: Account
+    _type: EntityShape
+    entity: sales360.entities.Account.Account
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 520
+      y: -186
+  - _name: Contact
+    _type: EntityShape
+    entity: sales360.entities.Contact.Contact
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: -12
+      y: 431.4497985839844
+  - _name: AccountContactRelation
+    _type: EntityShape
+    entity: sales360.entities.AccountContactRelation.AccountContactRelation
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: 220
+    height: -1
+    position:
+      x: -96
+      y: -124
+  - _name: Role
+    _type: EntityShape
+    entity: sales360.entities.Role.Role
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 96
+      y: -380.75
+  - _name: AccountType
+    _type: EntityShape
+    entity: sales360.entities.AccountType.AccountType
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 748
+      y: -320
+  - _name: Ownership
+    _type: EntityShape
+    entity: sales360.entities.Ownership.Ownership
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 758
+      y: -90
+  - _name: SicCode
+    _type: EntityShape
+    entity: sales360.entities.SicCode.SicCode
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 988
+      y: -322
+  - _name: NAICCode
+    _type: EntityShape
+    entity: sales360.entities.NAICCode.NAICCode
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 1002
+      y: -94
+  - _name: Industry
+    _type: EntityShape
+    entity: sales360.entities.Industry.Industry
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 752
+      y: 144
+  - _name: CleanStatus
+    _type: EntityShape
+    entity: sales360.entities.CleanStatus.CleanStatus
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 1046
+      y: 130.64996337890625
+  - _name: LeadSource
+    _type: EntityShape
+    entity: sales360.entities.LeadSource.LeadSource
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: 300
+      y: -180
+  - _name: Salutation
+    _type: EntityShape
+    entity: sales360.entities.Salutation.Salutation
+    borderColor: rgb(34,177,76)
+    fontTitleColor: ""
+    width: 200
+    height: -1
+    position:
+      x: -252
+      y: 399.5
+referenceLinks:
+  - reference: sales360.references.ParentCompany
+    fromEntityShape: sales360.model_diagrams.AccountContact.Account
+    toEntityShape: sales360.model_diagrams.AccountContact.Account
+    bendPoints:
+      - x: 435
+        y: 900
+      - x: 435
+        y: 1005
+  - reference: sales360.references.ReportsToContact
+    fromEntityShape: sales360.model_diagrams.AccountContact.Contact
+    toEntityShape: sales360.model_diagrams.AccountContact.Contact
+    bendPoints:
+      - x: 165
+        y: 555
+      - x: 300
+        y: 570
+      - x: 420
+        y: 375
+      - x: 150
+        y: 300
+  - reference: sales360.references.ContactsAccount
+    fromEntityShape: sales360.model_diagrams.AccountContact.Contact
+    toEntityShape: sales360.model_diagrams.AccountContact.Account
+    bendPoints: []
+  - reference: sales360.references.AccountContactRelations
+    fromEntityShape: sales360.model_diagrams.AccountContact.AccountContactRelation
+    toEntityShape: sales360.model_diagrams.AccountContact.Account
+    bendPoints: []
+  - reference: sales360.references.AccountContactRelationsContact
+    fromEntityShape: sales360.model_diagrams.AccountContact.AccountContactRelation
+    toEntityShape: sales360.model_diagrams.AccountContact.Contact
+    bendPoints: []
+  - reference: sales360.references.AccountContactRelationsRole
+    fromEntityShape: sales360.model_diagrams.AccountContact.AccountContactRelation
+    toEntityShape: sales360.model_diagrams.AccountContact.Role
+    bendPoints: []
+  - reference: sales360.references.AccountsType
+    fromEntityShape: sales360.model_diagrams.AccountContact.Account
+    toEntityShape: sales360.model_diagrams.AccountContact.AccountType
+    bendPoints: []
+  - reference: sales360.references.AccountsOwnership
+    fromEntityShape: sales360.model_diagrams.AccountContact.Account
+    toEntityShape: sales360.model_diagrams.AccountContact.Ownership
+    bendPoints: []
+  - reference: sales360.references.AccountsSicCode
+    fromEntityShape: sales360.model_diagrams.AccountContact.Account
+    toEntityShape: sales360.model_diagrams.AccountContact.SicCode
+    bendPoints: []
+  - reference: sales360.references.AccountNAICCode
+    fromEntityShape: sales360.model_diagrams.AccountContact.Account
+    toEntityShape: sales360.model_diagrams.AccountContact.NAICCode
+    bendPoints: []
+  - reference: sales360.references.AccountIndustry
+    fromEntityShape: sales360.model_diagrams.AccountContact.Account
+    toEntityShape: sales360.model_diagrams.AccountContact.Industry
+    bendPoints: []
+  - reference: sales360.references.AccountsCleanStatus
+    fromEntityShape: sales360.model_diagrams.AccountContact.Account
+    toEntityShape: sales360.model_diagrams.AccountContact.CleanStatus
+    bendPoints: []
+  - reference: sales360.references.AccountsFromSource
+    fromEntityShape: sales360.model_diagrams.AccountContact.Account
+    toEntityShape: sales360.model_diagrams.AccountContact.LeadSource
+    bendPoints: []
+  - reference: sales360.references.ContactsSalutation
+    fromEntityShape: sales360.model_diagrams.AccountContact.Contact
+    toEntityShape: sales360.model_diagrams.AccountContact.Salutation
+    bendPoints: []
+  - reference: sales360.references.ContactsLeadSource
+    fromEntityShape: sales360.model_diagrams.AccountContact.Contact
+    toEntityShape: sales360.model_diagrams.AccountContact.LeadSource
+    bendPoints: []
+  - reference: sales360.references.ContactsCleanStatus
+    fromEntityShape: sales360.model_diagrams.AccountContact.Contact
+    toEntityShape: sales360.model_diagrams.AccountContact.CleanStatus
+    bendPoints: []
+inheritLinks: []

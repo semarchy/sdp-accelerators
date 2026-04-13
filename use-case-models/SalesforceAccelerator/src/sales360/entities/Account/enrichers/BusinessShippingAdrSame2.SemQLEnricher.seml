@@ -1,0 +1,85 @@
+# It is an enricher for the account entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that copies the Billing Address fields to Shipping Address fields
+# if the BusinessShippingAddressSame attribute is set to true.
+# This enricher is executed after the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.Account.enrichers
+_name: BusinessShippingAdrSame2
+entity: sales360.entities.Account.Account
+label: Business Shipping Adr Same2
+description: Copies Billing Address fields to Shipping Address if BusinessShippingAddressSame is true
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: ShippingAddress.GeoLatitude
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoLatitude ELSE NULL END
+  - attributeName: ShippingAddress.GeoPostalCode
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoPostalCode ELSE NULL END
+  - attributeName: ShippingAddress.GeoStreetNumber
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoStreetNumber ELSE NULL END
+  - attributeName: ShippingAddress.GeoStatus
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoStatus ELSE NULL END
+  - attributeName: ShippingAddress.InpZipCode
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.InpZipCode ELSE NULL END
+  - attributeName: ShippingAddress.GeoLongitude
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoLongitude ELSE NULL END
+  - attributeName: ShippingAddress.GeoCountryShort
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoCountryShort ELSE NULL END
+  - attributeName: ShippingAddress.InpCity
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.InpCity ELSE NULL END
+  - attributeName: ShippingAddress.GeoQuality
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoQuality ELSE NULL END
+  - attributeName: ShippingAddress.InpState
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.InpState ELSE NULL END
+  - attributeName: ShippingAddress.GeoCountry
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoCountry ELSE NULL END
+  - attributeName: ShippingAddress.GeoLocality
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoLocality ELSE NULL END
+  - attributeName: ShippingAddress.GeoLogitudeInDecimal
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoLogitudeInDecimal ELSE NULL END
+  - attributeName: ShippingAddress.GeoStreetName
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoStreetName ELSE NULL END
+  - attributeName: ShippingAddress.InpAddressLine
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.InpAddressLine ELSE NULL END
+  - attributeName: ShippingAddress.GeoState
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoState ELSE NULL END
+  - attributeName: ShippingAddress.GeoLatitudeinDecimal
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.GeoLatitudeinDecimal ELSE NULL END
+  - attributeName: ShippingAddress.InpCountry
+    expression: CASE WHEN
+      COALESCE(SEM_BOOLEAN_TO_CHAR(BusinessShippingAddressSame),'') = 'true'
+      THEN BillingAddress.InpCountry ELSE NULL END
+afterEnrichers: sales360.entities.Account.enrichers.BusinessShippingAdrSame

@@ -1,0 +1,134 @@
+# This is the CampaignMember business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for campaign members,
+# including the root entity, labels, and display options.
+_name: CampaignMember
+_package: sales360.entities.CampaignMember.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.CampaignMember.CampaignMember
+rootLabel: Campaign Member
+rootPluralLabel: Campaign Member
+useHierarchyOnOpen: false
+label: Campaign Member
+description: Business view for managing campaign members within the Salesforce Accelerator application
+rootBusinessViewEntity:
+  _name: CampaignMember
+  _type: BusinessViewEntity
+  collection: sales360.entities.CampaignMember.collection_views.CampaignMemberCollection
+  displayRecordCount: ALWAYS
+  recordNodeDisplayCard: sales360.entities.CampaignMember.display_cards.CampaignMemberDisplayCard
+  enableUserDefinedSort: true
+  entity: sales360.entities.CampaignMember.CampaignMember
+  form: sales360.entities.CampaignMember.forms.CampaignMemberBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sales360.entities.CampaignMember.forms.CampaignMemberBrowsingForm.Main.FDN_Leads
+      navigationMode: MODAL_FORM
+    - formField: sales360.entities.CampaignMember.forms.CampaignMemberBrowsingForm.Main.FDN_Campaign
+      navigationMode: MODAL_FORM
+    - formField: sales360.entities.CampaignMember.forms.CampaignMemberBrowsingForm.Main.FDN_Contact
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: CampaignMemberMaster
+        _type: BusinessViewEntity
+        collection: sales360.entities.CampaignMember.collection_views.CampaignMemberMasterCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sales360.entities.CampaignMember.CampaignMember
+        form: sales360.entities.CampaignMember.forms.CampaignMemberMasterForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sales360.entities.CampaignMember.action_sets.CampaignMemberActionSet
+        displayCard: sales360.entities.CampaignMember.display_cards.CampaignMemberDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sales360.entities.CampaignMember.forms.CampaignMemberMasterForm.Main.FDN_Leads
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.CampaignMember.forms.CampaignMemberMasterForm.Main.FDN_LeadSource
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.CampaignMember.forms.CampaignMemberMasterForm.Main.FDN_Campaign
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.CampaignMember.forms.CampaignMemberMasterForm.Main.FDN_Status
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.CampaignMember.forms.CampaignMemberMasterForm.Main.FDN_Contact
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.CampaignMember.business_views.CampaignMember.CampaignMember
+
+  displayCard: sales360.entities.CampaignMember.display_cards.CampaignMemberDisplayCard

@@ -1,0 +1,26 @@
+# It is a Java Plugin enricher for the Account entity in the Salesforce Accelerator application.
+# This enricher generates a phonetic representation of the Account Name using the Metaphone algorithm.
+# This enricher is executed before the consumption of the entity data. 
+_type: JavaPluginEnricher
+_package: sales360.entities.Account.enrichers
+_name: PhoneticAccountName
+entity: sales360.entities.Account.Account
+label: Phonetic Account Name
+description: Phonetic algorithms for indexing names by sound, as pronounced in
+  English futher used for matching
+pluginId: com.semarchy.engine.plugins.convergence.text
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE 30
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedAccountName
+pluginOutputs:
+  - outputName: OUT_TRANSFORMED_TEXT
+    attributeName: PhoneticAccountName
+afterEnrichers: sales360.entities.Account.enrichers.BusinessTypeNormializer

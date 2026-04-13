@@ -1,0 +1,143 @@
+_package: Merchant.model_diagrams
+_name: MasterEntities
+_type: ModelDiagram
+label: Master Entities
+attributeNameFormat: NAME
+description: Master entities diagram showing core Merchant model and relationships.
+entityNameFormat: LABEL
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+
+entityShapes:
+  - _type: EntityShape
+    _name: Merchant
+    entity: Merchant.entities.Merchant.Merchant
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    position: { x: 0, y: 0 }
+    height: 320
+    width: 340
+
+  - _type: EntityShape
+    _name: Individual
+    entity: Merchant.entities.Individual.Individual
+    borderColor: "#ffe6ff"
+    fontTitleColor: ""
+    position: { x: 520, y: -120 }
+    height: 220
+    width: 280
+
+  - _type: EntityShape
+    _name: PartyContact
+    entity: Merchant.entities.PartyContact.PartyContact
+    borderColor: "#d8f0d8"
+    fontTitleColor: ""
+    position: { x: 520, y: 120 }
+    height: 320
+    width: 300
+
+  - _type: EntityShape
+    _name: Party
+    entity: Merchant.entities.Party.Party
+    borderColor: "#cfe8ff"
+    position: { x: 260, y: -120 }
+    fontTitleColor: ""
+    height: 240
+    width: 280
+
+  - _type: EntityShape
+    _name: LegalEntity
+    entity: Merchant.entities.LegalEntity.LegalEntity
+    borderColor: "#fff0e6"
+    position: { x: 230, y: 120 }
+    fontTitleColor: ""
+    height: 320
+    width: 300
+
+  - _type: EntityShape
+    _name: Product
+    entity: Merchant.entities.Product.Product
+    borderColor: "#f5f5f5"
+    position: { x: 0, y: 280 }
+    fontTitleColor: ""
+    height: 220
+    width: 280
+
+  - _type: EntityShape
+    _name: Industry
+    entity: Merchant.entities.Industry.Industry
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    position: { x: -160, y: 280 }
+    height: 320
+    width: 340
+
+  - _type: EntityShape
+    _name: SubIndustry
+    entity: Merchant.entities.SubIndustry.SubIndustry
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    position: { x: -200, y: 150 }
+    height: 320
+    width: 340
+
+
+referenceLinks:
+
+  - reference: Merchant.references.ProductsBelongToMerchant
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.Product
+    toEntityShape: Merchant.model_diagrams.MasterEntities.Merchant
+    bendPoints: []
+
+  - reference: Merchant.references.MerchantHasParent
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.Merchant
+    toEntityShape: Merchant.model_diagrams.MasterEntities.Merchant
+    bendPoints:
+      - { x: -100, y: 0 }
+      - { x: -100, y: -140 }
+      - { x: 0,  y: -140 }
+
+  - reference: Merchant.references.MerchantHasParty
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.Merchant
+    toEntityShape: Merchant.model_diagrams.MasterEntities.Party
+    bendPoints: []
+
+  - reference: Merchant.references.IndividualHasParty
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.Individual
+    toEntityShape: Merchant.model_diagrams.MasterEntities.Party
+    bendPoints: []
+
+  - reference: Merchant.references.LegalEntityHasParty
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.LegalEntity
+    toEntityShape: Merchant.model_diagrams.MasterEntities.Party
+    bendPoints: []
+
+  - reference: Merchant.references.PartyHasContact
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.PartyContact
+    toEntityShape: Merchant.model_diagrams.MasterEntities.Party
+    bendPoints: []
+
+  - reference: Merchant.references.MerchantHasIndustry
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.Merchant
+    toEntityShape: Merchant.model_diagrams.MasterEntities.Industry
+    bendPoints: []
+
+  - reference: Merchant.references.MerchantHasSubIndustry
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.Merchant
+    toEntityShape: Merchant.model_diagrams.MasterEntities.SubIndustry
+    bendPoints: []
+
+  - reference: Merchant.references.IndustryHasSubIndustry
+    fromEntityShape: Merchant.model_diagrams.MasterEntities.Industry
+    toEntityShape: Merchant.model_diagrams.MasterEntities.SubIndustry
+    bendPoints: []
+
+
+inheritLinks: []

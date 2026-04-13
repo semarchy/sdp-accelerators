@@ -1,0 +1,70 @@
+# This is the OwnershipBusinessView business view used in the Salesforce Accelerator
+# application.
+# It defines the structure and properties of the business view for ownerships,
+# including the root entity, labels, and display options.
+_name: Ownership
+_package: sales360.entities.Ownership.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.Ownership.Ownership
+rootLabel: Ownership
+rootPluralLabel: Ownership
+useHierarchyOnOpen: false
+label: Ownership
+description: Business view for Ownership entity
+rootBusinessViewEntity:
+  _name: Ownership
+  _type: BusinessViewEntity
+  collection: sales360.entities.Ownership.collection_views.OwnershipCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.Ownership.Ownership
+  form: sales360.entities.Ownership.forms.OwnershipForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.Ownership.action_sets.OwnershipActionSet
+  displayCard: sales360.entities.Ownership.display_cards.OwnershipDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.Ownership.business_views.Ownership.Ownership
+rootIconUrl: images://mdi/format-list-checkbox.svg

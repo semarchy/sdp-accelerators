@@ -1,0 +1,128 @@
+_package: CorpFin.entities.MappingSet.forms
+_type: Form
+_name: MappingSetForm
+
+entity: CorpFin.entities.MappingSet.MappingSet
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: MappingSet
+    label: Mapping Set
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/clipboard-text-multiple-outline.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    labelWidth: 200px
+
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: COLUMN
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: ROW
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: MappingSetName
+                    value: MappingSetName
+                    useCustomLabel: false
+                    dataType: STRING
+                  - _type: ReferenceField
+                    _name: FDN_SourceChartOfAccounts
+                    value: FDN_sourceChartOfAccounts
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+                    componentProperties:
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      useAvatarInChip: "1"
+                      useAvatarInChipValueInterpreter: LITERAL
+                  - _type: ReferenceField
+                    _name: FDN_TargetChartOfAccounts
+                    value: FDN_targetChartOfAccounts
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+                    componentProperties:
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      useAvatarInChip: "1"
+                      useAvatarInChipValueInterpreter: LITERAL
+
+              - _type: FormSection
+                _name: AdditionalInformation
+                label: Additional Information
+                labelWidth: 200px
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: IdField
+                    _name: MappingSetID
+                    value: MappingSetID
+                    useCustomLabel: false
+                    dataType: STRING
+                  - _type: ReferenceField
+                    _name: FDN_orgUnit
+                    value: FDN_orgUnit
+                    useCustomLabel: true
+                    dataType: STRING
+                    referencedEntity: CorpFin.entities.OrgUnit.OrgUnit
+                    label: Governed by
+                  - _type: TextField
+                    _name: Purpose
+                    value: Purpose
+                    useCustomLabel: false
+                    dataType: STRING
+
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormCollection
+                _name: AccountMappings
+                targetEntity: CorpFin.entities.AccountMapping.AccountMapping
+                collection: CorpFin.entities.AccountMapping.collection_views.AccountMappingCollectionView
+                label: Account Mappings
+                pluralLabel: Account Mappings
+                displayRecordCount: ALWAYS
+                enableUserDefinedSort: true
+                gridAllowed: false
+                listAllowed: true
+                sortExpression: AccountMappingID
+                tableAllowed: true
+                transitionPath: accountMapping                    
+                useCustomLabel: true
+                visibleValue: any accountMapping has (1=1)
+                visibleValueInterpreter: SEMQL
+
+              - _type: FormChart
+                _name: UnmappedAccounts
+                dashboardApplication: CorpFinDashboard
+                chart: UnmappedAccounts
+                embeddedMode: CARD
+                showDivider: true
+                titlePlacement: TOP
+                useCustomLabel: false
+                queryAttributes:
+                  - _type: FormChartParameter
+                    _name: mapping_set_id
+                    value: MappingSetID
+                    valueInterpreter: SEMQL

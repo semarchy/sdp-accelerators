@@ -1,0 +1,27 @@
+# Description: Reference linking `Merchant` to `Party` entities.
+# Contains the relationship, cardinality and foreign attribute mapping between Merchant and Party.
+# Role: Enables association of a Merchant to its underlying Party record.
+_package: Merchant.references
+_name: MerchantHasParty
+_type: Reference
+label: Merchant Has Party
+deletePropagation: RESTRICT
+
+fromEntity: Merchant.entities.Merchant.Merchant
+fromRoleLabel: Merchant
+fromRoleName: Merchant
+fromRolePluralLabel: Merchants
+physicalName: MERCHANT_HAS_PARTY
+
+toEntity: Merchant.entities.Party.Party
+toRoleLabel: Party
+toRoleName: Party
+toRolePhysicalName: PARTY
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Party
+  label: Party
+  physicalName: PARTY
+  searchable: true

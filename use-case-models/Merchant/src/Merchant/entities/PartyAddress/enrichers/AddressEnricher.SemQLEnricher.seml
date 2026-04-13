@@ -1,0 +1,16 @@
+_package: Merchant.entities.PartyAddress.enrichers
+_name: AddressEnricher
+_type: SemQLEnricher
+entity: Merchant.entities.PartyAddress.PartyAddress
+label: Address Enricher
+description: Enricher to populate standardized Enriched* address attributes
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: EnrichedStreet
+    expression: UPPER(Street)
+  - attributeName: EnrichedCity
+    expression: UPPER(City)
+  - attributeName: EnrichedState
+    expression: UPPER(State)
+  - attributeName: EnrichedPostalCode
+    expression: UPPER(PostalCode)

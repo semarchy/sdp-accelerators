@@ -1,0 +1,531 @@
+# This file defines the Contact entity in the Salesforce Accelerator application.
+# It includes attributes such as ContactID, Description, IndividualId, LastCUUpdateDate,
+# Jigsaw, Fax, EmailBouncedDate, LastName, Nickname, along with their properties and validations.
+# The entity is used to manage contact information within the application.
+_name: Contact
+_package: sales360.entities.Contact
+_type: Entity
+primaryKey: sales360.entities.Contact.Contact.ContactID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: UUID
+  
+label: Contact
+documentation: Represents a contact, which is a person associated with an account.
+description: Represents a contact, which is a person associated with an account.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/book.svg
+pluralLabel: Contacts
+historizeGolden: true
+historizeMaster: true
+physicalTableName: CONTACT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ContactID
+    physicalName: CONTACT_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Contact ID
+    documentation: Unique identifier for the contact
+    description: Unique identifier for the contact
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: A description of the contact
+    description: A description of the contact
+    mandatory: false
+    length: 2000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IndividualId
+    physicalName: INDIVIDUAL_ID
+    dataType: String
+    documentation: ID of the data privacy record associated with this contact
+    description: ID of the data privacy record associated with this contact
+    goldenAttribute: true
+    i18ned: false
+    label: Individual Id
+    mandatory: false
+    length: 18
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastCUUpdateDate
+    physicalName: LAST_CU_UPDATE_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Last CU Update Date
+    documentation: The date and time of the last change made to the contact
+    description: The date and time of the last change made to the contact
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Jigsaw
+    physicalName: JIGSAW
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Jigsaw
+    documentation: References the company's ID in Data.com
+    description: References the company's ID in Data.com
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Fax
+    physicalName: FAX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Fax
+    documentation: Fax number of the contact
+    description: Fax number of the contact
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EmailBouncedDate
+    physicalName: EMAIL_BOUNCED_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Email Bounced Date
+    documentation: If bounce management is activated and an email sent to the
+      contact bounces, the date and time of the bounce
+    description: If bounce management is activated and an email sent to the
+      contact bounces, the date and time of the bounce
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastName
+    physicalName: LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Last Name
+    documentation: Last name of the contact
+    description: Last name of the contact
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    length: 80
+    mandatoryValidationLabel: Last Name is mandatory
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Nickname
+    physicalName: NICKNAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Nickname
+    documentation: Nickname based on first name
+    description: Nickname based on first name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CleansedEmail
+    physicalName: CLEANSED_EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Cleansed Email
+    documentation: The contact's enriched email address
+    description: The contact's enriched email address
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FirstName
+    physicalName: FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: First Name
+    documentation: The contact's first name
+    description: The contact's first name
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MergedInCRM
+    physicalName: MERGED_IN_CRM
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Merged In CRM
+    documentation: Indicates whether the contact has been merged in the source
+      CRM system
+    description: Indicates whether the contact has been merged in the source
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsEmailBounced
+    physicalName: IS_EMAIL_BOUNCED
+    dataType: ByteInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Is Email Bounced
+    documentation: If bounce management is activated and an email is sent to a
+      contact, indicates whether the email bounced
+    description: If bounce management is activated and an email is sent to a
+      contact, indicates whether the email bounced
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FullName
+    physicalName: FULL_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Full Name
+    documentation: Concatenation of FirstName, MiddleName, LastName, and Suffix
+    description: Concatenation of FirstName, MiddleName, LastName, and Suffix
+    mandatory: false
+    length: 121
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Title
+    physicalName: TITLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Title
+    documentation: Title of the contact
+    description: Title of the contact
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Department
+    physicalName: DEPARTMENT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Department
+    documentation: The contact's department
+    description: The contact's department
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedLastName
+    physicalName: NORMALIZED_LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Last Name
+    documentation: Enriched last name
+    description: Enriched last name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhotoUrl
+    physicalName: PHOTO_URL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Photo Url
+    documentation: URL of the contact's photo
+    description: URL of the contact's photo
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPersonAccount
+    physicalName: IS_PERSON_ACCOUNT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Person Account
+    documentation: Indicates whether the contact is associated with a person account
+    description: Indicates whether the contact is associated with a person account
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EmailBouncedReason
+    physicalName: EMAIL_BOUNCED_REASON
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Email Bounced Reason
+    documentation: If bounce management is activated and an email sent to the
+      contact bounces, the reason for the bounce
+    description: If bounce management is activated and an email sent to the
+      contact bounces, the reason for the bounce
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BirthDate
+    physicalName: BIRTH_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Birth Date
+    documentation: The contact's birthdate
+    description: The contact's birthdate
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SourceEmail
+    physicalName: SOURCE_EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Source Email
+    documentation: The contact's email address as received from the source
+    description: The contact's email address as received from the source
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AssistantName
+    physicalName: ASSISTANT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Assistant Name
+    documentation: The assistant's name
+    description: The assistant's name
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastCURequestDate
+    physicalName: LAST_CU_REQUEST_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Last CU Request Date
+    documentation: The date and time of the last change request made to the contact
+    description: The date and time of the last change request made to the contact
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: JigsawContactId
+    physicalName: JIGSAW_CONTACT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Jigsaw Contact Id
+    documentation: References the contact's ID in Data.com
+    description: References the contact's ID in Data.com
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedFirstName
+    physicalName: NORMALIZED_FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized First Name
+    documentation: Enriched first name
+    description: Enriched first name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _name: MobilePhone
+    _type: EntityAttribute
+    label: Mobile Phone
+    documentation: The contact's mobile phone number
+    description: The contact's mobile phone number
+    physicalName: MOB
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: AssistantPhone
+    _type: EntityAttribute
+    label: Assistant Phone
+    documentation: The assistant's phone number
+    description: The assistant's phone number
+    physicalName: AST
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: Phone
+    _type: EntityAttribute
+    label: Phone
+    documentation: Phone number for the contact
+    description: Phone number for the contact
+    physicalName: PHO
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: MailingAddress
+    _type: EntityAttribute
+    label: Mailing Address
+    documentation: The compound form of the mailing address
+    description: The compound form of the mailing address
+    physicalName: IMA
+    dataType: sales360.complex_types.StandardizedAddressType
+  - _name: HomePhone
+    _type: EntityAttribute
+    label: Home Phone
+    documentation: The contact's home phone number
+    description: The contact's home phone number
+    physicalName: HOM
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: OtherPhone
+    _type: EntityAttribute
+    label: Other Phone
+    documentation: The contact's other phone number
+    description: The contact's other phone number
+    physicalName: OTH
+    dataType: sales360.complex_types.StandardizedPhoneType
+  - _name: OtherAddress
+    _type: EntityAttribute
+    label: Other Address
+    documentation: The compound form of the other address
+    description: The compound form of the other address
+    physicalName: IOA
+    dataType: sales360.complex_types.StandardizedAddressType
+matcher:
+  _name: SemlQLMatcherContact
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 95
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 89
+  mergeThresholdMergingConfirmedWithNewMasters: 89
+  mergeThresholdMergingConfirmedWithUnconfirmed: 89
+  mergeThresholdMergingUnconfirmed: 89
+  mergeThresholdMergingUnconfirmedWithNewMasters: 89
+  mergeThresholdNewGroup: 89
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: NormalizedNameNickNameDOBEmail
+      condition: |-
+        /*** Normalized Name or nickname exact match ***/
+        ( Record1.NormalizedFirstName = Record2.NormalizedFirstName
+           or Record1.Nickname = Record2.Nickname
+           or Record1.NormalizedFirstName = UPPER(Record2.Nickname)
+           or UPPER(Record1.Nickname) =  Record2.NormalizedFirstName
+        ) 
+        and Record1.NormalizedLastName = Record2.NormalizedLastName
+
+
+        /*** Date of birth exact match ***/
+        and Record1.BirthDate = Record2.BirthDate 
+
+        /*** Email exact match ***/
+        and Record1.CleansedEmail = Record2.CleansedEmail
+      label: Normalized Name Nick Name DOB Email
+      documentation: Check a match on Names, Date of Birth and Email
+      description: Check a match on Names, Date of Birth and Email
+      matchScore: 98
+      color: md:blue 900
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: NormalizedNameAddressDOBPhone
+      condition: >-
+        /*** Normalized Name or nickname exact match ***/
+
+        ( Record1.NormalizedFirstName = Record2.NormalizedFirstName
+           OR Record1.Nickname = Record2.Nickname 
+           OR Record1.NormalizedFirstName = UPPER(Record2.Nickname) 
+           OR UPPER(Record1.Nickname) =  Record2.NormalizedFirstName
+        ) 
+
+        AND Record1.NormalizedLastName = Record2.NormalizedLastName
+
+
+
+        /*** Date of birth exact match ***/
+
+        AND Record1.BirthDate= Record2.BirthDate
+
+
+        /*** Address match ***/
+
+        AND (COALESCE(Record1.Phone.StandardizedPhoneNumber,'') =
+        COALESCE(Record2.Phone.StandardizedPhoneNumber, '')
+            OR COALESCE(Record1.MobilePhone.StandardizedPhoneNumber,'') = COALESCE(Record2.MobilePhone.StandardizedPhoneNumber, '')  )
+      label: Normalized Name Address DOB Phone
+      documentation: Check a match on Names, Date of Birth and Address
+      description: Check a match on Names, Date of Birth and Address
+      matchScore: 96
+      color: md:green 800
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: ExactEmail
+      condition: Record1.CleansedEmail = Record2.CleansedEmail
+      label: Exact Email
+      documentation: Check extact email match
+      description: Check extact email match
+      matchScore: 68
+      color: md:green 500
+      usingMatchOn: false
