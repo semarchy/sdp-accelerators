@@ -1,0 +1,96 @@
+_name: AuthorProductClassifications
+_package: sappm360.entities.ProductClassification.steppers
+_type: Stepper
+entity: sappm360.entities.ProductClassification.ProductClassification
+description: Stepper for authoring product classifications.
+rootStep:
+  _name: ProductClassifications
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sappm360.entities.ProductClassification.collection_views.ProductClassificationCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Product Classifications
+  description: Manage Product Classification data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.ClassificationProduct.Product
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.ClassificationScheme.ClassificationScheme
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sappm360.entities.ProductClassification.validations.ClassificationDates
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Product Classification.
+      formTab: sappm360.entities.ProductClassification.forms.ProductClassificationDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.ProductClassification.forms.ProductClassificationDataEntryForm.Main.Details.DetailsContainer.Container3.FDN_Product
+          referencePickerCollectionView: sappm360.entities.Product.collection_views.ProductCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.ProductClassification.forms.ProductClassificationDataEntryForm.Main.Details.DetailsContainer.Container2.FDN_ClassificationScheme
+          referencePickerCollectionView: sappm360.entities.ClassificationScheme.collection_views.ClassificationSchemeCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sappm360.references.ClassificationProduct.Product
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.ClassificationScheme.ClassificationScheme
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sappm360.entities.ProductClassification.validations.ClassificationDates
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.ClassificationProduct.Product
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.ClassificationScheme.ClassificationScheme
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sappm360.entities.ProductClassification.validations.ClassificationDates
+      stepTriggers: []
+label: Author Product Classifications
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.ClassificationProduct.Product
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.ClassificationScheme.ClassificationScheme
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sappm360.entities.ProductClassification.validations.ClassificationDates
+triggers: []

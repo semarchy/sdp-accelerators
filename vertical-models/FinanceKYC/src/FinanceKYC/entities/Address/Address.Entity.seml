@@ -1,0 +1,180 @@
+_package: FinanceKYC.entities.Address
+_type: Entity
+_name: Address
+label: Address
+pluralLabel: Address
+entityType: FUZZY_MATCHED
+physicalTableName: ADDRESS
+iconUrl: images://mdi/book.svg
+description: 'Stores physical address details used to support customer, individual, and corporate KYC records.'
+documentation: 'Stores physical address details used to support customer, individual, and corporate KYC records.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: AddressID
+    _type: EntityAttribute
+    label: Address ID
+    description: 'Address ID value captured for the address record.'
+    documentation: 'Address ID value captured for the address record.'
+    physicalName: ADDRESS_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+
+  - _name: AddressType
+    _type: EntityAttribute
+    label: Address Type
+    description: 'Address Type value captured for the address record.'
+    documentation: 'Address Type value captured for the address record.'
+    physicalName: ADDRESS_TYPE
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _name: Street
+    _type: EntityAttribute
+    label: Street
+    description: 'Street value captured for the address record.'
+    documentation: 'Street value captured for the address record.'
+    physicalName: STREET
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _name: City
+    _type: EntityAttribute
+    label: City
+    description: 'City value captured for the address record.'
+    documentation: 'City value captured for the address record.'
+    physicalName: CITY
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: PostalCode
+    _type: EntityAttribute
+    label: Postal Code
+    description: 'Postal Code value captured for the address record.'
+    documentation: 'Postal Code value captured for the address record.'
+    physicalName: POSTAL_CODE
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _name: Country
+    _type: EntityAttribute
+    label: Country
+    description: 'Country value captured for the address record.'
+    documentation: 'Country value captured for the address record.'
+    physicalName: COUNTRY
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: State
+    _type: EntityAttribute
+    label: State
+    description: 'State value captured for the address record.'
+    documentation: 'State value captured for the address record.'
+    physicalName: STATE
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _name: FullAddress
+    _type: EntityAttribute
+    label: Full Address
+    description: 'Full Address value captured for the address record.'
+    documentation: 'Full Address value captured for the address record.'
+    physicalName: FULL_ADDRESS
+    dataType: String
+    length: 512
+    mandatory: false
+
+  - _name: EnrichedAddress
+    _type: EntityAttribute
+    label: Enriched Address
+    description: 'Enriched Address value captured for the address record.'
+    documentation: 'Enriched Address value captured for the address record.'
+    physicalName: ENRICHED_ADDRESS
+    dataType: String
+    length: 512
+    mandatory: false
+
+  - _name: ValidFrom
+    _type: EntityAttribute
+    label: Valid From
+    description: 'Valid From value captured for the address record.'
+    documentation: 'Valid From value captured for the address record.'
+    physicalName: VALID_FROM
+    dataType: Date
+    mandatory: false
+
+  - _name: ValidTo
+    _type: EntityAttribute
+    label: Valid To
+    description: 'Valid To value captured for the address record.'
+    documentation: 'Valid To value captured for the address record.'
+    physicalName: VALID_TO
+    dataType: Date
+    mandatory: false
+
+  - _name: IsCurrent
+    _type: EntityAttribute
+    label: Is Current
+    description: 'Is Current value captured for the address record.'
+    documentation: 'Is Current value captured for the address record.'
+    physicalName: IS_CURRENT
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.Address.Address.AddressID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: 'AddressSemQLMatcher'
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: EnricheddAddressCustomer
+      label: Enriched Address Customer
+      description: 'Exact match on Address enriched by Google Maps for the Same Customer.'
+      documentation: 'Exact match on Address enriched by Google Maps for the Same Customer.'
+      color: md:purple 700
+      condition: Record1.EnrichedAddress = Record2.EnrichedAddress AND Record1.FID_Customer = Record2.FID_Customer
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: FuzzyEnricheddAddressCustomer
+      label: Fuzzy Enriched Address Customer
+      description: 'Fuzzy match on Address enriched by Google Maps for the Same Customer.'
+      documentation: 'Fuzzy match on Address enriched by Google Maps for the Same Customer.'
+      color: md:purple 400
+      condition: SEM_EDIT_DISTANCE_SIMILARITY( Record1.EnrichedAddress,  Record2.EnrichedAddress ) > 60 AND Record1.FID_Customer = Record2.FID_Customer
+      matchScore: 50
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 95
+  autoConfirmSingletons: false

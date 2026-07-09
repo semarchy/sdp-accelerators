@@ -1,0 +1,95 @@
+## This file defines the LEGroup entity for the Legal Entity application.
+## It includes attributes and properties for managing LE group information.
+_package: LegalEntity.entities.LEGroup
+_type: Entity
+_name: LEGroup
+iconUrl: images://le-img-lib/chart-tree.svg
+label: LE Group
+pluralLabel: LE Groups
+description: Represents a group of legal entities, used for organizational structure, reporting, and management.
+documentation: The LEGroup entity defines groups of legal entities, supporting business analysis, hierarchy management, and reporting.
+enableDelete: true
+attributes: 
+  - _name: ID
+    dataType: LongInteger
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    physicalName: ID
+    label: ID
+    description: Unique identifier for the LE group.
+    documentation: This attribute stores the unique ID for each LE group, ensuring distinct identification.
+  - _name: Name
+    dataType: String
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: NAME
+    label: Name
+    description: The name of the LE group.
+    documentation: This attribute stores the group name, which is used to identify and distinguish LE groups.
+  - _name: InheritedCurrency
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: INHERITED_CURRENCY
+    label: Inherited Currency
+    description: Currency inherited by the group from its parent or related entity.
+    documentation: This attribute stores the inherited currency, supporting financial reporting and consistency.
+  - _name: StartDate
+    dataType: Date
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 0
+    multiValued: false
+    searchable: true
+    physicalName: START_DATE
+    label: Start Date
+    description: The start date for the LE group.
+    documentation: This attribute stores the date when the LE group was established or became active.
+  - _name: EndDate
+    dataType: Date
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 0
+    multiValued: false
+    searchable: true
+    physicalName: END_DATE
+    label: End Date
+    description: The end date for the LE group.
+    documentation: This attribute stores the date when the LE group was terminated or became inactive.
+  - _name: InceptionDate
+    dataType: Date
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 0
+    multiValued: false
+    searchable: true
+    physicalName: INCEPTION_DATE
+    label: Inception Date
+    description: The inception date for the LE group.
+    documentation: This attribute stores the date when the LE group was originally created or conceived.
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: LE_GROUP
+primaryKey: LegalEntity.entities.LEGroup.LEGroup.ID
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100

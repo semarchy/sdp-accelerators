@@ -1,0 +1,47 @@
+ # Description: Stepper for SubIndustry create/edit/import workflows.
+ # Contains: Steps and panels used by SubIndustry action steppers.
+ # Role: Drives multi-step UI flows for managing SubIndustry records.
+_package: Merchant.entities.SubIndustry.steppers
+# Description: Stepper definition for authoring `SubIndustry` records.
+# Contains the UI step flow for creating and managing sub-industry values.
+# Role: Guides users through sub-industry maintenance within the application.
+_type: Stepper
+_name: AuthorSubIndustries
+entity: Merchant.entities.SubIndustry.SubIndustry
+label: Sub Industries
+
+rootStep:
+  _type: CollectionStep
+  _name: SubIndustries
+  label: Sub Industries
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.SubIndustry.collection_views.SubIndustryCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  
+  childSteps:
+    - _type: FormStep
+      _name: SubIndustry
+      label: Sub Industry
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.SubIndustry.forms.SubIndustryForm.SubIndustry
+
+      formStepValidations:
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: false
+          validator: Merchant.entities.SubIndustry.validations.Industry

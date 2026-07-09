@@ -1,0 +1,87 @@
+_name: InsuranceCompany
+_package: HCO_HCP.entities.InsuranceCompany
+_type: Entity
+primaryKey: HCO_HCP.entities.InsuranceCompany.InsuranceCompany.Code
+sourceIdGeneration:
+  mode: MANUAL
+label: Insurance Company
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/domain.svg
+pluralLabel: Insurance Companies
+historizeGolden: true
+historizeMaster: false
+physicalTableName: INSURANCE_COMPANY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: Code
+    physicalName: CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Code
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedWebsite
+    physicalName: NORMALIZED_WEBSITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Website
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: URL
+    physicalName: URL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: URL
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TypeOfPayments
+    physicalName: TYPE_OF_PAYMENTS
+    dataType: HCO_HCP.list_of_values.TypesOfPayments
+    goldenAttribute: true
+    i18ned: false
+    label: Type Of Payments
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _name: InputAddress
+    _type: EntityAttribute
+    label: Input Address
+    physicalName: INP
+    dataType: HCO_HCP.complex_types.InputAddress
+  - _name: GeocodedAddress
+    _type: EntityAttribute
+    label: Geocoded Address
+    physicalName: GEO
+    dataType: HCO_HCP.complex_types.GeocodedAddressType

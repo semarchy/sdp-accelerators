@@ -1,0 +1,38 @@
+_package: PropertyAndCasualtyInsurance.entities.InsurancePlan.steppers
+_type: Stepper
+_name: AuthorInsurancePlans
+entity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+label: Insurance Plans
+rootStep:
+  _type: CollectionStep
+  _name: InsurancePlans
+  label: Insurance Plans
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.InsurancePlan.collection_views.InsurancePlanImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: InsurancePlan
+      label: Insurance Plan
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.InsurancePlan.forms.InsurancePlanDEForm.General
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.InsurancePlan.validations.DateRangeCheck

@@ -1,0 +1,58 @@
+# This is the CampaignStatusActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on campaign statuses, such as creating, editing,
+# deleting, , exporting,importing campaign statuses.
+_name: CampaignStatusActionSet
+_package: sales360.entities.CampaignStatus.action_sets
+_type: ActionSet
+entity: sales360.entities.CampaignStatus.CampaignStatus
+label: Campaign Status Action Set
+description: Action set for Campaign Status entity
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorCampaignStatuses
+    label: Create
+    description: Create a new Campaign Status
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.CampaignStatus.steppers.AuthorCampaignStatuses
+  - _name: EditAuthorCampaignStatuses
+    label: Edit
+    description: Edit existing Campaign Status
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.CampaignStatus.steppers.AuthorCampaignStatuses
+  - _name: Delete
+    label: Delete
+    description: Delete selected Campaign Statuses
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export Campaign Statuses
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorCampaignStatuses
+    label: Import
+    description: Import Campaign Statuses
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.CampaignStatus.steppers.AuthorCampaignStatuses

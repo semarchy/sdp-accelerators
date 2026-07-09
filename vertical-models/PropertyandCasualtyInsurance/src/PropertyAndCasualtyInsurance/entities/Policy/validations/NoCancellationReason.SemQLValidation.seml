@@ -1,0 +1,9 @@
+_name: NoCancellationReason
+_type: SemQLValidation
+_package: PropertyAndCasualtyInsurance.entities.Policy.validations
+entity: PropertyAndCasualtyInsurance.entities.Policy.Policy
+label: No Cancellation Reason
+condition: CancelDate IS NULL AND COALESCE(CancellationReason, '') = '' 
+        OR CancelDate IS NOT NULL AND COALESCE(CancellationReason, '') <> ''
+validationScope: PRE_CONSO
+validationLabel: Cancellation reason must be provided when cancel date is provided

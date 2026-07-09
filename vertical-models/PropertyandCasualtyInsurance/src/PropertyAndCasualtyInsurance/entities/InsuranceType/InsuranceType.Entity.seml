@@ -1,0 +1,87 @@
+_package: PropertyAndCasualtyInsurance.entities.InsuranceType
+_type: Entity
+_name: InsuranceType
+label: Insurance Type
+pluralLabel: Insurance Types
+entityType: BASIC
+physicalTableName: INSURANCE_TYPE
+iconUrl: images://mdi/book.svg
+description: "Represents a classification of insurance coverage types offered by the company"
+documentation: "Represents a classification of insurance coverage types offered by the company"
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: InsuranceTypeID
+    label: Insurance Type ID
+    physicalName: INSURANCE_TYPE_ID
+    description: "Unique identifier for each insurance type record, generated sequentially to ensure uniqueness and support efficient referencing across the system."
+    dataType: String
+    length: 128
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: InsuranceTypeCode
+    label: Insurance Type Code
+    physicalName: INSURANCE_TYPE_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Enterprise-unique identifier representing a specific insurance type classification."
+    documentation: "Enterprise-unique identifier representing a specific insurance type classification."
+  - _type: EntityAttribute
+    _name: InsuranceTypeName
+    label: Insurance Type Name
+    physicalName: INSURANCE_TYPE_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Display name of the insurance type (e.g., Personal Auto, Commercial Property)."
+    documentation: "Display name of the insurance type (e.g., Personal Auto, Commercial Property)."
+  
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    dataType: LongText
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    multiValued: false
+    physicalName: DESCRIPTION
+    searchable: true
+    description: "Detailed description of the insurance type, outlining its characteristics and coverage details."
+    documentation: "Detailed description of the insurance type, outlining its characteristics and coverage details."
+
+  - _type: EntityAttribute
+    _name: AdmittedFlag
+    label: Admitted Flag
+    physicalName: ADMITTED_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the coverage is admitted (regulated and approved) or non-admitted."
+    documentation: "Indicates whether the coverage is admitted (regulated and approved) or non-admitted."
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which this insurance type definition becomes effective."
+    documentation: "Date from which this insurance type definition becomes effective."
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date until which this insurance type definition remains valid."
+    documentation: "Date until which this insurance type definition remains valid."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType.InsuranceTypeID

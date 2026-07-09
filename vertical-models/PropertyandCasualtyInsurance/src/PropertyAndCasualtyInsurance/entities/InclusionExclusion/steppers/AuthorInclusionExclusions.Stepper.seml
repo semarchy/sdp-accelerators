@@ -1,0 +1,38 @@
+_package: PropertyAndCasualtyInsurance.entities.InclusionExclusion.steppers
+_type: Stepper
+_name: AuthorInclusionExclusions
+entity: PropertyAndCasualtyInsurance.entities.InclusionExclusion.InclusionExclusion
+label: Inclusion Exclusions
+rootStep:
+  _type: CollectionStep
+  _name: InclusionExclusions
+  label: Inclusion Exclusions
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.InclusionExclusion.collection_views.InclusionExclusionImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: InclusionExclusion
+      label: Inclusion Exclusion
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.InclusionExclusion.forms.InclusionExclusionDEForm.General
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.InclusionExclusion.validations.DateRangeCheck

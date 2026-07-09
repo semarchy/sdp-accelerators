@@ -1,0 +1,53 @@
+_name: MemberCoverage
+_package: HCO_HCP.entities.Coverage.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: HCO_HCP.entities.Coverage.Coverage
+rootLabel: Member Coverage
+rootPluralLabel: Member Coverage
+useHierarchyOnOpen: false
+label: Member Coverage
+rootBusinessViewEntity:
+  _name: MemberInsuranceCompanyEO
+  _type: BusinessViewEntity
+  collection: HCO_HCP.entities.Coverage.collection_views.CoverageCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: HCO_HCP.entities.Coverage.Coverage
+  displayCard: HCO_HCP.entities.Coverage.display_cards.CoverageDisplayCard
+  form: HCO_HCP.entities.Coverage.forms.CoverageInfo
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: HCO_HCP.entities.Coverage.action_sets.MemberInsuranceCompanyActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo.FDN_InsuranceCompany
+      navigationMode: BUSINESS_OBJECT_VIEW
+      businessView: HCO_HCP.entities.InsuranceCompany.business_views.InsuranceCompany
+    - formField: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo.FDN_Member
+      navigationMode: BUSINESS_OBJECT_VIEW
+      businessView: HCO_HCP.entities.Member.business_views.Member
+  transitions: []
+rootIconUrl: images://mdi/umbrella-outline.svg

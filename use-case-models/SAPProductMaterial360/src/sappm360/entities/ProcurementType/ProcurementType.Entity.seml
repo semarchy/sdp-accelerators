@@ -1,0 +1,94 @@
+# Procurement Type entity for the SAP Product / Material 360 accelerator.
+_name: ProcurementType
+_package: sappm360.entities.ProcurementType
+_type: Entity
+primaryKey: sappm360.entities.ProcurementType.ProcurementType.ProcurementTypeID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ProcurementTypeCode
+label: Procurement Type
+documentation: Procurement Type reference data used by the SAP Product / Material 360 model.
+description: Procurement Type reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Procurement Types
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PROCUREMENT_TYPE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProcurementTypeID
+    physicalName: PROCUREMENT_TYPE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Procurement Type ID
+    documentation: Unique identifier for the procurement type.
+    description: Unique identifier for the procurement type.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProcurementTypeCode
+    physicalName: PROCUREMENT_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Procurement Type Code
+    documentation: Code for the procurement type.
+    description: Code for the procurement type.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Procurement Type Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProcurementTypeName
+    physicalName: PROCUREMENT_TYPE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Procurement Type Name
+    documentation: Procurement type used by planning and purchasing.
+    description: Procurement type used by planning and purchasing.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Procurement Type Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the procurement type.
+    description: Description for the procurement type.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the procurement type is active.
+    description: Indicates whether the procurement type is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

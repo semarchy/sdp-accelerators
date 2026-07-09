@@ -1,0 +1,138 @@
+_name: AuthorItemBillOfMaterials
+_package: Manufacturing.entities.ItemBillOfMaterial.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial
+rootStep:
+  _name: ItemBillOfMaterials
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemBillOfMaterial.collection_views.ItemBillOfMaterialCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Bill Of Materials
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: BLOCK
+      validationType: MANDATORY
+      attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+    - onStepExit: BLOCK
+      validationType: MANDATORY
+      attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+    - onStepExit: BLOCK
+      validationType: FOREIGN
+      attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+  stepTriggers: []
+  childSteps:
+    - _name: ItemBillOfMaterial
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Bill Of Material
+      formTab: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm.ItemBillOfMaterial
+      formStepEnrichers:
+        - enricher: Manufacturing.entities.ItemBillOfMaterial.enrichers.DefaultRelationshipType
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: true
+        - enricher: Manufacturing.entities.ItemBillOfMaterial.enrichers.SetName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm.ItemBillOfMaterial.FDN_ChildItem
+          referencePickerCollectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm.ItemBillOfMaterial.FDN_ParentItem
+          referencePickerCollectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+      stepTriggers: []
+label: Author Item Bill Of Materials
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+triggers: []

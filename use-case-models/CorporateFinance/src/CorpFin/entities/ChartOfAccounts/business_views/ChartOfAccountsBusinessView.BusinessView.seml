@@ -1,0 +1,174 @@
+_package: CorpFin.entities.ChartOfAccounts.business_views
+_type: BusinessView
+_name: ChartOfAccountsBusinessView
+entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+rootLabel: Chart Of Accounts
+label: Chart Of Accounts
+rootPluralLabel: Charts Of Accounts
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ChartOfAccounts
+  entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+  displayCard: CorpFin.entities.ChartOfAccounts.display_cards.ChartOfAccountsDisplayCard
+  actionSet: CorpFin.entities.ChartOfAccounts.action_sets.ChartOfAccountsActionSet
+  collection: CorpFin.entities.ChartOfAccounts.collection_views.ChartOfAccountsCollectionView
+  form: CorpFin.entities.ChartOfAccounts.forms.ChartOfAccountsForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _type: BusinessViewTransition
+      _name: TopLevelAccounts
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: TopLevelAccounts
+      pluralLabel: TopLevelAccounts
+
+      enableHierarchy: any accountInCoA has (1=1)      
+      enableHierarchyInterpreter: SEMQL     
+      filter: FID_parentAccount IS NULL
+
+      expandHierarchyByDefault: true
+      transitionPath: accountInCoA
+      transitionType: FULLY_QUALIFIED
+      transitionVisible: '0'
+      transitionVisibleInterpreter: LITERAL
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: TopLevelAccount
+        entity: CorpFin.entities.Account.Account
+        actionSet: CorpFin.entities.Account.action_sets.AccountActionSet
+        collection: CorpFin.entities.Account.collection_views.AccountCollectionView
+        form: CorpFin.entities.Account.forms.AccountForm
+        displayCard: CorpFin.entities.Account.display_cards.AccountDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+
+        referenceAttributeNavigationConfigs:
+          - formField: CorpFin.entities.Account.forms.AccountForm.Account.Container1.Container3.CoAInformation.FDN_chartOfAccounts
+            businessView: CorpFin.entities.ChartOfAccounts.business_views.ChartOfAccountsBusinessView
+            form: CorpFin.entities.ChartOfAccounts.forms.ChartOfAccountsForm
+            navigationMode: BUSINESS_OBJECT_VIEW
+
+        transitions:
+          - _type: BusinessViewTransition
+            _name: NextLevelAccounts
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            label: Sub-Accounts
+            pluralLabel: Sub-Accounts
+      # Important: use the fromRoleName in the SEMQL expression
+            enableHierarchy: any childAccount has (1=1)          
+            enableHierarchyInterpreter: SEMQL
+
+            expandHierarchyByDefault: true
+            transitionPath: childAccount
+            transitionType: FULLY_QUALIFIED
+            transitionVisible: '0'
+            transitionVisibleInterpreter: LITERAL
+            visibleInFormTabCondition: any childAccount has (1 = 1)
+            useCustomLabel: true
+
+            businessViewEntity: 
+              _type: BusinessViewEntityReference
+              ref: CorpFin.entities.ChartOfAccounts.business_views.ChartOfAccountsBusinessView.ChartOfAccounts.TopLevelAccounts.TopLevelAccount     
+
+    - _type: BusinessViewTransition
+      _name: MappingSetsAsSource
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: MappingSet (as Source)
+      pluralLabel: MappingSets (as Source)
+
+# Important: use the fromRoleName in the SEMQL expression
+      enableHierarchy: '0'      
+      enableHierarchyInterpreter: LITERAL   
+
+      expandHierarchyByDefault: true
+      transitionPath: mappingSetOrigSRC
+      transitionType: FULLY_QUALIFIED
+      transitionVisibleInterpreter: SEMQL
+      visibleInFormTabCondition: any mappingSetOrigSRC has (1 = 1)
+      useCustomLabel: true
+
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: MappingSetAsSource
+        entity: CorpFin.entities.MappingSet.MappingSet
+        actionSet: CorpFin.entities.MappingSet.action_sets.MappingSetActionSet
+        collection: CorpFin.entities.MappingSet.collection_views.MappingSetCollectionView
+        form: CorpFin.entities.MappingSet.forms.MappingSetForm
+        displayCard: CorpFin.entities.MappingSet.display_cards.MappingSetDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+
+    - _type: BusinessViewTransition
+      _name: MappingSetsAsTarget
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: MappingSet (as Target)
+      pluralLabel: MappingSets (as Target)
+
+# Important: use the fromRoleName in the SEMQL expression
+      enableHierarchy: '0'      
+      enableHierarchyInterpreter: LITERAL   
+
+      expandHierarchyByDefault: true
+      transitionPath: mappingSetOrigTGT
+      transitionType: FULLY_QUALIFIED
+      transitionVisibleInterpreter: SEMQL
+      visibleInFormTabCondition: any mappingSetOrigTGT has (1 = 1)
+      useCustomLabel: true
+
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: MappingSetAsTarget
+        entity: CorpFin.entities.MappingSet.MappingSet
+        actionSet: CorpFin.entities.MappingSet.action_sets.MappingSetActionSet
+        collection: CorpFin.entities.MappingSet.collection_views.MappingSetCollectionView
+        form: CorpFin.entities.MappingSet.forms.MappingSetForm
+        displayCard: CorpFin.entities.MappingSet.display_cards.MappingSetDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+
+enableHierarchyView: true
+useHierarchyOnOpen: true

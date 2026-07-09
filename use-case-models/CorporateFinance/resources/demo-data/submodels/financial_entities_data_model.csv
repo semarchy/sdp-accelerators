@@ -1,0 +1,41 @@
+Entity,EntityType,Attribute,DataType,Mandatory,Description,ReferenceTo
+OrgUnitType,BASIC,OrgUnitTypeID,String,Y,"Surrogate identifier for org unit type",
+OrgUnitType,BASIC,Type,String,Y,"Org unit type (CostCenter, ProfitCenter, BusinessUnit, LegalEntity, Group)",
+OrgUnitType,BASIC,Description,String,N,"Description of the org unit type",
+OrgUnit,BASIC,OrgUnitID,String,Y,"Surrogate identifier for organizational unit",
+OrgUnit,BASIC,OrgUnitBusinessCode,String,Y,"External or ERP code for the unit",
+OrgUnit,BASIC,NormalizedOrgUnitBusinessCode,String,N,"Trimmed and uppercased business code for matching",
+OrgUnit,BASIC,OrgUnitName,String,Y,"Display name of the organizational unit",
+OrgUnit,BASIC,NormalizedOrgUnitName,String,N,"Trimmed and uppercased organizational unit name for matching",
+OrgUnit,BASIC,PhonetizedOrgUnitName,String,N,"Phonetic representation of the org unit name for fuzzy matching",
+OrgUnit,BASIC,OrgUnitTypeID,String,Y,"Assigned org unit type","OrgUnitType"
+OrgUnit,BASIC,CounterpartyID,String,N,"Linked counterparty when the unit represents a legal entity or business partner","Counterparty"
+OrgUnit,BASIC,Description,String,N,"Narrative description of responsibilities or scope",
+OrgHierarchy,BASIC,OrgHierarchyID,String,Y,"Surrogate identifier for an organizational hierarchy",
+OrgHierarchy,BASIC,Name,String,Y,"Hierarchy name (e.g., FY2026 Managerial)",
+OrgHierarchy,BASIC,EffectiveStartDate,Date,Y,"Effective start date",
+OrgHierarchy,BASIC,EffectiveEndDate,Date,N,"Effective end date",
+OrgHierarchy,BASIC,NormalizedName,String,N,"Trimmed and uppercased hierarchy name",
+OrgHierarchy,BASIC,HierarchyType,String,Y,"Type of hierarchy (Operational, Managerial, Statutory, Group)",
+OrgHierarchy,BASIC,NormalizedHierarchyType,String,N,"Trimmed and uppercased hierarchy type",
+OrgHierarchy,BASIC,Description,String,N,"Additional context for the hierarchy",
+OrgHierarchyNode,BASIC,OrgHierarchyNodeID,String,Y,"Surrogate identifier for a hierarchy node",
+OrgHierarchyNode,BASIC,OrgHierarchyID,String,Y,"Hierarchy that contains this node","OrgHierarchy"
+OrgHierarchyNode,BASIC,EffectiveStartDate,Date,Y,"Effective start date",
+OrgHierarchyNode,BASIC,EffectiveEndDate,Date,N,"Effective end date",
+OrgHierarchyNode,BASIC,OrgUnitID,String,Y,"Organizational unit represented by this node","OrgUnit"
+OrgHierarchyNode,BASIC,ParentNodeID,String,N,"Parent hierarchy node (null for root nodes)","OrgHierarchyNode"
+OrgHierarchyNode,BASIC,RelationshipType,String,Y,"Relationship to the parent (ReportsTo, Owns, Consolidates)",
+OrgHierarchyNode,BASIC,Sequence,Integer,N,"Ordering of siblings under the same parent",
+OrgUnitCoAAssignment,BASIC,CoAAssignmentID,String,Y,"Surrogate identifier for CoA usage",
+OrgUnitCoAAssignment,BASIC,OrgUnitID,String,Y,"Organizational unit using the chart","OrgUnit"
+OrgUnitCoAAssignment,BASIC,ChartOfAccountsID,String,Y,"Assigned chart of accounts","ChartOfAccounts"
+OrgUnitCoAAssignment,BASIC,UsageScope,String,Y,"Purpose of the assignment (Operational, Managerial, Statutory, Group)",
+OrgUnitCoAAssignment,BASIC,NormalizedUsageScope,String,N,"Trimmed and uppercased usage scope",
+OrgUnitCoAAssignment,BASIC,Notes,String,N,"Additional context or restrictions",
+OrgUnitMappingCoverage,BASIC,MappingCoverageID,String,Y,"Surrogate identifier linking units to mappings",
+OrgUnitMappingCoverage,BASIC,OrgUnitID,String,Y,"Organizational unit covered by the mapping","OrgUnit"
+OrgUnitMappingCoverage,BASIC,MappingSetID,String,Y,"Mapping set applied to the unit","MappingSet"
+OrgUnitMappingCoverage,BASIC,CoverageScope,String,Y,"Description of source->target scope (Local->Group, BU->Legal)",
+OrgUnitMappingCoverage,BASIC,NormalizedCoverageScope,String,N,"Trimmed and uppercased coverage scope",
+OrgUnitMappingCoverage,BASIC,Comments,String,N,"Business notes or approvals",

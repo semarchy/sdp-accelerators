@@ -1,0 +1,14 @@
+ # Description: Normalization enricher for Country short names.
+ # Contains: SemQL rules to normalize and populate LocalShortName and variants.
+ # Role: Ensures consistent short name formatting for Country master data.
+_package: Merchant.entities.Country.enrichers
+_name: NormalizeShortName
+_type: SemQLEnricher
+description: "Converts country short name to uppercase letters"
+label: "Normalize Short Name"
+entity: Merchant.entities.Country.Country
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnglishShortNameCAPS
+    expression: UPPER(EnglishShortName)

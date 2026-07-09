@@ -1,0 +1,186 @@
+ # Description: Form layout for the `Party` entity (create/edit UI).
+ # Contains: Fields for party name, type, status, country and validity dates.
+ # Role: Provides the UI to create and edit Party records.
+_package: Merchant.entities.Party.forms
+_type: Form
+_name: PartyForm
+entity: Merchant.entities.Party.Party
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: Party
+    label: Party
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL    
+    iconUrl: images://mdi/people.svg
+    content:
+      - _type: FormSection
+        _name: Primary
+        label: Primary
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PrimaryRow
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: LeftCol
+                layoutDirection: COLUMN
+                content:
+                  - _type: TextField
+                    _name: DisplayName
+                    value: DisplayName
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: headline-6
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: TextField
+                    _name: LegalName
+                    value: LegalName
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: TextField
+                    _name: AlternateName
+                    value: AlternateName
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+              - _type: FormContainer
+                _name: RightCol
+                layoutDirection: COLUMN
+                content:
+                  - _type: MenuField
+                    _name: PartyType
+                    value: PartyType
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: MenuField
+                    _name: PartyRoleType
+                    value: PartyRoleType
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: MenuField
+                    _name: PartyStatus
+                    value: PartyStatus
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+      - _type: FormSection
+        _name: Metadata
+        label: System Metadata
+        layoutDirection: COLUMN
+        content:
+          - _type: TextField
+            _name: RecordId
+            value: PartyID
+            useCustomLabel: true
+            label: "Party ID"
+            dataType: LONG_INTEGER
+            componentProperties:
+              textAlign: left
+            labelProperties:
+              alignment: left
+              position: top
+              typography: caption
+              isVisible: '1'
+
+          - _type: TextField
+            _name: NormalizedName
+            value: NormalizedName
+            useCustomLabel: false
+            dataType: STRING
+            componentProperties:
+              textAlign: left
+            labelProperties:
+              alignment: left
+              position: top
+              typography: caption
+              isVisible: '1'
+
+  - _type: FormTab
+    _name: Enrichment
+    label: Enrichment
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/silverware-clean.svg
+    content:
+      - _type: FormSection
+        _name: Enriched
+        label: Enriched Data
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: EnrichCol1
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: NormalizedNameEnriched
+                value: NormalizedName
+                useCustomLabel: false
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                  textTypography: body-1
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+      

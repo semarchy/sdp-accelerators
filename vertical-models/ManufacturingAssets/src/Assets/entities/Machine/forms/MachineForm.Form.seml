@@ -1,0 +1,181 @@
+
+_package: Assets.entities.Machine.forms
+_type: Form
+_name: MachineForm
+entity: Assets.entities.Machine.Machine
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Machine
+    label: Machine
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/cogs.svg
+    labelWidth: '150'
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                layoutDirection: COLUMN
+                content:
+                  - _type: FormContainer
+                    _name: GeneralInfoRow1
+                    layoutDirection: ROW
+                    content:
+                      - _type: IdField
+                        _name: MachineID
+                        value: MachineID
+                        useCustomLabel: false
+                        dataType: STRING
+                      - _type: TextField
+                        _name: SerialNumber
+                        value: SerialNumber
+                        useCustomLabel: false
+                        dataType: STRING
+                      - _type: TextField
+                        _name: TypeModel
+                        value: TypeModel
+                        useCustomLabel: false
+                        dataType: STRING
+                      - _type: TextField
+                        _name: Manufacturer
+                        value: Manufacturer
+                        useCustomLabel: false
+                        dataType: STRING
+                  - _type: FormContainer
+                    _name: GeneralInfoRow2
+                    layoutDirection: ROW
+                    content:
+                      - _type: TextField
+                        _name: YearOfManufacture
+                        value: YearOfManufacture
+                        useCustomLabel: false
+                        dataType: INTEGER
+                      - _type: ReferenceField
+                        _name: FDN_ProductionLine
+                        value: FDN_ProductionLine
+                        useCustomLabel: false
+                        dataType: STRING
+                        referencedEntity: Assets.entities.ProductionLine.ProductionLine
+                      - _type: ReferenceField
+                        _name: FDN_MachineStatus
+                        value: FDN_MachineStatus
+                        useCustomLabel: false
+                        dataType: STRING
+                        referencedEntity: Assets.entities.MachineStatus.MachineStatus
+                      - _type: ReferenceField
+                        _name: FDN_CriticalityLevel
+                        value: FDN_CriticalityLevel
+                        useCustomLabel: false
+                        dataType: STRING
+                        referencedEntity: Assets.entities.CriticalityLevel.CriticalityLevel
+              - _type: FormSection
+                _name: OperationalInformation
+                label: Operational Information
+                layoutDirection: COLUMN
+                content:
+                  - _type: FormContainer
+                    _name: OperationalInfoRow1
+                    layoutDirection: ROW
+                    content:
+                      - _type: DateField
+                        _name: InstallationDate
+                        value: InstallationDate
+                        useCustomLabel: false
+                        dataType: DATE
+                      - _type: TextField
+                        _name: PowerRating
+                        value: PowerRating
+                        useCustomLabel: true
+                        label: Power Rating (kW)
+                        dataType: DECIMAL
+                      - _type: TextField
+                        _name: MaintenanceFrequency
+                        value: MaintenanceFrequency
+                        useCustomLabel: false
+                        dataType: STRING
+                      - _type: DateField
+                        _name: LastMaintenanceDate
+                        value: LastMaintenanceDate
+                        useCustomLabel: false
+                        dataType: DATE
+                  - _type: FormContainer
+                    _name: OperationalInfoRow2
+                    layoutDirection: ROW
+                    content:
+                      - _type: DateField
+                        _name: NextScheduledMaintenance
+                        value: NextScheduledMaintenance
+                        useCustomLabel: false
+                        dataType: DATE
+                      - _type: DateField
+                        _name: WarrantyExpiryDate
+                        value: WarrantyExpiryDate
+                        useCustomLabel: false
+                        dataType: DATE
+                      - _type: TextField
+                        _name: AssetValue
+                        value: AssetValue
+                        useCustomLabel: true
+                        label: Asset Value (USD)
+                        dataType: DECIMAL
+                      - _type: TextField
+                        _name: ComplianceCertifications
+                        value: ComplianceCertifications
+                        useCustomLabel: false
+                        dataType: STRING
+          - _type: FormSection
+            _name: LocationInformation
+            label: Location Information
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: LocationDescription
+                value: Location.Description
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: LocationGPSCoordinates
+                value: Location.GPSCoordinates
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: LocationFloorZone
+                value: Location.FloorZone
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: LocationAccessibilityLevel
+                value: Location.AccessibilityLevel
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: LocationEnvironmentalConditions
+                value: Location.EnvironmentalConditions
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left

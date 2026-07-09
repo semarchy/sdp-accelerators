@@ -1,0 +1,64 @@
+_name: MaterialReviewSuggestion
+_package: sappm360.entities.Material.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.Material.Material
+rootLabel: SAP Material Review Suggestion
+rootPluralLabel: SAP Material Review Suggestions
+useHierarchyOnOpen: false
+label: SAP Material Review Suggestion
+description: Business view for reviewing duplicate materials.
+rootBusinessViewEntity:
+  _name: Material
+  _type: BusinessViewEntity
+  collection: sappm360.entities.Material.collection_views.MaterialCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.Material.Material
+  form: sappm360.entities.Material.forms.MaterialBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.Material.action_sets.MaterialReviewSuggestionsActionSet
+  displayCard: sappm360.entities.Material.display_cards.MaterialDisplayCard
+  sortExpression: MaterialNumber
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container12.FDN_Product
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container13.FDN_MaterialType
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container20.FDN_IndustrySector
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container12.FDN_MaterialGroup
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container13.FDN_BaseUOM
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container20.FDN_ProcurementType
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container12.FDN_ValuationClass
+      navigationMode: MODAL_FORM
+  transitions: []
+rootIconUrl: images://mdi/cube-outline.svg
+rootFilter: HasSuggestedMerge = '1'

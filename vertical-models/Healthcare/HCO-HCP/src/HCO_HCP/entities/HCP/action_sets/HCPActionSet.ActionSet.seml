@@ -1,0 +1,113 @@
+_name: HCPActionSet
+_package: HCO_HCP.entities.HCP.action_sets
+_type: ActionSet
+entity: HCO_HCP.entities.HCP.HCP
+label: HCP Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorHCPs
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: MASTER
+    createMultiple: true
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.HCP.steppers.AuthorHCPs
+  - _name: EditAuthorHCPs
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    itemsLimit: 1000
+    multipleSelectionAllowed: true
+    stepper: HCO_HCP.entities.HCP.steppers.AuthorHCPs
+  - _name: MassUpdateAuthorHCPs
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: HCO_HCP.entities.HCP.steppers.AuthorHCPs
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+    itemsLimit: 1000
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnHCP
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    itemsLimit: 1000
+    dupsManager: HCO_HCP.entities.HCP.dups_managers.ManageDuplicatesOnHCP
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnHCP
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: HCO_HCP.entities.HCP.dups_managers.ManageDuplicatesOnHCP
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnHCP
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    itemsLimit: 1000
+    dupsManager: HCO_HCP.entities.HCP.dups_managers.ManageDuplicatesOnHCP
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorHCPs
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.HCP.steppers.AuthorHCPs
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: HCO_HCP.entities.HCP.display_cards.HCPDisplayCard
+    formTab: HCO_HCP.entities.HCP.forms.HCPForm.HCP
+  - _name: ImportAuthorHCPs2
+    label: Import  NPIs
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: false
+    defaultPublisher: HCO_HCP.publishers.NPI
+    stepper: HCO_HCP.entities.HCP.steppers.AuthorHCPs

@@ -1,0 +1,95 @@
+# This is the ContactMasterCollection collection view used in the Salesforce Accelerator application.
+# It defines how contacts are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.Contact.collection_views
+_name: ContactMasterCollection
+_type: CollectionView
+entity: sales360.entities.Contact.Contact
+default: false
+displayCard: sales360.entities.Contact.display_cards.ContactDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Contact
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 250
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: true
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: PublisherID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PublisherID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceID
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: MergedInCRM
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: MergedInCRM
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Department
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Department
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: Title
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Title
+    visibleByDefault: true
+    defaultWidth: 300
+  - _type: TextColumn
+    _name: Phone_StandardizedPhoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    label: Phone
+    useCustomLabel: true
+    value: Phone.StandardizedPhoneNumber
+    visibleByDefault: true
+  - _type: HyperlinkColumn
+    _name: CleansedEmail
+    columnAlign: LEFT
+    dataType: STRING
+    label: Email
+    useCustomLabel: true
+    value: SEM_CONCAT('','1','mailto://',CleansedEmail)
+    visibleByDefault: true
+    defaultWidth: 300
+    componentProperties:
+      linkDisplayText: CleansedEmail
+      linkDisplayTextValueInterpreter: SEMQL
+      linkTarget: new-window
+      linkTargetValueInterpreter: LITERAL
+      linkSourceType: url
+      linkSourceTypeValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: MailingAddress
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MailingAddress
+    visibleByDefault: true
+    defaultWidth: 500

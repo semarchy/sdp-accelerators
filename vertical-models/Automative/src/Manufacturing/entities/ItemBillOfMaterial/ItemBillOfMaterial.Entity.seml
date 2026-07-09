@@ -1,0 +1,105 @@
+_name: ItemBillOfMaterial
+_package: Manufacturing.entities.ItemBillOfMaterial
+_type: Entity
+primaryKey: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.ItemBillOfMaterialID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+label: Item Bill Of Material
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Item Bill Of Materials
+description: "Bill of material relationship that links parent items to child components with effective dates and relationship type."
+documentation: "Bill of material relationship that links parent items to child components with effective dates and relationship type. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: true
+historizeMaster: false
+physicalTableName: ITEM_BILL_OF_MATERIAL
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ItemBillOfMaterialID
+    physicalName: ITEM_BILL_OF_MATERIAL_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Item Bill Of Material record."
+    documentation: "Surrogate identifier for the Item Bill Of Material record."
+    goldenAttribute: true
+    i18ned: false
+    label: Item Bill Of Material ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveEndDate
+    physicalName: EFFECTIVE_END_DATE
+    dataType: Date
+    description: "Date when the Item Bill Of Material relationship or classification stops being effective."
+    documentation: End Date after which this BOM is not being used to manufacture the item
+    goldenAttribute: true
+    i18ned: false
+    label: Effective End Date
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RelationshipType
+    physicalName: RELATIONSHIP_TYPE
+    dataType: Manufacturing.list_of_values.ItemBOM_RelationshipType
+    description: "Classification of the bill of material relationship between parent and child items."
+    documentation: "Classification of the bill of material relationship between parent and child items."
+    goldenAttribute: true
+    i18ned: false
+    label: Relationship Type
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveStartDate
+    physicalName: EFFECTIVE_START_DATE
+    dataType: Date
+    description: "Date when the Item Bill Of Material relationship or classification becomes effective."
+    documentation: Effective Start Date from when this item will be used this Bill of Materila
+    goldenAttribute: true
+    i18ned: false
+    label: Effective Start Date
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    description: "Display name for the bill of material relationship or parent assembly."
+    documentation: Name of Bill of Materila
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    mandatory: false
+    length: 1024
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

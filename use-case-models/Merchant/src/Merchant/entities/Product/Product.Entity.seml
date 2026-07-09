@@ -1,0 +1,64 @@
+# Description: Entity definition for `Product`.
+# Contains attributes describing products and services offered by merchants.
+# Role: Holds product/master data and links to categories and merchants.
+_package: Merchant.entities.Product
+_type: Entity
+_name: Product
+label: Product
+pluralLabel: Products
+entityType: BASIC
+physicalTableName: PRODUCT
+iconUrl: images://mdi/package-variant.svg
+description: "Products and services offered by merchants"
+documentation: "Contains product information including categories, brands, and descriptions"
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: ProductID
+    label: Product ID
+    physicalName: PRODUCT_ID
+    dataType: LongInteger
+    precision: 18
+    mandatory: true
+    searchable: true
+    description: "Unique master identifier for the Product"
+
+  - _type: EntityAttribute
+    _name: ProductName
+    label: Product Name
+    physicalName: PRODUCT_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Official name of the product or service"
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Description of the product"
+
+  - _type: EntityAttribute
+    _name: ProductStatus
+    label: Product Status
+    physicalName: PRODUCT_STATUS
+    lovValidationScope: PRE_CONSO
+    dataType: Merchant.list_of_values.ProductStatus
+    length: 20
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Current status of the product (e.g., Active, Inactive)"
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: Merchant.entities.Product.Product.ProductID

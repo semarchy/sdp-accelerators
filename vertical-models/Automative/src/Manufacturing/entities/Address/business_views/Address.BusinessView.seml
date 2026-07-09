@@ -1,0 +1,342 @@
+_name: Address
+_package: Manufacturing.entities.Address.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: Manufacturing.entities.Address.Address
+rootLabel: Address
+rootPluralLabel: Addresses
+useHierarchyOnOpen: false
+label: Addresses
+rootBusinessViewEntity:
+  _name: AddressEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.Address.collection_views.AddressCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.Address.Address
+  form: Manufacturing.entities.Address.forms.AddressForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: Manufacturing.entities.Address.action_sets.AddressActionSet
+  sortExpression: |-
+    (LOOKUP
+    	COUNt CustomerID
+    	FROM Customers
+    END) DESC
+  businessEntityBuiltInFilters:
+    - _name: HouseholdsWith2Customers
+      _type: BusinessEntityBuiltInFilter
+      label: Households With 2+ Customers
+      semQlCondition: |-
+        (LOOKUP
+        	COUNT CustomerID
+        	FROM Customers
+        end) >=2
+      visible: true
+    - _name: Households
+      _type: BusinessEntityBuiltInFilter
+      label: Households
+      semQlCondition: Household = 'true'
+      visible: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.Address.forms.AddressForm.Address.Container.InputAddress.FDN_InputState
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.Address.forms.AddressForm.Address.Container.InputAddress.FDN_InputCountry
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: Manufacturer
+      _type: BusinessViewTransition
+      transitionPath: ManufacturerAddresses.Manufacturer
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: ANY ManufacturerAddresses.Manufacturer have (ManufacturerID is not null)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/office-building-outline.svg
+      label: Manufacturer
+      pluralLabel: Manufacturers
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: Household != 'true'
+      businessViewEntity:
+        _name: Manufacturer
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.Manufacturer.collection_views.ManufacturerCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.Manufacturer.Manufacturer
+        form: Manufacturing.entities.Manufacturer.forms.ManufacturerForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations:
+          - browsingTarget: NOT_NAVIGABLE
+            formCollection: Manufacturing.entities.Manufacturer.forms.ManufacturerForm.Manufacturer.Container.Collection
+          - browsingTarget: NOT_NAVIGABLE
+            formCollection: Manufacturing.entities.Manufacturer.forms.ManufacturerForm.Manufacturer.Container.Collection2
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: HouseholdMembers
+      _type: BusinessViewTransition
+      transitionPath: Customers
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: Household = 'true'
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/people.svg
+      label: Household Member
+      pluralLabel: Household Members
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: Household = 'true'
+      businessViewEntity:
+        _name: Customer
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.Customer.collection_views.CustomerCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.Customer.Customer
+        form: Manufacturing.entities.Customer.forms.CustomerForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: ManufacturingPlant
+      _type: BusinessViewTransition
+      transitionPath: ManufacturingPlantAddresses.ManufacturingPlant
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: ANY ManufacturingPlantAddresses.ManufacturingPlant have
+        (ManufacturingPlantID is not null)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/factory.svg
+      label: Manufacturing Plant
+      pluralLabel: Manufacturing Plants
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: Household != 'true'
+      businessViewEntity:
+        _name: ManufacturingPlant
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ManufacturingPlant.collection_views.ManufacturingPlantCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant
+        form: Manufacturing.entities.ManufacturingPlant.forms.ManufacturingPlantForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ManufacturingPlant.forms.ManufacturingPlantForm.ManufacturingPlant.FDN_Manufacturer
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Dealers
+      _type: BusinessViewTransition
+      transitionPath: Dealers
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: ANY Dealers have (DealerID is not null)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/store-outline.svg
+      label: Dealer
+      pluralLabel: Dealers
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: Household != 'true'
+      businessViewEntity:
+        _name: ProductDealer
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ProductDealer.collection_views.ProductDealerCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ProductDealer.ProductDealer
+        form: Manufacturing.entities.ProductDealer.forms.ProductDealerForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ProductDealer.forms.ProductDealerForm.ProductDealer.FDN_Address
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductDealer.forms.ProductDealerForm.Address.Container.InputAddress.Address_FDN_InputState
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductDealer.forms.ProductDealerForm.Address.Container.InputAddress.Address_FDN_InputCountry
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Vehicle
+      _type: BusinessViewTransition
+      transitionPath: Customers.CustomerVehicles.Vehicle
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/car-hatchback.svg
+      label: Vehicle Owned
+      pluralLabel: Vehicles Owned
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: Household = 'true'
+      businessViewEntity:
+        _name: ProductVehicle
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ProductVehicle.collection_views.ProductVehicleCollectionYearMakeModelVIN
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ProductVehicle.ProductVehicle
+        form: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        sortExpression: FID_ModelYear DESC
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Trim
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_SellingDealership
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Model
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Make
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_ModelYear
+            navigationMode: MODAL_FORM
+        transitions: []

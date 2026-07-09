@@ -1,0 +1,230 @@
+_name: PortfolioChangeApproval
+_package: PrivateEquity.workflows
+_type: Workflow
+label: Portfolio Change Approval
+generalProperties:
+  attachmentMimeTypes: "*"
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+notifications:
+  workflowAdminOnDueDate: false
+dataScope:
+  - _name: PortfolioLegalEntity
+    _type: RootEntity
+    cardinality: SINGLE_RECORD
+    displayCard: PrivateEquity.entities.PortfolioLegalEntity.display_cards.PortfolioLegalEntityDisplayCard
+    entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+    childEntities: []
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+steps:
+  - _name: StartPortfolioChange
+    _type: StartFromSelectionEvent
+    defaultPriority: NORMAL
+    position:
+      x: -547.5100174428535
+      y: -67.3195079107729
+    label: Start Portfolio Change
+    initiatorRequiredRole: DataSteward
+    selectionSourceType: GOLDEN_DATA
+    authoredEntity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: true
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: PrivateEquity.workflows.PortfolioChangeApproval.RequestChange
+      bendPoints: []
+  - _name: RequestChange
+    _type: UserTask
+    label: Request Portfolio Change
+    icon: images://mdi/swap-horizontal.svg
+    position:
+      x: -408
+      y: -84
+    assigneeCanRelease: true
+    myTasksConfiguration:
+      collection: PrivateEquity.entities.PortfolioLegalEntity.collection_views.PortfolioLegalEntityCollection
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: PrivateEquity.applications.PrivateEquity
+    assigneeCondition: Username = StepInstance.WorkflowInstance.InitiatorName
+    assigneeRequiredRole: DataSteward
+    entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+    stepper: PrivateEquity.entities.PortfolioLegalEntity.steppers.ApprovePortfolioChange
+    transitions:
+      - _name: SendForApproval
+        _type: UserTaskTransition
+        label: Send For Approval
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: false
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: PrivateEquity.workflows.PortfolioChangeApproval.ApproveChange
+        transitionValidations: []
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: false
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: -330
+            y: 105
+          - x: 465
+            y: 105
+        toStep: PrivateEquity.workflows.PortfolioChangeApproval.End
+        transitionValidations: []
+  - _name: ApproveChange
+    _type: UserTask
+    label: Approve Portfolio Change
+    icon: images://mdi/check-decagram.svg
+    position:
+      x: -24
+      y: -80
+    assigneeCanRelease: true
+    myTasksConfiguration:
+      collection: PrivateEquity.entities.PortfolioLegalEntity.collection_views.PortfolioLegalEntityCollection
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: PrivateEquity.applications.PrivateEquity
+    assigneeRequiredRole: BusinessUser
+    entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+    stepper: PrivateEquity.entities.PortfolioLegalEntity.steppers.ApprovePortfolioChange
+    transitions:
+      - _name: Approve
+        _type: UserTaskTransition
+        label: Approve
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: false
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: PrivateEquity.workflows.PortfolioChangeApproval.SubmitData
+        transitionValidations: []
+      - _name: SendBack
+        _type: UserTaskTransition
+        label: Send Back
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: false
+          commentParamRequired: true
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: 15
+            y: 45
+          - x: -285
+            y: 45
+        toStep: PrivateEquity.workflows.PortfolioChangeApproval.RequestChange
+        transitionValidations: []
+      - _name: Reject
+        _type: UserTaskTransition
+        label: Reject
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: false
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: 105
+            y: 45
+          - x: 255
+            y: 45
+          - x: 390
+            y: 45
+        toStep: PrivateEquity.workflows.PortfolioChangeApproval.End
+        transitionValidations: []
+  - _name: SubmitData
+    _type: SubmitAutomation
+    label: Apply Portfolio Change
+    position:
+      x: 240
+      y: -80
+    integrationJob: PrivateEquity.model_jobs.INTEGRATE_ALL
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      label: Outgoing
+      toStep: PrivateEquity.workflows.PortfolioChangeApproval.End
+      bendPoints: []
+  - _name: End
+    _type: EndEvent
+    position:
+      x: 460
+      y: -68

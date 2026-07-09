@@ -1,0 +1,108 @@
+# Plant entity for the SAP Product / Material 360 accelerator.
+_name: Plant
+_package: sappm360.entities.Plant
+_type: Entity
+primaryKey: sappm360.entities.Plant.Plant.PlantID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: PlantCode
+label: Plant
+documentation: SAP plant or manufacturing location participating in product planning.
+description: SAP plant or manufacturing location participating in product planning.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/factory.svg
+pluralLabel: Plants
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PLANT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PlantID
+    physicalName: PLANT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Plant ID
+    documentation: Unique identifier for a plant.
+    description: Unique identifier for a plant.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PlantCode
+    physicalName: PLANT_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Plant Code
+    documentation: SAP plant code.
+    description: SAP plant code.
+    mandatory: true
+    length: 40
+    mandatoryValidationLabel: Plant Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PlantName
+    physicalName: PLANT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Plant Name
+    documentation: Business name of the plant.
+    description: Business name of the plant.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Plant Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Region
+    physicalName: REGION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Region
+    documentation: Region where the plant operates.
+    description: Region where the plant operates.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CountryName
+    physicalName: COUNTRY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Country Name
+    documentation: Country where the plant is located.
+    description: Country where the plant is located.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the plant is active.
+    description: Indicates whether the plant is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

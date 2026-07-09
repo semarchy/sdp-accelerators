@@ -1,0 +1,42 @@
+_type: JavaPluginEnricher
+_package: HCO_HCP.entities.HCP.enrichers
+_name: GoogleMapEnricher
+entity: HCO_HCP.entities.HCP.HCP
+label: Google Map Enricher
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+batchUpdateSize: 1000
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+enricherExecutionScope: NONE
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+pluginInputs:
+  - inputName: IN_CITY
+    expression: City
+  - inputName: IN_ADDRESSLINE
+    expression: StreetAddressLine1
+  - inputName: IN_POSTALCODE
+    expression: ZipCode
+  - inputName: IN_COUNTRY
+    expression: Country
+pluginOutputs:
+  - outputName: ROUTE_LONGNAME
+    attributeName: GeocodedAddress.StreetName
+  - outputName: COUNTRY_LONGNAME
+    attributeName: GeocodedAddress.Country
+  - outputName: COORDINATES_LATITUDE
+    attributeName: GeocodedAddress.CoordLatitude
+  - outputName: STREETNUMBER_LONGNAME
+    attributeName: GeocodedAddress.StreetNumber
+  - outputName: LOCALITY_LONGNAME
+    attributeName: GeocodedAddress.Locality
+  - outputName: POSTALCODE_LONGNAME
+    attributeName: GeocodedAddress.PostalCode
+  - outputName: ADM_AREA_LEV1_LONGNAME
+    attributeName: GeocodedAddress.State
+  - outputName: COORDINATES_LONGITUDE
+    attributeName: GeocodedAddress.CoordLongitude
+afterEnrichers: HCO_HCP.entities.HCP.enrichers.NPINumber

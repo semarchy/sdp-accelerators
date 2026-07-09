@@ -1,0 +1,97 @@
+_package: PropertyAndCasualtyInsurance.entities.Rating
+_type: Entity
+_name: Rating
+label: Rating
+pluralLabel: Ratings
+entityType: BASIC
+physicalTableName: RATING
+iconUrl: images://mdi/book.svg
+description: "Represents a rating configuration for an insurance plan."
+documentation: "Represents a rating configuration for an insurance plan."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: RatingID
+    label: Rating ID
+    physicalName: RATING_ID
+    dataType: String
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: RatingPlanCode
+    label: Rating Plan Code
+    physicalName: RATING_PLAN_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier representing a rating configuration or plan."
+    documentation: "Unique identifier representing a rating configuration or plan."
+  - _type: EntityAttribute
+    _name: RatingPlanName
+    label: Rating Plan Name
+    physicalName: RATING_PLAN_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Business-facing name of the rating plan."
+    documentation: "Business-facing name of the rating plan."
+  - _type: EntityAttribute
+    _name: Version
+    label: Version
+    physicalName: VERSION
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Version identifier tracking changes to rating logic or rate factors."
+    documentation: "Version identifier tracking changes to rating logic or rate factors."
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which the rating plan becomes effective."
+    documentation: "Date from which the rating plan becomes effective."
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date until which the rating plan remains valid."
+    documentation: "Date until which the rating plan remains valid."
+  - _type: EntityAttribute
+    _name: RatingMethod
+    label: Rating Method
+    physicalName: RATING_METHOD
+    dataType: PropertyAndCasualtyInsurance.list_of_values.RatingMethod
+    length: 128
+    mandatory: false
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Method used to compute premium (e.g., Table-driven, Formula-based, External engine)."
+    documentation: "Method used to compute premium (e.g., Table-driven, Formula-based, External engine)."
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional contextual information regarding rating assumptions or configuration."
+    documentation: "Additional contextual information regarding rating assumptions or configuration."
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: PropertyAndCasualtyInsurance.entities.Rating.Rating.RatingID

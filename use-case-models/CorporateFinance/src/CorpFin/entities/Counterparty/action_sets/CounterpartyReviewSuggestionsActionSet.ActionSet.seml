@@ -1,0 +1,26 @@
+_package: CorpFin.entities.Counterparty.action_sets
+_type: ActionSet
+_name: CounterpartyReviewSuggestionsActionSet
+
+entity: CorpFin.entities.Counterparty.Counterparty
+label: Counterparty Review Suggestions Action Set
+defaultActionSet: false
+
+actions:
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnCounterparty
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: CorpFin.entities.Counterparty.dups_managers.ReviewSuggestionsOnCounterparty
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnCounterparty
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: CorpFin.entities.Counterparty.dups_managers.ReviewSuggestionsOnCounterparty
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false

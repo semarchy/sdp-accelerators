@@ -1,0 +1,127 @@
+_package: PropertyAndCasualtyInsurance.entities.Coverage.collection_views
+_type: CollectionView
+_name: CoverageCollectionView
+entity: PropertyAndCasualtyInsurance.entities.Coverage.Coverage
+default: true
+displayCard: PropertyAndCasualtyInsurance.entities.Coverage.display_cards.CoverageDisplayCard
+tableDisplayCardColumnWidth: 300
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Coverage
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: CoverageID
+    value: CoverageID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CoverageCode
+    value: CoverageCode
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    defaultWidth: 200
+
+  - _type: ReferenceColumn
+    _name: FID_CoverageCategory
+    columnAlign: LEFT
+    dataType: STRING
+    label: Coverage Category
+    referencedEntity: PropertyAndCasualtyInsurance.entities.CoverageCategory.CoverageCategory
+    useCustomLabel: true
+    value: FDN_CoverageCategory
+    visibleByDefault: true
+    defaultWidth: 200
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '200'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_InsurancePlan
+    columnAlign: LEFT
+    dataType: STRING
+    label: Insurance Plan
+    referencedEntity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+    useCustomLabel: true
+    value: FDN_InsurancePlan
+    visibleByDefault: true
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: DefaultLimitType
+    value: DefaultLimitType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    defaultWidth: 250
+    componentProperties:
+      useAvatarInMenu: '1'
+      useAvatarInMenuValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: DefaultDeductibleType
+    value: DefaultDeductibleType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      useAvatarInMenu: '1'
+      useAvatarInMenuValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: MinimumLimitAmount
+    value: MinimumLimitAmount
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: '$ #,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: MaximumLimitAmount
+    value: MaximumLimitAmount
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: '$ #,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  
+  - _type: TextColumn
+    _name: EffectiveFrom
+    value: EffectiveFrom
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EffectiveTo
+    value: EffectiveTo
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true

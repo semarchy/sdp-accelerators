@@ -1,0 +1,270 @@
+## This file defines the LegalEntity entity for the Legal Entity application.
+## It includes attributes and properties for managing legal entities and their details.
+_package: LegalEntity.entities.LegalEntity
+_type: Entity
+_name: LegalEntity
+pluralLabel: Legal Entities
+label: Legal Entity
+iconUrl: images://le-img-lib/office-building.svg
+description: This entity represents a legal entity in the Legal Entity application. It is used to store and manage organizations, companies, or other formal entities for business activities, compliance, and reporting.
+documentation: The LegalEntity entity defines the structure for storing legal entity records, including names, addresses, identifiers, and business attributes. It supports business logic, reporting, compliance, and integration with external systems. In private equity, a legal entity is a distinct organization established to conduct business and hold assets, often structured as a limited partnership or LLC.
+enableDelete: true
+attributes: 
+  - _name: ID
+    dataType: LongInteger
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    physicalName: ID
+    label: ID
+    description: The unique identifier for the legal entity.
+    documentation: A system-generated unique identifier for each legal entity record.
+  - _name: Name
+    dataType: String
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: NAME
+    label: Name
+    description: The name of the legal entity.
+    documentation: The official name or title of the legal entity.
+  - _name: NormalizedName
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: NORMALIZED_NAME
+    label: Normalized Name
+    description: The normalized name of the legal entity.
+    documentation: The standardized or normalized version of the legal entity's name for matching and deduplication.
+  - _name: FiscalYear
+    dataType: Boolean
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 0
+    multiValued: false
+    searchable: true
+    physicalName: FISCAL_YEAR
+    label: Fiscal Year
+    description: Indicates if the legal entity has a fiscal year.
+    documentation: Boolean flag indicating whether the legal entity has a fiscal year defined.
+  - _name: FiscalYearEnd
+    dataType: LegalEntity.list_of_values.FiscalYearEnd
+    lovValidationScope: PRE_CONSO
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: FISCAL_YEAR_END
+    label: Fiscal Year End
+    description: The fiscal year end for the legal entity.
+    documentation: The month or date when the legal entity's fiscal year ends.
+  - _name: Revenue
+    dataType: Integer
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 20
+    precision: 10
+    multiValued: false
+    searchable: true
+    physicalName: REVENUE
+    label: Revenue
+    description: The revenue of the legal entity.
+    documentation: The annual or reported revenue for the legal entity.
+  - _name: USFEIN
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 10
+    multiValued: false
+    searchable: true
+    physicalName: US_FEIN
+    label: US FEIN
+    description: The US Federal Employer Identification Number (FEIN) for the legal entity.
+    documentation: The FEIN is a unique identifier assigned to businesses by the IRS in the United States.
+  - _name: SSN
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 20
+    multiValued: false
+    searchable: true
+    physicalName: SSN
+    label: SSN
+    description: The Social Security Number (SSN) for the legal entity.
+    documentation: The SSN is a unique identifier used for individuals and some entities in the United States.
+  - _name: InputAddress 
+    dataType: LegalEntity.complex_types.InputAddressType
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: INP
+    label: Input Address
+    description: The input address for the legal entity.
+    documentation: The address provided for the legal entity, including street, city, state, and country.
+  - _name: GeocodedAddress
+    dataType: LegalEntity.complex_types.GeocodedAddressType
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: GEO
+    label: Geocoded Address
+    description: The geocoded address for the legal entity.
+    documentation: The address of the legal entity with geocoding information, such as latitude and longitude.
+  - _name: NewInTY22
+    dataType: LegalEntity.list_of_values.YesNo
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    physicalName: NEW_IN_TY22
+    label: New In TY22
+    description: Indicates if the legal entity is new in tax year 2022.
+    documentation: Yes/No flag indicating whether the legal entity was created or added in tax year 2022.
+  - _name: FinalInTY22
+    dataType: LegalEntity.list_of_values.YesNo
+    _type: EntityAttribute
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    i18ned: false
+    multiValued: false
+    searchable: true
+    physicalName: FINAL_IN_TY22
+    label: Final In TY22
+    description: Indicates if the legal entity is final in tax year 2022.
+    documentation: Yes/No flag indicating whether the legal entity was finalized or closed in tax year 2022.
+  - _name: K1DueJune30
+    dataType: LegalEntity.list_of_values.YesNo
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    physicalName: K1_DUE_JUNE_30
+    label: K1 Due June 30
+    description: Indicates if the K-1 form is due by June 30 for the legal entity.
+    documentation: Yes/No flag indicating whether the K-1 tax form is due by June 30 for the legal entity.
+  - _name: FromADVPF
+    dataType: LegalEntity.list_of_values.YesNo
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    physicalName: FROM_ADV_PF
+    label: From Adv PF
+    description: Indicates if the legal entity is from ADV PF.
+    documentation: Yes/No flag indicating whether the legal entity originated from ADV PF.
+  - _name: ENableTaxSoftware
+    dataType: LegalEntity.list_of_values.YesNo
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    physicalName: ENABLE_TAX_SOFTWARE
+    label: Enable Tax Software
+    description: Indicates if tax software is enabled for the legal entity.
+    documentation: Yes/No flag indicating whether tax software is enabled for the legal entity.
+  - _name: Website
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: WEBSITE
+    label: Website
+    description: The website URL for the legal entity.
+    documentation: The web address or URL of the legal entity's website.
+  - _name: ChainID
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 5
+    multiValued: false
+    searchable: true
+    physicalName: CHAIN_ID
+    label: Chain ID
+    description: The chain ID for the legal entity.
+    documentation: The unique chain identifier used for linking and integration purposes.
+entityType: FUZZY_MATCHED
+historizeGolden: false
+historizeMaster: false
+physicalTableName: LEGAL_ENTITY
+matcher:
+  _type: SemQLMatcher
+  _name: LegalEntityMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: true
+  matchRules:
+    - _name: ExactEIN
+      label: ExactEIN
+      _type: SemQLMatchRule
+      condition: "Record1.USFEIN = Record2.USFEIN"
+      matchScore: 100
+      usingMatchOn: false
+    - _name: ExactNameAddress
+      label: ExactNameAddress
+      _type: SemQLMatchRule
+      condition: "Record1.NormalizedName  = Record2.NormalizedName AND Record1.InputAddress.AddressLine = Record2.InputAddress.AddressLine AND Record1.InputAddress.City = Record2.InputAddress.City AND Record1.InputAddress.State = Record2.InputAddress.State AND Record1.InputAddress.Country = Record2.InputAddress.Country AND Record1.InputAddress.ZipCode = Record2.InputAddress.ZipCode"
+      matchScore: 90
+      usingMatchOn: false
+    - _name: ExactName
+      label: ExactName
+      _type: SemQLMatchRule
+      condition: "Record1.NormalizedName  = Record2.NormalizedName" 
+      matchScore: 75
+      usingMatchOn: false
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdNewGroup: 85
+  mergeThresholdRemergingPreviouslySplit: 85
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+primaryKey: LegalEntity.entities.LegalEntity.LegalEntity.ID
+
+sourceIdGeneration:
+  mode: MANUAL
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1200

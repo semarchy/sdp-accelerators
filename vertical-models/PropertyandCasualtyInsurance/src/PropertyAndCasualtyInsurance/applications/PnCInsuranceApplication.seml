@@ -1,0 +1,980 @@
+_package: PropertyAndCasualtyInsurance.applications
+_type: Application
+_name: PnCInsuranceApplication
+label: Property and Casualty Insurance
+visibility: VISIBLE
+applicationTitle: Property and Casualty Insurance MDM
+avatarImageUrl: images://pnc-ins/pncAvatar.png
+logoUrl: images://pnc-ins/pncSearch.png
+coverImageUrl: images://pnc-ins/pncNavLogo.png
+favIcon: images://pnc-ins/pncAvatar.png
+titleColor: md:blue 800
+titleBarDefaultColor: md:green 300
+titleBarAuthoringColor: md:orange 300
+titleBarErrorColor: md:red 300
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+defaultAction: PropertyAndCasualtyInsurance.applications.PnCInsuranceApplication.Root.ExecutiveDashboard
+documentationConfig:
+  documentation: "Property and Casualty Model diagram covering all entities "
+  documentationConfigDiagrams:
+    - _type: DocumentationConfigDiagram
+      _name: AllEntities
+      modelDiagram: PropertyAndCasualtyInsurance.model_diagrams.AllEntities
+      label: Property and Casualty All Entities
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: false
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: LineOfCoverage
+      label: Line Of Coverage
+      viewType: GD
+      businessView: PropertyAndCasualtyInsurance.entities.Coverage.business_views.CoverageBusinessView
+      searchTypeConfig: PropertyAndCasualtyInsurance.entities.Coverage.business_views.CoverageBusinessView.Coverage.TextConfig
+      maxResults: 5
+    
+    - _type: GlobalSearchBoView
+      _name: VehicleAssets
+      label: Vehicle Assets
+      viewType: GD
+      businessView: PropertyAndCasualtyInsurance.entities.VehicleAsset.business_views.VehicleAssetBusinessView
+      searchTypeConfig: PropertyAndCasualtyInsurance.entities.VehicleAsset.business_views.VehicleAssetBusinessView.VehicleAsset.TextConfig
+      maxResults: 5
+
+    - _type: GlobalSearchBoView
+      _name: HomeAssets
+      label: Home Assets
+      viewType: GD
+      businessView: PropertyAndCasualtyInsurance.entities.HomeAsset.business_views.HomeAssetBusinessView
+      searchTypeConfig: PropertyAndCasualtyInsurance.entities.HomeAsset.business_views.HomeAssetBusinessView.HomeAsset.TextConfig
+      maxResults: 5
+navDrawer:
+  - _type: NavigationGroup
+    _name: RootFolder
+    label: Root Folder
+    dividerVisible: false
+    labelVisible: false
+    actions:
+      - appAction: PropertyAndCasualtyInsurance.applications.PnCInsuranceApplication.Root.MyTasks
+      - appAction: PropertyAndCasualtyInsurance.applications.PnCInsuranceApplication.Root.GlobalSearch
+
+      - appAction: PropertyAndCasualtyInsurance.applications.PnCInsuranceApplication.Root.ExecutiveDashboard
+
+  - _type: FolderNavGroup
+    _name: ProductManagement
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: PropertyAndCasualtyInsurance.applications.PnCInsuranceApplication.Root.ProductManagement
+
+  - _type: FolderNavGroup
+    _name: PolicyManagement
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: PropertyAndCasualtyInsurance.applications.PnCInsuranceApplication.Root.PolicyManagement
+
+  - _type: FolderNavGroup
+    _name: InsuredAssetManagement
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: PropertyAndCasualtyInsurance.applications.PnCInsuranceApplication.Root.InsuredAssetManagement
+  - _type: FolderNavGroup
+    _name: Admin
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: PropertyAndCasualtyInsurance.applications.PnCInsuranceApplication.Root.Admin
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+
+  appActions:
+    - _type: MyTasksAction
+      _name: MyTasks
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: false
+
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+
+    - _type: OpenDashboardAction
+      _name: ExecutiveDashboard
+      dashboard: ExecutivePolicyOverview
+      label: Executive Dashboard
+      dashboardApplication: PropertyAndCasualty
+      icon: images://mdi/chart-box.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+
+    - _type: FolderAction
+      _name: ProductManagement
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Product Management
+      labelColor: md:blue 900
+      appActions:
+        
+        - _type: BrowseBusinessViewAction
+          _name: BrowseLineOfBusiness
+          businessView: PropertyAndCasualtyInsurance.entities.LineOfBusiness.business_views.LineOfBusinessBusinessView
+          label: Line of Business
+          nbRecordsBadgeVisible: false
+          description: Browse Line Of Business Hierarchy
+          iconColor: md:blue 700
+          icon: images://mdi/family-tree.svg
+          labelColor: md:blue 700
+
+        - _type: BrowseBusinessViewAction
+          _name: BrowseInsuranceProduct
+          label: Insurance Products
+          businessView: PropertyAndCasualtyInsurance.entities.InsuranceProduct.business_views.InsuranceProductBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          description: Browse Insurance Product records
+          iconColor: md:blue 700
+          labelColor: md:blue 700
+          icon: images://mdi/package.svg
+
+        - _type: BrowseBusinessViewAction
+          _name: InsuranceType
+          label: Insurance Types
+          businessView: PropertyAndCasualtyInsurance.entities.InsuranceType.business_views.InsuranceTypeBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          description: Browse Insurance Type records
+          iconColor: md:blue 700
+          labelColor: md:blue 700
+          icon: images://mdi/arrow-decision-outline.svg
+
+        - _type: FolderAction
+          _name: ProductConfigurations
+          description: Browse other relevant information for insurance product management
+          label: Product Configurations
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:blue 700
+          labelColor: md:blue 700
+          appActions:
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCoverage
+              businessView: PropertyAndCasualtyInsurance.entities.Coverage.business_views.CoverageBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Coverages
+              description: Browse Insurance Coverages
+              image: images://pnc-ins/pnc-coverage.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCoverageCategory
+              businessView: PropertyAndCasualtyInsurance.entities.CoverageCategory.business_views.CoverageCategoryBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Coverage Categories
+              description: Browse Coverage Categories
+              image: images://pnc-ins/pnc-coverage-category.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseFormEndorsement
+              businessView: PropertyAndCasualtyInsurance.entities.FormEndorsement.business_views.FormEndorsementBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Form Endorsements
+              description: Browse Form Endorsement
+              image: images://pnc-ins/pnc-form-endorsements.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseInclusionExclusion
+              businessView: PropertyAndCasualtyInsurance.entities.InclusionExclusion.business_views.InclusionExclusionBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Inclusions and Exclusions
+              description: Browse Inclusions and Exclusions
+              image: images://pnc-ins/pnc-inclusion-exclusion.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseInsurancePlan
+              businessView: PropertyAndCasualtyInsurance.entities.InsurancePlan.business_views.InsurancePlanBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Insurance Plans
+              description: Browse Insurance Plans
+              image: images://pnc-ins/pnc-insurance-plan.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRating
+              businessView: PropertyAndCasualtyInsurance.entities.Rating.business_views.RatingBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Ratings
+              description: Browse Ratings
+              image: images://pnc-ins/pnc-ratings.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRegulatoryTest
+              businessView: PropertyAndCasualtyInsurance.entities.RegulatoryTest.business_views.RegulatoryTestBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Regulatory Tests
+              description: Browse Regulatory Tests
+              image: images://pnc-ins/pnc-regulatory-tests.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRiskClass
+              businessView: PropertyAndCasualtyInsurance.entities.RiskClass.business_views.RiskClassBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Risk Classes
+              description: Browse Risk Classes
+              image: images://pnc-ins/pnc-riskclass.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+    - _type: FolderAction
+      _name: PolicyManagement
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Policy Management
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowsePolicy
+          businessView: PropertyAndCasualtyInsurance.entities.Policy.business_views.PolicyBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:indigo 700
+          labelColor: md:indigo 700
+          label: Policies
+          description: Browse Policy records
+          icon: images://mdi/document.svg
+
+        - _type: BrowseBusinessViewAction
+          _name: BrowseLineOfCoverage
+          businessView: PropertyAndCasualtyInsurance.entities.LineOfCoverage.business_views.LineOfCoverageBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:indigo 700
+          labelColor: md:indigo 700
+          label: Lines Of Coverage
+          description: Browse line of coverage records
+          icon: images://mdi/shield-link-variant.svg
+
+        - _type: BrowseBusinessViewAction
+          _name: BrowsePolicyByStatus
+          businessView: PropertyAndCasualtyInsurance.entities.PolicyStatus.business_views.PolicyByStatusBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:indigo 700
+          labelColor: md:indigo 700
+          label: Policies by Status
+          description: Browse Policy records by Status
+          icon: images://mdi/file-document-outline.svg
+
+        - _type: FolderAction
+          _name: PolicyConfigurations
+          description: Browse other relevant information for insurance policy management
+          label: Policy Configurations
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:indigo 700
+          labelColor: md:indigo 700
+          appActions:
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCoverageStatus
+              businessView: PropertyAndCasualtyInsurance.entities.CoverageStatus.business_views.CoverageStatusBusinessView
+              label: Coverage Statuses
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              description: Browse Coverage Statuses
+              iconColor: md:blue
+              labelColor: md:blue 900
+              image: images://pnc-ins/pnc-coverage-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseDistributionChannel
+              businessView: PropertyAndCasualtyInsurance.entities.DistributionChannel.business_views.DistributionChannelBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Distribution Channels
+              description: Browse Distribution Channels
+              image: images://pnc-ins/pnc-distribution-channel.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePaymentPlan
+              businessView: PropertyAndCasualtyInsurance.entities.PaymentPlan.business_views.PaymentPlanBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Payment Plans
+              description: Browse Payment Plans
+              image: images://pnc-ins/pnc-payment-plan.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePaymentStatus
+              businessView: PropertyAndCasualtyInsurance.entities.PaymentStatus.business_views.PaymentStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Payment Statuses
+              description: Browse Payment Statuses
+              image: images://pnc-ins/pnc-payment-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePolicyStatus
+              businessView: PropertyAndCasualtyInsurance.entities.PolicyStatus.business_views.PolicyStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Policy Statuses
+              description: Browse Policy Statuses
+              image: images://pnc-ins/pnc-policy-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+
+    - _type: FolderAction
+      _name: InsuredAssetManagement
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Insured Asset Management
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseVehicleAsset
+          businessView: PropertyAndCasualtyInsurance.entities.VehicleAsset.business_views.VehicleAssetBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:teal 700
+          labelColor: md:teal 700
+          label: Vehicle Assets
+          description: Browse Vehicle Asset records
+          icon: images://mdi/car-multiple.svg
+
+        - _type: BrowseBusinessViewAction
+          _name: BrowseHomeAsset
+          businessView: PropertyAndCasualtyInsurance.entities.HomeAsset.business_views.HomeAssetBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:teal 700
+          labelColor: md:teal 700
+          label: Home Assets
+          description: Browse Home Asset records
+          icon: images://mdi/home-switch.svg
+
+
+        - _type: FolderAction
+          _name: AssetConfigurations
+          description: Browse reference data for insured asset management
+          label: Asset Configuration
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:teal 700
+          labelColor: md:teal 700
+          appActions:
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseAssetStatus
+              businessView: PropertyAndCasualtyInsurance.entities.AssetStatus.business_views.AssetStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Asset Statuses
+              description: Browse Asset Statuses
+              image: images://pnc-ins/pnc-asset-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseAssetType
+              businessView: PropertyAndCasualtyInsurance.entities.AssetType.business_views.AssetTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Asset Types
+              description: Browse Asset Types
+              image: images://pnc-ins/pnc-asset-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBasementType
+              businessView: PropertyAndCasualtyInsurance.entities.BasementType.business_views.BasementTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Basement Types
+              description: Browse Basement Types
+              image: images://pnc-ins/pnc-basement-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBodyStyle
+              businessView: PropertyAndCasualtyInsurance.entities.BodyStyle.business_views.BodyStyleBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Body Styles
+              description: Browse Body Styles
+              image: images://pnc-ins/pnc-body-style.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseConstructionType
+              businessView: PropertyAndCasualtyInsurance.entities.ConstructionType.business_views.ConstructionTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Construction Types
+              description: Browse Construction Types
+              image: images://pnc-ins/pnc-construction-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseFoundationType
+              businessView: PropertyAndCasualtyInsurance.entities.FoundationType.business_views.FoundationTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Foundation Types
+              description: Browse Foundation Types
+              image: images://pnc-ins/pnc-foundation-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseInsurableAsset
+              businessView: PropertyAndCasualtyInsurance.entities.InsurableAsset.business_views.InsurableAssetBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Insurable Assets
+              description: Browse Insurable Assets
+              image: images://pnc-ins/pnc-insurable-asset.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRoofType
+              businessView: PropertyAndCasualtyInsurance.entities.RoofType.business_views.RoofTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Roof Types
+              description: Browse Roof Types
+              image: images://pnc-ins/pnc-roof-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseStateProvince
+              businessView: PropertyAndCasualtyInsurance.entities.StateProvince.business_views.StateProvinceBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: States and Provinces
+              description: Browse States and Provinces
+              image: images://pnc-ins/pnc-state-province.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseVehicleMake
+              businessView: PropertyAndCasualtyInsurance.entities.VehicleMake.business_views.VehicleMakeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Vehicle Makes
+              description: Browse Vehicle Makes
+              image: images://pnc-ins/pnc-vehicle-make.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseVehicleModel
+              businessView: PropertyAndCasualtyInsurance.entities.VehicleModel.business_views.VehicleModelBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Vehicle Models
+              description: Browse Vehicle Models
+              image: images://pnc-ins/pnc-vehicle-model.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseVehicleSafetyFeature
+              businessView: PropertyAndCasualtyInsurance.entities.VehicleSafetyFeature.business_views.VehicleSafetyFeatureBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Vehicle Safety Features
+              description: Browse Vehicle Safety Features
+              image: images://pnc-ins/pnc-vehicle-safety-feature.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseVehicleTrim
+              businessView: PropertyAndCasualtyInsurance.entities.VehicleTrim.business_views.VehicleTrimBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Vehicle Trims
+              description: Browse Vehicle Trims
+              image: images://pnc-ins/pnc-vehicle-trim.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseVehicleType
+              businessView: PropertyAndCasualtyInsurance.entities.VehicleType.business_views.VehicleTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:blue
+              labelColor: md:blue 900
+              label: Vehicle Types
+              description: Browse Vehicle Types
+              image: images://pnc-ins/pnc-vehicle-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+     
+
+ 
+    - _type: FolderAction
+      _name: Admin
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Administration
+
+      appActions:
+        - _type: FolderAction
+          _name: Errors
+          icon: images://mdi/alert-box.svg
+          iconColor: md:black
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Manage Errors
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: VehicleAssets
+              businessView: PropertyAndCasualtyInsurance.entities.VehicleAsset.business_views.VehicleAssetBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:red 700
+              viewType: SDWE
+              image: images://pnc-ins/pnc-vehicle-asset-error.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: Policies
+              businessView: PropertyAndCasualtyInsurance.entities.Policy.business_views.PolicyBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:red 700
+              viewType: SDWE
+              image: images://pnc-ins/pnc-policy-error.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: HomeAssets
+              businessView: PropertyAndCasualtyInsurance.entities.HomeAsset.business_views.HomeAssetBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:red 700
+              viewType: SDWE
+              image: images://pnc-ins/pnc-home-asset-error.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: LineOfCoverage
+              businessView: PropertyAndCasualtyInsurance.entities.LineOfCoverage.business_views.LineOfCoverageBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:red 700
+              viewType: SDWE
+              image: images://pnc-ins/pnc-line-of-coverage-error.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+        - _type: FolderAction
+          _name: ImportData
+          icon: images://mdi/database-import.svg
+          image: images://default/folder-item-import.png
+          iconColor: md:black
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Import Data
+          requiredRole: semarchyAdmin
+
+          appActions:
+            - _type: ImportDataAppAction
+              _name: ImportAssetStatus
+              label: 01-Import Asset Status
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.AssetStatus.action_sets.AssetStatusActionSet.ImportAuthorAssetStatuses
+
+            - _type: ImportDataAppAction
+              _name: ImportAssetType
+              label: 02-Import Asset Type
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.AssetType.action_sets.AssetTypeActionSet.ImportAuthorAssetTypes
+
+            - _type: ImportDataAppAction
+              _name: ImportBasementType
+              label: 03-Import Basement Type
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.BasementType.action_sets.BasementTypeActionSet.ImportAuthorBasementTypes
+
+            - _type: ImportDataAppAction
+              _name: ImportBodyStyle
+              label: 04-Import Body Style
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.BodyStyle.action_sets.BodyStyleActionSet.ImportAuthorBodyStyles
+
+            - _type: ImportDataAppAction
+              _name: ImportConstructionType
+              label: 05-Import Construction Type
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.ConstructionType.action_sets.ConstructionTypeActionSet.ImportAuthorConstructionTypes
+
+            - _type: ImportDataAppAction
+              _name: ImportCoverageCategory
+              label: 06-Import Coverage Category
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.CoverageCategory.action_sets.CoverageCategoryActionSet.ImportAuthorCoverageCategories
+
+            - _type: ImportDataAppAction
+              _name: ImportCoverageStatus
+              label: 07-Import Coverage Status
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.CoverageStatus.action_sets.CoverageStatusActionSet.ImportAuthorCoverageStatuses
+
+            - _type: ImportDataAppAction
+              _name: ImportDistributionChannel
+              label: 08-Import Distribution Channel
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.DistributionChannel.action_sets.DistributionChannelActionSet.ImportAuthorDistributionChannels
+
+            - _type: ImportDataAppAction
+              _name: ImportFoundationType
+              label: 09-Import Foundation Type
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.FoundationType.action_sets.FoundationTypeActionSet.ImportAuthorFoundationTypes
+
+            - _type: ImportDataAppAction
+              _name: ImportVehicleMake
+              label: 10-Import Vehicle Make
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.VehicleMake.action_sets.VehicleMakeActionSet.ImportAuthorVehicleMakes
+
+            - _type: ImportDataAppAction
+              _name: ImportVehicleModel
+              label: 11-Import Vehicle Model
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.VehicleModel.action_sets.VehicleModelActionSet.ImportAuthorVehicleModels
+
+            - _type: ImportDataAppAction
+              _name: ImportVehicleSafetyFeature
+              label: 12-Import Vehicle Safety Feature
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.VehicleSafetyFeature.action_sets.VehicleSafetyFeatureActionSet.ImportAuthorVehicleSafetyFeatures
+
+            - _type: ImportDataAppAction
+              _name: ImportVehicleTrim
+              label: 13-Import Vehicle Trim
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.VehicleTrim.action_sets.VehicleTrimActionSet.ImportAuthorVehicleTrims
+
+            - _type: ImportDataAppAction
+              _name: ImportVehicleType
+              label: 14-Import Vehicle Type
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.VehicleType.action_sets.VehicleTypeActionSet.ImportAuthorVehicleTypes
+
+            - _type: ImportDataAppAction
+              _name: ImportPaymentPlan
+              label: 15-Import Payment Plan
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.PaymentPlan.action_sets.PaymentPlanActionSet.ImportAuthorPaymentPlans
+
+            - _type: ImportDataAppAction
+              _name: ImportPaymentStatus
+              label: 16-Import Payment Status
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.PaymentStatus.action_sets.PaymentStatusActionSet.ImportAuthorPaymentStatuses
+
+            - _type: ImportDataAppAction
+              _name: ImportRoofType
+              label: 17-Import Roof Type
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.RoofType.action_sets.RoofTypeActionSet.ImportAuthorRoofTypes
+
+            - _type: ImportDataAppAction
+              _name: ImportStateProvince
+              label: 18-Import State Province
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.StateProvince.action_sets.StateProvinceActionSet.ImportAuthorStatesandProvinces
+
+            - _type: ImportDataAppAction
+              _name: ImportPolicyStatus
+              label: 19-Import Policy Status
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.PolicyStatus.action_sets.PolicyStatusActionSet.ImportAuthorPolicyStatuses
+
+            - _type: ImportDataAppAction
+              _name: ImportRiskClass
+              label: 20-Import Risk Class
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.RiskClass.action_sets.RiskClassActionSet.ImportAuthorRiskClasses
+
+            - _type: ImportDataAppAction
+              _name: ImportLineOfBusiness
+              label: 21-Import Line Of Business
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.LineOfBusiness.action_sets.LineOfBusinessActionSet.ImportAuthorLineOfBusinesses
+
+            - _type: ImportDataAppAction
+              _name: ImportInclusionExclusion
+              label: 22-Import Inclusion Exclusion
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.InclusionExclusion.action_sets.InclusionExclusionActionSet.ImportAuthorInclusionExclusions
+
+            - _type: ImportDataAppAction
+              _name: ImportInsuranceProduct
+              label: 23-Import Insurance Product
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.InsuranceProduct.action_sets.InsuranceProductActionSet.ImportAuthorInsuranceProducts
+
+            - _type: ImportDataAppAction
+              _name: ImportInsuranceType
+              label: 24-Import Insurance Type
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.InsuranceType.action_sets.InsuranceTypeActionSet.ImportAuthorInsuranceTypes
+
+            - _type: ImportDataAppAction
+              _name: ImportInsurancePlan
+              label: 25-Import Insurance Plan
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.InsurancePlan.action_sets.InsurancePlanActionSet.ImportAuthorInsurancePlans
+
+            - _type: ImportDataAppAction
+              _name: ImportRegulatoryTests
+              label: 26-Import Regulatory Test
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.RegulatoryTest.action_sets.RegulatoryTestActionSet.ImportAuthorRegulatoryTests
+
+            - _type: ImportDataAppAction
+              _name: ImportRatings
+              label: 27-Import Rating
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.Rating.action_sets.RatingActionSet.ImportAuthorRatings
+
+            - _type: ImportDataAppAction
+              _name: ImportCoverage
+              label: 28-Import Coverage
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.Coverage.action_sets.CoverageActionSet.ImportAuthorCoverages
+
+            - _type: ImportDataAppAction
+              _name: ImportFormEndorsements
+              label: 29-Import Form Endorsement
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.FormEndorsement.action_sets.FormEndorsementActionSet.ImportAuthorFormEndorsements
+
+            - _type: ImportDataAppAction
+              _name: ImportVehicleAsset
+              label: 30-Import Vehicle Asset
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.VehicleAsset.action_sets.VehicleAssetActionSet.ImportAuthorVehicleAssets
+
+            - _type: ImportDataAppAction
+              _name: ImportHomeAsset
+              label: 31-Import Home Asset
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.HomeAsset.action_sets.HomeAssetActionSet.ImportAuthorHomeAssets
+
+            - _type: ImportDataAppAction
+              _name: ImportPolicy
+              label: 32-Import Policy
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.Policy.action_sets.PolicyMasterImport.Import
+
+            - _type: ImportDataAppAction
+              _name: ImportLineOfCoverage
+              label: 33-Import Line Of Coverage
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.LineOfCoverage.action_sets.LineOfCoverageActionSet.ImportAuthorLineOfCoverages
+
+            - _type: ImportDataAppAction
+              _name: ImportInsurableAsset
+              label: 34-Import Insurable Asset
+              image: images://default/folder-item-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: PropertyAndCasualtyInsurance.entities.InsurableAsset.action_sets.InsurableAssetActionSet.ImportAuthorInsurableAssets
+
+
+
+
+        - _type: BrowseEntitiesFolderAction
+          _name: Entities
+          lineageEnabled: true
+          label: Browse All Data
+          requiredRole: semarchyAdmin
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+
+        - _type: OpenDocumentationAction
+          _name: OpenModelDoc
+          iconColor: md:black
+          label: Model Documentation
+

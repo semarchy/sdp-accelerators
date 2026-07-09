@@ -1,0 +1,94 @@
+_name: AuthorItem_ItemImageJoins
+_package: Manufacturing.entities.Item_ItemImageJoin.steppers
+_type: Stepper
+entity: Manufacturing.entities.Item_ItemImageJoin.Item_ItemImageJoin
+rootStep:
+  _name: Item_ItemImageJoins
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.Item_ItemImageJoin.collection_views.Item_ItemImageJoinCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Image Joins
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+  stepTriggers: []
+  childSteps:
+    - _name: Item_ItemImageJoin
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Image Join
+      formTab: Manufacturing.entities.Item_ItemImageJoin.forms.Item_ItemImageJoinForm.Item_ItemImageJoin
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+      stepTriggers: []
+label: Author Item Image Joins
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+triggers: []

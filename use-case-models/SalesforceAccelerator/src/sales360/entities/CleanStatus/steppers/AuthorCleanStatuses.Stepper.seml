@@ -1,0 +1,51 @@
+# This is the AuthorCleanStatuses Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing clean statuses within the Salesforce context.
+_name: AuthorCleanStatuses
+_package: sales360.entities.CleanStatus.steppers
+_type: Stepper
+entity: sales360.entities.CleanStatus.CleanStatus
+description: Stepper for managing Clean Status records in the Salesforce Accelerator
+rootStep:
+  _name: CleanStatuss
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.CleanStatus.collection_views.CleanStatusCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Clean Statuses
+  description: Manage Clean Status records
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Clean Status
+      formTab: sales360.entities.CleanStatus.forms.CleanStatusForm.Main
+      formStepEnrichers:
+        - enricher: sales360.entities.CleanStatus.enrichers.Upper
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Clean Statuses
+stepperFinishValidations: []
+triggers: []

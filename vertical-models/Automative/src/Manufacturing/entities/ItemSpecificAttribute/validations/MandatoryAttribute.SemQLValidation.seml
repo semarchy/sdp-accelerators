@@ -1,0 +1,19 @@
+_name: MandatoryAttribute
+_package: Manufacturing.entities.ItemSpecificAttribute.validations
+entity: Manufacturing.entities.ItemSpecificAttribute.ItemSpecificAttribute
+label: Mandatory Attribute
+description: "Ensures mandatory item attributes have either a constrained value or an unconstrained value before consolidation."
+validationScope: PRE_CONSO
+validationLabel: A value is mandatory for this attribute
+_type: SemQLValidation
+condition: |-
+  Attribute.Mandatory ='0' 
+  or (
+  	Attribute.Mandatory ='1' 
+  	and
+  	(
+  		FID_AttributeValue is not null
+  		or
+  		UnconstrainedValue is not null
+  	)
+  )

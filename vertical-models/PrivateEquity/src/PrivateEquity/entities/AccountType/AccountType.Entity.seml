@@ -1,0 +1,52 @@
+_name: AccountType
+_package: PrivateEquity.entities.AccountType
+_type: Entity
+primaryKey: PrivateEquity.entities.AccountType.AccountType.AccountType
+sourceIdGeneration:
+  mode: MANUAL
+label: Account Type
+description: "Defines reference values used to classify bank accounts by business purpose or account category."
+documentation: "Maintains the controlled list of account type values used to categorize bank accounts during stewardship and integration."
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/bank-transfer.svg
+pluralLabel: Account Types
+historizeGolden: false
+historizeMaster: false
+physicalTableName: ACCOUNT_TYPE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AccountType
+    physicalName: ACCOUNT_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Account Type
+    description: "Controlled reference value used to classify account type records."
+    documentation: "Controlled reference value used to classify account type records. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 128
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    description: "Free-text explanation that clarifies the meaning or business use of the account type value."
+    documentation: "Free-text explanation that clarifies the meaning or business use of the account type value. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 4000
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

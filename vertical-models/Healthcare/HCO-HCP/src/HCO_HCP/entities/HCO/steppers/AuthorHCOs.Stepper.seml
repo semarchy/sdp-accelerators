@@ -1,0 +1,251 @@
+_name: AuthorHCOs
+_package: HCO_HCP.entities.HCO.steppers
+_type: Stepper
+entity: HCO_HCP.entities.HCO.HCO
+rootStep:
+  _name: HCOs
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.HCO.collection_views.HCOCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: HCOs
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: HCO_HCP.entities.HCO.HCO.ACTIVECODE
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: HCO_HCP.entities.HCO.HCO.SemlQLMatcherHCO
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+  stepTriggers: []
+  childSteps:
+    - _name: HCO
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: HCO
+      formTab: HCO_HCP.entities.HCO.forms.HCOForm2Input.HCO
+      formStepEnrichers:
+        - enricher: HCO_HCP.entities.HCO.enrichers.GoogleMapEnricher
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: HCO_HCP.entities.HCO.enrichers.NormalizeName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: HCO_HCP.entities.HCO.enrichers.RemoveBusinessEntityType
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: LOV
+          attribute: HCO_HCP.entities.HCO.HCO.ACTIVECODE
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: HCO_HCP.entities.HCO.HCO.ACTIVECODE
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: HCO_HCP.entities.HCO.HCO.SemlQLMatcherHCO
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+      stepTriggers: []
+    - _name: HCPS
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: HCO_HCP.entities.HCP.collection_views.HCPCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: HCPS
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.HcpSpecialization.TaxonomySpecialization
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: HCO_HCP.entities.HCO.HCO.ACTIVECODE
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: HCO_HCP.entities.HCO.HCO.SemlQLMatcherHCO
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: HCO_HCP.entities.HCP.validations.CheckName
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: HCO_HCP.entities.HCP.validations.RejectNotAvailableData
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.HcpsHCO.HCO
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: HCO_HCP.entities.HCP.HCP.SemlQLMatcherHCP
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: HCO_HCP.references.HcpsHCO
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: HCP
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Healthcare Provider
+          formTab: HCO_HCP.entities.HCP.forms.HCPForm.HCP
+          formStepEnrichers:
+            - enricher: HCO_HCP.entities.HCP.enrichers.NPINumber
+              executedOnButtonClick: true
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - enricher: HCO_HCP.entities.HCP.enrichers.GoogleMapEnricher
+              executedOnButtonClick: true
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - enricher: HCO_HCP.entities.HCP.enrichers.AddressCleansing
+              executedOnButtonClick: true
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - enricher: HCO_HCP.entities.HCP.enrichers.NPPESGetNPI
+              executedOnButtonClick: true
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - enricher: HCO_HCP.entities.HCP.enrichers.SplitName
+              executedOnButtonClick: true
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - enricher: HCO_HCP.entities.HCP.enrichers.Phoneticize
+              executedOnButtonClick: true
+              executedOnDataChange: true
+              executedOnFormOpen: true
+          referenceFormFieldConfigs:
+            - enableCreateReference: false
+              enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: HCO_HCP.entities.HCP.forms.HCPForm.HCP.Container415.BasicInformation.FDN_HCO
+              referencePickerCollectionView: HCO_HCP.entities.HCO.collection_views.HCOCollection
+              referencePickerSearchTypeConfigs: []
+            - enableCreateReference: false
+              enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: HCO_HCP.entities.HCP.forms.HCPForm.HCP.Container415.BasicInformation.FDN_TaxonomySpecialization
+              referencePickerCollectionView: HCO_HCP.entities.TaxonomyClassificationSpecialization.collection_views.TaxonomyClassificationSpecializationCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: CHECK
+              executedOnDataChange: false
+              executedOnFormOpen: false
+              validator: HCO_HCP.entities.HCP.validations.CheckName
+            - validationType: FOREIGN
+              attribute: HCO_HCP.references.HcpsHCO.HCO
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - validationType: FOREIGN
+              attribute: HCO_HCP.references.HcpSpecialization.TaxonomySpecialization
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: CHECK
+              executedOnDataChange: false
+              executedOnFormOpen: false
+              validator: HCO_HCP.entities.HCP.validations.RejectNotAvailableData
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: DETECT_DUPS
+              matcher: HCO_HCP.entities.HCP.HCP.SemlQLMatcherHCP
+            - onStepExit: SKIP
+              validationType: CHECK
+              validator: HCO_HCP.entities.HCP.validations.CheckName
+            - onStepExit: SKIP
+              validationType: CHECK
+              validator: HCO_HCP.entities.HCP.validations.RejectNotAvailableData
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: HCO_HCP.references.HcpsHCO.HCO
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: HCO_HCP.references.HcpSpecialization.TaxonomySpecialization
+          stepTriggers: []
+label: Author HCOs
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.HcpsHCO.HCO
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: HCO_HCP.entities.HCP.validations.CheckName
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.HcpSpecialization.TaxonomySpecialization
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: HCO_HCP.entities.HCO.HCO.ACTIVECODE
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: HCO_HCP.entities.HCO.validations.RejectNotAvailableData
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: HCO_HCP.entities.HCP.validations.RejectNotAvailableData
+triggers: []

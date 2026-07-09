@@ -1,0 +1,238 @@
+_name: EditContacts
+_package: PrivateEquity.entities.Contact.steppers
+_type: Stepper
+entity: PrivateEquity.entities.Contact.Contact
+rootStep:
+  _name: EditContact
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.Contact.collection_views.ContactCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Edit Contact
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: PrivateEquity.entities.Contact.validations.SSNFormat
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.ContactsLegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: UNIQUE
+      uniqueKey: PrivateEquity.entities.Contact.unique_keys.UniqueSSN
+    - onStepExit: WARN
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Contact.Contact.LastName
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.ContactsOffice.Office
+    - onStepExit: WARN
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.ContactsOffice.Office
+    - onStepExit: WARN
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Contact.Contact.FirstName
+  stepTriggers: []
+  childSteps:
+    - _name: ContactInfo
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Contact Info
+      formTab: PrivateEquity.entities.Contact.forms.ContactEditingForm.ContactInfo
+      formStepEnrichers:
+        - enricher: PrivateEquity.entities.Contact.enrichers.AutopopulateFullName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Contact.enrichers.StandardizeMobilePhone
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Contact.enrichers.AutopopulateOfficePhone
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Contact.enrichers.CleanseEmail
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.Contact.forms.ContactEditingForm.ContactInfo.Container5.Container3.FDN_LegalEntity
+          referencePickerCollectionView: PrivateEquity.entities.LegalEntity.collection_views.LegalEntityCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.Contact.forms.ContactEditingForm.ContactInfo.Container5.Container3.FDN_Office
+          referencePickerCollectionView: PrivateEquity.entities.Office.collection_views.OfficeCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Contact.Contact.LastName
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.ContactsOffice.Office
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Contact.Contact.FirstName
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.ContactsOffice.Office
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: UNIQUE
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          uniqueKey: PrivateEquity.entities.Contact.unique_keys.UniqueSSN
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: PrivateEquity.entities.Contact.validations.SSNFormat
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.ContactsLegalEntity.LegalEntity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: UNIQUE
+          uniqueKey: PrivateEquity.entities.Contact.unique_keys.UniqueSSN
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.ContactsOffice.Office
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.ContactsLegalEntity.LegalEntity
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Contact.Contact.FirstName
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Contact.Contact.LastName
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.ContactsOffice.Office
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: PrivateEquity.entities.Contact.validations.SSNFormat
+      stepTriggers: []
+    - _name: AddressInfo
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Address Info
+      formSection: PrivateEquity.entities.Contact.forms.ContactEditingForm.ContactInfo.AddressInfo
+      formStepEnrichers:
+        - enricher: PrivateEquity.entities.Contact.enrichers.CleanseEmail
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Contact.enrichers.StandardizeMobilePhone
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Contact.enrichers.AutopopulateOfficePhone
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Contact.enrichers.AutopopulateFullName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.ContactsOffice.Office
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.ContactsOffice.Office
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: UNIQUE
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          uniqueKey: PrivateEquity.entities.Contact.unique_keys.UniqueSSN
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: PrivateEquity.entities.Contact.validations.SSNFormat
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Contact.Contact.FirstName
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.ContactsLegalEntity.LegalEntity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Contact.Contact.LastName
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.ContactsLegalEntity.LegalEntity
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Contact.Contact.FirstName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.ContactsOffice.Office
+        - onStepExit: SKIP
+          validationType: UNIQUE
+          uniqueKey: PrivateEquity.entities.Contact.unique_keys.UniqueSSN
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.ContactsOffice.Office
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: PrivateEquity.entities.Contact.validations.SSNFormat
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Contact.Contact.LastName
+      stepTriggers: []
+label: Edit Contacts
+stepperFinishValidations:
+  - onStepperFinish: BLOCK
+    validationType: UNIQUE
+    uniqueKey: PrivateEquity.entities.Contact.unique_keys.UniqueSSN
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.ContactsOffice.Office
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Contact.Contact.FirstName
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.ContactsLegalEntity.LegalEntity
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Contact.Contact.LastName
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.ContactsOffice.Office
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: PrivateEquity.entities.Contact.validations.SSNFormat
+triggers: []

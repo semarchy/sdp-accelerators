@@ -1,0 +1,20 @@
+_type: StandardSurvivorshipRule
+entity: HCO_HCP.entities.Member.Member
+_package: HCO_HCP.entities.Member.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+consolidationOrderByExpression: LPAD( SourceID, 5, '0' )
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Default Rule
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberXLS
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberJSON
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.Encounters
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes: []

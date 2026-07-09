@@ -1,0 +1,14 @@
+# It is an enricher for the CampaignMember entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that sets the HasResponded attribute to 1 if the FDN_Status is 'Responded', otherwise 0.
+# This enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.CampaignMember.enrichers
+_name: HasResponded
+entity: sales360.entities.CampaignMember.CampaignMember
+label: Has Responded
+description: Enricher that sets HasResponded to 1 if FDN_Status is 'Responded', otherwise 0
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: HasResponded
+    expression: CASE WHEN FDN_Status = 'Responded' THEN 1 ELSE 0 END
+afterEnrichers: sales360.entities.CampaignMember.enrichers.Type

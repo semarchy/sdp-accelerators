@@ -1,0 +1,69 @@
+_name: ItemActionSet
+_package: Manufacturing.entities.Item.action_sets
+_type: ActionSet
+entity: Manufacturing.entities.Item.Item
+label: Item Action Set
+defaultActionSet: true
+actions:
+  - _name: StartWorkflow
+    _type: StartWorkflowEntityAction
+    label: Onboard New Item
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: Manufacturing.workflows.OnboardItem.Start
+  - _name: CreateAuthorItems
+    label: Create (Direct)
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.Item.steppers.AuthorItems
+  - _name: EditAuthorItems
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.Item.steppers.AuthorItems
+  - _name: MassUpdateAuthorItems
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: Manufacturing.entities.Item.steppers.AuthorItems
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorItems
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.Item.steppers.AuthorItems
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

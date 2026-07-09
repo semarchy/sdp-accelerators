@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.Contact.enrichers
+_name: AutopopulateFullName
+entity: PrivateEquity.entities.Contact.Contact
+label: Autopopulate Full Name
+description: "Builds the contact full name from first and last name values before consolidation."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FullName
+    expression: FirstName || ' ' || LastName
+afterEnrichers: PrivateEquity.entities.Contact.enrichers.StandardizeMobilePhone

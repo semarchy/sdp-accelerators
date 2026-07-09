@@ -1,0 +1,100 @@
+_package: PropertyAndCasualtyInsurance.entities.InclusionExclusion.collection_views
+_type: CollectionView
+_name: InclusionExclusionImportCollection
+entity: PropertyAndCasualtyInsurance.entities.InclusionExclusion.InclusionExclusion
+default: true
+displayCard: PropertyAndCasualtyInsurance.entities.InclusionExclusion.display_cards.InclusionExclusionDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Inclusion Exclusion
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: InclusionExclusionID
+    value: InclusionExclusionID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: Type
+    value: Type
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      useAvatarInMenu: '1'
+      useAvatarInMenuValueInterpreter: LITERAL
+      textColor: CASE WHEN Type = 'Inclusion' THEN 'md:green' WHEN Type = 'Exclusion' THEN 'md:red' ELSE 'black' END
+      textColorValueInterpreter: SEMQL
+  - _type: TextColumn
+    _name: Title
+    value: Title
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FID_LineOfBusiness
+    columnAlign: LEFT
+    label: Line of Business
+    dataType: STRING
+    referencedEntity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness
+    useCustomLabel: true
+    value: FDN_LineOfBusiness
+    defaultWidth: 300
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+      chipMaxWidth: '300'
+      chipMaxWidthValueInterpreter: LITERAL
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Description
+    value: Description
+    useCustomLabel: false
+    dataType: LONG_TEXT
+    columnAlign: LEFT
+    visibleByDefault: true
+    defaultWidth: 500
+  - _type: TextColumn
+    _name: RuleText
+    value: RuleText
+    useCustomLabel: false
+    dataType: LONG_TEXT
+    columnAlign: LEFT
+    visibleByDefault: true
+    defaultWidth: 500
+  - _type: TextColumn
+    _name: JurisdictionState
+    value: JurisdictionState
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EffectiveFrom
+    value: EffectiveFrom
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EffectiveTo
+    value: EffectiveTo
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true

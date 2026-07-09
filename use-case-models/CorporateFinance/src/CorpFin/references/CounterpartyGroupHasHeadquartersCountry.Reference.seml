@@ -1,0 +1,32 @@
+_package: CorpFin.references
+_name: CounterpartyGroupHasHeadquartersCountry
+_type: Reference
+label: Counterparty Group Has Headquarters Country
+description: "Defines the reference from Counterparty Group records to Country records, enforcing the relationship between Counterparty Group and Country data."
+documentation: "Defines the reference from Counterparty Group records to Country records, enforcing the relationship between Counterparty Group and Country data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+fromRoleLabel: Counterparty Group
+fromRoleName: counterpartyGroup
+fromRolePluralLabel: Counterparty Groups
+physicalName: CPGROUP_HAS_HQ_COUNTRY
+fromNavigable: true
+
+toEntity: CorpFin.entities.Country.Country
+toRoleLabel: Country
+toRoleName: headquartersCountry
+toRolePhysicalName: HEADQUARTERS_COUNTRY
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: headquartersCountry
+  label: Headquarters Country
+  physicalName: HEADQUARTERS_COUNTRY
+  searchable: true
+  entity: CorpFin.entities.Country.Country
+
+

@@ -1,0 +1,94 @@
+# Lifecycle Status entity for the SAP Product / Material 360 accelerator.
+_name: LifecycleStatus
+_package: sappm360.entities.LifecycleStatus
+_type: Entity
+primaryKey: sappm360.entities.LifecycleStatus.LifecycleStatus.LifecycleStatusID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: LifecycleStatusCode
+label: Lifecycle Status
+documentation: Lifecycle Status reference data used by the SAP Product / Material 360 model.
+description: Lifecycle Status reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Lifecycle Statuses
+historizeGolden: true
+historizeMaster: false
+physicalTableName: LIFECYCLE_STATUS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: LifecycleStatusID
+    physicalName: LIFECYCLE_STATUS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lifecycle Status ID
+    documentation: Unique identifier for the lifecycle status.
+    description: Unique identifier for the lifecycle status.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LifecycleStatusCode
+    physicalName: LIFECYCLE_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lifecycle Status Code
+    documentation: Code for the lifecycle status.
+    description: Code for the lifecycle status.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Lifecycle Status Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LifecycleStatusName
+    physicalName: LIFECYCLE_STATUS_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lifecycle Status Name
+    documentation: Lifecycle phase such as active, design, phase out, or retired.
+    description: Lifecycle phase such as active, design, phase out, or retired.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Lifecycle Status Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the lifecycle status.
+    description: Description for the lifecycle status.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the lifecycle status is active.
+    description: Indicates whether the lifecycle status is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

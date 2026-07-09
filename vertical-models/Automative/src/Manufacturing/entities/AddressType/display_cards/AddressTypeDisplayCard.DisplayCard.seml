@@ -1,0 +1,26 @@
+_name: AddressTypeDisplayCard
+_package: Manufacturing.entities.AddressType.display_cards
+_type: DisplayCard
+entity: Manufacturing.entities.AddressType.AddressType
+default: true
+primaryTextExpression: AddressType
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: >-
+  case when AddressType like 'Billing Address'
+  then  'images://mdi/office-building-marker-outline.svg'
+
+  when AddressType like 'Headquarters Address' then
+  'images://mdi/office-building-outline.svg'    
+
+  when AddressType like 'Shipping Address' then 'images://mdi/warehouse.svg'
+
+  end
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

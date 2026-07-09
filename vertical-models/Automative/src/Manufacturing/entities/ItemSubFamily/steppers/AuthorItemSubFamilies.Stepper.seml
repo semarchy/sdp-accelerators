@@ -1,0 +1,118 @@
+_name: AuthorItemSubFamilies
+_package: Manufacturing.entities.ItemSubFamily.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemSubFamily.ItemSubFamily
+rootStep:
+  _name: ItemSubFamilys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemSubFamily.collection_views.ItemSubFamilyCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Sub Families
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemSubFamiliesBelongsToItemFamily.ItemFamily
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ItemSubFamily.ItemSubFamily.SubFamily
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemSubFamiliesBelongsToItemFamily.ItemFamily
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemSubFamiliesHasParentSubFamily.ParentSubFamily
+    - onStepExit: SKIP
+      validationType: UNIQUE
+      uniqueKey: Manufacturing.entities.ItemSubFamily.unique_keys.FamilySubfamilyParentSubFamily
+  stepTriggers: []
+  childSteps:
+    - _name: ItemSubFamily
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Sub Family
+      formTab: Manufacturing.entities.ItemSubFamily.forms.ItemSubFamilyForm.ItemSubFamily
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ItemSubFamily.forms.ItemSubFamilyForm.ItemSubFamily.Container.FDN_ParentSubFamily
+          referenceFilter: Referenced.FID_ItemFamily = Record.FID_ItemFamily
+          referencePickerCollectionView: Manufacturing.entities.ItemSubFamily.collection_views.ItemSubFamilyCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ItemSubFamily.forms.ItemSubFamilyForm.ItemSubFamily.Container.FDN_ItemFamily
+          referencePickerCollectionView: Manufacturing.entities.ItemFamily.collection_views.ItemFamilyCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSubFamiliesBelongsToItemFamily.ItemFamily
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemSubFamiliesBelongsToItemFamily.ItemFamily
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemSubFamily.ItemSubFamily.SubFamily
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: UNIQUE
+          executedOnDataChange: true
+          executedOnFormOpen: false
+          uniqueKey: Manufacturing.entities.ItemSubFamily.unique_keys.FamilySubfamilyParentSubFamily
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSubFamiliesHasParentSubFamily.ParentSubFamily
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemSubFamiliesBelongsToItemFamily.ItemFamily
+        - onStepExit: WARN
+          validationType: UNIQUE
+          uniqueKey: Manufacturing.entities.ItemSubFamily.unique_keys.FamilySubfamilyParentSubFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSubFamiliesBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSubFamiliesHasParentSubFamily.ParentSubFamily
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemSubFamily.ItemSubFamily.SubFamily
+      stepTriggers: []
+label: Author Item Sub Families
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ItemSubFamily.ItemSubFamily.SubFamily
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemSubFamiliesHasParentSubFamily.ParentSubFamily
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemSubFamiliesBelongsToItemFamily.ItemFamily
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemSubFamiliesBelongsToItemFamily.ItemFamily
+  - onStepperFinish: SKIP
+    validationType: UNIQUE
+    uniqueKey: Manufacturing.entities.ItemSubFamily.unique_keys.FamilySubfamilyParentSubFamily
+triggers: []

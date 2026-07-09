@@ -1,0 +1,94 @@
+# Valuation Class entity for the SAP Product / Material 360 accelerator.
+_name: ValuationClass
+_package: sappm360.entities.ValuationClass
+_type: Entity
+primaryKey: sappm360.entities.ValuationClass.ValuationClass.ValuationClassID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ValuationClassCode
+label: Valuation Class
+documentation: Valuation Class reference data used by the SAP Product / Material 360 model.
+description: Valuation Class reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Valuation Classes
+historizeGolden: true
+historizeMaster: false
+physicalTableName: VALUATION_CLASS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ValuationClassID
+    physicalName: VALUATION_CLASS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Valuation Class ID
+    documentation: Unique identifier for the valuation class.
+    description: Unique identifier for the valuation class.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValuationClassCode
+    physicalName: VALUATION_CLASS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Valuation Class Code
+    documentation: Code for the valuation class.
+    description: Code for the valuation class.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Valuation Class Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValuationClassName
+    physicalName: VALUATION_CLASS_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Valuation Class Name
+    documentation: SAP valuation class used for account determination.
+    description: SAP valuation class used for account determination.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Valuation Class Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the valuation class.
+    description: Description for the valuation class.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the valuation class is active.
+    description: Indicates whether the valuation class is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

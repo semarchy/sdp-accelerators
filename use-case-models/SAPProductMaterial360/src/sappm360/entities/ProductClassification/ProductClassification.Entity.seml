@@ -1,0 +1,121 @@
+# Product Classification entity for the SAP Product / Material 360 accelerator.
+_name: ProductClassification
+_package: sappm360.entities.ProductClassification
+_type: Entity
+primaryKey: sappm360.entities.ProductClassification.ProductClassification.ProductClassificationID
+sourceIdGeneration:
+  mode: MANUAL
+label: Product Classification
+documentation: Classification assignment for extensible product taxonomies and standards.
+description: Classification assignment for extensible product taxonomies and standards.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/shape-outline.svg
+pluralLabel: Product Classifications
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PROD_CLASS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductClassificationID
+    physicalName: PROD_CLASS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Classification ID
+    documentation: Unique identifier for a product classification assignment.
+    description: Unique identifier for a product classification assignment.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ClassificationCode
+    physicalName: CLASS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Classification Code
+    documentation: Classification code from a taxonomy such as UNSPSC or eClass.
+    description: Classification code from a taxonomy such as UNSPSC or eClass.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Classification Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ClassificationName
+    physicalName: CLASS_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Classification Name
+    documentation: Name or label for the classification code.
+    description: Name or label for the classification code.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Classification Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ClassificationLevel
+    physicalName: CLASS_LEVEL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Classification Level
+    documentation: Level within the classification scheme.
+    description: Level within the classification scheme.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AssignedValue
+    physicalName: ASSIGNED_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Assigned Value
+    documentation: Assigned value or qualifier for the product classification.
+    description: Assigned value or qualifier for the product classification.
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValidFrom
+    physicalName: VALID_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Valid From
+    documentation: Date from which the classification is valid.
+    description: Date from which the classification is valid.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValidTo
+    physicalName: VALID_TO
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Valid To
+    documentation: Date through which the classification remains valid.
+    description: Date through which the classification remains valid.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

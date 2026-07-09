@@ -1,0 +1,66 @@
+ # Description: Action set for `Industry` entity (create/edit/manage actions).
+ # Contains: Action definitions and linked steppers for industry workflows.
+ # Role: Controls UI actions available for Industry master data.
+_package: Merchant.entities.Industry.action_sets
+_type: ActionSet
+_name: IndustryActionSet
+entity: Merchant.entities.Industry.Industry
+label: Industry Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorIndustries
+    label: Create
+    useCustomLabel: true
+    stepper: Merchant.entities.Industry.steppers.AuthorIndustries
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorIndustries
+    label: Edit
+    useCustomLabel: true
+    stepper: Merchant.entities.Industry.steppers.AuthorIndustries
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorIndustries
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Merchant.entities.Industry.steppers.AuthorIndustries
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorIndustries
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Merchant.entities.Industry.steppers.AuthorIndustries
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

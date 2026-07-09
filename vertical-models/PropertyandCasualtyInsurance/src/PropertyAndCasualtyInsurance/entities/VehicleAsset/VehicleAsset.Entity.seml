@@ -1,0 +1,242 @@
+_package: PropertyAndCasualtyInsurance.entities.VehicleAsset
+_type: Entity
+_name: VehicleAsset
+label: "Vehicle Asset"
+pluralLabel: "Vehicle Assets"
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 110000
+entityType: FUZZY_MATCHED
+physicalTableName: VEHICLE_ASSET
+iconUrl: images://mdi/car-outline.svg
+description: "Vehicle asset mastered for auto underwriting, rating, and claims linkage."
+documentation: "Vehicle asset mastered for auto underwriting, rating, and claims linkage."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: VehicleAssetId
+    label: "Vehicle Asset ID"
+    physicalName: VEHICLE_ASSET_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "System-generated unique identifier representing a specific vehicle asset record."
+    documentation: "System-generated unique identifier representing a specific vehicle asset record."
+  - _type: EntityAttribute
+    _name: VIN
+    label: "VIN"
+    physicalName: VIN
+    dataType: String
+    length: 17
+    mandatory: false
+    searchable: true
+    description: "Vehicle Identification Number uniquely assigned to the vehicle."
+    documentation: "Vehicle Identification Number uniquely assigned to the vehicle."
+  - _type: EntityAttribute
+    _name: PlateNumber
+    label: "Plate Number"
+    physicalName: PLATE_NUMBER
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+    description: "Registered license plate number assigned by issuing authority."
+    documentation: "Registered license plate number assigned by issuing authority."
+  - _type: EntityAttribute
+    _name: Year
+    label: "Year"
+    physicalName: MODEL_YEAR
+    dataType: Integer
+    precision: 10
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Model year of the vehicle as defined by manufacturer."
+    documentation: "Model year of the vehicle as defined by manufacturer."
+  - _type: EntityAttribute
+    _name: FuelType
+    label: "Fuel Type"
+    physicalName: FUEL_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.FuelType
+    length: 128
+    mandatory: false
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary fuel or propulsion type (Gasoline, Diesel, Hybrid, Electric)."
+    documentation: "Primary fuel or propulsion type (Gasoline, Diesel, Hybrid, Electric)."
+  - _type: EntityAttribute
+    _name: EngineSize
+    label: "Engine Size"
+    physicalName: ENGINE_SIZE
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+    description: "Engine displacement or performance specification."
+    documentation: "Engine displacement or performance specification."
+  - _type: EntityAttribute
+    _name: AntiTheftDeviceFlag
+    label: "Anti Theft Device Flag"
+    physicalName: ANTI_THEFT_DEVICE_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates presence of approved anti-theft or immobilizer system."
+    documentation: "Indicates presence of approved anti-theft or immobilizer system."
+  - _type: EntityAttribute
+    _name: UsageType
+    label: "Usage Type"
+    physicalName: USAGE_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.UsageType
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Declared primary usage of the vehicle (Pleasure, Commute, Business)."
+    documentation: "Declared primary usage of the vehicle (Pleasure, Commute, Business)."
+  - _type: EntityAttribute
+    _name: AnnualMileage
+    label: "Annual Mileage"
+    physicalName: ANNUAL_MILEAGE
+    dataType: Integer
+    precision: 10
+    mandatory: false
+    searchable: true
+    description: "Estimated miles driven annually."
+    documentation: "Estimated miles driven annually."
+  - _type: EntityAttribute
+    _name: OwnershipType
+    label: "Ownership Type"
+    physicalName: OWNERSHIP_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.OwnershipType
+    length: 128
+    mandatory: false
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Ownership classification (Owned, Leased, Financed)."
+    documentation: "Ownership classification (Owned, Leased, Financed)."
+  - _type: EntityAttribute
+    _name: OriginalPurchasePrice
+    label: "Original Purchase Price"
+    physicalName: ORIGINAL_PURCHASE_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Original acquisition cost of the vehicle."
+    documentation: "Original acquisition cost of the vehicle."
+  - _type: EntityAttribute
+    _name: CurrentMarketValue
+    label: "Current Market Value"
+    physicalName: CURRENT_MARKET_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Estimated current actual cash value of the vehicle."
+    documentation: "Estimated current actual cash value of the vehicle."
+  - _type: EntityAttribute
+    _name: CollisionDeductible
+    label: "Collision Deductible"
+    physicalName: COLLISION_DEDUCTIBLE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Deductible amount applicable to collision coverage."
+    documentation: "Deductible amount applicable to collision coverage."
+  - _type: EntityAttribute
+    _name: ComprehensiveDeductible
+    label: "Comprehensive Deductible"
+    physicalName: COMPREHENSIVE_DEDUCTIBLE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Deductible amount applicable to comprehensive coverage."
+    documentation: "Deductible amount applicable to comprehensive coverage."
+  - _type: EntityAttribute
+    _name: UninsuredMotoristLimit
+    label: "Uninsured Motorist Limit"
+    physicalName: UNINSURED_MOTORIST_LIMIT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Coverage limit for uninsured/underinsured motorist protection."
+    documentation: "Coverage limit for uninsured/underinsured motorist protection."
+  - _type: EntityAttribute
+    _name: StartDate
+    label: "Start Date"
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date vehicle becomes insured under the policy."
+    documentation: "Date vehicle becomes insured under the policy."
+  - _type: EntityAttribute
+    _name: EndDate
+    label: "End Date"
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date vehicle is removed from coverage."
+    documentation: "Date vehicle is removed from coverage."
+sourceIdGeneration:
+  mode: UUID
+primaryKey: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset.VehicleAssetId
+matcher:
+  _name: SemQLMatcherVehicleAsset
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 91
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 75
+  mergeThresholdMergingConfirmedWithUnconfirmed: 75
+  mergeThresholdMergingUnconfirmed: 75
+  mergeThresholdMergingUnconfirmedWithNewMasters: 75
+  mergeThresholdNewGroup: 75
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Vehicle Asset Match Rules
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactVIN
+      condition: >-
+        Record1.VIN IS NOT NULL
+        and Record2.VIN IS NOT NULL
+        and Record1.VIN = Record2.VIN
+      label: Exact VIN
+      matchScore: 100
+      color: md:green 900
+      documentation: Matches vehicle assets using exact VIN.
+      description: Matches vehicle assets using exact VIN.
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: PlateStateAndVehicleProfile
+      condition: >-
+        Record1.PlateNumber IS NOT NULL
+        and Record2.PlateNumber IS NOT NULL
+        and Record1.PlateNumber = Record2.PlateNumber
+        and Record1.PlateState.StateCode = Record2.PlateState.StateCode
+        and Record1.Year = Record2.Year
+        and Record1.Make.MakeCode = Record2.Make.MakeCode
+        and Record1.Model.ModelCode = Record2.Model.ModelCode
+      label: Plate State And Vehicle Profile
+      matchScore: 92
+      color: md:green 700
+      documentation: Matches vehicle assets using exact VIN.
+      description: Matches vehicle assets by plate, state, year, make, and model.
+      usingMatchOn: false

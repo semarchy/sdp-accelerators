@@ -1,0 +1,125 @@
+# This is the AccountActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on accounts, such as creating, editing,
+# mass updating, copying, deleting,exporting,importing accounts, browsing graph,
+# reviewing and confirming duplicates, merging or splitting duplicates, reviewing duplicate suggestions,
+# and explaining records.
+_name: AccountActionSet
+_package: sales360.entities.Account.action_sets
+_type: ActionSet
+entity: sales360.entities.Account.Account
+label: Account Action Set
+description: Action set for managing Account records in the Salesforce Accelerator application.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorAccounts
+    label: Create
+    description: Create a new Author Account record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: false
+    stepper: sales360.entities.Account.steppers.AuthorAccounts
+  - _name: EditAuthorAccounts
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.Account.steppers.AuthorAccounts
+  - _name: MassUpdateAuthorAccounts
+    label: Mass Update
+    description: Perform a mass update on selected Author Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sales360.entities.Account.steppers.AuthorAccounts
+  - _name: CopyAuthorAccounts
+    label: Copy
+    description: Create a copy of selected Author Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.Account.steppers.AuthorAccounts
+  - _name: Delete
+    label: Delete
+    description: Delete selected Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export selected Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorAccounts
+    label: Import
+    description: Import Author Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sales360.publishers.DataEntry
+    stepper: sales360.entities.Account.steppers.AccountImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    description: Browse the relationship graph for Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicate Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnAccount
+    label: Review And Confirm Duplicates
+    description: Review and confirm duplicate Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: sales360.entities.Account.dups_managers.ManageDuplicatesOnAccount
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnAccount
+    label: Merge Or Split Duplicates
+    description: Merge or split duplicate Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: sales360.entities.Account.dups_managers.ManageDuplicatesOnAccount
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnAccount
+    label: Review Duplicates Suggestions
+    description: Review duplicate suggestions for Account records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sales360.entities.Account.dups_managers.ManageDuplicatesOnAccount
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    description: Explain the details of an Account record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: sales360.entities.Account.display_cards.AccountNameAddress
+    formTab: sales360.entities.Account.forms.AccountBrowsingForm.Enrichments

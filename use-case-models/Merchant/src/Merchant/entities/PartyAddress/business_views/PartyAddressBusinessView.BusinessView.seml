@@ -1,0 +1,47 @@
+# Description: Business view configuration for `PartyAddress`.
+# Contains pre-defined business view used by global search and UI summaries.
+# Role: Provides a consumable view of address data for application components.
+ # Description: Business view for `PartyAddress` exposing navigation and actions.
+ # Contains: Business node linking collection, form and action set for PartyAddress.
+ # Role: Integrates PartyAddress into the model navigation and UI.
+_package: Merchant.entities.PartyAddress.business_views
+_type: BusinessView
+_name: PartyAddressBusinessView
+entity: Merchant.entities.PartyAddress.PartyAddress
+label: Party Address Business View
+rootLabel: Party Addresses
+rootPluralLabel: Party Addresses
+
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PartyAddress
+  displayCard: Merchant.entities.PartyAddress.display_cards.PartyAddressDisplayCard
+  entity: Merchant.entities.PartyAddress.PartyAddress
+  actionSet: Merchant.entities.PartyAddress.action_sets.PartyAddressActionSet
+  collection: Merchant.entities.PartyAddress.collection_views.PartyAddressCollectionView
+  form: Merchant.entities.PartyAddress.forms.PartyAddressForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

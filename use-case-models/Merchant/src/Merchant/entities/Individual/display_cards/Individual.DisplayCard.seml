@@ -1,0 +1,28 @@
+ # Description: Display card for `Individual` showing primary and supporting text.
+ # Contains: Expressions to render individual name and avatar for list/grid displays.
+ # Role: Visual card used across UI lists, selectors and collections for Individual records.
+_package: Merchant.entities.Individual.display_cards
+_type: DisplayCard
+_name: Individual
+entity: Merchant.entities.Individual.Individual
+default: true
+primaryTextExpression: "SEM_CONCAT(LastNameEnriched, ', ', FirstNameEnriched)"
+secondaryTextExpression: "CASE WHEN Gender IS NOT NULL AND FDN_Nationality IS NOT NULL THEN Gender || ' • ' || FDN_Nationality WHEN Gender IS NOT NULL THEN Gender WHEN FDN_Nationality IS NOT NULL THEN FDN_Nationality ELSE '' END"
+supportingTextExpression: "CASE WHEN IdentificationNumber IS NOT NULL THEN IdentificationNumber WHEN DateOfBirth IS NOT NULL THEN SEM_DATE_TO_CHAR(DateOfBirth) ELSE '' END"
+
+# Primary image: prefer person photo; fallback to generic account icon
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageValue: images://mdi/account.svg
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FILL
+primaryImageFallbackValue: images://mdi/account-circle.svg
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+
+# Avatar: simple person icon
+avatarImageValue: images://mdi/account-circle.svg
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

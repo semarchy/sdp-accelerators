@@ -1,0 +1,205 @@
+_name: Supplier
+_package: Manufacturing.entities.Supplier
+_type: Entity
+primaryKey: Manufacturing.entities.Supplier.Supplier.SupplierID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 10000
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 10000
+label: Supplier
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/office-building.svg
+pluralLabel: Suppliers
+description: "Supplier master record used to manage procurement relationships, supplier hierarchy, addresses, and supplied items."
+documentation: "Supplier master record used to manage procurement relationships, supplier hierarchy, addresses, and supplied items. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SUPPLIER
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SupplierID
+    physicalName: SUPPLIER_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Supplier record."
+    documentation: "Surrogate identifier for the Supplier record."
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Website
+    physicalName: WEBSITE
+    dataType: String
+    description: "Website URL for the Supplier record."
+    documentation: "Online address or URL linked to a business or individual offering goods or services. It provides a direct link to the supplier's digital platform, offering information about their offerings and facilitating transparent communication within the business network."
+    goldenAttribute: true
+    i18ned: false
+    label: Website
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    description: "Business description for the Supplier record."
+    documentation: Description about the supplier
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    mandatory: false
+    length: 2048
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EmployeeRange
+    physicalName: EMPLOYEE_RANGE
+    dataType: String
+    description: "Employee-count range used to classify supplier size."
+    documentation: '"Employee Range" refers to the categorization of the number of individuals employed by a business or organization within a specified range. This attribute provides an overview of the scale of the workforce employed and helps in classifying businesses based on their size.'
+    goldenAttribute: true
+    i18ned: false
+    label: Employee Range
+    mandatory: false
+    length: 250
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    description: Name of the supplier
+    documentation: 'The "Name of the Supplier" is the specific title or designation identifying an entity providing goods or services. It is essential for documentation, transactions, and clear business communication. This information ensures accurate identification, transparency, and accountability in business relationships.'
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ARIBACode
+    physicalName: ARIBA_CODE
+    dataType: String
+    description: ARIBA Code of the supplier in the internal system
+    documentation: "A unique identifier within the SAP Ariba platform, assigned to entities like suppliers or transactions. This code streamlines procurement processes, aiding in efficient organization and communication within the SAP Ariba ecosystem."
+    goldenAttribute: true
+    i18ned: false
+    label: ARIBA Code
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Revenue
+    physicalName: REVENUE
+    dataType: LongInteger
+    description: "Reported revenue for the supplier."
+    documentation: "Revenue is the money received by or due to an organization. Synonyms: income, takings, receipts, proceeds, earnings."
+    goldenAttribute: true
+    i18ned: false
+    label: Revenue
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FoundedYear
+    physicalName: FOUNDED_YEAR
+    dataType: Integer
+    description: "Calendar year when the supplier was founded."
+    documentation: '"Founded Year" represents the calendar year when a business or organization was established, offering a key historical marker for understanding its background, growth, and legacy.'
+    goldenAttribute: true
+    i18ned: false
+    label: Founded Year
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 10
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherSupplier
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 90
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 80
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 0
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: SupplierMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ARIBACode
+      condition: Record1.ARIBACode = Record2.ARIBACode
+      label: ARIBA Code
+      matchScore: 98
+      documentation: Supplier has same ARIBA Code
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MetaphoneMatchOnSupplierName
+      condition: DMETAPHONE(Record1.Name) = DMETAPHONE(Record2.Name)
+      label: Metaphone Match On Supplier Name
+      matchScore: 85
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: FuzzyNameMatch
+      condition: SEM_EDIT_DISTANCE_SIMILARITY(Record1.Name, Record2.Name) >= 80
+      label: Fuzzy Name Match
+      matchScore: 75
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: Website
+      condition: Record1.Website = Record2.Website
+      label: Website
+      matchScore: 60
+      usingMatchOn: false

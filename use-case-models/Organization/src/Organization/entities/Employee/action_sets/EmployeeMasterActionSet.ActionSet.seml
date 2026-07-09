@@ -1,0 +1,110 @@
+# This file defines the action set for managing Employee entities in the Organization domain.
+# It includes actions for editing, mass updating, deleting, exporting, importing,
+# and browsing graphs of Employee entities. 
+# This action are available on Master data records.
+_package: Organization.entities.Employee.action_sets
+_type: ActionSet
+entity: Organization.entities.Employee.Employee
+_name: EmployeeMasterActionSet
+label: Employee Master Action Set
+description: Employee Master Action Set
+defaultActionSet: false
+actions:
+  - _type: EditAction
+    _name: EditAuthorEmployees
+    useCustomLabel: true
+    label: Edit
+    description: Edit Employee records
+    multipleSelectionAllowed: true
+    waitDialogEnabled: false
+    itemsLimit: 1000
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    stepper: Organization.entities.Employee.steppers.AuthorEmployees
+  - _type: CreateAction
+    _name: CreateAuthorEmployees
+    useCustomLabel: true
+    label: Create
+    description: Create new Employee records
+    waitDialogEnabled: false
+    createMultiple: false
+    createdRecordType: GOLDEN
+    allowOtherPublishers: false
+    stepper: Organization.entities.Employee.steppers.AuthorEmployees
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorEmployees
+    useCustomLabel: true
+    label: Mass Update
+    description: Mass update Employee records
+    availableForGoldenData: true
+    availableForMasterData: true
+    waitDialogEnabled: false
+    stepper: Organization.entities.Employee.steppers.AuthorEmployees
+  - _type: ExportAction
+    _name: Export
+    useCustomLabel: true
+    label: Export
+    description: Export Employee data
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorEmployees
+    useCustomLabel: true
+    label: Import
+    description: Import Employee data
+    waitDialogEnabled: false
+    importMode: CREATE_AND_UPDATE
+    stepper: Organization.entities.Employee.steppers.AuthorEmployeesImport
+    importedRecordType: MASTER
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    useCustomLabel: true
+    label: Browse Graph
+    description: Browse the graph of Employee entities
+    waitDialogEnabled: false
+  - _type: ExplainRecordAction
+    _name: ExplainRecord
+    useCustomLabel: true
+    label: Explain Record
+    description: Explain the record
+    waitDialogEnabled: false
+    displayCard: Organization.entities.Employee.display_cards.ReviewEmployeeDisplayCard
+    formTab: Organization.entities.Employee.forms.EmployeeReviewSuggestionsForm.Employee
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    useCustomLabel: true
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicates
+    waitDialogEnabled: false
+    itemsLimit: 1000
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Merge Or Split Duplicates
+    description: Merge or split duplicates
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    waitDialogEnabled: false
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Review Duplicates Suggestions
+    description: Review duplicates suggestions
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false
+    itemsLimit: 1000
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Review And Confirm Duplicates
+    description: Review and confirm duplicates suggestions
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+

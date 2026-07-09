@@ -1,0 +1,53 @@
+_name: CustomerServiceAppointment
+_package: Manufacturing.entities.CustomerServiceAppointment
+_type: Entity
+primaryKey: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1000
+label: Customer Service Appointment
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/calendar-alert.svg
+pluralLabel: Customer Service Appointments
+description: "Service appointment history linking customers, vehicles, dealers, and services performed after purchase."
+documentation: "Service appointment history linking customers, vehicles, dealers, and services performed after purchase. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: true
+historizeMaster: false
+physicalTableName: CUSTOMER_SERVICE_APPOINTM
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ServiceAppointmentID
+    physicalName: SERVICE_APPOINTMENT_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Customer Service Appointment record."
+    documentation: "Surrogate identifier for the Customer Service Appointment record."
+    goldenAttribute: true
+    i18ned: false
+    label: Service Appointment ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ServiceAppointmentDate
+    physicalName: SERVICE_APPOINTMENT_DATE
+    dataType: Date
+    description: "Date when the vehicle service appointment occurred or is scheduled."
+    documentation: "Date when the vehicle service appointment occurred or is scheduled."
+    goldenAttribute: true
+    i18ned: false
+    label: Service Appointment Date
+    mandatory: true
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

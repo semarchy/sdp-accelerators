@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: Manufacturing.entities.Customer.enrichers
+_name: HouseholdIDToInteger
+entity: Manufacturing.entities.Customer.Customer
+label: Household ID To Integer
+description: "Converts the household identifier returned by lookup into the numeric foreign key used for household relationships."
+enricherExecutionScope: PRE_POST
+semQlEnricherExpressions:
+  - attributeName: FID_Household
+    expression: SEM_CAST_NUMERIC(HouseholdID)
+afterEnrichers: Manufacturing.entities.Customer.enrichers.MelissaPersonatorEnricher

@@ -1,0 +1,65 @@
+# This file defines the CleanStatus entity in the Salesforce Accelerator application.
+# It includes attributes such as CleanStatusID, CleanStatusCode, and CleanStatusValue,
+# along with their properties and validations.
+# The entity is used to manage clean status information within the application.
+_name: CleanStatus
+_package: sales360.entities.CleanStatus
+_type: Entity
+primaryKey: sales360.entities.CleanStatus.CleanStatus.CleanStatusID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: CleanStatusCode
+label: Clean Status
+documentation: Record’s clean status as compared with Data.com
+description: Record’s clean status as compared with Data.com
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Clean Statuses
+historizeGolden: true
+historizeMaster: false
+physicalTableName: CLEAN_STATUS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CleanStatusID
+    physicalName: CLEAN_STATUS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Clean Status ID
+    documentation: Unique identifier for the Clean Status record
+    description: Unique identifier for the Clean Status record
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CleanStatusCode
+    physicalName: CLEAN_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Clean Status Code
+    documentation: Code representing the clean status
+    description: Code representing the clean status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CleanStatusValue
+    physicalName: CLEAN_STATUS_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Clean Status Value
+    documentation: Value indicating the clean status
+    description: Value indicating the clean status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

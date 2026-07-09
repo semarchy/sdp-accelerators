@@ -1,0 +1,60 @@
+_package: PrivateEquity.entities.GroupHierarchy.collection_views
+_name: GroupHierarchyCollection
+_type: CollectionView
+entity: PrivateEquity.entities.GroupHierarchy.GroupHierarchy
+default: true
+displayCard: PrivateEquity.entities.GroupHierarchy.display_cards.GroupHierarchyDisplayCard
+tableAllowed: true
+tableRowLines: 1
+tableDisplayCardColumnLabel: Group Hierarchy
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: true
+listShowDivider: true
+gridAllowed: true
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: ID
+    visibleByDefault: false
+  - _type: ReferenceColumn
+    _name: FDN_Parent
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Parent
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.LEGroup.LEGroup
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Child
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Child
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.LEGroup.LEGroup
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Currency
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Currency
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Currency.Currency
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL

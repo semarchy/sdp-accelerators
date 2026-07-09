@@ -1,0 +1,44 @@
+# Description: Entity definition for `ProductCategory`.
+# Contains categorization metadata for products and related attributes.
+# Role: Provides hierarchical categories used to classify products in the model.
+_package: Merchant.entities.ProductCategory
+_type: Entity
+_name: ProductCategory
+label: Product Category
+pluralLabel: Product Categories
+entityType: BASIC
+physicalTableName: PRODUCT_CATEGORY
+iconUrl: images://mdi/shape.svg
+description: "Categorization of products and services offered by merchants"
+documentation: "Contains hierarchical product categories and their descriptions"
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+
+  - _type: EntityAttribute
+    _name: CategoryName
+    label: Category Name
+    physicalName: CATEGORY_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Name of the product category"
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Flag indicating if category is currently in use"
+
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+primaryKey: Merchant.entities.ProductCategory.ProductCategory.CategoryName

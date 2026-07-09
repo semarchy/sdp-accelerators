@@ -1,0 +1,81 @@
+_name: AuthorTaxonomyGroupings
+_package: HCO_HCP.entities.TaxonomyGrouping.steppers
+_type: Stepper
+entity: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping
+rootStep:
+  _name: TaxonomyGroupings
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.TaxonomyGrouping.collection_views.TaxonomyGroupingCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Taxonomy Groupings
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Name
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Role
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Role
+  stepTriggers: []
+  childSteps:
+    - _name: TaxonomyGrouping
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Taxonomy Grouping
+      formTab: HCO_HCP.entities.TaxonomyGrouping.forms.TaxonomyGroupingForm.TaxonomyGrouping
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Role
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Role
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Role
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Name
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Role
+      stepTriggers: []
+label: Author Taxonomy Groupings
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Role
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Role
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: HCO_HCP.entities.TaxonomyGrouping.TaxonomyGrouping.Name
+triggers: []

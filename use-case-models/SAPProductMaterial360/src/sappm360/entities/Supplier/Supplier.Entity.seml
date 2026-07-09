@@ -1,0 +1,122 @@
+# Supplier entity for the SAP Product / Material 360 accelerator.
+_name: Supplier
+_package: sappm360.entities.Supplier
+_type: Entity
+primaryKey: sappm360.entities.Supplier.Supplier.SupplierID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: SupplierCode
+label: Supplier
+documentation: Supplier organization participating in product sourcing and procurement.
+description: Supplier organization participating in product sourcing and procurement.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/truck-outline.svg
+pluralLabel: Suppliers
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SUPPLIER
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SupplierID
+    physicalName: SUPPLIER_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier ID
+    documentation: Unique identifier for the supplier.
+    description: Unique identifier for the supplier.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierCode
+    physicalName: SUPPLIER_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Code
+    documentation: Code that identifies the supplier.
+    description: Code that identifies the supplier.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Supplier Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierName
+    physicalName: SUPPLIER_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Name
+    documentation: Business name of the supplier.
+    description: Business name of the supplier.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Supplier Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierType
+    physicalName: SUPPLIER_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Type
+    documentation: Type or role of the supplier.
+    description: Type or role of the supplier.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CountryName
+    physicalName: COUNTRY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Country Name
+    documentation: Country where the supplier is primarily located.
+    description: Country where the supplier is primarily located.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PreferredSupplier
+    physicalName: PREF_SUPPLIER
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Preferred Supplier
+    documentation: Indicates whether the supplier is preferred.
+    description: Indicates whether the supplier is preferred.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the supplier is active.
+    description: Indicates whether the supplier is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

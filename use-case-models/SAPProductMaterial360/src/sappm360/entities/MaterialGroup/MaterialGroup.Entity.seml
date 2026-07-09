@@ -1,0 +1,94 @@
+# Material Group entity for the SAP Product / Material 360 accelerator.
+_name: MaterialGroup
+_package: sappm360.entities.MaterialGroup
+_type: Entity
+primaryKey: sappm360.entities.MaterialGroup.MaterialGroup.MaterialGroupID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: MaterialGroupCode
+label: Material Group
+documentation: Material Group reference data used by the SAP Product / Material 360 model.
+description: Material Group reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Material Groups
+historizeGolden: true
+historizeMaster: false
+physicalTableName: MATERIAL_GROUP
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: MaterialGroupID
+    physicalName: MATERIAL_GROUP_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Group ID
+    documentation: Unique identifier for the material group.
+    description: Unique identifier for the material group.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MaterialGroupCode
+    physicalName: MATERIAL_GROUP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Group Code
+    documentation: Code for the material group.
+    description: Code for the material group.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Material Group Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MaterialGroupName
+    physicalName: MATERIAL_GROUP_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Group Name
+    documentation: Material group used for procurement and reporting.
+    description: Material group used for procurement and reporting.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Material Group Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the material group.
+    description: Description for the material group.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the material group is active.
+    description: Indicates whether the material group is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

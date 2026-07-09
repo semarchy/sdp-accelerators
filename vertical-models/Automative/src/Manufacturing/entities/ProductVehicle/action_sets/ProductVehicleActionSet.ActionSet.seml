@@ -1,0 +1,106 @@
+_name: ProductVehicleActionSet
+_package: Manufacturing.entities.ProductVehicle.action_sets
+_type: ActionSet
+entity: Manufacturing.entities.ProductVehicle.ProductVehicle
+label: Product Vehicle Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorProductVehicles
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.ProductVehicle.steppers.AuthorProductVehicles
+  - _name: EditAuthorProductVehicles
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.ProductVehicle.steppers.AuthorProductVehicles
+  - _name: MassUpdateAuthorProductVehicles
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: Manufacturing.entities.ProductVehicle.steppers.AuthorProductVehicles
+  - _name: CopyAuthorProductVehicles
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.ProductVehicle.steppers.AuthorProductVehicles
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorProductVehicles
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.ProductVehicle.steppers.AuthorProductVehicles
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnProductVehicle
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: Manufacturing.entities.ProductVehicle.dups_managers.ManageDuplicatesOnProductVehicle
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnProductVehicle
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: Manufacturing.entities.ProductVehicle.dups_managers.ManageDuplicatesOnProductVehicle
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnProductVehicle
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: Manufacturing.entities.ProductVehicle.dups_managers.ManageDuplicatesOnProductVehicle
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: Manufacturing.entities.ProductVehicle.display_cards.ProductVehicleDisplayCard
+    formTab: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle

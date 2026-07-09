@@ -1,0 +1,60 @@
+#This file defines the Document entity in the Legal Entity application.
+# It includes attributes and properties for managing document records.
+_package: LegalEntity.entities.Document
+_type: Entity
+_name: Document
+label: Document
+pluralLabel: Documents
+iconUrl: images://le-img-lib/document.svg
+description: This entity represents a document in the Legal Entity application. It is used to store and manage documents related to legal entities, such as contracts, reports, and compliance records.
+documentation: The Document entity defines the structure for storing document records, including metadata, due dates, and URLs. It supports business logic, reporting, and integration with external systems.
+enableDelete: true
+attributes: 
+  - _name: ID
+    dataType: LongInteger
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    physicalName: ID
+    label: ID 
+    description: The unique identifier for the document.
+    documentation: A system-generated unique identifier for each document record.
+  - _name: DueDate
+    dataType: Date
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 0
+    multiValued: false
+    searchable: true
+    physicalName: DUE_DATE
+    label: Due Date
+    description: The due date for the document.
+    documentation: The date by which the document must be submitted or is relevant.
+  - _name: URL
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: URL
+    label: URL
+    description: The URL for the document.
+    documentation: The web address or location of the document file.
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: DOCUMENT 
+primaryKey: LegalEntity.entities.Document.Document.ID
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1000
+
+  

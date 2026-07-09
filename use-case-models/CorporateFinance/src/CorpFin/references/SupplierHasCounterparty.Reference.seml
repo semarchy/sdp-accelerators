@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: SupplierHasCounterparty
+_type: Reference
+label: Supplier Has Counterparty
+description: "Defines the reference from Supplier records to Counterparty records, enforcing the relationship between Supplier and Counterparty data."
+documentation: "Defines the reference from Supplier records to Counterparty records, enforcing the relationship between Supplier and Counterparty data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Supplier.Supplier
+fromRoleLabel: Supplier
+fromRoleName: supplier
+fromRolePluralLabel: Suppliers
+physicalName: SUPPLIER_HAS_COUNTERPARTY
+fromNavigable: true
+
+toEntity: CorpFin.entities.Counterparty.Counterparty
+toRoleLabel: Counterparty
+toRoleName: counterparty
+toRolePhysicalName: COUNTERPARTY_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: counterparty
+  label: Counterparty ID
+  physicalName: COUNTERPARTY_ID
+  searchable: true
+  entity: CorpFin.entities.Counterparty.Counterparty

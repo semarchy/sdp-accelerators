@@ -1,0 +1,120 @@
+_name: AuthorProductOptionOrFeatureRelationships
+_package: Manufacturing.entities.ProductOptionOrFeatureRelationship.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductOptionOrFeatureRelationship.ProductOptionOrFeatureRelationship
+rootStep:
+  _name: ProductOptionOrFeatureRelationships
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductOptionOrFeatureRelationship.collection_views.ProductOptionOrFeatureRelationshipCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Product Option Or Feature Relationships
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsChild.Child
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsProductOptionOrFeatureRelationshipType.RelationshipType
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsChild.Child
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsParent.Parent
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsParent.Parent
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsProductOptionOrFeatureRelationshipType.RelationshipType
+  stepTriggers: []
+  childSteps:
+    - _name: ProductOptionOrFeatureRelationship
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Product Option Or Feature Relationship
+      formTab: Manufacturing.entities.ProductOptionOrFeatureRelationship.forms.ProductOptionOrFeatureRelationshipForm.ProductOptionOrFeatureRelationship
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsChild.Child
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsProductOptionOrFeatureRelationshipType.RelationshipType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsProductOptionOrFeatureRelationshipType.RelationshipType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsParent.Parent
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsChild.Child
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsParent.Parent
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsProductOptionOrFeatureRelationshipType.RelationshipType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsChild.Child
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsProductOptionOrFeatureRelationshipType.RelationshipType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsParent.Parent
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsChild.Child
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsParent.Parent
+      stepTriggers: []
+label: Author Product Option Or Feature Relationships
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsParent.Parent
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsChild.Child
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsProductOptionOrFeatureRelationshipType.RelationshipType
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsChild.Child
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsParent.Parent
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ProductOptionOrFeatureRelationshipsProductOptionOrFeatureRelationshipType.RelationshipType
+triggers: []

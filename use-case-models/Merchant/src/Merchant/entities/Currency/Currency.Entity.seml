@@ -1,0 +1,74 @@
+# Description: Entity definition for `Currency` (ISO 4217 currency codes).
+# Contains currency codes and metadata used by pricing and localization.
+# Role: Reference data entity for currency lookups and validation.
+ # Description: Entity definition for `Currency` (currency codes and metadata).
+ # Contains: Currency attributes used for pricing and localization.
+ # Role: Reference data entity supporting currency lookups and validation.
+_package: Merchant.entities.Currency
+_type: Entity
+_name: Currency
+label: Currency
+pluralLabel: Currencies
+entityType: BASIC
+physicalTableName: CURRENCY
+iconUrl: images://mdi/currency-usd.svg
+description: "ISO 4217 Currency codes and information"
+documentation: "Contains standard currency codes and related details as per ISO 4217"
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: Currency Code
+    physicalName: CURRENCY_CODE
+    dataType: String
+    length: 3
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+    description: "ISO 4217 alphabetic currency code (e.g., USD, EUR)"
+
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    physicalName: CURRENCY_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Official name of the currency"
+
+  - _type: EntityAttribute
+    _name: CurrencyNumber
+    label: Currency Number
+    physicalName: CURRENCY_NUMBER
+    dataType: String
+    length: 3
+    searchable: true
+    description: "ISO 4217 numeric currency code"
+
+  - _type: EntityAttribute
+    _name: CountryAlpha3
+    label: Country Alpha3 Code
+    physicalName: COUNTRY_ALPHA3
+    dataType: String
+    length: 3
+    searchable: true
+    description: "ISO 3166-1 alpha-3 country code"
+
+  - _type: EntityAttribute
+    _name: IsCurrent
+    label: Is Current
+    physicalName: IS_CURRENT
+    dataType: Boolean
+    searchable: true
+    description: "Flag if the currency is currently in use"
+
+sourceIdGeneration:
+  mode: MANUAL
+  idExpression: AlphabeticCode
+  
+primaryKey: Merchant.entities.Currency.Currency.CurrencyCode

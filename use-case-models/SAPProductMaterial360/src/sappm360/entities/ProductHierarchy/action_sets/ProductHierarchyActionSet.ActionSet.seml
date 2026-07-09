@@ -1,0 +1,69 @@
+_name: ProductHierarchyActionSet
+_package: sappm360.entities.ProductHierarchy.action_sets
+_type: ActionSet
+entity: sappm360.entities.ProductHierarchy.ProductHierarchy
+label: Product Hierarchy Action Set
+description: Action set for managing product hierarchies in SAP Product / Material 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorProductHierarchies
+    label: Create
+    description: Create a new Product Hierarchy record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sappm360.entities.ProductHierarchy.steppers.AuthorProductHierarchies
+  - _name: EditAuthorProductHierarchies
+    label: Edit
+    description: Edit Product Hierarchy records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sappm360.entities.ProductHierarchy.steppers.AuthorProductHierarchies
+  - _name: MassUpdateAuthorProductHierarchies
+    label: Mass Update
+    description: Mass update Product Hierarchy records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sappm360.entities.ProductHierarchy.steppers.AuthorProductHierarchies
+  - _name: Delete
+    label: Delete
+    description: Delete selected Product Hierarchy records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorProductHierarchies
+    label: Import
+    description: Import Product Hierarchy records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sappm360.entities.ProductHierarchy.steppers.ProductHierarchyImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

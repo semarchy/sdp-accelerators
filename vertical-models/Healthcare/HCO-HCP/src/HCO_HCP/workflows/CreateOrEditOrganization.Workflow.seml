@@ -1,0 +1,325 @@
+_name: CreateOrEditOrganization
+_package: HCO_HCP.workflows
+_type: Workflow
+label: Create Or Edit Organization
+generalProperties:
+  attachmentMimeTypes: "*"
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+notifications:
+  workflowAdminOnDueDate: false
+dataScope:
+  - _name: HCO
+    _type: RootEntity
+    cardinality: SINGLE_RECORD
+    displayCard: HCO_HCP.entities.HCO.display_cards.HCODisplayCard
+    entity: HCO_HCP.entities.HCO.HCO
+    childEntities:
+      - ref: HCO_HCP.references.HcpSpecialization
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+steps:
+  - _name: StartCreate
+    _type: StartFromEmptySelectionEvent
+    defaultPriority: NORMAL
+    position:
+      x: -640
+      y: -210
+    label: Start Create
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: HCO_HCP.workflows.CreateOrEditOrganization.NewOrganization
+      bendPoints: []
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: true
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+  - _name: StartEdit
+    _type: StartFromSelectionEvent
+    defaultPriority: NORMAL
+    position:
+      x: -650
+      y: 20
+    label: Start Edit
+    selectionSourceType: GOLDEN_DATA
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: HCO_HCP.workflows.CreateOrEditOrganization.EditOrganization
+      bendPoints: []
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+    authoredEntity: HCO_HCP.entities.HCO.HCO
+  - _name: NewOrganization
+    _type: UserTask
+    label: New Organization
+    position:
+      x: -460
+      y: -210
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: HCO_HCP.applications.HCO_HCP
+    assigneeRequiredRole: BusinessUser
+    entity: HCO_HCP.entities.HCO.HCO
+    stepper: HCO_HCP.entities.HCO.steppers.AuthorHCOs
+    transitions:
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: REVERT_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.Cancel
+      - _name: SendForApproval
+        _type: UserTaskTransition
+        label: Send For Approval
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.Approve
+  - _name: EditOrganization
+    _type: UserTask
+    label: Edit Organization
+    position:
+      x: -460
+      y: 20
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: HCO_HCP.applications.HCO_HCP
+    assigneeRequiredRole: BusinessUser
+    entity: HCO_HCP.entities.HCO.HCO
+    stepper: HCO_HCP.entities.HCO.steppers.AuthorHCOs
+    transitions:
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.Cancel
+      - _name: SendForApproval
+        _type: UserTaskTransition
+        label: Send For Approval
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: 360
+            y: 0
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.Approve
+  - _name: Cancel
+    _type: EndEvent
+    position:
+      x: -460
+      y: -100
+  - _name: EndOrganization
+    _type: EndEvent
+    position:
+      x: 240
+      y: -210
+  - _name: Approve
+    _type: UserTask
+    label: Approve
+    position:
+      x: -100
+      y: -210
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: HCO_HCP.applications.HCO_HCP
+    assigneeRequiredRole: DataSteward
+    entity: HCO_HCP.entities.HCO.HCO
+    stepper: HCO_HCP.entities.HCO.steppers.AuthorHCOs
+    transitions:
+      - _name: Submit
+        _type: UserTaskTransition
+        label: Submit
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.Approval
+      - _name: Fix
+        _type: UserTaskTransition
+        label: Fix
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: -90
+            y: 80
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.Fix
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.Cancel
+  - _name: Approval
+    _type: SubmitAutomation
+    label: Approval
+    position:
+      x: 120
+      y: -210
+    integrationJob: HCO_HCP.model_jobs.HCO
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: HCO_HCP.workflows.CreateOrEditOrganization.EndOrganization
+  - _name: Fix
+    _type: Router
+    label: Fix
+    position:
+      x: -260
+      y: -70
+    routes:
+      - _name: NotActive
+        _type: Route
+        index: 1
+        label: Not Active
+        bendPoints: []
+        condition: CurrentDataSet.HCO.ID = 1
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.NewOrganization
+      - _name: Active
+        _type: Route
+        index: 2
+        label: Active
+        bendPoints: []
+        toStep: HCO_HCP.workflows.CreateOrEditOrganization.EditOrganization

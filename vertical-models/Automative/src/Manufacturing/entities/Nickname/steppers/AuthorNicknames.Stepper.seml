@@ -1,0 +1,68 @@
+_name: AuthorNicknames
+_package: Manufacturing.entities.Nickname.steppers
+_type: Stepper
+entity: Manufacturing.entities.Nickname.Nickname
+rootStep:
+  _name: Nicknames
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.Nickname.collection_views.NicknameCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Nicknames
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.Nickname.Nickname.TopNickname
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.Nickname.Nickname.AllNicknames
+  stepTriggers: []
+  childSteps:
+    - _name: Nickname
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Nickname
+      formTab: Manufacturing.entities.Nickname.forms.NicknameForm.Nickname
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Nickname.Nickname.AllNicknames
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Nickname.Nickname.TopNickname
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Nickname.Nickname.TopNickname
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Nickname.Nickname.AllNicknames
+      stepTriggers: []
+label: Author Nicknames
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.Nickname.Nickname.AllNicknames
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.Nickname.Nickname.TopNickname
+triggers: []

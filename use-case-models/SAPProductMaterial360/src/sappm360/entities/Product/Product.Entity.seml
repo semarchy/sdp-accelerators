@@ -1,0 +1,284 @@
+# Product Golden Record entity for the SAP Product / Material 360 accelerator.
+_name: Product
+_package: sappm360.entities.Product
+_type: Entity
+primaryKey: sappm360.entities.Product.Product.ProductGoldenID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: UUID
+label: Product Golden Record
+documentation: Trusted product golden record consolidating SAP and non-SAP product information.
+description: Trusted product golden record consolidating SAP and non-SAP product information.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/package-variant-closed.svg
+pluralLabel: Products
+historizeGolden: true
+historizeMaster: true
+physicalTableName: PRODUCT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductGoldenID
+    physicalName: PROD_GOLDEN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Product Golden ID
+    documentation: System generated golden identifier for the trusted product record.
+    description: System generated golden identifier for the trusted product record.
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductID
+    physicalName: PRODUCT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product ID
+    documentation: Enterprise product identifier used across SAP and downstream systems.
+    description: Enterprise product identifier used across SAP and downstream systems.
+    mandatory: true
+    length: 64
+    mandatoryValidationLabel: Product ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductName
+    physicalName: PRODUCT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Name
+    documentation: Business name for the product golden record.
+    description: Business name for the product golden record.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Product Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductDescription
+    physicalName: PRODUCT_DESC
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Description
+    documentation: Business description used by stewards to understand the product.
+    description: Business description used by stewards to understand the product.
+    mandatory: false
+    length: 2000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedProductName
+    physicalName: NORM_PRODUCT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Product Name
+    documentation: Standardized product name used for matching and search.
+    description: Standardized product name used for matching and search.
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductFamily
+    physicalName: PRODUCT_FAMILY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Family
+    documentation: Commercial or portfolio family to which the product belongs.
+    description: Commercial or portfolio family to which the product belongs.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductLine
+    physicalName: PRODUCT_LINE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Line
+    documentation: Product line used for portfolio reporting and stewardship.
+    description: Product line used for portfolio reporting and stewardship.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GTIN
+    physicalName: GTIN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: GTIN
+    documentation: Global Trade Item Number used to identify packaged trade items.
+    description: Global Trade Item Number used to identify packaged trade items.
+    mandatory: false
+    length: 32
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ManufacturerPartNumber
+    physicalName: MFR_PART_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Manufacturer Part Number
+    documentation: Manufacturer assigned part number for the product.
+    description: Manufacturer assigned part number for the product.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Effective From
+    documentation: Date from which the product record is effective.
+    description: Date from which the product record is effective.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Effective To
+    documentation: Date through which the product record remains effective.
+    description: Date through which the product record remains effective.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GlobalQualityScore
+    physicalName: GLOBAL_QUALITY_SCORE
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Global Quality Score
+    documentation: Overall stewardship quality score for the product.
+    description: Overall stewardship quality score for the product.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsHazardous
+    physicalName: IS_HAZARDOUS
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Hazardous
+    documentation: Indicates whether the product is treated as hazardous.
+    description: Indicates whether the product is treated as hazardous.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsProcurementRelevant
+    physicalName: IS_PROC_RELEVANT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Procurement Relevant
+    documentation: Indicates whether the product participates in procurement processes.
+    description: Indicates whether the product participates in procurement processes.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsSellable
+    physicalName: IS_SELLABLE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Sellable
+    documentation: Indicates whether the product can be syndicated for sales channels.
+    description: Indicates whether the product can be syndicated for sales channels.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemQLMatcherProduct
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 94
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Product matching rules for golden record consolidation.
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameGTIN
+      condition: >-
+        Record1.GTIN is not null and Record1.GTIN = Record2.GTIN
+      label: Same GTIN
+      documentation: Same GTIN matching rule for Product Golden Record.
+      description: Same GTIN matching rule for Product Golden Record.
+      matchScore: 100
+      color: md:green 800
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameProductID
+      condition: >-
+        Record1.ProductID is not null and Record1.ProductID = Record2.ProductID
+      label: Same Product ID
+      documentation: Same Product ID matching rule for Product Golden Record.
+      description: Same Product ID matching rule for Product Golden Record.
+      matchScore: 96
+      color: md:green 700
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameNameAndFamily
+      condition: >-
+        Record1.NormalizedProductName = Record2.NormalizedProductName and COALESCE(Record1.ProductFamily,'') = COALESCE(Record2.ProductFamily,'')
+      label: Same Name And Family
+      documentation: Same Name And Family matching rule for Product Golden Record.
+      description: Same Name And Family matching rule for Product Golden Record.
+      matchScore: 88
+      color: md:teal 600
+      usingMatchOn: false

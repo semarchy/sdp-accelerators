@@ -1,0 +1,29 @@
+_name: ProductReviewSuggestionsActionSet
+_package: sappm360.entities.Product.action_sets
+_type: ActionSet
+entity: sappm360.entities.Product.Product
+label: Product Golden Record Review Suggestions Action Set
+description: Action set for reviewing Product Golden Record duplicate suggestions.
+defaultActionSet: false
+actions:
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicate products.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnProduct
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions for Product Golden Record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sappm360.entities.Product.dups_managers.ManageDuplicatesOnProduct
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

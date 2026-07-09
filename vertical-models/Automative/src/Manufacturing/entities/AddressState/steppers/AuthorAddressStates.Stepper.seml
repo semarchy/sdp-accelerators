@@ -1,0 +1,68 @@
+_name: AuthorAddressStates
+_package: Manufacturing.entities.AddressState.steppers
+_type: Stepper
+entity: Manufacturing.entities.AddressState.AddressState
+rootStep:
+  _name: AddressStates
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.AddressState.collection_views.AddressStateCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: States
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.StatesAddressCountry.AddressCountry
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.StatesAddressCountry.AddressCountry
+  stepTriggers: []
+  childSteps:
+    - _name: AddressState
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: State
+      formTab: Manufacturing.entities.AddressState.forms.AddressStateForm.AddressState
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.StatesAddressCountry.AddressCountry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.StatesAddressCountry.AddressCountry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.StatesAddressCountry.AddressCountry
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.StatesAddressCountry.AddressCountry
+      stepTriggers: []
+label: Author States
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.StatesAddressCountry.AddressCountry
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.StatesAddressCountry.AddressCountry
+triggers: []

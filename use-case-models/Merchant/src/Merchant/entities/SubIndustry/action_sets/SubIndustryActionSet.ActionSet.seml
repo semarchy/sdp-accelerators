@@ -1,0 +1,57 @@
+ # Description: Action set for `SubIndustry` entity (manage/create/edit actions).
+ # Contains: Actions and linked steppers for SubIndustry workflows.
+ # Role: Defines available UI actions for SubIndustry management.
+_package: Merchant.entities.SubIndustry.action_sets
+_type: ActionSet
+_name: SubIndustryActionSet
+entity: Merchant.entities.SubIndustry.SubIndustry
+label: Sub Industry Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorSubIndustries
+    label: Create
+    useCustomLabel: true
+    stepper: Merchant.entities.SubIndustry.steppers.AuthorSubIndustries
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorSubIndustries
+    label: Edit
+    useCustomLabel: true
+    stepper: Merchant.entities.SubIndustry.steppers.AuthorSubIndustries
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorSubIndustries
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Merchant.entities.SubIndustry.steppers.AuthorSubIndustries
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

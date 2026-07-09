@@ -1,0 +1,9 @@
+_package: Merchant.entities.Merchant.validations
+_name: MerchantName
+_type: SemQLValidation
+entity: Merchant.entities.Merchant.Merchant
+label: Validate Merchant Name
+# Merchant Name must be provided and not empty/whitespace
+condition: MerchantName IS NOT NULL AND LENGTH(LTRIM(RTRIM(MerchantName))) > 0
+validationScope: PRE_CONSO
+validationLabel: Merchant Name must not be null or empty

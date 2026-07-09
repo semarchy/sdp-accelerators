@@ -1,0 +1,88 @@
+_name: Fund
+_package: PrivateEquity.entities.Fund
+_type: Entity
+primaryKey: PrivateEquity.entities.Fund.Fund.ID
+sourceIdGeneration:
+  mode: MANUAL
+label: Fund
+description: "Represents an investment fund used to organize portfolios and related legal entities."
+documentation: "Private equity companies offer various investment products to their investors, with the most common being funds. A fund is a pooled investment vehicle that allows investors to pool their capital together, which is then managed by the private equity firm. These funds serve as investment vehicles through which the firm invests in various assets such as private companies, real estate, or other alternative investments."
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/ungroup.svg
+pluralLabel: Funds
+historizeGolden: true
+historizeMaster: false
+physicalTableName: FUND
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    description: "Unique identifier for the fund record."
+    documentation: "Unique identifier for the fund record. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 10
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    description: "Business name used to identify the fund record in stewardship screens and integrations."
+    documentation: "Private equity companies offer various investment products to their investors, with the most common being funds. A fund is a pooled investment vehicle that allows investors to pool their capital together, which is then managed by the private equity firm. These funds serve as investment vehicles through which the firm invests in various assets such as private companies, real estate, or other alternative investments."
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ChainID
+    physicalName: CHAIN_ID
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Chain ID
+    description: "Source chain identifier used to align the fund with upstream private equity systems."
+    documentation: "Source chain identifier used to align the fund with upstream private equity systems. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 10
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    description: "Free-text explanation that clarifies the meaning or business use of the fund value."
+    documentation: "Free-text explanation that clarifies the meaning or business use of the fund value. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 4000
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

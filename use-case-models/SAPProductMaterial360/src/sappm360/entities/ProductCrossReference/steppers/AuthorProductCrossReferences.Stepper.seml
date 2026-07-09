@@ -1,0 +1,102 @@
+_name: AuthorProductCrossReferences
+_package: sappm360.entities.ProductCrossReference.steppers
+_type: Stepper
+entity: sappm360.entities.ProductCrossReference.ProductCrossReference
+description: Stepper for authoring product cross references.
+rootStep:
+  _name: ProductCrossReferences
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sappm360.entities.ProductCrossReference.collection_views.ProductCrossReferenceCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Product Cross References
+  description: Manage Product Cross Reference data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.CrossReferenceProduct.Product
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.CrossReferenceMaterial.Material
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.CrossReferenceSourceSystem.SourceSystem
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Product Cross Reference.
+      formTab: sappm360.entities.ProductCrossReference.forms.ProductCrossReferenceDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.ProductCrossReference.forms.ProductCrossReferenceDataEntryForm.Main.Details.DetailsContainer.Container2.FDN_Product
+          referencePickerCollectionView: sappm360.entities.Product.collection_views.ProductCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.ProductCrossReference.forms.ProductCrossReferenceDataEntryForm.Main.Details.DetailsContainer.Container3.FDN_Material
+          referencePickerCollectionView: sappm360.entities.Material.collection_views.MaterialCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.ProductCrossReference.forms.ProductCrossReferenceDataEntryForm.Main.Details.DetailsContainer.Container2.FDN_SourceSystem
+          referencePickerCollectionView: sappm360.entities.SourceSystem.collection_views.SourceSystemCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sappm360.references.CrossReferenceProduct.Product
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.CrossReferenceMaterial.Material
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.CrossReferenceSourceSystem.SourceSystem
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.CrossReferenceProduct.Product
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.CrossReferenceMaterial.Material
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.CrossReferenceSourceSystem.SourceSystem
+      stepTriggers: []
+label: Author Product Cross References
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.CrossReferenceProduct.Product
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.CrossReferenceMaterial.Material
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.CrossReferenceSourceSystem.SourceSystem
+triggers: []

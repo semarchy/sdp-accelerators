@@ -1,0 +1,195 @@
+_package: CorpFin.model_diagrams
+_name: CorpFinCounterParty
+_type: ModelDiagram
+attributeNameFormat: NAME
+description: Visual map of the Corporate Finance data model and its relationships.
+entityNameFormat: LABEL
+label: Counterparty sub-Model
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    entity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+    _name: CounterpartyGroup
+    borderColor: "#9BBB59"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 234.50474115049303
+      y: -73.2686292913985
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Country.Country
+    _name: Country
+    borderColor: "#4F81BD"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 152.77669662022328
+      y: 455.19078594747293
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Currency.Currency
+    _name: Currency
+    borderColor: "#C0504D"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1134
+      y: -98
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Counterparty.Counterparty
+    _name: Counterparty
+    borderColor: "#8064A2"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 707.8640222651348
+      y: 313.8834831011163
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.CounterpartyAddress.CounterpartyAddress
+    _name: CounterpartyAddress
+    borderColor: "#F79646"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 686.4855284315162
+      y: 965.2297076194357
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Address.Address
+    _name: Address
+    borderColor: "#FFD700"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 433.06894447051764
+      y: 746.3884723686141
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.ContactInformation.ContactInformation
+    _name: ContactInformation
+    borderColor: "#1F497D"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1231.7265845806344
+      y: 638.4319679071091
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.BankAccount.BankAccount
+    _name: BankAccount
+    borderColor: "#C00000"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1448.7886379647482
+      y: 340.06845839681205
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Customer.Customer
+    _name: Customer
+    borderColor: "#4BACC6"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 852
+      y: -152
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Supplier.Supplier
+    _name: Supplier
+    borderColor: "#F79646"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 554
+      y: -114
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.RiskComplianceProfile.RiskComplianceProfile
+    _name: RiskComplianceProfile
+    borderColor: "#4B0082"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 988.5346465932494
+      y: 806.7664119808414
+    width: -1
+referenceLinks:
+  - bendPoints:
+      - x: 150
+        y: 135
+      - x: 150
+        y: 270
+      - x: 240
+        y: 270
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.CounterpartyGroup
+    reference: CorpFin.references.CounterpartyGroupHasParent
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.CounterpartyGroup
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.CounterpartyGroup
+    reference: CorpFin.references.CounterpartyGroupHasHeadquartersCountry
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Country
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+    reference: CorpFin.references.CounterpartyHasParentGroup
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.CounterpartyGroup
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+    reference: CorpFin.references.CounterpartyHasCountry
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Country
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+    reference: CorpFin.references.CounterpartyHasCurrency
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Currency
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.CounterpartyAddress
+    reference: CorpFin.references.CounterpartyAddressHasCounterparty
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.CounterpartyAddress
+    reference: CorpFin.references.CounterpartyAddressHasAddress
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Address
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Address
+    reference: CorpFin.references.AddressHasCountry
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Country
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.ContactInformation
+    reference: CorpFin.references.ContactInformationHasCounterparty
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.BankAccount
+    reference: CorpFin.references.BankAccountHasCounterparty
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.BankAccount
+    reference: CorpFin.references.BankAccountHasCurrency
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Currency
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Customer
+    reference: CorpFin.references.CustomerHasCounterparty
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Customer
+    reference: CorpFin.references.CustomerHasPreferredCurrency
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Currency
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Supplier
+    reference: CorpFin.references.SupplierHasCounterparty
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.RiskComplianceProfile
+    reference: CorpFin.references.RiskComplianceProfileHasCounterparty
+    toEntityShape: CorpFin.model_diagrams.CorpFinCounterParty.Counterparty
+inheritLinks: []

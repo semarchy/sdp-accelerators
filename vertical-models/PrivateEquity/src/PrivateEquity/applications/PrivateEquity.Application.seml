@@ -1,0 +1,616 @@
+_package: PrivateEquity.applications
+_name: PrivateEquity
+_type: Application
+applicationTitle: Private Equity
+avatarImageUrl: images://manufacturing/legal-entity-mgmt.svg
+coverImageUrl: images://default/cover.png
+favIcon: images://manufacturing/legal-entity-mgmt.svg
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ""
+logoUrl: images://default/logo.png
+visibility: VISIBLE
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: Groups
+      _type: DocumentationConfigDiagram
+      modelDiagram: PrivateEquity.model_diagrams.Groups
+      label: Groups
+    - _name: Relationships
+      _type: DocumentationConfigDiagram
+      modelDiagram: PrivateEquity.model_diagrams.Relationships
+      label: Relationships
+    - _name: Account
+      _type: DocumentationConfigDiagram
+      modelDiagram: PrivateEquity.model_diagrams.Account
+      label: Account
+    - _name: AllDomains
+      _type: DocumentationConfigDiagram
+      modelDiagram: PrivateEquity.model_diagrams.AllDomains
+      label: All Domains
+    - _name: LegalEntityDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: PrivateEquity.model_diagrams.LegalEntity
+      label: Legal Entity
+label: Private Equity
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: Portfolio
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: PrivateEquity.entities.Portfolio.business_views.Portfolio
+      label: Portfolio
+      maxResults: 5
+      searchTypeConfig: PrivateEquity.entities.Portfolio.business_views.Portfolio.PortfolioEO.TextConfig
+    - _name: LEGroup
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: PrivateEquity.entities.LEGroup.business_views.LEGroup
+      label: LE Group
+      maxResults: 5
+      searchTypeConfig: PrivateEquity.entities.LEGroup.business_views.LEGroup.LEGroupEO.TextConfig
+    - _name: Fund
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: PrivateEquity.entities.Fund.business_views.Fund
+      label: Funds
+      maxResults: 5
+      searchTypeConfig: PrivateEquity.entities.Fund.business_views.Fund.FundEO.TextConfig
+    - _name: LegalEntityView
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: PrivateEquity.entities.LegalEntity.business_views.LegalEntity
+      label: Legal Entity
+      maxResults: 5
+      searchTypeConfig: PrivateEquity.entities.LegalEntity.business_views.LegalEntity.LegalEntityEO.TextConfig
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: GlobalSearch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: GlobalSearchAction
+    - _name: MyTasks
+      iconColor: md:red
+      labelColor: md:red
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: MyTasksAction
+      badgeVisible: true
+      badgeBackgroundColor: md:red
+    - _name: Entities
+      icon: images://mdi/database-outline.svg
+      iconColor: md:green
+      image: images://mdi/database-outline.svg
+      label: Entities
+      labelColor: md:green
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseEntitiesFolderAction
+      lineageEnabled: true
+    - _name: LegalEntity
+      label: Legal Entities
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseLEGroup
+          label: LE Groups
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: PrivateEquity.entities.LEGroup.business_views.LEGroup
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseLegalEntity
+          icon: images://mdi/office-building.svg
+          image: images://mdi/office-building.svg
+          label: Legal Entities
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: PrivateEquity.entities.LegalEntity.business_views.LegalEntity
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseFund
+          label: Funds
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: PrivateEquity.entities.Fund.business_views.Fund
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseAccount
+          icon: images://mdi/bank.svg
+          image: images://mdi/bank.svg
+          label: Bank / Custodian Accounts
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: PrivateEquity.entities.Account.business_views.Account
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+    - _name: ReferenceData
+      icon: images://mdi/folder-open.svg
+      image: images://mdi/folder-open.svg
+      label: Reference Data
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: ExternalRDM
+          icon: images://mdi/arrow-expand-all.svg
+          image: images://mdi/arrow-expand-all.svg
+          label: Industry RDM
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: BrowseCurrency
+              icon: images://mdi/currency-usd-circle-outline.svg
+              image: images://mdi/currency-usd-circle-outline.svg
+              label: Currencies
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Currency.business_views.Currency
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseCountry
+              icon: images://mdi/flag-variant.svg
+              image: images://mdi/flag-variant.svg
+              label: Countries
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Country.business_views.Country
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseForm
+              icon: images://mdi/book.svg
+              image: images://mdi/book.svg
+              label: Forms
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Form.business_views.Form
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseState
+              icon: images://mdi/flag-outline-variant.svg
+              image: images://mdi/flag-outline-variant.svg
+              label: States
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.State.business_views.State
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+        - _name: InternalRDM
+          icon: images://mdi/arrow-collapse-all.svg
+          image: images://mdi/arrow-collapse-all.svg
+          label: Corporate RDM
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: BrowseEntityType
+              icon: images://mdi/account-question.svg
+              image: images://mdi/account-question.svg
+              label: Entity Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.EntityType.business_views.EntityType
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseCategory
+              icon: images://mdi/file-tree.svg
+              image: images://mdi/file-tree.svg
+              label: Categories
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Category.business_views.Category
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseEntityStructure
+              icon: images://mdi/format-list-bulleted-type.svg
+              image: images://mdi/format-list-bulleted-type.svg
+              label: Entity Structures
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.EntityStructure.business_views.EntityStructure
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseNameType
+              icon: images://mdi/format-list-bulleted-type.svg
+              image: images://mdi/format-list-bulleted-type.svg
+              label: Name Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.NameType.business_views.NameType
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseRelationship
+              icon: images://mdi/handshake-outline.svg
+              image: images://mdi/handshake-outline.svg
+              label: Relationships
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Relationship.business_views.Relationship
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseStartegy
+              icon: images://mdi/settings-outline.svg
+              image: images://mdi/settings-outline.svg
+              label: Startegies
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Startegy.business_views.Startegy
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseStatus
+              icon: images://mdi/question-mark-circle.svg
+              image: images://mdi/question-mark-circle.svg
+              label: Statuses
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Status.business_views.Status
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseSubcategory
+              icon: images://mdi/file-tree-outline.svg
+              image: images://mdi/file-tree-outline.svg
+              label: Subcategories
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Subcategory.business_views.Subcategory
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowsePortfolio
+              icon: images://mdi/folder-open.svg
+              image: images://mdi/folder-open.svg
+              label: Portfolioes
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Portfolio.business_views.Portfolio
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseGeographyType
+              icon: images://mdi/home-map-marker.svg
+              image: images://mdi/home-map-marker.svg
+              label: Geography Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.GeographyType.business_views.GeographyType
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseRegion
+              icon: images://mdi/flag-checkered-variant.svg
+              image: images://mdi/flag-checkered-variant.svg
+              label: Regions
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Region.business_views.Region
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseIndustry
+              icon: images://mdi/factory.svg
+              image: images://mdi/factory.svg
+              label: Industries
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Industry.business_views.Industry
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseInvestmentStructure
+              icon: images://mdi/currency-btc.svg
+              image: images://mdi/currency-btc.svg
+              label: Investment Structures
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.InvestmentStructure.business_views.InvestmentStructure
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseGroupType
+              icon: images://mdi/format-list-bulleted-type.svg
+              image: images://mdi/format-list-bulleted-type.svg
+              label: Group Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.GroupType.business_views.GroupType
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseAccountType
+              icon: images://mdi/bank-transfer.svg
+              image: images://mdi/bank-transfer.svg
+              label: Account Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.AccountType.business_views.AccountType
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseOffice
+              icon: images://mdi/office-building-marker.svg
+              image: images://mdi/office-building-marker.svg
+              label: Offices
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Office.business_views.Office
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseContact
+              icon: images://mdi/contact-phone.svg
+              image: images://mdi/contact-phone.svg
+              label: Contacts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Contact.business_views.Contact
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseBank
+              icon: images://mdi/bank.svg
+              image: images://mdi/bank.svg
+              label: Banks
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Bank.business_views.Bank
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseEntityRole
+              icon: images://mdi/format-list-bulleted-type.svg
+              image: images://mdi/format-list-bulleted-type.svg
+              label: Entity Roles
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.EntityRole.business_views.EntityRole
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    - _name: DataStewardship
+      icon: images://mdi/auto-fix.svg
+      image: images://mdi/auto-fix.svg
+      label: Data Stewardship
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: DataStewardshipFolder
+          icon: images://mdi/person-plus.svg
+          image: images://mdi/person-plus.svg
+          label: Data Stewardship
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: ImportLegalEntity
+              icon: images://mdi/application-import.svg
+              image: images://mdi/application-import.svg
+              label: Import LEs
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: ImportDataAppAction
+              importAction: PrivateEquity.entities.LegalEntity.action_sets.LegalEntityActionSet.ImportAuthorLegalEntities
+            - _name: LegalEntityError
+              icon: images://mdi/auto-fix.svg
+              iconColor: md:red
+              image: images://mdi/auto-fix.svg
+              label: LE Errors
+              labelColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.LegalEntity.business_views.LegalEntity
+              nbRecordsBadgeVisible: true
+              businessViewLabelOverride: LE Error
+              businessViewRootLabelOverride: LE Error
+              businessViewRootPluralLabelOverride: LE Errors
+              nbRecordsBadgeBackgroundColor: md:red
+              useSearchOnOpen: false
+              viewType: SDWE
+    - _name: ManyToManyRelationships
+      label: Relationships
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: AllManyToMany
+          icon: images://mdi/table-large.svg
+          image: images://mdi/table-large.svg
+          label: X-Ref Relationships
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: BrowsePortfolioLegalEntity
+              icon: images://mdi/ungroup.svg
+              image: images://mdi/ungroup.svg
+              label: Portfolio Legal Entities
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.PortfolioLegalEntity.business_views.PortfolioLegalEntity
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseParentChild
+              icon: images://mdi/family-tree.svg
+              image: images://mdi/family-tree.svg
+              label: Parent Children
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.ParentChild.business_views.ParentChild
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseGroupHierarchy
+              icon: images://mdi/family-tree.svg
+              image: images://mdi/family-tree.svg
+              label: Group Hierarchies
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.GroupHierarchy.business_views.GroupHierarchy
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseLERelationship
+              icon: images://mdi/handshake-outline.svg
+              image: images://mdi/handshake-outline.svg
+              label: LE Relationships
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.LERelationship.business_views.LERelationship
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseFundLE
+              icon: images://mdi/table-large-plus.svg
+              image: images://mdi/table-large-plus.svg
+              label: Fund LEs
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.FundLE.business_views.FundLE
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseDocument
+              icon: images://mdi/table-large-plus.svg
+              image: images://mdi/table-large-plus.svg
+              label: Documents
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Document.business_views.Document
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseGroupLegalEntity
+              icon: images://mdi/table-large-plus.svg
+              image: images://mdi/table-large-plus.svg
+              label: Group Legal Entities
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.GroupLegalEntity.business_views.GroupLegalEntity
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseName
+              icon: images://mdi/rename-box.svg
+              image: images://mdi/rename-box.svg
+              label: Names
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: PrivateEquity.entities.Name.business_views.Name
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    # - _name: Documentation
+    #   icon: images://mdi/book-open-blank-variant.svg
+    #   image: images://mdi/book-open-blank-variant.svg
+    #   label: Documentation
+    #   imageAlign: MIDDLE_CENTER
+    #   imageMode: FIT
+    #   _type: FolderAction
+    #   appActions:
+    #     - _name: DemoGuide
+    #       icon: images://mdi/book-open-blank-variant.svg
+    #       image: images://mdi/book-open-blank-variant.svg
+    #       label: Demo Guide
+    #       imageAlign: MIDDLE_CENTER
+    #       imageMode: FIT
+    #       _type: UrlAction
+    #       url: https://industrydemo.s3.amazonaws.com/LegalEntity/Private+Equity_Legal+Entity+Use+Case+Document.pdf
+    #       target: EDITOR_EMBEDDING_WITHOUT_TITLE
+defaultAction: PrivateEquity.applications.PrivateEquity.Root.GlobalSearch
+navDrawer:
+  - _name: PlatformActions
+    _type: NavigationGroup
+    dividerVisible: true
+    label: Platform Actions
+    labelVisible: true
+    actions:
+      - appAction: PrivateEquity.applications.PrivateEquity.Root.GlobalSearch
+      - appAction: PrivateEquity.applications.PrivateEquity.Root.MyTasks
+      - appAction: PrivateEquity.applications.PrivateEquity.Root.Entities
+  - _name: LegalEntity
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: PrivateEquity.applications.PrivateEquity.Root.LegalEntity
+  - _name: ReferenceData
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: PrivateEquity.applications.PrivateEquity.Root.ReferenceData
+  - _name: DataStewardship
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: PrivateEquity.applications.PrivateEquity.Root.DataStewardship
+  - _name: JoinTables
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: PrivateEquity.applications.PrivateEquity.Root.ManyToManyRelationships
+  # - _name: Documentation
+  #   _type: FolderNavGroup
+  #   dividerVisible: true
+  #   labelVisible: true
+  #   linkedFolder: PrivateEquity.applications.PrivateEquity.Root.Documentation

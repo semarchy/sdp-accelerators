@@ -1,0 +1,94 @@
+_name: AuthorPortfolioLegalEntities
+_package: PrivateEquity.entities.PortfolioLegalEntity.steppers
+_type: Stepper
+entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+rootStep:
+  _name: PortfolioLegalEntitys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.PortfolioLegalEntity.collection_views.PortfolioLegalEntityCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Portfolio Legal Entities
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.PortfolioLegalEntitiesPortfolio.Portfolio
+    - onStepExit: WARN
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.PortfolioLegalEntitiesLegalEntity.LegalEntity
+    - onStepExit: WARN
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.PortfolioLegalEntitiesPortfolio.Portfolio
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.PortfolioLegalEntitiesLegalEntity.LegalEntity
+  stepTriggers: []
+  childSteps:
+    - _name: PortfolioLegalEntity
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Portfolio Legal Entity
+      formTab: PrivateEquity.entities.PortfolioLegalEntity.forms.PortfolioLegalEntityForm.PortfolioLegalEntity
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.PortfolioLegalEntitiesLegalEntity.LegalEntity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.PortfolioLegalEntitiesPortfolio.Portfolio
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.PortfolioLegalEntitiesPortfolio.Portfolio
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.PortfolioLegalEntitiesLegalEntity.LegalEntity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.PortfolioLegalEntitiesPortfolio.Portfolio
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.PortfolioLegalEntitiesLegalEntity.LegalEntity
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.PortfolioLegalEntitiesLegalEntity.LegalEntity
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.PortfolioLegalEntitiesPortfolio.Portfolio
+      stepTriggers: []
+label: Author Portfolio Legal Entities
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.PortfolioLegalEntitiesLegalEntity.LegalEntity
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.PortfolioLegalEntitiesLegalEntity.LegalEntity
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.PortfolioLegalEntitiesPortfolio.Portfolio
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.PortfolioLegalEntitiesPortfolio.Portfolio
+triggers: []

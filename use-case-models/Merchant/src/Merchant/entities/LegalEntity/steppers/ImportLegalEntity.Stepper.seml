@@ -1,0 +1,38 @@
+_package: Merchant.entities.LegalEntity.steppers
+_type: Stepper
+_name: ImportLegalEntity
+entity: Merchant.entities.LegalEntity.LegalEntity
+label: Legal Entities
+rootStep:
+  _type: CollectionStep
+  _name: LegalEntities
+  label: Legal Entities
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.LegalEntity.collection_views.LegalEntityImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: LegalEntity
+      label: Legal Entity
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.LegalEntity.forms.LegalEntityForm.Overview
+      formStepEnrichers:
+        - enricher: Merchant.entities.LegalEntity.enrichers.NormalizeLegalName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false

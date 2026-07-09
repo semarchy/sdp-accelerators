@@ -1,0 +1,16 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.LegalEntity.enrichers
+_name: PopulateType
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+label: Populate Type
+description: "Classifies legal entities as Internal when the name matches the configured PSG pattern, otherwise defaults the type to Investor."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_EntityType
+    expression: |-
+      case when 
+      REGEXP_LIKE(Name, '[PSG]{3}')
+      then 'Internal'
+      else 'Investor'
+      end
+afterEnrichers: PrivateEquity.entities.LegalEntity.enrichers.GeocodeUsingGoogle

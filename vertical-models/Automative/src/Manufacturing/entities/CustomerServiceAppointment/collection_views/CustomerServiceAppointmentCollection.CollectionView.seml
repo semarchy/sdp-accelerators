@@ -1,0 +1,78 @@
+_package: Manufacturing.entities.CustomerServiceAppointment.collection_views
+_name: CustomerServiceAppointmentCollection
+_type: CollectionView
+entity: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment
+default: true
+displayCard: Manufacturing.entities.CustomerServiceAppointment.display_cards.CustomerServiceAppointmentDisplayCard
+tableAllowed: true
+tableRowLines: 1
+tableDisplayCardColumnLabel: Customer Service Appointment
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ServiceAppointmentID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: ServiceAppointmentID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ServiceAppointmentDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: ServiceAppointmentDate
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_Customer
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Customer
+    visibleByDefault: true
+    referencedEntity: Manufacturing.entities.Customer.Customer
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_DealerService
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_DealerService
+    visibleByDefault: true
+    referencedEntity: Manufacturing.entities.ProductDealerService.ProductDealerService
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: DealerService_FDN_Service
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DealerService.FDN_Service
+    visibleByDefault: true
+    referencedEntity: Manufacturing.entities.ProductService.ProductService
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Vehicle
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Vehicle
+    visibleByDefault: true
+    referencedEntity: Manufacturing.entities.ProductVehicle.ProductVehicle
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL

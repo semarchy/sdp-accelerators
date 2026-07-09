@@ -1,0 +1,106 @@
+# Product Relationship entity for the SAP Product / Material 360 accelerator.
+_name: ProductRelationship
+_package: sappm360.entities.ProductRelationship
+_type: Entity
+primaryKey: sappm360.entities.ProductRelationship.ProductRelationship.ProductRelationshipID
+sourceIdGeneration:
+  mode: MANUAL
+label: Product Relationship
+documentation: Relationship between products such as substitute, successor, accessory, or bundle component.
+description: Relationship between products such as substitute, successor, accessory, or bundle component.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/relation-many-to-many.svg
+pluralLabel: Product Relationships
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PROD_REL
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductRelationshipID
+    physicalName: PROD_REL_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Relationship ID
+    documentation: Unique identifier for a relationship between products.
+    description: Unique identifier for a relationship between products.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RelationshipCode
+    physicalName: REL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Relationship Code
+    documentation: Code that identifies the product relationship.
+    description: Code that identifies the product relationship.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Relationship Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Quantity
+    physicalName: QUANTITY
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Quantity
+    documentation: Quantity used when the relationship represents a component or bundle.
+    description: Quantity used when the relationship represents a component or bundle.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Effective From
+    documentation: Date from which the relationship is effective.
+    description: Date from which the relationship is effective.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Effective To
+    documentation: Date through which the relationship remains effective.
+    description: Date through which the relationship remains effective.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the relationship is active.
+    description: Indicates whether the relationship is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

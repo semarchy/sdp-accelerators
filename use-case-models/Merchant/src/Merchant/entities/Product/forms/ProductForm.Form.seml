@@ -1,0 +1,134 @@
+# Description: Form definition for `Product` used to create/edit product records.
+# Contains form layout, fields and validations for product attributes.
+# Role: Drives the UI form for product maintenance.
+_package: Merchant.entities.Product.forms
+_type: Form
+_name: ProductForm
+entity: Merchant.entities.Product.Product
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Overview
+    label: Overview
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/eye-outline.svg
+    content:
+      - _type: FormSection
+        _name: Primary
+        label: Primary
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PrimaryRow
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: LeftCol
+                layoutDirection: COLUMN
+                content:
+                  - _type: TextField
+                    _name: ProductName
+                    value: ProductName
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: headline-6
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: TextField
+                    _name: Description
+                    value: Description
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+              - _type: FormContainer
+                _name: RightCol
+                layoutDirection: COLUMN
+                content:
+                  - _type: ReferenceField
+                    _name: Merchant
+                    value: FDN_Merchant
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: Merchant.entities.Merchant.Merchant
+                    authoringMode: auto
+                    componentProperties:
+                      displayType: chip
+                      textAlign: left
+                      useAvatarInChip: '1'
+                      useSecondaryTextInChip: '1'
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: ReferenceField
+                    _name: Category
+                    value: FDN_ProductCategory
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: Merchant.entities.ProductCategory.ProductCategory
+                    authoringMode: auto
+                    componentProperties:
+                      displayType: chip
+                      textAlign: left
+                      useAvatarInChip: '1'
+                      useSecondaryTextInChip: '1'
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: MenuField
+                    _name: ProductStatus
+                    value: ProductStatus
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+      - _type: FormSection
+        _name: Metadata
+        label: System Metadata
+        layoutDirection: COLUMN
+        content:
+          - _type: IdField
+            _name: ProductID
+            value: ProductID
+            useCustomLabel: true
+            label: "Product ID"
+            dataType: LONG_INTEGER
+            componentProperties:
+              textAlign: left
+            labelProperties:
+              alignment: left
+              position: top
+              typography: caption
+              isVisible: '1'

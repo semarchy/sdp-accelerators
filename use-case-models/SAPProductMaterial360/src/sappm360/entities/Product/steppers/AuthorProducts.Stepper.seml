@@ -1,0 +1,165 @@
+_name: AuthorProducts
+_package: sappm360.entities.Product.steppers
+_type: Stepper
+entity: sappm360.entities.Product.Product
+description: Stepper for authoring products.
+rootStep:
+  _name: Products
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sappm360.entities.Product.collection_views.ProductCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Products
+  description: Manage Product Golden Record data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.ProductsBrand.Brand
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.ProductsType.ProductType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.ProductsStatus.ProductStatus
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.ProductsLifecycleStatus.LifecycleStatus
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.ProductsHierarchy.ProductHierarchy
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sappm360.entities.Product.validations.EffectiveDates
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sappm360.entities.Product.Product.SemQLMatcherProduct
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Product Golden Record.
+      formTab: sappm360.entities.Product.forms.ProductDataEntryForm.Main
+      formStepEnrichers:
+        - enricher: sappm360.entities.Product.enrichers.NormalizedProductName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Product.forms.ProductDataEntryForm.Main.Relationships.RelationshipsContainer.Container11.FDN_Brand
+          referencePickerCollectionView: sappm360.entities.Brand.collection_views.BrandCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Product.forms.ProductDataEntryForm.Main.Relationships.RelationshipsContainer.Container12.FDN_ProductType
+          referencePickerCollectionView: sappm360.entities.ProductType.collection_views.ProductTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Product.forms.ProductDataEntryForm.Main.Relationships.RelationshipsContainer.Container11.FDN_ProductStatus
+          referencePickerCollectionView: sappm360.entities.ProductStatus.collection_views.ProductStatusCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Product.forms.ProductDataEntryForm.Main.Relationships.RelationshipsContainer.Container12.FDN_LifecycleStatus
+          referencePickerCollectionView: sappm360.entities.LifecycleStatus.collection_views.LifecycleStatusCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Product.forms.ProductDataEntryForm.Main.Relationships.RelationshipsContainer.Container11.FDN_ProductHierarchy
+          referencePickerCollectionView: sappm360.entities.ProductHierarchy.collection_views.ProductHierarchyCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sappm360.references.ProductsBrand.Brand
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.ProductsType.ProductType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.ProductsStatus.ProductStatus
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.ProductsLifecycleStatus.LifecycleStatus
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.ProductsHierarchy.ProductHierarchy
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sappm360.entities.Product.validations.EffectiveDates
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.ProductsBrand.Brand
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.ProductsType.ProductType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.ProductsStatus.ProductStatus
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.ProductsLifecycleStatus.LifecycleStatus
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.ProductsHierarchy.ProductHierarchy
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sappm360.entities.Product.validations.EffectiveDates
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sappm360.entities.Product.Product.SemQLMatcherProduct
+      stepTriggers: []
+label: Author Products
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.ProductsBrand.Brand
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.ProductsType.ProductType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.ProductsStatus.ProductStatus
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.ProductsLifecycleStatus.LifecycleStatus
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.ProductsHierarchy.ProductHierarchy
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sappm360.entities.Product.validations.EffectiveDates
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

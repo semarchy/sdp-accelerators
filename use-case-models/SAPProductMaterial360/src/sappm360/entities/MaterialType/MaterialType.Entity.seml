@@ -1,0 +1,94 @@
+# Material Type entity for the SAP Product / Material 360 accelerator.
+_name: MaterialType
+_package: sappm360.entities.MaterialType
+_type: Entity
+primaryKey: sappm360.entities.MaterialType.MaterialType.MaterialTypeID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: MaterialTypeCode
+label: Material Type
+documentation: Material Type reference data used by the SAP Product / Material 360 model.
+description: Material Type reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Material Types
+historizeGolden: true
+historizeMaster: false
+physicalTableName: MATERIAL_TYPE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: MaterialTypeID
+    physicalName: MATERIAL_TYPE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Type ID
+    documentation: Unique identifier for the material type.
+    description: Unique identifier for the material type.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MaterialTypeCode
+    physicalName: MATERIAL_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Type Code
+    documentation: Code for the material type.
+    description: Code for the material type.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Material Type Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MaterialTypeName
+    physicalName: MATERIAL_TYPE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Type Name
+    documentation: SAP material type used for accounting and logistics behavior.
+    description: SAP material type used for accounting and logistics behavior.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Material Type Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the material type.
+    description: Description for the material type.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the material type is active.
+    description: Indicates whether the material type is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

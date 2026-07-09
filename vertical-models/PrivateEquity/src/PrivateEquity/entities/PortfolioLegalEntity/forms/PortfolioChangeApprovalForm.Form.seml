@@ -1,0 +1,209 @@
+_package: PrivateEquity.entities.PortfolioLegalEntity.forms
+_type: Form
+_name: PortfolioChangeApprovalForm
+entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+default: false
+formTabs:
+  - _name: PortfolioChangeApproval
+    _type: FormTab
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Portfolio Change
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormContainer
+        _name: Container
+        layoutDirection: ROW
+        content:
+          - _type: FormSection
+            _name: CurrentAssignment
+            label: Current Assignment
+            layoutDirection: COLUMN
+            documentationInterpreter: LITERAL
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            content:
+              - _name: GoldenRecord_FDN_LegalEntity
+                label: Investment Vehicle
+                value: GoldenRecord.FDN_LegalEntity
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: PrivateEquity.entities.LegalEntity.LegalEntity
+                _type: ReferenceField
+                authoringMode: READ_ONLY
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: GoldenRecord_FDN_Portfolio
+                label: Current Portfolio
+                value: GoldenRecord.FDN_Portfolio
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: PrivateEquity.entities.Portfolio.Portfolio
+                _type: ReferenceField
+                authoringMode: READ_ONLY
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: GoldenRecord_FDN_EntityRole
+                label: Current Role
+                value: GoldenRecord.FDN_EntityRole
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: PrivateEquity.entities.EntityRole.EntityRole
+                _type: ReferenceField
+                authoringMode: READ_ONLY
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormSection
+            _name: ProposedAssignment
+            label: Proposed Assignment
+            layoutDirection: COLUMN
+            documentationInterpreter: LITERAL
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            content:
+              - _name: Unchanged_FDN_LegalEntity
+                label: Investment Vehicle
+                value: GoldenRecord.FDN_LegalEntity
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: PrivateEquity.entities.LegalEntity.LegalEntity
+                _type: ReferenceField
+                authoringMode: READ_ONLY
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FDN_Portfolio
+                label: New Portfolio
+                value: FDN_Portfolio
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: PrivateEquity.entities.Portfolio.Portfolio
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentBackgroundColor: |-
+                    case
+                    when FDN_Portfolio != GoldenRecord.FDN_Portfolio
+                    then 'css:yellow'
+                    else 'css:white'
+                    end
+                  contentBackgroundColorValueInterpreter: SEMQL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FDN_EntityRole
+                label: Role
+                value: FDN_EntityRole
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: PrivateEquity.entities.EntityRole.EntityRole
+                _type: ReferenceField
+                authoringMode: READ_ONLY
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL

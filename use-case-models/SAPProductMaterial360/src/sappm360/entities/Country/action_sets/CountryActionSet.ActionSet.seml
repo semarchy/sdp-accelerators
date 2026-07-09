@@ -1,0 +1,69 @@
+_name: CountryActionSet
+_package: sappm360.entities.Country.action_sets
+_type: ActionSet
+entity: sappm360.entities.Country.Country
+label: Country Action Set
+description: Action set for managing countries in SAP Product / Material 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorCountries
+    label: Create
+    description: Create a new Country record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sappm360.entities.Country.steppers.AuthorCountries
+  - _name: EditAuthorCountries
+    label: Edit
+    description: Edit Country records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sappm360.entities.Country.steppers.AuthorCountries
+  - _name: MassUpdateAuthorCountries
+    label: Mass Update
+    description: Mass update Country records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sappm360.entities.Country.steppers.AuthorCountries
+  - _name: Delete
+    label: Delete
+    description: Delete selected Country records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorCountries
+    label: Import
+    description: Import Country records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sappm360.entities.Country.steppers.CountryImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

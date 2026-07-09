@@ -1,0 +1,47 @@
+# This is the AuthorIndustries Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing industries within the Salesforce context.
+_name: AuthorIndustries
+_package: sales360.entities.Industry.steppers
+_type: Stepper
+entity: sales360.entities.Industry.Industry
+description: Stepper for managing Industry entities
+rootStep:
+  _name: Industrys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Industry.collection_views.IndustryCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Industries
+  description: Collection step for managing industries
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for Industry entity
+      formTab: sales360.entities.Industry.forms.IndustryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Industries
+stepperFinishValidations: []
+triggers: []

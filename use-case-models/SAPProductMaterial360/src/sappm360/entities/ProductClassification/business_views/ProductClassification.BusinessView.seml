@@ -1,0 +1,71 @@
+_name: ProductClassification
+_package: sappm360.entities.ProductClassification.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.ProductClassification.ProductClassification
+rootLabel: Product Classification
+rootPluralLabel: Product Classifications
+useHierarchyOnOpen: false
+label: Product Classification
+description: Business view for Product Classification.
+rootBusinessViewEntity:
+  _name: ProductClassification
+  _type: BusinessViewEntity
+  collection: sappm360.entities.ProductClassification.collection_views.ProductClassificationCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.ProductClassification.ProductClassification
+  form: sappm360.entities.ProductClassification.forms.ProductClassificationBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.ProductClassification.action_sets.ProductClassificationActionSet
+  displayCard: sappm360.entities.ProductClassification.display_cards.ProductClassificationDisplayCard
+  sortExpression: ClassificationCode
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.ProductClassification.forms.ProductClassificationBrowsingForm.Main.Details.DetailsContainer.Container3.FDN_Product
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.ProductClassification.forms.ProductClassificationBrowsingForm.Main.Details.DetailsContainer.Container4.FDN_ClassificationScheme
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.ProductClassification.business_views.ProductClassification.ProductClassification
+rootIconUrl: images://mdi/shape-outline.svg

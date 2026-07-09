@@ -1,0 +1,55 @@
+_name: AuthorProductBodyStyles
+_package: Manufacturing.entities.ProductBodyStyle.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductBodyStyle.ProductBodyStyle
+rootStep:
+  _name: ProductBodyStyles
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductBodyStyle.collection_views.ProductBodyStyleCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Body Styles
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductBodyStyle.ProductBodyStyle.BodyStyle
+  stepTriggers: []
+  childSteps:
+    - _name: ProductBodyStyle
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Body Style
+      formTab: Manufacturing.entities.ProductBodyStyle.forms.ProductBodyStyleForm.ProductBodyStyle
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductBodyStyle.ProductBodyStyle.BodyStyle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductBodyStyle.ProductBodyStyle.BodyStyle
+      stepTriggers: []
+label: Author Body Styles
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductBodyStyle.ProductBodyStyle.BodyStyle
+triggers: []

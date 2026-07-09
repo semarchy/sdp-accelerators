@@ -1,0 +1,681 @@
+_package: PropertyAndCasualtyInsurance.entities.VehicleAsset.forms
+_type: Form
+_name: VehicleAssetForm
+entity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Summary
+    iconUrl: images://mdi/car-info.svg
+    label: Summary
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: SummaryContainer01
+        content:
+          - _type: MarkdownField
+            _name: VehicleSummaryOverview
+            label: Overview
+            value: >-
+              SEM_CONCAT('', '1',
+                '# Vehicle Asset ', COALESCE(SEM_NUMBER_TO_CHAR(VehicleAssetId), 'Unidentified'), CHR(10), CHR(10),
+                '**VIN:** ', COALESCE(VIN, 'Not recorded'), CHR(10), CHR(10),
+                '**Vehicle:** ', COALESCE(SEM_NUMBER_TO_CHAR(Year), ''), ' ', COALESCE(Make.MakeName, ''), ' ', COALESCE(Model.ModelName, ''), CHR(10), CHR(10),
+                '**Trim / Body:** ', COALESCE(Trim.TrimName, 'Not recorded'), ' / ', COALESCE(BodyStyle.BodyStyleName, 'Not recorded'), CHR(10), CHR(10),
+                '**Usage:** ', COALESCE(UsageType, 'Not recorded'), CHR(10), CHR(10),
+                CASE
+                  WHEN EndDate IS NOT NULL AND EndDate <= CURRENT_DATE() THEN CONCAT('Coverage ended on ', SEM_TO_CHAR2(EndDate), '. Validate if this asset should remain active.')
+                  WHEN EndDate IS NOT NULL THEN CONCAT('Coverage is active and scheduled to end on ', SEM_TO_CHAR2(EndDate), '.')
+                  WHEN StartDate IS NULL THEN 'Coverage start date is not recorded. Confirm effective date alignment with policy lifecycle.'
+                  ELSE CONCAT('Coverage is active since ', SEM_TO_CHAR2(StartDate), '.')
+                END
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/car-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:blue 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+
+      - _type: FormContainer
+        _name: SummaryContainer02
+        content:
+          - _type: MarkdownField
+            _name: VehicleSummaryIdentity
+            label: Identity and registration
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Identity and registration', CHR(10), CHR(10),
+                '| Item | Value |', CHR(10),
+                '| --- | --- |', CHR(10),
+                '| Plate number | ', COALESCE(PlateNumber, 'Not recorded'), ' |', CHR(10),
+                '| Plate state | ', COALESCE(PlateState.StateCode, 'Not recorded'), ' |', CHR(10),
+                '| Vehicle type | ', COALESCE(VehicleType.VehicleTypeName, 'Not recorded'), ' |', CHR(10),
+                '| Fuel type | ', COALESCE(FuelType, 'Not recorded'), ' |', CHR(10),
+                '| Engine size | ', COALESCE(EngineSize, 'Not recorded'), ' |'
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/card-account-details-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:indigo 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+
+          - _type: MarkdownField
+            _name: VehicleSummaryUsage
+            label: Usage and protection
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Usage and protection', CHR(10), CHR(10),
+                '| Signal | Value |', CHR(10),
+                '| --- | --- |', CHR(10),
+                '| Usage type | ', COALESCE(UsageType, 'Not recorded'), ' |', CHR(10),
+                '| Annual mileage | ', CASE WHEN AnnualMileage IS NOT NULL THEN SEM_NUMBER_TO_CHAR(AnnualMileage) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Ownership type | ', COALESCE(OwnershipType, 'Not recorded'), ' |', CHR(10),
+                '| Anti-theft device | ', CASE WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(AntiTheftDeviceFlag), 'false') = 'true' THEN 'Yes' ELSE 'No / not recorded' END, ' |'
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/shield-check-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:teal 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+
+      - _type: FormContainer
+        _name: SummaryContainer03
+        content:
+          - _type: MarkdownField
+            _name: VehicleSummaryValuation
+            label: Valuation and deductibles
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Valuation and deductibles', CHR(10), CHR(10),
+                '| Measure | Value |', CHR(10),
+                '| --- | ---: |', CHR(10),
+                '| Original purchase price | ', CASE WHEN OriginalPurchasePrice IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(OriginalPurchasePrice)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Current market value | ', CASE WHEN CurrentMarketValue IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(CurrentMarketValue)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Collision deductible | ', CASE WHEN CollisionDeductible IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(CollisionDeductible)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Comprehensive deductible | ', CASE WHEN ComprehensiveDeductible IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(ComprehensiveDeductible)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Uninsured motorist limit | ', CASE WHEN UninsuredMotoristLimit IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(UninsuredMotoristLimit)) ELSE 'Not recorded' END, ' |'
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/cash-multiple.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:green 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+
+          - _type: MarkdownField
+            _name: VehicleSummaryLifecycle
+            label: Lifecycle guidance
+            value: >-
+              CASE
+                WHEN EndDate IS NOT NULL AND EndDate <= CURRENT_DATE() THEN SEM_CONCAT('', '1',
+                  '## Lifecycle guidance', CHR(10), CHR(10),
+                  '**Coverage start:** ', CASE WHEN StartDate IS NOT NULL THEN SEM_TO_CHAR2(StartDate) ELSE 'Not recorded' END, CHR(10), CHR(10),
+                  '**Coverage end:** ', SEM_TO_CHAR2(EndDate), CHR(10), CHR(10),
+                  'This vehicle is marked as out of coverage. Confirm policy endorsement timing and retention requirements before further servicing.'
+                )
+                ELSE SEM_CONCAT('', '1',
+                  '## Lifecycle guidance', CHR(10), CHR(10),
+                  '**Coverage start:** ', CASE WHEN StartDate IS NOT NULL THEN SEM_TO_CHAR2(StartDate) ELSE 'Not recorded' END, CHR(10), CHR(10),
+                  '**Coverage end:** ', CASE WHEN EndDate IS NOT NULL THEN CONCAT('Active until ', SEM_TO_CHAR2(EndDate)) ELSE 'Active / not recorded' END, CHR(10), CHR(10),
+                  CASE
+                    WHEN AnnualMileage IS NOT NULL AND AnnualMileage > 20000 THEN 'High-mileage usage detected. Revisit rating assumptions at renewal.'
+                    WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(AntiTheftDeviceFlag), 'false') = 'true' THEN 'Anti-theft protection is enabled. Confirm credit eligibility in underwriting rules.'
+                    ELSE 'Coverage appears active. Review valuation and deductible alignment during the next servicing cycle.'
+                  END
+                )
+              END
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/clipboard-check-outline.svg
+              iconColor: CASE WHEN EndDate IS NOT NULL AND EndDate <= CURRENT_DATE() THEN 'md:red 700' ELSE 'md:blue 700' END
+              iconColorValueInterpreter: SEMQL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+  - _type: FormTab
+    _name: VehicleAsset
+    label: "Vehicle Asset"
+    iconUrl: images://mdi/car-outline.svg
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: VehicleAssetSection1
+        label: "Vehicle Identity"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: VehicleAssetSection1Row
+            content:
+              - _type: FormContainer
+                _name: VehicleAssetSection1Col1
+                content:
+                  - _type: IdField
+                    _name: VehicleAssetId
+                    dataType: LONG_INTEGER
+                    useCustomLabel: false
+                    value: VehicleAssetId
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: VIN
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: VIN
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: PlateNumber
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: PlateNumber
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: VehicleAssetSection1Col2
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_PlateState
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.StateProvince.StateProvince
+                    useCustomLabel: false
+                    value: FDN_PlateState
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: Year
+                    dataType: INTEGER
+                    useCustomLabel: false
+                    value: Year
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '####'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_Make
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.VehicleMake.VehicleMake
+                    useCustomLabel: false
+                    value: FDN_Make
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: VehicleAssetSection1Col3
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_Model
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.VehicleModel.VehicleModel
+                    useCustomLabel: false
+                    value: FDN_Model
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_Trim
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.VehicleTrim.VehicleTrim
+                    useCustomLabel: false
+                    value: FDN_Trim
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_BodyStyle
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.BodyStyle.BodyStyle
+                    useCustomLabel: false
+                    value: FDN_BodyStyle
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: VehicleAssetSection1Col4
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_VehicleType
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.VehicleType.VehicleType
+                    useCustomLabel: false
+                    value: FDN_VehicleType
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: MenuField
+                    _name: FuelType
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: FuelType
+                    componentProperties:
+                      textAlign: left
+                      useAvatarInMenu: '1'
+                      useAvatarInMenuValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: EngineSize
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: EngineSize
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: VehicleAssetSection2
+        label: "Usage and Driver"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: VehicleAssetSection2Row
+            content:
+              - _type: FormContainer
+                _name: VehicleAssetSection2Col1
+                content:
+                  - _type: MenuField
+                    _name: UsageType
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: UsageType
+                    componentProperties:
+                      textAlign: left
+                      useAvatarInMenu: '1'
+                      useAvatarInMenuValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                    
+                  - _type: TextField
+                    _name: AnnualMileage
+                    dataType: INTEGER
+                    useCustomLabel: false
+                    value: AnnualMileage
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: VehicleAssetSection2Col2
+                content:
+                  - _type: MenuField
+                    _name: OwnershipType
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: OwnershipType
+                    componentProperties:
+                      textAlign: left
+                      useAvatarInMenu: '1'
+                      useAvatarInMenuValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: VehicleAssetSection2Col3
+                content:
+                  - _type: CheckboxField
+                    _name: AntiTheftDeviceFlag
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: AntiTheftDeviceFlag
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: VehicleAssetSection2Col4
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_SafetyFeatures
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.VehicleSafetyFeature.VehicleSafetyFeature
+                    useCustomLabel: false
+                    value: FDN_SafetyFeatures
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: VehicleAssetSection3
+        label: "Valuation and Coverage"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: VehicleAssetSection3Row
+            content:
+              - _type: FormContainer
+                _name: VehicleAssetSection3Col1
+                content:
+                  - _type: TextField
+                    _name: OriginalPurchasePrice
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: OriginalPurchasePrice
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: CurrentMarketValue
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: CurrentMarketValue
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN  
+              - _type: FormContainer
+                _name: VehicleAssetSection3Col2
+                content:
+                  - _type: TextField
+                    _name: ComprehensiveDeductible
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: ComprehensiveDeductible
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              
+              - _type: FormContainer
+                _name: VehicleAssetSection3Col3
+                content:
+                  - _type: TextField
+                    _name: CollisionDeductible
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: CollisionDeductible
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: VehicleAssetSection3Col4
+                content:
+                  - _type: TextField
+                    _name: UninsuredMotoristLimit
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: UninsuredMotoristLimit
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: VehicleAssetSection4
+        label: "Lifecycle"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: VehicleAssetSection4Row
+            content:
+              - _type: FormContainer
+                _name: VehicleAssetSection4Col1
+                content:
+                  - _type: TextField
+                    _name: StartDate
+                    dataType: DATE
+                    useCustomLabel: false
+                    value: StartDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+
+              - _type: FormContainer
+                _name: VehicleAssetSection4Col2
+                content:
+                  - _type: TextField
+                    _name: EndDate
+                    dataType: DATE
+                    useCustomLabel: false
+                    value: EndDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+
+              - _type: FormContainer
+                _name: VehicleAssetSection4Col3
+                content: []
+                layoutDirection: COLUMN
+
+              - _type: FormContainer
+                _name: VehicleAssetSection4Col4
+                content: []
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN

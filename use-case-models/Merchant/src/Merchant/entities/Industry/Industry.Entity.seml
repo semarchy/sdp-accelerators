@@ -1,0 +1,35 @@
+# Description: Entity definition for `Industry` (industry sectors).
+# Contains industry metadata used for high-level classification of merchants.
+# Role: Master reference used by `LegalEntity` and reporting components.
+ # Description: Entity definition for `Industry` (industry sectors and metadata).
+ # Contains: Industry attributes used to classify merchants and legal entities.
+ # Role: Reference data entity used for categorization and reporting.
+_package: Merchant.entities.Industry
+_type: Entity
+_name: Industry
+label: Industry
+pluralLabel: Industry
+entityType: BASIC
+physicalTableName: INDUSTRY
+iconUrl: images://mdi/book.svg
+description: "Industry classifications used to categorize merchants and to group related sub-industries."
+documentation: "Master list of industry sectors. Used to classify merchants and to drive reporting, grouping and reference validations across the merchant model."
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:    
+  - _type: EntityAttribute
+    _name: IndustryName
+    label: Industry Name
+    physicalName: INDUSTRY_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Name of the industry sector"
+
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: Merchant.entities.Industry.Industry.IndustryName

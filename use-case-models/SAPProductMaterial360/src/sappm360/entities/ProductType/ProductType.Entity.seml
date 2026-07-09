@@ -1,0 +1,94 @@
+# Product Type entity for the SAP Product / Material 360 accelerator.
+_name: ProductType
+_package: sappm360.entities.ProductType
+_type: Entity
+primaryKey: sappm360.entities.ProductType.ProductType.ProductTypeID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ProductTypeCode
+label: Product Type
+documentation: Product Type reference data used by the SAP Product / Material 360 model.
+description: Product Type reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Product Types
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PRODUCT_TYPE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductTypeID
+    physicalName: PRODUCT_TYPE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Type ID
+    documentation: Unique identifier for the product type.
+    description: Unique identifier for the product type.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductTypeCode
+    physicalName: PRODUCT_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Type Code
+    documentation: Code for the product type.
+    description: Code for the product type.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Product Type Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductTypeName
+    physicalName: PRODUCT_TYPE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Type Name
+    documentation: Type used to distinguish materials, finished goods, services, and kits.
+    description: Type used to distinguish materials, finished goods, services, and kits.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Product Type Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the product type.
+    description: Description for the product type.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the product type is active.
+    description: Indicates whether the product type is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

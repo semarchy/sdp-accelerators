@@ -1,0 +1,73 @@
+ # Description: Action set for `PartyAddress` entity (create/edit/manage actions).
+ # Contains: Definitions of UI actions and linked steppers for addresses.
+ # Role: Controls available actions for managing PartyAddress records.
+_package: Merchant.entities.PartyAddress.action_sets
+_type: ActionSet
+_name: PartyAddressActionSet
+entity: Merchant.entities.PartyAddress.PartyAddress
+label: Party Address Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorPartyAddresses
+    label: Create
+    useCustomLabel: true
+    stepper: Merchant.entities.PartyAddress.steppers.AuthorPartyAddresses
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorPartyAddresses
+    label: Edit
+    useCustomLabel: true
+    stepper: Merchant.entities.PartyAddress.steppers.AuthorPartyAddresses
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorPartyAddresses
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Merchant.entities.PartyAddress.steppers.AuthorPartyAddresses
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorPartyAddresses
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Merchant.entities.PartyAddress.steppers.ImportPartyAddress
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: CopyAction
+    _name: CopyAuthorPartyAddresses
+    label: Copy
+    useCustomLabel: true
+    stepper: Merchant.entities.PartyAddress.steppers.AuthorPartyAddresses
+    multipleSelectionAllowed: true
+    waitDialogEnabled: false

@@ -1,0 +1,69 @@
+_name: SupplierProductActionSet
+_package: sappm360.entities.SupplierProduct.action_sets
+_type: ActionSet
+entity: sappm360.entities.SupplierProduct.SupplierProduct
+label: Supplier Product Action Set
+description: Action set for managing supplier products in SAP Product / Material 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorSupplierProducts
+    label: Create
+    description: Create a new Supplier Product record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sappm360.entities.SupplierProduct.steppers.AuthorSupplierProducts
+  - _name: EditAuthorSupplierProducts
+    label: Edit
+    description: Edit Supplier Product records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sappm360.entities.SupplierProduct.steppers.AuthorSupplierProducts
+  - _name: MassUpdateAuthorSupplierProducts
+    label: Mass Update
+    description: Mass update Supplier Product records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sappm360.entities.SupplierProduct.steppers.AuthorSupplierProducts
+  - _name: Delete
+    label: Delete
+    description: Delete selected Supplier Product records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorSupplierProducts
+    label: Import
+    description: Import Supplier Product records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sappm360.entities.SupplierProduct.steppers.SupplierProductImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

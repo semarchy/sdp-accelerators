@@ -1,0 +1,47 @@
+# This is the AuthorLeadStatuses Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing lead statuses within the Salesforce context.
+_name: AuthorLeadStatuses
+_package: sales360.entities.LeadStatus.steppers
+_type: Stepper
+entity: sales360.entities.LeadStatus.LeadStatus
+description: Stepper for managing Lead Statuses in Salesforce
+rootStep:
+  _name: LeadStatuss
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.LeadStatus.collection_views.LeadStatusCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Lead Statuses
+  description: Collection of Lead Statuses
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main Lead Status Information
+      formTab: sales360.entities.LeadStatus.forms.LeadStatusForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Lead Statuses
+stepperFinishValidations: []
+triggers: []

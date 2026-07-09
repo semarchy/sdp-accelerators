@@ -1,0 +1,69 @@
+_name: ComplianceStatusActionSet
+_package: sappm360.entities.ComplianceStatus.action_sets
+_type: ActionSet
+entity: sappm360.entities.ComplianceStatus.ComplianceStatus
+label: Compliance Status Action Set
+description: Action set for managing compliance statuses in SAP Product / Material 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorComplianceStatuses
+    label: Create
+    description: Create a new Compliance Status record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sappm360.entities.ComplianceStatus.steppers.AuthorComplianceStatuses
+  - _name: EditAuthorComplianceStatuses
+    label: Edit
+    description: Edit Compliance Status records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sappm360.entities.ComplianceStatus.steppers.AuthorComplianceStatuses
+  - _name: MassUpdateAuthorComplianceStatuses
+    label: Mass Update
+    description: Mass update Compliance Status records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sappm360.entities.ComplianceStatus.steppers.AuthorComplianceStatuses
+  - _name: Delete
+    label: Delete
+    description: Delete selected Compliance Status records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorComplianceStatuses
+    label: Import
+    description: Import Compliance Status records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sappm360.entities.ComplianceStatus.steppers.ComplianceStatusImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

@@ -1,0 +1,117 @@
+_package: PropertyAndCasualtyInsurance.entities.FormEndorsement
+_type: Entity
+_name: FormEndorsement
+label: Form Endorsement
+pluralLabel: Form Endorsements
+entityType: BASIC
+physicalTableName: FORM_ENDORSEMENT
+iconUrl: images://mdi/book.svg
+description: "Represents a form or endorsement associated with an insurance plan."
+documentation: "Represents a form or endorsement associated with an insurance plan."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: FormEndorsementID
+    label: Form Endorsement ID
+    physicalName: FORM_ENDORSEMENT_ID
+    dataType: String
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: FormCode
+    label: Form Code
+    physicalName: FORM_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Canonical enterprise identifier for a form or endorsement."
+    documentation: "Canonical enterprise identifier for a form or endorsement."
+  - _type: EntityAttribute
+    _name: FormNumber
+    label: Form Number
+    physicalName: FORM_NUMBER
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Carrier-issued or industry-standard form number."
+    documentation: "Carrier-issued or industry-standard form number."
+  - _type: EntityAttribute
+    _name: FormTitle
+    label: Form Title
+    physicalName: FORM_TITLE
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Official title of the form or endorsement."
+    documentation: "Official title of the form or endorsement."
+  - _type: EntityAttribute
+    _name: FormType
+    label: Form Type
+    physicalName: FORM_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.FormEndorsementType
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Classification indicating document purpose (Coverage Form, Endorsement, Notice, Other)."
+    documentation: "Classification indicating document purpose (Coverage Form, Endorsement, Notice, Other)."
+  - _type: EntityAttribute
+    _name: EditionDate
+    label: Edition Date
+    physicalName: EDITION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Official edition or revision date of the form."
+    documentation: "Official edition or revision date of the form."
+  - _type: EntityAttribute
+    _name: JurisdictionState
+    label: Jurisdiction State
+    physicalName: JURISDICTION_STATE
+    dataType: String
+    length: 10
+    mandatory: false
+    searchable: true
+    description: "State or jurisdiction where the form applies."
+    documentation: "State or jurisdiction where the form applies."
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which the form becomes available for use."
+    documentation: "Date from which the form becomes available for use."
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date until which the form remains valid."
+    documentation: "Date until which the form remains valid."
+  - _type: EntityAttribute
+    _name: ActiveFlag
+    label: Active Flag
+    physicalName: ACTIVE_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the form is currently active and selectable."
+    documentation: "Indicates whether the form is currently active and selectable."
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: PropertyAndCasualtyInsurance.entities.FormEndorsement.FormEndorsement.FormEndorsementID

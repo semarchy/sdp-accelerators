@@ -1,0 +1,139 @@
+_name: ManufacturingPlant
+_package: Manufacturing.entities.ManufacturingPlant
+_type: Entity
+primaryKey: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.ManufacturingPlantID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 10000
+label: Manufacturing Plant
+documentation: Contains details about Location of Manufacturing plants
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/factory.svg
+pluralLabel: Manufacturing Plants
+description: "Manufacturing facility master record used to track ownership, operating dates, output type, and supplied or produced items."
+historizeGolden: true
+historizeMaster: false
+physicalTableName: MANUFACTURING_PLANT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ManufacturingPlantID
+    physicalName: MANUFACTURING_PLANT_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Manufacturing Plant record."
+    documentation: "Surrogate identifier for the Manufacturing Plant record."
+    goldenAttribute: true
+    i18ned: false
+    label: Manufacturing Plant ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OutputProduct
+    physicalName: OUTPUT_PRODUCT
+    dataType: Manufacturing.list_of_values.MFGPlant_OutputProductType
+    description: "Type of product output produced by the manufacturing plant."
+    documentation: "Type of output the manufacturing plant produces. Does it produce finished goods or raw materials which can be used by other plants."
+    goldenAttribute: true
+    i18ned: false
+    label: Output Product
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: true
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsActive
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    description: "Indicates whether the plant is currently active and producing output."
+    documentation: Is the plant still active and producing output
+    goldenAttribute: true
+    i18ned: false
+    label: Is Active
+    mandatory: false
+    length: 1
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OperationStartDate
+    physicalName: START_DATE
+    dataType: Date
+    description: "Date when the Manufacturing Plant relationship or classification becomes effective."
+    documentation: Date when plant operations were started
+    goldenAttribute: true
+    i18ned: false
+    label: Start Date
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PlantOwnership
+    physicalName: PLANT_OWNERSHIP
+    dataType: Manufacturing.list_of_values.MGFPlant_PlantType
+    description: "Ownership model for the plant, such as owned, joint venture, or subcontracted."
+    documentation: "Ownership model for the plant, such as owned, joint venture, or subcontracted."
+    goldenAttribute: true
+    i18ned: false
+    label: Plant Ownership
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OperationEndDate
+    physicalName: OPERATION_END_DATE
+    dataType: Date
+    description: "Date when the Manufacturing Plant relationship or classification stops being effective."
+    documentation: Date when plant operations ended
+    goldenAttribute: true
+    i18ned: false
+    label: End Date
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PlantName
+    physicalName: PLANT_NAME
+    dataType: String
+    description: Name of the Manufacturing Plant
+    documentation: Name of the Manufacturing Plant
+    goldenAttribute: true
+    i18ned: false
+    label: Plant Name
+    mandatory: true
+    length: 250
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

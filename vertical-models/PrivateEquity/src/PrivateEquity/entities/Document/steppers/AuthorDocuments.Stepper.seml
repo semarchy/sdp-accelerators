@@ -1,0 +1,94 @@
+_name: AuthorDocuments
+_package: PrivateEquity.entities.Document.steppers
+_type: Stepper
+entity: PrivateEquity.entities.Document.Document
+rootStep:
+  _name: Documents
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.Document.collection_views.DocumentCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Documents
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.DocumentsLegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.DocumentsForm.Form
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.DocumentsLegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.DocumentsForm.Form
+  stepTriggers: []
+  childSteps:
+    - _name: Document
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Document
+      formTab: PrivateEquity.entities.Document.forms.DocumentForm.Document
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.DocumentsLegalEntity.LegalEntity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.DocumentsForm.Form
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.DocumentsForm.Form
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.DocumentsLegalEntity.LegalEntity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.DocumentsLegalEntity.LegalEntity
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.DocumentsForm.Form
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.DocumentsLegalEntity.LegalEntity
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.DocumentsForm.Form
+      stepTriggers: []
+label: Author Documents
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.DocumentsLegalEntity.LegalEntity
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.DocumentsForm.Form
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.DocumentsLegalEntity.LegalEntity
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.DocumentsForm.Form
+triggers: []

@@ -1,0 +1,58 @@
+_package: PropertyAndCasualtyInsurance.entities.DistributionChannel
+_type: Entity
+_name: DistributionChannel
+label: Distribution Channel
+pluralLabel: Distribution Channels
+entityType: BASIC
+physicalTableName: DISTRIBUTION_CHANNEL
+iconUrl: images://mdi/book.svg
+description: "Represents master sales and distribution channels used across policy operations."
+documentation: "Represents master sales and distribution channels used across policy operations."
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: ChannelCode
+    label: Channel Code
+    physicalName: CHANNEL_CODE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for sales/distribution channel."
+    documentation: "Unique identifier for sales/distribution channel."
+  - _type: EntityAttribute
+    _name: ChannelName
+    label: Channel Name
+    physicalName: CHANNEL_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Display name of channel (Direct, Agency, Broker, Partner)."
+    documentation: "Display name of channel (Direct, Agency, Broker, Partner)."
+  - _type: EntityAttribute
+    _name: ChannelType
+    label: Channel Type
+    physicalName: CHANNEL_TYPE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Higher-level grouping (Retail, Wholesale, Digital)."
+    documentation: "Higher-level grouping (Retail, Wholesale, Digital)."
+  - _type: EntityAttribute
+    _name: CommissionEligibleFlag
+    label: Commission Eligible Flag
+    physicalName: COMMISSION_ELIGIBLE_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether channel earns commission."
+    documentation: "Indicates whether channel earns commission."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.DistributionChannel.DistributionChannel.ChannelCode

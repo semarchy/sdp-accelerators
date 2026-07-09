@@ -1,0 +1,107 @@
+_name: AuthorProductModels
+_package: Manufacturing.entities.ProductModel.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductModel.ProductModel
+rootStep:
+  _name: ProductModels
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductModel.collection_views.ProductModelCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Models
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductModel.ProductModel.Model
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ModelsModelYear.ModelYear
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ModelsMake.Make
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ModelsMake.Make
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ModelsModelYear.ModelYear
+  stepTriggers: []
+  childSteps:
+    - _name: ProductModel
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Model
+      formTab: Manufacturing.entities.ProductModel.forms.ProductModelForm.ProductModel
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductModel.ProductModel.Model
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ModelsMake.Make
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ModelsMake.Make
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ModelsModelYear.ModelYear
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ModelsModelYear.ModelYear
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ModelsMake.Make
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ModelsModelYear.ModelYear
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductModel.ProductModel.Model
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ModelsModelYear.ModelYear
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ModelsMake.Make
+      stepTriggers: []
+label: Author Models
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ModelsMake.Make
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductModel.ProductModel.Model
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ModelsModelYear.ModelYear
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ModelsModelYear.ModelYear
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ModelsMake.Make
+triggers: []

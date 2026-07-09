@@ -1,0 +1,64 @@
+_name: InsuranceCompanyActionSet
+_package: HCO_HCP.entities.InsuranceCompany.action_sets
+_type: ActionSet
+entity: HCO_HCP.entities.InsuranceCompany.InsuranceCompany
+label: Insurance Company Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorInsuranceCompanys
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.InsuranceCompany.steppers.AuthorInsuranceCompanys
+  - _name: EditAuthorInsuranceCompanys
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    itemsLimit: 1000
+    multipleSelectionAllowed: true
+    stepper: HCO_HCP.entities.InsuranceCompany.steppers.AuthorInsuranceCompanys
+  - _name: MassUpdateAuthorInsuranceCompanys
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: HCO_HCP.entities.InsuranceCompany.steppers.AuthorInsuranceCompanys
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorInsuranceCompanys
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.InsuranceCompany.steppers.AuthorInsuranceCompanys
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

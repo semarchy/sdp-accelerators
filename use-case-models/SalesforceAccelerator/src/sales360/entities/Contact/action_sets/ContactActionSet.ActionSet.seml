@@ -1,0 +1,105 @@
+# This is the ContactActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on contacts, such as creating, editing,
+# mass updating, copying, deleting, exporting,importing contacts, browsing graph,
+# reviewing and confirming duplicates, merging or splitting duplicates, reviewing duplicate suggestions,
+# and explaining records.
+_name: ContactActionSet
+_package: sales360.entities.Contact.action_sets
+_type: ActionSet
+entity: sales360.entities.Contact.Contact
+label: Contact Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorContacts
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: true
+    allowOtherPublishers: false
+    stepper: sales360.entities.Contact.steppers.AuthorContacts
+  - _name: EditAuthorContacts
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.Contact.steppers.AuthorContacts
+  - _name: MassUpdateAuthorContacts
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sales360.entities.Contact.steppers.AuthorContacts
+  - _name: CopyAuthorContacts
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.Contact.steppers.AuthorContacts
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: true
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorContacts
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sales360.publishers.DataEntry
+    stepper: sales360.entities.Contact.steppers.ContactImport
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnContact
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: sales360.entities.Contact.dups_managers.ManageDuplicatesOnContact
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnContact
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: sales360.entities.Contact.dups_managers.ManageDuplicatesOnContact
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnContact
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sales360.entities.Contact.dups_managers.ManageDuplicatesOnContact
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false

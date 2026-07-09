@@ -1,0 +1,32 @@
+# It is an enricher for the Contact entity in the Salesforce Accelerator application.
+# It is a Java Plugin Enricher that uses a lookup table to populate the Nickname attribute based on Given Name.
+# This enricher is executed before the consumption of the entity data.
+_type: JavaPluginEnricher
+_package: sales360.entities.Contact.enrichers
+_name: Nickname
+entity: sales360.entities.Contact.Contact
+label: Nickname
+description: Enricher to populate the Nickname attribute based on Given Name using a lookup table.
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_OUTPUT_COLUMNS
+    value: TOP_NICKNAMES
+  - paramName: PARAM_MAPPING_TABLE
+    value: GD_NICKNAME
+  - paramName: PARAM_LOOKUP_COLUMN
+    value: GIVEN_NAME
+  - paramName: PARAM_CACHE
+    value: NO_CACHE
+pluginInputs:
+  - inputName: IN_LOOKUP_VALUE
+    expression: LOWER(COALESCE(NormalizedFirstName, FirstName))
+pluginOutputs:
+  - outputName: OUT_RESULT1
+    attributeName: Nickname
+afterEnrichers: sales360.entities.Contact.enrichers.GeocodedOtherAddress

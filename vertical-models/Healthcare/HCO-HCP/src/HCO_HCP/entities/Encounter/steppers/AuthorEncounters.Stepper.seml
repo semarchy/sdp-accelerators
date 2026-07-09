@@ -1,0 +1,81 @@
+_name: AuthorEncounters
+_package: HCO_HCP.entities.Encounter.steppers
+_type: Stepper
+entity: HCO_HCP.entities.Encounter.Encounter
+rootStep:
+  _name: Encounters
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.Encounter.collection_views.ImportCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Encounters
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.EncountersMember.Member
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.EncountersHCO.HCO
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.EncountersHCP.HCP
+  stepTriggers: []
+  childSteps:
+    - _name: Encounter
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Encounter
+      formTab: HCO_HCP.entities.Encounter.forms.EncounterForm.Encounter
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.EncountersMember.Member
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.EncountersHCP.HCP
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.EncountersHCO.HCO
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.EncountersHCP.HCP
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.EncountersHCO.HCO
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.EncountersMember.Member
+      stepTriggers: []
+label: Author Encounters
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.EncountersMember.Member
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.EncountersHCO.HCO
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.EncountersHCP.HCP
+triggers: []

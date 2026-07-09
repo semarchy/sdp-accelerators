@@ -1,0 +1,60 @@
+_package: PropertyAndCasualtyInsurance.entities.InsuranceType.business_views
+_type: BusinessView
+_name: InsuranceTypeBusinessView
+label: Insurance Type
+description: Provides a consolidated view of insurance type information, combining key attributes and related data to support business users in understanding and managing insurance types effectively. This business view aggregates essential details such as insurance type codes, names, risk classifications, and regulatory status to facilitate comprehensive coverage management, underwriting segmentation, and compliance monitoring.
+entity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType
+rootLabel: Insurance Types
+rootPluralLabel: Insurance Types
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: InsuranceType
+  displayCard: PropertyAndCasualtyInsurance.entities.InsuranceType.display_cards.InsuranceTypeDisplayCard
+  entity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType
+  actionSet: PropertyAndCasualtyInsurance.entities.InsuranceType.action_sets.InsuranceTypeActionSet
+  collection: PropertyAndCasualtyInsurance.entities.InsuranceType.collection_views.InsuranceTypeCollectionView
+  form: PropertyAndCasualtyInsurance.entities.InsuranceType.forms.InsuranceTypeForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: Transition from Line of Business to related Golden History Records.
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PropertyAndCasualtyInsurance.entities.InsuranceType.business_views.InsuranceTypeBusinessView.InsuranceType
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://pnc-ins/insurancetypes.svg

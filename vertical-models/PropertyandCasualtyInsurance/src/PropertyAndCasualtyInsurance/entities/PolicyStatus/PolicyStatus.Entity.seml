@@ -1,0 +1,71 @@
+_package: PropertyAndCasualtyInsurance.entities.PolicyStatus
+_type: Entity
+_name: PolicyStatus
+label: Policy Status
+pluralLabel: Policy Statuses
+entityType: BASIC
+physicalTableName: POLICY_STATUS
+iconUrl: images://mdi/book.svg
+description: "Represents reference policy lifecycle states used by policy administration."
+documentation: "Represents reference policy lifecycle states used by policy administration."
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PolicyStatusCode
+    label: Policy Status Code
+    physicalName: POLICY_STATUS_CODE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique code representing a policy lifecycle state."
+    documentation: "Unique code representing a policy lifecycle state."
+  - _type: EntityAttribute
+    _name: PolicyStatusName
+    label: Policy Status Name
+    physicalName: POLICY_STATUS_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Display name of the policy status (e.g., Active, Cancelled)."
+    documentation: "Display name of the policy status (e.g., Active, Cancelled)."
+  - _type: EntityAttribute
+    _name: StatusCategory
+    label: Status Category
+    physicalName: STATUS_CATEGORY
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "High-level grouping (e.g., In-Force, Terminated, Pending)."
+    documentation: "High-level grouping (e.g., In-Force, Terminated, Pending)."
+  - _type: EntityAttribute
+    _name: IsInForceFlag
+    label: Is In Force Flag
+    physicalName: IS_IN_FORCE_FLAG
+    dataType: Boolean
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Indicates whether status represents active coverage."
+    documentation: "Indicates whether status represents active coverage."
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    dataType: LongText
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    multiValued: false
+    physicalName: DESCRIPTION 
+    searchable: true
+    description: "Detailed explanation of the policy status, including implications for coverage and servicing."
+    documentation: "Detailed explanation of the policy status, including implications for coverage and servicing." 
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.PolicyStatus.PolicyStatus.PolicyStatusCode

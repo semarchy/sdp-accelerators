@@ -1,0 +1,101 @@
+_name: AuthorMembers
+_package: HCO_HCP.entities.Member.steppers
+_type: Stepper
+entity: HCO_HCP.entities.Member.Member
+rootStep:
+  _name: Members
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.Member.collection_views.ImportCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Members
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.MembersHCP.HCP
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: HCO_HCP.entities.Member.Member.SemlQLMatcherMember
+  stepTriggers: []
+  childSteps:
+    - _name: Member
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Member
+      formTab: HCO_HCP.entities.Member.forms.ImportForm.Main
+      formStepEnrichers:
+        - enricher: HCO_HCP.entities.Member.enrichers.Gender
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: HCO_HCP.entities.Member.enrichers.CleanseEmail
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: HCO_HCP.entities.Member.enrichers.FindPCPPubID
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: HCO_HCP.entities.Member.enrichers.StandardizeHomePhone
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: HCO_HCP.entities.Member.enrichers.StandardizeCellPhone
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: HCO_HCP.entities.Member.enrichers.Phoneticize
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: HCO_HCP.entities.Member.enrichers.FindPCPSourceID
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: HCO_HCP.entities.Member.enrichers.GeocodeUsingGoogle
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: HCO_HCP.entities.Member.forms.ImportForm.Main.FDN_HCP
+          referencePickerCollectionView: HCO_HCP.entities.HCP.collection_views.HCPCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.MembersHCP.HCP
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: HCO_HCP.entities.Member.Member.SemlQLMatcherMember
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.MembersHCP.HCP
+      stepTriggers: []
+label: Author Members
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.MembersHCP.HCP
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

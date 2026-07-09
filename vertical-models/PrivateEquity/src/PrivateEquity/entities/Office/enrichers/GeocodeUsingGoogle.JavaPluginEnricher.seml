@@ -1,0 +1,49 @@
+_type: JavaPluginEnricher
+_package: PrivateEquity.entities.Office.enrichers
+_name: GeocodeUsingGoogle
+entity: PrivateEquity.entities.Office.Office
+label: Geocode Using Google
+description: "Geocodes address components using Google Maps and stores the resolved location details."
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+batchUpdateSize: 1000
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+pluginInputs:
+  - inputName: IN_ADDRESSLINE
+    expression: SourceAddress.AddressLine
+  - inputName: IN_CITY
+    expression: SourceAddress.City
+  - inputName: IN_COUNTRY
+    expression: SourceAddress.Country
+  - inputName: IN_POSTALCODE
+    expression: SourceAddress.ZipCode
+pluginOutputs:
+  - outputName: QUALITY
+    attributeName: GeocodedAddress.Quality
+  - outputName: LOCALITY_LONGNAME
+    attributeName: GeocodedAddress.Locality
+  - outputName: ADM_AREA_LEV1_SHORTNAME
+    attributeName: GeocodedAddress.State
+  - outputName: ROUTE_LONGNAME
+    attributeName: GeocodedAddress.StreetName
+  - outputName: COORDINATES_LATITUDE
+    attributeName: GeocodedAddress.CoordLatitude
+  - outputName: STATUS
+    attributeName: GeocodedAddress.StatusReturned
+  - outputName: COUNTRY_LONGNAME
+    attributeName: GeocodedAddress.Country
+  - outputName: POSTALCODE_LONGNAME
+    attributeName: GeocodedAddress.PostalCode
+  - outputName: COUNTRY_SHORTNAME
+    attributeName: GeocodedAddress.CountryShort
+  - outputName: COORDINATES_LONGITUDE
+    attributeName: GeocodedAddress.CoordLongitude
+  - outputName: STREETNUMBER_LONGNAME
+    attributeName: GeocodedAddress.StreetNumber
+afterEnrichers: PrivateEquity.entities.Office.enrichers.StandarizePhone

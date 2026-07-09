@@ -1,0 +1,89 @@
+_package: PropertyAndCasualtyInsurance.entities.InsurableAsset.collection_views
+_type: CollectionView
+_name: InsurableAssetPolicyCollection
+entity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+default: false
+displayCard: PropertyAndCasualtyInsurance.entities.InsurableAsset.display_cards.InsurableAssetPolicy
+tableDisplayCardColumnWidth: 400
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: "Insurable Asset"
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FID_AssetStatus
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Asset Status"
+    referencedEntity: PropertyAndCasualtyInsurance.entities.AssetStatus.AssetStatus
+    useCustomLabel: true
+    value: FDN_AssetStatus
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  
+  - _type: ReferenceColumn
+    _name: FID_AssignedPolicy
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Assigned Policy"
+    referencedEntity: PropertyAndCasualtyInsurance.entities.Policy.Policy
+    useCustomLabel: true
+    value: FDN_AssignedPolicy
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+
+  - _type: TextColumn
+    _name: PolicyIssueDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: "Policy Issue Date"
+    value: AssignedPolicy.IssueDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PolicyStatus
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: "Policy Status"
+    value: AssignedPolicy.PolicyStatus.PolicyStatusName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PolicyCancelDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: "Policy Cancel Date"
+    value: AssignedPolicy.CancelDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PolicyCancelReason
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: "Policy Cancel Reason"
+    value: AssignedPolicy.CancellationReason
+    visibleByDefault: true

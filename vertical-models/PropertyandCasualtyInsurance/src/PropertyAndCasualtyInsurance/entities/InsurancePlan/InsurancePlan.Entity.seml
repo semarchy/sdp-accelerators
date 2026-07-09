@@ -1,0 +1,107 @@
+_package: PropertyAndCasualtyInsurance.entities.InsurancePlan
+_type: Entity
+_name: InsurancePlan
+label: Insurance Plan
+pluralLabel: Insurance Plans
+entityType: BASIC
+physicalTableName: INSURANCE_PLAN
+iconUrl: images://mdi/book.svg
+description: "Represents a configured insurance plan within a specific insurance type, including plan lifecycle and filing metadata."
+documentation: "Represents a configured insurance plan within a specific insurance type, including plan lifecycle and filing metadata."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: InsurancePlanID
+    label: Insurance Plan ID
+    physicalName: INSURANCE_PLAN_ID
+    dataType: String
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PlanCode
+    label: Plan Code
+    physicalName: PLAN_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier representing a configured plan within an insurance type."
+    documentation: "Unique identifier representing a configured plan within an insurance type."
+  - _type: EntityAttribute
+    _name: PlanName
+    label: Plan Name
+    physicalName: PLAN_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Business-facing name of the plan configuration."
+    documentation: "Business-facing name of the plan configuration."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: LongText
+    searchable: true
+    description: "Detailed description of the insurance plan, its features, and intended use cases."
+    documentation: "Detailed description of the insurance plan, its features, and intended use cases."
+  - _type: EntityAttribute
+    _name: PlanVersion
+    label: Plan Version
+    physicalName: PLAN_VERSION
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Version identifier for iterative plan updates."
+    documentation: "Version identifier for iterative plan updates."
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    searchable: true
+    description: "Date on which this plan configuration becomes effective."
+    documentation: "Date on which this plan configuration becomes effective."
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which this plan configuration expires."
+    documentation: "Date on which this plan configuration expires."
+  - _type: EntityAttribute
+    _name: PlanStatus
+    label: Plan Status
+    physicalName: PLAN_STATUS
+    dataType: PropertyAndCasualtyInsurance.list_of_values.PlanStatus
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Current operational status of the plan (e.g., Active, Withdrawn, Suspended)."
+    documentation: "Current operational status of the plan (e.g., Active, Withdrawn, Suspended)."
+  - _type: EntityAttribute
+    _name: FilingReference
+    label: Filing Reference
+    physicalName: FILING_REFERENCE
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+    description: "Regulatory filing or approval identifier tied to this plan."
+    documentation: "Regulatory filing or approval identifier tied to this plan."
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan.InsurancePlanID

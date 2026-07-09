@@ -1,0 +1,178 @@
+_name: ItemFamily
+_package: Manufacturing.entities.ItemFamily.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: Manufacturing.entities.ItemFamily.ItemFamily
+rootLabel: Item Family
+rootPluralLabel: Item Families
+useHierarchyOnOpen: true
+label: Item Families
+rootBusinessViewEntity:
+  _name: ItemFamilyEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.ItemFamily.collection_views.ItemFamilyCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.ItemFamily.ItemFamily
+  form: Manufacturing.entities.ItemFamily.forms.ItemFamilyForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.ItemFamily.action_sets.ItemFamilyActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: ItemSubFamilies
+      _type: BusinessViewTransition
+      transitionPath: ItemSubFamilies
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: ANY ItemSubFamilies HAVE (ItemSubFamilyID is not null)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "0"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ItemSubFamily
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ItemSubFamily.collection_views.ItemSubFamilyCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ItemSubFamily.ItemSubFamily
+        form: Manufacturing.entities.ItemSubFamily.forms.ItemSubFamilyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ItemSubFamily.forms.ItemSubFamilyForm.ItemSubFamily.Container.FDN_ItemFamily
+            navigationMode: MODAL_FORM
+        transitions:
+          - _name: ItemSubFamilies
+            _type: BusinessViewTransition
+            transitionPath: ItemSubFamilies
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            displayFormTabAs: LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: ANY ItemSubFamilies have (ItemSubFamilyID is not null)
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: false
+            transitionVisible: "0"
+            transitionVisibleInterpreter: LITERAL
+            visibleInFormTabCondition: 1=0
+            businessViewEntity:
+              _type: BusinessViewEntityReference
+              ref: Manufacturing.entities.ItemFamily.business_views.ItemFamily.ItemFamilyEO.ItemSubFamilies.ItemSubFamily
+          - _name: Items
+            _type: BusinessViewTransition
+            transitionPath: Items
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            displayFormTabAs: LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: ANY Items have (ItemID is not null)
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: false
+            transitionVisible: "0"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _name: Item
+              _type: BusinessViewEntity
+              collection: Manufacturing.entities.Item.collection_views.ItemCollection
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: Manufacturing.entities.Item.Item
+              form: Manufacturing.entities.Item.forms.ItemForm
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              businessEntityBuiltInFilters: []
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                  enabled: true
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                  enabled: true
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                  enabled: true
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+                  enabled: true
+              embeddedCollectionNavigations:
+                - browsingTarget: NOT_NAVIGABLE
+                  formCollection: Manufacturing.entities.Item.forms.ItemForm.Item.Container6.BillOfMaterial
+              referenceAttributeNavigationConfigs:
+                - formField: Manufacturing.entities.Item.forms.ItemForm.Item.Container3.Container2.FDN_ItemFamily
+                  navigationMode: MODAL_FORM
+                - formField: Manufacturing.entities.Item.forms.ItemForm.Item.Container3.Container2.FDN_ItemType
+                  navigationMode: MODAL_FORM
+                - formField: Manufacturing.entities.Item.forms.ItemForm.Item.Container3.Container2.FDN_ItemSubFamily
+                  navigationMode: MODAL_FORM
+              transitions:
+                - _name: ChildItem
+                  _type: BusinessViewTransition
+                  transitionPath: BillOfMaterials.ChildItem
+                  transitionType: FULLY_QUALIFIED
+                  useCustomLabel: false
+                  displayFormTabAs: LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  enableHierarchy: ANY BillOfMaterials.ChildItem have (ItemID is not null)
+                  enableHierarchyInterpreter: SEMQL
+                  expandHierarchyByDefault: false
+                  transitionVisible: "1"
+                  transitionVisibleInterpreter: LITERAL
+                  businessViewEntity:
+                    _type: BusinessViewEntityReference
+                    ref: Manufacturing.entities.ItemFamily.business_views.ItemFamily.ItemFamilyEO.ItemSubFamilies.ItemSubFamily.Items.Item

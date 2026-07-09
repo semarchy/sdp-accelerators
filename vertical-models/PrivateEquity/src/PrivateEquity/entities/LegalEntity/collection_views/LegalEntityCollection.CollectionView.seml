@@ -1,0 +1,349 @@
+_package: PrivateEquity.entities.LegalEntity.collection_views
+_name: LegalEntityCollection
+_type: CollectionView
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+default: true
+displayCard: PrivateEquity.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Legal Entity
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: true
+listShowDivider: true
+gridAllowed: true
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: ID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Name
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Name
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NormalizedName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NormalizedName
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: FiscalYear
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: FiscalYear
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "0"
+      useSwitchValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: FiscalYearEnd
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FiscalYearEnd
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Revenue
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: Revenue
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: $###,###
+      displayFormatValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: USFEIN
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: USFEIN
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SSN
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SSN
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: InputAddress
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GeocodedAddress
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: GeocodedAddress
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_EntityStructure
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_EntityStructure
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.EntityStructure.EntityStructure
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: NewInTY22
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NewInTY22
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: FinalInTY22
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FinalInTY22
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ChainID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ChainID
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: K1DueJune30
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: K1DueJune30
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: FormADVPF
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FormADVPF
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: EnableTaxSoftware
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EnableTaxSoftware
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_Country
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Country
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Country.Country
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_GeographyType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_GeographyType
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.GeographyType.GeographyType
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_State
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_State
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.State.State
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Status
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Status
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Status.Status
+    componentProperties:
+      textColor: CASE WHEN FDN_Status = 'Active' THEN 'md:green'  	ELSE 'md:red' END
+      textColorValueInterpreter: SEMQL
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_EntityType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_EntityType
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.EntityType.EntityType
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Category
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Category
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Category.Category
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Subcategory
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Subcategory
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Subcategory.Subcategory
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Startegy
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Startegy
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Startegy.Startegy
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Currency
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Currency
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Currency.Currency
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: InputAddress_AddressLine
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.AddressLine
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: InputAddress_City
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.City
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: InputAddress_State
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.State
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: InputAddress_ZipCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.ZipCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: InputAddress_Country
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.Country
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Website
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Website
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_Industry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Industry
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Industry.Industry
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Region
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Region
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Region.Region
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: DateColumn
+    _name: CreationDate
+    columnAlign: LEFT
+    dataType: TIMESTAMP
+    useCustomLabel: false
+    value: CreationDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: UpdateDate
+    columnAlign: LEFT
+    dataType: TIMESTAMP
+    useCustomLabel: false
+    value: UpdateDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Creator
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Creator
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Updator
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Updator
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MastersCount
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: MastersCount
+    visibleByDefault: true

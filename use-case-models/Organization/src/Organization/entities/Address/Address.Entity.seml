@@ -1,0 +1,136 @@
+_package: Organization.entities.Address
+_type: Entity
+_name: Address
+label: Address
+pluralLabel: Addresses
+entityType: BASIC
+physicalTableName: ADDRESS
+iconUrl: images://hr-img-lib/map-marker.svg
+description: Address entity representing physical addresses.
+documentation: This entity contains attributes related to physical addresses,
+  including street, city, state, and postal code. It is used across various
+  entities in the organization to store address information.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _name: AddressID
+    _type: EntityAttribute
+    label: Address ID
+    description: Unique identifier for the address
+    documentation: Unique identifier for the address
+    physicalName: ADDRESS_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _name: Number
+    _type: EntityAttribute
+    label: Number
+    description: House or building number
+    documentation: House or building number
+    physicalName: NUMBER
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _name: EnrichedNumber
+    _type: EntityAttribute
+    label: Enriched Number
+    description: Enriched house or building number
+    documentation: Enriched house or building number
+    physicalName: ENRICHED_NUMBER
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+  - _name: Street
+    _type: EntityAttribute
+    label: Street
+    description: Street name
+    documentation: Street name
+    physicalName: STREET
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _name: EnrichedStreet
+    _type: EntityAttribute
+    label: Enriched Street
+    description: Enriched street name
+    documentation: Enriched street name
+    physicalName: ENRICHED_STREET
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _name: City
+    _type: EntityAttribute
+    label: City
+    description: City name
+    documentation: City name
+    physicalName: CITY
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _name: EnrichedCity
+    _type: EntityAttribute
+    label: Enriched City
+    description: Enriched city name
+    documentation: Enriched city name
+    physicalName: ENRICHED_CITY
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _name: State
+    _type: EntityAttribute
+    label: State
+    description: State or province name
+    documentation: State or province name
+    physicalName: STATE
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _name: ZipCode
+    _type: EntityAttribute
+    label: Zip Code
+    description: Postal code
+    documentation: Postal code
+    physicalName: ZIP_CODE
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+  - _name: Latitude
+    _type: EntityAttribute
+    label: Latitude
+    description: Geographic latitude
+    documentation: Geographic latitude
+    physicalName: LATITUDE
+    dataType: Decimal
+    precision: 10
+    scale: 6
+    mandatory: false
+    searchable: true
+  - _name: Longitude
+    _type: EntityAttribute
+    label: Longitude
+    description: Geographic longitude
+    documentation: Geographic longitude
+    physicalName: LONGITUDE
+    dataType: Decimal
+    precision: 10
+    scale: 6
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1000
+primaryKey: Organization.entities.Address.Address.AddressID
+dataEntryAllowed: true

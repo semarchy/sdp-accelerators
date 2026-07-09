@@ -1,0 +1,85 @@
+# This file defines the Contract entity in the Organization domain.
+# It includes various attributes such as ContractID, IsInternal, StartDate, EndDate,
+# and LeavingReason, each with specific configurations for data type, length, and visibility.
+# This entity is used to manage contract records within the organization in link with employees.
+_package: Organization.entities.Contract
+_type: Entity
+_name: Contract
+label: Contract
+pluralLabel: Contract
+entityType: BASIC
+physicalTableName: CONTRACT
+iconUrl: images://hr-img-lib/file-sign.svg
+documentation: This entity represents a contract within the organization, including details such as start and end dates, and reasons for leaving.
+description: This entity represents a contract within the organization, including details such as start and end dates, and reasons for leaving.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _name: ContractID
+    _type: EntityAttribute
+    label: Contract ID
+    physicalName: CONTRACT_ID
+    dataType: LongInteger
+    description: Unique identifier for the contract
+    documentation: Unique identifier for the contract
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _name: ContractRef
+    _type: EntityAttribute
+    label: Contract Reference
+    physicalName: CONTRACT_REF
+    dataType: String
+    description: Internal contract reference
+    documentation: Internal contract reference
+    length: 255
+    mandatory: true
+    mandatoryValidationLabel: Is contract reference missing
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _name: IsMain
+    _type: EntityAttribute
+    label: Is Main
+    physicalName: IS_MAIN
+    dataType: Boolean
+    description: Indicates if this is the main contract
+    documentation: Indicates if this is the main contract
+    mandatory: false
+    searchable: true
+  - _name : StartDate
+    _type: EntityAttribute
+    label: Start Date
+    description: Start date of the contract
+    documentation: Start date of the contract
+    physicalName: START_DATE
+    dataType: Date
+    length: 1
+    mandatory: true
+    mandatoryValidationLabel: Is start date
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _name : EndDate
+    _type: EntityAttribute
+    label: End Date
+    description: End date of the contract
+    documentation: End date of the contract
+    physicalName: END_DATE
+    dataType: Date
+    length: 1
+    mandatory: false
+    searchable: true
+  - _name : TerminationReason
+    _type: EntityAttribute
+    label: Termination Reason
+    description: Reason for terminating the contract
+    documentation: Reason for terminating the contract
+    physicalName: TERMINATION_REASON
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100
+primaryKey: Organization.entities.Contract.Contract.ContractID

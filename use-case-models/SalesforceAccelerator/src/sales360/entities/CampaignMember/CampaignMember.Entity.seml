@@ -1,0 +1,167 @@
+# This file defines the CampaignMember entity for the Salesforce Accelerator application.
+# It includes attributes and properties for managing campaign members and their details.
+_name: CampaignMember
+_package: sales360.entities.CampaignMember
+_type: Entity
+primaryKey: sales360.entities.CampaignMember.CampaignMember.CampaignMemberID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: UUID
+label: Campaign Member
+documentation: Represents the association between a campaign and either a lead or a contact.
+description: Represents the association between a campaign and either a lead or a contact.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/book.svg
+pluralLabel: Campaign Members
+historizeGolden: true
+historizeMaster: true
+physicalTableName: CAMPAIGN_MEMBER
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CampaignMemberID
+    physicalName: CAMPAIGN_MEMBER_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Campaign Member ID
+    documentation: Unique identifier for the Campaign Member
+    description: Unique identifier for the Campaign Member
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HasOptedOutOfEmail
+    physicalName: HAS_OPTED_OUT_OF_EMAIL
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Has Opted Out Of Email
+    documentation: Indicates whether the contact or lead would prefer not to receive email
+    description: Indicates whether the contact or lead would prefer not to receive email
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DoNotCall
+    physicalName: DO_NOT_CALL
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Do Not Call
+    documentation: Indicates whether the contact or lead has requested not to be called
+    description: Indicates whether the contact or lead has requested not to be called
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Type
+    physicalName: CM_TYPE
+    dataType: sales360.list_of_values.CampaignMemberType
+    goldenAttribute: true
+    i18ned: false
+    label: Type
+    documentation: Indicates whether the campaign member is a lead or a contact
+    description: Indicates whether the campaign member is a lead or a contact
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FirstRespondedDate
+    physicalName: FIRST_RESPONDED_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: First Responded Date
+    documentation: Indicates the date on which the campaign member was first given a
+      responded status
+    description: Indicates the date on which the campaign member was first given a
+      responded status
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CompanyOrAccount
+    physicalName: COMPANY_OR_ACCOUNT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Company Or Account
+    documentation: The company or account associated with the campaign member
+    description: The company or account associated with the campaign member
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HasResponded
+    physicalName: HAS_RESPONDED
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Has Responded
+    documentation: Indicates whether the campaign member has responded to the campaign
+    description: Indicates whether the campaign member has responded to the campaign
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HasOptedOutOfFax
+    physicalName: HAS_OPTED_OUT_OF_FAX
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Has Opted Out Of Fax
+    documentation: Indicates that the contact or lead doesn't wish to receive faxes
+    description: Indicates that the contact or lead doesn't wish to receive faxes
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherCampaignMember
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 95
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactParentMatch
+      condition: |-
+        Record1.FID_Campaign = Record2.FID_Campaign and
+        (
+        Record1.FID_Leads = Record2.FID_Leads or
+        Record1.FID_Contact = Record2.FID_Contact)
+      label: Exact Parent Match
+      matchScore: 100
+      color: md:green 900
+      documentation: Exact match on a Campaign with Leads or Contacts
+      description: Exact match on a Campaign with Leads or Contacts
+      usingMatchOn: false

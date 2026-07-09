@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: VehicleAssetHasPlateState
+description: "Identifies the state or jurisdiction issuing the vehicle plate."
+_type: Reference
+label: "Plate State"
+
+fromEntity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset
+fromRoleLabel: "Vehicle Asset"
+fromRoleName: VehicleAsset
+fromRolePluralLabel: "Vehicle Assets"
+physicalName: VEH_ASSET_HAS_PLATE_ST
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.StateProvince.StateProvince
+toRoleLabel: "State or Province"
+toRoleName: PlateState
+documentation: "Identifies the state or jurisdiction issuing the vehicle plate."
+toRolePhysicalName: PLATE_STATE_CODE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PlateState
+  label: "Plate State"
+  description: "Identifies the state or jurisdiction issuing the vehicle plate."
+  physicalName: PLATE_STATE_CODE
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.StateProvince.StateProvince

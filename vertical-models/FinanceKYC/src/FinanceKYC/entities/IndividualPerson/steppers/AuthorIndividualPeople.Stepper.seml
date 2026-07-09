@@ -1,0 +1,36 @@
+_package: FinanceKYC.entities.IndividualPerson.steppers
+_type: Stepper
+_name: AuthorIndividualPeople
+
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+label: Individual People
+
+rootStep:
+  _type: CollectionStep
+  _name: IndividualPeople
+  label: Individual People
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: FinanceKYC.entities.IndividualPerson.collection_views.IndividualPersonImportMasterCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  
+  childSteps:
+    - _type: FormStep
+      _name: IndividualPerson
+      label: Individual Person
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: FinanceKYC.entities.IndividualPerson.forms.IndividualPersonForm.IndividualPerson

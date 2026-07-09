@@ -1,0 +1,107 @@
+# Supplier Product entity for the SAP Product / Material 360 accelerator.
+_name: SupplierProduct
+_package: sappm360.entities.SupplierProduct
+_type: Entity
+primaryKey: sappm360.entities.SupplierProduct.SupplierProduct.SupplierProductID
+sourceIdGeneration:
+  mode: MANUAL
+label: Supplier Product
+documentation: Supplier-specific product representation and sourcing detail.
+description: Supplier-specific product representation and sourcing detail.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/handshake-outline.svg
+pluralLabel: Supplier Products
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SUPPLIER_PRODUCT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SupplierProductID
+    physicalName: SUPP_PRODUCT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Product ID
+    documentation: Unique identifier for a supplier-specific product representation.
+    description: Unique identifier for a supplier-specific product representation.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierProductNumber
+    physicalName: SUPP_PRODUCT_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Product Number
+    documentation: Supplier assigned product or catalog number.
+    description: Supplier assigned product or catalog number.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Supplier Product Number is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierDescription
+    physicalName: SUPP_DESC
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Description
+    documentation: Supplier-provided product description.
+    description: Supplier-provided product description.
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LeadTimeDays
+    physicalName: LEAD_TIME_DAYS
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Time Days
+    documentation: Supplier lead time in days.
+    description: Supplier lead time in days.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MinimumOrderQuantity
+    physicalName: MIN_ORDER_QTY
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Minimum Order Quantity
+    documentation: Minimum quantity that can be ordered from the supplier.
+    description: Minimum quantity that can be ordered from the supplier.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PreferredSupplierIndicator
+    physicalName: PREF_SUPP_IND
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Preferred Supplier Indicator
+    documentation: Indicates whether this supplier product is preferred.
+    description: Indicates whether this supplier product is preferred.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

@@ -1,0 +1,87 @@
+_package: Merchant.entities.LegalEntity.business_views
+_type: BusinessView
+_name: LegalEntityBusinessView
+entity: Merchant.entities.LegalEntity.LegalEntity
+rootLabel: Legal Entity
+rootPluralLabel: Legal Entities
+displayRootNodeAs: ICON_LABEL
+label: Legal Entity Business View
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: LegalEntity
+  displayCard: Merchant.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+  entity: Merchant.entities.LegalEntity.LegalEntity
+  actionSet: Merchant.entities.LegalEntity.action_sets.LegalEntityActionSet
+  collection: Merchant.entities.LegalEntity.collection_views.LegalEntityCollectionView
+  form: Merchant.entities.LegalEntity.forms.LegalEntityForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: MasterRecords
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MerchantMaster
+        _type: BusinessViewEntity
+        collection: Merchant.entities.LegalEntity.collection_views.LegalEntityCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Merchant.entities.LegalEntity.LegalEntity
+        form: Merchant.entities.LegalEntity.forms.LegalEntityForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: Merchant.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+enableHierarchyView: false
+useHierarchyOnOpen: false

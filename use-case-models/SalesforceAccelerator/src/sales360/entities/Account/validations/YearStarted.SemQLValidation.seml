@@ -1,0 +1,11 @@
+# It defines a validation rule for the 'YearStarted' field in the 'Account' entity.
+# The rule ensures that the year does not exceed four digits. If the year has five digits, the validation will fail.
+_name: YearStarted
+_package: sales360.entities.Account.validations
+entity: sales360.entities.Account.Account
+label: Year Started
+description: Validation to ensure YearStarted does not exceed four digits
+validationScope: PRE_CONSO
+validationLabel: Year cannot be 5 digit
+_type: SemQLValidation
+condition: COALESCE(SEM_SUBSTRING(SEM_NUMBER_TO_CHAR(YearStarted) , 5, 1), '') = ''

@@ -1,0 +1,210 @@
+_type: ModelDiagram
+_package: sappm360.model_diagrams
+_name: GovernanceReference
+attributeNameFormat: NAME
+description: Governance Reference diagram for SAP Product / Material 360 with plant, supplier, regulatory, cross-reference, and source-system links.
+entityNameFormat: NAME
+label: Governance Reference
+referenceRoleNameFormat: NAME
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: true
+showReferenceCardinality: true
+showReferenceName: true
+showReferenceRoles: false
+entityShapes:
+  - _name: RegulatoryAttribute
+    _type: EntityShape
+    entity: sappm360.entities.RegulatoryAttribute.RegulatoryAttribute
+    borderColor: rgb(8, 36, 61)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 80
+      y: 80
+  - _name: SupplierProduct
+    _type: EntityShape
+    entity: sappm360.entities.SupplierProduct.SupplierProduct
+    borderColor: rgb(0, 167, 157)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 340
+      y: 80
+  - _name: PlantProduct
+    _type: EntityShape
+    entity: sappm360.entities.PlantProduct.PlantProduct
+    borderColor: rgb(12, 91, 163)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 600
+      y: 80
+  - _name: ProductCrossReference
+    _type: EntityShape
+    entity: sappm360.entities.ProductCrossReference.ProductCrossReference
+    borderColor: rgb(34, 139, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 860
+      y: 80
+  - _name: Product
+    _type: EntityShape
+    entity: sappm360.entities.Product.Product
+    borderColor: rgb(8, 36, 61)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 1120
+      y: 80
+  - _name: Material
+    _type: EntityShape
+    entity: sappm360.entities.Material.Material
+    borderColor: rgb(0, 167, 157)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 1380
+      y: 80
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: sappm360.entities.SourceSystem.SourceSystem
+    borderColor: rgb(75, 95, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 80
+      y: 360
+  - _name: UnitOfMeasure
+    _type: EntityShape
+    entity: sappm360.entities.UnitOfMeasure.UnitOfMeasure
+    borderColor: rgb(75, 95, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 340
+      y: 360
+  - _name: ComplianceStatus
+    _type: EntityShape
+    entity: sappm360.entities.ComplianceStatus.ComplianceStatus
+    borderColor: rgb(75, 95, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 600
+      y: 360
+  - _name: RelationshipType
+    _type: EntityShape
+    entity: sappm360.entities.RelationshipType.RelationshipType
+    borderColor: rgb(75, 95, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 860
+      y: 360
+  - _name: Country
+    _type: EntityShape
+    entity: sappm360.entities.Country.Country
+    borderColor: rgb(75, 95, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 1120
+      y: 360
+  - _name: Supplier
+    _type: EntityShape
+    entity: sappm360.entities.Supplier.Supplier
+    borderColor: rgb(75, 95, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 1380
+      y: 360
+  - _name: Plant
+    _type: EntityShape
+    entity: sappm360.entities.Plant.Plant
+    borderColor: rgb(75, 95, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 80
+      y: 640
+  - _name: StorageLocation
+    _type: EntityShape
+    entity: sappm360.entities.StorageLocation.StorageLocation
+    borderColor: rgb(75, 95, 112)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 340
+      y: 640
+referenceLinks:
+  - reference: sappm360.references.RegulatoryComplianceStatus
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.RegulatoryAttribute
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.ComplianceStatus
+    bendPoints: []
+  - reference: sappm360.references.RegulatoryCountry
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.RegulatoryAttribute
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Country
+    bendPoints: []
+  - reference: sappm360.references.RegulatoryProduct
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.RegulatoryAttribute
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Product
+    bendPoints: []
+  - reference: sappm360.references.SupplierProductProduct
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.SupplierProduct
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Product
+    bendPoints: []
+  - reference: sappm360.references.SupplierProductSupplier
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.SupplierProduct
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Supplier
+    bendPoints: []
+  - reference: sappm360.references.PlantProductMaterial
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.PlantProduct
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Material
+    bendPoints: []
+  - reference: sappm360.references.PlantProductPlant
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.PlantProduct
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Plant
+    bendPoints: []
+  - reference: sappm360.references.PlantProductProduct
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.PlantProduct
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Product
+    bendPoints: []
+  - reference: sappm360.references.PlantProductStorageLocation
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.PlantProduct
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.StorageLocation
+    bendPoints: []
+  - reference: sappm360.references.StorageLocationPlant
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.StorageLocation
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Plant
+    bendPoints: []
+  - reference: sappm360.references.CrossReferenceMaterial
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.ProductCrossReference
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Material
+    bendPoints: []
+  - reference: sappm360.references.CrossReferenceProduct
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.ProductCrossReference
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.Product
+    bendPoints: []
+  - reference: sappm360.references.CrossReferenceSourceSystem
+    fromEntityShape: sappm360.model_diagrams.GovernanceReference.ProductCrossReference
+    toEntityShape: sappm360.model_diagrams.GovernanceReference.SourceSystem
+    bendPoints: []

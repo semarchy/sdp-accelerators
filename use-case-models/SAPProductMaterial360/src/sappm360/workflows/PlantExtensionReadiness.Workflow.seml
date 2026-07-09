@@ -1,0 +1,272 @@
+_package: sappm360.workflows
+_type: Workflow
+_name: PlantExtensionReadiness
+label: Plant Extension / Manufacturing Readiness
+workflowAdminRole: semarchyAdmin
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+  - entity: sappm360.entities.PlantProduct.PlantProduct
+    _type: RootEntity
+    _name: PlantProduct
+    cardinality: SINGLE_RECORD
+    displayCard: sappm360.entities.PlantProduct.display_cards.PlantProductDisplayCard
+steps:
+  - _type: StartFromSelectionEvent
+    _name: StartFromExistingPlantProduct
+    position:
+      x: -520
+      y: -30
+    label: Start From Plant Product
+#    initiatorRequiredRole: productSteward
+    defaultPriority: NORMAL
+    authoredEntity: sappm360.entities.PlantProduct.PlantProduct
+    selectionSourceType: GOLDEN_DATA
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: sappm360.workflows.PlantExtensionReadiness.CapturePlantExtension
+      bendPoints: []
+  - _type: StartFromEmptySelectionEvent
+    _name: StartFromScratch
+    position:
+      x: -520
+      y: -100
+    label: Start From Scratch
+#    initiatorRequiredRole: productSteward
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: sappm360.workflows.PlantExtensionReadiness.CapturePlantExtension
+      bendPoints: []
+  - _type: UserTask
+    _name: CapturePlantExtension
+    label: Capture Plant Extension
+    icon: images://mdi/factory.svg
+    position:
+      x: -320
+      y: -75
+    application: sappm360.applications.ProductMaterial360Hub
+#    assigneeRequiredRole: productSteward
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sappm360.entities.PlantProduct.PlantProduct
+    stepper: sappm360.entities.PlantProduct.steppers.AuthorPlantProducts
+    myTasksConfiguration:
+      collection: sappm360.entities.PlantProduct.collection_views.PlantProductCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToPlantPlanningReview
+        label: Proceed
+        toStep: sappm360.workflows.PlantExtensionReadiness.PlantPlanningReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: PlantPlanningReview
+    label: Plant Planning Review
+    icon: images://mdi/calendar-check.svg
+    position:
+      x: -80
+      y: -75
+    application: sappm360.applications.ProductMaterial360Hub
+#    assigneeRequiredRole: productSteward
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sappm360.entities.PlantProduct.PlantProduct
+    stepper: sappm360.entities.PlantProduct.steppers.AuthorPlantProducts
+    myTasksConfiguration:
+      collection: sappm360.entities.PlantProduct.collection_views.PlantProductCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToProcurementCostingReview
+        label: Proceed
+        toStep: sappm360.workflows.PlantExtensionReadiness.ProcurementCostingReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: ProcurementCostingReview
+    label: Procurement and Costing Review
+    icon: images://mdi/currency-usd.svg
+    position:
+      x: 160
+      y: -75
+    application: sappm360.applications.ProductMaterial360Hub
+#    assigneeRequiredRole: productSteward
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sappm360.entities.PlantProduct.PlantProduct
+    stepper: sappm360.entities.PlantProduct.steppers.AuthorPlantProducts
+    myTasksConfiguration:
+      collection: sappm360.entities.PlantProduct.collection_views.PlantProductCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToDataStewardApproval
+        label: Proceed
+        toStep: sappm360.workflows.PlantExtensionReadiness.DataStewardApproval
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: DataStewardApproval
+    label: Data Steward Approval
+    icon: images://mdi/check-circle.svg
+    position:
+      x: 400
+      y: -75
+    application: sappm360.applications.ProductMaterial360Hub
+#    assigneeRequiredRole: productSteward
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sappm360.entities.PlantProduct.PlantProduct
+    stepper: sappm360.entities.PlantProduct.steppers.AuthorPlantProducts
+    myTasksConfiguration:
+      collection: sappm360.entities.PlantProduct.collection_views.PlantProductCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToSubmitData
+        label: Approve and Submit
+        toStep: sappm360.workflows.PlantExtensionReadiness.SubmitData
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 640
+      y: -75
+    integrationJob: sappm360.model_jobs.INTEGRATE_ALL
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: sappm360.workflows.PlantExtensionReadiness.End
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 860
+      y: -75

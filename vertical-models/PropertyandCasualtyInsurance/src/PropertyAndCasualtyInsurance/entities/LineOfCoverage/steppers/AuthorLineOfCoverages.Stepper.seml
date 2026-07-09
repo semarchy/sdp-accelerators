@@ -1,0 +1,38 @@
+_package: PropertyAndCasualtyInsurance.entities.LineOfCoverage.steppers
+_type: Stepper
+_name: AuthorLineOfCoverages
+entity: PropertyAndCasualtyInsurance.entities.LineOfCoverage.LineOfCoverage
+label: Lines Of Coverage
+rootStep:
+  _type: CollectionStep
+  _name: LineOfCoverages
+  label: Lines Of Coverage
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.LineOfCoverage.collection_views.LineOfCoverageImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: LineOfCoverage
+      label: Line Of Coverage
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.LineOfCoverage.forms.LineOfCoverageForm.LineOfCoverage
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.LineOfCoverage.validations.DateRangeCheck

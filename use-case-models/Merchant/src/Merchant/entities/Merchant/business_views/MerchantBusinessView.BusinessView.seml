@@ -1,0 +1,139 @@
+_package: Merchant.entities.Merchant.business_views
+# Description: Business view for `Merchant` exposing forms, collections and actions.
+# Contains configuration used by the application for navigation and global search.
+# Role: Central business view that groups merchant-related UI artifacts for users.
+_type: BusinessView
+_name: MerchantBusinessView
+entity: Merchant.entities.Merchant.Merchant
+rootLabel: Merchants
+rootPluralLabel: Merchants
+displayRootNodeAs: ICON_LABEL
+label: Merchant Business View
+rootIconUrl: images://mdi/office-building-outline.svg
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Merchant
+  displayCard: Merchant.entities.Merchant.display_cards.MerchantDisplayCard
+  entity: Merchant.entities.Merchant.Merchant
+  actionSet: Merchant.entities.Merchant.action_sets.MerchantActionSet
+  collection: Merchant.entities.Merchant.collection_views.MerchantCollectionView
+  form: Merchant.entities.Merchant.forms.MerchantForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: MasterRecords
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MerchantMaster
+        _type: BusinessViewEntity
+        collection: Merchant.entities.Merchant.collection_views.MerchantCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Merchant.entities.Merchant.Merchant
+        form: Merchant.entities.Merchant.forms.MerchantForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: Merchant.entities.Merchant.display_cards.MerchantDisplayCard
+    - _type: BusinessViewTransition
+      _name: Subsidiaries
+      transitionPath: subsidiary
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: any subsidiary has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "0"
+      transitionVisibleInterpreter: LITERAL
+      iconUrl: images://mdi/sitemap.svg
+      businessViewEntity:
+        _name: Subsidiaries
+        _type: BusinessViewEntity
+        collection: Merchant.entities.Merchant.collection_views.MerchantCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Merchant.entities.Merchant.Merchant
+        form: Merchant.entities.Merchant.forms.MerchantForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: Merchant.entities.Merchant.display_cards.MerchantDisplayCard
+enableHierarchyView: true
+useHierarchyOnOpen: false

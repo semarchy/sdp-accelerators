@@ -1,0 +1,83 @@
+# This is the OpportunityContactRoleMasterCollection collection view used in the Salesforce Accelerator application.
+# It defines how opportunity contact roles are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.OpportunityContactRole.collection_views
+_name: OpportunityContactRoleMasterCollection
+_type: CollectionView
+entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+default: false
+displayCard: sales360.entities.OpportunityContactRole.display_cards.OpportunityContactRoleDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Contact Role
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_Opportunity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Opportunity
+    visibleByDefault: true
+    defaultWidth: 300
+    displayCard: sales360.entities.Opportunity.display_cards.OpportunityDisplayCard
+    referencedEntity: sales360.entities.Opportunity.Opportunity
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Contact
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Contact
+    visibleByDefault: true
+    defaultWidth: 200
+    displayCard: sales360.entities.Contact.display_cards.ContactDisplayCard
+    referencedEntity: sales360.entities.Contact.Contact
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Role
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Role
+    visibleByDefault: true
+    displayCard: sales360.entities.Role.display_cards.RoleDisplayCard
+    referencedEntity: sales360.entities.Role.Role
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: CheckboxColumn
+    _name: IsPrimary
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsPrimary
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: MultipleRoles
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MultipleRoles
+    visibleByDefault: true

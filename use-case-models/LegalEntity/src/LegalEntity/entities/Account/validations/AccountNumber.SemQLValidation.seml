@@ -1,0 +1,11 @@
+# This file defines the AccountNumber validation for the Legal Entity application.
+# It ensures that the AccountNumber adheres to a specific format, which is between 8 and 12 digits.
+# The validation is executed before the consumption of the entity data.
+_package: LegalEntity.entities.Account.validations
+_name: AccountNumber
+_type: SemQLValidation
+entity: LegalEntity.entities.Account.Account
+label: Account Numner
+condition: "REGEXP_LIKE(AccountNumber, '^[0-9]{8,12}$')"
+validationScope: PRE_CONSO
+validationLabel: Account Number must be between 8 and 12 digits

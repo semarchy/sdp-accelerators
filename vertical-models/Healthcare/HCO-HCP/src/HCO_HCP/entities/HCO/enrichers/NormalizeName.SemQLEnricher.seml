@@ -1,0 +1,19 @@
+_type: SemQLEnricher
+_package: HCO_HCP.entities.HCO.enrichers
+_name: NormalizeName
+entity: HCO_HCP.entities.HCO.HCO
+label: Normalize Name
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: HospitalNameNormalized
+    expression: >-
+      REGEXP_REPLACE( 
+      	REPLACE( 
+      		REPLACE( UPPER(HospitalName), '''', '' ),
+      		'&', 
+      		' AND ' 
+      	),
+      	'[[:punct:][:blank:]]+', /* find one or more spaces or punctuation marks */
+      	' ',                     /* replace with a single space */
+      	'g'                      /* replace all occurences */
+      )

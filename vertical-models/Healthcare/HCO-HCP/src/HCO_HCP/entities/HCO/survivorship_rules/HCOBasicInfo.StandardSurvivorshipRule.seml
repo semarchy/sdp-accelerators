@@ -1,0 +1,30 @@
+_type: StandardSurvivorshipRule
+entity: HCO_HCP.entities.HCO.HCO
+_package: HCO_HCP.entities.HCO.survivorship_rules
+defaultRule: false
+_name: HCOBasicInfo
+consolidationOrderByExpression: UpdateDate DESC
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: HCO Basic Info
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.HCO_HCP
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.IMP
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MDM
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.Encounters
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberXLS
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberJSON
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+attributes:
+  - attributeName: HospitalCCN
+  - attributeName: HospitalNameNormalized
+  - attributeName: HospitalID
+  - attributeName: HospitalName

@@ -1,0 +1,83 @@
+# This is the ContactOpportunityRoleCollection collection view used in the Salesforce Accelerator application.
+# It defines how contact opportunity roles are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.OpportunityContactRole.collection_views
+_name: ContactOpportunityRoleCollection
+_type: CollectionView
+entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+default: false
+displayCard: sales360.entities.OpportunityContactRole.display_cards.ContactOpportunityRoleDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Opportunity
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 250
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: Opportunity_Amount
+    columnAlign: LEFT
+    dataType: INTEGER
+    label: Amount
+    useCustomLabel: true
+    value: Opportunity.Amount
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: Opportunity_IsWon
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    label: Is Won
+    useCustomLabel: true
+    value: Opportunity.IsWon
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: Opportunity_FDN_StageName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Opportunity.FDN_StageName
+    visibleByDefault: true
+    displayCard: sales360.entities.StageName.display_cards.StageNameDisplayCard
+    referencedEntity: sales360.entities.StageName.StageName
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: CheckboxColumn
+    _name: Opportunity_IsClosed
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    label: Is Closed
+    useCustomLabel: true
+    value: Opportunity.IsClosed
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Opportunity_FiscalQuarter
+    columnAlign: LEFT
+    dataType: INTEGER
+    label: Fiscal Quarter
+    useCustomLabel: true
+    value: Opportunity.FiscalQuarter
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Opportunity_FiscalYear
+    columnAlign: LEFT
+    dataType: INTEGER
+    label: Fiscal Year
+    useCustomLabel: true
+    value: Opportunity.FiscalYear
+    visibleByDefault: true

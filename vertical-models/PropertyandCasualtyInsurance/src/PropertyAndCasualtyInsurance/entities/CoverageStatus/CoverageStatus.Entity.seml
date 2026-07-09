@@ -1,0 +1,90 @@
+_package: PropertyAndCasualtyInsurance.entities.CoverageStatus
+_type: Entity
+_name: CoverageStatus
+label: Coverage Status
+pluralLabel: Coverage Statuses
+entityType: BASIC
+physicalTableName: COVERAGE_STATUS
+iconUrl: images://mdi/book.svg
+description: "Represents reference lifecycle states used to manage coverage availability and servicing behavior."
+documentation: "Represents reference lifecycle states used to manage coverage availability and servicing behavior."
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CoverageStatusCode
+    label: Coverage Status Code
+    physicalName: COVERAGE_STATUS_CODE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique code representing a coverage lifecycle state."
+    documentation: "Unique code representing a coverage lifecycle state."
+  - _type: EntityAttribute
+    _name: CoverageStatusName
+    label: Coverage Status Name
+    physicalName: COVERAGE_STATUS_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Display name of the coverage status (e.g., Available, Suspended, Retired)."
+    documentation: "Display name of the coverage status (e.g., Available, Suspended, Retired)."
+  - _type: EntityAttribute
+    _name: CoverageLifecycleStage
+    label: Coverage Lifecycle Stage
+    physicalName: COVERAGE_LIFECYCLE_STAGE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Lifecycle grouping such as Draft, Released, Suspended, or Retired."
+    documentation: "Lifecycle grouping such as Draft, Released, Suspended, or Retired."
+  - _type: EntityAttribute
+    _name: SelectableForNewBusinessFlag
+    label: Selectable For New Business Flag
+    physicalName: SEL_FOR_NEW_BUSINESS_FLG
+    dataType: Boolean
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Indicates whether this status allows the coverage to be selected on new quotes and policies."
+    documentation: "Indicates whether this status allows the coverage to be selected on new quotes and policies."
+  - _type: EntityAttribute
+    _name: ClaimsPayableFlag
+    label: Claims Payable Flag
+    physicalName: CLAIMS_PAYABLE_FLAG
+    dataType: Boolean
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Indicates whether claims remain payable for coverages in this status."
+    documentation: "Indicates whether claims remain payable for coverages in this status."
+  - _type: EntityAttribute
+    _name: RequiresUnderwriterReviewFlag
+    label: Requires Underwriter Review Flag
+    physicalName: UW_REVIEW_REQUIRED_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether this status requires an underwriting review before coverage can be changed or activated."
+    documentation: "Indicates whether this status requires an underwriting review before coverage can be changed or activated."
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    dataType: LongText
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    multiValued: false
+    physicalName: DESCRIPTION
+    searchable: true
+    description: "Detailed explanation of the coverage status and its operational implications."
+    documentation: "Detailed explanation of the coverage status and its operational implications."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.CoverageStatus.CoverageStatus.CoverageStatusCode

@@ -1,0 +1,161 @@
+_name: ManufacturingPlant
+_package: Manufacturing.entities.ManufacturingPlant.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant
+rootLabel: Manufacturing Plant
+rootPluralLabel: Manufacturing Plants
+useHierarchyOnOpen: false
+label: Manufacturing Plants
+rootBusinessViewEntity:
+  _name: ManufacturingPlantEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.ManufacturingPlant.collection_views.ManufacturingPlantCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant
+  form: Manufacturing.entities.ManufacturingPlant.forms.ManufacturingPlantForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.ManufacturingPlant.action_sets.ManufacturingPlantActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: Item
+      _type: BusinessViewTransition
+      transitionPath: SupplierManufacturers.Item
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: ANY SupplierManufacturers.Item have (ItemID is not null and
+        (FID_ItemType like 'Finished%' or FID_ItemType like '%Assembly'))
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      filter: (FID_ItemType like 'Finished%' or FID_ItemType like '%Assembly')
+      iconUrl: images://mdi/hammer-screwdriver.svg
+      label: Items Manufactured
+      pluralLabel: Items Manufactured
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Item
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.Item.collection_views.ItemCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.Item.Item
+        form: Manufacturing.entities.Item.forms.ItemForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations:
+          - browsingTarget: NOT_NAVIGABLE
+            formCollection: Manufacturing.entities.Item.forms.ItemForm.Item.Container6.BillOfMaterial
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.Item.forms.ItemForm.Item.Container3.Container2.FDN_ItemCondition
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.Item.forms.ItemForm.Item.Container3.Container2.FDN_ItemFamily
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.Item.forms.ItemForm.Item.Container3.Container2.FDN_ItemSubFamily
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.Item.forms.ItemForm.Item.Container3.Container2.FDN_ItemType
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: ManufacturingPlantAddresses
+      _type: BusinessViewTransition
+      transitionPath: ManufacturingPlantAddresses
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/office-building-marker.svg
+      label: Plant Address
+      pluralLabel: Plant Addresses
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ManufacturingPlantAddress
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ManufacturingPlantAddress.collection_views.ManufacturingPlantAddressCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ManufacturingPlantAddress.ManufacturingPlantAddress
+        form: Manufacturing.entities.ManufacturingPlantAddress.forms.ManufacturingPlantAddressForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ManufacturingPlantAddress.forms.ManufacturingPlantAddressForm.ManufacturingPlantAddress.FDN_AddressType
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ManufacturingPlantAddress.forms.ManufacturingPlantAddressForm.ManufacturingPlantAddress.FDN_Address
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ManufacturingPlantAddress.forms.ManufacturingPlantAddressForm.ManufacturingPlantAddress.FDN_ManufacturingPlant
+            navigationMode: MODAL_FORM
+        transitions: []

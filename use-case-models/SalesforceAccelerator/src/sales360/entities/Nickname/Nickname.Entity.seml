@@ -1,0 +1,63 @@
+# This file defines the Nickname entity in the Salesforce Accelerator application.
+# It includes attributes such as GivenName, AllNicknames, and TopNicknames, along with their properties and validations.
+# The entity is used to manage nickname information within the application.
+_name: Nickname
+_package: sales360.entities.Nickname
+_type: Entity
+primaryKey: sales360.entities.Nickname.Nickname.GivenName
+sourceIdGeneration:
+  mode: MANUAL
+label: Nickname
+documentation: List of all the Nicnames
+description: List of all the Nicnames
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Nicknames
+historizeGolden: true
+historizeMaster: false
+physicalTableName: NICKNAME
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: GivenName
+    physicalName: GIVEN_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Given Name
+    documentation: Given name of the person
+    description: Given name of the person
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AllNicknames
+    physicalName: ALL_NICKNAMES
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: All Nicknames
+    documentation: All nicknames associated with the given name
+    description: All nicknames associated with the given name
+    mandatory: false
+    length: 500
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TopNicknames
+    physicalName: TOP_NICKNAMES
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Top Nicknames
+    documentation: Top nicknames associated with the given name
+    description: Top nicknames associated with the given name
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

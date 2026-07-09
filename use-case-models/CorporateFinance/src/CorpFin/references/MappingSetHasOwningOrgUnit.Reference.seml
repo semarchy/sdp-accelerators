@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: MappingSetHasOwningOrgUnit
+_type: Reference
+label: Mapping Set Has Owning Org Unit
+description: "Defines the reference from Mapping Set records to Org Unit records, enforcing the relationship between Mapping Set and Org Unit data."
+documentation: "Defines the reference from Mapping Set records to Org Unit records, enforcing the relationship between Mapping Set and Org Unit data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.MappingSet.MappingSet
+fromRoleLabel: Mapping Set
+fromRoleName: mappingSet
+fromRolePluralLabel: Mapping Sets
+physicalName: MAPPINGSET_HAS_ORGUNIT
+fromNavigable: true
+
+toEntity: CorpFin.entities.OrgUnit.OrgUnit
+toRoleLabel: Org Unit
+toRoleName: orgUnit
+toRolePhysicalName: OWNING_ORG_UNIT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: orgUnit
+  label: Owning Org Unit ID
+  physicalName: OWNING_ORG_UNIT_ID
+  searchable: true
+  entity: CorpFin.entities.OrgUnit.OrgUnit

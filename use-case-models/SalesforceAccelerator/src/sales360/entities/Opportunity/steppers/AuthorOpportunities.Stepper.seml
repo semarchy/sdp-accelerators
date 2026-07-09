@@ -1,0 +1,193 @@
+# This is the AuthorOpportunities Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing opportunities within the Salesforce context.
+_name: AuthorOpportunities
+_package: sales360.entities.Opportunity.steppers
+_type: Stepper
+entity: sales360.entities.Opportunity.Opportunity
+rootStep:
+  _name: Opportunitys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Opportunity.collection_views.OpportunityCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Opportunities
+  description: Manage Opportunities
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.references.OpportunitiesStageName.StageName
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.OpportunitiesLeadSource.LeadSource
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.OpportunitiesStageName.StageName
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.entities.Opportunity.Opportunity.Name
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.OpportunitiesForecastCategory.ForecastCategory
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.OpportunitiesAccount.Account
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.entities.Opportunity.Opportunity.CloseDate
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.OpportunitiesCampaign.Campaign
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.OpportunitiesOpportunityType.Type
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main Information
+      formTab: sales360.entities.Opportunity.forms.OpportunityDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Opportunity.forms.OpportunityDataEntryForm.Main.Container.Container2.FDN_Account
+          referencePickerCollectionView: sales360.entities.Account.collection_views.AccountCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Opportunity.forms.OpportunityDataEntryForm.Main.Container.Container3.FDN_Type
+          referencePickerCollectionView: sales360.entities.OpportunityType.collection_views.OpportunityTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Opportunity.forms.OpportunityDataEntryForm.Main.Container.Container2.FDN_ForecastCategory
+          referencePickerCollectionView: sales360.entities.ForecastCategory.collection_views.ForecastCategoryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Opportunity.forms.OpportunityDataEntryForm.Main.Container.Container2.FDN_StageName
+          referencePickerCollectionView: sales360.entities.StageName.collection_views.StageNameCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Opportunity.forms.OpportunityDataEntryForm.Main.Container.Container3.FDN_LeadSource
+          referencePickerCollectionView: sales360.entities.LeadSource.collection_views.LeadSourceCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesCampaign.Campaign
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesLeadSource.LeadSource
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesOpportunityType.Type
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: sales360.entities.Opportunity.Opportunity.CloseDate
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesForecastCategory.ForecastCategory
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesAccount.Account
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: sales360.references.OpportunitiesStageName.StageName
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: sales360.entities.Opportunity.Opportunity.Name
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesStageName.StageName
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesCampaign.Campaign
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesLeadSource.LeadSource
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.entities.Opportunity.Opportunity.Name
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesOpportunityType.Type
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesForecastCategory.ForecastCategory
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.references.OpportunitiesStageName.StageName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesStageName.StageName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.OpportunitiesAccount.Account
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.entities.Opportunity.Opportunity.CloseDate
+      stepTriggers: []
+label: Author Opportunities
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.OpportunitiesAccount.Account
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.OpportunitiesOpportunityType.Type
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.entities.Opportunity.Opportunity.CloseDate
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.references.OpportunitiesStageName.StageName
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.OpportunitiesStageName.StageName
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.entities.Opportunity.Opportunity.Name
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.OpportunitiesForecastCategory.ForecastCategory
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.OpportunitiesLeadSource.LeadSource
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.OpportunitiesCampaign.Campaign
+triggers: []

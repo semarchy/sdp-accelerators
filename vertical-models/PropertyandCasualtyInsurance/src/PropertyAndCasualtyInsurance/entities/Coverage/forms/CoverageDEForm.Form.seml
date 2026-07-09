@@ -1,0 +1,301 @@
+_package: PropertyAndCasualtyInsurance.entities.Coverage.forms
+_type: Form
+_name: CoverageDEForm
+entity: PropertyAndCasualtyInsurance.entities.Coverage.Coverage
+default: true
+description: Form for browsing coverages
+formTabs:
+  - _type: FormTab
+    _name: General
+    label: Coverage
+    iconUrl: images://mdi/umbrella-outline.svg
+    documentation: This form provides a comprehensive view of coverage details, allowing users to browse and manage coverage definitions effectively
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: CoverageDefinitionSection
+        label: Coverage Definition
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: CoverageDefinitionLayout
+            content:
+              - _type: FormContainer
+                _name: CoverageDefinitionContainer01
+                content:
+                  - _type: TextField
+                    _name: CoverageName
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: CoverageName
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: IdField
+                    _name: CoverageID
+                    dataType: LONG_INTEGER
+                    useCustomLabel: false
+                    value: CoverageID
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: CoverageCode
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: CoverageCode
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: CoverageDescription
+                    dataType: LONG_TEXT
+                    useCustomLabel: false
+                    value: CoverageDescription
+                    componentProperties:
+                      textAlign: left
+                      isMultiline: '1'
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: '3'
+                      multilineMaxLinesValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: CoverageDefinitionContainer02
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_InsurancePlan
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+                    useCustomLabel: false
+                    value: FDN_InsurancePlan
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_CoverageCategory
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.CoverageCategory.CoverageCategory
+                    useCustomLabel: false
+                    value: FDN_CoverageCategory
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '200'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: EffectiveFrom
+                    dataType: DATE
+                    useCustomLabel: false
+                    value: EffectiveFrom
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: EffectiveTo
+                    dataType: DATE
+                    useCustomLabel: false
+                    value: EffectiveTo
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: CoverageTermsSection
+        label: Coverage Terms
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: CoverageTermsLayout
+            content:
+              - _type: FormContainer
+                _name: CoverageTermsContainer01
+                content:
+                  - _type: TextField
+                    _name: MinimumLimitAmount
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: MinimumLimitAmount
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: MaximumLimitAmount
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: MaximumLimitAmount
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: DefaultLimitAmount
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: DefaultLimitAmount
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: CoverageTermsContainer02
+                content:
+                  - _type: TextField
+                    _name: MinimumDeductibleAmount
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: MinimumDeductibleAmount
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: MaximumDeductibleAmount
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: MaximumDeductibleAmount
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: DefaultDeductibleAmount
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: DefaultDeductibleAmount
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: CoverageTermsContainer03
+                content:
+                  - _type: MenuField
+                    _name: DefaultLimitType
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: DefaultLimitType
+                    componentProperties:
+                      textAlign: left
+                      useAvatarInMenu: '1'
+                      useAvatarInMenuValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: CheckboxField
+                    _name: AggregateLimitIndicator
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: AggregateLimitIndicator
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: CheckboxField
+                    _name: OccurrenceLimitIndicator
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: OccurrenceLimitIndicator
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: CoverageTermsContainer04
+                content:
+                  - _type: MenuField
+                    _name: DefaultDeductibleType
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: DefaultDeductibleType
+                    componentProperties:
+                      textAlign: left
+                      useAvatarInMenu: '1'
+                      useAvatarInMenuValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: CoinsurancePercentage
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: CoinsurancePercentage
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: WaitingPeriodDays
+                    dataType: INTEGER
+                    useCustomLabel: false
+                    value: WaitingPeriodDays
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN

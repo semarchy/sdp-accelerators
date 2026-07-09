@@ -1,0 +1,258 @@
+# SAP Material entity for the SAP Product / Material 360 accelerator.
+_name: Material
+_package: sappm360.entities.Material
+_type: Entity
+primaryKey: sappm360.entities.Material.Material.MaterialGoldenID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 2001
+sourceIdGeneration:
+  mode: UUID
+label: SAP Material
+documentation: SAP material definition harmonized across ECC, S/4HANA, plants, and business units.
+description: SAP material definition harmonized across ECC, S/4HANA, plants, and business units.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/cube-outline.svg
+pluralLabel: Materials
+historizeGolden: true
+historizeMaster: true
+physicalTableName: MATERIAL
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: MaterialGoldenID
+    physicalName: MAT_GOLDEN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Material Golden ID
+    documentation: System generated golden identifier for the harmonized material.
+    description: System generated golden identifier for the harmonized material.
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MaterialNumber
+    physicalName: MATERIAL_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Number
+    documentation: SAP material number from an ECC or S/4HANA system.
+    description: SAP material number from an ECC or S/4HANA system.
+    mandatory: true
+    length: 64
+    mandatoryValidationLabel: Material Number is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MaterialDescription
+    physicalName: MATERIAL_DESC
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Description
+    documentation: Primary material description used by SAP users.
+    description: Primary material description used by SAP users.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Material Description is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedMaterialDesc
+    physicalName: NORM_MAT_DESC
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Material Description
+    documentation: Standardized material description used for duplicate detection.
+    description: Standardized material description used for duplicate detection.
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SAPClient
+    physicalName: SAP_CLIENT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: SAP Client
+    documentation: SAP client or tenant from which the material originated.
+    description: SAP client or tenant from which the material originated.
+    mandatory: false
+    length: 16
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SAPPlantScope
+    physicalName: SAP_PLANT_SCOPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: SAP Plant Scope
+    documentation: Plant or regional scope where the material is maintained.
+    description: Plant or regional scope where the material is maintained.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MaterialStatus
+    physicalName: MATERIAL_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Material Status
+    documentation: Operational status of the SAP material.
+    description: Operational status of the SAP material.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SafetyStock
+    physicalName: SAFETY_STOCK
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Safety Stock
+    documentation: Safety stock quantity used in planning.
+    description: Safety stock quantity used in planning.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ReorderPoint
+    physicalName: REORDER_POINT
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Reorder Point
+    documentation: Inventory level at which replenishment should be considered.
+    description: Inventory level at which replenishment should be considered.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LeadTimeDays
+    physicalName: LEAD_TIME_DAYS
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Time Days
+    documentation: Standard replenishment or procurement lead time in days.
+    description: Standard replenishment or procurement lead time in days.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BatchManaged
+    physicalName: BATCH_MANAGED
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Batch Managed
+    documentation: Indicates whether the material requires batch management.
+    description: Indicates whether the material requires batch management.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SerialNumberProfile
+    physicalName: SERIAL_NUM_PROFILE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Serial Number Profile
+    documentation: SAP serial number profile assigned to the material.
+    description: SAP serial number profile assigned to the material.
+    mandatory: false
+    length: 64
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CreatedOn
+    physicalName: CREATED_ON
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Created On
+    documentation: Original creation date of the material in SAP.
+    description: Original creation date of the material in SAP.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemQLMatcherMaterial
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 94
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Material matching rules for cross-system SAP consolidation.
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameMaterialAndClient
+      condition: >-
+        Record1.MaterialNumber = Record2.MaterialNumber and COALESCE(Record1.SAPClient,'') = COALESCE(Record2.SAPClient,'')
+      label: Same Material And Client
+      documentation: Same Material And Client matching rule for SAP Material.
+      description: Same Material And Client matching rule for SAP Material.
+      matchScore: 100
+      color: md:green 800
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameMaterialNumber
+      condition: >-
+        Record1.MaterialNumber = Record2.MaterialNumber
+      label: Same Material Number
+      documentation: Same Material Number matching rule for SAP Material.
+      description: Same Material Number matching rule for SAP Material.
+      matchScore: 94
+      color: md:green 700
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameDescriptionAndProduct
+      condition: >-
+        Record1.NormalizedMaterialDesc = Record2.NormalizedMaterialDesc and Record1.FID_Product = Record2.FID_Product
+      label: Same Description And Product
+      documentation: Same Description And Product matching rule for SAP Material.
+      description: Same Description And Product matching rule for SAP Material.
+      matchScore: 86
+      color: md:teal 600
+      usingMatchOn: false

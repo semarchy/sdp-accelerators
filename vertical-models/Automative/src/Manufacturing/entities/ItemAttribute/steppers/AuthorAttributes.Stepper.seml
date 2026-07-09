@@ -1,0 +1,159 @@
+_name: AuthorAttributes
+_package: Manufacturing.entities.ItemAttribute.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemAttribute.ItemAttribute
+rootStep:
+  _name: Attributes
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemAttribute.collection_views.AttributeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Attributes
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ItemAttribute.ItemAttribute.Attribute
+  stepTriggers: []
+  childSteps:
+    - _name: Attribute
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Attribute
+      formTab: Manufacturing.entities.ItemAttribute.forms.AttributeForm.Attribute
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemAttribute.ItemAttribute.Attribute
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemAttribute.ItemAttribute.Attribute
+      stepTriggers: []
+    - _name: AttributeValue
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: Manufacturing.entities.ItemAttributeValue.collection_views.ItemAttributeValueCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Attribute Value
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemAttribute.ItemAttribute.Attribute
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue.Value
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: Manufacturing.references.AttributeValuesBelongsToItemAttribute
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: ItemAttributeValue
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Item Attribute Value
+          formTab: Manufacturing.entities.ItemAttributeValue.forms.ItemAttributeValueForm.ItemAttributeValue
+          formStepEnrichers: []
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.ItemAttributeValue.forms.ItemAttributeValueForm.ItemAttributeValue.FDN_ItemAttribute
+              referencePickerCollectionView: Manufacturing.entities.ItemAttribute.collection_views.AttributeCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: MANDATORY
+              attribute: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue.Value
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue.Value
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+          stepTriggers: []
+label: Author Attributes
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue.Value
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ItemAttribute.ItemAttribute.Attribute
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+triggers: []

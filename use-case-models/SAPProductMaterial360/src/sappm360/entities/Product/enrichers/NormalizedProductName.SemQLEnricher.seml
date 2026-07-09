@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: sappm360.entities.Product.enrichers
+_name: NormalizedProductName
+entity: sappm360.entities.Product.Product
+label: Normalized Product Name
+description: Normalize the product name for product matching.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedProductName
+    expression: LTRIM(RTRIM(UPPER(ProductName)))

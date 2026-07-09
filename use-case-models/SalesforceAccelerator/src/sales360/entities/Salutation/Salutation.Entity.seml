@@ -1,0 +1,65 @@
+# This file defines the Salutation entity in the Legal Entity application.
+# It includes attributes such as SalutationID, SalutationType, and SalutationValue,
+# along with their properties and validations.
+# The entity is used to manage salutation information within the application.
+_name: Salutation
+_package: sales360.entities.Salutation
+_type: Entity
+primaryKey: sales360.entities.Salutation.Salutation.SalutationID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: SalutationType
+label: Salutation
+documentation: Honorific added to the name for use in letters, etc.
+description: Honorific added to the name for use in letters, etc.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Salutations
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SALUTATION
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SalutationID
+    physicalName: SALUTATION_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Salutation ID
+    documentation: Unique identifier for the salutation.
+    description: Unique identifier for the salutation.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SalutationType
+    physicalName: SALUTATION_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Salutation Type
+    documentation: Type of salutation (e.g., Mr., Ms., Dr.).
+    description: Type of salutation (e.g., Mr., Ms., Dr.).
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SalutationValue
+    physicalName: SALUTATION_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Salutation Value
+    documentation: The actual salutation value.
+    description: The actual salutation value.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

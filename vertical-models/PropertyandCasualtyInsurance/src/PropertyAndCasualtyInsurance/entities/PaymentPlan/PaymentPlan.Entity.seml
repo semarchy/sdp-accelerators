@@ -1,0 +1,78 @@
+_package: PropertyAndCasualtyInsurance.entities.PaymentPlan
+_type: Entity
+_name: PaymentPlan
+label: Payment Plan
+pluralLabel: Payment Plans
+entityType: BASIC
+physicalTableName: PAYMENT_PLAN
+iconUrl: images://mdi/book.svg
+description: "Represents billing and premium payment plan options available for policy servicing."
+documentation: "Represents billing and premium payment plan options available for policy servicing."
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PlanCode
+    label: Plan Code
+    physicalName: PLAN_CODE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for a payment plan option."
+    documentation: "Unique identifier for a payment plan option."
+  - _type: EntityAttribute
+    _name: PlanName
+    label: Plan Name
+    physicalName: PLAN_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Business-friendly name of the payment plan (e.g., Monthly, Quarterly, Annual)."
+    documentation: "Business-friendly name of the payment plan (e.g., Monthly, Quarterly, Annual)."
+  - _type: EntityAttribute
+    _name: BillingFrequency
+    label: Billing Frequency
+    physicalName: BILLING_FREQUENCY
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Frequency of payment billing cycle such as Monthly, Quarterly, or Annual."
+    documentation: "Frequency of payment billing cycle such as Monthly, Quarterly, or Annual."
+  - _type: EntityAttribute
+    _name: InstallmentCount
+    label: Installment Count
+    physicalName: INSTALLMENT_COUNT
+    dataType: Integer
+    precision: 3
+    mandatory: false
+    searchable: true
+    description: "Number of installments expected during the policy term under this plan."
+    documentation: "Number of installments expected during the policy term under this plan."
+  - _type: EntityAttribute
+    _name: AutoPaySupportedFlag
+    label: Auto Pay Supported Flag
+    physicalName: AUTO_PAY_SUPPORTED_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether this payment plan supports automatic recurring payments."
+    documentation: "Indicates whether this payment plan supports automatic recurring payments."
+  - _type: EntityAttribute
+    _name: GracePeriodDays
+    label: Grace Period Days
+    physicalName: GRACE_PERIOD_DAYS
+    dataType: Integer
+    precision: 3
+    mandatory: false
+    searchable: true
+    description: "Number of grace days allowed after due date before delinquency actions begin."
+    documentation: "Number of grace days allowed after due date before delinquency actions begin."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.PaymentPlan.PaymentPlan.PlanCode

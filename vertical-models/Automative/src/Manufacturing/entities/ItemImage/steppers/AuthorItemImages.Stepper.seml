@@ -1,0 +1,55 @@
+_name: AuthorItemImages
+_package: Manufacturing.entities.ItemImage.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemImage.ItemImage
+rootStep:
+  _name: ProductItemImages
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemImage.collection_views.ItemImageCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Images
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ItemImage.ItemImage.URL
+  stepTriggers: []
+  childSteps:
+    - _name: ProductItemImage
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Image
+      formTab: Manufacturing.entities.ItemImage.forms.ItemImageFormEdit.ProductItemImage
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemImage.ItemImage.URL
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemImage.ItemImage.URL
+      stepTriggers: []
+label: Author Item Images
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ItemImage.ItemImage.URL
+triggers: []

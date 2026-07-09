@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.LegalEntity.enrichers
+_name: SetStatusPendingValidation
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+label: Set Status Pending Validation
+description: "Sets the legal entity status to Pending Validation during pre-consolidation processing."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_Status
+    expression: "'Pending Validation'"
+afterEnrichers: PrivateEquity.entities.LegalEntity.enrichers.SetStatusDraft

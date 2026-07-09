@@ -1,0 +1,41 @@
+# This file defines the Job Role entity in the Organization module.
+# It specifies the entity attributes, primary key, and source ID generation.
+_package: Organization.entities.JobRole
+_type: Entity
+_name: JobRole
+label: Job Role
+pluralLabel: Job Role
+entityType: BASIC
+physicalTableName: JOB_ROLE
+iconUrl: images://hr-img-lib/file-tree.svg
+description: This entity represents job roles within the organization, which can be used for categorization and filtering of employees.
+documentation: This entity is used to define various job roles, which can be referenced in other entities
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: JobRoleID
+    label: Job Role ID
+    description: Unique identifier for the job role.
+    documentation: This attribute is the primary key for the Job Role entity and is used to uniquely identify each record.
+    physicalName: JOB_ROLE_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: Label
+    label: Label
+    description: Label for the job role.
+    documentation: This attribute holds the label for the job role.
+    physicalName: LABEL
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100
+primaryKey: Organization.entities.JobRole.JobRole.JobRoleID

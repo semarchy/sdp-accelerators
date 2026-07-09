@@ -1,0 +1,196 @@
+_name: Country
+_package: PrivateEquity.entities.Country
+_type: Entity
+primaryKey: PrivateEquity.entities.Country.Country.ID
+sourceIdGeneration:
+  mode: MANUAL
+label: Country
+description: "Defines country reference data used for addresses, tax reporting, and geographic classification."
+documentation: "Maintains ISO and local country identifiers used by address, region, tax, and reporting workflows."
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/flag-variant.svg
+pluralLabel: Countries
+historizeGolden: true
+historizeMaster: false
+physicalTableName: COUNTRY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    description: "Unique identifier for the country record."
+    documentation: "Unique identifier for the country record. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 2
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GEC
+    physicalName: GEC
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: GEC
+    description: "Geopolitical Entities, Names, and Codes identifier for the country."
+    documentation: "Geopolitical Entities, Names, and Codes identifier for the country. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 2
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EnglishShortName
+    physicalName: ENGLISH_SHORT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: English Short Name
+    description: "Short English country name used in user-facing lists and search."
+    documentation: "Short English country name used in user-facing lists and search. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EnglishFullName
+    physicalName: ENGLISH_FULL_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: English Full Name
+    description: "Full English country name used for formal reporting and reference."
+    documentation: "Full English country name used for formal reporting and reference. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FlagURL
+    physicalName: FLAG_URL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Flag URL
+    description: "URL for the country flag image used in reference displays."
+    documentation: "URL for the country flag image used in reference displays. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: URLWikipedia
+    physicalName: URL_WIKIPEDIA
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: URL Wikipedia
+    description: "Wikipedia URL used as an external country reference."
+    documentation: "Wikipedia URL used as an external country reference. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Alpha3Code
+    physicalName: ALPHA3_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: ISO 3166-1 3-Letter Code
+    description: "Three-letter ISO 3166-1 country code used for country identification and integration."
+    documentation: "This three-letter code (alpha-3) is more closely related to the country name than the two-letter code. The two-letter code is preferred in most situations. [ISO 3166 Country Codes](https://www.iso.org/iso-3166-country-codes.html)"
+    mandatory: false
+    length: 3
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Alpha2Code
+    physicalName: ALPHA2_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: ISO 3166-1 2-Letter Code
+    description: "Two-letter ISO 3166-1 country code used for country identification and integration."
+    documentation: "This two-letter code (alpha-2) is recommended as the general-purpose code. [ISO 3166 Country Codes](https://www.iso.org/iso-3166-country-codes.html)"
+    mandatory: false
+    length: 2
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NumericCode
+    physicalName: NUMERIC_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Numeric Code
+    description: "Numeric ISO 3166-1 country code used for standards-based integration."
+    documentation: "Numeric ISO 3166-1 country code used for standards-based integration. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 3
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LocalShortName
+    physicalName: LOCAL_SHORT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Local Short Name
+    description: "Local short country name used for regional display and reference."
+    documentation: "Local short country name used for regional display and reference. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

@@ -1,0 +1,11 @@
+_package: CorpFin.entities.Supplier.enrichers
+_name: NormalizeSupplier
+_type: SemQLEnricher
+entity: CorpFin.entities.Supplier.Supplier
+label: Normalize Supplier Payment Terms
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes supplier payment terms by trimming whitespace and converting values to uppercase for standardization."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedPaymentTerms
+    expression: "RTRIM(LTRIM(UPPER(PaymentTerms)))"

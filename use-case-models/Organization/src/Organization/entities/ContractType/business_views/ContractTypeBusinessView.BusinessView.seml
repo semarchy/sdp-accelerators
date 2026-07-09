@@ -1,0 +1,40 @@
+# This file defines the business view for Contract Types in the Organization domain.
+# It includes the root business view entity, action set, collection view, and form. 
+_package: Organization.entities.ContractType.business_views
+_type: BusinessView
+_name: ContractTypeBusinessView
+label: Contract Types
+entity: Organization.entities.ContractType.ContractType
+rootLabel: Contract Types
+rootPluralLabel: Contract Types
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ContractType
+  entity: Organization.entities.ContractType.ContractType
+  actionSet: Organization.entities.ContractType.action_sets.ContractTypeActionSet
+  collection: Organization.entities.ContractType.collection_views.ContractTypeCollectionView
+  form: Organization.entities.ContractType.forms.ContractTypeForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  displayCard: Organization.entities.ContractType.display_cards.ContractTypeDisplayCard
+enableHierarchyView: false
+useHierarchyOnOpen: false

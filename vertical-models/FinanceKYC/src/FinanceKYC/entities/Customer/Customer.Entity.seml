@@ -1,0 +1,116 @@
+_package: FinanceKYC.entities.Customer
+_type: Entity
+_name: Customer
+label: Customer
+pluralLabel: Customer
+entityType: BASIC
+physicalTableName: CUSTOMER
+iconUrl: images://mdi/book.svg
+description: "Represents the customer record that links parties, products, contracts, and KYC activity."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: CustomerID
+    _type: EntityAttribute
+    label: Customer ID
+    description: 'Unique identifier for the customer'
+    documentation: 'Unique identifier for the customer'
+    physicalName: CUSTOMER_ID
+    dataType: String
+    mandatory: true
+    valueSeparator: ''
+    searchable: true
+    length: 36
+
+  - _name: CustomerType
+    _type: EntityAttribute
+    label: Customer Type
+    description: 'Type of customer (Individual/Corporate)'
+    documentation: 'Type of customer (Individual/Corporate)'
+    physicalName: CUSTOMER_TYPE
+    dataType: String
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    valueSeparator: ','
+    searchable: true
+    length: 20
+
+  - _name: Status
+    _type: EntityAttribute
+    label: Status
+    description: 'Current status of the customer'
+    documentation: 'Current status of the customer'
+    physicalName: STATUS
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 20
+
+  - _name: SourceSystem
+    _type: EntityAttribute
+    label: Source System
+    description: 'System where the customer was onboarded'
+    documentation: 'System where the customer was onboarded'
+    physicalName: SOURCE_SYSTEM
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 30
+
+  - _name: Segment
+    _type: EntityAttribute
+    label: Segment
+    description: 'Customer segment'
+    documentation: 'Customer segment'
+    physicalName: SEGMENT
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 30
+
+  - _name: CommunicationLanguage
+    _type: EntityAttribute
+    label: Communication Language
+    description: 'Preferred communication language'
+    documentation: 'Preferred communication language'
+    physicalName: COMMLANGUAGE
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 10
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    description: 'Additional notes'
+    documentation: 'Additional notes'
+    physicalName: NOTES
+    dataType: String
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 255
+
+  - _name: IsActive
+    _type: EntityAttribute
+    label: Is Active
+    description: 'Active flag'
+    documentation: 'Active flag'
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    mandatory: false
+    valueSeparator: ','
+    searchable: true
+    length: 1
+
+primaryKey: FinanceKYC.entities.Customer.Customer.CustomerID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

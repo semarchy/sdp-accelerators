@@ -1,0 +1,148 @@
+_name: AuthorCustomerServiceAppointments
+_package: Manufacturing.entities.CustomerServiceAppointment.steppers
+_type: Stepper
+entity: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment
+rootStep:
+  _name: CustomerServiceAppointments
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.CustomerServiceAppointment.collection_views.CustomerServiceAppointmentCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Customer Service Appointments
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentDate
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+  stepTriggers: []
+  childSteps:
+    - _name: CustomerServiceAppointment
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Customer Service Appointment
+      formTab: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_DealerService
+          referencePickerCollectionView: Manufacturing.entities.ProductDealerService.collection_views.ProductDealerServiceCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Vehicle
+          referencePickerCollectionView: Manufacturing.entities.ProductVehicle.collection_views.ProductVehicleCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Customer
+          referencePickerCollectionView: Manufacturing.entities.Customer.collection_views.CustomerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentDate
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentDate
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+      stepTriggers: []
+label: Author Customer Service Appointments
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentDate
+triggers: []

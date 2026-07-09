@@ -1,0 +1,331 @@
+_name: LegalEntity
+_package: PrivateEquity.entities.LegalEntity
+_type: Entity
+primaryKey: PrivateEquity.entities.LegalEntity.LegalEntity.ID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: MANUAL
+label: Legal Entity
+description: "Represents a formal legal organization or individual managed for tax, accounting, relationship, and investment workflows."
+documentation: "In the context of a private equity company, a legal entity refers to a distinct and formal organization established to conduct business activities and hold assets. It is a separate legal entity from its owners and is typically structured as a limited partnership or a limited liability company. Private equity firms often establish multiple legal entities to manage their operations and investments effectively."
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/office-building.svg
+pluralLabel: Legal Entities
+historizeGolden: true
+historizeMaster: true
+physicalTableName: LEGAL_ENTITY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    description: "Unique identifier for the legal entity record."
+    documentation: "Unique identifier for the legal entity record. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    description: "Business name used to identify the legal entity record in stewardship screens and integrations."
+    documentation: "In the context of a private equity company, a legal entity refers to a distinct and formal organization established to conduct business activities and hold assets. It is a separate legal entity from its owners and is typically structured as a limited partnership or a limited liability company. Private equity firms often establish multiple legal entities to manage their operations and investments effectively."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedName
+    physicalName: NORMALIZED_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Name
+    description: "Uppercased and trimmed legal entity name used for matching and validation."
+    documentation: "Uppercased and trimmed legal entity name used for matching and validation. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Website
+    physicalName: WEBSITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Website
+    description: "Website URL associated with the legal entity."
+    documentation: "Website URL associated with the legal entity. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SSN
+    physicalName: SSN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: SSN
+    description: "Social Security Number captured when the legal entity is an individual."
+    documentation: "Social Security Number captured when the legal entity is an individual. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 11
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: USFEIN
+    physicalName: USFEIN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: USFEIN
+    description: "United States Federal Employer Identification Number used for tax identification."
+    documentation: "United States Federal Employer Identification Number used for tax identification. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 10
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NewInTY22
+    physicalName: NEW_IN_TY22
+    dataType: PrivateEquity.list_of_values.YesNo
+    goldenAttribute: true
+    i18ned: false
+    label: New In TY22
+    description: "Indicates whether the legal entity was newly included in tax year 2022 processing."
+    documentation: "Indicates whether the legal entity was newly included in tax year 2022 processing. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EnableTaxSoftware
+    physicalName: ENABLE_TAX_SOFTWARE
+    dataType: PrivateEquity.list_of_values.YesNo
+    goldenAttribute: true
+    i18ned: false
+    label: Enable Tax Software
+    description: "Indicates whether the legal entity should be enabled in tax software integrations."
+    documentation: "Indicates whether the legal entity should be enabled in tax software integrations. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: K1DueJune30
+    physicalName: K1_DUE_JUNE30
+    dataType: PrivateEquity.list_of_values.YesNo
+    goldenAttribute: true
+    i18ned: false
+    label: K1 Due June30
+    description: "Indicates whether Schedule K-1 is due by June 30 for the legal entity."
+    documentation: "Indicates whether Schedule K-1 is due by June 30 for the legal entity. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FiscalYearEnd
+    physicalName: FISCAL_YEAR_END
+    dataType: PrivateEquity.list_of_values.FiscalYearEnd
+    goldenAttribute: true
+    i18ned: false
+    label: Fiscal Year End
+    description: "Fiscal year-end value used for tax and reporting timelines."
+    documentation: "Fiscal year-end value used for tax and reporting timelines. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Revenue
+    physicalName: REVENUE
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Revenue
+    description: "Revenue amount associated with legal entity reporting."
+    documentation: "Revenue is the money received by or due to an organization. **Synonyms**: _income, takings, receipts, proceeds, earnings_ Full details available in <a href=\"Governance/Governance/browsing/BusinessTerms/revenue\" target=\"_blank\">Revenue (Business Term)</a> in our Data Governance Application."
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 10
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FormADVPF
+    physicalName: FORM_ADVPF
+    dataType: PrivateEquity.list_of_values.YesNo
+    goldenAttribute: true
+    i18ned: false
+    label: Form ADV / PF
+    description: "Indicates whether Form ADV or Form PF applies to the legal entity."
+    documentation: "Indicates whether Form ADV or Form PF applies to the legal entity. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FinalInTY22
+    physicalName: FINAL_IN_TY22
+    dataType: PrivateEquity.list_of_values.YesNo
+    goldenAttribute: true
+    i18ned: false
+    label: Final In TY22
+    description: "Indicates whether the legal entity was final in tax year 2022 processing."
+    documentation: "Indicates whether the legal entity was final in tax year 2022 processing. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FiscalYear
+    physicalName: FISCAL_YEAR
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Fiscal Year
+    description: "Indicates whether the legal entity follows a fiscal year basis."
+    documentation: "Indicates whether the legal entity follows a fiscal year basis. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 1
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ChainID
+    physicalName: CHAIN_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Chain ID
+    description: "Source chain identifier used to align the legal entity with upstream private equity systems."
+    documentation: "Source chain identifier used to align the legal entity with upstream private equity systems. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 5
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _name: GeocodedAddress
+    _type: EntityAttribute
+    label: Geocoded Address
+    description: "Geocoded address generated from legal entity address inputs."
+    documentation: "Geocoded address generated from legal entity address inputs. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    physicalName: GEO
+    dataType: PrivateEquity.complex_types.GeocodedAddressType
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+  - _name: InputAddress
+    _type: EntityAttribute
+    label: Input Address
+    description: "Source address captured for geocoding and legal entity location management."
+    documentation: "Source address captured for geocoding and legal entity location management. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    physicalName: INP
+    dataType: PrivateEquity.complex_types.InputAddressType
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+matcher:
+  _name: SemlQLMatcherLegalEntity
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdNewGroup: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: LE Matcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactEIN
+      condition: Record1.USFEIN = Record2.USFEIN
+      label: Exact EIN
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: ExactNameAddress
+      condition: |-
+        Record1.NormalizedName = Record2.NormalizedName
+        AND Record1.GeocodedAddress = Record2.GeocodedAddress
+      label: Exact Name & Address
+      matchScore: 90
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: ExactName
+      condition: Record1.Name = Record2.Name
+      label: Exact Name
+      matchScore: 75
+      usingMatchOn: false

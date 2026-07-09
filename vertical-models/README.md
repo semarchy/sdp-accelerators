@@ -1,0 +1,1 @@
+This folder contains vertical data models that cover a more specific use cases.

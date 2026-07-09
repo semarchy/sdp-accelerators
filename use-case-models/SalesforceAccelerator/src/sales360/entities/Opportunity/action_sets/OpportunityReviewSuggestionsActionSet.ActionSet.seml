@@ -1,0 +1,34 @@
+# This is the OpportunityReviewSuggestionsActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on opportunities, such as reviewing duplicate suggestions,
+# and explaining records.
+_name: OpportunityReviewSuggestionsActionSet
+_package: sales360.entities.Opportunity.action_sets
+_type: ActionSet
+entity: sales360.entities.Opportunity.Opportunity
+label: Opportunity Review Suggestions Action Set
+defaultActionSet: false
+actions:
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnOpportunity
+    label: Review Duplicates Suggestions
+    description: Review duplicate suggestions for Opportunity records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sales360.entities.Opportunity.dups_managers.ManageDuplicatesOnOpportunity
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    description: Export Opportunity records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ExplainRecord
+    label: Explain Record
+    description: Explain an Opportunity record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: sales360.entities.Opportunity.display_cards.OpportunityDisplayCard
+    formTab: sales360.entities.Opportunity.forms.OpportunityBrowsingForm.Main

@@ -1,0 +1,79 @@
+_package: FinanceKYC.entities.Relationship
+_type: Entity
+_name: Relationship
+label: Relationship
+pluralLabel: Relationship
+entityType: BASIC
+physicalTableName: RELATIONSHIP
+iconUrl: images://mdi/book.svg
+description: 'Captures relationships between parties or customers for ownership, association, and risk analysis.'
+documentation: 'Captures relationships between parties or customers for ownership, association, and risk analysis.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: RelationshipID
+    _type: EntityAttribute
+    label: Relationship ID
+    description: 'Relationship ID value captured for the relationship record.'
+    documentation: 'Relationship ID value captured for the relationship record.'
+    physicalName: RELATIONSHIP_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: RelationshipType
+    _type: EntityAttribute
+    label: Relationship Type
+    description: 'Relationship Type value captured for the relationship record.'
+    documentation: 'Relationship Type value captured for the relationship record.'
+    physicalName: RELATIONSHIP_TYPE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: StartDate
+    _type: EntityAttribute
+    label: Start Date
+    description: 'Start Date value captured for the relationship record.'
+    documentation: 'Start Date value captured for the relationship record.'
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: EndDate
+    _type: EntityAttribute
+    label: End Date
+    description: 'End Date value captured for the relationship record.'
+    documentation: 'End Date value captured for the relationship record.'
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: IsActive
+    _type: EntityAttribute
+    label: Is Active
+    description: 'Is Active value captured for the relationship record.'
+    documentation: 'Is Active value captured for the relationship record.'
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    description: 'Notes value captured for the relationship record.'
+    documentation: 'Notes value captured for the relationship record.'
+    physicalName: NOTES
+    dataType: String
+    length: 255
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.Relationship.Relationship.RelationshipID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

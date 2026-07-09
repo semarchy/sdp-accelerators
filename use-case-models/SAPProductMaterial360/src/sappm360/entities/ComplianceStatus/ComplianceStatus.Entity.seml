@@ -1,0 +1,94 @@
+# Compliance Status entity for the SAP Product / Material 360 accelerator.
+_name: ComplianceStatus
+_package: sappm360.entities.ComplianceStatus
+_type: Entity
+primaryKey: sappm360.entities.ComplianceStatus.ComplianceStatus.ComplianceStatusID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ComplianceStatusCode
+label: Compliance Status
+documentation: Compliance Status reference data used by the SAP Product / Material 360 model.
+description: Compliance Status reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Compliance Statuses
+historizeGolden: true
+historizeMaster: false
+physicalTableName: COMPLIANCE_STATUS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ComplianceStatusID
+    physicalName: COMPLIANCE_STATUS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Compliance Status ID
+    documentation: Unique identifier for the compliance status.
+    description: Unique identifier for the compliance status.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ComplianceStatusCode
+    physicalName: COMPLIANCE_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Compliance Status Code
+    documentation: Code for the compliance status.
+    description: Code for the compliance status.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Compliance Status Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ComplianceStatusName
+    physicalName: COMPLIANCE_STATUS_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Compliance Status Name
+    documentation: Compliance state used for regulatory product governance.
+    description: Compliance state used for regulatory product governance.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Compliance Status Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the compliance status.
+    description: Description for the compliance status.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the compliance status is active.
+    description: Indicates whether the compliance status is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

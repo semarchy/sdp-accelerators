@@ -1,0 +1,69 @@
+_package: CorpFin.entities.OrgHierarchyNode.action_sets
+_type: ActionSet
+_name: OrgHierarchyNodeActionSet
+entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+label: Org Hierarchy Node Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorOrgHierarchyNodes
+    label: Create
+    useCustomLabel: true
+    stepper: CorpFin.entities.OrgHierarchyNode.steppers.AuthorOrgHierarchyNodes
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorOrgHierarchyNodes
+    label: Edit
+    useCustomLabel: true
+    stepper: CorpFin.entities.OrgHierarchyNode.steppers.AuthorOrgHierarchyNodes
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  # - _type: StartWorkflowEntityAction
+  #   _name: AddSubOrgUnit
+  #   label: Add Sub Org Unit
+  #   startEvent: CorpFin.workflows.AddSubOrgUnit.Start
+  #   useCustomLabel: true
+  #   waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorOrgHierarchyNodes
+    label: Mass Update
+    useCustomLabel: true
+    stepper: CorpFin.entities.OrgHierarchyNode.steppers.AuthorOrgHierarchyNodes
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorOrgHierarchyNodes
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: CorpFin.entities.OrgHierarchyNode.steppers.AuthorOrgHierarchyNodes
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

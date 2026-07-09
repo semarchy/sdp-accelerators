@@ -1,0 +1,31 @@
+_package: FinanceKYC.entities.CorporateEntity.action_sets
+_type: ActionSet
+_name: CorporateEntityConfirmMatchesActionSet
+
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Corporate Entity Confirm Matches Action Set
+defaultActionSet: false
+
+actions:
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: false
+    waitDialogEnabled: false
+
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnCorporateEntity
+    label: Review and Confirm Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.CorporateEntity.dups_managers.ConfirmMatchesOnCorporateEntity
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnCorporateEntity
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.CorporateEntity.dups_managers.ConfirmMatchesOnCorporateEntity
+    enableEdit: true
+    waitDialogEnabled: false

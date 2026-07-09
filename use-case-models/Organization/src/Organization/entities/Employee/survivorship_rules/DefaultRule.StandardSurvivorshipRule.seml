@@ -1,0 +1,20 @@
+# This file defines the default survivorship rule for Employee entities in the Organization model.
+# It specifies the consolidation strategy and publisher rankings for survivorship.
+# This rule is applied when no specific rule matches the attributes of an Employee entity.
+_package: Organization.entities.Employee.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DefaultRule
+label: Default Rule
+consolidationSkipNulls: false
+defaultRule: true
+entity: Organization.entities.Employee.Employee
+description: This rule defines the default survivorship behavior for Employee entities.
+consolidationStrategy: PREFERRED_PUBLISHER
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: Organization.publishers.SecondaryHRMS
+  - _type: ConsoPublisherRanking
+    publisher: Organization.publishers.MainHRMS
+  - _type: ConsoPublisherRanking
+    publisher: Organization.publishers.PayrollSystem
+overrideStrategy: UNTIL_NEXT_USER_CHANGE

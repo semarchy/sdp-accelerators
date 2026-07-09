@@ -1,0 +1,81 @@
+_name: AuthorTaxonomyClassificationSpecializations
+_package: HCO_HCP.entities.TaxonomyClassificationSpecialization.steppers
+_type: Stepper
+entity: HCO_HCP.entities.TaxonomyClassificationSpecialization.TaxonomyClassificationSpecialization
+rootStep:
+  _name: TaxonomyClassificationSpecializations
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.TaxonomyClassificationSpecialization.collection_views.TaxonomyClassificationSpecializationCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Taxonomy Classification Specializations
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomySpecialization.TaxonomySpecialization
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomyClassification.Classification
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomySpecialization.TaxonomySpecialization
+  stepTriggers: []
+  childSteps:
+    - _name: TaxonomyClassificationSpecialization
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Taxonomy Classification Specialization
+      formTab: HCO_HCP.entities.TaxonomyClassificationSpecialization.forms.TaxonomyClassificationSpecializationForm.TaxonomyClassificationSpecialization
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomyClassification.Classification
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomySpecialization.TaxonomySpecialization
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomySpecialization.TaxonomySpecialization
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomySpecialization.TaxonomySpecialization
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomyClassification.Classification
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomySpecialization.TaxonomySpecialization
+      stepTriggers: []
+label: Author Taxonomy Classification Specializations
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomySpecialization.TaxonomySpecialization
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomyClassification.Classification
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.TaxonomyClassificationSpecializationsTaxonomySpecialization.TaxonomySpecialization
+triggers: []

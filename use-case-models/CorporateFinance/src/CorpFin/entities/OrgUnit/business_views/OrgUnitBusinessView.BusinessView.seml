@@ -1,0 +1,160 @@
+_package: CorpFin.entities.OrgUnit.business_views
+_type: BusinessView
+_name: OrgUnitBusinessView
+entity: CorpFin.entities.OrgUnit.OrgUnit
+rootLabel: Org Units
+label: Org Units
+rootPluralLabel: Org Units
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: OrgUnit
+  entity: CorpFin.entities.OrgUnit.OrgUnit
+  actionSet: CorpFin.entities.OrgUnit.action_sets.OrgUnitActionSet
+  collection: CorpFin.entities.OrgUnit.collection_views.OrgUnitCollectionView
+  form: CorpFin.entities.OrgUnit.forms.OrgUnitForm
+  displayCard: CorpFin.entities.OrgUnit.display_cards.OrgUnitDisplayCard
+
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _type: BusinessViewTransition
+      _name: ToHierarchies
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: Part of Hierarchies
+      pluralLabel: Part of Hierarchies
+
+      enableHierarchy: '0'    
+      enableHierarchyInterpreter: LITERAL
+
+      expandHierarchyByDefault: false
+      transitionPath: OrgHierarchyNodeToUnit
+      transitionType: FULLY_QUALIFIED
+      transitionVisible: '1'
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: ToHierarchies
+        entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+        actionSet: CorpFin.entities.OrgHierarchyNode.action_sets.OrgHierarchyNodeActionSet
+        collection: CorpFin.entities.OrgHierarchyNode.collection_views.OrgHierarchyNodeCollectionView 
+        form: CorpFin.entities.OrgHierarchyNode.forms.OrgHierarchyNodeForm
+        displayCard: CorpFin.entities.OrgHierarchyNode.display_cards.OrgHierarchyNodeDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true    
+
+    - _name: ToAssignedCoA
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/clipboard-list-outline.svg
+      useCustomLabel: false
+
+      transitionPath: orgUnitCoAAssignment
+      visibleInFormTabCondition: any orgUnitCoAAssignment has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToAssignedCoA
+        _type: BusinessViewEntity
+
+        collection: CorpFin.entities.OrgUnitCoAAssignment.collection_views.OrgUnitCoAAssignmentCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CorpFin.entities.OrgUnitCoAAssignment.OrgUnitCoAAssignment
+        form: CorpFin.entities.OrgUnitCoAAssignment.forms.OrgUnitCoAAssignmentForm
+        displayCard: CorpFin.entities.OrgUnitCoAAssignment.display_cards.OrgUnitCoAAssignmentDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        # sortExpression: ''
+        tableAllowed: true
+
+    - _name: ToGovernedCoA
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/account-details.svg
+      useCustomLabel: false
+
+      transitionPath: chartOfAccounts
+      visibleInFormTabCondition: any chartOfAccounts has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToGovernedCoA
+        _type: BusinessViewEntity
+
+        collection: CorpFin.entities.ChartOfAccounts.collection_views.ChartOfAccountsCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+        form: CorpFin.entities.ChartOfAccounts.forms.ChartOfAccountsForm
+        displayCard: CorpFin.entities.ChartOfAccounts.display_cards.ChartOfAccountsDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        # sortExpression: ''
+        tableAllowed: true
+
+    - _name: ToCoAMappings
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/clipboard-edit-outline.svg
+      useCustomLabel: false
+
+      transitionPath: orgUnitMappingCoverage
+      visibleInFormTabCondition: any orgUnitMappingCoverage has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToCoAMappings
+        _type: BusinessViewEntity
+
+        collection: CorpFin.entities.OrgUnitMappingCoverage.collection_views.OrgUnitMappingCoverageCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CorpFin.entities.OrgUnitMappingCoverage.OrgUnitMappingCoverage
+        form: CorpFin.entities.OrgUnitMappingCoverage.forms.OrgUnitMappingCoverageForm
+        displayCard: CorpFin.entities.OrgUnitMappingCoverage.display_cards.OrgUnitMappingCoverageDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        # sortExpression: ''
+        tableAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

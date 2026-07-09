@@ -1,0 +1,13 @@
+# This is the AccountName enricher for the Legal Entity application.
+# It enriches the Account entity with a unique name based on the FDN_LegalEntity and FDN_Bank.
+# The enricher is executed before the post-processing of the entity data
+_package: LegalEntity.entities.Account.enrichers
+_name: AccountName
+_type: SemQLEnricher
+entity: LegalEntity.entities.Account.Account
+label: Account Name
+condition: "Name is null"
+enricherExecutionScope: PRE_POST
+semQlEnricherExpressions:
+  - attributeName: AccountKey
+    expression: "FDN_LegalEntity || '~' || FDN_Bank"

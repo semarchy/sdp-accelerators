@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.Office.enrichers
+_name: NormalizedName
+entity: PrivateEquity.entities.Office.Office
+label: Normalized Name
+description: "Normalizes office names by trimming whitespace and converting values to uppercase for matching and validation."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedName
+    expression: RTRIM(LTRIM(UPPER(Name)))

@@ -1,0 +1,102 @@
+## This file defines the Site entity for the Legal Entity application.
+## It includes attributes and properties for managing Site values.
+_package: LegalEntity.entities.Site
+_type: Entity
+_name: Site
+label: Site
+pluralLabel: Sites
+iconUrl: images://le-img-lib/office-building-marker.svg
+description: Represents a physical or virtual site associated with a legal entity, used for location management and reporting.
+documentation: The Site entity defines the locations relevant to legal entities, supporting business operations, analysis, and reporting.
+enableDelete: true
+attributes: 
+  - _name: ID
+    dataType: LongInteger
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    physicalName: ID
+    label: ID
+    description: Unique identifier for the site.
+    documentation: This attribute stores the unique ID for each site, ensuring distinct identification.
+  - _name: Name
+    dataType: String
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: SITE_NAME
+    label: Site Name
+    description: The name of the site.
+    documentation: This attribute stores the site name, which is used to identify and distinguish locations.
+  - _name: NormalizedName
+    dataType: String
+    _type: EntityAttribute
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: NORMALIZED_NAME
+    label: Normalized Name
+    description: The normalized name of the site for consistency.
+    documentation: This attribute stores a standardized version of the site name for matching and reporting purposes.
+  - _name: Phone
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    description: Contact phone number for the site.
+    documentation: This attribute stores the phone number associated with the site for communication purposes.
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: PHONE
+    label: Phone
+  - _name: StandardizedPhone
+    dataType: String
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: STANDARDIZED_PHONE
+    label: Standardized Phone
+  - _name: SourceAddress
+    dataType: LegalEntity.complex_types.InputAddressType
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: SOA
+    label: Source Address
+  - _name: GeocodedAddress
+    dataType: LegalEntity.complex_types.GeocodedAddressType
+    _type: EntityAttribute
+    mandatory: false
+    i18ned: false
+    length: 128
+    multiValued: false
+    searchable: true
+    physicalName: GEO
+    label: Geocoded Address
+primaryKey: LegalEntity.entities.Site.Site.ID
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: SITE
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1800

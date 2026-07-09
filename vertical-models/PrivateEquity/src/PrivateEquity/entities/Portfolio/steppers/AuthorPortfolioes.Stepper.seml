@@ -1,0 +1,124 @@
+_name: AuthorPortfolioes
+_package: PrivateEquity.entities.Portfolio.steppers
+_type: Stepper
+entity: PrivateEquity.entities.Portfolio.Portfolio
+rootStep:
+  _name: Portfolios
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.Portfolio.collection_views.PortfolioCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Portfolioes
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.PortfolioesIndustry.Industry
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.PortfolioesIndustry.Industry
+    - onStepExit: SKIP
+      validationType: UNIQUE
+      uniqueKey: PrivateEquity.entities.Portfolio.unique_keys.ChainID
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Portfolio.Portfolio.ChainID
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.PortfolioesFund.Fund
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Portfolio.Portfolio.Name
+  stepTriggers: []
+  childSteps:
+    - _name: Portfolio
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Portfolio
+      formTab: PrivateEquity.entities.Portfolio.forms.PortfolioForm.Portfolio
+      formStepEnrichers:
+        - enricher: PrivateEquity.entities.Portfolio.enrichers.PortfolioName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.PortfolioesIndustry.Industry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: UNIQUE
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          uniqueKey: PrivateEquity.entities.Portfolio.unique_keys.ChainID
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Portfolio.Portfolio.ChainID
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.PortfolioesFund.Fund
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Portfolio.Portfolio.Name
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.PortfolioesIndustry.Industry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.PortfolioesFund.Fund
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.PortfolioesIndustry.Industry
+        - onStepExit: SKIP
+          validationType: UNIQUE
+          uniqueKey: PrivateEquity.entities.Portfolio.unique_keys.ChainID
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.PortfolioesIndustry.Industry
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Portfolio.Portfolio.Name
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Portfolio.Portfolio.ChainID
+      stepTriggers: []
+label: Author Portfolioes
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Portfolio.Portfolio.Name
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.PortfolioesIndustry.Industry
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Portfolio.Portfolio.ChainID
+  - onStepperFinish: WARN
+    validationType: UNIQUE
+    uniqueKey: PrivateEquity.entities.Portfolio.unique_keys.ChainID
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.PortfolioesIndustry.Industry
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.PortfolioesFund.Fund
+triggers: []

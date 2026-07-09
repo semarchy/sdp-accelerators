@@ -1,0 +1,36 @@
+ # Description: Stepper for Currency create/edit/import workflows.
+ # Contains: Steps and UI panels used by currency actions and imports.
+ # Role: Drives multi-step actions for managing Currency records.
+_package: Merchant.entities.Currency.steppers
+_type: Stepper
+_name: AuthorCurrencies
+entity: Merchant.entities.Currency.Currency
+label: Currencies
+rootStep:
+  _type: CollectionStep
+  _name: Currencies
+  label: Currencies
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.Currency.collection_views.CurrencyCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Currency
+      label: Currency
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.Currency.forms.CurrencyForm.Currency

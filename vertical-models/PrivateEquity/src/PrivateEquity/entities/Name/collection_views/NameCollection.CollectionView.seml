@@ -1,0 +1,56 @@
+_package: PrivateEquity.entities.Name.collection_views
+_name: NameCollection
+_type: CollectionView
+entity: PrivateEquity.entities.Name.Name
+default: true
+displayCard: PrivateEquity.entities.Name.display_cards.NameDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Name
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: true
+listShowDivider: true
+gridAllowed: true
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 2
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: ID
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_NameType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_NameType
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.NameType.NameType
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_LegalEntity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_LegalEntity
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.LegalEntity.LegalEntity
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Name
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Name
+    visibleByDefault: true

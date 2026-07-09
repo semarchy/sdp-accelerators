@@ -1,0 +1,63 @@
+_name: FundActionSet
+_package: PrivateEquity.entities.Fund.action_sets
+_type: ActionSet
+entity: PrivateEquity.entities.Fund.Fund
+label: Fund Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorFunds
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: true
+    allowOtherPublishers: true
+    stepper: PrivateEquity.entities.Fund.steppers.AuthorFunds
+  - _name: EditAuthorFunds
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: PrivateEquity.entities.Fund.steppers.AuthorFunds
+  - _name: MassUpdateAuthorFunds
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: PrivateEquity.entities.Fund.steppers.AuthorFunds
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorFunds
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: PrivateEquity.entities.Fund.steppers.AuthorFunds
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

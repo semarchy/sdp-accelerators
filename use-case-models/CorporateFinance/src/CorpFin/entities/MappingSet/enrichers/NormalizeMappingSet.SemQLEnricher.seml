@@ -1,0 +1,11 @@
+_package: CorpFin.entities.MappingSet.enrichers
+_name: NormalizeMappingSet
+_type: SemQLEnricher
+entity: CorpFin.entities.MappingSet.MappingSet
+label: Normalize Mapping Set
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes mapping set names for consistent lookup, comparison, and governance."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedMappingSetName
+    expression: "RTRIM(LTRIM(UPPER(MappingSetName)))"

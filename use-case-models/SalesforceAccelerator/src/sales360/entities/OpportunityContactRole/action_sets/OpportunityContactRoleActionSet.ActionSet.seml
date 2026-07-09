@@ -1,0 +1,68 @@
+# This is the OpportunityContactRoleActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on opportunity contact roles, such as creating, editing,
+# mass updating, deleting, exporting, importing opportunity contact roles.
+_name: OpportunityContactRoleActionSet
+_package: sales360.entities.OpportunityContactRole.action_sets
+_type: ActionSet
+entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+label: Opportunity Contact Role Action Set
+description: Action Set for Opportunity Contact Role entity in Salesforce Accelerator
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorOpportunityContactRoles
+    label: Create
+    description: Create a new Opportunity Contact Role record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.OpportunityContactRole.steppers.AuthorOpportunityContactRoles
+  - _name: EditAuthorOpportunityContactRoles
+    label: Edit
+    description: Edit an existing Opportunity Contact Role record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.OpportunityContactRole.steppers.AuthorOpportunityContactRoles
+  - _name: Delete
+    label: Delete
+    description: Delete selected Opportunity Contact Role records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: MassUpdateAuthorOpportunityContactRoles
+    label: Mass Update
+    description: Mass update Opportunity Contact Role records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sales360.entities.OpportunityContactRole.steppers.AuthorOpportunityContactRoles
+  - _name: Export
+    label: Export
+    description: Export Opportunity Contact Role records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorOpportunityContactRoles
+    label: Import
+    description: Import Opportunity Contact Role records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.OpportunityContactRole.steppers.OpportunityContactRoleImport

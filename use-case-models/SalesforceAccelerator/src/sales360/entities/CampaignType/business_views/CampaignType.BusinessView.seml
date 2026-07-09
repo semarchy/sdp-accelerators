@@ -1,0 +1,69 @@
+# This is the CampaignType business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for accounts,
+# including the root entity, labels, and display options.
+_name: CampaignType
+_package: sales360.entities.CampaignType.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.CampaignType.CampaignType
+rootLabel: Campaign Type
+rootPluralLabel: Campaign Type
+useHierarchyOnOpen: false
+label: Campaign Type
+description: Business view for Campaign Type entity in Salesforce Accelerator
+rootBusinessViewEntity:
+  _name: CampaignType
+  _type: BusinessViewEntity
+  collection: sales360.entities.CampaignType.collection_views.CampaignTypeCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.CampaignType.CampaignType
+  form: sales360.entities.CampaignType.forms.CampaignTypeForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.CampaignType.action_sets.CampaignTypeActionSet
+  displayCard: sales360.entities.CampaignType.display_cards.CampaignTypeDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.CampaignType.business_views.CampaignType.CampaignType
+rootIconUrl: images://mdi/format-list-checkbox.svg

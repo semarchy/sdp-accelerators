@@ -1,0 +1,106 @@
+# Product Cross Reference entity for the SAP Product / Material 360 accelerator.
+_name: ProductCrossReference
+_package: sappm360.entities.ProductCrossReference
+_type: Entity
+primaryKey: sappm360.entities.ProductCrossReference.ProductCrossReference.ProductCrossReferenceID
+sourceIdGeneration:
+  mode: MANUAL
+label: Product Cross Reference
+documentation: Cross-system identifier mapping between product, material, and external systems.
+description: Cross-system identifier mapping between product, material, and external systems.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/vector-link.svg
+pluralLabel: Product Cross References
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PROD_XREF
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductCrossReferenceID
+    physicalName: PROD_XREF_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Cross Reference ID
+    documentation: Unique identifier for a system cross reference.
+    description: Unique identifier for a system cross reference.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ExternalProductID
+    physicalName: EXT_PRODUCT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: External Product ID
+    documentation: Product identifier used by an external system.
+    description: Product identifier used by an external system.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: External Product ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ExternalMaterialNumber
+    physicalName: EXT_MATERIAL_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: External Material Number
+    documentation: Material identifier used by an external system.
+    description: Material identifier used by an external system.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CrossReferenceType
+    physicalName: XREF_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Cross Reference Type
+    documentation: Type of mapping such as SAP ECC, S/4HANA, PLM, PIM, or legacy.
+    description: Type of mapping such as SAP ECC, S/4HANA, PLM, PIM, or legacy.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SourceLastUpdated
+    physicalName: SRC_LAST_UPDATED
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Source Last Updated
+    documentation: Timestamp when the source mapping was last updated.
+    description: Timestamp when the source mapping was last updated.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the cross reference is active.
+    description: Indicates whether the cross reference is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

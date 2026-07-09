@@ -1,0 +1,60 @@
+_name: ProductReviewSuggestion
+_package: sappm360.entities.Product.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.Product.Product
+rootLabel: Product Golden Record Review Suggestion
+rootPluralLabel: Product Golden Record Review Suggestions
+useHierarchyOnOpen: false
+label: Product Golden Record Review Suggestion
+description: Business view for reviewing duplicate products.
+rootBusinessViewEntity:
+  _name: Product
+  _type: BusinessViewEntity
+  collection: sappm360.entities.Product.collection_views.ProductCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.Product.Product
+  form: sappm360.entities.Product.forms.ProductBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.Product.action_sets.ProductReviewSuggestionsActionSet
+  displayCard: sappm360.entities.Product.display_cards.ProductDisplayCard
+  sortExpression: NormalizedProductName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.Product.forms.ProductBrowsingForm.Main.Relationships.RelationshipsContainer.Container11.FDN_Brand
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Product.forms.ProductBrowsingForm.Main.Relationships.RelationshipsContainer.Container12.FDN_ProductType
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Product.forms.ProductBrowsingForm.Main.Relationships.RelationshipsContainer.Container20.FDN_ProductStatus
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Product.forms.ProductBrowsingForm.Main.Relationships.RelationshipsContainer.Container11.FDN_LifecycleStatus
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Product.forms.ProductBrowsingForm.Main.Relationships.RelationshipsContainer.Container12.FDN_ProductHierarchy
+      navigationMode: MODAL_FORM
+  transitions: []
+rootIconUrl: images://mdi/package-variant-closed.svg
+rootFilter: HasSuggestedMerge = '1'

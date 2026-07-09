@@ -1,0 +1,69 @@
+_name: ProductVariant
+_package: sappm360.entities.ProductVariant.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.ProductVariant.ProductVariant
+rootLabel: Product Variant
+rootPluralLabel: Product Variants
+useHierarchyOnOpen: false
+label: Product Variant
+description: Business view for Product Variant.
+rootBusinessViewEntity:
+  _name: ProductVariant
+  _type: BusinessViewEntity
+  collection: sappm360.entities.ProductVariant.collection_views.ProductVariantCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.ProductVariant.ProductVariant
+  form: sappm360.entities.ProductVariant.forms.ProductVariantBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.ProductVariant.action_sets.ProductVariantActionSet
+  displayCard: sappm360.entities.ProductVariant.display_cards.ProductVariantDisplayCard
+  sortExpression: VariantCode
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.ProductVariant.forms.ProductVariantBrowsingForm.Main.Details.DetailsContainer.Container4.FDN_Product
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.ProductVariant.business_views.ProductVariant.ProductVariant
+rootIconUrl: images://mdi/palette-swatch-outline.svg

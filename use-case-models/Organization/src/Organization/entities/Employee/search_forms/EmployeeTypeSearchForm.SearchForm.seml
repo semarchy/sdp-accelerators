@@ -1,0 +1,23 @@
+# This file defines the EmployeeTypeSearchForm search form in the Organization domain.
+# It is designed to provide a user interface for searching Employee entities based on their type.
+# The form allows users to filter Employees by their type, enhancing the search capabilities within the Employee
+# management system.
+_package: Organization.entities.Employee.search_forms
+_type: SearchForm
+_name: EmployeeTypeSearchForm
+label: Employee Type
+entity: Organization.entities.Employee.Employee
+semQlCondition: 1=1
+searchParameters:
+  - _name: EmployeeType
+    _type: SearchParameter
+    bindVariableName: SEARCH_PARAM_EMPLOYEE_TYPE
+    label: Employee Type
+    dataType: String
+    length: 255
+    displayType: VALUE_PICKER
+    boundSelectExpression: EmployeeType
+    primaryTextExpression: EmployeeType
+    useDistinct: true
+    displayCount: false
+    lookupEntity: Organization.entities.Employee.Employee

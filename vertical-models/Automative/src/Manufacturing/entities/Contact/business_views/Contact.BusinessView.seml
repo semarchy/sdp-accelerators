@@ -1,0 +1,49 @@
+_name: Contact
+_package: Manufacturing.entities.Contact.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.Contact.Contact
+rootLabel: Contact
+rootPluralLabel: Contacts
+useHierarchyOnOpen: false
+label: Contacts
+rootBusinessViewEntity:
+  _name: ContactEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.Contact.collection_views.ContactCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.Contact.Contact
+  form: Manufacturing.entities.Contact.forms.ContactForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.Contact.action_sets.ContactActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.Contact.forms.ContactForm.Contact.FDN_ManufacturingPlant
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.Contact.forms.ContactForm.Contact.FDN_Supplier
+      navigationMode: MODAL_FORM
+  transitions: []

@@ -1,0 +1,92 @@
+_package: PropertyAndCasualtyInsurance.entities.HomeAsset.action_sets
+_type: ActionSet
+_name: HomeAssetActionSet
+entity: PropertyAndCasualtyInsurance.entities.HomeAsset.HomeAsset
+label: "Home Asset Action Set"
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorHomeAssets
+    label: Create
+    useCustomLabel: true
+    stepper: PropertyAndCasualtyInsurance.entities.HomeAsset.steppers.AuthorHomeAssets
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorHomeAssets
+    label: Edit
+    useCustomLabel: true
+    stepper: PropertyAndCasualtyInsurance.entities.HomeAsset.steppers.AuthorHomeAssets
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorHomeAssets
+    label: Mass Update
+    useCustomLabel: true
+    stepper: PropertyAndCasualtyInsurance.entities.HomeAsset.steppers.AuthorHomeAssets
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: true
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorHomeAssets
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: PropertyAndCasualtyInsurance.entities.HomeAsset.steppers.AuthorHomeAssets
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnHomeAsset
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    dupsManager: PropertyAndCasualtyInsurance.entities.HomeAsset.dups_managers.ManageDuplicatesOnHomeAsset
+    enableEdit: true
+    mandateConfirmAll: false
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnHomeAsset
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    dupsManager: PropertyAndCasualtyInsurance.entities.HomeAsset.dups_managers.ManageDuplicatesOnHomeAsset
+    enableEdit: true
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnHomeAsset
+    label: Review Duplicate Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    dupsManager: PropertyAndCasualtyInsurance.entities.HomeAsset.dups_managers.ManageDuplicatesOnHomeAsset
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false

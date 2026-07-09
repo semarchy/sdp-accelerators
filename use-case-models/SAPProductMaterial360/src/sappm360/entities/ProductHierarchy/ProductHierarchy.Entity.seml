@@ -1,0 +1,123 @@
+# Product Hierarchy entity for the SAP Product / Material 360 accelerator.
+_name: ProductHierarchy
+_package: sappm360.entities.ProductHierarchy
+_type: Entity
+primaryKey: sappm360.entities.ProductHierarchy.ProductHierarchy.ProductHierarchyID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: HierarchyCode
+label: Product Hierarchy
+documentation: Enterprise product hierarchy used for category, family, and product line governance.
+description: Enterprise product hierarchy used for category, family, and product line governance.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/sitemap-outline.svg
+pluralLabel: Product Hierarchies
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PROD_HIERARCHY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductHierarchyID
+    physicalName: PROD_HIER_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Hierarchy ID
+    documentation: Unique identifier for the product hierarchy node.
+    description: Unique identifier for the product hierarchy node.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HierarchyCode
+    physicalName: HIERARCHY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Hierarchy Code
+    documentation: Code that identifies the hierarchy node.
+    description: Code that identifies the hierarchy node.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Hierarchy Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HierarchyName
+    physicalName: HIERARCHY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Hierarchy Name
+    documentation: Business name of the hierarchy node.
+    description: Business name of the hierarchy node.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Hierarchy Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HierarchyLevel
+    physicalName: HIERARCHY_LEVEL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Hierarchy Level
+    documentation: Level such as division, category, subcategory, family, or product line.
+    description: Level such as division, category, subcategory, family, or product line.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LevelNumber
+    physicalName: LEVEL_NUMBER
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Level Number
+    documentation: Numeric level used for hierarchy ordering.
+    description: Numeric level used for hierarchy ordering.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HierarchyPath
+    physicalName: HIERARCHY_PATH
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Hierarchy Path
+    documentation: Readable path from the top of the product hierarchy.
+    description: Readable path from the top of the product hierarchy.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the hierarchy node is active.
+    description: Indicates whether the hierarchy node is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

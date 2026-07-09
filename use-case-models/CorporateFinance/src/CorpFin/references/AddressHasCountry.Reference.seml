@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: AddressHasCountry
+_type: Reference
+label: Address Has Country
+description: "Defines the reference from Address records to Country records, enforcing the relationship between Address and Country data."
+documentation: "Defines the reference from Address records to Country records, enforcing the relationship between Address and Country data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Address.Address
+fromRoleLabel: Address
+fromRoleName: address
+fromRolePluralLabel: Addresses
+physicalName: ADDRESS_HAS_COUNTRY
+fromNavigable: true
+
+toEntity: CorpFin.entities.Country.Country
+toRoleLabel: Country
+toRoleName: country
+toRolePhysicalName: COUNTRY_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: country
+  label: Country Code
+  physicalName: COUNTRY_CODE
+  searchable: true
+  entity: CorpFin.entities.Country.Country

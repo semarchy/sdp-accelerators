@@ -1,0 +1,94 @@
+_name: AuthorItemAttributeSubFamilies
+_package: Manufacturing.entities.ItemAttributeSubFamily.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemAttributeSubFamily.ItemAttributeSubFamily
+rootStep:
+  _name: ItemAttributeSubFamilys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemAttributeSubFamily.collection_views.ItemAttributeSubFamilyCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Attribute Sub Families
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemAttribute.ItemAttribute
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemAttribute.ItemAttribute
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemSubFamily.ItemSubFamily
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemSubFamily.ItemSubFamily
+  stepTriggers: []
+  childSteps:
+    - _name: ItemAttributeSubFamily
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Attribute Sub Family
+      formTab: Manufacturing.entities.ItemAttributeSubFamily.forms.ItemAttributeSubFamilyForm.ItemAttributeSubFamily
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemSubFamily.ItemSubFamily
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemSubFamily.ItemSubFamily
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemAttribute.ItemAttribute
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemAttribute.ItemAttribute
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemAttribute.ItemAttribute
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemAttribute.ItemAttribute
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemSubFamily.ItemSubFamily
+      stepTriggers: []
+label: Author Item Attribute Sub Families
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemAttribute.ItemAttribute
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemAttribute.ItemAttribute
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemSubFamily.ItemSubFamily
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemAttributeSubFamiliesHasItemSubFamily.ItemSubFamily
+triggers: []

@@ -1,0 +1,94 @@
+# Relationship Type entity for the SAP Product / Material 360 accelerator.
+_name: RelationshipType
+_package: sappm360.entities.RelationshipType
+_type: Entity
+primaryKey: sappm360.entities.RelationshipType.RelationshipType.RelationshipTypeID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: RelationshipTypeCode
+label: Relationship Type
+documentation: Relationship Type reference data used by the SAP Product / Material 360 model.
+description: Relationship Type reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Relationship Types
+historizeGolden: true
+historizeMaster: false
+physicalTableName: RELATIONSHIP_TYPE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: RelationshipTypeID
+    physicalName: RELATIONSHIP_TYPE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Relationship Type ID
+    documentation: Unique identifier for the relationship type.
+    description: Unique identifier for the relationship type.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RelationshipTypeCode
+    physicalName: RELATIONSHIP_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Relationship Type Code
+    documentation: Code for the relationship type.
+    description: Code for the relationship type.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Relationship Type Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RelationshipTypeName
+    physicalName: RELATIONSHIP_TYPE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Relationship Type Name
+    documentation: Type of product relationship such as substitute, successor, bundle, or accessory.
+    description: Type of product relationship such as substitute, successor, bundle, or accessory.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Relationship Type Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the relationship type.
+    description: Description for the relationship type.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the relationship type is active.
+    description: Indicates whether the relationship type is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

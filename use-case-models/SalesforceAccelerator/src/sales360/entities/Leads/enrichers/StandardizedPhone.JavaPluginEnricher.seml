@@ -1,0 +1,30 @@
+# It is an enricher for the lead entity in the Salesforce Accelerator application.
+# It is a JavaPluginEnricher that standardizes phone numbers using a Semarchy phone
+# enricher plugin.
+# This enricher is executed before the consumption of the entity data.
+_type: JavaPluginEnricher
+_package: sales360.entities.Leads.enrichers
+_name: StandardizedPhone
+entity: sales360.entities.Leads.Leads
+label: Standardized Phone
+description: Enricher to standardize phone numbers using Semarchy phone enricher plugin.
+pluginId: com.semarchy.engine.plugins.convergence.phone
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_COUNTRY_CODE
+    expression: COALESCE(Address.InpCountry, 'US')
+  - inputName: IN_PHONE
+    expression: Phone.InpPhoneNumber
+  - inputName: IN_PHONE_FORMAT
+    expression: "'NATIONAL'"
+pluginOutputs:
+  - outputName: ENRICHED_PHONE
+    attributeName: Phone.StandardizedPhoneNumber
+  - outputName: GEOCODE_DATA
+    attributeName: Phone.PhoneGeocodingData
+afterEnrichers: sales360.entities.Leads.enrichers.GeoCodedAddress

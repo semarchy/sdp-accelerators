@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_type: Reference
+_name: CountryHasRegion
+label: Country Has Region
+description: "Defines the reference from Country records to Region records, enforcing the relationship between Country and Region data."
+documentation: "Defines the reference from Country records to Region records, enforcing the relationship between Country and Region data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.Country.Country
+fromRoleLabel: Country
+fromRoleName: country
+fromRolePluralLabel: Countries
+physicalName: COUNTRY_HAS_REGION
+fromNavigable: true
+
+toEntity: CorpFin.entities.Region.Region
+toRoleLabel: Region
+toRoleName: region
+toRolePhysicalName: REGION_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: region
+  label: Region ID
+  physicalName: REGION_ID
+  searchable: true
+  entity: CorpFin.entities.Region.Region

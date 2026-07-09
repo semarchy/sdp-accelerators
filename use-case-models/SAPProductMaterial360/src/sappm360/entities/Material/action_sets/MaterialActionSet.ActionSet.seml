@@ -1,0 +1,111 @@
+_name: MaterialActionSet
+_package: sappm360.entities.Material.action_sets
+_type: ActionSet
+entity: sappm360.entities.Material.Material
+label: SAP Material Action Set
+description: Action set for managing materials in SAP Product / Material 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorMaterials
+    label: Create
+    description: Create a new SAP Material record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sappm360.entities.Material.steppers.AuthorMaterials
+  - _name: EditAuthorMaterials
+    label: Edit
+    description: Edit SAP Material records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sappm360.entities.Material.steppers.AuthorMaterials
+  - _name: MassUpdateAuthorMaterials
+    label: Mass Update
+    description: Mass update SAP Material records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sappm360.entities.Material.steppers.AuthorMaterials
+  - _name: Delete
+    label: Delete
+    description: Delete selected SAP Material records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorMaterials
+    label: Import
+    description: Import SAP Material records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sappm360.publishers.DataEntry
+    stepper: sappm360.entities.Material.steppers.MaterialImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicate materials.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnMaterial
+    label: Review And Confirm Duplicates
+    description: Review and confirm duplicate SAP Material records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: sappm360.entities.Material.dups_managers.ManageDuplicatesOnMaterial
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnMaterial
+    label: Merge Or Split Duplicates
+    description: Merge or split duplicate SAP Material records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: sappm360.entities.Material.dups_managers.ManageDuplicatesOnMaterial
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnMaterial
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions for SAP Material records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sappm360.entities.Material.dups_managers.ManageDuplicatesOnMaterial
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    description: Explain SAP Material record details.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: sappm360.entities.Material.display_cards.MaterialDisplayCard
+    formTab: sappm360.entities.Material.forms.MaterialBrowsingForm.Main

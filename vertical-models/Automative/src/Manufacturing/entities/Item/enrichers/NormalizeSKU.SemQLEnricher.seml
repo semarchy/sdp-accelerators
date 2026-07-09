@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: Manufacturing.entities.Item.enrichers
+_name: NormalizeSKU
+entity: Manufacturing.entities.Item.Item
+label: Normalize SKU
+description: "Normalizes SKU values by removing punctuation for item matching and standardization."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedSKU
+    expression: REGEXP_REPLACE(SKU,'[[:punct:]]','', 'g')
+afterEnrichers: Manufacturing.entities.Item.enrichers.DefaultItemCondition

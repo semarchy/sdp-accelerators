@@ -1,0 +1,11 @@
+_package: CorpFin.entities.OrgUnitMappingCoverage.enrichers
+_name: NormalizeOrgUnitMappingCoverage
+_type: SemQLEnricher
+entity: CorpFin.entities.OrgUnitMappingCoverage.OrgUnitMappingCoverage
+label: Normalize Org Unit Mapping Coverage
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes mapping coverage scope values for consistent source-to-target mapping governance."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedCoverageScope
+    expression: "RTRIM(LTRIM(UPPER(CoverageScope)))"

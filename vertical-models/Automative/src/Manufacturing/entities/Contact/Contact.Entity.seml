@@ -1,0 +1,182 @@
+_name: Contact
+_package: Manufacturing.entities.Contact
+_type: Entity
+primaryKey: Manufacturing.entities.Contact.Contact.ContactID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 10000
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+label: Contact
+documentation: Contacts of various mnaufactuirng plant, suppliers etc.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/account-tie.svg
+pluralLabel: Contacts
+description: "Contact person records associated with suppliers, manufacturers, manufacturing plants, and operational relationships."
+historizeGolden: true
+historizeMaster: true
+physicalTableName: CONTACT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ContactID
+    physicalName: CONTACT_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Contact record."
+    documentation: "Surrogate identifier for the Contact record."
+    goldenAttribute: true
+    i18ned: false
+    label: Contact ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Picture
+    physicalName: PICTURE
+    dataType: String
+    description: "Image or asset used to visually represent the Contact record."
+    documentation: Picture URL of the person
+    goldenAttribute: true
+    i18ned: false
+    label: Picture
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Email
+    physicalName: EMAIL
+    dataType: String
+    description: "Email value used to contact or identify the Contact record."
+    documentation: Email ID of the contact
+    goldenAttribute: true
+    i18ned: false
+    label: Email
+    mandatory: false
+    length: 250
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    description: Name of the Contact Person
+    documentation: Name of the Contact Person
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Designation
+    physicalName: DESIGNATION
+    dataType: String
+    description: Designation of the Contact
+    documentation: Designation of the Contact
+    goldenAttribute: true
+    i18ned: false
+    label: Designation
+    mandatory: false
+    length: 200
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Number
+    physicalName: NUMBER
+    dataType: String
+    description: Contact Number of the person
+    documentation: Contact Number of the person
+    goldenAttribute: true
+    i18ned: false
+    label: Number
+    mandatory: true
+    length: 50
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherContact
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 91
+  mergeThresholdMergingConfirmedWithNewMasters: 91
+  mergeThresholdMergingConfirmedWithUnconfirmed: 91
+  mergeThresholdMergingUnconfirmed: 91
+  mergeThresholdMergingUnconfirmedWithNewMasters: 91
+  mergeThresholdNewGroup: 91
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: ContactMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameEmail
+      condition: Record1.Email = Record2.Email
+      label: Same Email
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: Number
+      condition: Record1.Number = Record2.Number
+      label: Number
+      matchScore: 98
+      color: md:amber
+      documentation: Contacts matching on Contact Number
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SimilarNames
+      condition: >-
+        (
+        	Record1.FID_Supplier = Record2.FID_Supplier 
+        	OR 
+        	Record1.FID_ManufacturingPlant= Record2.FID_ManufacturingPlant 
+        	OR 
+        	Record1.FID_Manufacturer = Record2.FID_Manufacturer 
+        )
+
+        and 
+
+        SEM_EDIT_DISTANCE_SIMILARITY(upper(Record1.Name), upper(Record2.Name))
+        >= 85
+
+
+        /* TODO: as a best practice the names should be normalized by an
+        enricher, not UPPER CASED here. */
+      label: Similar Names
+      matchScore: 96
+      description: Contacts are at the same company and have very similar names
+      documentation: Contacts are at the same company and have very similar names
+      usingMatchOn: false

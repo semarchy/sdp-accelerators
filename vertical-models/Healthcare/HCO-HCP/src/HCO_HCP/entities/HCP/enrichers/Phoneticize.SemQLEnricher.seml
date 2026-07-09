@@ -1,0 +1,12 @@
+_type: SemQLEnricher
+_package: HCO_HCP.entities.HCP.enrichers
+_name: Phoneticize
+entity: HCO_HCP.entities.HCP.HCP
+label: Phoneticize
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: LastNamePhonetic
+    expression: METAPHONE( LastName, 128 )
+  - attributeName: FirstNamePhonetic
+    expression: METAPHONE( FirstName, 128 )
+afterEnrichers: HCO_HCP.entities.HCP.enrichers.SplitName

@@ -1,0 +1,41 @@
+# This file defines the business view for the Contract Cost Center entity in the Organization domain.
+# It includes various configurations such as entity, label, root label, and action set,
+# as well as the root business view entity and its attributes.
+_package: Organization.entities.ContractCostCenter.business_views
+_type: BusinessView
+_name: ContractCostCenterBusinessView
+entity: Organization.entities.ContractCostCenter.ContractCostCenter
+label: Contract Cost Centers
+rootLabel: Contract Cost Centers
+rootPluralLabel: Contract Cost Centers
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ContractCostCenter
+  entity: Organization.entities.ContractCostCenter.ContractCostCenter
+  actionSet: Organization.entities.ContractCostCenter.action_sets.ContractCostCenterActionSet
+  collection: Organization.entities.ContractCostCenter.collection_views.ContractCostCenterCollectionView
+  form: Organization.entities.ContractCostCenter.forms.ContractCostCenterForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  displayCard: Organization.entities.ContractCostCenter.display_cards.ContractCostCenterDisplayCard
+enableHierarchyView: false
+useHierarchyOnOpen: false

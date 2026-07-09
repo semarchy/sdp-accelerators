@@ -1,0 +1,155 @@
+_package: CorpFin.model_diagrams
+_name: CorpFinOrgEntities
+_type: ModelDiagram
+attributeNameFormat: NAME
+description: Visual map of the Corporate Finance data model and its relationships.
+entityNameFormat: LABEL
+label: Org Entities sub-Model
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: true
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    entity: CorpFin.entities.OrgHierarchy.OrgHierarchy
+    _name: OrgHierarchy
+    borderColor: "#4F81BD"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 66.38265686421173
+      y: -286.2859301942883
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+    _name: OrgHierarchyNode
+    borderColor: "#C0504D"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 572.424501948317
+      y: -277.94859402006716
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.OrgUnit.OrgUnit
+    _name: OrgUnit
+    borderColor: "#9BBB59"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 490.54714969953125
+      y: 189.51571656651038
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.OrgUnitType.OrgUnitType
+    _name: OrgUnitType
+    borderColor: "#7B68EE"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 846
+      y: 724
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.OrgUnitCoAAssignment.OrgUnitCoAAssignment
+    _name: OrgUnitCoAAssignment
+    borderColor: "#FFD700"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 954.5215768231759
+      y: -168.71710180281286
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.OrgUnitMappingCoverage.OrgUnitMappingCoverage
+    _name: OrgUnitMappingCoverage
+    borderColor: "#4BACC6"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 428
+      y: 686
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+    _name: ChartOfAccounts
+    borderColor: "#C00000"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 964.0815129608847
+      y: 316.9499201721361
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.MappingSet.MappingSet
+    _name: MappingSet
+    borderColor: "#8064A2"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 77.38187246232721
+      y: 683.3020514625697
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Counterparty.Counterparty
+    _name: Counterparty
+    borderColor: "#F79646"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 77.6435809482871
+      y: 179.87213561822335
+    width: -1
+referenceLinks:
+  - bendPoints:
+      - x: 870
+        y: -120
+      - x: 870
+        y: -345
+      - x: 675
+        y: -345
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgHierarchyNode
+    reference: CorpFin.references.OrgHierarchyNodeHasParentNode
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgHierarchyNode
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgHierarchyNode
+    reference: CorpFin.references.OrgHierarchyNodeBelongsToHierarchy
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgHierarchy
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgHierarchyNode
+    reference: CorpFin.references.OrgHierarchyNodeHasOrgUnit
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnit
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnitCoAAssignment
+    reference: CorpFin.references.OrgUnitCoAAssignmentHasOrgUnit
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnit
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnitCoAAssignment
+    reference: CorpFin.references.OrgUnitCoAAssignmentHasChart
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.ChartOfAccounts
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnitMappingCoverage
+    reference: CorpFin.references.OrgUnitMappingCoverageHasOrgUnit
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnit
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnitMappingCoverage
+    reference: CorpFin.references.OrgUnitMappingCoverageHasMappingSet
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.MappingSet
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.ChartOfAccounts
+    reference: CorpFin.references.ChartOfAccountsIsGovernedByOrgUnit
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnit
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnit
+    reference: CorpFin.references.OrgUnitHasType
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnitType
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.OrgUnit
+    reference: CorpFin.references.OrgUnitHasCounterparty
+    toEntityShape: CorpFin.model_diagrams.CorpFinOrgEntities.Counterparty
+inheritLinks: []

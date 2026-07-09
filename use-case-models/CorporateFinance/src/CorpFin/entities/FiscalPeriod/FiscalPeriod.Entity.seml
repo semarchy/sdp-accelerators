@@ -1,0 +1,93 @@
+_package: CorpFin.entities.FiscalPeriod
+_type: Entity
+_name: FiscalPeriod
+label: Fiscal Period
+pluralLabel: Fiscal Periods
+entityType: BASIC
+physicalTableName: FISCAL_PERIOD
+iconUrl: images://mdi/calendar-month.svg
+description: "Fiscal period for accounting and reporting."
+documentation: "Fiscal period for accounting and reporting."
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: PeriodID
+    label: Period ID
+    description: Surrogate identifier for the period
+    documentation: Surrogate identifier for the period
+    physicalName: PERIOD_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: FiscalYear
+    label: Fiscal Year
+    description: Fiscal year number
+    documentation: Fiscal year number
+    physicalName: FISCAL_YEAR
+    dataType: String
+    length: 4
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: PeriodNumber
+    label: Period Number
+    description: Period number in fiscal year
+    documentation: Period number in fiscal year
+    physicalName: PERIOD_NUMBER
+    dataType: Integer
+    precision: 2
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: PeriodLabel
+    label: Period Label
+    description: Human-readable business label for the period
+    documentation: Human-readable business label for the period
+    physicalName: PERIOD_LABEL
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    description: Start date of the period
+    documentation: Start date of the period
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    description: End date of the period
+    documentation: End date of the period
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _type: EntityAttribute
+    _name: Quarter
+    label: Quarter
+    description: Quarter label (Q1, Q2, etc.)
+    documentation: Quarter label (Q1, Q2, etc.)
+    physicalName: QUARTER
+    dataType: String
+    length: 10
+    mandatory: false
+
+primaryKey: CorpFin.entities.FiscalPeriod.FiscalPeriod.PeriodID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

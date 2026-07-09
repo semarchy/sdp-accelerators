@@ -1,0 +1,94 @@
+_name: AuthorItemProductTrims
+_package: Manufacturing.entities.ItemProductTrim.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemProductTrim.ItemProductTrim
+rootStep:
+  _name: ItemProductTrims
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemProductTrim.collection_views.ItemProductTrimCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Product Trims
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemProductTrimsHasItem.Item
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemProductTrimsHasProductTrim.ProductTrim
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemProductTrimsHasProductTrim.ProductTrim
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemProductTrimsHasItem.Item
+  stepTriggers: []
+  childSteps:
+    - _name: ItemProductTrim
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Product Trim
+      formTab: Manufacturing.entities.ItemProductTrim.forms.ItemProductTrimForm.ItemProductTrim
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemProductTrimsHasProductTrim.ProductTrim
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemProductTrimsHasItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemProductTrimsHasProductTrim.ProductTrim
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemProductTrimsHasItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemProductTrimsHasProductTrim.ProductTrim
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemProductTrimsHasProductTrim.ProductTrim
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemProductTrimsHasItem.Item
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemProductTrimsHasItem.Item
+      stepTriggers: []
+label: Author Item Product Trims
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemProductTrimsHasProductTrim.ProductTrim
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemProductTrimsHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemProductTrimsHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemProductTrimsHasProductTrim.ProductTrim
+triggers: []

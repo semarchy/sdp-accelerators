@@ -1,0 +1,23 @@
+# It is an enricher for the contact entity in the Salesforce Accelerator application.
+# It is a Java Plugin Enricher that uses an email cleansing plugin to cleanse email addresses.
+# This enricher is executed before the consumption of the entity data.
+_type: JavaPluginEnricher
+_package: sales360.entities.Contact.enrichers
+_name: CleansedEmail
+entity: sales360.entities.Contact.Contact
+label: Cleansed Email
+description: Enricher to cleanse email addresses using Semarchy Email enricher plugin
+pluginId: com.semarchy.engine.plugins.convergence.email
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_EMAIL_ADDRESS
+    expression: SourceEmail
+pluginOutputs:
+  - outputName: OUT_CLEANSED_EMAIL
+    attributeName: CleansedEmail
+afterEnrichers: sales360.entities.Contact.enrichers.StandardizePhone

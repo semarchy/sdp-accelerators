@@ -1,0 +1,25 @@
+﻿_package: FinanceKYC.entities.Address.enrichers
+_name: EnrichGoogleMaps
+_type: JavaPluginEnricher
+entity: FinanceKYC.entities.Address.Address
+label: Standardize Address Enricher
+description: 'Enriches address records with a standardized address value from the Google Maps plugin.'
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  FinanceKYC.entities.Address.enrichers.EnrichFullAddress
+batchUpdateSize: 1000
+processingBatchSize: 1
+threadPoolSize: 1
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+pluginInputs:
+  - expression: FullAddress
+    inputName: IN_ADDRESSLINE
+pluginOutputs:
+- attributeName: EnrichedAddress
+  outputName: FORMATTED_ADDRESS

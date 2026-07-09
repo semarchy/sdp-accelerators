@@ -1,0 +1,195 @@
+_name: AuthorLEGroups
+_package: PrivateEquity.entities.LEGroup.steppers
+_type: Stepper
+entity: PrivateEquity.entities.LEGroup.LEGroup
+rootStep:
+  _name: LEGroups
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.LEGroup.collection_views.LEGroupCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: LE Groups
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LeGroupsCurrency.Currency
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LeGroupsStartegy.Startegy
+  stepTriggers: []
+  childSteps:
+    - _name: LEGroup
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: LE Group
+      formTab: PrivateEquity.entities.LEGroup.forms.LEGroupForm.LEGroup
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LeGroupsStartegy.Startegy
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LeGroupsCurrency.Currency
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LeGroupsCurrency.Currency
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LeGroupsStartegy.Startegy
+      stepTriggers: []
+    - _name: GroupLEs
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: PrivateEquity.entities.GroupLegalEntity.collection_views.GroupLegalEntityCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: true
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Group L Es
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LeGroupsStartegy.Startegy
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LeGroupsCurrency.Currency
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: true
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyFdnAttribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+      manyToManyPickerCollectionView: PrivateEquity.entities.LegalEntity.collection_views.LegalEntityCollection
+      oneToManyReference: PrivateEquity.references.GroupLegalEntitiesLEGroup
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: GroupLegalEntity
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Group Legal Entity
+          formTab: PrivateEquity.entities.GroupLegalEntity.forms.GroupLegalEntityForm.GroupLegalEntity
+          formStepEnrichers: []
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: PrivateEquity.entities.GroupLegalEntity.forms.GroupLegalEntityForm.GroupLegalEntity.FDN_LegalEntity
+              referencePickerCollectionView: PrivateEquity.entities.LegalEntity.collection_views.LegalEntityCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: PrivateEquity.entities.GroupLegalEntity.forms.GroupLegalEntityForm.GroupLegalEntity.FDN_LEGroup
+              referencePickerCollectionView: PrivateEquity.entities.LEGroup.collection_views.LEGroupCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: MANDATORY
+              attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+          stepTriggers: []
+label: Author LE Groups
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LeGroupsCurrency.Currency
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LeGroupsStartegy.Startegy
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+triggers: []

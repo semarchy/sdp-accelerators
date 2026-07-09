@@ -1,0 +1,90 @@
+_package: Assets.entities.Machine.steppers
+_type: Stepper
+_name: AuthorMachinesDigitalTwins
+entity: Assets.entities.Machine.Machine
+label: MachinesDigitalTwins
+rootStep:
+  _type: CollectionStep
+  _name: Machines
+  label: Machines
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: FORCE_READ_ONLY
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Assets.entities.Machine.collection_views.MachineCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Machine
+      label: Machine
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: FORCE_BROWSING
+      enableMasterValuePicking: false
+      formTab: Assets.entities.Machine.forms.MachineForm.Machine
+      formStepEnrichers:
+        - enricher: Assets.entities.Machine.enrichers.WorkflowEnricher
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+
+
+    - _type: CollectionStep
+      _name: DigitalTwins
+      label: Digital Twins
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      collectionView: Assets.entities.DigitalTwin.collection_views.DigitalTwinCollectionView
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      manyToManyUserDefinedSortEnabled: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      oneToManyReference: Assets.references.DigitalTwinMachine
+      childSteps:
+        - _type: FormStep
+          _name: DigitalTwin
+          label: Digital Twin
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          formFieldsMode: AUTO
+          enableMasterValuePicking: false
+          formTab: Assets.entities.DigitalTwin.forms.DigitalTwinForm.DigitalTwin

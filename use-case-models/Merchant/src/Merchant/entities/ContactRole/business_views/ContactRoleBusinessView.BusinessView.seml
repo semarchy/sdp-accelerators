@@ -1,0 +1,43 @@
+ # Description: Business view for `ContactRole` exposing navigation and actions.
+ # Contains: Business node linking to collection/form/actionSet for ContactRole.
+ # Role: Integrates ContactRole into model navigation and UI.
+_package: Merchant.entities.ContactRole.business_views
+_type: BusinessView
+_name: ContactRoleBusinessView
+label: Contact Role Business View
+entity: Merchant.entities.ContactRole.ContactRole
+rootLabel: Contact Roles
+rootPluralLabel: Contact Roles
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ContactRole
+  displayCard: Merchant.entities.ContactRole.display_cards.ContactRoleDisplayCard
+  entity: Merchant.entities.ContactRole.ContactRole
+  actionSet: Merchant.entities.ContactRole.action_sets.ContactRoleActionSet
+  collection: Merchant.entities.ContactRole.collection_views.ContactRoleCollectionView
+  form: Merchant.entities.ContactRole.forms.ContactRoleForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

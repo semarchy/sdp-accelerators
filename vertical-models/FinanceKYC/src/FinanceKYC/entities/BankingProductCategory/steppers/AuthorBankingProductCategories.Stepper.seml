@@ -1,0 +1,42 @@
+_package: FinanceKYC.entities.BankingProductCategory.steppers
+_type: Stepper
+_name: AuthorBankingProductCategories
+entity: FinanceKYC.entities.BankingProductCategory.BankingProductCategory
+label: Banking Product Categories
+rootStep:
+  _type: CollectionStep
+  _name: BankingProductCategories
+  label: Banking Product Categories
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: FinanceKYC.entities.BankingProductCategory.collection_views.BankingProductCategoryCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: BankingProductCategory
+      label: Banking Product Category
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: FinanceKYC.entities.BankingProductCategory.forms.BankingProductCategoryForm.BankingProductCategory
+      formStepValidations:
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: FinanceKYC.entities.BankingProductCategory.BankingProductCategory.CategoryName
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: FinanceKYC.entities.BankingProductCategory.BankingProductCategory.Description

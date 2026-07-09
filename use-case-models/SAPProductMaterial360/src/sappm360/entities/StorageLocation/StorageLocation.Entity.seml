@@ -1,0 +1,304 @@
+# Storage Location entity for the SAP Product / Material 360 accelerator.
+_name: StorageLocation
+_package: sappm360.entities.StorageLocation
+_type: Entity
+primaryKey: sappm360.entities.StorageLocation.StorageLocation.StorageLocationID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: StorageLocationCode
+label: Storage Location
+documentation: SAP storage location within a plant.
+description: SAP storage location within a plant.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/warehouse.svg
+pluralLabel: Storage Locations
+historizeGolden: true
+historizeMaster: false
+physicalTableName: STORAGE_LOCATION
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: StorageLocationID
+    physicalName: STOR_LOC_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Storage Location ID
+    documentation: Unique identifier for a storage location.
+    description: Unique identifier for a storage location.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StorageLocationCode
+    physicalName: STOR_LOC_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Storage Location Code
+    documentation: SAP storage location code.
+    description: SAP storage location code.
+    mandatory: true
+    length: 40
+    mandatoryValidationLabel: Storage Location Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StorageLocationName
+    physicalName: STOR_LOC_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Storage Location Name
+    documentation: Business name of the storage location.
+    description: Business name of the storage location.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Storage Location Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the storage location is active.
+    description: Indicates whether the storage location is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InpAddressLine
+    physicalName: INP_ADDRESS_LINE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input Address Line
+    documentation: Street address line used as input for geocoding.
+    description: Street address line used as input for geocoding.
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InpCity
+    physicalName: INP_CITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input City
+    documentation: City used as input for geocoding.
+    description: City used as input for geocoding.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InpState
+    physicalName: INP_STATE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input State
+    documentation: State or region used as input for geocoding.
+    description: State or region used as input for geocoding.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InpPostalCode
+    physicalName: INP_POSTAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input Postal Code
+    documentation: Postal code used as input for geocoding.
+    description: Postal code used as input for geocoding.
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InpCountry
+    physicalName: INP_COUNTRY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input Country
+    documentation: Country used as input for geocoding.
+    description: Country used as input for geocoding.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoStreetNumber
+    physicalName: GEO_STREET_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Street Number
+    documentation: Street number returned by the Google Maps geocoding enricher.
+    description: Street number returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoStreetName
+    physicalName: GEO_STREET_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Street Name
+    documentation: Street or route returned by the Google Maps geocoding enricher.
+    description: Street or route returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoLocality
+    physicalName: GEO_LOCALITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Locality
+    documentation: Locality or city returned by the Google Maps geocoding enricher.
+    description: Locality or city returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoState
+    physicalName: GEO_STATE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded State
+    documentation: Administrative area returned by the Google Maps geocoding enricher.
+    description: Administrative area returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoPostalCode
+    physicalName: GEO_POSTAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Postal Code
+    documentation: Postal code returned by the Google Maps geocoding enricher.
+    description: Postal code returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoCountry
+    physicalName: GEO_COUNTRY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Country
+    documentation: Country long name returned by the Google Maps geocoding enricher.
+    description: Country long name returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoCountryShort
+    physicalName: GEO_COUNTRY_SHORT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Country Short
+    documentation: Country short code returned by the Google Maps geocoding enricher.
+    description: Country short code returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 16
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoLatitude
+    physicalName: GEO_LATITUDE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Latitude
+    documentation: Latitude returned by the Google Maps geocoding enricher.
+    description: Latitude returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoLongitude
+    physicalName: GEO_LONGITUDE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Longitude
+    documentation: Longitude returned by the Google Maps geocoding enricher.
+    description: Longitude returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoStatus
+    physicalName: GEO_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Status
+    documentation: Geocoding status returned by the Google Maps geocoding enricher.
+    description: Geocoding status returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeoQuality
+    physicalName: GEO_QUALITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Quality
+    documentation: Geocoding quality returned by the Google Maps geocoding enricher.
+    description: Geocoding quality returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

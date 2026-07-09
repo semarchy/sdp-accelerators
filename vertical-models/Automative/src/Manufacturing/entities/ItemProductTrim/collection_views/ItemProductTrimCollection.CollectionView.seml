@@ -1,0 +1,63 @@
+_package: Manufacturing.entities.ItemProductTrim.collection_views
+_name: ItemProductTrimCollection
+_type: CollectionView
+entity: Manufacturing.entities.ItemProductTrim.ItemProductTrim
+default: true
+displayCard: Manufacturing.entities.ItemProductTrim.display_cards.ItemProductTrimDisplayCard
+tableAllowed: true
+tableRowLines: 1
+tableDisplayCardColumnLabel: Item Product Trim
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ItemProductTrimID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: ItemProductTrimID
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_ProductTrim
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_ProductTrim
+    visibleByDefault: true
+    referencedEntity: Manufacturing.entities.ProductTrim.ProductTrim
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Item
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Item
+    visibleByDefault: true
+    referencedEntity: Manufacturing.entities.Item.Item
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: DateColumn
+    _name: StartDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: StartDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: EndDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: EndDate
+    visibleByDefault: true

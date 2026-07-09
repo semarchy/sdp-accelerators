@@ -1,0 +1,18 @@
+# Description: Model job used to load Country reference data into the Merchant model.
+# Contains job configuration and source mapping for country data ingestion.
+# Role: Provides a scheduled/automated ETL job for populating Country reference data.
+_package: Merchant.model_jobs
+_name: LoadCountry
+_type: ModelJob
+jobType: INTEGRATION
+queueName: default
+modelTasks:
+  - _type: ModelJobTask
+    entity: Merchant.entities.Country.Country
+    _name: LoadCountry
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

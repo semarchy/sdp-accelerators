@@ -1,0 +1,66 @@
+_package: Assets.entities.Supplier.business_views
+_type: BusinessView
+_name: SupplierBusinessView
+entity: Assets.entities.Supplier.Supplier
+rootLabel: Suppliers
+rootPluralLabel: Suppliers
+displayRootNodeAs: ICON_LABEL
+label: Supplier
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Supplier
+  entity: Assets.entities.Supplier.Supplier
+  actionSet: Assets.entities.Supplier.action_sets.SupplierActionSet
+  collection: Assets.entities.Supplier.collection_views.SupplierCollectionView
+  form: Assets.entities.Supplier.forms.SupplierForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  displayCard: Assets.entities.Supplier.display_cards.SupplierDisplayCard
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: SpareParts
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: SpareParts
+        entity: Assets.entities.SparePart.SparePart
+        actionSet: Assets.entities.SparePart.action_sets.SparePartActionSet
+        collection: Assets.entities.SparePart.collection_views.SparePartCollectionView
+        form: Assets.entities.SparePart.forms.SparePartForm
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        displayCard: Assets.entities.SparePart.display_cards.SparePartDisplayCard
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true
+        enableUserDefinedSort: true
+        overrideDefaultSort: false
+      transitionPath: SparePart
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: Spare Part
+      pluralLabel: Spare Parts
+      enableHierarchy: '0'
+      expandHierarchyByDefault: false
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

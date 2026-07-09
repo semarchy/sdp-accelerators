@@ -1,0 +1,203 @@
+_name: AuthorMaterials
+_package: sappm360.entities.Material.steppers
+_type: Stepper
+entity: sappm360.entities.Material.Material
+description: Stepper for authoring materials.
+rootStep:
+  _name: Materials
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sappm360.entities.Material.collection_views.MaterialCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Materials
+  description: Manage SAP Material data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.MaterialsProduct.Product
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.MaterialsMaterialType.MaterialType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.MaterialsIndustrySector.IndustrySector
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.MaterialsMaterialGroup.MaterialGroup
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.MaterialsBaseUOM.BaseUOM
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.MaterialsProcurementType.ProcurementType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.MaterialsValuationClass.ValuationClass
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sappm360.entities.Material.validations.PlanningQuantities
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sappm360.entities.Material.Material.SemQLMatcherMaterial
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for SAP Material.
+      formTab: sappm360.entities.Material.forms.MaterialDataEntryForm.Main
+      formStepEnrichers:
+        - enricher: sappm360.entities.Material.enrichers.NormalizedMaterialDescription
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Material.forms.MaterialDataEntryForm.Main.Relationships.RelationshipsContainer.Container12.FDN_Product
+          referencePickerCollectionView: sappm360.entities.Product.collection_views.ProductCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Material.forms.MaterialDataEntryForm.Main.Relationships.RelationshipsContainer.Container13.FDN_MaterialType
+          referencePickerCollectionView: sappm360.entities.MaterialType.collection_views.MaterialTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Material.forms.MaterialDataEntryForm.Main.Relationships.RelationshipsContainer.Container12.FDN_IndustrySector
+          referencePickerCollectionView: sappm360.entities.IndustrySector.collection_views.IndustrySectorCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Material.forms.MaterialDataEntryForm.Main.Relationships.RelationshipsContainer.Container13.FDN_MaterialGroup
+          referencePickerCollectionView: sappm360.entities.MaterialGroup.collection_views.MaterialGroupCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Material.forms.MaterialDataEntryForm.Main.Relationships.RelationshipsContainer.Container12.FDN_BaseUOM
+          referencePickerCollectionView: sappm360.entities.UnitOfMeasure.collection_views.UnitOfMeasureCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Material.forms.MaterialDataEntryForm.Main.Relationships.RelationshipsContainer.Container13.FDN_ProcurementType
+          referencePickerCollectionView: sappm360.entities.ProcurementType.collection_views.ProcurementTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.Material.forms.MaterialDataEntryForm.Main.Relationships.RelationshipsContainer.Container12.FDN_ValuationClass
+          referencePickerCollectionView: sappm360.entities.ValuationClass.collection_views.ValuationClassCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sappm360.references.MaterialsProduct.Product
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.MaterialsMaterialType.MaterialType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.MaterialsIndustrySector.IndustrySector
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.MaterialsMaterialGroup.MaterialGroup
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.MaterialsBaseUOM.BaseUOM
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.MaterialsProcurementType.ProcurementType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.MaterialsValuationClass.ValuationClass
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sappm360.entities.Material.validations.PlanningQuantities
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.MaterialsProduct.Product
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.MaterialsMaterialType.MaterialType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.MaterialsIndustrySector.IndustrySector
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.MaterialsMaterialGroup.MaterialGroup
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.MaterialsBaseUOM.BaseUOM
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.MaterialsProcurementType.ProcurementType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.MaterialsValuationClass.ValuationClass
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: sappm360.entities.Material.validations.PlanningQuantities
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sappm360.entities.Material.Material.SemQLMatcherMaterial
+      stepTriggers: []
+label: Author Materials
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.MaterialsProduct.Product
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.MaterialsMaterialType.MaterialType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.MaterialsIndustrySector.IndustrySector
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.MaterialsMaterialGroup.MaterialGroup
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.MaterialsBaseUOM.BaseUOM
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.MaterialsProcurementType.ProcurementType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.MaterialsValuationClass.ValuationClass
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sappm360.entities.Material.validations.PlanningQuantities
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

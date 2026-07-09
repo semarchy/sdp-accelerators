@@ -1,0 +1,65 @@
+# This file defines the LeadSource entity in the Salesforce Accelerator application.
+# It includes attributes such as LeadSourceID, LeadSourceType, and LeadSourceValue,
+# along with their properties and validations.
+# The entity is used to manage lead source information within the application.
+_name: LeadSource
+_package: sales360.entities.LeadSource
+_type: Entity
+primaryKey: sales360.entities.LeadSource.LeadSource.LeadSourceID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: LeadSourceType
+label: Lead Source
+documentation: The source of the account record
+description: The source of the account record
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Lead Sources
+historizeGolden: true
+historizeMaster: false
+physicalTableName: LEAD_SOURCE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: LeadSourceID
+    physicalName: LEAD_SOURCE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Source ID
+    documentation: Unique identifier for the Lead Source
+    description: Unique identifier for the Lead Source
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LeadSourceType
+    physicalName: LEAD_SOURCE_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Source Type
+    documentation: Type of the Lead Source
+    description: Type of the Lead Source
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LeadSourceValue
+    physicalName: LEAD_SOURCE_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Source Value
+    documentation: Value of the Lead Source
+    description: Value of the Lead Source
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

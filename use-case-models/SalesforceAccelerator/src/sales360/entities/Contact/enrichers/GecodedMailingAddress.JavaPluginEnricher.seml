@@ -1,0 +1,52 @@
+# It is an enricher for the Contact entity in the Salesforce Accelerator application.
+# It is a Java Plugin Enricher that uses a Google Maps API plugin to geocode mailing addresses.
+# This enricher scope is set to NONE and can be changed as per business use case.
+_type: JavaPluginEnricher
+_package: sales360.entities.Contact.enrichers
+_name: GecodedMailingAddress
+entity: sales360.entities.Contact.Contact
+label: Gecoded Mailing Address
+description: Enricher to geocode mailing address using Google Maps API
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+pluginInputs:
+  - inputName: IN_POSTALCODE
+    expression: MailingAddress.InpZipCode
+  - inputName: IN_CITY
+    expression: MailingAddress.InpCity
+  - inputName: IN_ADDRESSLINE
+    expression: MailingAddress.InpAddressLine
+  - inputName: IN_COUNTRY
+    expression: MailingAddress.InpCountry
+pluginOutputs:
+  - outputName: POSTALCODE_LONGNAME
+    attributeName: MailingAddress.GeoPostalCode
+  - outputName: QUALITY
+    attributeName: MailingAddress.GeoQuality
+  - outputName: LOCALITY_LONGNAME
+    attributeName: MailingAddress.GeoLocality
+  - outputName: STREETNUMBER_LONGNAME
+    attributeName: MailingAddress.GeoStreetNumber
+  - outputName: COUNTRY_SHORTNAME
+    attributeName: MailingAddress.GeoCountryShort
+  - outputName: COORDINATES_LONGITUDE
+    attributeName: MailingAddress.GeoLongitude
+  - outputName: COORDINATES_LATITUDE
+    attributeName: MailingAddress.GeoLatitude
+  - outputName: ROUTE_LONGNAME
+    attributeName: MailingAddress.GeoStreetName
+  - outputName: STATUS
+    attributeName: MailingAddress.GeoStatus
+  - outputName: ADM_AREA_LEV1_SHORTNAME
+    attributeName: MailingAddress.GeoState
+  - outputName: COUNTRY_LONGNAME
+    attributeName: MailingAddress.GeoCountry
+afterEnrichers: sales360.entities.Contact.enrichers.StandardizeMobilePhone

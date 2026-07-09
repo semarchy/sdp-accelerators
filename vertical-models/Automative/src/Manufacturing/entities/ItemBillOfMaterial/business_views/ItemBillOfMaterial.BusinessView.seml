@@ -1,0 +1,49 @@
+_name: ItemBillOfMaterial
+_package: Manufacturing.entities.ItemBillOfMaterial.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial
+rootLabel: Item Bill Of Material
+rootPluralLabel: Item Bill Of Materials
+useHierarchyOnOpen: false
+label: Item Bill Of Materials
+rootBusinessViewEntity:
+  _name: ItemBillOfMaterialEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.ItemBillOfMaterial.collection_views.ItemBillOfMaterialCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial
+  form: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.ItemBillOfMaterial.action_sets.ItemBillOfMaterialActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm.ItemBillOfMaterial.FDN_ChildItem
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm.ItemBillOfMaterial.FDN_ParentItem
+      navigationMode: MODAL_FORM
+  transitions: []

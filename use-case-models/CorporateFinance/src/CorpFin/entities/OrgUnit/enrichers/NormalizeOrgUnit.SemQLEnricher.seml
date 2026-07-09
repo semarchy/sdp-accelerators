@@ -1,0 +1,13 @@
+_package: CorpFin.entities.OrgUnit.enrichers
+_name: NormalizeOrgUnit
+_type: SemQLEnricher
+entity: CorpFin.entities.OrgUnit.OrgUnit
+label: Normalize Org Unit
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes organizational unit business code and name values for matching, validation, and duplicate detection."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedOrgUnitBusinessCode
+    expression: "RTRIM(LTRIM(UPPER(OrgUnitBusinessCode)))"
+  - attributeName: NormalizedOrgUnitName
+    expression: "RTRIM(LTRIM(UPPER(OrgUnitName)))"

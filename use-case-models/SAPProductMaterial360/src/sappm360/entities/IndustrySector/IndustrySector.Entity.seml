@@ -1,0 +1,94 @@
+# Industry Sector entity for the SAP Product / Material 360 accelerator.
+_name: IndustrySector
+_package: sappm360.entities.IndustrySector
+_type: Entity
+primaryKey: sappm360.entities.IndustrySector.IndustrySector.IndustrySectorID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: IndustrySectorCode
+label: Industry Sector
+documentation: Industry Sector reference data used by the SAP Product / Material 360 model.
+description: Industry Sector reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Industry Sectors
+historizeGolden: true
+historizeMaster: false
+physicalTableName: INDUSTRY_SECTOR
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: IndustrySectorID
+    physicalName: INDUSTRY_SECTOR_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry Sector ID
+    documentation: Unique identifier for the industry sector.
+    description: Unique identifier for the industry sector.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IndustrySectorCode
+    physicalName: INDUSTRY_SECTOR_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry Sector Code
+    documentation: Code for the industry sector.
+    description: Code for the industry sector.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Industry Sector Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IndustrySectorName
+    physicalName: INDUSTRY_SECTOR_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry Sector Name
+    documentation: SAP industry sector used to classify materials.
+    description: SAP industry sector used to classify materials.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Industry Sector Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the industry sector.
+    description: Description for the industry sector.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the industry sector is active.
+    description: Indicates whether the industry sector is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

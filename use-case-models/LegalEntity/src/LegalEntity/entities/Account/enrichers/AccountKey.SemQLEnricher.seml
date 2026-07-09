@@ -1,0 +1,14 @@
+# This is an enricher for the Account entity in the Legal Entity application.
+# It enriches the Account entity with a unique key based on the Routing Number and Account Number.
+# The key is constructed by concatenating the ChainID of the Fund, Portfolio, and the Account itself.
+# This enricher is executed before the consumption of the entity data.
+_package: LegalEntity.entities.Account.enrichers
+_name: AccountKey
+_type: SemQLEnricher
+entity: LegalEntity.entities.Account.Account
+label: Account Key
+description: Enriches the Account entity with a unique key based on the Routing Number and Account Number.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: AccountKey
+    expression: "Fund.ChainID || '~' || Portfolio.ChainID || '~' || ChainID"

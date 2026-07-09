@@ -1,0 +1,43 @@
+# This file defines the form for the Contract Cost Center entity in the Organization domain.
+# It includes various fields such as ContractCostCenterID, FDN_Contract, and FDN_CostCenter,
+# each with specific configurations for data type and visibility.
+_package: Organization.entities.ContractCostCenter.forms
+_type: Form
+_name: ContractCostCenterForm
+entity: Organization.entities.ContractCostCenter.ContractCostCenter
+default: true
+formTabs:
+  - _type: FormTab
+    _name: ContractCostCenter
+    label: Contract Cost Center
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: IdField
+        _name: ContractCostCenterID
+        value: ContractCostCenterID
+        useCustomLabel: false
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        dataType: LONG_INTEGER
+      - _type: ReferenceField
+        referencedEntity: Organization.entities.Contract.Contract
+        _name: FDN_Contract
+        value: FDN_Contract
+        useCustomLabel: false
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        dataType: STRING
+      - _type: ReferenceField
+        referencedEntity: Organization.entities.CostCenter.CostCenter
+        _name: FDN_CostCenter
+        value: FDN_CostCenter
+        useCustomLabel: false
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        dataType: STRING

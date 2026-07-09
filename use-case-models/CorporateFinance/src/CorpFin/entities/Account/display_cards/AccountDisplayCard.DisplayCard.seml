@@ -1,0 +1,26 @@
+_package: CorpFin.entities.Account.display_cards
+_type: DisplayCard
+_name: AccountDisplayCard
+entity: CorpFin.entities.Account.Account
+default: true
+primaryTextExpression: NormalizedAccountCode || ' - ' || NormalizedAccountName
+# primaryTextExpression: AccountName
+
+primaryImageValueInterpreter: LITERAL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+primaryImageSourceType: URL
+
+avatarImageSourceType: URL
+# avatarImageValueInterpreter: LITERAL
+avatarImageValueInterpreter: SEMQL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT
+# avatarImageValue: images://mdi/text-box-minus-outline.svg
+avatarImageValue: case when (ALL chartOfAccounts.mappingSetOrigSRC HAVE (ANY accountMapping has (FID_sourceAccount=ParentRecord.ParentRecord.AccountID))) then 'images://mdi/text-box-minus-outline.svg' else 'images://mdi/text-box-remove.svg' end
+
+    
+    
+

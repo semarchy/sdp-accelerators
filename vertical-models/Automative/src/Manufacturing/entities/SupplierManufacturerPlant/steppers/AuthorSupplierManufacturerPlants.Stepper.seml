@@ -1,0 +1,174 @@
+_name: AuthorSupplierManufacturerPlants
+_package: Manufacturing.entities.SupplierManufacturerPlant.steppers
+_type: Stepper
+entity: Manufacturing.entities.SupplierManufacturerPlant.SupplierManufacturerPlant
+rootStep:
+  _name: SupplierManufacturerPlants
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.SupplierManufacturerPlant.collection_views.SupplierManufacturerPlantCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Supplier Manufacturer Plants
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierManufacturersSupplier.Supplier
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierManufacturerPlantsHasManufacturer.Manufacturer
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierManufacturersHaveSupplierAddress.SupplierAddress
+  stepTriggers: []
+  childSteps:
+    - _name: SupplierManufacturerPlant
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Supplier Manufacturer Plant
+      formTab: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant
+      formStepEnrichers:
+        - enricher: Manufacturing.entities.SupplierManufacturerPlant.enrichers.Manufacturer
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_SupplierAddress
+          referenceFilter: >-
+            (ANY Referenced.SupplierAddressJoins have (FID_Supplier =
+            Record.FID_Supplier ))
+
+            OR
+
+            (Record.FID_Supplier is null and Referenced.FDN_InputCountry like
+            '%')
+          referencePickerCollectionView: Manufacturing.entities.Address.collection_views.AddressCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_ManufacturingPlant
+          referenceFilter: |-
+            (Record.FID_Manufacturer is null and Referenced.PlantName like '%') 
+            OR
+            (Referenced.FID_Manufacturer = Record.FID_Manufacturer)
+          referencePickerCollectionView: Manufacturing.entities.ManufacturingPlant.collection_views.ManufacturingPlantCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_Item
+          referencePickerCollectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_Supplier
+          referencePickerCollectionView: Manufacturing.entities.Supplier.collection_views.SupplierCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_Manufacturer
+          referencePickerCollectionView: Manufacturing.entities.Manufacturer.collection_views.ManufacturerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersSupplier.Supplier
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHaveSupplierAddress.SupplierAddress
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturerPlantsHasManufacturer.Manufacturer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHaveSupplierAddress.SupplierAddress
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersSupplier.Supplier
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturerPlantsHasManufacturer.Manufacturer
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+      stepTriggers: []
+label: Author Supplier Manufacturer Plants
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturersHaveSupplierAddress.SupplierAddress
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturersSupplier.Supplier
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturerPlantsHasManufacturer.Manufacturer
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+triggers: []

@@ -1,0 +1,51 @@
+_name: GroupHierarchy
+_package: PrivateEquity.entities.GroupHierarchy.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: PrivateEquity.entities.GroupHierarchy.GroupHierarchy
+rootLabel: Group Hierarchy
+rootPluralLabel: Group Hierarchies
+useHierarchyOnOpen: false
+label: Group Hierarchies
+rootBusinessViewEntity:
+  _name: GroupHierarchyEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.GroupHierarchy.collection_views.GroupHierarchyCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.GroupHierarchy.GroupHierarchy
+  form: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.GroupHierarchy.action_sets.GroupHierarchyActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm.GroupHierarchy.FDN_Currency
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm.GroupHierarchy.FDN_Child
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm.GroupHierarchy.FDN_Parent
+      navigationMode: MODAL_FORM
+  transitions: []

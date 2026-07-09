@@ -1,0 +1,52 @@
+# It is an enricher for the lead entity in the Salesforce Accelerator application.
+# It is a JavaPlugin enricher that enriches address fields with geocoding information using Google Maps API.
+# The enricher scope is set to NONE and can be changed as per the business use case.
+_type: JavaPluginEnricher
+_package: sales360.entities.Leads.enrichers
+_name: GeoCodedAddress
+entity: sales360.entities.Leads.Leads
+label: Geo Coded Address
+description: Enriches address fields with geocoding information using Google Maps API.
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+pluginInputs:
+  - inputName: IN_COUNTRY
+    expression: Address.InpCountry
+  - inputName: IN_CITY
+    expression: Address.InpCity
+  - inputName: IN_ADDRESSLINE
+    expression: Address.InpAddressLine
+  - inputName: IN_POSTALCODE
+    expression: Address.InpZipCode
+pluginOutputs:
+  - outputName: COUNTRY_SHORTNAME
+    attributeName: Address.GeoCountryShort
+  - outputName: COORDINATES_LATITUDE
+    attributeName: Address.GeoLatitude
+  - outputName: STATUS
+    attributeName: Address.GeoStatus
+  - outputName: QUALITY
+    attributeName: Address.GeoQuality
+  - outputName: COORDINATES_LONGITUDE
+    attributeName: Address.GeoLongitude
+  - outputName: LOCALITY_LONGNAME
+    attributeName: Address.GeoLocality
+  - outputName: ROUTE_LONGNAME
+    attributeName: Address.GeoStreetName
+  - outputName: POSTALCODE_LONGNAME
+    attributeName: Address.GeoPostalCode
+  - outputName: COUNTRY_LONGNAME
+    attributeName: Address.GeoCountry
+  - outputName: ADM_AREA_LEV1_SHORTNAME
+    attributeName: Address.GeoState
+  - outputName: STREETNUMBER_LONGNAME
+    attributeName: Address.GeoStreetNumber
+afterEnrichers: sales360.entities.Leads.enrichers.NormalizedName

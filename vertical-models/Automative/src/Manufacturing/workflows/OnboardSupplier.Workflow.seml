@@ -1,0 +1,173 @@
+_name: OnboardSupplier
+_package: Manufacturing.workflows
+_type: Workflow
+label: Onboard Supplier
+generalProperties:
+  attachmentMimeTypes: "*"
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+notifications:
+  workflowAdminOnDueDate: false
+dataScope:
+  - _name: Supplier
+    _type: RootEntity
+    cardinality: MULTI_RECORD
+    entity: Manufacturing.entities.Supplier.Supplier
+    childEntities:
+      - ref: Manufacturing.references.SupplierAddressJoinsHasAddressType
+      - ref: Manufacturing.references.SuppliersHavePaymentTerm
+      - ref: Manufacturing.references.SupplierManufacturersSupplier
+      - ref: Manufacturing.references.ContactsHasSupplier
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+steps:
+  - _name: Start
+    _type: StartFromEmptySelectionEvent
+    defaultPriority: NORMAL
+    position:
+      x: -540
+      y: -50
+    label: Start
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: Manufacturing.workflows.OnboardSupplier.OnboardSupplier
+      bendPoints: []
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+  - _name: OnboardSupplier
+    _type: UserTask
+    label: Onboard Supplier
+    position:
+      x: -230
+      y: -50
+    assigneeCanRelease: true
+    myTasksConfiguration:
+      collection: Manufacturing.entities.Supplier.collection_views.SupplierCollection
+    notificationsOnTaskAssignment:
+      toAssignee: false
+      toCandidates: false
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: Manufacturing.applications.Manufacturing
+    assigneeCondition: Username = StepInstance.WorkflowInstance.InitiatorName
+    entity: Manufacturing.entities.Supplier.Supplier
+    stepper: Manufacturing.entities.Supplier.steppers.AuthorSuppliers
+    transitions:
+      - _name: SubmitForApproval
+        _type: UserTaskTransition
+        label: Submit For Approval
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: false
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: true
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: Manufacturing.workflows.OnboardSupplier.ReviewSupplier
+        transitionValidations: []
+  - _name: ReviewSupplier
+    _type: UserTask
+    label: Review Supplier
+    position:
+      x: 140
+      y: -50
+    assigneeCanRelease: true
+    myTasksConfiguration:
+      collection: Manufacturing.entities.Supplier.collection_views.SupplierCollection
+    notificationsOnTaskAssignment:
+      toAssignee: false
+      toCandidates: false
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: Manufacturing.applications.Manufacturing
+    entity: Manufacturing.entities.Supplier.Supplier
+    stepper: Manufacturing.entities.Supplier.steppers.AuthorSuppliers
+    transitions:
+      - _name: Submit
+        _type: UserTaskTransition
+        label: Submit
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: false
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: false
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: Manufacturing.workflows.OnboardSupplier.Submit
+        transitionValidations: []
+      - _name: Reject
+        _type: UserTaskTransition
+        label: Reject
+        behaviorOnTransition: REVERT_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: false
+          commentParamRequired: true
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: 0
+            y: 180
+        toStep: Manufacturing.workflows.OnboardSupplier.End
+        transitionValidations: []
+  - _name: Submit
+    _type: SubmitAutomation
+    label: Submit
+    position:
+      x: 470
+      y: -50
+    submitUserExpression: "'semadmin'"
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: CloseWorkflow
+      toStep: Manufacturing.workflows.OnboardSupplier.End
+  - _name: End
+    _type: EndEvent
+    position:
+      x: 470
+      y: 130

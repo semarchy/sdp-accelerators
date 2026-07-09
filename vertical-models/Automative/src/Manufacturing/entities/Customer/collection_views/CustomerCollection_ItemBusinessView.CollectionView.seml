@@ -1,0 +1,120 @@
+_package: Manufacturing.entities.Customer.collection_views
+_name: CustomerCollection_ItemBusinessView
+_type: CollectionView
+entity: Manufacturing.entities.Customer.Customer
+default: false
+displayCard: Manufacturing.entities.Customer.display_cards.CustomerDisplayCard
+tableAllowed: true
+tableRowLines: 1
+tableDisplayCardColumnLabel: Customer
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: CustomerID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: CustomerID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FirstName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FirstName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LastName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LastName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MemberID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MemberID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Address
+    columnAlign: LEFT
+    dataType: STRING
+    label: Address
+    useCustomLabel: true
+    value: SEM_CONCAT(', ', '1', GeocodedStreetNumber, GeocodedStreetName,
+      GeocodedLocality)
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GeocodedState
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: GeocodedState
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GeocodedCountry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: GeocodedCountry
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GeocodedPostalCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: GeocodedPostalCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GeocodedLongitude
+    columnAlign: LEFT
+    dataType: DECIMAL
+    useCustomLabel: false
+    value: GeocodedLongitude
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GeocodedLatitude
+    columnAlign: LEFT
+    dataType: DECIMAL
+    useCustomLabel: false
+    value: GeocodedLatitude
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CleansedEmail
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CleansedEmail
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: StandardizedPhone
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: StandardizedPhone
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Vehicles
+    columnAlign: LEFT
+    dataType: STRING
+    label: Vehicles
+    useCustomLabel: true
+    value: |-
+      LOOKUP
+      	distinct_string_agg FDN_Model || ' ' || Description
+      	separated by ', '
+      	FROM CustomerVehicles.Vehicle.Trim
+      	where Description = 'S 650 Large'
+      END
+    visibleByDefault: true

@@ -1,0 +1,125 @@
+_name: Account
+_package: PrivateEquity.entities.Account
+_type: Entity
+primaryKey: PrivateEquity.entities.Account.Account.ID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+label: Account
+description: "Represents a bank account associated with a legal entity, fund, portfolio, and banking institution."
+documentation: "Captures bank account identifiers and derived account keys used to link accounts to legal entities, funds, portfolios, and banks in operational and reporting workflows."
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/bank.svg
+pluralLabel: Accounts
+historizeGolden: false
+historizeMaster: false
+physicalTableName: ACCOUNT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    description: "Unique identifier for the account record."
+    documentation: "Unique identifier for the account record. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RoutingNumber
+    physicalName: ROUTING_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Routing Number
+    description: "Bank routing number used to identify the financial institution for account validation and payments."
+    documentation: "Bank routing number used to identify the financial institution for account validation and payments. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 9
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    description: "Business name used to identify the account record in stewardship screens and integrations."
+    documentation: "A calculated field that concatenates Legal Entity Name and Bank Name"
+    mandatory: false
+    length: 250
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountKey
+    physicalName: ACCOUNT_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Account Key
+    description: "Derived composite key combining fund, portfolio, and chain identifiers to identify an account across integrations."
+    documentation: "This is a calculated field by xDM according to a rule that concatenates Fund, Portfolio and Account chain IDs"
+    mandatory: false
+    length: 250
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountNumber
+    physicalName: ACCOUNT_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Account Number
+    description: "Bank account number used to identify the account at the servicing bank."
+    documentation: "Bank account number used to identify the account at the servicing bank. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 12
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ChainID
+    physicalName: CHAIN_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Chain ID
+    description: "Source chain identifier used to align the account with upstream private equity systems."
+    documentation: "Source chain identifier used to align the account with upstream private equity systems. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

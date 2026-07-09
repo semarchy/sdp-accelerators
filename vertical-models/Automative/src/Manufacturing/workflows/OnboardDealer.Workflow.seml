@@ -1,0 +1,270 @@
+_name: OnboardDealer
+_package: Manufacturing.workflows
+_type: Workflow
+label: Onboard Dealer
+generalProperties:
+  attachmentMimeTypes: "*"
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+notifications:
+  workflowAdminOnDueDate: false
+dataScope:
+  - _name: ProductDealer
+    _type: RootEntity
+    cardinality: SINGLE_RECORD
+    entity: Manufacturing.entities.ProductDealer.ProductDealer
+    childEntities: []
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+steps:
+  - _name: Start
+    _type: StartFromEmptySelectionEvent
+    defaultPriority: NORMAL
+    position:
+      x: -440
+      y: -40
+    label: Start
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: Manufacturing.workflows.OnboardDealer.OnboardDealer
+      bendPoints: []
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+  - _name: OnboardDealer
+    _type: UserTask
+    label: Onboard Dealer
+    position:
+      x: -240
+      y: -40
+    assigneeCanRelease: true
+    myTasksConfiguration:
+      collection: Manufacturing.entities.ProductDealer.collection_views.ProductDealerCollection
+    notificationsOnTaskAssignment:
+      toAssignee: false
+      toCandidates: false
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: Manufacturing.applications.Automotive
+    assigneeCondition: Username = StepInstance.WorkflowInstance.InitiatorName
+    entity: Manufacturing.entities.ProductDealer.ProductDealer
+    stepper: Manufacturing.entities.ProductDealer.steppers.OnboardDealer_Step1
+    transitions:
+      - _name: Submit
+        _type: UserTaskTransition
+        label: Submit
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: Manufacturing.workflows.OnboardDealer.ParallelActions
+        transitionValidations: []
+  - _name: ParallelActions
+    _type: ParallelBlock
+    label: Parallel Actions
+    position:
+      x: 110
+      y: -40
+    transition:
+      _name: outgoing
+      _type: ParallelBlockTransition
+      bendPoints: []
+      toStep: Manufacturing.workflows.OnboardDealer.ReviewData
+    branches:
+      - _name: Operations
+        _type: Branch
+        index: 1
+        label: Operations
+        steps:
+          - _name: Start
+            _type: BranchStartEvent
+            position:
+              x: -440
+              y: -20
+            transition:
+              _name: outgoing
+              _type: StartEventTransition
+              toStep: Manufacturing.workflows.OnboardDealer.ParallelActions.Operations.Operations
+              bendPoints: []
+          - _name: Operations
+            _type: UserTask
+            label: Operations
+            position:
+              x: -160
+              y: -20
+            assigneeCanRelease: true
+            myTasksConfiguration:
+              collection: Manufacturing.entities.ProductDealer.collection_views.ProductDealerCollection
+            notificationsOnTaskAssignment:
+              toAssignee: false
+              toCandidates: false
+            notificationsOnTaskExpiration:
+              toAdmin: false
+              toCandidatesOrAssignee: false
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            taskType: DATA_AUTHORING
+            application: Manufacturing.applications.Automotive
+            entity: Manufacturing.entities.ProductDealer.ProductDealer
+            stepper: Manufacturing.entities.ProductDealer.steppers.Operations_Step2
+            transitions:
+              - _name: Submit
+                _type: UserTaskTransition
+                label: Submit
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  attachmentParamRequired: false
+                  attachmentParamSupported: true
+                  commentParamRequired: false
+                  commentParamSupported: true
+                  descriptionParamSupported: false
+                  dueDateParamRequired: false
+                  dueDateParamSupported: false
+                  nextTaskAssigneeRequired: false
+                  nextTaskAssigneeSupported: false
+                  priorityParamSupported: false
+                userTaskCompletionRequired: true
+                bendPoints: []
+                toStep: Manufacturing.workflows.OnboardDealer.ParallelActions.Operations.End
+                transitionValidations: []
+          - _name: End
+            _type: BranchEndEvent
+            position:
+              x: 90
+              y: -20
+      - _name: Logistics
+        _type: Branch
+        index: 2
+        label: Logistics
+        steps:
+          - _name: Start
+            _type: BranchStartEvent
+            position:
+              x: -470
+              y: -120
+            transition:
+              _name: outgoing
+              _type: StartEventTransition
+              toStep: Manufacturing.workflows.OnboardDealer.ParallelActions.Logistics.AddLocationDetails
+              bendPoints: []
+          - _name: AddLocationDetails
+            _type: UserTask
+            label: Add Location Details
+            position:
+              x: -270
+              y: -120
+            assigneeCanRelease: true
+            myTasksConfiguration:
+              collection: Manufacturing.entities.ProductDealer.collection_views.ProductDealerCollection
+            notificationsOnTaskAssignment:
+              toAssignee: false
+              toCandidates: false
+            notificationsOnTaskExpiration:
+              toAdmin: false
+              toCandidatesOrAssignee: false
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            taskType: DATA_AUTHORING
+            application: Manufacturing.applications.Automotive
+            entity: Manufacturing.entities.ProductDealer.ProductDealer
+            stepper: Manufacturing.entities.ProductDealer.steppers.Logistics_Step3
+            transitions:
+              - _name: Submit
+                _type: UserTaskTransition
+                label: Submit
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  attachmentParamRequired: false
+                  attachmentParamSupported: true
+                  commentParamRequired: false
+                  commentParamSupported: true
+                  descriptionParamSupported: false
+                  dueDateParamRequired: false
+                  dueDateParamSupported: false
+                  nextTaskAssigneeRequired: false
+                  nextTaskAssigneeSupported: false
+                  priorityParamSupported: false
+                userTaskCompletionRequired: true
+                bendPoints: []
+                toStep: Manufacturing.workflows.OnboardDealer.ParallelActions.Logistics.End
+                transitionValidations: []
+          - _name: End
+            _type: BranchEndEvent
+            position:
+              x: -10
+              y: -120
+  - _name: ReviewData
+    _type: UserTask
+    label: Review Data
+    position:
+      x: 380
+      y: -40
+    assigneeCanRelease: true
+    myTasksConfiguration:
+      collection: Manufacturing.entities.ProductDealer.collection_views.ProductDealerCollection
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: Manufacturing.applications.Automotive
+    entity: Manufacturing.entities.ProductDealer.ProductDealer
+    stepper: Manufacturing.entities.ProductDealer.steppers.AuthorProductDealers
+    transitions:
+      - _name: Submit
+        _type: UserTaskTransition
+        label: Submit
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: Manufacturing.workflows.OnboardDealer.End
+        transitionValidations: []
+  - _name: End
+    _type: EndEvent
+    position:
+      x: 600
+      y: -40

@@ -1,0 +1,143 @@
+_name: Item
+_package: Manufacturing.entities.Item
+_type: Entity
+primaryKey: Manufacturing.entities.Item.Item.ItemID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+label: Item
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/hammer-screwdriver.svg
+pluralLabel: Items
+description: "Product, part, raw material, semi-finished good, or finished assembly managed across sourcing and manufacturing processes."
+documentation: "Product, part, raw material, semi-finished good, or finished assembly managed across sourcing and manufacturing processes. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: true
+historizeMaster: false
+physicalTableName: ITEM
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ItemID
+    physicalName: ITEM_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Item record."
+    documentation: "Surrogate identifier for the Item record."
+    goldenAttribute: true
+    i18ned: false
+    label: Item ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SKU
+    physicalName: SKU
+    dataType: String
+    description: "Stock keeping unit used to uniquely identify the item within manufacturing and sourcing processes."
+    documentation: Stock Keeping Unit ID within the company to uniquely idnetify any item
+    goldenAttribute: true
+    i18ned: false
+    label: SKU
+    mandatory: true
+    length: 200
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OtherName
+    physicalName: OTHER_NAME
+    dataType: String
+    description: "Alternate item name used by source systems, suppliers, or business users."
+    documentation: Alternate Name for the item
+    goldenAttribute: true
+    i18ned: false
+    label: Other Name
+    mandatory: false
+    length: 512
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LeadTime
+    physicalName: LEAD_TIME
+    dataType: Integer
+    description: "Expected number of days required to source or procure the item."
+    documentation: Lead Time to source the product in Days
+    goldenAttribute: true
+    i18ned: false
+    label: Lead Time(Days)
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 10
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedSKU
+    physicalName: NORMALIZED_SKU
+    dataType: String
+    description: Normalized SKU after removing dashes from SKU
+    documentation: Normalized SKU after removing dashes from SKU
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized SKU
+    mandatory: false
+    length: 250
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    description: "Display name of the item, part, material, or assembly."
+    documentation: Name of the Item
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    description: Description about the item
+    documentation: Description about the item
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    mandatory: false
+    length: 4000
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

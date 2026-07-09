@@ -1,0 +1,29 @@
+_type: JavaPluginEnricher
+_package: Manufacturing.entities.Customer.enrichers
+_name: NormalizeName
+entity: Manufacturing.entities.Customer.Customer
+label: Normalize Name
+description: "Normalizes customer full names into standardized first and last name components for matching and stewardship."
+pluginId: com.semarchy.engine.plugins.convergence.personname.personNameEnricher
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: CASE_TRANSFORMATION
+    value: LOWER_CASE
+  - paramName: SURNAME_POSITION
+    value: SURNAME_LAST
+pluginInputs:
+  - inputName: COUNTRY_CODE
+    expression: COALESCE(GeocodedCountry, 'US')
+  - inputName: PERSON_NAME
+    expression: FirstName || ' ' || LastName
+pluginOutputs:
+  - outputName: GIVEN_NAME
+    attributeName: NormalizedFirstName
+  - outputName: SURNAME
+    attributeName: NormalizedLastName
+afterEnrichers: Manufacturing.entities.Customer.enrichers.PhonetizeLastName

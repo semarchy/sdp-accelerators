@@ -1,0 +1,179 @@
+_name: Material
+_package: sappm360.entities.Material.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.Material.Material
+rootLabel: SAP Material
+rootPluralLabel: Materials
+useHierarchyOnOpen: false
+label: SAP Material
+description: Business view for SAP Material.
+rootBusinessViewEntity:
+  _name: Material
+  _type: BusinessViewEntity
+  collection: sappm360.entities.Material.collection_views.MaterialCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.Material.Material
+  form: sappm360.entities.Material.forms.MaterialBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.Material.action_sets.MaterialActionSet
+  displayCard: sappm360.entities.Material.display_cards.MaterialDisplayCard
+  sortExpression: MaterialNumber
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container12.FDN_Product
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container13.FDN_MaterialType
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container20.FDN_IndustrySector
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container12.FDN_MaterialGroup
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container13.FDN_BaseUOM
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container20.FDN_ProcurementType
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.Material.forms.MaterialBrowsingForm.Main.Relationships.RelationshipsContainer.Container12.FDN_ValuationClass
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: PlantProducts
+      _type: BusinessViewTransition
+      transitionPath: PlantProducts
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/factory.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: PlantProduct
+        _type: BusinessViewEntity
+        collection: sappm360.entities.PlantProduct.collection_views.PlantProductCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sappm360.entities.PlantProduct.PlantProduct
+        form: sappm360.entities.PlantProduct.forms.PlantProductBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sappm360.entities.PlantProduct.action_sets.PlantProductActionSet
+        displayCard: sappm360.entities.PlantProduct.display_cards.PlantProductDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: ProductCrossReferences
+      _type: BusinessViewTransition
+      transitionPath: ProductCrossReferences
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/vector-link.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ProductCrossReference
+        _type: BusinessViewEntity
+        collection: sappm360.entities.ProductCrossReference.collection_views.ProductCrossReferenceCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sappm360.entities.ProductCrossReference.ProductCrossReference
+        form: sappm360.entities.ProductCrossReference.forms.ProductCrossReferenceBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sappm360.entities.ProductCrossReference.action_sets.ProductCrossReferenceActionSet
+        displayCard: sappm360.entities.ProductCrossReference.display_cards.ProductCrossReferenceDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.Material.business_views.Material.Material
+rootIconUrl: images://mdi/cube-outline.svg

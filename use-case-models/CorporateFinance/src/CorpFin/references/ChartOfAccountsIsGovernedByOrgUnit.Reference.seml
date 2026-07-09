@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: ChartOfAccountsIsGovernedByOrgUnit
+_type: Reference
+label: Chart Of Accounts Is Governed By Org Unit
+description: "Defines the reference from Chart Of Accounts records to Org Unit records, enforcing the relationship between Chart Of Accounts and Org Unit data."
+documentation: "Defines the reference from Chart Of Accounts records to Org Unit records, enforcing the relationship between Chart Of Accounts and Org Unit data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+fromRoleLabel: Governs CoA
+fromRoleName: chartOfAccounts
+fromRolePluralLabel: Governs CoAs
+physicalName: COA_GOV_BY_ORGUNIT
+fromNavigable: true
+
+toEntity: CorpFin.entities.OrgUnit.OrgUnit
+toRoleLabel: Org Unit
+toRoleName: orgUnit
+toRolePhysicalName: GOVERNING_ORG_UNIT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: orgUnit
+  label: Governing Org Unit ID
+  physicalName: GOVERNING_ORG_UNIT_ID
+  searchable: true
+  entity: CorpFin.entities.OrgUnit.OrgUnit

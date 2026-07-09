@@ -1,0 +1,78 @@
+_name: ProductVehicle
+_package: Manufacturing.entities.ProductVehicle
+_type: Entity
+primaryKey: Manufacturing.entities.ProductVehicle.ProductVehicle.VehicleID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1000
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1000
+label: Vehicle
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/car-hatchback.svg
+pluralLabel: Vehicles
+description: "Individual vehicle master record identified by VIN and linked to make, model, trim, dealer, and ownership history."
+documentation: "Individual vehicle master record identified by VIN and linked to make, model, trim, dealer, and ownership history. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: true
+historizeMaster: true
+physicalTableName: PRODUCT_VEHICLE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: VehicleID
+    physicalName: VEHICLE_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Vehicle record."
+    documentation: "Surrogate identifier for the Vehicle record."
+    goldenAttribute: true
+    i18ned: false
+    label: Vehicle ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: VIN
+    physicalName: VIN
+    dataType: String
+    description: "Vehicle identification number used as the primary business key for matching vehicles."
+    documentation: "Vehicle identification number used as the primary business key for matching vehicles."
+    goldenAttribute: true
+    i18ned: false
+    label: VIN
+    mandatory: true
+    length: 17
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherProductVehicle
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 80
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Vehichle Matcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: VINMatcher
+      condition: Record1.VIN = Record2.VIN
+      label: VIN Matcher
+      matchScore: 100
+      usingMatchOn: false

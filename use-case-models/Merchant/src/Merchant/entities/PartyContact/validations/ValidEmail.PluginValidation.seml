@@ -1,0 +1,27 @@
+# Description: Email validation plugin for `PartyContact` email attributes.
+# Contains validation logic to ensure contact emails are syntactically valid.
+# Role: Prevents invalid email addresses from being persisted into the model.
+ # Description: Email validation plugin for `PartyContact` to ensure valid emails.
+ # Contains: Validation logic or plugin configuration for email format checks.
+ # Role: Prevents invalid email addresses for PartyContact records.
+_package: Merchant.entities.PartyContact.validations
+_name: ValidEmail
+_type: PluginValidation
+description: "Validates party contact email addresses for correct syntax and domain validity"
+label: "Email Validation"
+entity: Merchant.entities.PartyContact.PartyContact
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: Pcom.semarchy.engine.plugins.convergence.email
+
+pluginInputs:
+  - inputName: EMAIL_ADDRESS
+    expression: Email
+
+pluginParams:
+  - paramName: ACCEPTED_DOMAINS
+    value: VALID_DOMAINS
+
+threadPoolSize: 1
+validationLabel: Invalid email address format or domain
+validationScope: PRE_CONSO

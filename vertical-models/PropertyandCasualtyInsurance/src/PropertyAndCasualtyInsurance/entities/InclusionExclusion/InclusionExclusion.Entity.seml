@@ -1,0 +1,99 @@
+_package: PropertyAndCasualtyInsurance.entities.InclusionExclusion
+_type: Entity
+_name: InclusionExclusion
+label: Inclusion Exclusion
+pluralLabel: Inclusion Exclusion
+physicalTableName: INCLUSION_EXCLUSION
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: InclusionExclusionID
+    label: Inclusion Exclusion ID
+    description: "System-generated unique identifier for the inclusion or exclusion record."
+    documentation: "System-generated unique identifier for the inclusion or exclusion record."
+    physicalName: INCLUSION_EXCLUSION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Type
+    label: Type
+    physicalName: I_E_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.InclusionExclusionType
+    length: 128
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Indicates whether the clause expands (Inclusion) or restricts (Exclusion) coverage."
+    documentation: "Indicates whether the clause expands (Inclusion) or restricts (Exclusion) coverage."
+
+  - _type: EntityAttribute
+    _name: Title
+    label: Title
+    physicalName: TITLE
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Short descriptive title summarizing the clause content."
+    documentation: "Short descriptive title summarizing the clause content."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Plain-language explanation summarizing the intent and effect of the clause."
+    documentation: "Plain-language explanation summarizing the intent and effect of the clause."
+
+  - _type: EntityAttribute
+    _name: RuleText
+    label: Rule Text
+    physicalName: RULE_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Formal legal or contractual wording of the clause."
+    documentation: "Formal legal or contractual wording of the clause."
+
+  - _type: EntityAttribute
+    _name: JurisdictionState
+    label: Jurisdiction State
+    physicalName: JURISDICTION_STATE
+    dataType: String
+    length: 10
+    mandatory: false
+    searchable: true
+    description: "State or jurisdiction where the clause specifically applies."
+    documentation: "State or jurisdiction where the clause specifically applies."
+
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which this clause becomes applicable."
+    documentation: "Date from which this clause becomes applicable."
+    
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date until which this clause remains applicable."
+    documentation: "Date until which this clause remains applicable."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.InclusionExclusion.InclusionExclusion.InclusionExclusionID
+entityType: BASIC

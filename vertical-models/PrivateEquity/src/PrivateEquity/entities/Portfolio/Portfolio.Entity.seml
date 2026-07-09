@@ -1,0 +1,89 @@
+_name: Portfolio
+_package: PrivateEquity.entities.Portfolio
+_type: Entity
+primaryKey: PrivateEquity.entities.Portfolio.Portfolio.ID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 4000
+label: Portfolio
+description: "Represents a portfolio within a fund used to group investments and related legal entities."
+documentation: "Within a private equity fund, there are portfolios. A portfolio represents a collection of investments held by the fund. Private equity firms typically manage multiple portfolios within a fund, each comprising a set of investments with common characteristics or objectives. Portfolios can be segmented based on factors such as industry, geographic location, risk profile, or investment stage."
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/folder-open.svg
+pluralLabel: Portfolioes
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PORTFOLIO
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    description: "Unique identifier for the portfolio record."
+    documentation: "Unique identifier for the portfolio record. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ChainID
+    physicalName: CHAIN_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Chain ID
+    description: "Source chain identifier used to align the portfolio with upstream private equity systems."
+    documentation: "Source chain identifier used to align the portfolio with upstream private equity systems. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    description: "Free-text explanation that clarifies the meaning or business use of the portfolio value."
+    documentation: "Free-text explanation that clarifies the meaning or business use of the portfolio value. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 4000
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    description: "Business name used to identify the portfolio record in stewardship screens and integrations."
+    documentation: "Within a private equity fund, there are portfolios. A portfolio represents a collection of investments held by the fund. Private equity firms typically manage multiple portfolios within a fund, each comprising a set of investments with common characteristics or objectives. Portfolios can be segmented based on factors such as industry, geographic location, risk profile, or investment stage."
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

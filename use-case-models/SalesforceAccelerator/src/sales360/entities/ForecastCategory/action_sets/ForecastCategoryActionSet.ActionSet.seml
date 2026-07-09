@@ -1,0 +1,58 @@
+# This is the ForecastCategoryActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on forecast categories, such as creating, editing,
+# deleting, exporting,importing forecast categories.
+_name: ForecastCategoryActionSet
+_package: sales360.entities.ForecastCategory.action_sets
+_type: ActionSet
+entity: sales360.entities.ForecastCategory.ForecastCategory
+label: Forecast Category Action Set
+description: Action set for Forecast Category entity
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorForecastCategories
+    label: Create
+    description: Create new Forecast Categories
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.ForecastCategory.steppers.AuthorForecastCategories
+  - _name: EditAuthorForecastCategories
+    label: Edit
+    description: Edit existing Forecast Categories
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.ForecastCategory.steppers.AuthorForecastCategories
+  - _name: Delete
+    label: Delete
+    description: Delete selected Forecast Categories
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export selected Forecast Categories
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorForecastCategories
+    label: Import
+    description: Import Forecast Categories
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.ForecastCategory.steppers.AuthorForecastCategories

@@ -1,0 +1,16 @@
+# It is a SemQL enricher for the Account entity in the Salesforce Accelerator application.
+# This enricher normalizes the Website by removing protocols and 'www.' prefix.
+# This enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.Account.enrichers
+_name: NormalizedWebsite
+entity: sales360.entities.Account.Account
+label: Normalized Website
+description: Normalizes the Website by removing protocols and 'www.' prefix.
+enricherExecutionScope: PRE_CONSO
+condition: Website IS NOT NULL OR Website !=''
+semQlEnricherExpressions:
+  - attributeName: NormalizedWebsite
+    expression: SEM_CONCAT('', '1', 'http://www.', REPLACE(REPLACE(REPLACE(Website,
+      'https://', ''), 'http://', ''), 'www.', ''))
+afterEnrichers: sales360.entities.Account.enrichers.BusinessShippingAdrSame2

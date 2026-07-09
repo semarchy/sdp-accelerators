@@ -1,0 +1,335 @@
+_package: Assets.workflows
+_type: Workflow
+_name: EditMachineAssets
+label: Edit Machine Assets
+workflowAdminRole: DataSteward
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+  - entity: Assets.entities.Machine.Machine
+    _type: RootEntity
+    _name: Machine
+    cardinality: SINGLE_RECORD
+    displayCard: Assets.entities.Machine.display_cards.MachineDisplayCard
+    childEntities:
+      - ref: Assets.references.ProductMachine
+      - ref: Assets.references.DigitalTwinMachine
+      - ref: Assets.references.IoTDeviceMachine
+  
+steps:
+  - _type: StartFromSelectionEvent
+    _name: Start
+    position:
+      x: -520
+      y: -80
+    label: Add Machine Details
+    initiatorRequiredRole: DataSteward
+    defaultPriority: NORMAL
+    authoredEntity: Assets.entities.Machine.Machine
+    selectionSourceType: GOLDEN_DATA
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: Assets.workflows.EditMachineAssets.EditMachine
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 520
+      y: -80
+  - _type: UserTask
+    _name: EditMachine
+    label: Edit Machine
+    icon: images://mdi/account-edit.svg
+    position:
+      x: -300
+      y: -80
+    application: Assets.applications.DefaultApplication
+    assigneeRequiredRole: DataSteward
+    assigneeCondition: Username=UserTaskInstance.StepInstance.WorkflowInstance.InitiatorName
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: Assets.entities.Machine.Machine
+    stepper: Assets.entities.Machine.steppers.AuthorMachines
+    myTasksConfiguration:
+      collection: Assets.entities.Machine.collection_views.MachineCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: Proceed
+        label: Proceed
+        toStep: Assets.workflows.EditMachineAssets.ParallelAuthoring
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: false
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: false
+          attachmentParamRequired: false
+
+        bendPoints: []
+      - _type: UserTaskTransition
+        _name: Cancel
+        label: Cancel
+        toStep: Assets.workflows.EditMachineAssets.End
+        bendPoints:
+          - x: -30
+            y: -200
+          - x: 210
+            y: -195
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: false
+          commentParamSupported: false
+          commentParamRequired: false
+          priorityParamSupported: false
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: false
+          attachmentParamRequired: false
+  
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 309.4379802414928
+      y: -42.88254665203074
+    integrationJob: Assets.model_jobs.INGEST_WKF
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: Assets.workflows.EditMachineAssets.End
+      bendPoints: []
+  
+  - _type: ParallelBlock
+    _name: ParallelAuthoring
+    label: Author Related Assets
+    position:
+      x: -40
+      y: -80
+    branches:
+      - _type: Branch
+        _name: Products
+        icon: images://mdi/package-variant.svg
+        index: 1
+        label: Products
+        steps:
+          - _type: BranchStartEvent
+            _name: StartProducts
+
+            position:
+              x: -80
+              y: -20
+            transition:
+              _type: StartEventTransition
+              _name: outgoing
+              toStep: Assets.workflows.EditMachineAssets.ParallelAuthoring.Products.AuthorProducts
+
+          - _type: UserTask
+            _name: AuthorProducts
+            label: Author Products
+            icon: images://mdi/package-variant.svg
+            
+            position:
+              x: 120
+              y: -20
+            application: Assets.applications.DefaultApplication
+            assigneeRequiredRole: BusinessUser
+            assigneeCanRelease: true
+            notificationsOnTaskAssignment:
+              toAssignee: true
+              toCandidates: true
+            notificationsOnTaskExpiration:
+              taskMaxDuration: 0
+              toAdmin: false
+              toCandidatesOrAssignee: false
+              toRole: ""
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            taskType: DATA_AUTHORING
+            entity: Assets.entities.Machine.Machine
+            stepper: Assets.entities.Machine.steppers.AuthorMachinesProducts
+
+            myTasksConfiguration:
+              collection: Assets.entities.Machine.collection_views.MachineCollectionView
+
+            transitions:
+              - _type: UserTaskTransition
+                _name: CompleteProducts
+                label: Complete
+                toStep: Assets.workflows.EditMachineAssets.ParallelAuthoring.Products.BranchEnd
+                userTaskCompletionRequired: true
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  nextTaskAssigneeSupported: false
+                  nextTaskAssigneeRequired: false
+                  descriptionParamSupported: false
+                  commentParamSupported: false
+                  commentParamRequired: false
+                  priorityParamSupported: false
+                  dueDateParamSupported: false
+                  dueDateParamRequired: false
+                  attachmentParamSupported: false
+                  attachmentParamRequired: false
+          - _type: BranchEndEvent
+            _name: BranchEnd
+            position:
+              x: 320
+              y: -20
+      - _type: Branch
+        _name: DigitalAssets
+        icon: images://mdi/cpu-64-bit.svg
+        index: 0
+        label: Digital Assets
+        steps:
+          - _type: BranchStartEvent
+            _name: StartDigitalAssets
+            position:
+              x: -80
+              y: 160
+            transition:
+              _type: StartEventTransition
+              _name: outgoing
+              toStep: Assets.workflows.EditMachineAssets.ParallelAuthoring.DigitalAssets.AuthorDigitalTwins
+          - _type: UserTask
+            _name: AuthorDigitalTwins
+            label: Author Digital Twins
+            icon: images://mdi/digital-ocean.svg
+            position:
+              x: 26.447187928669393
+              y: 186.19478737997258
+            application: Assets.applications.DefaultApplication
+            assigneeRequiredRole: DataSteward
+            assigneeCanRelease: true
+            notificationsOnTaskAssignment:
+              toAssignee: true
+              toCandidates: true
+            notificationsOnTaskExpiration:
+              taskMaxDuration: 0
+              toAdmin: false
+              toCandidatesOrAssignee: false
+              toRole: ""
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            taskType: DATA_AUTHORING
+            entity: Assets.entities.Machine.Machine
+            stepper: Assets.entities.Machine.steppers.AuthorMachinesDigitalTwins
+            myTasksConfiguration:
+              collection: Assets.entities.Machine.collection_views.MachineCollectionView
+            transitions:
+              - _type: UserTaskTransition
+                _name: CompleteDigitalTwins
+                label: Next
+                toStep: Assets.workflows.EditMachineAssets.ParallelAuthoring.DigitalAssets.AuthorIoTDevices
+                userTaskCompletionRequired: true
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  nextTaskAssigneeSupported: false
+                  nextTaskAssigneeRequired: false
+                  descriptionParamSupported: false
+                  commentParamSupported: false
+                  commentParamRequired: false
+                  priorityParamSupported: false
+                  dueDateParamSupported: false
+                  dueDateParamRequired: false
+                  attachmentParamSupported: false
+                  attachmentParamRequired: false
+                bendPoints: []
+          - _type: UserTask
+            _name: AuthorIoTDevices
+            label: Author IoT Devices
+            icon: images://mdi/radar.svg
+            position:
+              x: 312.51577503429354
+              y: 214.26063100137173
+            application: Assets.applications.DefaultApplication
+            assigneeRequiredRole: DataSteward
+            assigneeCanRelease: true
+            notificationsOnTaskAssignment:
+              toAssignee: true
+              toCandidates: true
+            notificationsOnTaskExpiration:
+              taskMaxDuration: 0
+              toAdmin: false
+              toCandidatesOrAssignee: false
+              toRole: ""
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            taskType: DATA_AUTHORING
+            entity: Assets.entities.Machine.Machine
+            stepper: Assets.entities.Machine.steppers.AuthorMachinesIoTDevices
+            myTasksConfiguration:
+              collection: Assets.entities.Machine.collection_views.MachineCollectionView
+            transitions:
+              - _type: UserTaskTransition
+                _name: CompleteIoTDevices
+                label: Complete
+                toStep: Assets.workflows.EditMachineAssets.ParallelAuthoring.DigitalAssets.BranchEnd
+                userTaskCompletionRequired: true
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  nextTaskAssigneeSupported: false
+                  nextTaskAssigneeRequired: false
+                  descriptionParamSupported: false
+                  commentParamSupported: false
+                  commentParamRequired: false
+                  priorityParamSupported: false
+                  dueDateParamSupported: false
+                  dueDateParamRequired: false
+                  attachmentParamSupported: false
+                  attachmentParamRequired: false
+                bendPoints: []
+          - _type: BranchEndEvent
+            _name: BranchEnd
+            position:
+              x: 520
+              y: 160
+    transition:
+      _type: ParallelBlockTransition
+      _name: AfterBranches
+      toStep: Assets.workflows.EditMachineAssets.SubmitData
+

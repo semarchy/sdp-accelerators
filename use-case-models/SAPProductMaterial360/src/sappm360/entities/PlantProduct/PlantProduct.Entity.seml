@@ -1,0 +1,105 @@
+# Plant Product entity for the SAP Product / Material 360 accelerator.
+_name: PlantProduct
+_package: sappm360.entities.PlantProduct
+_type: Entity
+primaryKey: sappm360.entities.PlantProduct.PlantProduct.PlantProductID
+sourceIdGeneration:
+  mode: MANUAL
+label: Plant Product
+documentation: Plant-specific planning, storage, and manufacturing data for a product or material.
+description: Plant-specific planning, storage, and manufacturing data for a product or material.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/factory.svg
+pluralLabel: Plant Products
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PLANT_PRODUCT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PlantProductID
+    physicalName: PLANT_PRODUCT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Plant Product ID
+    documentation: Unique identifier for plant-specific product data.
+    description: Unique identifier for plant-specific product data.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MRPType
+    physicalName: MRP_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: MRP Type
+    documentation: SAP MRP type used for plant planning.
+    description: SAP MRP type used for plant planning.
+    mandatory: false
+    length: 40
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SafetyStock
+    physicalName: SAFETY_STOCK
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Safety Stock
+    documentation: Plant-specific safety stock.
+    description: Plant-specific safety stock.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ReorderPoint
+    physicalName: REORDER_POINT
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Reorder Point
+    documentation: Plant-specific reorder point.
+    description: Plant-specific reorder point.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LotSize
+    physicalName: LOT_SIZE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Lot Size
+    documentation: Lot sizing procedure or value.
+    description: Lot sizing procedure or value.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ManufacturingStatus
+    physicalName: MFG_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Manufacturing Status
+    documentation: Manufacturing readiness or usage status for the plant.
+    description: Manufacturing readiness or usage status for the plant.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

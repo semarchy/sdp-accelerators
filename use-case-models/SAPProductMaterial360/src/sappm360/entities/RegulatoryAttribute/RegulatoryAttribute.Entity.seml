@@ -1,0 +1,121 @@
+# Regulatory Attribute entity for the SAP Product / Material 360 accelerator.
+_name: RegulatoryAttribute
+_package: sappm360.entities.RegulatoryAttribute
+_type: Entity
+primaryKey: sappm360.entities.RegulatoryAttribute.RegulatoryAttribute.RegulatoryAttributeID
+sourceIdGeneration:
+  mode: MANUAL
+label: Regulatory Attribute
+documentation: Compliance, restriction, certification, or safety attribute for a product.
+description: Compliance, restriction, certification, or safety attribute for a product.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/shield-check-outline.svg
+pluralLabel: Regulatory Attributes
+historizeGolden: true
+historizeMaster: false
+physicalTableName: REG_ATTR
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: RegulatoryAttributeID
+    physicalName: REG_ATTR_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Regulatory Attribute ID
+    documentation: Unique identifier for a regulatory attribute.
+    description: Unique identifier for a regulatory attribute.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RegulationCode
+    physicalName: REG_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Regulation Code
+    documentation: Code that identifies the regulation or control.
+    description: Code that identifies the regulation or control.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Regulation Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RegulationName
+    physicalName: REG_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Regulation Name
+    documentation: Name of the regulation, certification, or restriction.
+    description: Name of the regulation, certification, or restriction.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Regulation Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ComplianceIndicator
+    physicalName: COMPLIANCE_IND
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Compliance Indicator
+    documentation: Indicates whether the product is compliant.
+    description: Indicates whether the product is compliant.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CertificateNumber
+    physicalName: CERT_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Certificate Number
+    documentation: Certificate or declaration number for the control.
+    description: Certificate or declaration number for the control.
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ExpirationDate
+    physicalName: EXPIRATION_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Expiration Date
+    documentation: Date when the certification or restriction expires.
+    description: Date when the certification or restriction expires.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SafetyDataSheetUrl
+    physicalName: SDS_URL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Safety Data Sheet URL
+    documentation: URL for the safety data sheet or compliance document.
+    description: URL for the safety data sheet or compliance document.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

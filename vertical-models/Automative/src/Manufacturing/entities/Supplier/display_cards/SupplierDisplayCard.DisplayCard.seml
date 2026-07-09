@@ -1,0 +1,21 @@
+_name: SupplierDisplayCard
+_package: Manufacturing.entities.Supplier.display_cards
+_type: DisplayCard
+entity: Manufacturing.entities.Supplier.Supplier
+default: true
+primaryTextExpression: Name
+secondaryTextExpression: ARIBACode
+primaryImageValue: "'http://logo.clearbit.com/' || Website"
+primaryImageValueInterpreter: SEMQL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: "'http://logo.clearbit.com/' ||
+  COALESCE(Website,lower(REGEXP_REPLACE(Name,
+  '[[:punct:][:space:]]','','g'))||'.com')"
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

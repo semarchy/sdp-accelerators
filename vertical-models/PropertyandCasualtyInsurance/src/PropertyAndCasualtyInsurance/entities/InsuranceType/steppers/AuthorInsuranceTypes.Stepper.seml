@@ -1,0 +1,42 @@
+_package: PropertyAndCasualtyInsurance.entities.InsuranceType.steppers
+_type: Stepper
+_name: AuthorInsuranceTypes
+entity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType
+label: Insurance Types
+rootStep:
+  _type: CollectionStep
+  _name: InsuranceTypes
+  label: Insurance Types
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.InsuranceType.collection_views.InsuranceTypeImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: InsuranceType
+      label: Insurance Type
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.InsuranceType.forms.InsuranceTypeDEForm.General
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.InsuranceType.validations.DateRangeCheck
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.InsuranceType.validations.InsuranceTypeNameMandatory

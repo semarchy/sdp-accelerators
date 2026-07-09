@@ -1,0 +1,49 @@
+_name: ParentChild
+_package: PrivateEquity.entities.ParentChild.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: PrivateEquity.entities.ParentChild.ParentChild
+rootLabel: Parent Child
+rootPluralLabel: Parent Children
+useHierarchyOnOpen: false
+label: Parent Children
+rootBusinessViewEntity:
+  _name: ParentChildEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.ParentChild.collection_views.ParentChildCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.ParentChild.ParentChild
+  form: PrivateEquity.entities.ParentChild.forms.ParentChildForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.ParentChild.action_sets.ParentChildActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: PrivateEquity.entities.ParentChild.forms.ParentChildForm.ParentChild.FDN_Child
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.ParentChild.forms.ParentChildForm.ParentChild.FDN_Parent
+      navigationMode: MODAL_FORM
+  transitions: []

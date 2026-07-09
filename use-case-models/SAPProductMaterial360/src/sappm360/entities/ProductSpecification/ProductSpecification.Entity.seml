@@ -1,0 +1,119 @@
+# Product Specification entity for the SAP Product / Material 360 accelerator.
+_name: ProductSpecification
+_package: sappm360.entities.ProductSpecification
+_type: Entity
+primaryKey: sappm360.entities.ProductSpecification.ProductSpecification.ProductSpecificationID
+sourceIdGeneration:
+  mode: MANUAL
+label: Product Specification
+documentation: Technical, business, packaging, or performance specification for a product.
+description: Technical, business, packaging, or performance specification for a product.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/file-document-outline.svg
+pluralLabel: Product Specifications
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PRODUCT_SPEC
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductSpecificationID
+    physicalName: PROD_SPEC_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Specification ID
+    documentation: Unique identifier for a product specification.
+    description: Unique identifier for a product specification.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SpecificationName
+    physicalName: SPEC_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Specification Name
+    documentation: Name of the product specification.
+    description: Name of the product specification.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Specification Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SpecificationType
+    physicalName: SPEC_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Specification Type
+    documentation: Type such as dimensions, packaging, technical, or performance.
+    description: Type such as dimensions, packaging, technical, or performance.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SpecificationValue
+    physicalName: SPEC_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Specification Value
+    documentation: Value captured for the specification.
+    description: Value captured for the specification.
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MinimumValue
+    physicalName: MIN_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Minimum Value
+    documentation: Minimum acceptable value for a ranged specification.
+    description: Minimum acceptable value for a ranged specification.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MaximumValue
+    physicalName: MAX_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Maximum Value
+    documentation: Maximum acceptable value for a ranged specification.
+    description: Maximum acceptable value for a ranged specification.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Effective From
+    documentation: Date from which the specification is effective.
+    description: Date from which the specification is effective.
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

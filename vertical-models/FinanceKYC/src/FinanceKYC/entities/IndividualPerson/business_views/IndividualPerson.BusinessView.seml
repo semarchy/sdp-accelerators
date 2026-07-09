@@ -1,0 +1,89 @@
+_package: FinanceKYC.entities.IndividualPerson.business_views
+_type: BusinessView
+_name: IndividualPerson
+
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+label: Individual Person
+rootLabel: Individual Person
+rootPluralLabel: Individual People
+displayRootNodeAs: ICON_LABEL
+rootFilter: 1 = 1
+rootIconUrl: images://mdi/people.svg
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: IndividualPerson
+  entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+  actionSet: FinanceKYC.entities.IndividualPerson.action_sets.IndividualPersonActionSet
+  collection: FinanceKYC.entities.IndividualPerson.collection_views.IndividualPersonCollectionView
+  form: FinanceKYC.entities.IndividualPerson.forms.IndividualPersonForm
+  displayCard: FinanceKYC.entities.IndividualPerson.display_cards.IndividualPersonDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+
+      businessViewEntity:
+        _name: IndividualPersonMaster
+        _type: BusinessViewEntity
+
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+
+        collection: FinanceKYC.entities.IndividualPerson.collection_views.IndividualPersonBrowseMasterCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+        form: FinanceKYC.entities.IndividualPerson.forms.IndividualPersonForm
+        displayCard: FinanceKYC.entities.IndividualPerson.display_cards.IndividualPersonDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        # sortExpression: ''
+        tableAllowed: true
+

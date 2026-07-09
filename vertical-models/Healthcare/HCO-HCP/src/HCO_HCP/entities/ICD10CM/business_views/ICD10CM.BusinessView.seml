@@ -1,0 +1,119 @@
+_name: ICD10CM
+_package: HCO_HCP.entities.ICD10CM.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: HCO_HCP.entities.ICD10CM.ICD10CM
+rootLabel: ICD-10-CM (diagnosis)
+rootPluralLabel: ICD-10-CM (diagnosis)
+useHierarchyOnOpen: true
+label: ICD-10-CM (diagnosis)
+rootBusinessViewEntity:
+  _name: ICD10CMEO
+  _type: BusinessViewEntity
+  collection: HCO_HCP.entities.ICD10CM.collection_views.ICD10CMCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: HCO_HCP.entities.ICD10CM.ICD10CM
+  displayCard: HCO_HCP.entities.ICD10CM.display_cards.ICD10CMDisplayCard
+  form: HCO_HCP.entities.ICD10CM.forms.ICD10CMForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: HCO_HCP.entities.ICD10CM.action_sets.ICD10CMActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: HCO_HCP.entities.ICD10CM.forms.ICD10CMForm.ICD10CM.FDN_ParentICD10
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: ChildICD10
+      _type: BusinessViewTransition
+      transitionPath: ChildICD10
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: ANY ChildICD10 HAS ( ID IS NOT NULL )
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "0"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY ChildICD10 have ( 1=1 )
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: HCO_HCP.entities.ICD10CM.business_views.ICD10CM.ICD10CMEO
+    - _name: ICD10Mapping
+      _type: BusinessViewTransition
+      transitionPath: ICD10Mapping
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      label: ICD9 CODE
+      pluralLabel: ICD9 CODE
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY ICD10Mapping HAVE (1=1)
+      businessViewEntity:
+        _name: ICD09
+        _type: BusinessViewEntity
+        collection: HCO_HCP.entities.ICDMapping.collection_views.ICDMappingCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: HCO_HCP.entities.ICDMapping.ICDMapping
+        displayCard: HCO_HCP.entities.ICDMapping.display_cards.ICDMappingDisplayCard
+        form: HCO_HCP.entities.ICDMapping.forms.ICDMappingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: HCO_HCP.entities.ICDMapping.forms.ICDMappingForm.ICDMapping.FDN_ICD10
+            navigationMode: MODAL_FORM
+          - formField: HCO_HCP.entities.ICDMapping.forms.ICDMappingForm.ICDMapping.FDN_ICD9
+            navigationMode: MODAL_FORM
+        transitions: []
+rootFilter: FID_ParentICD10 IS NULL

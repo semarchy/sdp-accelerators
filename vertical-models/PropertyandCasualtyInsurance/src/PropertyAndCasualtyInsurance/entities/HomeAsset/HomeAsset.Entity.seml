@@ -1,0 +1,431 @@
+_package: PropertyAndCasualtyInsurance.entities.HomeAsset
+_type: Entity
+_name: HomeAsset
+label: "Home Asset"
+pluralLabel: "Home Assets"
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 100000
+entityType: FUZZY_MATCHED
+physicalTableName: HOME_ASSET
+iconUrl: images://mdi/home-city-outline.svg
+description: "Residential property asset mastered for homeowner and dwelling underwriting."
+documentation: "Residential property asset mastered for homeowner and dwelling underwriting."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: HomeAssetId
+    label: "Home Asset ID"
+    physicalName: HOME_ASSET_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier representing a specific residential property asset record."
+    documentation: "Unique identifier representing a specific residential property asset record."
+  - _type: EntityAttribute
+    _name: PropertyAddressLine1
+    label: "Property Address Line 1"
+    physicalName: PROPERTY_ADDRESS_LINE_1
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Primary street address for the insured residential property."
+    documentation: "Primary street address for the insured residential property."
+  - _type: EntityAttribute
+    _name: PropertyAddressLine2
+    label: "Property Address Line 2"
+    physicalName: PROPERTY_ADDRESS_LINE_2
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Secondary address information such as unit, suite, or apartment number."
+    documentation: "Secondary address information such as unit, suite, or apartment number."
+  - _type: EntityAttribute
+    _name: PropertyCity
+    label: "Property City"
+    physicalName: PROPERTY_CITY
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+    description: "City of the insured residential property location."
+    documentation: "City of the insured residential property location."
+  - _type: EntityAttribute
+    _name: PropertyState
+    label: "Property State"
+    physicalName: PROPERTY_STATE
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+    description: "State or province of the insured residential property location."
+    documentation: "State or province of the insured residential property location."
+  - _type: EntityAttribute
+    _name: PropertyPostalCode
+    label: "Property Postal Code"
+    physicalName: PROPERTY_POSTAL_CODE
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+    description: "Postal or ZIP code of the insured residential property location."
+    documentation: "Postal or ZIP code of the insured residential property location."
+  - _type: EntityAttribute
+    _name: PropertyCountry
+    label: "Property Country"
+    physicalName: PROPERTY_COUNTRY
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+    description: "Country of the insured residential property location."
+    documentation: "Country of the insured residential property location."
+  - _type: EntityAttribute
+    _name: YearBuilt
+    label: "Year Built"
+    physicalName: YEAR_BUILT
+    dataType: Integer
+    precision: 10
+    mandatory: false
+    searchable: true
+    description: "Calendar year the dwelling structure was originally constructed."
+    documentation: "Calendar year the dwelling structure was originally constructed."
+  - _type: EntityAttribute
+    _name: ConstructionQuality
+    label: "Construction Quality"
+    physicalName: CONSTRUCTION_QUALITY
+    dataType: PropertyAndCasualtyInsurance.list_of_values.ConstructionQuality
+    length: 128
+    mandatory: false
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Quality or grade of construction (e.g., Standard, Custom, Luxury)."
+    documentation: "Quality or grade of construction (e.g., Standard, Custom, Luxury)."
+  - _type: EntityAttribute
+    _name: RoofYear
+    label: "Roof Year"
+    physicalName: ROOF_YEAR
+    dataType: Integer
+    precision: 10
+    mandatory: false
+    searchable: true
+    description: "Year the roof was last replaced or substantially renovated."
+    documentation: "Year the roof was last replaced or substantially renovated."
+  - _type: EntityAttribute
+    _name: SquareFootage
+    label: "Square Footage"
+    physicalName: SQUARE_FOOTAGE
+    dataType: Integer
+    precision: 10
+    mandatory: false
+    searchable: true
+    description: "Total finished living area of the dwelling."
+    documentation: "Total finished living area of the dwelling."
+  - _type: EntityAttribute
+    _name: NumberOfStories
+    label: "Number Of Stories"
+    physicalName: NUMBER_OF_STORIES
+    dataType: Integer
+    precision: 10
+    mandatory: false
+    searchable: true
+    description: "Number of above-grade floors in the structure."
+    documentation: "Number of above-grade floors in the structure."
+  - _type: EntityAttribute
+    _name: NumberOfUnits
+    label: "Number Of Units"
+    physicalName: NUMBER_OF_UNITS
+    dataType: Integer
+    precision: 10
+    mandatory: false
+    searchable: true
+    description: "Total residential units within the structure."
+    documentation: "Total residential units within the structure."
+  - _type: EntityAttribute
+    _name: GarageType
+    label: "Garage Type"
+    physicalName: GARAGE_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.GarageType
+    length: 128
+    mandatory: false
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Classification of garage structure (Attached, Detached, None)."
+    documentation: "Classification of garage structure (Attached, Detached, None)."
+  - _type: EntityAttribute
+    _name: OccupancyType
+    label: "Occupancy Type"
+    physicalName: OCCUPANCY_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.OccupancyType
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Indicates how the dwelling is occupied (Owner, Tenant, Vacant, Seasonal)."
+    documentation: "Indicates how the dwelling is occupied (Owner, Tenant, Vacant, Seasonal)."
+  - _type: EntityAttribute
+    _name: PrimaryResidenceFlag
+    label: "Primary Residence Flag"
+    physicalName: PRIMARY_RESIDENCE_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the property is the insured's primary residence."
+    documentation: "Indicates whether the property is the insured's primary residence."
+  - _type: EntityAttribute
+    _name: ProtectionClass
+    label: "Protection Class"
+    physicalName: PROTECTION_CLASS
+    dataType: String
+    length: 10
+    mandatory: false
+    searchable: true
+    description: "Fire protection class assigned to the location."
+    documentation: "Fire protection class assigned to the location."
+  - _type: EntityAttribute
+    _name: DistanceToFireStation
+    label: "Distance To Fire Station"
+    physicalName: DISTANCE_TO_FIRE_STATION
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Distance from property to nearest responding fire station."
+    documentation: "Distance from property to nearest responding fire station."
+  - _type: EntityAttribute
+    _name: SprinklerSystemFlag
+    label: "Sprinkler System Flag"
+    physicalName: SPRINKLER_SYSTEM_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates presence of an operational fire sprinkler system."
+    documentation: "Indicates presence of an operational fire sprinkler system."
+  - _type: EntityAttribute
+    _name: BurglarAlarmFlag
+    label: "Burglar Alarm Flag"
+    physicalName: BURGLAR_ALARM_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates presence of monitored burglary alarm system."
+    documentation: "Indicates presence of monitored burglary alarm system."
+  - _type: EntityAttribute
+    _name: SmokeDetectorFlag
+    label: "Smoke Detector Flag"
+    physicalName: SMOKE_DETECTOR_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates presence of functional smoke detection systems."
+    documentation: "Indicates presence of functional smoke detection systems."
+  - _type: EntityAttribute
+    _name: SwimmingPoolFlag
+    label: "Swimming Pool Flag"
+    physicalName: SWIMMING_POOL_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates presence of a swimming pool on premises."
+    documentation: "Indicates presence of a swimming pool on premises."
+  - _type: EntityAttribute
+    _name: TrampolineFlag
+    label: "Trampoline Flag"
+    physicalName: TRAMPOLINE_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates presence of a trampoline on premises."
+    documentation: "Indicates presence of a trampoline on premises."
+  - _type: EntityAttribute
+    _name: DogBreed
+    label: "Dog Breed"
+    physicalName: DOG_BREED
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+    description: "Declared breed of dog(s) residing at the property, if applicable."
+    documentation: "Declared breed of dog(s) residing at the property, if applicable."
+  - _type: EntityAttribute
+    _name: ReplacementCost
+    label: "Replacement Cost"
+    physicalName: REPLACEMENT_COST
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Estimated cost to rebuild the dwelling at current construction prices."
+    documentation: "Estimated cost to rebuild the dwelling at current construction prices."
+  - _type: EntityAttribute
+    _name: MarketValue
+    label: "Market Value"
+    physicalName: MARKET_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Estimated current market value of the property."
+    documentation: "Estimated current market value of the property."
+  - _type: EntityAttribute
+    _name: PersonalPropertyLimit
+    label: "Personal Property Limit"
+    physicalName: PERSONAL_PROPERTY_LIMIT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Coverage limit for personal property contents."
+    documentation: "Coverage limit for personal property contents."
+  - _type: EntityAttribute
+    _name: LossUseLimit
+    label: "Loss Use Limit"
+    physicalName: LOSS_USE_LIMIT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Coverage limit for additional living expenses or loss of use."
+    documentation: "Coverage limit for additional living expenses or loss of use."
+  - _type: EntityAttribute
+    _name: LiabilityLimit
+    label: "Liability Limit"
+    physicalName: LIABILITY_LIMIT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Personal liability coverage limit associated with the dwelling."
+    documentation: "Personal liability coverage limit associated with the dwelling."
+  - _type: EntityAttribute
+    _name: DeductibleAmount
+    label: "Deductible Amount"
+    physicalName: DEDUCTIBLE_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Deductible applicable to property damage claims."
+    documentation: "Deductible applicable to property damage claims."
+  - _type: EntityAttribute
+    _name: FloodZone
+    label: "Flood Zone"
+    physicalName: FLOOD_ZONE
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+    description: "FEMA-designated flood zone classification for the property."
+    documentation: "FEMA-designated flood zone classification for the property."
+  - _type: EntityAttribute
+    _name: EarthquakeZone
+    label: "Earthquake Zone"
+    physicalName: EARTHQUAKE_ZONE
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+    description: "Seismic hazard classification applicable to the property location."
+    documentation: "Seismic hazard classification applicable to the property location."
+  - _type: EntityAttribute
+    _name: WindHailExclusionFlag
+    label: "Wind Hail Exclusion Flag"
+    physicalName: WIND_HAIL_EXCLUSION_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether wind or hail perils are excluded from coverage."
+    documentation: "Indicates whether wind or hail perils are excluded from coverage."
+  - _type: EntityAttribute
+    _name: StartDate
+    label: "Start Date"
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the home asset becomes insured under a policy."
+    documentation: "Date the home asset becomes insured under a policy."
+  - _type: EntityAttribute
+    _name: EndDate
+    label: "End Date"
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the home asset is removed from coverage."
+    documentation: "Date the home asset is removed from coverage."
+sourceIdGeneration:
+  mode: UUID
+primaryKey: PropertyAndCasualtyInsurance.entities.HomeAsset.HomeAsset.HomeAssetId
+matcher:
+  _name: SemQLMatcherHomeAsset
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 91
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 75
+  mergeThresholdMergingConfirmedWithUnconfirmed: 75
+  mergeThresholdMergingUnconfirmed: 75
+  mergeThresholdMergingUnconfirmedWithNewMasters: 75
+  mergeThresholdNewGroup: 75
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Home Asset Match Rules
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactAddressYearAndSize
+      condition: >-
+        Record1.PropertyAddressLine1 = Record2.PropertyAddressLine1
+        and Record1.PropertyPostalCode = Record2.PropertyPostalCode
+        and Record1.PropertyCity = Record2.PropertyCity
+        and Record1.YearBuilt = Record2.YearBuilt
+        and Record1.SquareFootage = Record2.SquareFootage
+      label: Exact Address Year And Size
+      matchScore: 96
+      color: md:green 800
+      documentation: Matches home assets using normalized address, build year, and square footage.
+      description: Matches home assets using normalized address, build year, and square footage.
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: AddressAndConstructionProfile
+      condition: >-
+        Record1.PropertyAddressLine1 = Record2.PropertyAddressLine1
+        and Record1.PropertyPostalCode = Record2.PropertyPostalCode
+        and Record1.PropertyState = Record2.PropertyState
+        and Record1.ConstructionType.ConstructionTypeCode = Record2.ConstructionType.ConstructionTypeCode
+        and Record1.RoofType.RoofTypeCode = Record2.RoofType.RoofTypeCode
+      label: Address And Construction Profile
+      matchScore: 88
+      color: md:green 600
+      documentation: Matches home assets using normalized address, build year, and square footage.
+      description: Matches home assets using address and key construction attributes.
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: AddressAndValuationProfile
+      condition: >-
+        Record1.PropertyPostalCode = Record2.PropertyPostalCode
+        and Record1.PropertyState = Record2.PropertyState
+        and Record1.YearBuilt = Record2.YearBuilt
+        and Record1.MarketValue = Record2.MarketValue
+        and Record1.ReplacementCost = Record2.ReplacementCost
+      label: Address And Valuation Profile
+      matchScore: 82
+      color: md:green 300
+      documentation: Matches home assets using address and key construction attributes.
+      description: Matches home assets using postal code, year built, and valuation details.
+      usingMatchOn: false

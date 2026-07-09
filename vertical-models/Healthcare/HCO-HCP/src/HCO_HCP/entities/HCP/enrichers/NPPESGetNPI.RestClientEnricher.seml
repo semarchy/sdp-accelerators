@@ -1,0 +1,28 @@
+_type: RestClientEnricher
+_package: HCO_HCP.entities.HCP.enrichers
+_name: NPPESGetNPI
+entity: HCO_HCP.entities.HCP.HCP
+label: NPPES Get NPI
+pluginId: NPPESGetNPI
+batchUpdateSize: 1000
+condition: NPI IS NULL
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+enricherExecutionScope: NONE
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: last_name
+    expression: LastName
+  - inputName: postal_code
+    expression: ZipCode
+  - inputName: first_name
+    expression: FirstName
+  - inputName: state
+    expression: State
+  - inputName: city
+    expression: City
+pluginOutputs:
+  - outputName: NPI
+    attributeName: NPI
+afterEnrichers: HCO_HCP.entities.HCP.enrichers.AddressCleansing

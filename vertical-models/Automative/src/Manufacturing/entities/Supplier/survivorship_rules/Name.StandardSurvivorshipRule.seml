@@ -1,0 +1,23 @@
+_type: StandardSurvivorshipRule
+entity: Manufacturing.entities.Supplier.Supplier
+_package: Manufacturing.entities.Supplier.survivorship_rules
+defaultRule: false
+_name: Name
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Name
+description: "Selects the surviving supplier name during consolidation."
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: Manufacturing.publishers.ERP
+  - _type: ConsoPublisherRanking
+    publisher: Manufacturing.publishers.MKT
+  - _type: ConsoPublisherRanking
+    publisher: Manufacturing.publishers.PLM
+  - _type: ConsoPublisherRanking
+    publisher: Manufacturing.publishers.CRM
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+attributes:
+  - attributeName: Name

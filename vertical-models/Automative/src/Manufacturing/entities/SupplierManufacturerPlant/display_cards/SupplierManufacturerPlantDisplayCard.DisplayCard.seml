@@ -1,0 +1,24 @@
+_name: SupplierManufacturerPlantDisplayCard
+_package: Manufacturing.entities.SupplierManufacturerPlant.display_cards
+_type: DisplayCard
+entity: Manufacturing.entities.SupplierManufacturerPlant.SupplierManufacturerPlant
+default: true
+primaryTextExpression: >-
+  case 
+
+  when (FDN_Supplier is not null and FDN_ManufacturingPlant is not null ) then
+  FDN_Supplier || ' - ' || FDN_ManufacturingPlant
+
+  else COALESCE(FDN_Supplier, FDN_Manufacturer, FDN_ManufacturingPlant )
+
+  end
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

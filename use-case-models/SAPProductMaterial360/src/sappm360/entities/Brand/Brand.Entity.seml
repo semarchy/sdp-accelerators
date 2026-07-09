@@ -1,0 +1,94 @@
+# Brand entity for the SAP Product / Material 360 accelerator.
+_name: Brand
+_package: sappm360.entities.Brand
+_type: Entity
+primaryKey: sappm360.entities.Brand.Brand.BrandID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: BrandCode
+label: Brand
+documentation: Brand owned, manufactured, or distributed by the enterprise.
+description: Brand owned, manufactured, or distributed by the enterprise.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/tag-outline.svg
+pluralLabel: Brands
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BRAND
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: BrandID
+    physicalName: BRAND_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Brand ID
+    documentation: Unique identifier for the brand.
+    description: Unique identifier for the brand.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BrandCode
+    physicalName: BRAND_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Brand Code
+    documentation: Code that identifies the brand.
+    description: Code that identifies the brand.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Brand Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BrandName
+    physicalName: BRAND_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Brand Name
+    documentation: Business name of the brand.
+    description: Business name of the brand.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Brand Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BrandOwner
+    physicalName: BRAND_OWNER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Brand Owner
+    documentation: Organization or business unit that owns the brand.
+    description: Organization or business unit that owns the brand.
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the brand is active.
+    description: Indicates whether the brand is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

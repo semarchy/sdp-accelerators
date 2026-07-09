@@ -1,0 +1,53 @@
+# This is the OpportunitiesReviewSuggestions business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for opportunities,
+# including the root entity, labels, and display options.
+_name: OpportunitiesReviewSuggestions
+_package: sales360.entities.Opportunity.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.Opportunity.Opportunity
+rootLabel: Opportunities Review Suggestions
+rootPluralLabel: Opportunities Review Suggestions
+useHierarchyOnOpen: false
+label: Opportunities Review Suggestions
+description: Business view for reviewing opportunity suggestions
+rootBusinessViewEntity:
+  _name: Opportunity
+  _type: BusinessViewEntity
+  collection: sales360.entities.Opportunity.collection_views.OpportunityCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.Opportunity.Opportunity
+  form: sales360.entities.Opportunity.forms.OpportunityBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.Opportunity.action_sets.OpportunityReviewSuggestionsActionSet
+  displayCard: sales360.entities.Opportunity.display_cards.OpportunityDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sales360.entities.Opportunity.forms.OpportunityBrowsingForm.Main.Container.Container2.FDN_Account
+      navigationMode: MODAL_FORM
+  transitions: []
+rootFilter: HasSuggestedMerge = '1'

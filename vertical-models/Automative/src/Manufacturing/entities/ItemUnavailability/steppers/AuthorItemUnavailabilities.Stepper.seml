@@ -1,0 +1,107 @@
+_name: AuthorItemUnavailabilities
+_package: Manufacturing.entities.ItemUnavailability.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemUnavailability.ItemUnavailability
+rootStep:
+  _name: ItemUnavailabilitys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemUnavailability.collection_views.ItemUnavailabilityCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Unavailabilities
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemUnavailabilitiesHasSubstituteItem.SubstituteItem
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ItemUnavailability.ItemUnavailability.StartDate
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemUnavailabilitiesHasItem.Item
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemUnavailabilitiesHasItem.Item
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemUnavailabilitiesHasSubstituteItem.SubstituteItem
+  stepTriggers: []
+  childSteps:
+    - _name: ItemUnavailability
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Unavailability
+      formTab: Manufacturing.entities.ItemUnavailability.forms.ItemUnavailabilityForm.ItemUnavailability
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemUnavailabilitiesHasItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemUnavailability.ItemUnavailability.StartDate
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemUnavailabilitiesHasSubstituteItem.SubstituteItem
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemUnavailabilitiesHasItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemUnavailabilitiesHasSubstituteItem.SubstituteItem
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemUnavailabilitiesHasSubstituteItem.SubstituteItem
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemUnavailabilitiesHasItem.Item
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemUnavailabilitiesHasSubstituteItem.SubstituteItem
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemUnavailabilitiesHasItem.Item
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemUnavailability.ItemUnavailability.StartDate
+      stepTriggers: []
+label: Author Item Unavailabilities
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemUnavailabilitiesHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemUnavailabilitiesHasSubstituteItem.SubstituteItem
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemUnavailabilitiesHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ItemUnavailability.ItemUnavailability.StartDate
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemUnavailabilitiesHasSubstituteItem.SubstituteItem
+triggers: []

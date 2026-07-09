@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: InsurableAssetHasLineOfBusiness
+description: "Aligns an insurable asset with a line of business."
+_type: Reference
+label: "Line of Business"
+
+fromEntity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+fromRoleLabel: "Insurable Asset"
+fromRoleName: InsurableAsset
+fromRolePluralLabel: "Insurable Assets"
+physicalName: INSURABLE_ASSET_HAS_LOB
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness
+toRoleLabel: "Line of Business"
+toRoleName: LineOfBusiness
+documentation: "Aligns an insurable asset with a line of business."
+toRolePhysicalName: LOB_CODE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: LineOfBusiness
+  label: "Line of Business"
+  description: "Line of business associated with the insured asset."
+  physicalName: LOB_CODE
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness

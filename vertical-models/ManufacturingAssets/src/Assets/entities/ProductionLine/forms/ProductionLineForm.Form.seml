@@ -1,0 +1,144 @@
+_package: Assets.entities.ProductionLine.forms
+_type: Form
+_name: ProductionLineForm
+entity: Assets.entities.ProductionLine.ProductionLine
+default: true
+formTabs:
+  - _type: FormTab
+    _name: ProductionLine
+    label: Production Line
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/robot-industrial.svg
+    labelWidth: '150'
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                layoutDirection: COLUMN
+                content:
+                  - _type: FormContainer
+                    _name: GeneralInfoRow1
+                    layoutDirection: ROW
+                    content:
+                      - _type: IdField
+                        _name: ProductionLineID
+                        value: ProductionLineID
+                        useCustomLabel: false
+                        dataType: STRING
+                      - _type: TextField
+                        _name: Name
+                        value: Name
+                        useCustomLabel: false
+                        dataType: STRING
+                      - _type: TextField
+                        _name: Code
+                        value: Code
+                        useCustomLabel: false
+                        dataType: STRING
+                  - _type: FormContainer
+                    _name: GeneralInfoRow2
+                    layoutDirection: ROW
+                    content:
+                      - _type: ReferenceField
+                        _name: FDN_Factory
+                        value: FDN_Factory
+                        useCustomLabel: false
+                        dataType: STRING
+                        referencedEntity: Assets.entities.Factory.Factory
+                      - _type: ReferenceField
+                        _name: FDN_LineType
+                        value: FDN_LineType
+                        useCustomLabel: false
+                        dataType: STRING
+                        referencedEntity: Assets.entities.LineType.LineType
+              - _type: FormSection
+                _name: OperationalInformation
+                label: Operational Information
+                layoutDirection: COLUMN
+                content:
+                  - _type: FormContainer
+                    _name: OperationalInfoRow1
+                    layoutDirection: ROW
+                    content:
+                      - _type: ReferenceField
+                        _name: FDN_ProductionLineStatus
+                        value: FDN_ProductionLineStatus
+                        useCustomLabel: false
+                        dataType: STRING
+                        referencedEntity: Assets.entities.ProductionLineStatus.ProductionLineStatus
+                      - _type: TextField
+                        _name: Capacity
+                        value: Capacity
+                        label: Capacity (units/hour)
+                        useCustomLabel: true
+                        dataType: INTEGER
+                  - _type: FormContainer
+                    _name: OperationalInfoRow2
+                    layoutDirection: ROW
+                    content:
+                      - _type: DateField
+                        _name: StartDate
+                        value: StartDate
+                        useCustomLabel: false
+                        dataType: DATE
+                      - _type: DateField
+                        _name: EndDate
+                        value: EndDate
+                        useCustomLabel: false
+                        dataType: DATE
+          - _type: FormSection
+            _name: LocationInformation
+            label: Location Information
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: LocationDescription
+                value: Location.Description
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: LocationGPSCoordinates
+                value: Location.GPSCoordinates
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: LocationFloorZone
+                value: Location.FloorZone
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: LocationAccessibilityLevel
+                value: Location.AccessibilityLevel
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left
+              - _type: TextField
+                _name: LocationEnvironmentalConditions
+                value: Location.EnvironmentalConditions
+                useCustomLabel: false
+                dataType: STRING
+                labelProperties:
+                 position: top
+                 alignment: left

@@ -1,0 +1,43 @@
+_package: Assets.entities.MaintenanceSchedule.business_views
+_type: BusinessView
+_name: MaintenanceScheduleBusinessView
+entity: Assets.entities.MaintenanceSchedule.MaintenanceSchedule
+rootLabel: Maintenance Schedules
+rootPluralLabel: Maintenance Schedules
+displayRootNodeAs: ICON_LABEL
+label: Maintenance Schedule
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: MaintenanceSchedule
+  entity: Assets.entities.MaintenanceSchedule.MaintenanceSchedule
+  actionSet: Assets.entities.MaintenanceSchedule.action_sets.MaintenanceScheduleActionSet
+  collection: Assets.entities.MaintenanceSchedule.collection_views.MaintenanceScheduleCollectionView
+  form: Assets.entities.MaintenanceSchedule.forms.MaintenanceScheduleForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  displayCard: Assets.entities.MaintenanceSchedule.display_cards.MaintenanceScheduleDisplayCard
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  embeddedCollectionNavigations:
+    - browsingTarget: MODAL_FORM
+      formCollection: Assets.entities.MaintenanceSchedule.forms.MaintenanceScheduleForm.MaintenanceSchedule.Container0.SparePartsUsed
+      form: Assets.entities.SparePart.forms.SparePartForm
+enableHierarchyView: false
+useHierarchyOnOpen: false
+

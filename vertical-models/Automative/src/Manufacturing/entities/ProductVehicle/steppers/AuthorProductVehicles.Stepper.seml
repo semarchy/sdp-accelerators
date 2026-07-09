@@ -1,0 +1,209 @@
+_name: AuthorProductVehicles
+_package: Manufacturing.entities.ProductVehicle.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductVehicle.ProductVehicle
+rootStep:
+  _name: ProductVehicles
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductVehicle.collection_views.ProductVehicleCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Vehicles
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.VehiclesModelYear.ModelYear
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.VehiclestMake.Make
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.VehiclesTrim.Trim
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.VehiclesTrim.Trim
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.VehiclesModel.Model
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.VehiclesModelYear.ModelYear
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.VehiclesModel.Model
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductVehicle.ProductVehicle.VIN
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.VehiclestMake.Make
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: Manufacturing.entities.ProductVehicle.ProductVehicle.SemlQLMatcherProductVehicle
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.VehiclesDealer.SellingDealership
+  stepTriggers: []
+  childSteps:
+    - _name: ProductVehicle
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Vehicle
+      formTab: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Make
+          referencePickerCollectionView: Manufacturing.entities.ProductMake.collection_views.ProductMakeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_ModelYear
+          referencePickerCollectionView: Manufacturing.entities.ProductModelYear.collection_views.ProductModelYearCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Trim
+          referenceFilter: Referenced.FDN_Model = Record.FDN_Model
+          referencePickerCollectionView: Manufacturing.entities.ProductTrim.collection_views.ProductTrimCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_SellingDealership
+          referencePickerCollectionView: Manufacturing.entities.ProductDealer.collection_views.ProductDealerCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Model
+          referenceFilter: |-
+            Referenced.FDN_ModelYear = Record.FDN_ModelYear AND
+            Referenced.FDN_Make = Record.FDN_Make
+          referencePickerCollectionView: Manufacturing.entities.ProductModel.collection_views.ProductModelCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.VehiclesModelYear.ModelYear
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.VehiclesTrim.Trim
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.VehiclestMake.Make
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclesModel.Model
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclestMake.Make
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductVehicle.ProductVehicle.VIN
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclesDealer.SellingDealership
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclesModelYear.ModelYear
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclesTrim.Trim
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.VehiclesModel.Model
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclesModel.Model
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.ProductVehicle.ProductVehicle.SemlQLMatcherProductVehicle
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclesModelYear.ModelYear
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.VehiclesModel.Model
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclesDealer.SellingDealership
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductVehicle.ProductVehicle.VIN
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclesTrim.Trim
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.VehiclesModelYear.ModelYear
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.VehiclesTrim.Trim
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.VehiclestMake.Make
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.VehiclestMake.Make
+      stepTriggers: []
+label: Author Vehicles
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.VehiclesTrim.Trim
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.VehiclesModel.Model
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.VehiclestMake.Make
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.VehiclesTrim.Trim
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductVehicle.ProductVehicle.VIN
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.VehiclestMake.Make
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.VehiclesDealer.SellingDealership
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.VehiclesModelYear.ModelYear
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.VehiclesModelYear.ModelYear
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.VehiclesModel.Model
+triggers: []

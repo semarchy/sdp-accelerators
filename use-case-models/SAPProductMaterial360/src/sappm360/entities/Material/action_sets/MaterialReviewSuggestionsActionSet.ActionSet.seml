@@ -1,0 +1,29 @@
+_name: MaterialReviewSuggestionsActionSet
+_package: sappm360.entities.Material.action_sets
+_type: ActionSet
+entity: sappm360.entities.Material.Material
+label: SAP Material Review Suggestions Action Set
+description: Action set for reviewing SAP Material duplicate suggestions.
+defaultActionSet: false
+actions:
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicate materials.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnMaterial
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions for SAP Material.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sappm360.entities.Material.dups_managers.ManageDuplicatesOnMaterial
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

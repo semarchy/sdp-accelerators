@@ -1,0 +1,204 @@
+_package: PropertyAndCasualtyInsurance.entities.Coverage
+_type: Entity
+_name: Coverage
+label: Coverage
+pluralLabel: Coverages
+entityType: BASIC
+physicalTableName: COVERAGE
+iconUrl: images://mdi/book.svg
+description: "Represents a standardized coverage component definition used across insurance products and policies."
+documentation: "Represents a standardized coverage component definition used across insurance products and policies."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CoverageID
+    label: Coverage ID
+    physicalName: COVERAGE_ID
+    dataType: String
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: CoverageCode
+    label: Coverage Code
+    physicalName: COVERAGE_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Enterprise-defined unique identifier representing a specific coverage component."
+    documentation: "Enterprise-defined unique identifier representing a specific coverage component."
+  - _type: EntityAttribute
+    _name: CoverageName
+    label: Coverage Name
+    physicalName: COVERAGE_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Display name of the coverage as presented to agents and policyholders."
+    documentation: "Display name of the coverage as presented to agents and policyholders."
+  - _type: EntityAttribute
+    _name: CoverageDescription
+    label: Coverage Description
+    physicalName: COVERAGE_DESCRIPTION
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Detailed explanation of the protection provided, including scope and intent."
+    documentation: "Detailed explanation of the protection provided, including scope and intent."
+ 
+  - _type: EntityAttribute
+    _name: DefaultLimitType
+    label: Default Limit Type
+    physicalName: DEFAULT_LIMIT_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.CoverageLimitType
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Default limit structure associated with this coverage definition."
+    documentation: "Default limit structure associated with this coverage definition."
+  - _type: EntityAttribute
+    _name: DefaultDeductibleType
+    label: Default Deductible Type
+    physicalName: DEFAULT_DEDUCTIBLE_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.CoverageDeductibleType
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Default deductible structure associated with this coverage."
+    documentation: "Default deductible structure associated with this coverage."
+  - _type: EntityAttribute
+    _name: MinimumLimitAmount
+    label: Minimum Limit Amount
+    physicalName: MINIMUM_LIMIT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Minimum allowable coverage limit that may be selected for this coverage."
+    documentation: "Minimum allowable coverage limit that may be selected for this coverage."
+  - _type: EntityAttribute
+    _name: MaximumLimitAmount
+    label: Maximum Limit Amount
+    physicalName: MAXIMUM_LIMIT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Maximum allowable coverage limit permitted for this coverage."
+    documentation: "Maximum allowable coverage limit permitted for this coverage."
+  - _type: EntityAttribute
+    _name: DefaultLimitAmount
+    label: Default Limit Amount
+    physicalName: DEFAULT_LIMIT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Default coverage limit automatically assigned during policy creation if no override is selected."
+    documentation: "Default coverage limit automatically assigned during policy creation if no override is selected."
+  - _type: EntityAttribute
+    _name: MinimumDeductibleAmount
+    label: Minimum Deductible Amount
+    physicalName: MINIMUM_DEDUCTIBLE_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Lowest deductible amount permitted for this coverage."
+    documentation: "Lowest deductible amount permitted for this coverage."
+  - _type: EntityAttribute
+    _name: MaximumDeductibleAmount
+    label: Maximum Deductible Amount
+    physicalName: MAXIMUM_DEDUCTIBLE_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Highest deductible amount permitted for this coverage."
+    documentation: "Highest deductible amount permitted for this coverage."
+  - _type: EntityAttribute
+    _name: DefaultDeductibleAmount
+    label: Default Deductible Amount
+    physicalName: DEFAULT_DEDUCTIBLE_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Default deductible assigned to the coverage if no customer selection is made."
+    documentation: "Default deductible assigned to the coverage if no customer selection is made."
+  - _type: EntityAttribute
+    _name: CoinsurancePercentage
+    label: Coinsurance Percentage
+    physicalName: COINSURANCE_PERCENTAGE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Percentage of covered loss shared by the insured under policy terms."
+    documentation: "Percentage of covered loss shared by the insured under policy terms."
+  - _type: EntityAttribute
+    _name: WaitingPeriodDays
+    label: Waiting Period Days
+    physicalName: WAITING_PERIOD_DAYS
+    dataType: Integer
+    precision: 5
+    mandatory: false
+    searchable: true
+    description: "Number of days that must elapse before coverage benefits become payable."
+    documentation: "Number of days that must elapse before coverage benefits become payable."
+  - _type: EntityAttribute
+    _name: AggregateLimitIndicator
+    label: Aggregate Limit Indicator
+    physicalName: AGGREGATE_LIMIT_INDICATOR
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the coverage is subject to an aggregate limit across multiple claims."
+    documentation: "Indicates whether the coverage is subject to an aggregate limit across multiple claims."
+  - _type: EntityAttribute
+    _name: OccurrenceLimitIndicator
+    label: Occurrence Limit Indicator
+    physicalName: OCC_LIMIT_INDICATOR
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the coverage enforces a per-occurrence claim limit."
+    documentation: "Indicates whether the coverage enforces a per-occurrence claim limit."
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which this coverage definition is valid."
+    documentation: "Date from which this coverage definition is valid."
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date until which this coverage definition remains valid."
+    documentation: "Date until which this coverage definition remains valid."
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: PropertyAndCasualtyInsurance.entities.Coverage.Coverage.CoverageID

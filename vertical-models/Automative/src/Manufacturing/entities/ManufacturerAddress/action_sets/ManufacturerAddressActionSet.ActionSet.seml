@@ -1,0 +1,63 @@
+_name: ManufacturerAddressActionSet
+_package: Manufacturing.entities.ManufacturerAddress.action_sets
+_type: ActionSet
+entity: Manufacturing.entities.ManufacturerAddress.ManufacturerAddress
+label: Manufacturer Address Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorManufacturerAddresses
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.ManufacturerAddress.steppers.AuthorManufacturerAddresses
+  - _name: EditAuthorManufacturerAddresses
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.ManufacturerAddress.steppers.AuthorManufacturerAddresses
+  - _name: MassUpdateAuthorManufacturerAddresses
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: Manufacturing.entities.ManufacturerAddress.steppers.AuthorManufacturerAddresses
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorManufacturerAddresses
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.ManufacturerAddress.steppers.AuthorManufacturerAddresses
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

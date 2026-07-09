@@ -1,0 +1,26 @@
+_package: FinanceKYC.entities.CorporateEntity.action_sets
+_type: ActionSet
+_name: CorporateEntityReviewSuggestionsActionSet
+
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Corporate Entity Review Suggestions Action Set
+defaultActionSet: false
+
+actions:
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnCorporateEntity
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.CorporateEntity.dups_managers.ReviewSuggestionsOnCorporateEntity
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnCorporateEntity
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.CorporateEntity.dups_managers.ReviewSuggestionsOnCorporateEntity
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false

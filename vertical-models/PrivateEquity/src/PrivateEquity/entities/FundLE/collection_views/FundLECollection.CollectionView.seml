@@ -1,0 +1,73 @@
+_package: PrivateEquity.entities.FundLE.collection_views
+_name: FundLECollection
+_type: CollectionView
+entity: PrivateEquity.entities.FundLE.FundLE
+default: true
+displayCard: PrivateEquity.entities.FundLE.display_cards.FundLEDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Fund LE
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: true
+listShowDivider: true
+gridAllowed: true
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 2
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: ID
+    visibleByDefault: false
+  - _type: ReferenceColumn
+    _name: FDN_Fund
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Fund
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.Fund.Fund
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_EntityRole
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_EntityRole
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.EntityRole.EntityRole
+    componentProperties:
+      textColor: |-
+        case when FDN_EntityRole = 'Manager'
+        then 'md:red'
+        else 'md:green'
+        end
+      textColorValueInterpreter: SEMQL
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_LegalEntity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_LegalEntity
+    visibleByDefault: true
+    referencedEntity: PrivateEquity.entities.LegalEntity.LegalEntity
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Code
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Code
+    visibleByDefault: true

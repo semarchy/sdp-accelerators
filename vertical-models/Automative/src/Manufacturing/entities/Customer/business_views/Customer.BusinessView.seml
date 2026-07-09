@@ -1,0 +1,212 @@
+_name: Customer
+_package: Manufacturing.entities.Customer.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: Manufacturing.entities.Customer.Customer
+rootLabel: Customer
+rootPluralLabel: Customers
+useHierarchyOnOpen: false
+label: Customers
+rootBusinessViewEntity:
+  _name: CustomerEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.Customer.collection_views.CustomerCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.Customer.Customer
+  form: Manufacturing.entities.Customer.forms.CustomerForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  sortExpression: LastName ASC
+  tableAllowed: true
+  actionSet: Manufacturing.entities.Customer.action_sets.CustomerActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.Customer.forms.CustomerForm.Customer.Information.Container5.FDN_Household2
+      navigationMode: BUSINESS_OBJECT_VIEW
+      businessView: Manufacturing.entities.Address.business_views.Address
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: Manufacturing.entities.Customer.business_views.Customer.CustomerEO
+    - _name: ServiceAppointment
+      _type: BusinessViewTransition
+      transitionPath: ServiceAppointments
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "1"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/calendar-alert.svg
+      label: Service Appointment
+      pluralLabel: Service Appointments
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: CustomerServiceAppointment
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.CustomerServiceAppointment.collection_views.CustomerServiceAppointmentCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment
+        form: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Vehicle
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Customer
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_DealerService
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: CustomerVehicles
+      _type: BusinessViewTransition
+      transitionPath: CustomerVehicles
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "1"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/car-hatchback.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: CustomerVehicle
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.CustomerVehicle.collection_views.CustomerVehicleCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.CustomerVehicle.CustomerVehicle
+        form: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm.CustomerVehicle.FDN_Customer
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm.CustomerVehicle.FDN_Vehicle
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/link-variant.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: Manufacturing.entities.Customer.business_views.Customer.CustomerEO
+    - _name: Customers
+      _type: BusinessViewTransition
+      transitionPath: Household.Customers
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/greenhouse.svg
+      label: Family Member
+      pluralLabel: Family Members
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: |-
+        (LOOKUP
+        	count CustomerID
+        	FROM Household.Customers
+        END) >=2
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: Manufacturing.entities.Customer.business_views.Customer.CustomerEO

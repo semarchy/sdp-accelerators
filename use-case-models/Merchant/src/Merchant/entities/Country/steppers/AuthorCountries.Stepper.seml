@@ -1,0 +1,42 @@
+ # Description: Stepper used by Country create/edit/import flows.
+ # Contains: Steps and panels for authoring Country records in wizards.
+ # Role: Drives multi-step actions (create/edit/import) for Country entity.
+_package: Merchant.entities.Country.steppers
+_type: Stepper
+_name: AuthorCountries
+entity: Merchant.entities.Country.Country
+label: Countries
+
+rootStep:
+  _type: CollectionStep
+  _name: Countries
+  label: Countries
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.Country.collection_views.CountryCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Country
+      label: Country
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.Country.forms.CountryForm.Country
+      formStepEnrichers:
+        - enricher: Merchant.entities.Country.enrichers.NormalizeShortName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false

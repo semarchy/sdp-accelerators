@@ -1,0 +1,26 @@
+_type: StandardSurvivorshipRule
+entity: HCO_HCP.entities.HCP.HCP
+_package: HCO_HCP.entities.HCP.survivorship_rules
+defaultRule: false
+_name: NPI
+consolidationSkipNulls: true
+consolidationStrategy: PREFERRED_PUBLISHER
+label: NPI
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.NPI
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MDM
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.IMP
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberJSON
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberXLS
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.HCO_HCP
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+attributes:
+  - attributeName: NPI

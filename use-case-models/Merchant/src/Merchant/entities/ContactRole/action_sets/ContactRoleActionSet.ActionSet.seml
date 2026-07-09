@@ -1,0 +1,66 @@
+ # Description: Action set for `ContactRole` entity (create/edit actions).
+ # Contains: Actions and linked steppers for managing ContactRole records.
+ # Role: Provides UI actions for ContactRole maintenance.
+_package: Merchant.entities.ContactRole.action_sets
+_type: ActionSet
+_name: ContactRoleActionSet
+entity: Merchant.entities.ContactRole.ContactRole
+label: Contact Role Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorContactRoles
+    label: Create
+    useCustomLabel: true
+    stepper: Merchant.entities.ContactRole.steppers.AuthorContactRoles
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorContactRoles
+    label: Edit
+    useCustomLabel: true
+    stepper: Merchant.entities.ContactRole.steppers.AuthorContactRoles
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorContactRoles
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Merchant.entities.ContactRole.steppers.AuthorContactRoles
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorContactRoles
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Merchant.entities.ContactRole.steppers.AuthorContactRoles
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

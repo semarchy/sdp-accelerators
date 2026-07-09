@@ -1,0 +1,159 @@
+_name: LEGroup
+_package: PrivateEquity.entities.LEGroup.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: PrivateEquity.entities.LEGroup.LEGroup
+rootLabel: LE Group
+rootPluralLabel: LE Groups
+useHierarchyOnOpen: false
+label: LE Groups
+rootBusinessViewEntity:
+  _name: LEGroupEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.LEGroup.collection_views.LEGroupCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.LEGroup.LEGroup
+  form: PrivateEquity.entities.LEGroup.forms.LEGroupForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.LEGroup.action_sets.LEGroupActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations:
+    - browsingTarget: NOT_NAVIGABLE
+      formCollection: PrivateEquity.entities.LEGroup.forms.LEGroupForm.LEGroup.Collection
+  referenceAttributeNavigationConfigs:
+    - formField: PrivateEquity.entities.LEGroup.forms.LEGroupForm.LEGroup.Container.Container3.FDN_Currency
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LEGroup.forms.LEGroupForm.LEGroup.Container.Container2.FDN_Startegy
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GroupLegalEntities
+      _type: BusinessViewTransition
+      transitionPath: GroupLegalEntities
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: any GroupLegalEntities has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/table-large-plus.svg
+      label: Legal Entity
+      pluralLabel: Legal Entities
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: GroupLegalEntity
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.GroupLegalEntity.collection_views.GroupLegalEntityCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.GroupLegalEntity.GroupLegalEntity
+        form: PrivateEquity.entities.GroupLegalEntity.forms.GroupLegalEntityForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.GroupLegalEntity.forms.GroupLegalEntityForm.GroupLegalEntity.FDN_LEGroup
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.GroupLegalEntity.forms.GroupLegalEntityForm.GroupLegalEntity.FDN_LegalEntity
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: GroupHierarchies
+      _type: BusinessViewTransition
+      transitionPath: GroupHierarchies
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: any GroupHierarchies has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/family-tree.svg
+      label: Child Group
+      pluralLabel: Child Groups
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: GroupHierarchy
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.GroupHierarchy.collection_views.GroupHierarchyCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.GroupHierarchy.GroupHierarchy
+        form: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm.GroupHierarchy.FDN_Parent
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm.GroupHierarchy.FDN_Child
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm.GroupHierarchy.FDN_Currency
+            navigationMode: MODAL_FORM
+        transitions: []

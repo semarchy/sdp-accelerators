@@ -1,0 +1,13 @@
+_package: CorpFin.entities.BankAccount.enrichers
+_name: NormalizeBankAccount
+_type: SemQLEnricher
+entity: CorpFin.entities.BankAccount.BankAccount
+label: Normalize Bank Account
+enricherExecutionScope: PRE_CONSO
+description: This enricher normalizes the IBAN and SWIFT attributes of a bank account by trimming whitespace and converting to uppercase.
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedIBAN
+    expression: "RTRIM(LTRIM(UPPER(IBAN)))"
+  - attributeName: NormalizedSWIFT
+    expression: "RTRIM(LTRIM(UPPER(SWIFT)))"

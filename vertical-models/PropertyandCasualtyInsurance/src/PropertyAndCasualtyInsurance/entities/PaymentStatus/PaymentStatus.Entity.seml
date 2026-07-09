@@ -1,0 +1,67 @@
+_package: PropertyAndCasualtyInsurance.entities.PaymentStatus
+_type: Entity
+_name: PaymentStatus
+label: Payment Status
+pluralLabel: Payment Statuses
+entityType: BASIC
+physicalTableName: PAYMENT_STATUS
+iconUrl: images://mdi/book.svg
+description: "Represents master payment standing states used by billing and collections."
+documentation: "Represents master payment standing states used by billing and collections."
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: StatusCode
+    label: Status Code
+    physicalName: STATUS_CODE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for a payment status value."
+    documentation: "Unique identifier for a payment status value."
+  - _type: EntityAttribute
+    _name: StatusName
+    label: Status Name
+    physicalName: STATUS_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Display name of payment status (e.g., Paid, Overdue, Delinquent)."
+    documentation: "Display name of payment status (e.g., Paid, Overdue, Delinquent)."
+  - _type: EntityAttribute
+    _name: StatusCategory
+    label: Status Category
+    physicalName: STATUS_CATEGORY
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Higher-level grouping such as Current, AtRisk, or Delinquent."
+    documentation: "Higher-level grouping such as Current, AtRisk, or Delinquent."
+  - _type: EntityAttribute
+    _name: DelinquentIndicator
+    label: Delinquent Indicator
+    physicalName: DELINQUENT_INDICATOR
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether this status represents delinquency requiring follow-up actions."
+    documentation: "Indicates whether this status represents delinquency requiring follow-up actions."
+  - _type: EntityAttribute
+    _name: ActiveFlag
+    label: Active Flag
+    physicalName: ACTIVE_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the payment status code is currently active for use."
+    documentation: "Indicates whether the payment status code is currently active for use."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.PaymentStatus.PaymentStatus.StatusCode

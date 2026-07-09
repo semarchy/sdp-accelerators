@@ -1,0 +1,43 @@
+ # Description: Business view for `Currency` exposing navigation and actions.
+ # Contains: Business node, collection/form/actionSet links for Currency.
+ # Role: Integrates Currency into the model navigation and UI.
+_package: Merchant.entities.Currency.business_views
+_type: BusinessView
+_name: CurrencyBusinessView
+label: Currency Business View
+entity: Merchant.entities.Currency.Currency
+rootLabel: Currencies
+rootPluralLabel: Currencies
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Currency
+  displayCard: Merchant.entities.Currency.display_cards.CurrencyDisplayCard
+  entity: Merchant.entities.Currency.Currency
+  actionSet: Merchant.entities.Currency.action_sets.CurrencyActionSet
+  collection: Merchant.entities.Currency.collection_views.CurrencyCollectionView
+  form: Merchant.entities.Currency.forms.CurrencyForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

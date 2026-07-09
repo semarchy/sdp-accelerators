@@ -1,0 +1,50 @@
+_name: CustomerVehicle
+_package: Manufacturing.entities.CustomerVehicle.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.CustomerVehicle.CustomerVehicle
+rootLabel: Customer Vehicle
+rootPluralLabel: Customer Vehicles
+useHierarchyOnOpen: false
+label: Customer Vehicles
+rootBusinessViewEntity:
+  _name: CustomerVehicleEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.CustomerVehicle.collection_views.CustomerVehicleCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.CustomerVehicle.CustomerVehicle
+  form: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: Manufacturing.entities.CustomerVehicle.action_sets.CustomerVehicleActionSet
+  sortExpression: (case when Vehicle.FDN_Make = 'Mercedes-Benz' then 1 else 0 end) DESC
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm.CustomerVehicle.FDN_Vehicle
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm.CustomerVehicle.FDN_Customer
+      navigationMode: MODAL_FORM
+  transitions: []

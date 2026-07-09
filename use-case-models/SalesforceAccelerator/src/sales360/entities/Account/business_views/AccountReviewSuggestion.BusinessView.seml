@@ -1,0 +1,56 @@
+# This is the AccountReviewSuggestion business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for accounts review suggestions,
+# including the root entity, labels, and display options.
+_name: AccountReviewSuggestion
+_package: sales360.entities.Account.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.Account.Account
+rootLabel: Account Review Suggestion
+rootPluralLabel: Account Review Suggestion
+useHierarchyOnOpen: false
+label: Account Review Suggestion
+description: Account Review Suggestions business view
+rootBusinessViewEntity:
+  _name: Account
+  _type: BusinessViewEntity
+  collection: sales360.entities.Account.collection_views.AccountCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.Account.Account
+  form: sales360.entities.Account.forms.AccountBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.Account.action_sets.AccountReviewSuggestionsActionSet
+  displayCard: sales360.entities.Account.display_cards.AccountNameAddress
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sales360.entities.Account.forms.AccountBrowsingForm.Company.Details.Container.Container3.FDN_Industry
+      navigationMode: MODAL_FORM
+    - formField: sales360.entities.Account.forms.AccountBrowsingForm.Company.Details.Container.Container2.FDN_AccountType
+      navigationMode: MODAL_FORM
+  transitions: []
+rootFilter: COALESCE(SEM_BOOLEAN_TO_CHAR(IsPersonAccount), 'false') = 'false'
+  and HasSuggestedMerge = '1'

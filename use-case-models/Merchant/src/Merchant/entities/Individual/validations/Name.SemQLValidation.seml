@@ -1,0 +1,9 @@
+_package: Merchant.entities.Individual.validations
+_name: Name
+_type: SemQLValidation
+entity: Merchant.entities.Individual.Individual
+label: Validate Individual Name
+# Condition enforces both FirstName and LastName are provided and not empty/whitespace.
+condition: FirstName IS NOT NULL AND LENGTH(LTRIM(RTRIM(FirstName))) > 0 AND LastName IS NOT NULL AND LENGTH(LTRIM(RTRIM(LastName))) > 0
+validationScope: PRE_CONSO
+validationLabel: Both first and last name must be populated

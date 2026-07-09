@@ -1,0 +1,164 @@
+_package: Assets.entities.Machine.business_views
+_type: BusinessView
+_name: MachineBusinessView
+entity: Assets.entities.Machine.Machine
+rootLabel: Machines
+rootPluralLabel: Machines
+displayRootNodeAs: ICON_LABEL
+label: Machine
+enableHierarchyView: true
+useHierarchyOnOpen: true
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Machine
+  entity: Assets.entities.Machine.Machine
+  actionSet: Assets.entities.Machine.action_sets.MachineActionSet
+  collection: Assets.entities.Machine.collection_views.MachineCollectionView
+  form: Assets.entities.Machine.forms.MachineForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  displayCard: Assets.entities.Machine.display_cards.MachineDisplayCard
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: DigitalTwins
+      transitionPath: DigitalTwin
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: Digital Twin
+      pluralLabel: Digital Twins
+      enableHierarchy: '1'
+      expandHierarchyByDefault: true
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: DigitalTwins
+        entity: Assets.entities.DigitalTwin.DigitalTwin
+        actionSet: Assets.entities.DigitalTwin.action_sets.DigitalTwinActionSet
+        collection: Assets.entities.DigitalTwin.collection_views.DigitalTwinCollectionView
+        form: Assets.entities.DigitalTwin.forms.DigitalTwinForm
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        displayCard: Assets.entities.DigitalTwin.display_cards.DigitalTwinDisplayCard
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+        referenceAttributeNavigationConfigs:
+          - formField: Assets.entities.DigitalTwin.forms.DigitalTwinForm.DigitalTwin.FDN_Machine
+            businessView: Assets.entities.Machine.business_views.MachineBusinessView
+            form: Assets.entities.Machine.forms.MachineForm
+            navigationMode: BUSINESS_OBJECT_VIEW
+    - _type: BusinessViewTransition
+      _name: IoTDevices
+      transitionPath: IoTDevice
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: IoT Device
+      pluralLabel: IoT Devices
+      enableHierarchy: '1'
+      expandHierarchyByDefault: true
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: IoTDevices
+        entity: Assets.entities.IoTDevice.IoTDevice
+        actionSet: Assets.entities.IoTDevice.action_sets.IoTDeviceActionSet
+        collection: Assets.entities.IoTDevice.collection_views.IoTDeviceCollectionView
+        form: Assets.entities.IoTDevice.forms.IoTDeviceForm
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        displayCard: Assets.entities.IoTDevice.display_cards.IoTDeviceDisplayCard
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+        referenceAttributeNavigationConfigs:
+          - formField: Assets.entities.IoTDevice.forms.IoTDeviceForm.IoTDevice.FDN_Machine2
+            businessView: Assets.entities.Machine.business_views.MachineBusinessView
+            form: Assets.entities.Machine.forms.MachineForm
+            navigationMode: BUSINESS_OBJECT_VIEW
+    - _type: BusinessViewTransition
+      _name: Products
+      transitionPath: Product
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: Product
+      pluralLabel: Products
+      enableHierarchy: '1'
+      expandHierarchyByDefault: true
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: Products
+        entity: Assets.entities.Product.Product
+        actionSet: Assets.entities.Product.action_sets.ProductActionSet
+        collection: Assets.entities.Product.collection_views.ProductCollectionView
+        form: Assets.entities.Product.forms.ProductForm
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        displayCard: Assets.entities.Product.display_cards.ProductDisplayCard
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+        referenceAttributeNavigationConfigs:
+          - formField: Assets.entities.Product.forms.ProductForm.Product.FDN_Machine
+            businessView: Assets.entities.Machine.business_views.MachineBusinessView
+            form: Assets.entities.Machine.forms.MachineForm
+            navigationMode: BUSINESS_OBJECT_VIEW
+    - _type: BusinessViewTransition
+      _name: MaintenanceSchedules
+      transitionPath: MaintenanceSchedule
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: Maintenance Schedule
+      pluralLabel: Maintenance Schedules
+      enableHierarchy: '1'
+      expandHierarchyByDefault: true
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: MaintenanceSchedules
+        entity: Assets.entities.MaintenanceSchedule.MaintenanceSchedule
+        actionSet: Assets.entities.MaintenanceSchedule.action_sets.MaintenanceScheduleActionSet
+        collection: Assets.entities.MaintenanceSchedule.collection_views.MaintenanceScheduleCollectionView
+        form: Assets.entities.MaintenanceSchedule.forms.MaintenanceScheduleForm
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        displayCard: Assets.entities.MaintenanceSchedule.display_cards.MaintenanceScheduleDisplayCard
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true
+        referenceAttributeNavigationConfigs:
+          - formField: Assets.entities.MaintenanceSchedule.forms.MaintenanceScheduleForm.MaintenanceSchedule.Container0.Container1.Container2.FDN_Machine2
+            businessView: Assets.entities.Machine.business_views.MachineBusinessView
+            form: Assets.entities.Machine.forms.MachineForm
+            navigationMode: BUSINESS_OBJECT_VIEW
+

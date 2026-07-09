@@ -1,0 +1,104 @@
+_package: FinanceKYC.entities.KYCReview
+_type: Entity
+_name: KYCReview
+label: KYCReview
+pluralLabel: KYCReview
+entityType: BASIC
+physicalTableName: KYCREVIEW
+iconUrl: images://mdi/book.svg
+description: 'Records KYC review decisions, outcomes, and scheduling for customer due diligence.'
+documentation: 'Records KYC review decisions, outcomes, and scheduling for customer due diligence.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: KYCReviewID
+    _type: EntityAttribute
+    label: KYCReview ID
+    description: 'KYCReview ID value captured for the kyc review record.'
+    documentation: 'KYCReview ID value captured for the kyc review record.'
+    physicalName: KYCREVIEW_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: ReviewDate
+    _type: EntityAttribute
+    label: Review Date
+    description: 'Review Date value captured for the kyc review record.'
+    documentation: 'Review Date value captured for the kyc review record.'
+    physicalName: REVIEW_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Review Date is required.
+
+  - _name: ReviewerName
+    _type: EntityAttribute
+    label: Reviewer Name
+    description: 'Reviewer Name value captured for the kyc review record.'
+    documentation: 'Reviewer Name value captured for the kyc review record.'
+    physicalName: REVIEWER_NAME
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: Reviewer Name is required.
+
+  - _name: ReviewResult
+    _type: EntityAttribute
+    label: Review Result
+    description: 'Review Result value captured for the kyc review record.'
+    documentation: 'Review Result value captured for the kyc review record.'
+    physicalName: REVIEW_RESULT
+    dataType: String
+    length: 20
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    mandatoryValidationLabel: KYC Review Result is required.
+
+  - _name: Notes
+    _type: EntityAttribute
+    label: Notes
+    description: 'Notes value captured for the kyc review record.'
+    documentation: 'Notes value captured for the kyc review record.'
+    physicalName: NOTES
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _name: IsAutomated
+    _type: EntityAttribute
+    label: Is Automated
+    description: 'Is Automated value captured for the kyc review record.'
+    documentation: 'Is Automated value captured for the kyc review record.'
+    physicalName: IS_AUTOMATED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: IsPassed
+    _type: EntityAttribute
+    label: Is Passed
+    description: 'Is Passed value captured for the kyc review record.'
+    documentation: 'Is Passed value captured for the kyc review record.'
+    physicalName: IS_PASSED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: NextReviewDate
+    _type: EntityAttribute
+    label: Next Review Date
+    description: 'Next Review Date value captured for the kyc review record.'
+    documentation: 'Next Review Date value captured for the kyc review record.'
+    physicalName: NEXT_REVIEW_DATE
+    dataType: Date
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.KYCReview.KYCReview.KYCReviewID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

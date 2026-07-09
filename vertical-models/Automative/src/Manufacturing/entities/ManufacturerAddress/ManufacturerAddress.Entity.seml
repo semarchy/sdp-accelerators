@@ -1,0 +1,71 @@
+_name: ManufacturerAddress
+_package: Manufacturing.entities.ManufacturerAddress
+_type: Entity
+primaryKey: Manufacturing.entities.ManufacturerAddress.ManufacturerAddress.ManufacturerAddressID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+label: Manufacturer Address
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/map-marker-path.svg
+pluralLabel: Manufacturer Addresses
+description: "Relationship between a manufacturer and an address with effective dates for location history."
+documentation: "Relationship between a manufacturer and an address with effective dates for location history. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: false
+historizeMaster: false
+physicalTableName: MANUFACTURER_ADDRESS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ManufacturerAddressID
+    physicalName: MANUFACTURER_ADDRESS_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Manufacturer Address record."
+    documentation: "Surrogate identifier for the Manufacturer Address record."
+    goldenAttribute: true
+    i18ned: false
+    label: Manufacturer Address ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EndDate
+    physicalName: END_DATE
+    dataType: Date
+    description: "Date when the Manufacturer Address relationship or classification stops being effective."
+    documentation: End Date till which Manufacturer was using this address
+    goldenAttribute: true
+    i18ned: false
+    label: End Date
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StartDate
+    physicalName: START_DATE
+    dataType: Date
+    description: "Date when the Manufacturer Address relationship or classification becomes effective."
+    documentation: Start Date from when the Manufacturer is using this address
+    goldenAttribute: true
+    i18ned: false
+    label: Start Date
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

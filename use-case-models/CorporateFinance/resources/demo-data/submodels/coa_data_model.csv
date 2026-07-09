@@ -1,0 +1,49 @@
+Entity,EntityType,Attribute,DataType,Mandatory,Description,ReferenceTo
+ChartOfAccounts,BASIC,ChartOfAccountsID,String,Y,"Surrogate identifier for the chart of accounts",
+ChartOfAccounts,BASIC,Name,String,Y,"Chart of accounts display name",
+ChartOfAccounts,BASIC,NormalizedName,String,N,"Trimmed and uppercased chart of accounts name",
+ChartOfAccounts,BASIC,Description,String,N,"Description or usage context",
+ChartOfAccounts,BASIC,AccountingStandard,String,N,"Accounting framework (Local GAAP, IFRS, etc.)",
+ChartOfAccounts,BASIC,CurrencyCode,String,N,"Currency code","Currency"
+ChartOfAccounts,BASIC,GoverningOrgUnitID,String,N,"Governing org unit ID","OrgUnit"
+ChartOfAccounts,BASIC,IsGroupCoA,Boolean,N,"Indicates if this is the corporate/group CoA",
+MappingType,BASIC,MappingTypeID,String,Y,"Surrogate identifier for mapping type",
+MappingType,BASIC,Type,String,Y,"Mapping type",
+MappingType,BASIC,Description,String,N,"Description of the mapping type",
+Account,BASIC,AccountID,String,Y,"Surrogate identifier for account",
+Account,BASIC,ChartOfAccountsID,String,Y,"Chart of accounts ID","ChartOfAccounts"
+Account,BASIC,AccountCode,String,Y,"Unique code within the CoA",
+Account,BASIC,NormalizedAccountCode,String,N,"Trimmed and uppercased account code",
+Account,BASIC,AccountName,String,Y,"Account label",
+Account,BASIC,NormalizedAccountName,String,N,"Trimmed and uppercased account name",
+Account,BASIC,AccountType,String,Y,"Classification (Asset, Liability, etc.)",
+Account,BASIC,ParentAccountID,String,N,"Parent account ID","Account"
+Account,BASIC,IsPosting,Boolean,Y,"Indicates if postings are allowed",
+MappingRule,BASIC,RuleID,String,Y,"Surrogate identifier for mapping rule",
+MappingRule,BASIC,RuleName,String,Y,"Rule label",
+MappingRule,BASIC,NormalizedRuleName,String,N,"Trimmed and uppercased rule name",
+MappingRule,BASIC,RuleType,String,Y,"Rule classification (Split, Conditional, Override)",
+MappingRule,BASIC,NormalizedRuleType,String,N,"Trimmed and uppercased rule type",
+MappingRule,BASIC,RuleDescription,String,N,"Plain-language description of the split or condition",
+MappingSet,BASIC,MappingSetID,String,Y,"Surrogate identifier for mapping scope",
+MappingSet,BASIC,MappingSetName,String,Y,"Mapping set name (e.g., FY2026 Group)",
+MappingSet,BASIC,NormalizedMappingSetName,String,N,"Trimmed and uppercased mapping set name",
+MappingSet,BASIC,Purpose,String,Y,"Purpose (Consolidation, Migration, Reporting)",
+MappingSet,BASIC,SourceCoAID,String,Y,"Source CoA ID","ChartOfAccounts"
+MappingSet,BASIC,TargetCoAID,String,Y,"Target CoA ID","ChartOfAccounts"
+MappingSet,BASIC,OwningOrgUnitID,String,N,"Owning org unit ID","OrgUnit"
+AccountMapping,BASIC,AccountMappingID,String,Y,"Surrogate identifier for account mapping",
+AccountMapping,BASIC,Priority,Integer,N,"Order to evaluate when overlaps exist",
+AccountMapping,BASIC,Justification,String,N,"Business justification or notes",
+AccountMapping,BASIC,ReportingPnLCategoryCode,String,N,"BI/reporting category to assign when applying this mapping",
+AccountMapping,BASIC,MappingSetID,String,Y,"Mapping set ID","MappingSet"
+AccountMapping,BASIC,SourceAccountID,String,Y,"Source account ID","Account"
+AccountMapping,BASIC,TargetAccountID,String,N,"Target account ID","Account"
+AccountMapping,BASIC,RuleID,String,N,"Rule ID","MappingRule"
+AccountMapping,BASIC,MappingType,String,Y,"Mapping type","MappingType"
+SplitAllocation,BASIC,SplitAllocationID,String,Y,"Surrogate identifier for split allocation",
+SplitAllocation,BASIC,SplitPercent,Decimal(5,2),Y,"Percentage of amount routed to the target",
+SplitAllocation,BASIC,NormalizedSplitPercent,Decimal(5,2),N,"Cleaned percentage for validation and capping",
+SplitAllocation,BASIC,Sequence,Integer,N,"Order of allocation evaluation",
+SplitAllocation,BASIC,AccountMappingID,String,Y,"Account mapping ID","AccountMapping"
+SplitAllocation,BASIC,TargetAccountID,String,Y,"Target account ID","Account"

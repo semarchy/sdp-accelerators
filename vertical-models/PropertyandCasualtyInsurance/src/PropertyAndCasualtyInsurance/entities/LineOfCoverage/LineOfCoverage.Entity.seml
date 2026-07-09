@@ -1,0 +1,364 @@
+_package: PropertyAndCasualtyInsurance.entities.LineOfCoverage
+_type: Entity
+_name: LineOfCoverage
+label: Line Of Coverage
+pluralLabel: Lines Of Coverage
+entityType: ID_MATCHED
+physicalTableName: LINE_OF_COVERAGE
+iconUrl: images://mdi/book.svg
+description: "Represents a policy-level coverage instance including limits, pricing, and lifecycle details."
+documentation: "Represents a policy-level coverage instance including limits, pricing, and lifecycle details."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: LineOfCoverageId
+    label: Line Of Coverage Id
+    physicalName: LINE_OF_COVERAGE_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "System-generated unique identifier representing a specific policy coverage instance."
+    documentation: "System-generated unique identifier representing a specific policy coverage instance."
+  - _type: EntityAttribute
+    _name: AssetId
+    label: Asset Id
+    physicalName: ASSET_ID
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Reference to specific insured asset when coverage applies at item level."
+    documentation: "Reference to specific insured asset when coverage applies at item level."
+  - _type: EntityAttribute
+    _name: CoverageTrigger
+    label: Coverage Trigger
+    physicalName: COVERAGE_TRIGGER
+    dataType: PropertyAndCasualtyInsurance.list_of_values.CoverageTriggerType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Defines claim trigger mechanism such as Occurrence or Claims-Made."
+    documentation: "Defines claim trigger mechanism such as Occurrence or Claims-Made."
+  - _type: EntityAttribute
+    _name: ClaimsMadeRetroDate
+    label: Claims Made Retro Date
+    physicalName: CLAIMS_MADE_RETRO_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Retroactive date applicable for claims-made coverage."
+    documentation: "Retroactive date applicable for claims-made coverage."
+  - _type: EntityAttribute
+    _name: LimitAmount
+    label: Limit Amount
+    physicalName: LIMIT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Primary limit of liability for this coverage instance."
+    documentation: "Primary limit of liability for this coverage instance."
+  - _type: EntityAttribute
+    _name: LimitType
+    label: Limit Type
+    physicalName: LIMIT_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.CoverageLimitType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Structure of the limit (Per Occurrence, Aggregate, Combined Single Limit)."
+    documentation: "Structure of the limit (Per Occurrence, Aggregate, Combined Single Limit)."
+  - _type: EntityAttribute
+    _name: AggregateLimit
+    label: Aggregate Limit
+    physicalName: AGGREGATE_LIMIT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Maximum cumulative payout allowed during policy period."
+    documentation: "Maximum cumulative payout allowed during policy period."
+  - _type: EntityAttribute
+    _name: SublimitAmount
+    label: Sublimit Amount
+    physicalName: SUBLIMIT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Specific lower limit applied to defined peril or subcategory."
+    documentation: "Specific lower limit applied to defined peril or subcategory."
+  - _type: EntityAttribute
+    _name: PerRiskLimit
+    label: Per Risk Limit
+    physicalName: PER_RISK_LIMIT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Limit applied individually per insured asset or risk unit."
+    documentation: "Limit applied individually per insured asset or risk unit."
+  - _type: EntityAttribute
+    _name: DeductibleAmount
+    label: Deductible Amount
+    physicalName: DEDUCTIBLE_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Deductible applicable to this coverage instance."
+    documentation: "Deductible applicable to this coverage instance."
+  - _type: EntityAttribute
+    _name: DeductibleType
+    label: Deductible Type
+    physicalName: DEDUCTIBLE_TYPE
+    dataType: PropertyAndCasualtyInsurance.list_of_values.CoverageDeductibleType
+    mandatory: false
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Type of deductible structure (Flat, Percentage, Franchise)."
+    documentation: "Type of deductible structure (Flat, Percentage, Franchise)."
+  - _type: EntityAttribute
+    _name: Rate
+    label: Rate
+    physicalName: RATE
+    dataType: Decimal
+    precision: 10
+    scale: 6
+    mandatory: false
+    searchable: true
+    description: "Applied rating factor or premium rate for the coverage."
+    documentation: "Applied rating factor or premium rate for the coverage."
+  - _type: EntityAttribute
+    _name: ExposureBase
+    label: Exposure Base
+    physicalName: EXPOSURE_BASE
+    dataType: Decimal
+    precision: 18
+    scale: 4
+    mandatory: false
+    searchable: true
+    description: "Exposure metric used for rating (e.g., payroll, sales, area)."
+    documentation: "Exposure metric used for rating (e.g., payroll, sales, area)."
+  - _type: EntityAttribute
+    _name: ExposureUnit
+    label: Exposure Unit
+    physicalName: EXPOSURE_UNIT
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Unit of measure associated with exposure base."
+    documentation: "Unit of measure associated with exposure base."
+  - _type: EntityAttribute
+    _name: ManualPremium
+    label: Manual Premium
+    physicalName: MANUAL_PREMIUM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Premium calculated before discretionary credits or debits."
+    documentation: "Premium calculated before discretionary credits or debits."
+  - _type: EntityAttribute
+    _name: TechnicalPremium
+    label: Technical Premium
+    physicalName: TECHNICAL_PREMIUM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Actuarially indicated premium based on risk characteristics."
+    documentation: "Actuarially indicated premium based on risk characteristics."
+  - _type: EntityAttribute
+    _name: WrittenPremium
+    label: Written Premium
+    physicalName: WRITTEN_PREMIUM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Premium recorded at issuance for this coverage."
+    documentation: "Premium recorded at issuance for this coverage."
+  - _type: EntityAttribute
+    _name: EarnedPremium
+    label: Earned Premium
+    physicalName: EARNED_PREMIUM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Premium portion earned over elapsed coverage period."
+    documentation: "Premium portion earned over elapsed coverage period."
+  - _type: EntityAttribute
+    _name: FullyEarnedFlag
+    label: Fully Earned Flag
+    physicalName: FULLY_EARNED_FLAG
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether premium is fully earned at inception."
+    documentation: "Indicates whether premium is fully earned at inception."
+  - _type: EntityAttribute
+    _name: DiscountAmount
+    label: Discount Amount
+    physicalName: DISCOUNT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Total discount applied to coverage premium."
+    documentation: "Total discount applied to coverage premium."
+  - _type: EntityAttribute
+    _name: SurchargeAmount
+    label: Surcharge Amount
+    physicalName: SURCHARGE_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Additional premium applied due to elevated risk factors."
+    documentation: "Additional premium applied due to elevated risk factors."
+  - _type: EntityAttribute
+    _name: ValuationMethod
+    label: Valuation Method
+    physicalName: VALUATION_METHOD
+    dataType: PropertyAndCasualtyInsurance.list_of_values.ValuationMethod
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Method used to determine claim settlement value."
+    documentation: "Method used to determine claim settlement value."
+  - _type: EntityAttribute
+    _name: BlanketIndicator
+    label: Blanket Indicator
+    physicalName: BLANKET_INDICATOR
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates coverage applies collectively across multiple assets."
+    documentation: "Indicates coverage applies collectively across multiple assets."
+  - _type: EntityAttribute
+    _name: PrimaryExcessIndicator
+    label: Primary Excess Indicator
+    physicalName: PRIMARY_EXCESS_IND
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Indicates whether coverage is primary, excess, or umbrella layer."
+    documentation: "Indicates whether coverage is primary, excess, or umbrella layer."
+  - _type: EntityAttribute
+    _name: QuotaSharePercent
+    label: Quota Share Percent
+    physicalName: QUOTA_SHARE_PERCENT
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Percentage of risk ceded under quota share arrangement."
+    documentation: "Percentage of risk ceded under quota share arrangement."
+  - _type: EntityAttribute
+    _name: EndorsementIndicator
+    label: Endorsement Indicator
+    physicalName: ENDORSEMENT_INDICATOR
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates coverage was added or modified via endorsement."
+    documentation: "Indicates coverage was added or modified via endorsement."
+  - _type: EntityAttribute
+    _name: EndorsementEffectiveDate
+    label: Endorsement Effective Date
+    physicalName: ENDORSEMENT_EFFECTIVE_DT
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date endorsement-related changes become effective."
+    documentation: "Date endorsement-related changes become effective."
+  - _type: EntityAttribute
+    _name: OriginalEffectiveDate
+    label: Original Effective Date
+    physicalName: ORIGINAL_EFFECTIVE_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Original inception date of this coverage instance."
+    documentation: "Original inception date of this coverage instance."
+  - _type: EntityAttribute
+    _name: UnderwriterNotes
+    label: Underwriter Notes
+    physicalName: UNDERWRITER_NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Internal notes documenting underwriting rationale or exceptions."
+    documentation: "Internal notes documenting underwriting rationale or exceptions."
+  - _type: EntityAttribute
+    _name: RiskScore
+    label: Risk Score
+    physicalName: RISK_SCORE
+    dataType: Decimal
+    precision: 6
+    scale: 3
+    mandatory: false
+    searchable: true
+    description: "Quantitative risk score derived from underwriting or predictive modeling."
+    documentation: "Quantitative risk score derived from underwriting or predictive modeling."
+  - _type: EntityAttribute
+    _name: LossHistoryIndicator
+    label: Loss History Indicator
+    physicalName: LOSS_HISTORY_INDICATOR
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates prior losses relevant to this coverage."
+    documentation: "Indicates prior losses relevant to this coverage."
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Date coverage becomes effective under the policy."
+    documentation: "Date coverage becomes effective under the policy."
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date coverage terminates or expires."
+    documentation: "Date coverage terminates or expires."
+  - _type: EntityAttribute
+    _name: ActiveFlag
+    label: Active Flag
+    physicalName: ACTIVE_FLAG
+    dataType: Boolean
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Indicates whether the coverage instance is currently active."
+    documentation: "Indicates whether the coverage instance is currently active."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.LineOfCoverage.LineOfCoverage.LineOfCoverageId

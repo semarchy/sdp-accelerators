@@ -1,0 +1,65 @@
+# This file defines the CampaignMemberStatus entity in the Salesforce Accelerator application.
+# It includes attributes such as CampaignMemberStatusID, CampaignMemberStatusCode, and CampaignMemberStatusValue,
+# along with their properties and validations.
+# The entity is used to manage campaign member status information within the application.
+_name: CampaignMemberStatus
+_package: sales360.entities.CampaignMemberStatus
+_type: Entity
+primaryKey: sales360.entities.CampaignMemberStatus.CampaignMemberStatus.CampaignMemberStatusID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: CampaignMemberStatusCode
+label: Campaign Member Status
+documentation: All the statuses of the contact or lead added to a campaign
+description: All the statuses of the contact or lead added to a campaign
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Campaign Member Statuses
+historizeGolden: true
+historizeMaster: false
+physicalTableName: CAMPAIGN_MEMBER_STATUS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CampaignMemberStatusID
+    physicalName: CAMPAIGN_MEMBER_STATUS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Campaign Member Status ID
+    documentation: Unique identifier for Campaign Member Status
+    description: Unique identifier for Campaign Member Status
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CampaignMemberStatusCode
+    physicalName: CAMPAIGN_MEMBER_STATUS_CO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Campaign Member Status Code
+    documentation: Code representing the Campaign Member Status
+    description: Code representing the Campaign Member Status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CampaignMemberStatusValue
+    physicalName: CAMPAIGN_MEMBER_STATUS_VA
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Campaign Member Status Value
+    documentation: Value or description of the Campaign Member Status
+    description: Value or description of the Campaign Member Status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

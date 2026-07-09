@@ -1,0 +1,94 @@
+# Country entity for the SAP Product / Material 360 accelerator.
+_name: Country
+_package: sappm360.entities.Country
+_type: Entity
+primaryKey: sappm360.entities.Country.Country.CountryID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: CountryCode
+label: Country
+documentation: Country reference data used by the SAP Product / Material 360 model.
+description: Country reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Countries
+historizeGolden: true
+historizeMaster: false
+physicalTableName: COUNTRY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CountryID
+    physicalName: COUNTRY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Country ID
+    documentation: Unique identifier for the country.
+    description: Unique identifier for the country.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CountryCode
+    physicalName: COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Country Code
+    documentation: Code for the country.
+    description: Code for the country.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Country Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CountryName
+    physicalName: COUNTRY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Country Name
+    documentation: Country used for regulatory and regional restrictions.
+    description: Country used for regulatory and regional restrictions.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Country Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the country.
+    description: Description for the country.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the country is active.
+    description: Indicates whether the country is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

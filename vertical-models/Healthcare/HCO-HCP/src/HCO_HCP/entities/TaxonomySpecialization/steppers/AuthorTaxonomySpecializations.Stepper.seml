@@ -1,0 +1,55 @@
+_name: AuthorTaxonomySpecializations
+_package: HCO_HCP.entities.TaxonomySpecialization.steppers
+_type: Stepper
+entity: HCO_HCP.entities.TaxonomySpecialization.TaxonomySpecialization
+rootStep:
+  _name: TaxonomySpecializations
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.TaxonomySpecialization.collection_views.TaxonomySpecializationCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Taxonomy Specializations
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: HCO_HCP.entities.TaxonomySpecialization.TaxonomySpecialization.Name
+  stepTriggers: []
+  childSteps:
+    - _name: TaxonomySpecialization
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Taxonomy Specialization
+      formTab: HCO_HCP.entities.TaxonomySpecialization.forms.TaxonomySpecializationForm.TaxonomySpecialization
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: HCO_HCP.entities.TaxonomySpecialization.TaxonomySpecialization.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: HCO_HCP.entities.TaxonomySpecialization.TaxonomySpecialization.Name
+      stepTriggers: []
+label: Author Taxonomy Specializations
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: HCO_HCP.entities.TaxonomySpecialization.TaxonomySpecialization.Name
+triggers: []

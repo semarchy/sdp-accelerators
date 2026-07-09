@@ -1,0 +1,27 @@
+_type: JavaPluginEnricher
+_package: PrivateEquity.entities.Contact.enrichers
+_name: StandardizeMobilePhone
+entity: PrivateEquity.entities.Contact.Contact
+label: Standardize Mobile Phone
+description: "Standardizes contact mobile phone numbers using country context for consistent phone formatting."
+pluginId: com.semarchy.engine.plugins.convergence.phone
+batchUpdateSize: 1000
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_PHONE
+    expression: Mobile
+  - inputName: IN_PHONE_FORMAT
+    expression: "'NATIONAL'"
+  - inputName: IN_REGION_CALLING_FROM
+    expression: "'US'"
+  - inputName: IN_COUNTRY_CODE
+    expression: COALESCE( Address.Country, 'US' )
+pluginOutputs:
+  - outputName: ENRICHED_PHONE
+    attributeName: StandarizedMobile
+  - outputName: GEOCODE_DATA
+    attributeName: MobileGeocodingData

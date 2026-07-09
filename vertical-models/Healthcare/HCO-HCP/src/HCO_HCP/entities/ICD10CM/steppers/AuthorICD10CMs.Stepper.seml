@@ -1,0 +1,55 @@
+_name: AuthorICD10CMs
+_package: HCO_HCP.entities.ICD10CM.steppers
+_type: Stepper
+entity: HCO_HCP.entities.ICD10CM.ICD10CM
+rootStep:
+  _name: ICD10CMs
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.ICD10CM.collection_views.ICD10CMCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: ICD10CMs
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.ICD10Hierarchy.ParentICD10
+  stepTriggers: []
+  childSteps:
+    - _name: ICD10CM
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: ICD10CM
+      formTab: HCO_HCP.entities.ICD10CM.forms.ICD10CMForm.ICD10CM
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.ICD10Hierarchy.ParentICD10
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.ICD10Hierarchy.ParentICD10
+      stepTriggers: []
+label: Author ICD-10-CM (diagnosis)
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.ICD10Hierarchy.ParentICD10
+triggers: []

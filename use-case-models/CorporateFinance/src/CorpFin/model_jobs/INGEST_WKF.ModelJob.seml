@@ -1,0 +1,28 @@
+_package: CorpFin.model_jobs
+_type: ModelJob
+_name: INGEST_WKF
+jobType: INTEGRATION
+queueName: Default
+jobParams:
+  - _name: V_USER_ROLES
+    _type: ModelJobParam
+    value: ''
+modelTasks:
+  - entity: CorpFin.entities.OrgUnit.OrgUnit
+    _type: ModelJobTask
+    _name: OrgUnit
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+    _type: ModelJobTask
+    _name: OrgHierarchyNode
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

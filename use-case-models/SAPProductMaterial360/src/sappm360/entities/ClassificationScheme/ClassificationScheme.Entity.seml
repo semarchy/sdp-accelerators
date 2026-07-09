@@ -1,0 +1,94 @@
+# Classification Scheme entity for the SAP Product / Material 360 accelerator.
+_name: ClassificationScheme
+_package: sappm360.entities.ClassificationScheme
+_type: Entity
+primaryKey: sappm360.entities.ClassificationScheme.ClassificationScheme.ClassificationSchemeID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ClassificationSchemeCode
+label: Classification Scheme
+documentation: Classification Scheme reference data used by the SAP Product / Material 360 model.
+description: Classification Scheme reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Classification Schemes
+historizeGolden: true
+historizeMaster: false
+physicalTableName: CLASS_SCHEME
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ClassificationSchemeID
+    physicalName: CLASS_SCHEME_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Classification Scheme ID
+    documentation: Unique identifier for the classification scheme.
+    description: Unique identifier for the classification scheme.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ClassificationSchemeCode
+    physicalName: CLASS_SCHEME_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Classification Scheme Code
+    documentation: Code for the classification scheme.
+    description: Code for the classification scheme.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Classification Scheme Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ClassificationSchemeName
+    physicalName: CLASS_SCHEME_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Classification Scheme Name
+    documentation: Classification framework such as UNSPSC, eClass, or custom taxonomy.
+    description: Classification framework such as UNSPSC, eClass, or custom taxonomy.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Classification Scheme Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the classification scheme.
+    description: Description for the classification scheme.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the classification scheme is active.
+    description: Indicates whether the classification scheme is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

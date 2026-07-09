@@ -1,0 +1,124 @@
+# Unit of Measure entity for the SAP Product / Material 360 accelerator.
+_name: UnitOfMeasure
+_package: sappm360.entities.UnitOfMeasure
+_type: Entity
+primaryKey: sappm360.entities.UnitOfMeasure.UnitOfMeasure.UnitOfMeasureID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: UOMCode
+label: Unit of Measure
+documentation: Standard unit of measure and conversion definition used by SAP materials.
+description: Standard unit of measure and conversion definition used by SAP materials.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/scale-balance.svg
+pluralLabel: Units of Measure
+historizeGolden: true
+historizeMaster: false
+physicalTableName: UNIT_OF_MEASURE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: UnitOfMeasureID
+    physicalName: UOM_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Unit of Measure ID
+    documentation: Unique identifier for the unit of measure.
+    description: Unique identifier for the unit of measure.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: UOMCode
+    physicalName: UOM_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: UOM Code
+    documentation: Standard unit of measure code.
+    description: Standard unit of measure code.
+    mandatory: true
+    length: 16
+    mandatoryValidationLabel: UOM Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: UOMName
+    physicalName: UOM_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: UOM Name
+    documentation: Business name of the unit of measure.
+    description: Business name of the unit of measure.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: UOM Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ISOCode
+    physicalName: ISO_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: ISO Code
+    documentation: ISO unit code used for integration.
+    description: ISO unit code used for integration.
+    mandatory: false
+    length: 16
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Dimension
+    physicalName: DIMENSION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Dimension
+    documentation: Measurement dimension such as mass, volume, or count.
+    description: Measurement dimension such as mass, volume, or count.
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ConversionNumerator
+    physicalName: CONV_NUMERATOR
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Conversion Numerator
+    documentation: Numerator used for alternate unit conversion.
+    description: Numerator used for alternate unit conversion.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ConversionDenominator
+    physicalName: CONV_DENOMINATOR
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Conversion Denominator
+    documentation: Denominator used for alternate unit conversion.
+    description: Denominator used for alternate unit conversion.
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    searchable: true
+    valueSeparator: ","

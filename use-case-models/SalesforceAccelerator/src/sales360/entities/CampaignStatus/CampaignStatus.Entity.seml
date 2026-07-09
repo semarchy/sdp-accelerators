@@ -1,0 +1,65 @@
+# This file defines the CampaignStatus entity in the Salesforce Accelerator application.
+# It includes attributes such as CampaignStatusID, CampaignStatus, and CampaignStatusName,
+# along with their properties and validations.
+# The entity is used to manage campaign status information within the application.
+_name: CampaignStatus
+_package: sales360.entities.CampaignStatus
+_type: Entity
+primaryKey: sales360.entities.CampaignStatus.CampaignStatus.CampaignStatusID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: CampaignStatus
+label: Campaign Status
+documentation: Status of the campaign, for example, Planned, In Progress
+description: Status of the campaign, for example, Planned, In Progress
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Campaign Statuses
+historizeGolden: true
+historizeMaster: false
+physicalTableName: CAMPAIGN_STATUS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CampaignStatusID
+    physicalName: CAMPAIGN_STATUS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Campaign Status ID
+    documentation: Unique identifier for the campaign status
+    description: Unique identifier for the campaign status
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CampaignStatus
+    physicalName: CAMPAIGN_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Campaign Status
+    documentation: Name of the campaign status
+    description: Name of the campaign status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CampaignStatusName
+    physicalName: CAMPAIGN_STATUS_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Campaign Status Name
+    documentation: Descriptive name of the campaign status
+    description: Descriptive name of the campaign status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

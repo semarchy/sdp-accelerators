@@ -1,0 +1,229 @@
+_type: JavaPluginEnricher
+_package: Manufacturing.entities.Customer.enrichers
+_name: MelissaPersonatorEnricher
+entity: Manufacturing.entities.Customer.Customer
+label: Melissa Personator Enricher
+pluginId: com.semarchy.engine.plugins.melissa.personator
+batchUpdateSize: 1000
+enricherCache: Manufacturing.enricher_caches.MelissaPersonator
+numberOfRetry: 10
+onErrorBehavior: FAIL_JOB
+description: This is the Semarchy-built Melissa plugin, not the legacy version
+  built by Melissa.
+enricherExecutionScope: PRE_POST
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_APPEND
+    value: "true"
+  - paramName: PARAM_LICENSE
+    value: INSERT_YOUR_API_KEY
+  - paramName: PARAM_MOVE
+    value: "true"
+  - paramName: PARAM_VERIFY
+    value: "true"
+pluginInputs:
+  - inputName: IN_PHONE
+    expression: SourcePhone
+  - inputName: IN_CITY
+    expression: InputCity
+  - inputName: IN_COUNTRY
+    expression: InputCountry
+  - inputName: IN_POSTAL_CODE
+    expression: InputZipCode
+  - inputName: IN_EMAIL
+    expression: SourceEmail
+  - inputName: IN_STATE
+    expression: InputState
+  - inputName: IN_FULLNAME
+    expression: concat(FirstName ,' ', LastName)
+  - inputName: IN_ADDRESS_LINE_1
+    expression: InputAddressLine
+pluginOutputs:
+  - outputName: OUT_ADDR_SUITE_NUMBER
+    attributeName: MDPersonator.AddressSuiteNumber
+  - outputName: OUT_PHONE_PREFIX
+    attributeName: MDPersonator.PhonePrefix
+  - outputName: OUT_EMAIL
+    attributeName: MDPersonator.EmailAddress
+  - outputName: OUT_ADDR_POST_DIR
+    attributeName: MDPersonator.AddressPostDirection
+  - outputName: OUT_URBAN_NAME
+    attributeName: MDPersonator.UrbanizationName
+  - outputName: OUT_NAME_LAST
+    attributeName: MDPersonator.NameLast
+  - outputName: OUT_CBSA_DIV_TITLE
+    attributeName: MDPersonator.CBSADivisionTitle
+  - outputName: OUT_COUNTY_NAME
+    attributeName: MDPersonator.CountyName
+  - outputName: OUT_ADDR_ROUTE_SERVICE
+    attributeName: MDPersonator.AddressRouteService
+  - outputName: OUT_LENGTH_OF_RESIDENCE
+    attributeName: MDPersonator.LengthOfResidence
+  - outputName: OUT_GENDER
+    attributeName: MDPersonator.Gender
+  - outputName: OUT_NAME_FIRST2
+    attributeName: MDPersonator.NameFirst2
+  - outputName: OUT_HOUSEHOLD_SIZE
+    attributeName: MDPersonator.HouseholdSize
+  - outputName: OUT_CREDIT_CARD_USER
+    attributeName: MDPersonator.CreditCardUser
+  - outputName: OUT_ETHNIC_GROUP
+    attributeName: MDPersonator.EthnicGroup
+  - outputName: OUT_PHONE_NEW_AREA_CODE
+    attributeName: MDPersonator.PhoneNewAreaCode
+  - outputName: OUT_DELIVERY_PC_DIGIT
+    attributeName: MDPersonator.DeliveryPointCheckDigit
+  - outputName: OUT_PHONE_EXT
+    attributeName: MDPersonator.PhoneExtension
+  - outputName: OUT_CENSUS_TRACT
+    attributeName: MDPersonator.CensusTract
+  - outputName: OUT_PRESENCE_OF_SENIOR
+    attributeName: MDPersonator.PresenceOfSenior
+  - outputName: OUT_DEMOGRAPHICS_RESULTS
+    attributeName: MDPersonator.DemographicsResults
+  - outputName: OUT_PRESENCE_OF_CHILDREN
+    attributeName: MDPersonator.PresenceOfChildren
+  - outputName: OUT_LATITUDE
+    attributeName: MDPersonator.Latitude
+  - outputName: OUT_ETHNIC_CODE
+    attributeName: MDPersonator.EthnicCode
+  - outputName: OUT_CBSA_TITLE
+    attributeName: MDPersonator.CBSATitle
+  - outputName: OUT_DELIVERY_IND
+    attributeName: MDPersonator.DeliveryIndicator
+  - outputName: OUT_PHONE_COUNTRY_NAME
+    attributeName: MDPersonator.PhoneCountryName
+  - outputName: OUT_CARRIER_ROUTE
+    attributeName: MDPersonator.CarrierRoute
+  - outputName: OUT_NAME_MIDDLE2
+    attributeName: MDPersonator.NameMiddle2
+  - outputName: OUT_PHONE_COUNTRY_CODE
+    attributeName: MDPersonator.PhoneCountryCode
+  - outputName: OUT_ADDR_ST_SUFFIX
+    attributeName: MDPersonator.AddressStreetSuffix
+  - outputName: OUT_DEMOGRAPHICS_GENDER
+    attributeName: MDPersonator.DemographicsGender
+  - outputName: OUT_RESULTS
+    attributeName: MDPersonator.Results
+  - outputName: OUT_CBSA_DIV_LEVEL
+    attributeName: MDPersonator.CBSADivisionLevel
+  - outputName: OUT_ADDR_NUMBER
+    attributeName: MDPersonator.AddressHouseNumber
+  - outputName: OUT_LONGITUDE
+    attributeName: MDPersonator.Longitude
+  - outputName: OUT_CITY
+    attributeName: MDPersonator.City
+  - outputName: OUT_SALUTATION
+    attributeName: MDPersonator.Salutation
+  - outputName: OUT_ADDR_DELIV_INST
+    attributeName: MDPersonator.AddressDeliveryInstallation
+  - outputName: OUT_CBSA_LEVEL
+    attributeName: MDPersonator.CBSALevel
+  - outputName: OUT_CBSA_CODE
+    attributeName: MDPersonator.CBSACode
+  - outputName: OUT_NAME_PREFIX
+    attributeName: MDPersonator.NamePrefix
+  - outputName: OUT_NAME_FIRST
+    attributeName: MDPersonator.NameFirst
+  - outputName: OUT_ADDRESS_KEY
+    attributeName: MDPersonator.AddressKey
+  - outputName: OUT_TRANSMISSION_RESULT
+    attributeName: MDPersonator.TransmissionResults
+  - outputName: OUT_CHILDREN_AGE_RANGE
+    attributeName: MDPersonator.ChildrenAgeRange
+  - outputName: OUT_PHONE
+    attributeName: MDPersonator.PhoneNumber
+  - outputName: OUT_COMPANY_NAME
+    attributeName: MDPersonator.CompanyName
+  - outputName: OUT_NAME_PREFIX2
+    attributeName: MDPersonator.NamePrefix2
+  - outputName: OUT_COUNTRY_CODE
+    attributeName: MDPersonator.CountryCode
+  - outputName: OUT_CITY_ABBR
+    attributeName: MDPersonator.CityAbbrev
+  - outputName: OUT_CBSA_DIV_CODE
+    attributeName: MDPersonator.CBSADivisionCode
+  - outputName: OUT_PLACE_CODE
+    attributeName: MDPersonator.PlaceCode
+  - outputName: OUT_MOVE_DATE
+    attributeName: MDPersonator.MoveDate
+  - outputName: OUT_PHONE_AREA_CODE
+    attributeName: MDPersonator.PhoneAreaCode
+  - outputName: OUT_COUNTRY
+    attributeName: MDPersonator.CountryName
+  - outputName: OUT_ADDRESS_EXTRA
+    attributeName: MDPersonator.AddressExtras
+  - outputName: OUT_EDUCATION
+    attributeName: MDPersonator.Education
+  - outputName: OUT_NAME_SUFFIX
+    attributeName: MDPersonator.NameSuffix
+  - outputName: OUT_FORMATTED_ADDRESS
+    attributeName: MDPersonator.FormattedAddress
+  - outputName: OUT_NAME_MIDDLE
+    attributeName: MDPersonator.NameMiddle
+  - outputName: OUT_NAMEFULL
+    attributeName: MDPersonator.NameFull
+  - outputName: OUT_STATE_NAME
+    attributeName: MDPersonator.StateName
+  - outputName: OUT_POSTAL_CODE
+    attributeName: MDPersonator.PostalCode
+  - outputName: OUT_CENSUS_BLOCK
+    attributeName: MDPersonator.CensusBlock
+  - outputName: OUT_CONGRESS_DISTRICT
+    attributeName: MDPersonator.CongressionalDistrict
+  - outputName: OUT_ADDR_PRIV_MAIL_NAME
+    attributeName: MDPersonator.AddressPrivateMailboxName
+  - outputName: OUT_ADDR_PRE_DIR
+    attributeName: MDPersonator.AddressPreDirection
+  - outputName: OUT_ADDR_SUITE_NAME
+    attributeName: MDPersonator.AddressSuiteName
+  - outputName: OUT_MAIL_DOMAIN_NAME
+    attributeName: MDPersonator.EmailDomainName
+  - outputName: OUT_OCCUPATION
+    attributeName: MDPersonator.Occupation
+  - outputName: OUT_MAILBOX_NAME
+    attributeName: MDPersonator.EmailMailboxName
+  - outputName: OUT_MARTIAL_STATUS
+    attributeName: MDPersonator.MaritalStatus
+  - outputName: OUT_ADDRESS_LINE_2
+    attributeName: MDPersonator.AddressLine2
+  - outputName: OUT_PHONE_SUFFIX
+    attributeName: MDPersonator.PhoneSuffix
+  - outputName: OUT_STATE
+    attributeName: MDPersonator.State
+  - outputName: OUT_POLITICAL_PARTY
+    attributeName: MDPersonator.PoliticalParty
+  - outputName: OUT_NAME_SUFFIX2
+    attributeName: MDPersonator.NameSuffix2
+  - outputName: OUT_COUNTY_FIPS
+    attributeName: MDPersonator.CountyFIPS
+  - outputName: OUT_HOUSEHOLD_INCOME
+    attributeName: MDPersonator.HouseholdIncome
+  - outputName: OUT_ADDR_LOCK_BOX
+    attributeName: MDPersonator.AddressLockBox
+  - outputName: OUT_DATE_OF_BIRTH
+    attributeName: MDPersonator.DateOfBirth
+  - outputName: OUT_ADDR_ST_NAME
+    attributeName: MDPersonator.AddressStreetName
+  - outputName: OUT_ADDRESS_TYPE_CODE
+    attributeName: MDPersonator.AddressTypeCode
+  - outputName: OUT_MAIL_TOP_DOMAIN
+    attributeName: MDPersonator.EmailTopLevelDomain
+  - outputName: OUT_ADDR_PRIV_MAIL_RANGE
+    attributeName: MDPersonator.AddressPrivateMailboxRange
+  - outputName: OUT_UTC
+    attributeName: MDPersonator.UTC
+  - outputName: OUT_OWN_RENT
+    attributeName: MDPersonator.OwnRent
+  - outputName: OUT_ADDRESS_LINE_1
+    attributeName: MDPersonator.AddressLine1
+  - outputName: OUT_NAME_LAST2
+    attributeName: MDPersonator.NameLast2
+  - outputName: OUT_DATE_OF_DEATH
+    attributeName: MDPersonator.DateOfDeath
+  - outputName: OUT_DELIVERY_PC
+    attributeName: MDPersonator.DeliveryPointCode
+  - outputName: OUT_GENDER2
+    attributeName: MDPersonator.Gender2
+afterEnrichers: Manufacturing.entities.Customer.enrichers.Household

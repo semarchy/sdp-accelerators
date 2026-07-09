@@ -1,0 +1,94 @@
+# Product Status entity for the SAP Product / Material 360 accelerator.
+_name: ProductStatus
+_package: sappm360.entities.ProductStatus
+_type: Entity
+primaryKey: sappm360.entities.ProductStatus.ProductStatus.ProductStatusID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ProductStatusCode
+label: Product Status
+documentation: Product Status reference data used by the SAP Product / Material 360 model.
+description: Product Status reference data used by the SAP Product / Material 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book-open-page-variant-outline.svg
+pluralLabel: Product Statuses
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PRODUCT_STATUS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProductStatusID
+    physicalName: PRODUCT_STATUS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Status ID
+    documentation: Unique identifier for the product status.
+    description: Unique identifier for the product status.
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductStatusCode
+    physicalName: PRODUCT_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Status Code
+    documentation: Code for the product status.
+    description: Code for the product status.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Product Status Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProductStatusName
+    physicalName: PRODUCT_STATUS_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Product Status Name
+    documentation: Status used to govern product lifecycle and syndication.
+    description: Status used to govern product lifecycle and syndication.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Product Status Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the product status.
+    description: Description for the product status.
+    mandatory: false
+    length: 512
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Active
+    documentation: Indicates whether the product status is active.
+    description: Indicates whether the product status is active.
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

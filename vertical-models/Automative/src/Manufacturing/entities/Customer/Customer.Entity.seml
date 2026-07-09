@@ -1,0 +1,740 @@
+_name: Customer
+_package: Manufacturing.entities.Customer
+_type: Entity
+primaryKey: Manufacturing.entities.Customer.Customer.CustomerID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 2000000
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 2000000
+label: Customer
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/account-multiple.svg
+pluralLabel: Customers
+description: "Retail customer master record used to consolidate ownership, household, contact, address, and service-history information."
+documentation: "Retail customer master record used to consolidate ownership, household, contact, address, and service-history information. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: true
+historizeMaster: true
+physicalTableName: CUSTOMER
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CustomerID
+    physicalName: CUSTOMER_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Customer record."
+    documentation: "Surrogate identifier for the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Customer ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneticLastName
+    physicalName: PHONETIC_LAST_NAME
+    dataType: String
+    description: "Phonetic representation of the customer last name used for fuzzy matching."
+    documentation: "Phonetic representation of the customer last name used for fuzzy matching."
+    goldenAttribute: true
+    i18ned: false
+    label: Phonetic Last Name
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeocodedLatitude
+    physicalName: GEOCODED_LATITUDE
+    dataType: Decimal
+    description: "Latitude returned by geocoding for the Customer record."
+    documentation: "Latitude returned by geocoding for the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Latitude
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 20
+    scale: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeocodedStreetName
+    physicalName: GEOCODED_STREET_NAME
+    dataType: String
+    description: "Street name returned by geocoding for the Customer record."
+    documentation: "Street name returned by geocoding for the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Street Name
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedFirstName
+    physicalName: NORMALIZED_FIRST_NAME
+    dataType: String
+    description: "Standardized first name value used for matching, validation, or stewardship."
+    documentation: "Standardized first name value used for matching, validation, or stewardship."
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized First Name
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InputZipCode
+    physicalName: INPUT_ZIP_CODE
+    dataType: String
+    description: "Original customer postal or ZIP code value provided by the source system before enrichment."
+    documentation: "Original customer postal or ZIP code value provided by the source system before enrichment."
+    goldenAttribute: true
+    i18ned: false
+    label: Input Zip Code
+    mandatory: false
+    length: 15
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MemberID
+    physicalName: MEMBER_ID
+    dataType: String
+    description: "Customer membership or loyalty identifier used as a matching and relationship key."
+    documentation: "Customer membership or loyalty identifier used as a matching and relationship key."
+    goldenAttribute: true
+    i18ned: false
+    label: Member ID
+    mandatory: false
+    length: 11
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeocodedStreetNumber
+    physicalName: GEOCODED_STREET_NUMBER
+    dataType: String
+    description: "Street number returned by geocoding for the Customer record."
+    documentation: "Street number returned by geocoding for the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Street Number
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastName
+    physicalName: LAST_NAME
+    dataType: String
+    description: "Customer family name as captured from the source or identity record."
+    documentation: Last Name of the customer as per the identity proof
+    goldenAttribute: true
+    i18ned: false
+    label: Last Name
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HouseholdID
+    physicalName: HOUSEHOLD_ID
+    dataType: String
+    description: "String household identifier derived from address enrichment and used for household grouping."
+    documentation: "String household identifier derived from address enrichment and used for household grouping."
+    goldenAttribute: true
+    i18ned: false
+    label: Household ID (String)
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DateOfBirth
+    physicalName: DATE_OF_BIRTH
+    dataType: Date
+    description: "Customer date of birth used for age validation and identity matching."
+    documentation: Date of Birth of the customer as per the identity proof
+    goldenAttribute: true
+    i18ned: false
+    label: Date Of Birth
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InputCity
+    physicalName: INPUT_CITY
+    dataType: String
+    description: "Original city value provided by the source system before enrichment."
+    documentation: "Original city value provided by the source system before enrichment."
+    goldenAttribute: true
+    i18ned: false
+    label: Input City
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InputCountry
+    physicalName: INPUT_COUNTRY
+    dataType: String
+    description: "Original country value provided by the source system before enrichment."
+    documentation: "Original country value provided by the source system before enrichment."
+    goldenAttribute: true
+    i18ned: false
+    label: Input Country
+    mandatory: false
+    length: 80
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneticFirstName
+    physicalName: PHONETIC_FIRST_NAME
+    dataType: String
+    description: "Phonetic representation of the customer first name used for fuzzy matching."
+    documentation: "Phonetic representation of the customer first name used for fuzzy matching."
+    goldenAttribute: true
+    i18ned: false
+    label: Phonetic First Name
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValidEmailDomain
+    physicalName: VALID_EMAIL_DOMAIN
+    dataType: String
+    description: "Email value used to contact or identify the Customer record."
+    documentation: "Email value used to contact or identify the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Valid Email Domain
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InputState
+    physicalName: INPUT_STATE
+    dataType: String
+    description: "Original state value provided by the source system before enrichment."
+    documentation: "Original state value provided by the source system before enrichment."
+    goldenAttribute: true
+    i18ned: false
+    label: Input State
+    mandatory: false
+    length: 80
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeocodedCountry
+    physicalName: GEOCODED_COUNTRY
+    dataType: String
+    description: "Country returned by geocoding for the Customer record."
+    documentation: "Country returned by geocoding for the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Country
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeocodedLocality
+    physicalName: GEOCODED_LOCALITY
+    dataType: String
+    description: "Locality returned by geocoding for the Customer record."
+    documentation: "Locality returned by geocoding for the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Locality
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InputAddressLine
+    physicalName: INPUT_ADDRESS_LINE
+    dataType: String
+    description: "Original address line value provided by the source system before enrichment."
+    documentation: "Original address line value provided by the source system before enrichment."
+    goldenAttribute: true
+    i18ned: false
+    label: Input Address Line
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneGeocodingData
+    physicalName: PHONE_GEOCODING_DATA
+    dataType: String
+    description: "Geographic metadata returned by phone standardization."
+    documentation: "Geographic metadata returned by phone standardization."
+    goldenAttribute: true
+    i18ned: false
+    label: Phone Geocoding Data
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SourceEmail
+    physicalName: SOURCE_EMAIL
+    dataType: String
+    description: "Email value used to contact or identify the Customer record."
+    documentation: "Email value used to contact or identify the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Source Email
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeocodedLongitude
+    physicalName: GEOCODED_LONGITUDE
+    dataType: Decimal
+    description: "Longitude returned by geocoding for the Customer record."
+    documentation: "Longitude returned by geocoding for the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Longitude
+    mandatory: false
+    length: 0
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 20
+    scale: 3
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StandardizedPhone
+    physicalName: STANDARDIZED_PHONE
+    dataType: String
+    description: "Phone number standardized by the phone enrichment plugin."
+    documentation: "Phone number standardized by the phone enrichment plugin."
+    goldenAttribute: true
+    i18ned: false
+    label: Standardized Phone
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SourcePhone
+    physicalName: SOURCE_PHONE
+    dataType: String
+    description: "Original phone number provided by the source system."
+    documentation: "Original phone number provided by the source system."
+    goldenAttribute: true
+    i18ned: false
+    label: Source Phone
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Nickname
+    physicalName: NICKNAME
+    dataType: String
+    description: "Common nickname associated with the customer given name for matching."
+    documentation: "Common nickname associated with the customer given name for matching."
+    goldenAttribute: true
+    i18ned: false
+    label: Nickname
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeocodedPostalCode
+    physicalName: GEOCODED_POSTAL_CODE
+    dataType: String
+    description: "Postal code returned by geocoding for the customer address."
+    documentation: "Postal code returned by geocoding for the customer address."
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Postal Code
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedLastName
+    physicalName: NORMALIZED_LAST_NAME
+    dataType: String
+    description: "Standardized last name value used for matching, validation, or stewardship."
+    documentation: "Standardized last name value used for matching, validation, or stewardship."
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Last Name
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GeocodedState
+    physicalName: GEOCODED_STATE
+    dataType: String
+    description: "State returned by geocoding for the Customer record."
+    documentation: "State returned by geocoding for the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded State
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FirstName
+    physicalName: FIRST_NAME
+    dataType: String
+    description: "Customer given name as captured from the source or identity record."
+    documentation: First Name of the customer as per the identity proof
+    goldenAttribute: true
+    i18ned: false
+    label: First Name
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CleansedEmail
+    physicalName: CLEANSED_EMAIL
+    dataType: String
+    description: "Email value used to contact or identify the Customer record."
+    documentation: "Email value used to contact or identify the Customer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Cleansed Email
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _name: MDPersonator
+    _type: EntityAttribute
+    label: MD Personator
+    physicalName: MD_
+    dataType: Manufacturing.complex_types.MelissaDataPersonatorType
+    description: "Melissa Personator enrichment output containing validated identity, address, phone, and demographic details."
+    documentation: "Melissa Personator enrichment output containing validated identity, address, phone, and demographic details."
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+matcher:
+  _name: SemlQLMatcherCustomer
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 95
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdNewGroup: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: CustomerMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: NormalizedLastNameMemberID
+      condition: |-
+        /*** Last Name exact match ***/ 
+        Record1.NormalizedLastName = Record2.NormalizedLastName
+
+        /*** Social Security Number exact match ***/
+        AND Record1.MemberID = Record2.MemberID
+      label: Exact Name Member ID
+      matchScore: 100
+      documentation: "In the best case scenario, we match people with this rule: match on Name and Member ID across systems."
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: NormalizedNameOrNicknameDOBEmail
+      condition: |-
+        /*** Normalized Name or nickname exact match ***/
+        ( Record1.NormalizedFirstName = Record2.NormalizedFirstName
+           OR Record1.Nickname = Record2.Nickname
+           OR Record1.NormalizedFirstName = Record2.Nickname
+           OR Record1.Nickname =  Record2.NormalizedFirstName
+        ) 
+        AND Record1.NormalizedLastName = Record2.NormalizedLastName
+
+
+        /*** Date of birth exact match ***/
+        AND Record1.DateOfBirth = Record2.DateOfBirth
+
+        /*** Email exact match ***/
+        AND Record1.CleansedEmail = Record2.CleansedEmail
+      label: Normalized Name Or Nickname DOB Email
+      matchScore: 98
+      documentation: 'In the "Normal Ideal" case, we match people with this rule: match on Name, Date of Birth, and Email, across systems.'
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: NormalizedNameOrNicknameDOBPhone
+      condition: |-
+        /*** Normalized Name or nickname exact match ***/
+        ( Record1.NormalizedFirstName = Record2.NormalizedFirstName
+           OR Record1.Nickname = Record2.Nickname 
+           OR Record1.NormalizedFirstName = Record2.Nickname 
+           OR Record1.Nickname =  Record2.NormalizedFirstName
+        ) 
+        AND Record1.NormalizedLastName = Record2.NormalizedLastName
+
+
+        /*** Date of birth exact match ***/
+        AND Record1.DateOfBirth = Record2.DateOfBirth
+
+        /*** Address match ***/
+        AND Record1.StandardizedPhone = Record2.StandardizedPhone
+      label: Normalized Name Or Nickname DOB Phone
+      matchScore: 96
+      documentation: "In this match case scenario, we match people with this rule: match on Name, Normalized Address, and Date of Birth across systems."
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: NormalizedNameOrNicknameAddressEmailPhone
+      condition: |-
+        /*** Normalized Name or nickname exact match ***/
+        ( Record1.NormalizedFirstName = Record2.NormalizedFirstName
+           OR Record1.Nickname = Record2.Nickname 
+           OR Record1.NormalizedFirstName = Record2.Nickname 
+           OR Record1.Nickname =  Record2.NormalizedFirstName
+        ) 
+        AND Record1.NormalizedLastName = Record2.NormalizedLastName
+
+
+        /*** Address match ***/
+        AND Record1.GeocodedStreetNumber= Record2.GeocodedStreetNumber
+        AND Record1.GeocodedStreetName = Record2.GeocodedStreetName
+        AND Record1.GeocodedLocality = Record2.GeocodedLocality
+        AND Record1.GeocodedState = Record2.GeocodedState
+        AND Record1.GeocodedPostalCode = Record2.GeocodedPostalCode
+        AND Record1.GeocodedCountry = Record2.GeocodedCountry
+
+        /*** Cleansed contact info ***/
+        AND Record1.StandardizedPhone = Record2.StandardizedPhone
+        AND Record1.CleansedEmail = Record2.CleansedEmail
+      label: Normalized Name Or Nickname Address Email Phone
+      matchScore: 94
+      documentation: Match by exact Normalized Name/NickName, Address, Email and Phone
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: PhoneticNameAddressEmailPhone
+      condition: |-
+        /*** Phonetic Name match ***/
+        Record1.PhoneticFirstName = Record2.PhoneticFirstName
+        AND Record1.PhoneticLastName = Record2.PhoneticLastName
+
+        /*** Address match ***/
+        AND Record1.GeocodedStreetNumber = Record2.GeocodedStreetNumber
+        AND Record1.GeocodedStreetName = Record2.GeocodedStreetName
+        AND Record1.GeocodedLocality = Record2.GeocodedLocality
+        AND Record1.GeocodedState = Record2.GeocodedState
+        AND Record1.GeocodedPostalCode = Record2.GeocodedPostalCode
+        AND Record1.GeocodedCountry = Record2.GeocodedCountry
+
+        /*** Cleansed contact info ***/
+        AND Record1.StandardizedPhone = Record2.StandardizedPhone
+        AND Record1.CleansedEmail = Record2.CleansedEmail
+      label: Phonetic Name Address Email Phone
+      matchScore: 78
+      documentation: Match by exact Phonetized Name, address, Email and Phone
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: ExactEmailMatch
+      condition: Record1.CleansedEmail = Record2.CleansedEmail
+      label: Exact Email Match
+      matchScore: 68
+      description: "Email is a strong match because most customers have a unique email, but it could be shared in a family situation so it is a useful suggestion."
+      documentation: Match by exact Normalized Name/NickName, Address, Email and Phone
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SimilarNameAddress
+      condition: >-
+        /*** Matching on similar names, catching typos ***/
+
+        ( SEM_EDIT_DISTANCE_SIMILARITY( Record1.FirstName, Record2.FirstName ) >
+        75
+
+        AND SEM_EDIT_DISTANCE_SIMILARITY(Record1.LastName, Record2.LastName ) >
+        75
+
+        )
+
+        OR
+
+        ( SEM_EDIT_DISTANCE_SIMILARITY(
+        Record1.NormalizedFirstName,  Record2.NormalizedFirstName ) > 80
+
+        AND SEM_EDIT_DISTANCE_SIMILARITY( Record1.NormalizedLastName,
+        Record2.NormalizedLastName ) > 80 
+
+        )
+
+
+        /*** Match on similar address ***/
+
+        AND  SEM_EDIT_DISTANCE_SIMILARITY( Record1.GeocodedLocality,
+        Record2.GeocodedLocality)  > 75
+
+        AND  SEM_EDIT_DISTANCE_SIMILARITY(
+        Record1.GeocodedStreetName,  Record2.GeocodedStreetName ) > 75
+
+
+        /*** Exact match on zip code, state, and country ***/
+
+        AND Record1.GeocodedState = Record2.GeocodedState
+
+        AND Record1.GeocodedPostalCode = Record2.GeocodedPostalCode
+
+        AND Record1.GeocodedCountry = Record2.GeocodedCountry
+      label: Similar Name Address
+      matchScore: 68
+      documentation: Fuzzy matching rule to catch typos with name and address data entry
+      usingMatchOn: false

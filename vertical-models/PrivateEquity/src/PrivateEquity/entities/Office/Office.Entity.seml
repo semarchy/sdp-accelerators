@@ -1,0 +1,125 @@
+_name: Office
+_package: PrivateEquity.entities.Office
+_type: Entity
+primaryKey: PrivateEquity.entities.Office.Office.ID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1000
+label: Office
+description: "Represents an office location associated with legal entities and contacts, including phone and address data."
+documentation: "Captures office names, phone numbers, and geocoded address details used by contacts and legal entities."
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/office-building-marker.svg
+pluralLabel: Offices
+historizeGolden: true
+historizeMaster: false
+physicalTableName: OFFICE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    description: "Unique identifier for the office record."
+    documentation: "Unique identifier for the office record. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Phone
+    physicalName: PHONE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Phone
+    description: "Phone number supplied for the office."
+    documentation: "Phone number supplied for the office. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StandarizedPhone
+    physicalName: STANDARIZED_PHONE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Standarized Phone
+    description: "Standardized office phone number generated for consistent contact and office communication."
+    documentation: "Standardized office phone number generated for consistent contact and office communication. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    description: "Business name used to identify the office record in stewardship screens and integrations."
+    documentation: "Business name used to identify the office record in stewardship screens and integrations. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: true
+    length: 2000
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalizedName
+    physicalName: NORMALIZED_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Name
+    description: "Uppercased and trimmed office name used for matching and validation."
+    documentation: "Uppercased and trimmed office name used for matching and validation. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _name: GeocodedAddress
+    _type: EntityAttribute
+    label: Geocoded Address
+    description: "Geocoded address generated from office address inputs."
+    documentation: "Geocoded address generated from office address inputs. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    physicalName: GEO
+    dataType: PrivateEquity.complex_types.GeocodedAddressType
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+  - _name: SourceAddress
+    _type: EntityAttribute
+    label: Source Address
+    description: "Source address captured for office geocoding and location management."
+    documentation: "Source address captured for office geocoding and location management. Use this attribute to support Legal Entity accelerator stewardship, validation, search, and downstream integration."
+    physicalName: SOU
+    dataType: PrivateEquity.complex_types.InputAddressType
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO

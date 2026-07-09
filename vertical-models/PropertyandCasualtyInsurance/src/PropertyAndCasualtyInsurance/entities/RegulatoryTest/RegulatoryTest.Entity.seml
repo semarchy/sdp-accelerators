@@ -1,0 +1,98 @@
+_package: PropertyAndCasualtyInsurance.entities.RegulatoryTest
+_type: Entity
+_name: RegulatoryTest
+label: Regulatory Test
+pluralLabel: Regulatory Tests
+entityType: BASIC
+physicalTableName: REGULATORY_TEST
+iconUrl: images://mdi/book.svg
+description: "Represents a regulatory or compliance validation rule associated with an insurance plan."
+documentation: "Represents a regulatory or compliance validation rule associated with an insurance plan."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: RegulatoryTestID
+    label: Regulatory Test ID
+    physicalName: REGULATORY_TEST_ID
+    dataType: String
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: RegulatoryTestCode
+    label: Regulatory Test Code
+    physicalName: REGULATORY_TEST_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier representing a regulatory or compliance validation rule."
+    documentation: "Unique identifier representing a regulatory or compliance validation rule."
+  - _type: EntityAttribute
+    _name: Jurisdiction
+    label: Jurisdiction
+    physicalName: JURISDICTION
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Regulatory authority or jurisdiction governing the validation rule."
+    documentation: "Regulatory authority or jurisdiction governing the validation rule."
+  - _type: EntityAttribute
+    _name: TestName
+    label: Test Name
+    physicalName: TEST_NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Name of the compliance or validation test."
+    documentation: "Name of the compliance or validation test."
+  - _type: EntityAttribute
+    _name: TestDescription
+    label: Test Description
+    physicalName: TEST_DESCRIPTION
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Detailed explanation of the regulatory rule logic and business purpose."
+    documentation: "Detailed explanation of the regulatory rule logic and business purpose."
+  - _type: EntityAttribute
+    _name: Severity
+    label: Severity
+    physicalName: SEVERITY
+    dataType: PropertyAndCasualtyInsurance.list_of_values.RegulatoryTestSeverity
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Severity level triggered upon test failure (Warning, Error, Blocking)."
+    documentation: "Severity level triggered upon test failure (Warning, Error, Blocking)."
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which this regulatory rule becomes enforceable."
+    documentation: "Date from which this regulatory rule becomes enforceable."
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date until which this regulatory rule remains enforceable."
+    documentation: "Date until which this regulatory rule remains enforceable."
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: PropertyAndCasualtyInsurance.entities.RegulatoryTest.RegulatoryTest.RegulatoryTestID

@@ -1,0 +1,132 @@
+# This file defines the Currency entity in the Legal Entity application.
+# It includes attributes and properties for managing currency values, such as ISO codes, symbols, and effective dates.
+_package: LegalEntity.entities.Currency
+_type: Entity
+_name: Currency
+label: Currency
+iconUrl: images://le-img-lib/cash.svg
+pluralLabel: Currencies
+description: Represents a currency, including its ISO codes, symbols, and effective dates. Used to manage and reference currency values in the Legal Entity model.
+documentation: The Currency entity stores information about world currencies, including ISO 4217 codes, symbols, and effective periods. It is used to standardize currency data across the application and support reference data management for financial transactions and reporting.
+enableDelete: true
+attributes:
+    - _name: ID
+      dataType: String
+      _type: EntityAttribute
+      mandatory: true
+      mandatoryValidationScope: PRE_CONSO
+      i18ned: false
+      length: 3
+      multiValued: false
+      searchable: true
+      physicalName: ID
+      label: ID
+      description: The ISO 4217 alphabetic code for the currency
+      documentation: The ISO 4217 alphabetic code for the currency
+    - _name: Name
+      dataType: String
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 128
+      multiValued: false
+      searchable: true
+      physicalName: NAME
+      label: Name
+      description: The full name of the currency.
+      documentation: The official name of the currency (e.g., "US Dollar", "Euro").
+    - _name: AlphabeticCode
+      dataType: String
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 128
+      multiValued: false
+      searchable: true
+      physicalName: ALPHABETIC_CODE
+      label: ISO 4217 Alphabetic Code
+      description: The ISO 4217 alphabetic code for the currency.
+      documentation: The three-letter ISO 4217 alphabetic code representing the currency (e.g., "USD", "EUR").
+    - _name: NumericCode
+      dataType: Integer
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      precision: 10
+      length: 0
+      multiValued: false
+      searchable: true
+      physicalName: NUMERIC_CODE
+      label: ISO 4217 Numeric Code
+      description: The ISO 4217 numeric code for the currency.
+      documentation: The three-digit ISO 4217 numeric code for the currency. [ISO 4217 Currency Codes](https://www.iso.org/iso-4217-currency-codes.html)
+    - _name: MinorUnit
+      dataType: ShortInteger
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      precision: 5
+      length: 0
+      multiValued: false
+      searchable: true
+      physicalName: MINOR_UNIT
+      label: Minor Unit
+      description: Number of decimal places used for the currency.
+      documentation: The number of decimal places (minor units) used to represent the currency (e.g., 2 for USD, 0 for JPY).
+    - _name: CommonSymbol
+      dataType: String
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 128
+      multiValued: false
+      searchable: true
+      physicalName: COMMON_SYMBOL
+      label: Common Symbol
+      description: The common symbol for the currency.
+      documentation: The symbol commonly used to represent the currency (e.g., "$", "€").
+    - _name: EffectiveFrom
+      dataType: Date
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 0
+      multiValued: false
+      searchable: true
+      physicalName: EFFECTIVE_FROM
+      label: Effective From
+      description: The date from which the currency is effective.
+      documentation: The start date when the currency becomes effective or valid in the system.
+    - _name: EffectiveTo
+      dataType: Date
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 0
+      multiValued: false
+      searchable: true
+      physicalName: EFFECTIVE_TO
+      label: Effective To
+      description: The date until which the currency is effective.
+      documentation: The end date until which the currency is considered valid in the system.
+    - _name: IsCurrent
+      dataType: Boolean
+      _type: EntityAttribute
+      mandatory: false
+      i18ned: false
+      length: 0
+      multiValued: false
+      searchable: true
+      physicalName: IS_CURRENT
+      label: Is Current
+      description: Indicates if the currency is currently in use.
+      documentation: Boolean flag indicating whether the currency is currently active and in use.
+entityType: BASIC
+historizeGolden: false
+historizeMaster: false
+physicalTableName: CURRENCY
+primaryKey: LegalEntity.entities.Currency.Currency.ID
+sourceIdGeneration:
+  mode: MANUAL
+
+  

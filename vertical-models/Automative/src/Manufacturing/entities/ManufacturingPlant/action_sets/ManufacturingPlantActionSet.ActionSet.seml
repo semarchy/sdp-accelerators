@@ -1,0 +1,63 @@
+_name: ManufacturingPlantActionSet
+_package: Manufacturing.entities.ManufacturingPlant.action_sets
+_type: ActionSet
+entity: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant
+label: Manufacturing Plant Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorManufacturingPlants
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.ManufacturingPlant.steppers.AuthorManufacturingPlants
+  - _name: EditAuthorManufacturingPlants
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.ManufacturingPlant.steppers.AuthorManufacturingPlants
+  - _name: MassUpdateAuthorManufacturingPlants
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: Manufacturing.entities.ManufacturingPlant.steppers.AuthorManufacturingPlants
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorManufacturingPlants
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.ManufacturingPlant.steppers.AuthorManufacturingPlants
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

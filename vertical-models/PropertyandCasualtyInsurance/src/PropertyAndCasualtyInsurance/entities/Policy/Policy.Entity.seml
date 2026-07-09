@@ -1,0 +1,213 @@
+_package: PropertyAndCasualtyInsurance.entities.Policy
+_type: Entity
+_name: Policy
+label: Policy
+pluralLabel: Policy
+physicalTableName: POLICY
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PolicyID
+    label: Policy ID
+    physicalName: POLICY_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "System-generated golden identifier uniquely representing a consolidated policy record across source systems."
+    documentation: "System-generated golden identifier uniquely representing a consolidated policy record across source systems."
+  - _type: EntityAttribute
+    _name: PolicyNumber
+    label: Policy Number
+    physicalName: POLICY_NUMBER
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Carrier-issued business policy number visible to customers and agents."
+    documentation: "Carrier-issued business policy number visible to customers and agents."
+  - _type: EntityAttribute
+    _name: PolicyVersion
+    label: Policy Version
+    physicalName: POLICY_VERSION
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Version or iteration of the policy when explicit versioning is supported by the carrier."
+    documentation: "Version or iteration of the policy when explicit versioning is supported by the carrier."
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: Effective Date
+    physicalName: EFFECTIVE_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which policy coverage becomes effective."
+    documentation: "Date on which policy coverage becomes effective."
+  - _type: EntityAttribute
+    _name: ExpirationDate
+    label: Expiration Date
+    physicalName: EXPIRATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which policy coverage expires."
+    documentation: "Date on which policy coverage expires."
+  - _type: EntityAttribute
+    _name: IssueDate
+    label: Issue Date
+    physicalName: ISSUE_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the policy was formally issued or bound by the carrier."
+    documentation: "Date the policy was formally issued or bound by the carrier."
+  - _type: EntityAttribute
+    _name: CancelDate
+    label: Cancel Date
+    physicalName: CANCEL_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the policy was cancelled prior to expiration, if applicable."
+    documentation: "Date the policy was cancelled prior to expiration, if applicable."
+  - _type: EntityAttribute
+    _name: CancellationReason
+    label: Cancellation Reason
+    physicalName: CANCELLATION_REASON
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Reason code explaining why the policy was cancelled or non-renewed."
+    documentation: "Reason code explaining why the policy was cancelled or non-renewed."
+  - _type: EntityAttribute
+    _name: JurisdictionState
+    label: Jurisdiction State
+    physicalName: JURISDICTION_STATE
+    dataType: String
+    length: 10
+    mandatory: false
+    searchable: true
+    description: "State or jurisdiction governing the policy contract."
+    documentation: "State or jurisdiction governing the policy contract."
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: Currency Code
+    physicalName: CURRENCY_CODE
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+    description: "Currency in which premiums, limits, and claims are denominated."
+    documentation: "Currency in which premiums, limits, and claims are denominated."
+  - _type: EntityAttribute
+    _name: WrittenPremium
+    label: Written Premium
+    physicalName: WRITTEN_PREMIUM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Total premium written for the policy term at issuance."
+    documentation: "Total premium written for the policy term at issuance."
+  - _type: EntityAttribute
+    _name: TotalPremium
+    label: Total Premium
+    physicalName: TOTAL_PREMIUM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Total premium payable by the insured including fees and adjustments."
+    documentation: "Total premium payable by the insured including fees and adjustments."
+  - _type: EntityAttribute
+    _name: LastPremiumPaidDate
+    label: Last Premium Paid Date
+    physicalName: LAST_PREMIUM_PAID_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which the most recent premium payment was successfully received for the policy."
+    documentation: "Date on which the most recent premium payment was successfully received for the policy."
+  - _type: EntityAttribute
+    _name: LastPremiumPaidAmount
+    label: Last Premium Paid Amount
+    physicalName: LAST_PREMIUM_PAID_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Amount of the most recent successfully received premium payment."
+    documentation: "Amount of the most recent successfully received premium payment."
+  - _type: EntityAttribute
+    _name: OutstandingPremiumAmount
+    label: Outstanding Premium Amount
+    physicalName: OUTSTANDING_PREMIUM_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Remaining unpaid premium balance associated with the policy."
+    documentation: "Remaining unpaid premium balance associated with the policy."
+  - _type: EntityAttribute
+    _name: PaymentDueDate
+    label: Payment Due Date
+    physicalName: PAYMENT_DUE_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Next scheduled premium payment due date for the policy billing cycle."
+    documentation: "Next scheduled premium payment due date for the policy billing cycle."
+  - _type: EntityAttribute
+    _name: AutoPayIndicator
+    label: Auto Pay Indicator
+    physicalName: AUTO_PAY_INDICATOR
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the policyholder is enrolled in automatic recurring premium payments."
+    documentation: "Indicates whether the policyholder is enrolled in automatic recurring premium payments."
+  - _type: EntityAttribute
+    _name: GracePeriodEndDate
+    label: Grace Period End Date
+    physicalName: GRACE_PERIOD_END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which the non-payment grace period expires and policy may become subject to lapse processing."
+    documentation: "Date on which the non-payment grace period expires and policy may become subject to lapse processing."
+  - _type: EntityAttribute
+    _name: PolicyLapseIndicator
+    label: Policy Lapse Indicator
+    physicalName: POLICY_LAPSE_INDICATOR
+    dataType: Boolean
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the policy has entered a lapsed state due to non-payment of premium obligations."
+    documentation: "Indicates whether the policy has entered a lapsed state due to non-payment of premium obligations."
+  - _type: EntityAttribute
+    _name: ReinstatementDate
+    label: Reinstatement Date
+    physicalName: REINSTATEMENT_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which a previously cancelled or lapsed policy was reinstated and returned to active coverage status."
+    documentation: "Date on which a previously cancelled or lapsed policy was reinstated and returned to active coverage status."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.Policy.Policy.PolicyID
+entityType: ID_MATCHED

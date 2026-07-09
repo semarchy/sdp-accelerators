@@ -1,0 +1,70 @@
+_name: Nickname
+_package: Manufacturing.entities.Nickname
+_type: Entity
+primaryKey: Manufacturing.entities.Nickname.Nickname.GivenName
+sourceIdGeneration:
+  mode: MANUAL
+label: Nickname
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Nicknames
+description: "Reference data mapping given names to common nicknames for customer matching and household analysis."
+documentation: "Reference data mapping given names to common nicknames for customer matching and household analysis. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: false
+historizeMaster: false
+physicalTableName: NICKNAME
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: GivenName
+    physicalName: GIVEN_NAME
+    dataType: String
+    description: "Formal given name associated with one or more nicknames."
+    documentation: "Formal given name associated with one or more nicknames."
+    goldenAttribute: true
+    i18ned: false
+    label: Given Name
+    mandatory: true
+    length: 128
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AllNicknames
+    physicalName: ALL_NICKNAMES
+    dataType: String
+    description: "List of known nicknames associated with the given name."
+    documentation: "List of known nicknames associated with the given name."
+    goldenAttribute: true
+    i18ned: false
+    label: All Nicknames
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TopNickname
+    physicalName: TOP_NICKNAME
+    dataType: String
+    description: "Most common nickname associated with the given name."
+    documentation: "Most common nickname associated with the given name."
+    goldenAttribute: true
+    i18ned: false
+    label: Top Nickname
+    mandatory: true
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

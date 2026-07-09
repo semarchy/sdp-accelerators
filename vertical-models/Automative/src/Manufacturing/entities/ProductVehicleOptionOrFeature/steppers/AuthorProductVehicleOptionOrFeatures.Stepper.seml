@@ -1,0 +1,125 @@
+_name: AuthorProductVehicleOptionOrFeatures
+_package: Manufacturing.entities.ProductVehicleOptionOrFeature.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductVehicleOptionOrFeature.ProductVehicleOptionOrFeature
+rootStep:
+  _name: ProductVehicleOptionOrFeatures
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductVehicleOptionOrFeature.collection_views.ProductVehicleOptionOrFeatureCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Vehicle Option Or Features
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.VehicleOptionOrFeaturesVehicle.Vehicle
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.VehicleOptionOrFeaturesProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.VehicleOptionOrFeaturesProductOptionOrFeatureValue.OptionOrFeatureValue
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.VehicleOptionOrFeaturesProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.VehicleOptionOrFeaturesVehicle.Vehicle
+  stepTriggers: []
+  childSteps:
+    - _name: ProductVehicleOptionOrFeature
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Vehicle Option Or Feature
+      formTab: Manufacturing.entities.ProductVehicleOptionOrFeature.forms.ProductVehicleOptionOrFeatureForm.ProductVehicleOptionOrFeature
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ProductVehicleOptionOrFeature.forms.ProductVehicleOptionOrFeatureForm.ProductVehicleOptionOrFeature.FDN_Vehicle
+          referencePickerCollectionView: Manufacturing.entities.ProductVehicle.collection_views.ProductVehicleCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ProductVehicleOptionOrFeature.forms.ProductVehicleOptionOrFeatureForm.ProductVehicleOptionOrFeature.FDN_OptionOrFeatureValue
+          referenceFilter: Record.FDN_ProductTrimOptionOrFeature =
+            Referenced.FDN_OptionOrFeature
+          referencePickerCollectionView: Manufacturing.entities.ProductOptionOrFeatureValue.collection_views.ProductOptionOrFeatureValueCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.ProductVehicleOptionOrFeature.forms.ProductVehicleOptionOrFeatureForm.ProductVehicleOptionOrFeature.FDN_ProductTrimOptionOrFeature
+          referenceFilter: Referenced.FDN_Trim = Record.Vehicle.FDN_Trim
+          referencePickerCollectionView: Manufacturing.entities.ProductTrimOptionOrFeature.collection_views.ProductTrimOptionOrFeatureCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesVehicle.Vehicle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesProductOptionOrFeatureValue.OptionOrFeatureValue
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesVehicle.Vehicle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesProductOptionOrFeatureValue.OptionOrFeatureValue
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesVehicle.Vehicle
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.VehicleOptionOrFeaturesVehicle.Vehicle
+      stepTriggers: []
+label: Author Vehicle Option Or Features
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.VehicleOptionOrFeaturesVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.VehicleOptionOrFeaturesProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.VehicleOptionOrFeaturesProductOptionOrFeatureValue.OptionOrFeatureValue
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.VehicleOptionOrFeaturesProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.VehicleOptionOrFeaturesVehicle.Vehicle
+triggers: []

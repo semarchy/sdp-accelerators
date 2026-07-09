@@ -1,0 +1,91 @@
+_package: PropertyAndCasualtyInsurance.entities.InsurancePlan.collection_views
+_type: CollectionView
+_name: InsurancePlanCollectionView
+entity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+default: true
+displayCard: PropertyAndCasualtyInsurance.entities.InsurancePlan.display_cards.InsurancePlanDisplayCard
+tableDisplayCardColumnWidth: 300
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Insurance Plan
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: InsurancePlanID
+    value: InsurancePlanID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PlanCode
+    value: PlanCode
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    
+  - _type: TextColumn
+    _name: PlanVersion
+    value: PlanVersion
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_InsuranceType
+    columnAlign: LEFT
+    dataType: STRING
+    label: Insurance Type
+    referencedEntity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType
+    useCustomLabel: true
+    value: FDN_InsuranceType
+    visibleByDefault: true
+    defaultWidth: 300
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '300'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: EffectiveFrom
+    value: EffectiveFrom
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EffectiveTo
+    value: EffectiveTo
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: PlanStatus
+    value: PlanStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      textColorValueInterpreter: LITERAL
+      useAvatarInMenu: '1'
+  - _type: TextColumn
+    _name: FilingReference
+    value: FilingReference
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true

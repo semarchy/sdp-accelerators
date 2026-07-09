@@ -1,0 +1,31 @@
+_package: PropertyAndCasualtyInsurance.references
+_name: InsurableAssetHasAssetStatus
+description: "Identifies the managed asset lifecycle status."
+_type: Reference
+label: "Asset Status"
+
+fromEntity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+fromRoleLabel: "Insurable Asset"
+fromRoleName: InsurableAsset
+fromRolePluralLabel: "Insurable Assets"
+physicalName: INS_ASSET_HAS_STATUS
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.AssetStatus.AssetStatus
+toRoleLabel: "Asset Status"
+toRoleName: AssetStatus
+documentation: "Identifies the managed asset lifecycle status."
+toRolePhysicalName: ASSET_STATUS_CODE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: AssetStatus
+  label: "Asset Status"
+  description: "Identifies the managed asset lifecycle status."
+  physicalName: ASSET_STATUS_CODE
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.AssetStatus.AssetStatus

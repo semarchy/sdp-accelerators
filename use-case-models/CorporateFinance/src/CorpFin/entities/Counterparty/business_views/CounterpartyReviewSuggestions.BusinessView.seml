@@ -1,0 +1,66 @@
+_package: CorpFin.entities.Counterparty.business_views
+_type: BusinessView
+_name: CounterpartyReviewSuggestions
+
+entity: CorpFin.entities.Counterparty.Counterparty
+label: Counterparties
+rootLabel: Counterparty
+rootPluralLabel: Counterparties
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: images://mdi/account-alert.svg
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Counterparty
+  entity: CorpFin.entities.Counterparty.Counterparty
+
+  actionSet: CorpFin.entities.Counterparty.action_sets.CounterpartyReviewSuggestionsActionSet
+  collection: CorpFin.entities.Counterparty.collection_views.CounterpartyReviewSuggestionsCollectionView
+  form: CorpFin.entities.Counterparty.forms.CounterpartyForm
+  displayCard: CorpFin.entities.Counterparty.display_cards.CounterpartyDisplayCard
+
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntityReference
+        ref: CorpFin.entities.Counterparty.business_views.CounterpartyReviewSuggestions.Counterparty
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  # sortExpression: ''
+
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

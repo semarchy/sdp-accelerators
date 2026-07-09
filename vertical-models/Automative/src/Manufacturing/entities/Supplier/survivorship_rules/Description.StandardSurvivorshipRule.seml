@@ -1,0 +1,19 @@
+_type: StandardSurvivorshipRule
+entity: Manufacturing.entities.Supplier.Supplier
+_package: Manufacturing.entities.Supplier.survivorship_rules
+defaultRule: false
+_name: Description
+consolidationOrderByExpression: |-
+  LENGTH(Description) DESC
+
+  /* We want the longest Description to survive*/
+consolidationSkipNulls: true
+consolidationStrategy: CUSTOM_RANKING
+label: Description
+description: "Selects the surviving supplier description during consolidation."
+publisherRankings: []
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: Description

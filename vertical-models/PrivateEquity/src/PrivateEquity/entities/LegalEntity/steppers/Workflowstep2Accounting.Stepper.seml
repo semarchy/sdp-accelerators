@@ -1,0 +1,377 @@
+_name: Workflowstep2Accounting
+_package: PrivateEquity.entities.LegalEntity.steppers
+_type: Stepper
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+rootStep:
+  _name: LegalEntitys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.LegalEntity.collection_views.LegalEntityCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Legal Entities
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LegalEntitiesCategory.Category
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: PrivateEquity.entities.LegalEntity.LegalEntity.SemlQLMatcherLegalEntity
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FiscalYearEnd
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LegalEntitiesEntityStructure.EntityStructure
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: PrivateEquity.entities.LegalEntity.LegalEntity.EnableTaxSoftware
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LegalEntitiesSubcategory.Subcategory
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FinalInTY22
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.LegalEntitiesEntityType.EntityType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LEState.State
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LegalEntitiesGeographyType.GeographyType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LegalEntitiesCurrency.Currency
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LECountry.Country
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: PrivateEquity.entities.LegalEntity.LegalEntity.K1DueJune30
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: PrivateEquity.entities.LegalEntity.LegalEntity.NewInTY22
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LegalEntitiesStartegy.Startegy
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FormADVPF
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: PrivateEquity.entities.LegalEntity.validations.DetectSpecialCharacter
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LegalEntitiesStatus.Status
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LegalEntitiesEntityType.EntityType
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: PrivateEquity.entities.LegalEntity.validations.USFEIN
+  stepTriggers: []
+  childSteps:
+    - _name: LegalEntity
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Legal Entity
+      formTab: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity
+      formStepEnrichers:
+        - enricher: PrivateEquity.entities.LegalEntity.enrichers.GeocodeUsingGoogle
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.LegalEntity.enrichers.NormalizeEntityName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.LegalEntity.enrichers.SetStatusPendingValidation
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: PrivateEquity.entities.LegalEntity.enrichers.SetStatusActive
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: PrivateEquity.entities.LegalEntity.enrichers.SetStatusDraft
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: PrivateEquity.entities.LegalEntity.enrichers.AutoPopulateCurrency
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.AccountingInformation.Container4.Container6.FDN_Startegy
+          referencePickerCollectionView: PrivateEquity.entities.Startegy.collection_views.StartegyCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.SystemLegalInformation.Container.Container3.FDN_State
+          referenceFilter: Referenced.FDN_Country = Record.FDN_Country
+          referencePickerCollectionView: PrivateEquity.entities.State.collection_views.StateCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.AccountingInformation.Container4.Container6.FDN_Category
+          referencePickerCollectionView: PrivateEquity.entities.Category.collection_views.CategoryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.SystemLegalInformation.Container.Container2.FDN_Status
+          referencePickerCollectionView: PrivateEquity.entities.Status.collection_views.StatusCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.AccountingInformation.Container4.Container5.FDN_Currency
+          referencePickerCollectionView: PrivateEquity.entities.Currency.collection_views.CurrencyCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.AccountingInformation.Container4.Container6.FDN_Subcategory
+          referenceFilter: Referenced.FDN_Category = Record.FDN_Category
+          referencePickerCollectionView: PrivateEquity.entities.Subcategory.collection_views.SubcategoryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.SystemLegalInformation.Container.Container3.FDN_GeographyType
+          referencePickerCollectionView: PrivateEquity.entities.GeographyType.collection_views.GeographyTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.SystemLegalInformation.Container.Container2.FDN_EntityType
+          referencePickerCollectionView: PrivateEquity.entities.EntityType.collection_views.EntityTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.SystemLegalInformation.Container.Container3.FDN_EntityStructure
+          referencePickerCollectionView: PrivateEquity.entities.EntityStructure.collection_views.EntityStructureCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.LegalEntity.forms.EntityEditingFormAccounting.LegalEntity.SystemLegalInformation.Container.Container3.FDN_Country
+          referencePickerCollectionView: PrivateEquity.entities.Country.collection_views.CountryCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FiscalYearEnd
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesEntityStructure.EntityStructure
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LECountry.Country
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesStartegy.Startegy
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FormADVPF
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.NewInTY22
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FinalInTY22
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesStatus.Status
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.K1DueJune30
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesCategory.Category
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: PrivateEquity.entities.LegalEntity.validations.USFEIN
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LEState.State
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: PrivateEquity.entities.LegalEntity.validations.DetectSpecialCharacter
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesGeographyType.GeographyType
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesEntityType.EntityType
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesSubcategory.Subcategory
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesCurrency.Currency
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.EnableTaxSoftware
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.LegalEntitiesEntityType.EntityType
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesGeographyType.GeographyType
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesEntityType.EntityType
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.NewInTY22
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LEState.State
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesStatus.Status
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesCurrency.Currency
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesSubcategory.Subcategory
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FinalInTY22
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.EnableTaxSoftware
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: PrivateEquity.entities.LegalEntity.validations.DetectSpecialCharacter
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.LegalEntitiesEntityType.EntityType
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: PrivateEquity.entities.LegalEntity.validations.USFEIN
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LECountry.Country
+        - onStepExit: WARN
+          validationType: DETECT_DUPS
+          matcher: PrivateEquity.entities.LegalEntity.LegalEntity.SemlQLMatcherLegalEntity
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.K1DueJune30
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesStartegy.Startegy
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FormADVPF
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FiscalYearEnd
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesEntityStructure.EntityStructure
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LegalEntitiesCategory.Category
+      stepTriggers:
+        - _type: StepEnricherTrigger
+          enricher: PrivateEquity.entities.LegalEntity.enrichers.SetStatusPendingValidation
+          _name: SetStausPendingValidation
+          event: ON_STEP_EXIT_POST_VALID
+label: Workflowstep2 Accounting
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: LOV
+    attribute: PrivateEquity.entities.LegalEntity.LegalEntity.K1DueJune30
+  - onStepperFinish: WARN
+    validationType: LOV
+    attribute: PrivateEquity.entities.LegalEntity.LegalEntity.NewInTY22
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LegalEntitiesCategory.Category
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LegalEntitiesStatus.Status
+  - onStepperFinish: WARN
+    validationType: LOV
+    attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FormADVPF
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: PrivateEquity.entities.LegalEntity.validations.DetectSpecialCharacter
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: PrivateEquity.entities.LegalEntity.validations.USFEIN
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LegalEntitiesSubcategory.Subcategory
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LegalEntitiesStartegy.Startegy
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LegalEntitiesEntityStructure.EntityStructure
+  - onStepperFinish: WARN
+    validationType: LOV
+    attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FiscalYearEnd
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LECountry.Country
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.LegalEntitiesEntityType.EntityType
+  - onStepperFinish: WARN
+    validationType: LOV
+    attribute: PrivateEquity.entities.LegalEntity.LegalEntity.EnableTaxSoftware
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LegalEntitiesGeographyType.GeographyType
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LEState.State
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LegalEntitiesCurrency.Currency
+  - onStepperFinish: WARN
+    validationType: LOV
+    attribute: PrivateEquity.entities.LegalEntity.LegalEntity.FinalInTY22
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LegalEntitiesEntityType.EntityType
+  - onStepperFinish: WARN
+    validationType: DETECT_DUPS
+triggers: []

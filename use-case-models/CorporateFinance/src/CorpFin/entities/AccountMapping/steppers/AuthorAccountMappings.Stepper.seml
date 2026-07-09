@@ -1,0 +1,161 @@
+_package: CorpFin.entities.AccountMapping.steppers
+_type: Stepper
+_name: AuthorAccountMappings
+entity: CorpFin.entities.AccountMapping.AccountMapping
+label: Account Mappings
+
+# handles multi-entities: AccountMapping and SplitAllocation
+modelJob: CorpFin.model_jobs.AccountMappingStepperJob
+
+
+rootStep:
+  _type: CollectionStep
+  _name: AccountMappings
+  label: Account Mappings
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: CorpFin.entities.AccountMapping.collection_views.AccountMappingCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+
+  childSteps:
+    - _type: FormStep
+      _name: AccountMapping
+      label: Account Mapping
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CorpFin.entities.AccountMapping.forms.AccountMappingForm.AccountMapping
+
+      referenceFormFieldConfigs:
+        - enableUserSort: true  
+        # List of Source Accounts must be filtered based on the SOURCE Chart of Accounts selected at the Mapping Set level
+          fdnFormField: CorpFin.entities.AccountMapping.forms.AccountMappingForm.AccountMapping.Container1.Container3.MappingDetails.FDN_sourceAccount
+          referencePickerType: AUTO_COMPLETE                         
+          referenceFilter: Referenced.FDN_chartOfAccounts = Record.mappingSet.FDN_sourceChartOfAccounts
+        - enableUserSort: true  
+        # List of Target Account - if applicable - must be filtered based on the TARGET Chart of Accounts selected at the Mapping Set level
+          fdnFormField: CorpFin.entities.AccountMapping.forms.AccountMappingForm.AccountMapping.Container1.Container3.TargetAccount.FDN_targetAccount
+          referencePickerType: AUTO_COMPLETE                         
+          referenceFilter: Referenced.FDN_chartOfAccounts = Record.mappingSet.FDN_targetChartOfAccounts
+
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: FOREIGN
+          attribute: CorpFin.references.AccountMappingBelongsToMappingSet.mappingSet
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: FOREIGN
+          attribute: CorpFin.references.AccountMappingHasSourceAccount.sourceAccount
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: FOREIGN
+          attribute: CorpFin.references.AccountMappingHasType.mappingType
+
+      stepTransitionValidations:
+        - onStepExit: BLOCK
+          validationType: FOREIGN
+          attribute: CorpFin.references.AccountMappingBelongsToMappingSet.mappingSet
+        - onStepExit: BLOCK
+          validationType: FOREIGN
+          attribute: CorpFin.references.AccountMappingHasSourceAccount.sourceAccount
+        - onStepExit: BLOCK
+          validationType: FOREIGN
+          attribute: CorpFin.references.AccountMappingHasType.mappingType
+          
+    - _type: CollectionStep
+      _name: SplitAllocations
+      oneToManyReference: CorpFin.references.SplitAllocationBelongsToMapping
+      label: Split Allocations
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      collectionView: CorpFin.entities.SplitAllocation.collection_views.SplitAllocationCollectionView
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: true
+      enableChildImportOnParentEdit: true
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      manyToManyCustomSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: true
+      skipToChildEditingOnParentEdit: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      
+      childSteps:
+        - _type: FormStep
+          _name: SplitAllocation
+          label: Split Allocation
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          formFieldsMode: AUTO
+          enableMasterValuePicking: false
+          formTab: CorpFin.entities.SplitAllocation.forms.SplitAllocationForm.SplitAllocation
+
+          referenceFormFieldConfigs:
+            - enableUserSort: true  
+          #   # List of Target Account - if applicable - must be filtered based on the TARGET Chart of Accounts selected at the Mapping Set level
+              fdnFormField: CorpFin.entities.SplitAllocation.forms.SplitAllocationForm.SplitAllocation.Container1.Container3.TargetAccountInformation.FDN_targetAccount
+              referencePickerType: AUTO_COMPLETE                         
+              referenceFilter: Referenced.FDN_chartOfAccounts = Record.accountMapping.mappingSet.FDN_targetChartOfAccounts
+              #  -- can't fnd a way to complete to FDN_mappingSet.FDN_targetChartOfAccounts -- can't fnd a way to complete to FDN_mappingSet.FDN_targetChartOfAccounts
+
+          formStepValidations:
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: MANDATORY
+              attribute: CorpFin.entities.SplitAllocation.SplitAllocation.SplitPercent
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: FOREIGN
+              attribute: CorpFin.references.SplitAllocationHasTargetAccount.targetAccount
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: FOREIGN
+              attribute: CorpFin.references.SplitAllocationBelongsToMapping.accountMapping
+
+          stepTransitionValidations:
+            - onStepExit: BLOCK
+              validationType: MANDATORY
+              attribute: CorpFin.entities.SplitAllocation.SplitAllocation.SplitPercent
+            - onStepExit: BLOCK
+              validationType: FOREIGN
+              attribute: CorpFin.references.SplitAllocationHasTargetAccount.targetAccount
+            - onStepExit: BLOCK
+              validationType: FOREIGN
+              attribute: CorpFin.references.SplitAllocationBelongsToMapping.accountMapping

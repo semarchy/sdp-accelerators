@@ -1,0 +1,46 @@
+# Stepper to import data for Leads
+_package: sales360.entities.Leads.steppers
+_name: LeadsImportStepper
+_type: Stepper
+entity: sales360.entities.Leads.Leads
+description: Stepper for importing Leads data
+rootStep:
+  _name: ImportLeads
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Leads.collection_views.LeadsImportCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Import Leads
+  description: Step for importing Leads data
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for Leads entity
+      formTab: sales360.entities.Leads.forms.LeadsBrowsingForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Leads
+stepperFinishValidations: []
+triggers: []

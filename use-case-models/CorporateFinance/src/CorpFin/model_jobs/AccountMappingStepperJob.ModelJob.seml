@@ -1,0 +1,25 @@
+_package: CorpFin.model_jobs
+_name: AccountMappingStepperJob
+_type: ModelJob
+jobType: INTEGRATION
+queueName: CorpFin.model_jobs
+
+modelTasks:
+- _type: ModelJobTask
+  entity: CorpFin.entities.AccountMapping.AccountMapping
+  _name: AccountMapping
+  consolidatedDataEnrichmentEnabled: true
+  consolidationEnabled: true
+  matchEnabled: true
+  postConsoValidationEnabled: true
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+- _type: ModelJobTask
+  entity: CorpFin.entities.SplitAllocation.SplitAllocation
+  _name: SplitAllocation
+  consolidatedDataEnrichmentEnabled: true
+  consolidationEnabled: true
+  matchEnabled: true
+  postConsoValidationEnabled: true
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true

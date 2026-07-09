@@ -1,0 +1,65 @@
+# This file defines the Ownership entity in the Salesforce Accelerator application.
+# It includes attributes such as OwnershipID, OwnershipValue, and OwnershipType,
+# along with their properties and validations.
+# The entity is used to manage ownership information within the application.
+_name: Ownership
+_package: sales360.entities.Ownership
+_type: Entity
+primaryKey: sales360.entities.Ownership.Ownership.OwnershipID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: OwnershipType
+label: Ownership
+documentation: Ownership type for the account, for example Private, Public, or Subsidiary
+description: Ownership type for the account, for example Private, Public, or Subsidiary
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/book.svg
+pluralLabel: Ownerships
+historizeGolden: true
+historizeMaster: false
+physicalTableName: OWNERSHIP
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: OwnershipID
+    physicalName: OWNERSHIP_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Ownership ID
+    documentation: Unique identifier for the Ownership entity
+    description: Unique identifier for the Ownership entity
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OwnershipValue
+    physicalName: OWNERSHIP_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Ownership Value
+    documentation: Value representing the ownership type, such as Private or Public
+    description: Value representing the ownership type, such as Private or Public
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OwnershipType
+    physicalName: OWNERSHIP_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Ownership Type
+    documentation: Type of ownership, for example Private, Public, or Subsidiary
+    description: Type of ownership, for example Private, Public, or Subsidiary
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

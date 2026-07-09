@@ -1,0 +1,92 @@
+_package: PropertyAndCasualtyInsurance.entities.VehicleAsset.action_sets
+_type: ActionSet
+_name: VehicleAssetActionSet
+entity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset
+label: "Vehicle Asset Action Set"
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorVehicleAssets
+    label: Create
+    useCustomLabel: true
+    stepper: PropertyAndCasualtyInsurance.entities.VehicleAsset.steppers.AuthorVehicleAssets
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorVehicleAssets
+    label: Edit
+    useCustomLabel: true
+    stepper: PropertyAndCasualtyInsurance.entities.VehicleAsset.steppers.AuthorVehicleAssets
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorVehicleAssets
+    label: Mass Update
+    useCustomLabel: true
+    stepper: PropertyAndCasualtyInsurance.entities.VehicleAsset.steppers.AuthorVehicleAssets
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: true
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorVehicleAssets
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: PropertyAndCasualtyInsurance.entities.VehicleAsset.steppers.AuthorVehicleAssets
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnVehicleAsset
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    dupsManager: PropertyAndCasualtyInsurance.entities.VehicleAsset.dups_managers.ManageDuplicatesOnVehicleAsset
+    enableEdit: true
+    mandateConfirmAll: false
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnVehicleAsset
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    dupsManager: PropertyAndCasualtyInsurance.entities.VehicleAsset.dups_managers.ManageDuplicatesOnVehicleAsset
+    enableEdit: true
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnVehicleAsset
+    label: Review Duplicate Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    dupsManager: PropertyAndCasualtyInsurance.entities.VehicleAsset.dups_managers.ManageDuplicatesOnVehicleAsset
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false

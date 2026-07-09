@@ -1,0 +1,263 @@
+_name: ProductVehicle
+_package: Manufacturing.entities.ProductVehicle.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: Manufacturing.entities.ProductVehicle.ProductVehicle
+rootLabel: Vehicle
+rootPluralLabel: Vehicles
+useHierarchyOnOpen: false
+label: Product Vehicles
+rootBusinessViewEntity:
+  _name: ProductVehicleEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.ProductVehicle.collection_views.ProductVehicleCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.ProductVehicle.ProductVehicle
+  form: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: Manufacturing.entities.ProductVehicle.action_sets.ProductVehicleActionSet
+  sortExpression: (case when FDN_Make = 'Mercedes-Benz' then 1 else 0 end) DESC
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Trim
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_SellingDealership
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Model
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_ModelYear
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Make
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: Household
+      _type: BusinessViewTransition
+      transitionPath: CustomerVehicles.Customer.Household
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "1"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/home-account.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Address
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.Address.collection_views.AddressCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.Address.Address
+        form: Manufacturing.entities.Address.forms.AddressForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.Address.forms.AddressForm.Address.Container.InputAddress.FDN_InputState
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.Address.forms.AddressForm.Address.Container.InputAddress.FDN_InputCountry
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: VehicleOptionOrFeatures
+      _type: BusinessViewTransition
+      transitionPath: VehicleOptionOrFeatures
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "1"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://manufacturing/Feature icon.png
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ProductVehicleOptionOrFeature
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ProductVehicleOptionOrFeature.collection_views.ProductVehicleOptionOrFeatureCollectionNameOnly
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ProductVehicleOptionOrFeature.ProductVehicleOptionOrFeature
+        form: Manufacturing.entities.ProductVehicleOptionOrFeature.forms.ProductVehicleOptionOrFeatureForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ProductVehicleOptionOrFeature.forms.ProductVehicleOptionOrFeatureForm.ProductVehicleOptionOrFeature.FDN_Vehicle
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicleOptionOrFeature.forms.ProductVehicleOptionOrFeatureForm.ProductVehicleOptionOrFeature.FDN_OptionOrFeatureValue
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicleOptionOrFeature.forms.ProductVehicleOptionOrFeatureForm.ProductVehicleOptionOrFeature.FDN_ProductTrimOptionOrFeature
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: ServiceAppointments
+      _type: BusinessViewTransition
+      transitionPath: ServiceAppointments
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "1"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/tools.svg
+      label: Service Appointment
+      pluralLabel: Service Appointments
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: CustomerServiceAppointment
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.CustomerServiceAppointment.collection_views.CustomerServiceAppointmentCollectionNameOnly
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment
+        form: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_DealerService
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Customer
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Vehicle
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Customer
+      _type: BusinessViewTransition
+      transitionPath: CustomerVehicles.Customer
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "1"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/people.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Customer
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.Customer.collection_views.CustomerCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.Customer.Customer
+        form: Manufacturing.entities.Customer.forms.CustomerForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+rootIconUrl: images://mdi/car-hatchback.svg

@@ -1,0 +1,83 @@
+_package: PropertyAndCasualtyInsurance.entities.InsuranceProduct
+_type: Entity
+_name: InsuranceProduct
+label: Insurance Product
+pluralLabel: Insurance Product
+entityType: BASIC
+physicalTableName: INSURANCE_PRODUCT
+iconUrl: images://mdi/book.svg
+description: "Represents a specific insurance product offered by the company, including its unique identifiers, descriptive attributes, and lifecycle information."
+documentation: "Represents a specific insurance product offered by the company, including its unique identifiers, descriptive attributes, and lifecycle information."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: InsuranceProductID
+    label: Insurance Product ID
+    description: "Unique identifier for the Insurance Product"
+    physicalName: INSURANCE_PRODUCT_ID
+    dataType: String
+    length: 128
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: ProductCode
+    label: Product Code
+    physicalName: PRODUCT_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Enterprise-defined unique identifier for the insurance product."
+    documentation: "Enterprise-defined unique identifier for the insurance product."
+  - _type: EntityAttribute
+    _name: ProductName
+    label: Product Name
+    physicalName: PRODUCT_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Commercial or marketing name of the insurance product."
+    documentation: "Commercial or marketing name of the insurance product."
+  - _type: EntityAttribute
+    _name: ProductDescription
+    label: Product Description
+    physicalName: PRODUCT_DESCRIPTION
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Detailed explanation of product features, target market, and coverage positioning."
+    documentation: "Detailed explanation of product features, target market, and coverage positioning."
+  - _type: EntityAttribute
+    _name: ProductStatus
+    label: Product Status
+    physicalName: PRODUCT_STATUS
+    dataType: PropertyAndCasualtyInsurance.list_of_values.InsuranceProductStaus
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Current lifecycle state of the product (e.g., Active, Retired, Suspended)."
+    documentation: "Current lifecycle state of the product (e.g., Active, Retired, Suspended)."
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which the product configuration is effective."
+    documentation: "Date from which the product configuration is effective."
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date until which the product configuration remains valid."
+    documentation: "Date until which the product configuration remains valid."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: PropertyAndCasualtyInsurance.entities.InsuranceProduct.InsuranceProduct.InsuranceProductID

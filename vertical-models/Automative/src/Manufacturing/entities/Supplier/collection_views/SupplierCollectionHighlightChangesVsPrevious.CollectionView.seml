@@ -1,0 +1,207 @@
+_package: Manufacturing.entities.Supplier.collection_views
+_name: SupplierCollectionHighlightChangesVsPrevious
+_type: CollectionView
+entity: Manufacturing.entities.Supplier.Supplier
+default: false
+description: This collection highlights a value when it represents a change from
+  the previous value. It is intended for use only when browsing Golden History
+  records.
+displayCard: Manufacturing.entities.Supplier.display_cards.SupplierDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Supplier
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: SupplierID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: SupplierID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Name
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Name
+    visibleByDefault: true
+    componentProperties:
+      cellBackgroundColor: |-
+        CASE WHEN Name = (
+        	LOOKUP FIRST Name
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END 
+        ) 
+        THEN NULL 
+        WHEN Name IS NULL and ( LOOKUP FIRST Name
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END ) IS NULL THEN NULL
+        ELSE 'md:pink 50' 
+        END
+      cellBackgroundColorValueInterpreter: SEMQL
+  - _type: TextColumn
+    _name: ARIBACode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ARIBACode
+    visibleByDefault: true
+    componentProperties:
+      cellBackgroundColor: |-
+        CASE WHEN ARIBACode = (
+        	LOOKUP FIRST ARIBACode
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END 
+        ) 
+        THEN NULL 
+        WHEN ARIBACode IS NULL and ( LOOKUP FIRST ARIBACode
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END ) IS NULL THEN NULL
+        ELSE 'md:pink 50' 
+        END
+      cellBackgroundColorValueInterpreter: SEMQL
+  - _type: ReferenceColumn
+    _name: FDN_SupplierPaymentTerm
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_SupplierPaymentTerm
+    visibleByDefault: true
+    referencedEntity: Manufacturing.entities.PaymentTerm.PaymentTerm
+    componentProperties:
+      cellBackgroundColor: >-
+        CASE WHEN FDN_SupplierPaymentTerm = (
+        	LOOKUP FIRST FDN_SupplierPaymentTerm
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END 
+        ) 
+
+        THEN NULL 
+
+        WHEN FDN_SupplierPaymentTerm IS NULL and ( LOOKUP FIRST
+        FDN_SupplierPaymentTerm
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END ) IS NULL THEN NULL
+        ELSE 'md:pink 50' 
+
+        END
+      cellBackgroundColorValueInterpreter: SEMQL
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: HyperlinkColumn
+    _name: Website
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Website
+    visibleByDefault: true
+    componentProperties:
+      cellBackgroundColor: |-
+        CASE WHEN Website = (
+        	LOOKUP FIRST Website
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END 
+        ) 
+        THEN NULL 
+        WHEN Website IS NULL and ( LOOKUP FIRST Website
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END ) IS NULL THEN NULL
+        ELSE 'md:pink 50' 
+        END
+      cellBackgroundColorValueInterpreter: SEMQL
+      linkDisplayText: Website
+      linkDisplayTextValueInterpreter: SEMQL
+      linkTarget: new-window
+      linkTargetValueInterpreter: LITERAL
+      linkSourceType: url
+      linkSourceTypeValueInterpreter: LITERAL
+  - _type: DateColumn
+    _name: UpdateDate
+    columnAlign: LEFT
+    dataType: TIMESTAMP
+    useCustomLabel: false
+    value: UpdateDate
+    visibleByDefault: true
+    componentProperties:
+      cellBackgroundColor: |-
+        CASE WHEN UpdateDate = (
+        	LOOKUP FIRST UpdateDate
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END 
+        ) 
+        THEN NULL 
+        WHEN UpdateDate IS NULL and ( LOOKUP FIRST UpdateDate
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE UpdateDate < ParentRecord.UpdateDate
+        	ORDER BY UpdateDate DESC
+        	END ) IS NULL THEN NULL
+        ELSE 'md:pink 50' 
+        END
+      cellBackgroundColorValueInterpreter: SEMQL
+  - _type: TextColumn
+    _name: Updator
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Updator
+    visibleByDefault: true
+    componentProperties:
+      cellBackgroundColor: |-
+        CASE WHEN Updator = (
+        	LOOKUP FIRST Updator
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE Updator < ParentRecord.Updator
+        	ORDER BY Updator DESC
+        	END 
+        ) 
+        THEN NULL 
+        WHEN Updator IS NULL and ( LOOKUP FIRST Updator
+        	FROM CurrentGoldenRecord.GoldenHistoryRecords
+        	WHERE Updator < ParentRecord.Updator
+        	ORDER BY Updator DESC
+        	END ) IS NULL THEN NULL
+        ELSE 'md:pink 50' 
+        END
+      cellBackgroundColorValueInterpreter: SEMQL
+  - _type: DateColumn
+    _name: CreationDate
+    columnAlign: LEFT
+    dataType: TIMESTAMP
+    useCustomLabel: false
+    value: CreationDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Creator
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Creator
+    visibleByDefault: true

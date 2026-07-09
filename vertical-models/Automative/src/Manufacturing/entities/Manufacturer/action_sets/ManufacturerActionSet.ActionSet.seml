@@ -1,0 +1,97 @@
+_name: ManufacturerActionSet
+_package: Manufacturing.entities.Manufacturer.action_sets
+_type: ActionSet
+entity: Manufacturing.entities.Manufacturer.Manufacturer
+label: Manufacturer Action Set
+defaultActionSet: true
+actions:
+  - _name: EditAuthorManufacturers
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.Manufacturer.steppers.AuthorManufacturers
+  - _name: MassUpdateAuthorManufacturers
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: Manufacturing.entities.Manufacturer.steppers.AuthorManufacturers
+  - _name: CopyAuthorManufacturers
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.Manufacturer.steppers.AuthorManufacturers
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorManufacturers
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.Manufacturer.steppers.AuthorManufacturers
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnManufacturer
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: Manufacturing.entities.Manufacturer.dups_managers.ManageDuplicatesOnManufacturer
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnManufacturer
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: Manufacturing.entities.Manufacturer.dups_managers.ManageDuplicatesOnManufacturer
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnManufacturer
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: Manufacturing.entities.Manufacturer.dups_managers.ManageDuplicatesOnManufacturer
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: Manufacturing.entities.Manufacturer.display_cards.ManufacturerDisplayCard
+    formTab: Manufacturing.entities.Manufacturer.forms.ManufacturerForm.Manufacturer

@@ -1,0 +1,36 @@
+ # Description: Stepper for ContactRole create/edit workflows.
+ # Contains: Wizard steps and panels for maintaining ContactRole records.
+ # Role: Drives multi-step actions for ContactRole master data.
+_package: Merchant.entities.ContactRole.steppers
+_type: Stepper
+_name: AuthorContactRoles
+entity: Merchant.entities.ContactRole.ContactRole
+label: Contact Roles
+rootStep:
+  _type: CollectionStep
+  _name: ContactRoles
+  label: Contact Roles
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.ContactRole.collection_views.ContactRoleCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: ContactRole
+      label: Contact Role
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.ContactRole.forms.ContactRoleForm.ContactRole

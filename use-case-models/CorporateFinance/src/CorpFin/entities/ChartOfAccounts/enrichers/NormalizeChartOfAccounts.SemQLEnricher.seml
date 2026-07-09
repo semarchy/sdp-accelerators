@@ -1,0 +1,11 @@
+_package: CorpFin.entities.ChartOfAccounts.enrichers
+_name: NormalizeChartOfAccounts
+_type: SemQLEnricher
+entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+label: Normalize Chart Of Accounts
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes chart of accounts names by trimming whitespace and converting them to uppercase for consistent comparison."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedName
+    expression: "RTRIM(LTRIM(UPPER(Name)))"

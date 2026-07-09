@@ -1,0 +1,69 @@
+# This is the LeadSourceBusinessView business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for lead sources,
+# including the root entity, labels, and display options.
+_name: LeadSource
+_package: sales360.entities.LeadSource.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.LeadSource.LeadSource
+rootLabel: Lead Source
+rootPluralLabel: Lead Source
+useHierarchyOnOpen: false
+label: Lead Source
+description: Business view for Lead Source entity
+rootBusinessViewEntity:
+  _name: LeadSource
+  _type: BusinessViewEntity
+  collection: sales360.entities.LeadSource.collection_views.LeadSourceCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.LeadSource.LeadSource
+  form: sales360.entities.LeadSource.forms.LeadSourceForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.LeadSource.action_sets.LeadSourceActionSet
+  displayCard: sales360.entities.LeadSource.display_cards.LeadSourceDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.LeadSource.business_views.LeadSource.LeadSource
+rootIconUrl: images://mdi/format-list-checkbox.svg

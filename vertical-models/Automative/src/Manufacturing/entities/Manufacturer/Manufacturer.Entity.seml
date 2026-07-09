@@ -1,0 +1,132 @@
+_name: Manufacturer
+_package: Manufacturing.entities.Manufacturer
+_type: Entity
+primaryKey: Manufacturing.entities.Manufacturer.Manufacturer.ManufacturerID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+label: Manufacturer
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/factory.svg
+pluralLabel: Manufacturers
+description: "Manufacturer master record used to manage automotive brands, ownership context, and related manufacturing plants."
+documentation: "Manufacturer master record used to manage automotive brands, ownership context, and related manufacturing plants. Use this entity to understand and govern this business object in the Manufacturing and Automotive accelerator applications."
+historizeGolden: true
+historizeMaster: true
+physicalTableName: MANUFACTURER
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ManufacturerID
+    physicalName: MANUFACTURER_ID
+    dataType: LongInteger
+    description: "Surrogate identifier for the Manufacturer record."
+    documentation: "Surrogate identifier for the Manufacturer record."
+    goldenAttribute: true
+    i18ned: false
+    label: Manufacturer ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Revenue
+    physicalName: REVENUE
+    dataType: String
+    description: "Reported revenue for the Manufacturer record."
+    documentation: Revenue of the Manufacturer
+    goldenAttribute: true
+    i18ned: false
+    label: Revenue
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Webiste
+    physicalName: WEBISTE
+    dataType: String
+    description: "Website URL for the Manufacturer record."
+    documentation: Website of the Manufacturer
+    goldenAttribute: true
+    i18ned: false
+    label: Website
+    mandatory: false
+    length: 1024
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Code
+    physicalName: CODE
+    dataType: String
+    description: "Manufacturer code used by ERP or operational source systems."
+    documentation: Code of Manufacturer in ERP system
+    goldenAttribute: true
+    i18ned: false
+    label: Code
+    mandatory: false
+    length: 512
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    physicalName: NAME
+    dataType: String
+    description: "Display name of the manufacturer."
+    documentation: "Display name of the manufacturer."
+    goldenAttribute: true
+    i18ned: false
+    label: Name
+    mandatory: true
+    length: 500
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherManufacturer
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 0
+  mergeThresholdMergingConfirmedWithNewMasters: 0
+  mergeThresholdMergingConfirmedWithUnconfirmed: 0
+  mergeThresholdMergingUnconfirmed: 0
+  mergeThresholdMergingUnconfirmedWithNewMasters: 0
+  mergeThresholdNewGroup: 0
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Manufacturer
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExatMatchOnManufacturerCode
+      condition: Record1.Code = Record2.Code
+      label: Exat Match On Manufacturer Code
+      matchScore: 100
+      usingMatchOn: false

@@ -1,0 +1,159 @@
+_name: AuthorProductTrims
+_package: Manufacturing.entities.ProductTrim.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductTrim.ProductTrim
+rootStep:
+  _name: ProductTrims
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductTrim.collection_views.ProductTrimCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Trim
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductTrim.ProductTrim.Trim
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimModel.Model
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimDriveTrain.DriveTrain
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.TrimModel.Model
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimCylinders.Cylinders
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimEngineAspiration.EngineAspiration
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimBodySize.BodySize
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimBodyStyle.BodyStyle
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimTransition.Transition
+  stepTriggers: []
+  childSteps:
+    - _name: ProductTrim
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Trim
+      formTab: Manufacturing.entities.ProductTrim.forms.ProductTrimForm.ProductTrim
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimCylinders.Cylinders
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimDriveTrain.DriveTrain
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductTrim.ProductTrim.Trim
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimEngineAspiration.EngineAspiration
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimModel.Model
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.TrimModel.Model
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimBodyStyle.BodyStyle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimBodySize.BodySize
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimTransition.Transition
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimEngineAspiration.EngineAspiration
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimDriveTrain.DriveTrain
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimBodyStyle.BodyStyle
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimCylinders.Cylinders
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimTransition.Transition
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductTrim.ProductTrim.Trim
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimBodySize.BodySize
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.TrimModel.Model
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimModel.Model
+      stepTriggers: []
+label: Author Trim
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimBodySize.BodySize
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimTransition.Transition
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimEngineAspiration.EngineAspiration
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimCylinders.Cylinders
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimDriveTrain.DriveTrain
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.TrimModel.Model
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductTrim.ProductTrim.Trim
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimModel.Model
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimBodyStyle.BodyStyle
+triggers: []

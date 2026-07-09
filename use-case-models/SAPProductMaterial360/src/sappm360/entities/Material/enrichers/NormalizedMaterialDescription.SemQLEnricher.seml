@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: sappm360.entities.Material.enrichers
+_name: NormalizedMaterialDescription
+entity: sappm360.entities.Material.Material
+label: Normalized Material Description
+description: Normalize material descriptions for duplicate material detection.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedMaterialDesc
+    expression: LTRIM(RTRIM(UPPER(MaterialDescription)))

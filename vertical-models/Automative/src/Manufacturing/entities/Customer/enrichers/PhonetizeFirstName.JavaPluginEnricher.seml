@@ -1,0 +1,22 @@
+_type: JavaPluginEnricher
+_package: Manufacturing.entities.Customer.enrichers
+_name: PhonetizeFirstName
+entity: Manufacturing.entities.Customer.Customer
+label: Phonetize First Name
+description: "Generates a phonetic representation of the customer first name to support fuzzy duplicate detection."
+pluginId: com.semarchy.engine.plugins.convergence.text
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: FirstName
+pluginOutputs:
+  - outputName: OUT_TRANSFORMED_TEXT
+    attributeName: PhoneticFirstName

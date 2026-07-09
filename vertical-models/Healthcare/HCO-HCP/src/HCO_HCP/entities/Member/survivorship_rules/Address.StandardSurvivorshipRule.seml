@@ -1,0 +1,27 @@
+_type: StandardSurvivorshipRule
+entity: HCO_HCP.entities.Member.Member
+_package: HCO_HCP.entities.Member.survivorship_rules
+defaultRule: false
+_name: Address
+consolidationOrderByExpression: UpdateDate DESC
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Address
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.Encounters
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.HCO_HCP
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberJSON
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberXLS
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: State
+  - attributeName: Country
+  - attributeName: City
+  - attributeName: Street
+  - attributeName: Zip

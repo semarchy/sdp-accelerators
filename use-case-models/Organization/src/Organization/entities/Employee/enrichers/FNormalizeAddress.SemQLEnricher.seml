@@ -1,0 +1,18 @@
+# This is a SemQL enricher configuration file for normalizing addresses of employees.
+# It uses SemQL expressions to normalize the city, state, and street attributes for matching purposes.
+# The city is converted to lowercase, the state is mapped to its full name in uppercase,
+# and the street is cleaned up by removing certain suffixes and standardizing abbreviations.
+# For more information, refer to the SemQL documentation: https://docs.semarchy.com/sdp/reference/dm/enrichers/seml-enricher
+_package: Organization.entities.Employee.enrichers
+_type: SemQLEnricher
+_name: FNormalizeAddress
+label: Normalize Address
+enricherExecutionScope: PRE_CONSO
+entity: Organization.entities.Employee.Employee
+semQlEnricherExpressions:
+  - attributeName: NormalizedCity
+    expression: LOWER ( Address.City )
+  - attributeName: NormalizedState
+    expression: "UPPER( case     when Address.State = 'AL'   then 'Alabama' 	when Address.State = 'AK'   then 'Alaska' 	when Address.State = 'AR'   then 'Arkansas' 	when Address.State = 'AZ'   then 'Arizona' 	when Address.State = 'CA'   then 'California' 	when Address.State = 'CO'   then 'Colorado' 	when Address.State = 'CT'   then 'Connecticut' 	when Address.State = 'DE'   then 'Delaware' 	when Address.State = 'FL'   then 'Florida' 	when Address.State = 'GA'   then 'Georgia' 	when Address.State = 'HI'   then 'Hawaii' 	when Address.State = 'ID'   then 'Idaho' 	when Address.State = 'IL'   then 'Illinois' 	when Address.State = 'IN'   then 'Indiana' 	when Address.State = 'IA'   then 'Iowa' 	when Address.State = 'KS'   then 'Kansas' 	when Address.State = 'KY'   then 'Kentucky' 	when Address.State = 'LA'   then 'Louisiana' 	when Address.State = 'ME'   then 'Maine' 	when Address.State = 'MD'   then 'Maryland' 	when Address.State = 'MA'   then 'Massachusetts' 	when Address.State = 'MI'   then 'Michigan' 	when Address.State = 'MN'   then 'Minnesota' 	when Address.State = 'MS'   then 'Mississippi' 	when Address.State = 'MO'   then 'Missouri' 	when Address.State = 'MT'   then 'Montana' 	when Address.State = 'NE'   then 'Nebraska' 	when Address.State = 'NV'   then 'Nevada' 	when Address.State = 'NH'   then 'New Hampshire' 	when Address.State = 'NJ'   then 'New Jersey'                 	when Address.State = 'NM'   then 'New Mexico' 	when Address.State = 'NY'   then 'New York' 	when Address.State = 'NC'   then 'North Carolina' 	when Address.State = 'ND'   then 'North Dakota' 	when Address.State = 'OH'   then 'Ohio' 	when Address.State = 'OK'   then 'Oklahoma' 	when Address.State = 'OR'   then 'Oregon' 	when Address.State = 'PA'   then 'Pennsylvania' 	when Address.State = 'RI'   then 'Rhode Island' 	when Address.State = 'SC'   then 'South Carolina' 	when Address.State = 'SD'   then 'South Dakota' 	when Address.State = 'TN'   then 'Tennessee' 	when Address.State = 'TX'   then 'Texas' 	when Address.State = 'UT'   then 'Utah' 	when Address.State = 'VT'   then 'Vermont' 	when Address.State = 'VA'   then 'Virginia' 	when Address.State = 'WA'   then 'Washington' 	when Address.State = 'WV'   then 'West Virginia' 	when Address.State = 'WI'   then 'Wisconsin' 	when Address.State = 'WY'   then 'Wyoming'     else Address.State end )"
+  - attributeName: NormalizedStreet
+    expression: replace( 	replace( 		replace( 			replace( 				replace( 					replace( 						replace( 							regexp_replace( 								upper(Address.Street) 								, '[,\.\*]+$' 								, ''               							) 							,'SUITE' 							,'STE' 						) 						,'PARKWAY' 						,'PKWY' 					) 					,'DRIVE' 					,'DR' 				) 				,'STREET' 				,'ST' 			) 			,'BOULEVARD' 			,'BLVD' 		) 		,'AVENUE' 		,'AVE' 	) 	,'ROAD' 	,'RD' )

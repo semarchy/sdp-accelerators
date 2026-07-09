@@ -1,0 +1,23 @@
+# This is a plugin enricher configuration file for enriching employee data with phonetic last names.
+# It uses the Semarchy Convergence text plugin to phonetize the last name of employees
+# For more information, refer to the plugin documentation: https://docs.semarchy.com/sdp/reference/dm/enrichers/text-enricher
+_package: Organization.entities.Employee.enrichers
+_type: JavaPluginEnricher
+_name: BPhonetizeLastName
+label: Phonetize Last Name
+enricherExecutionScope: PRE_CONSO
+entity: Organization.entities.Employee.Employee
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: LastName
+pluginOutputs:
+  - attributeName: PhoneticLastName
+    outputName: OUT_TRANSFORMED_TEXT

@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: BankAccountHasCurrency
+_type: Reference
+label: Bank Account Has Currency
+description: "Defines the reference from Bank Account records to Currency records, enforcing the relationship between Bank Account and Currency data."
+documentation: "Defines the reference from Bank Account records to Currency records, enforcing the relationship between Bank Account and Currency data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.BankAccount.BankAccount
+fromRoleLabel: Bank Account
+fromRoleName: bankAccount
+fromRolePluralLabel: Bank Accounts
+physicalName: BANKACCOUNT_HAS_CURRENCY
+fromNavigable: true
+
+toEntity: CorpFin.entities.Currency.Currency
+toRoleLabel: Currency
+toRoleName: currency
+toRolePhysicalName: ACCOUNT_CURRENCY
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: currency
+  label: Account Currency
+  physicalName: ACCOUNT_CURRENCY
+  searchable: true
+  entity: CorpFin.entities.Currency.Currency

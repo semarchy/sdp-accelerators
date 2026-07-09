@@ -1,0 +1,95 @@
+# This file defines the OpportunityContactRole entity in the Salesforce Accelerator application.
+# It includes attributes such as ID, IsPrimary, and MultipleRoles, along with their properties and validations.
+# The entity is used to manage opportunity contact role information within the application.
+_name: OpportunityContactRole
+_package: sales360.entities.OpportunityContactRole
+_type: Entity
+primaryKey: sales360.entities.OpportunityContactRole.OpportunityContactRole.ID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  
+  mode: UUID
+  
+label: Opportunity Contact Role
+documentation: Represents the role that a Contact plays on an Opportunity.
+description: Represents the role that a Contact plays on an Opportunity.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/book.svg
+pluralLabel: Opportunity Contact Roles
+historizeGolden: true
+historizeMaster: true
+physicalTableName: OPPORTUNITY_CONTACT_ROLE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ID
+    physicalName: ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: ID
+    documentation: Unique identifier for the OpportunityContactRole record
+    description: Unique identifier for the OpportunityContactRole record
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrimary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Primary
+    documentation: Indicates whether the associated Contact plays the primary role on the Opportunity
+    description: Indicates whether the associated Contact plays the primary role on the Opportunity
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MultipleRoles
+    physicalName: MULTIPLE_ROLES
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Multiple Roles
+    documentation: Populated if the contact plays multiple roles in an opportunity
+    description: Populated if the contact plays multiple roles in an opportunity
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+matcher:
+  _name: SemlQLMatcherOpportunityContactRole
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 95
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameParent
+      condition: |-
+        Record1.FID_Opportunity = Record2.FID_Opportunity and
+        Record1.FID_Contact = Record2.FID_Contact
+      label: Same Parent
+      documentation: Check same Opportunity and Contact Parent
+      description: Check same Opportunity and Contact Parent
+      matchScore: 100
+      color: md:green 900
+      usingMatchOn: false

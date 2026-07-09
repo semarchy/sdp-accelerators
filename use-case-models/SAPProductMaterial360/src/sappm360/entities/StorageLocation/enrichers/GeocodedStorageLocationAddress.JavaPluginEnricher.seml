@@ -1,0 +1,49 @@
+# Google Maps geocoding enricher for Storage Location addresses.
+_type: JavaPluginEnricher
+_package: sappm360.entities.StorageLocation.enrichers
+_name: GeocodedStorageLocationAddress
+entity: sappm360.entities.StorageLocation.StorageLocation
+label: Geocoded Storage Location Address
+description: Use the Google Maps API plugin to geocode storage location address fields.
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+pluginInputs:
+  - inputName: IN_COUNTRY
+    expression: InpCountry
+  - inputName: IN_CITY
+    expression: InpCity
+  - inputName: IN_ADDRESSLINE
+    expression: InpAddressLine
+  - inputName: IN_POSTALCODE
+    expression: InpPostalCode
+pluginOutputs:
+  - outputName: COUNTRY_SHORTNAME
+    attributeName: GeoCountryShort
+  - outputName: COORDINATES_LATITUDE
+    attributeName: GeoLatitude
+  - outputName: STATUS
+    attributeName: GeoStatus
+  - outputName: QUALITY
+    attributeName: GeoQuality
+  - outputName: COORDINATES_LONGITUDE
+    attributeName: GeoLongitude
+  - outputName: LOCALITY_LONGNAME
+    attributeName: GeoLocality
+  - outputName: ROUTE_LONGNAME
+    attributeName: GeoStreetName
+  - outputName: POSTALCODE_LONGNAME
+    attributeName: GeoPostalCode
+  - outputName: COUNTRY_LONGNAME
+    attributeName: GeoCountry
+  - outputName: ADM_AREA_LEV1_SHORTNAME
+    attributeName: GeoState
+  - outputName: STREETNUMBER_LONGNAME
+    attributeName: GeoStreetNumber

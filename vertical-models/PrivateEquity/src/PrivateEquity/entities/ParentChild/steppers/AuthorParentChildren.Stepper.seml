@@ -1,0 +1,94 @@
+_name: AuthorParentChildren
+_package: PrivateEquity.entities.ParentChild.steppers
+_type: Stepper
+entity: PrivateEquity.entities.ParentChild.ParentChild
+rootStep:
+  _name: ParentChilds
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.ParentChild.collection_views.ParentChildCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Parent Children
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.LEParent.Parent
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LEParent.Parent
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.LEChild.Child
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.LEChild.Child
+  stepTriggers: []
+  childSteps:
+    - _name: ParentChild
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Parent Child
+      formTab: PrivateEquity.entities.ParentChild.forms.ParentChildForm.ParentChild
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.LEParent.Parent
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.LEChild.Child
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LEChild.Child
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.LEParent.Parent
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.LEParent.Parent
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.LEChild.Child
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LEParent.Parent
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.LEChild.Child
+      stepTriggers: []
+label: Author Parent Children
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.LEChild.Child
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.LEParent.Parent
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LEChild.Child
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.LEParent.Parent
+triggers: []

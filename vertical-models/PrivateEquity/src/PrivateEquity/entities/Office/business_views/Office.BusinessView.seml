@@ -1,0 +1,96 @@
+_name: Office
+_package: PrivateEquity.entities.Office.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: PrivateEquity.entities.Office.Office
+rootLabel: Office
+rootPluralLabel: Offices
+useHierarchyOnOpen: false
+label: Offices
+rootBusinessViewEntity:
+  _name: OfficeEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.Office.collection_views.OfficeCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.Office.Office
+  form: PrivateEquity.entities.Office.forms.OfficeForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.Office.action_sets.OfficeActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: PrivateEquity.entities.Office.forms.OfficeForm.Office.FDN_LegalEntity
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: Contacts
+      _type: BusinessViewTransition
+      transitionPath: Contacts
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: any Contacts has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/contact-phone.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Contact
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.Contact.collection_views.ContactCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.Contact.Contact
+        form: PrivateEquity.entities.Contact.forms.ContactForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.Contact.forms.ContactForm.Contact.ContactInformation.Container2.FDN_Office
+            navigationMode: MODAL_FORM
+        transitions: []

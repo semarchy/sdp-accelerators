@@ -1,0 +1,25 @@
+# This is the display card for leads in the Salesforce Accelerator application.
+_name: LeadDisplayCard
+_package: sales360.entities.Leads.display_cards
+_type: DisplayCard
+entity: sales360.entities.Leads.Leads
+default: true
+primaryTextExpression: SEM_CONCAT(' ','1',NormalizedFirstName, NormalizedLastName)
+secondaryTextExpression: NormalizedCompany
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: >-
+  CASE WHEN SEM_BOOLEAN_TO_CHAR(IsConverted) = 'true' THEN
+  'images://mdi/account-check-outline.svg'
+
+  ELSE 'images://mdi/account-question.svg' 
+
+  END
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

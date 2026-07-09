@@ -1,0 +1,31 @@
+# This is the LeadsReviewSuggestionsActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on leads, such as reviewing duplicate suggestions,
+# exporting leads, and explaining lead records.
+_name: LeadsReviewSuggestionsActionSet
+_package: sales360.entities.Leads.action_sets
+_type: ActionSet
+entity: sales360.entities.Leads.Leads
+label: Leads Review Suggestions Action Set
+defaultActionSet: false
+actions:
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnLeads
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sales360.entities.Leads.dups_managers.ManageDuplicatesOnLeads
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: sales360.entities.Leads.display_cards.LeadDisplayCard
+    formTab: sales360.entities.Leads.forms.LeadsBrowsingForm.Main
