@@ -1,0 +1,29 @@
+_name: BPBankReviewSuggestionsActionSet
+_package: sapbp360.entities.BPBank.action_sets
+_type: ActionSet
+entity: sapbp360.entities.BPBank.BPBank
+label: BP Bank Review Suggestions Action Set
+description: Action set for reviewing BP Bank duplicate suggestions.
+defaultActionSet: false
+actions:
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicates.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnBPBank
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sapbp360.entities.BPBank.dups_managers.ManageDuplicatesOnBPBank
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

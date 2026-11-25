@@ -1,0 +1,51 @@
+_name: CustomerServiceAppointment
+_package: Manufacturing.entities.CustomerServiceAppointment.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment
+rootLabel: Customer Service Appointment
+rootPluralLabel: Customer Service Appointments
+useHierarchyOnOpen: false
+label: Customer Service Appointments
+rootBusinessViewEntity:
+  _name: CustomerServiceAppointmentEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.CustomerServiceAppointment.collection_views.CustomerServiceAppointmentCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment
+  form: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.CustomerServiceAppointment.action_sets.CustomerServiceAppointmentActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Customer
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_DealerService
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Vehicle
+      navigationMode: MODAL_FORM
+  transitions: []

@@ -1,0 +1,71 @@
+_package: RestaurantMaster.entities.RestaurantContactPoint
+_type: Entity
+_name: RestaurantContactPoint
+label: Contact point
+pluralLabel: Contact points
+entityType: BASIC
+physicalTableName: REST_CONTACT_POINT
+iconUrl: images://mdi/card-account-phone.svg
+description: Additional phone numbers, fax, email addresses, website and ordering or social links of a restaurant, public or internal.
+documentation: Additional phone numbers, fax, email addresses, website and ordering or social links of a restaurant, public or internal.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: RestaurantContactPointID
+  label: Key
+  physicalName: REST_CONTACT_POINT_ID
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  documentation: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  length: 100
+- _type: EntityAttribute
+  _name: ContactPointType
+  label: Type
+  physicalName: CONTACTPOINTTYPE
+  dataType: RestaurantMaster.list_of_values.ContactPointType
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Kind of contact point.
+  documentation: Kind of contact point.
+- _type: EntityAttribute
+  _name: Audience
+  label: Audience
+  physicalName: AUDIENCE
+  dataType: RestaurantMaster.list_of_values.Audience
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Public or internal.
+  documentation: Public or internal.
+- _type: EntityAttribute
+  _name: ContactValue
+  label: Value
+  physicalName: CONTACTVALUE
+  dataType: String
+  length: 512
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Number, address or link.
+  documentation: Number, address or link.
+- _type: EntityAttribute
+  _name: Extension
+  label: Extension
+  physicalName: EXTENSION
+  dataType: String
+  length: 16
+  mandatory: false
+  searchable: true
+  description: Phone extension.
+  documentation: Phone extension.
+primaryKey: RestaurantMaster.entities.RestaurantContactPoint.RestaurantContactPoint.RestaurantContactPointID
+sourceIdGeneration:
+  mode: MANUAL

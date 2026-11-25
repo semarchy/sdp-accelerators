@@ -1,0 +1,174 @@
+# Supplier Purchasing Org entity for the SAP Business Partner 360 accelerator.
+_name: SupplierPurchasingOrg
+_package: sapbp360.entities.SupplierPurchasingOrg
+_type: Entity
+primaryKey: sapbp360.entities.SupplierPurchasingOrg.SupplierPurchasingOrg.SupplierPurchOrgGoldenID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: UUID
+label: Supplier Purchasing Org
+documentation: Purchasing-organization-level data for a supplier.
+description: Purchasing-organization-level data for a supplier.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://sapbusinesspartner/SupplierPurchasingOrg.svg
+pluralLabel: Supplier Purchasing Orgs
+historizeGolden: true
+historizeMaster: true
+physicalTableName: SUP_PURCH_ORG
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SupplierPurchOrgGoldenID
+    physicalName: SUP_PURCH_ORG_GOLDEN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    label: Supplier Purch Org Golden ID
+    documentation: System generated golden identifier for the supplier purchasing org record.
+    description: System generated golden identifier for the supplier purchasing org record.
+    mandatory: true
+    mandatoryValidationLabel: Supplier Purch Org Golden ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    precision: 38
+    searchable: true
+  - _type: EntityAttribute
+    _name: IncotermsLocation1
+    physicalName: INCOTERMS_LOC_1
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Incoterms Location 1
+    documentation: Incoterms location.
+    description: Incoterms location.
+    mandatory: false
+    length: 70
+    searchable: true
+  - _type: EntityAttribute
+    _name: SupplierPhoneNumber
+    physicalName: SUP_PHONE_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Phone Number
+    documentation: Supplier purchasing phone number.
+    description: Supplier purchasing phone number.
+    mandatory: false
+    length: 30
+    searchable: true
+  - _type: EntityAttribute
+    _name: SupplierRespSalesPersonName
+    physicalName: SUP_RESP_SALES_PRSN_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Resp Sales Person Name
+    documentation: Responsible sales person name.
+    description: Responsible sales person name.
+    mandatory: false
+    length: 30
+    searchable: true
+  - _type: EntityAttribute
+    _name: NormalizedRespName
+    physicalName: NORM_RESP_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Resp Name
+    documentation: Standardized responsible sales person name used for matching.
+    description: Standardized responsible sales person name used for matching.
+    mandatory: false
+    length: 30
+    searchable: true
+  - _type: EntityAttribute
+    _name: SupplierIsBlockedForPurchasing
+    physicalName: SUP_IS_BLOCKED_FOR_PURCH
+    dataType: Boolean
+    goldenAttribute: true
+    label: Supplier Is Blocked For Purchasing
+    documentation: Purchasing block flag.
+    description: Purchasing block flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: MinimumOrderAmount
+    physicalName: MIN_ORDER_AMT
+    dataType: LongInteger
+    goldenAttribute: true
+    label: Minimum Order Amount
+    documentation: Minimum order amount.
+    description: Minimum order amount.
+    mandatory: false
+    precision: 38
+    searchable: true
+  - _type: EntityAttribute
+    _name: PurchaseOrderIsAckRequired
+    physicalName: PRCHS_ORDER_IS_ACK_RQRD
+    dataType: Boolean
+    goldenAttribute: true
+    label: Purchase Order Is Ack Required
+    documentation: Purchase order acknowledgment required flag.
+    description: Purchase order acknowledgment required flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: InvoiceIsGoodsReceiptBased
+    physicalName: NVC_IS_GOODS_RCPT_BASED
+    dataType: Boolean
+    goldenAttribute: true
+    label: Invoice Is Goods Receipt Based
+    documentation: Goods-receipt-based invoice verification flag.
+    description: Goods-receipt-based invoice verification flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: InvoiceIsMMServiceEntryBased
+    physicalName: NVC_IS_MM_SRVC_NTRY_BASED
+    dataType: Boolean
+    goldenAttribute: true
+    label: Invoice Is MM Service Entry Based
+    documentation: Service-entry-based invoice verification flag.
+    description: Service-entry-based invoice verification flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: ReturnsSupplier
+    physicalName: RETURNS_SUP
+    dataType: Boolean
+    goldenAttribute: true
+    label: Returns Supplier
+    documentation: Returns supplier flag.
+    description: Returns supplier flag.
+    mandatory: false
+    length: 1
+    searchable: true
+matcher:
+  _name: SemQLMatcherSUPPLIERPURCHASINGORG
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 94
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Supplier Purchasing Org matching rules for golden record consolidation.
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameRespSalesPerson
+      condition: Record1.NormalizedRespName is not null and Record1.NormalizedRespName = Record2.NormalizedRespName
+      label: Same Responsible Sales Person
+      documentation: Same Responsible Sales Person matching rule.
+      description: Same Responsible Sales Person matching rule.
+      matchScore: 80
+      color: md:amber 700
+      usingMatchOn: false

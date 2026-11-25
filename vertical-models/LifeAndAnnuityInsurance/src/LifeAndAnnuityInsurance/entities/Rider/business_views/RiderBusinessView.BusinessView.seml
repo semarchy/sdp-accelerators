@@ -1,0 +1,89 @@
+_package: LifeAndAnnuityInsurance.entities.Rider.business_views
+_type: BusinessView
+_name: RiderBusinessView
+label: "Rider"
+entity: LifeAndAnnuityInsurance.entities.Rider.Rider
+rootLabel: "Riders"
+rootPluralLabel: "Riders"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Rider
+  displayCard: LifeAndAnnuityInsurance.entities.Rider.display_cards.RiderDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.Rider.Rider
+  actionSet: LifeAndAnnuityInsurance.entities.Rider.action_sets.RiderActionSet
+  collection: LifeAndAnnuityInsurance.entities.Rider.collection_views.RiderCollectionView
+  form: LifeAndAnnuityInsurance.entities.Rider.forms.RiderForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Records
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: RiderMasterRecords
+        _type: BusinessViewEntity
+        displayCard: LifeAndAnnuityInsurance.entities.Rider.display_cards.RiderDisplayCard
+        collection: LifeAndAnnuityInsurance.entities.Rider.collection_views.RiderCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: LifeAndAnnuityInsurance.entities.Rider.Rider
+        form: LifeAndAnnuityInsurance.entities.Rider.forms.RiderForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: LifeAndAnnuityInsurance.entities.Rider.action_sets.RiderActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: "Transition from Rider to related golden history records."
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: LifeAndAnnuityInsurance.entities.Rider.business_views.RiderBusinessView.Rider
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/plus-box-multiple-outline.svg

@@ -1,0 +1,167 @@
+# GovernanceRule: entity of the GovernanceRules accelerator. A standard data governance rule that every MDM project of the company must apply, written as an imperative RFC 2119 statement (MUST, SHOULD, MAY), with its...
+_package: GovernanceRules.entities.GovernanceRule
+_type: Entity
+_name: GovernanceRule
+label: Governance rule
+pluralLabel: Governance rules
+physicalTableName: GOV_RULE
+entityType: BASIC
+description: 'A standard data governance rule that every MDM project of the company must apply, written as an imperative RFC
+  2119 statement (MUST, SHOULD, MAY), with its category, the implementation pattern a designer uses to apply it, its scopes
+  (data domain, data classification, attribute type) and the regulations or standards it cites. Authored by the governance
+  stewards and approved by the governance owner through the Rule review workflow; each approved version is kept in the history.
+
+
+  AI agent instructions: Only rules with InForce = true apply to a design. Cite the rule Code (for example PRIV-003) in the
+  description of every object that implements the rule. RequirementLevel MUST is mandatory, SHOULD is expected unless justified,
+  MAY is optional. Never apply or cite a rule that is not in force. When you design or change a data product, first call the
+  AttributeTypeCatalog named query to classify each attribute you touch (attribute type code, default classification), then call
+  RuleChecklist once for the whole change with the data domain, the classifications and the attribute type codes as comma-separated
+  lists (ApplicableRules returns the same rules for one attribute type with their statements and citations); use RuleDetail for one
+  rule and RulesByCategory to browse a category. Lists of values store codes (MUST, SHOULD, MAY; PRIVACY, DATA_QUALITY...): filter
+  on the code. Always pass the data domain: an omitted parameter only matches rules that are not restricted on that dimension, so
+  industry-specific rules (for example pharma rules scoped to MEDICINAL_PRODUCT, HCP, CLINICAL_SITE or to pharma attribute types
+  such as NDC or NPI) only come back when your design names those domains or attribute types.'
+historizeGolden: true
+historizeMaster: false
+enableDelete: false
+primaryKey: GovernanceRules.entities.GovernanceRule.GovernanceRule.Code
+sourceIdGeneration:
+  mode: MANUAL
+attributes:
+- _type: EntityAttribute
+  _name: Code
+  label: Code
+  physicalName: GR_CODE
+  dataType: String
+  length: 40
+  mandatory: true
+  description: 'Natural key of the rule; its prefix follows the category: DQ-, PRIV-, SEC-, RET-, REF-, MDM-, META-, AI-,
+    STW-, MOD-, entered by the author and never changed (for example PRIV-003).'
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Title
+  label: Title
+  physicalName: GR_TITLE
+  dataType: String
+  length: 200
+  mandatory: true
+  description: Short title of the rule.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Statement
+  label: Statement
+  physicalName: GR_STATEMENT
+  dataType: String
+  length: 4000
+  mandatory: true
+  description: Normative text of the rule, an imperative sentence in RFC 2119 style (MUST, SHOULD, MAY).
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Rationale
+  label: Rationale
+  physicalName: GR_RATIONALE
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: 'Why the rule exists: the risk it addresses or the regulation it serves.'
+- _type: EntityAttribute
+  _name: RequirementLevel
+  label: Requirement level
+  physicalName: GR_LEVEL
+  dataType: GovernanceRules.list_of_values.RequirementLevel
+  lovValidationScope: PRE_CONSO
+  mandatory: true
+  description: Strength of the rule, code MUST (Must), SHOULD (Should) or MAY (May), as in RFC 2119.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Category
+  label: Category
+  physicalName: GR_CATEGORY
+  dataType: GovernanceRules.list_of_values.RuleCategory
+  lovValidationScope: PRE_CONSO
+  mandatory: true
+  description: Category of the rule, code DATA_QUALITY, PRIVACY, SECURITY_ACCESS, RETENTION, REFERENCE_DATA, IDENTITY_MATCHING,
+    METADATA_DOCUMENTATION, AI_USAGE, STEWARDSHIP or MODELING_CONVENTIONS.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: ImplementationPattern
+  label: Implementation pattern
+  physicalName: GR_PATTERN
+  dataType: GovernanceRules.list_of_values.ImplementationPattern
+  lovValidationScope: PRE_CONSO
+  mandatory: false
+  description: How a designer implements the rule in a data product, code VALIDATION, ENRICHER, PRIVILEGE_ROW_FILTER, MATCHING_SURVIVORSHIP,
+    WORKFLOW, RETENTION_POLICY, DESCRIPTION_AI_INSTRUCTION, NAMING_CONVENTION or REFERENCE_ENTITY.
+- _type: EntityAttribute
+  _name: ImplementationGuidance
+  label: Implementation guidance
+  physicalName: GR_GUIDANCE
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: 'Concrete guidance for the designer: what to build in the data product to comply with the rule.'
+- _type: EntityAttribute
+  _name: Example
+  label: Example
+  physicalName: GR_EXAMPLE
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: An example of a compliant implementation or value.
+- _type: EntityAttribute
+  _name: LifecycleStatus
+  label: Status
+  physicalName: GR_STATUS
+  dataType: GovernanceRules.list_of_values.LifecycleStatus
+  lovValidationScope: PRE_CONSO
+  mandatory: true
+  description: Lifecycle status, code DRAFT (Draft), IN_REVIEW (In review), APPROVED (Approved), RETIREMENT_REQUESTED (Retirement
+    requested) or RETIRED (Retired). Changed by the Rule review workflow.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: EffectiveDate
+  label: Effective date
+  physicalName: GR_EFFECTIVE
+  dataType: Date
+  mandatory: false
+  description: Date from which the rule applies.
+- _type: EntityAttribute
+  _name: RetirementDate
+  label: Retirement date
+  physicalName: GR_RETIREMENT
+  dataType: Date
+  mandatory: false
+  description: Date from which the rule no longer applies; empty while the rule is not retired.
+- _type: EntityAttribute
+  _name: RetirementReason
+  label: Retirement reason
+  physicalName: GR_RET_REASON
+  dataType: String
+  length: 1000
+  mandatory: false
+  description: Why the rule is retired, entered when the retirement is requested.
+- _type: EntityAttribute
+  _name: ApprovedOn
+  label: Approved on
+  physicalName: GR_APPROVED_ON
+  dataType: Date
+  mandatory: false
+  description: Date of the last approval by the governance owner.
+- _type: EntityAttribute
+  _name: ApprovedBy
+  label: Approved by
+  physicalName: GR_APPROVED_BY
+  dataType: String
+  length: 128
+  mandatory: false
+  description: User who gave the last approval.
+- _type: EntityAttribute
+  _name: InForce
+  label: In force
+  physicalName: GR_IN_FORCE
+  dataType: Boolean
+  length: 1
+  mandatory: false
+  description: 'Computed: true when the status is APPROVED, the effective date is reached and the retirement date, if any,
+    is not reached. Computed when the rule is certified.'

@@ -1,0 +1,31 @@
+_package: CTMDM.entities.HealthcareOrganization.action_sets
+_type: ActionSet
+_name: HealthcareOrganizationConfirmMatchesActionSet
+
+entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+label: Healthcare Organization Confirm Matches Action Set
+defaultActionSet: false
+
+actions:
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: false
+    waitDialogEnabled: false
+
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnHealthcareOrganization
+    label: Review and Confirm Duplicates
+    useCustomLabel: true
+    dupsManager: CTMDM.entities.HealthcareOrganization.dups_managers.ConfirmMatchesOnHealthcareOrganization
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnHealthcareOrganization
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: CTMDM.entities.HealthcareOrganization.dups_managers.ConfirmMatchesOnHealthcareOrganization
+    enableEdit: true
+    waitDialogEnabled: false

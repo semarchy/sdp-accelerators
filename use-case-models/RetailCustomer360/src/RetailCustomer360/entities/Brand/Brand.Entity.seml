@@ -1,0 +1,167 @@
+_package: RetailCustomer360.entities.Brand
+_type: Entity
+_name: Brand
+label: Brand
+pluralLabel: Brands
+entityType: BASIC
+physicalTableName: BRAND
+iconUrl: https://api.iconify.design/mdi/tag-heart.svg?color=%230D1B2A&width=64
+
+description: "Commercial brand under which products are marketed."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: BrandId
+    label: Brand Id
+    physicalName: BRAND_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the brand."
+
+  - _type: EntityAttribute
+    _name: BrandCode
+    label: Brand Code
+    physicalName: BRAND_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the brand."
+
+  - _type: EntityAttribute
+    _name: BrandName
+    label: Brand Name
+    physicalName: BRAND_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Commercial name of the brand."
+
+  - _type: EntityAttribute
+    _name: BrandOwner
+    label: Brand Owner
+    physicalName: BRAND_OWNER
+    dataType: String
+    length: 200
+    searchable: true
+    description: "Legal entity that owns the brand."
+
+  - _type: EntityAttribute
+    _name: CountryOfOrigin
+    label: Country Of Origin
+    physicalName: COUNTRY_OF_ORIGIN
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Country the brand originates from."
+
+  - _type: EntityAttribute
+    _name: WebsiteUrl
+    label: Website Url
+    physicalName: WEBSITE_URL
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Public website of the brand."
+
+  - _type: EntityAttribute
+    _name: LogoUrl
+    label: Logo Url
+    physicalName: LOGO_URL
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Location of the brand logo image."
+
+  - _type: EntityAttribute
+    _name: LaunchYear
+    label: Launch Year
+    physicalName: LAUNCH_YEAR
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Year the brand was launched."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the brand is currently sold."
+
+  - _type: EntityAttribute
+    _name: IsPrivateLabel
+    label: Is Private Label
+    physicalName: IS_PRIVATE_LABEL
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the brand is a retailer own-label."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Positioning statement for the brand."
+
+  - _type: EntityAttribute
+    _name: BrandNameNormalized
+    label: Brand Name Normalized
+    physicalName: BRAND_NAME_NORM
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Uppercased and trimmed brand name used for lookups."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the brand record originates from."
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+
+primaryKey: RetailCustomer360.entities.Brand.Brand.BrandId
+
+sourceIdGeneration:
+  mode: MANUAL

@@ -1,0 +1,69 @@
+_package: RestaurantMaster.entities.LifecycleStatus.business_views
+_type: BusinessView
+_name: LifecycleStatusBusinessView
+entity: RestaurantMaster.entities.LifecycleStatus.LifecycleStatus
+rootLabel: Lifecycle statuses
+rootPluralLabel: Lifecycle statuses
+displayRootNodeAs: ICON_LABEL
+label: Lifecycle status
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: LifecycleStatus
+  entity: RestaurantMaster.entities.LifecycleStatus.LifecycleStatus
+  actionSet: RestaurantMaster.entities.LifecycleStatus.action_sets.LifecycleStatusActionSet
+  collection: RestaurantMaster.entities.LifecycleStatus.collection_views.LifecycleStatusCollectionView
+  form: RestaurantMaster.entities.LifecycleStatus.forms.LifecycleStatusForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  displayCard: RestaurantMaster.entities.LifecycleStatus.display_cards.LifecycleStatusDisplayCard
+  businessEntitySearchConfigs:
+  - _name: TextConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: TEXT
+  - _name: FormConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: BY_FORM
+  - _name: AdvancedConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: ADVANCED
+  - _name: SemqlConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+  - _type: BusinessViewTransition
+    _name: ReasonsTab
+    label: Reasons
+    useCustomLabel: true
+    transitionPath: Reasons
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: ReasonsTabEnt
+      entity: RestaurantMaster.entities.LifecycleStatusReason.LifecycleStatusReason
+      actionSet: RestaurantMaster.entities.LifecycleStatusReason.action_sets.LifecycleStatusReasonActionSet
+      collection: RestaurantMaster.entities.LifecycleStatusReason.collection_views.LifecycleStatusReasonCollectionView
+      form: RestaurantMaster.entities.LifecycleStatusReason.forms.LifecycleStatusReasonForm
+      displayCard: RestaurantMaster.entities.LifecycleStatusReason.display_cards.LifecycleStatusReasonDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Reasons
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/comment-question-outline.svg
+    visibleInFormTabCondition: any Reasons has (1=1)
+enableHierarchyView: false
+useHierarchyOnOpen: false

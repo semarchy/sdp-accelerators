@@ -1,0 +1,35 @@
+# AuthorGovernanceBodies: stepper on GovernanceBody of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceBody.steppers
+_type: Stepper
+_name: AuthorGovernanceBodies
+description: 'Creates and edits governance bodies (Create, Edit, Mass update and Import actions). Used by the governance steward, without workflow.'
+entity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+label: Enter governance bodies
+rootStep:
+  _type: CollectionStep
+  _name: GovernanceBodies
+  label: Governance bodies
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.GovernanceBody.collection_views.GovernanceBodyCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: GovernanceBody
+      label: Governance body
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.GovernanceBody.forms.GovernanceBodyForm.GovernanceBody

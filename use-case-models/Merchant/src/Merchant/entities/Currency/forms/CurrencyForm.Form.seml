@@ -1,0 +1,60 @@
+ # Description: Form layout for the `Currency` entity (data entry and edit UI).
+ # Contains: Fields and tabs for creating and editing currency records.
+ # Role: Provides the UI for currency master data management.
+_package: Merchant.entities.Currency.forms
+_type: Form
+_name: CurrencyForm
+entity: Merchant.entities.Currency.Currency
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Currency
+    label: Currency
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: IdField
+        _name: CurrencyCode
+        value: CurrencyCode
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: Name
+        value: Name
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: CurrencyNumber
+        value: CurrencyNumber
+        useCustomLabel: false
+        dataType: STRING
+      - _type: ReferenceField
+        _name: FDN_Country
+        value: FDN_Country
+        useCustomLabel: false
+        dataType: STRING
+        referencedEntity: Merchant.entities.Country.Country
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        authoringMode: auto
+        componentProperties:
+          textAlign: left
+          textTypography: body-1
+          displayType: hyperlink
+        labelProperties:
+          alignment: right
+          position: left
+          typography: caption
+          isVisible: '1'
+      - _type: TextField
+        _name: CountryAlpha3
+        value: CountryAlpha3
+        useCustomLabel: false
+        dataType: STRING
+      - _type: CheckboxField
+        _name: IsCurrent
+        value: IsCurrent
+        useCustomLabel: false
+        dataType: BOOLEAN

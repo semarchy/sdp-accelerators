@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.PlanStatus.business_views
+_type: BusinessView
+_name: PlanStatusBusinessView
+label: "Plan Status"
+entity: LifeAndAnnuityInsurance.entities.PlanStatus.PlanStatus
+rootLabel: "Plan Statuses"
+rootPluralLabel: "Plan Statuses"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PlanStatus
+  displayCard: LifeAndAnnuityInsurance.entities.PlanStatus.display_cards.PlanStatusDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.PlanStatus.PlanStatus
+  actionSet: LifeAndAnnuityInsurance.entities.PlanStatus.action_sets.PlanStatusActionSet
+  collection: LifeAndAnnuityInsurance.entities.PlanStatus.collection_views.PlanStatusCollectionView
+  form: LifeAndAnnuityInsurance.entities.PlanStatus.forms.PlanStatusForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: InsurancePlan
+      label: "Insurance Plan"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Insurance Plans"
+      iconUrl: images://mdi/file-cog-outline.svg
+      transitionPath: InsurancePlan
+      useCustomLabel: true
+      description: "Transition from Plan Status to related Insurance Plans."
+      visibleInFormTabCondition: any InsurancePlan has (1=1)
+      enableHierarchy: any InsurancePlan has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: InsurancePlan
+        displayCard: LifeAndAnnuityInsurance.entities.InsurancePlan.display_cards.InsurancePlanDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan
+        actionSet: LifeAndAnnuityInsurance.entities.InsurancePlan.action_sets.InsurancePlanActionSet
+        collection: LifeAndAnnuityInsurance.entities.InsurancePlan.collection_views.InsurancePlanCollectionView
+        form: LifeAndAnnuityInsurance.entities.InsurancePlan.forms.InsurancePlanForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/clipboard-check-outline.svg

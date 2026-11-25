@@ -1,0 +1,119 @@
+_package: CTMDM.entities.MedicalLicense
+_type: Entity
+_name: MedicalLicense
+label: Medical License
+pluralLabel: Medical Licenses
+entityType: ID_MATCHED
+physicalTableName: MED_LIC
+iconUrl: images://mdi/card-account-details-star.svg
+description: "Credential record describing an investigator's professional medical license."
+documentation: "Credential record describing an investigator's professional medical license."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: LicenseID
+    label: License ID
+    description: Business identifier for a medical license record.
+    documentation: Business identifier for a medical license record.
+    physicalName: LIC_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: LicenseNumber
+    label: License Number
+    description: Professional license number.
+    documentation: Professional license number.
+    physicalName: LIC_NUMBER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedLicenseNumber
+    label: Normalized License Number
+    description: Trimmed and uppercased license number.
+    documentation: Trimmed and uppercased license number.
+    physicalName: NORM_LIC_NUMBER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: LicenseCountry
+    label: License Country
+    description: Country or jurisdiction issuing the license.
+    documentation: Country or jurisdiction issuing the license.
+    physicalName: LIC_CTRY
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IssueDate
+    label: Issue Date
+    description: Date the license was issued.
+    documentation: Date the license was issued.
+    physicalName: ISSUE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ExpirationDate
+    label: Expiration Date
+    description: Date the license expires.
+    documentation: Date the license expires.
+    physicalName: EXPIRATION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: LicenseStatus
+    label: License Status
+    description: Current license standing.
+    documentation: Current license standing.
+    physicalName: LIC_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IssuingBoard
+    label: Issuing Board
+    description: Medical board or authority issuing the license.
+    documentation: Medical board or authority issuing the license.
+    physicalName: ISSUING_BOARD
+    dataType: String
+    length: 150
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: VerificationDate
+    label: Verification Date
+    description: Most recent verification date.
+    documentation: Most recent verification date.
+    physicalName: VERIFICATION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: VerificationSource
+    label: Verification Source
+    description: System or organization that verified the license.
+    documentation: System or organization that verified the license.
+    physicalName: VERIFICATION_SOURCE
+    dataType: String
+    length: 100
+    mandatory: false
+
+primaryKey: CTMDM.entities.MedicalLicense.MedicalLicense.LicenseID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

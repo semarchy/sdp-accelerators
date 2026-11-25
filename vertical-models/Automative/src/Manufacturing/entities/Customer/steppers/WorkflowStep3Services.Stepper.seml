@@ -1,0 +1,425 @@
+_name: WorkflowStep3Services
+_package: Manufacturing.entities.Customer.steppers
+_type: Stepper
+entity: Manufacturing.entities.Customer.Customer
+rootStep:
+  _name: Customers
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.Customer.collection_views.CustomerCollectionNameOnly
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Customers
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.CustomersHousehold.Household
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: Manufacturing.entities.Customer.Customer.SemlQLMatcherCustomer
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.Customer.Customer.LastName
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+      definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+  stepTriggers: []
+  childSteps:
+    - _name: Customer
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Customer
+      formTab: Manufacturing.entities.Customer.forms.CustomerEditingFormBusiness.Customer
+      formStepEnrichers:
+        - enricher: Manufacturing.entities.Customer.enrichers.PhonetizeFirstName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.GeocodeUsingGoogle
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.CleanseEmail
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.MelissaPersonatorEnricher
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.HouseholdIDToInteger
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.NormalizeName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.FillInUnknownNicknames
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.Household
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.LookupNickname
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.PhonetizeLastName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.StandardizePhone
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+        - validationType: CHECK
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.Customer.Customer.SemlQLMatcherCustomer
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+      stepTriggers: []
+    - _name: Information
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Information
+      formSection: Manufacturing.entities.Customer.forms.CustomerEditingFormBusiness.Customer.Information
+      formStepEnrichers:
+        - enricher: Manufacturing.entities.Customer.enrichers.PhonetizeLastName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.GeocodeUsingGoogle
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.MelissaPersonatorEnricher
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.FillInUnknownNicknames
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.StandardizePhone
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.NormalizeName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.PhonetizeFirstName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.Household
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.LookupNickname
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.CleanseEmail
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.HouseholdIDToInteger
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.Customer.Customer.SemlQLMatcherCustomer
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+      stepTriggers: []
+    - _name: ServiceAppointments
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: Manufacturing.entities.CustomerServiceAppointment.collection_views.CustomerServiceAppointmentCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Service Appointments
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentDate
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.Customer.Customer.SemlQLMatcherCustomer
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: Manufacturing.references.ServiceAppointmentsCustomer
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: CustomerServiceAppointment
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Customer Service Appointment
+          formTab: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment
+          formStepEnrichers: []
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.DealerService_FDN_Service
+              referencePickerCollectionView: Manufacturing.entities.ProductService.collection_views.ProductServiceCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Customer
+              referencePickerCollectionView: Manufacturing.entities.Customer.collection_views.CustomerCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_DealerService
+              referencePickerCollectionView: Manufacturing.entities.ProductDealerService.collection_views.ProductDealerServiceCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.CustomerServiceAppointment.forms.CustomerServiceAppointmentForm.CustomerServiceAppointment.FDN_Vehicle
+              referencePickerCollectionView: Manufacturing.entities.ProductVehicle.collection_views.ProductVehicleCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentDate
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentDate
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+          stepTriggers: []
+label: Workflow Step3 Services
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.CustomersHousehold.Household
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ServiceAppointmentsCustomer.Customer
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.CustomerServiceAppointment.CustomerServiceAppointment.ServiceAppointmentDate
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+    definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.Customer.Customer.LastName
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ServiceAppointmentstVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ServiceAppointmentsDealerService.DealerService
+triggers: []

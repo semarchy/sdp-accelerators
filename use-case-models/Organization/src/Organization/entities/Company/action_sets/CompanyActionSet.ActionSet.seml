@@ -1,0 +1,70 @@
+_package: Organization.entities.Company.action_sets
+_type: ActionSet
+_name: CompanyActionSet
+entity: Organization.entities.Company.Company
+label: Company Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorCompanies
+    label: Create
+    useCustomLabel: true
+    stepper: Organization.entities.Company.steppers.AuthorCompanies
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorCompanies
+    label: Edit
+    useCustomLabel: true
+    stepper: Organization.entities.Company.steppers.AuthorCompanies
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorCompanies
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Organization.entities.Company.steppers.AuthorCompanies
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorCompanies
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Organization.entities.Company.steppers.AuthorCompanies
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: CopyAction
+    _name: CopyAuthorCompanies
+    label: Copy
+    useCustomLabel: true
+    stepper: Organization.entities.Company.steppers.AuthorCompanies
+    multipleSelectionAllowed: true
+    waitDialogEnabled: false

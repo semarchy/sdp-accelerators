@@ -1,0 +1,28 @@
+_package: RestaurantMaster.entities.LegalEntity.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DefaultRule
+entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+label: Default (preferred source)
+description: ERP first (it bills the company), then Real Estate, then the hub.
+documentation: ERP first (it bills the company), then Real Estate, then the hub.
+defaultRule: true
+consolidationStrategy: PREFERRED_PUBLISHER
+consolidationSkipNulls: false
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+attributes:
+- attributeName: LegalName
+- attributeName: DoingBusinessAs
+- attributeName: LegalEntityType
+- attributeName: BillingAccountNumber
+- attributeName: BillingAddressLine1
+- attributeName: BillingAddressLine2
+- attributeName: BillingCity
+- attributeName: BillingPostalCode
+- attributeName: LegalEntityStatus
+publisherRankings:
+- _type: ConsoPublisherRanking
+  publisher: RestaurantMaster.publishers.ERP
+- _type: ConsoPublisherRanking
+  publisher: RestaurantMaster.publishers.RE
+- _type: ConsoPublisherRanking
+  publisher: RestaurantMaster.publishers.HUB

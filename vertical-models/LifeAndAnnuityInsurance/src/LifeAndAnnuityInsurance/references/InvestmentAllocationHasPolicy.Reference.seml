@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: InvestmentAllocationHasPolicy
+description: "Indicates the Policy associated with a Investment Allocation."
+_type: Reference
+label: "Investment Allocation Has Policy"
+
+fromEntity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+fromRoleLabel: "Investment Allocation"
+fromRoleName: InvestmentAllocation
+fromRolePluralLabel: "Investment Allocations"
+physicalName: INV_ALLOC_HAS_POL
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+toRoleLabel: "Policy"
+toRoleName: Policy
+toRolePhysicalName: POL
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Policy
+  label: "Policy ID"
+  description: "The identifier of the Policy associated with the Investment Allocation."
+  physicalName: POL_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Policy.Policy

@@ -1,0 +1,62 @@
+_package: CTMDM.entities.MedicalLicense.business_views
+_type: BusinessView
+_name: MedicalLicenseBusinessView
+
+entity: CTMDM.entities.MedicalLicense.MedicalLicense
+rootLabel: Medical License
+rootPluralLabel: Medical Licenses
+rootIconUrl: images://mdi/card-account-details-star.svg
+displayRootNodeAs: ICON_LABEL
+label: Medical Licenses
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: MedicalLicense
+  entity: CTMDM.entities.MedicalLicense.MedicalLicense
+  actionSet: CTMDM.entities.MedicalLicense.action_sets.MedicalLicenseActionSet
+  collection: CTMDM.entities.MedicalLicense.collection_views.MedicalLicenseCollectionView
+  form: CTMDM.entities.MedicalLicense.forms.MedicalLicenseForm
+  displayCard: CTMDM.entities.MedicalLicense.display_cards.MedicalLicenseDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.MedicalLicense.business_views.MedicalLicenseBusinessView.MedicalLicense
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

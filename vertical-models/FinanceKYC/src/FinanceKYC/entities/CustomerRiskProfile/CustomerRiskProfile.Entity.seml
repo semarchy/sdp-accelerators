@@ -1,0 +1,110 @@
+_package: FinanceKYC.entities.CustomerRiskProfile
+_type: Entity
+_name: CustomerRiskProfile
+label: Customer Risk Profile
+pluralLabel: Customer Risk Profile
+entityType: BASIC
+physicalTableName: CUSTOMER_RISK_PROFILE
+iconUrl: images://mdi/book.svg
+description: 'Captures customer risk assessment outcomes, sanction indicators, and review scheduling information.'
+documentation: 'Captures customer risk assessment outcomes, sanction indicators, and review scheduling information.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: RiskProfileID
+    _type: EntityAttribute
+    label: Customer Risk Profile ID
+    description: 'Customer Risk Profile ID value captured for the customer risk profile record.'
+    documentation: 'Customer Risk Profile ID value captured for the customer risk profile record.'
+    physicalName: RISK_PROFILE_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: RiskLevel
+    _type: EntityAttribute
+    label: Risk Level
+    description: 'Risk Level value captured for the customer risk profile record.'
+    documentation: 'Risk Level value captured for the customer risk profile record.'
+    physicalName: RISK_LEVEL
+    dataType: String
+    length: 20
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: AssessmentDate
+    _type: EntityAttribute
+    label: Assessment Date
+    description: 'Assessment Date value captured for the customer risk profile record.'
+    documentation: 'Assessment Date value captured for the customer risk profile record.'
+    physicalName: ASSESSMENT_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: AssessedBy
+    _type: EntityAttribute
+    label: Assessed By
+    description: 'Assessed By value captured for the customer risk profile record.'
+    documentation: 'Assessed By value captured for the customer risk profile record.'
+    physicalName: ASSESSED_BY
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _name: Score
+    _type: EntityAttribute
+    label: Score
+    description: 'Score value captured for the customer risk profile record.'
+    documentation: 'Score value captured for the customer risk profile record.'
+    physicalName: SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    mandatory: false
+
+  - _name: IsSanctioned
+    _type: EntityAttribute
+    label: Is Sanctioned
+    description: 'Is Sanctioned value captured for the customer risk profile record.'
+    documentation: 'Is Sanctioned value captured for the customer risk profile record.'
+    physicalName: IS_SANCTIONED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SanctionReason
+    label: Sanction Reason
+    description: 'Reason or supporting detail for a sanction-related finding.'
+    documentation: 'Reason or supporting detail for a sanction-related finding.'
+    physicalName: SANCTION_REASON
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ReviewFrequency
+    label: Review Frequency
+    description: 'Frequency at which the customer risk profile should be reviewed.'
+    documentation: 'Frequency at which the customer risk profile should be reviewed.'
+    physicalName: REVIEW_FREQUENCY
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NextReviewDate
+    label: Next Review Date
+    description: 'Next scheduled date for risk or KYC review.'
+    documentation: 'Next scheduled date for risk or KYC review.'
+    physicalName: NEXT_REVIEW_DATE
+    dataType: Date
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.CustomerRiskProfile.CustomerRiskProfile.RiskProfileID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

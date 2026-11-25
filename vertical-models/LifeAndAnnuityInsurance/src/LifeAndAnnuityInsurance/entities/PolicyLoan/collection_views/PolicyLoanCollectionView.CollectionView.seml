@@ -1,0 +1,92 @@
+_package: LifeAndAnnuityInsurance.entities.PolicyLoan.collection_views
+_type: CollectionView
+_name: PolicyLoanCollectionView
+entity: LifeAndAnnuityInsurance.entities.PolicyLoan.PolicyLoan
+default: true
+displayCard: LifeAndAnnuityInsurance.entities.PolicyLoan.display_cards.PolicyLoanDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: "Policy Loan"
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: PolicyLoanID
+    value: PolicyLoanID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LoanNumber
+    value: LoanNumber
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LoanDate
+    value: LoanDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LoanStatus
+    value: LoanStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LoanPrincipalAmount
+    value: LoanPrincipalAmount
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: '$ ##,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: LoanInterestRate
+    value: LoanInterestRate
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: OutstandingBalance
+    value: OutstandingBalance
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: '$ ##,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FID_Policy
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Policy"
+    referencedEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+    useCustomLabel: true
+    value: FDN_Policy
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL

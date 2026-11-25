@@ -1,0 +1,25 @@
+_package: RestaurantMaster.references
+_type: Reference
+label: Organization assignment - Restaurant
+_name: RestaurantOrgAssignmentHasRestaurant
+description: Attaches each organization assignment to its restaurant; deleted with the restaurant.
+documentation: Attaches each organization assignment to its restaurant; deleted with the restaurant.
+deletePropagation: CASCADE
+fromEntity: RestaurantMaster.entities.RestaurantOrgAssignment.RestaurantOrgAssignment
+fromRoleName: OrgAssignments
+fromRoleLabel: Organization assignment
+fromRolePluralLabel: Organization assignments
+physicalName: ORGASSIGN_RESTAURANT
+toEntity: RestaurantMaster.entities.Restaurant.Restaurant
+toRoleName: Restaurant
+toRolePhysicalName: RESTAURANT_ID
+toRoleLabel: Restaurant
+validationScope: PRE_CONSO
+oneToMany: true
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Restaurant
+  entity: RestaurantMaster.entities.Restaurant.Restaurant
+  label: Restaurant
+  physicalName: RESTAURANT_ID
+  searchable: true

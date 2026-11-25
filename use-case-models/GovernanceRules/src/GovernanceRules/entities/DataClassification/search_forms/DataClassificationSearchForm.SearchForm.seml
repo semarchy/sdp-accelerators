@@ -1,0 +1,16 @@
+# DataClassificationSearchForm: search form on DataClassification of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.DataClassification.search_forms
+_type: SearchForm
+_name: DataClassificationSearchForm
+entity: GovernanceRules.entities.DataClassification.DataClassification
+label: Find data classifications
+searchTip: Every criterion is optional.
+semQlCondition: (:SEARCH_TEXT IS NULL OR UPPER(Code) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Name) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Description) LIKE '%' || UPPER(:SEARCH_TEXT) || '%')
+searchParameters:
+  - _type: SearchParameter
+    _name: SearchText
+    label: Search text
+    bindVariableName: SEARCH_TEXT
+    dataType: String
+    length: 200
+    displayType: TEXT_FIELD

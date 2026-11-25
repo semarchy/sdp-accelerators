@@ -1,0 +1,180 @@
+_type: ModelDiagram
+_package: sapbp360.model_diagrams
+_name: FinancialRelationships
+attributeNameFormat: NAME
+description: Financial & Relationships diagram for SAP Business Partner 360.
+entityNameFormat: NAME
+label: Financial & Relationships
+referenceRoleNameFormat: NAME
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: true
+showReferenceCardinality: true
+showReferenceName: true
+showReferenceRoles: false
+entityShapes:
+  - _name: BPBank
+    _type: EntityShape
+    entity: sapbp360.entities.BPBank.BPBank
+    borderColor: rgb(133, 79, 11)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 80
+      y: 80
+  - _name: Country
+    _type: EntityShape
+    entity: sapbp360.entities.Country.Country
+    borderColor: rgb(95, 94, 90)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 340
+      y: 80
+  - _name: BusinessPartner
+    _type: EntityShape
+    entity: sapbp360.entities.BusinessPartner.BusinessPartner
+    borderColor: rgb(15, 110, 86)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 600
+      y: 80
+  - _name: BPTaxNumber
+    _type: EntityShape
+    entity: sapbp360.entities.BPTaxNumber.BPTaxNumber
+    borderColor: rgb(133, 79, 11)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 860
+      y: 80
+  - _name: BPTaxType
+    _type: EntityShape
+    entity: sapbp360.entities.BPTaxType.BPTaxType
+    borderColor: rgb(95, 94, 90)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 1120
+      y: 80
+  - _name: TaxNumberCategory
+    _type: EntityShape
+    entity: sapbp360.entities.TaxNumberCategory.TaxNumberCategory
+    borderColor: rgb(95, 94, 90)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 1380
+      y: 80
+  - _name: BPContact
+    _type: EntityShape
+    entity: sapbp360.entities.BPContact.BPContact
+    borderColor: rgb(133, 79, 11)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 80
+      y: 360
+  - _name: ContactPersonFunction
+    _type: EntityShape
+    entity: sapbp360.entities.ContactPersonFunction.ContactPersonFunction
+    borderColor: rgb(95, 94, 90)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 340
+      y: 360
+  - _name: ContactPersonDepartment
+    _type: EntityShape
+    entity: sapbp360.entities.ContactPersonDepartment.ContactPersonDepartment
+    borderColor: rgb(95, 94, 90)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 600
+      y: 360
+  - _name: RelationshipCategory
+    _type: EntityShape
+    entity: sapbp360.entities.RelationshipCategory.RelationshipCategory
+    borderColor: rgb(95, 94, 90)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 860
+      y: 360
+  - _name: BPRelationship
+    _type: EntityShape
+    entity: sapbp360.entities.BPRelationship.BPRelationship
+    borderColor: rgb(133, 79, 11)
+    fontTitleColor: rgb(249, 251, 252)
+    width: 190
+    height: 198
+    position:
+      x: 1120
+      y: 360
+referenceLinks:
+  - reference: sapbp360.references.BPBank_BankCountryKey
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPBank
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.Country
+    bendPoints: []
+  - reference: sapbp360.references.BPBank_BusinessPartner
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPBank
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.BusinessPartner
+    bendPoints: []
+  - reference: sapbp360.references.BPTaxNumber_BPTaxType
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPTaxNumber
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPTaxType
+    bendPoints: []
+  - reference: sapbp360.references.BPTaxNumber_TaxNumberCategory
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPTaxNumber
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.TaxNumberCategory
+    bendPoints: []
+  - reference: sapbp360.references.BPTaxNumber_BusinessPartner
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPTaxNumber
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.BusinessPartner
+    bendPoints: []
+  - reference: sapbp360.references.BPContact_BusinessPartnerCompany
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPContact
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.BusinessPartner
+    bendPoints: []
+  - reference: sapbp360.references.BPContact_BusinessPartnerPerson
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPContact
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.BusinessPartner
+    bendPoints: []
+  - reference: sapbp360.references.BPContact_ContactPersonFunction
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPContact
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.ContactPersonFunction
+    bendPoints: []
+  - reference: sapbp360.references.BPContact_ContactPersonDepartment
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPContact
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.ContactPersonDepartment
+    bendPoints: []
+  - reference: sapbp360.references.BPContact_ContactRelationshipType
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPContact
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.RelationshipCategory
+    bendPoints: []
+  - reference: sapbp360.references.BPRelationship_RelationshipCategory
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPRelationship
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.RelationshipCategory
+    bendPoints: []
+  - reference: sapbp360.references.BPRelationship_Party1
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPRelationship
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.BusinessPartner
+    bendPoints: []
+  - reference: sapbp360.references.BPRelationship_Party2
+    fromEntityShape: sapbp360.model_diagrams.FinancialRelationships.BPRelationship
+    toEntityShape: sapbp360.model_diagrams.FinancialRelationships.BusinessPartner
+    bendPoints: []

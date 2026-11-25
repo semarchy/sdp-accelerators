@@ -1,0 +1,85 @@
+# GovernancePolicyForm: Form on GovernancePolicy of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernancePolicy.forms
+_type: Form
+_name: GovernancePolicyForm
+entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+default: true
+formTabs:
+  - _type: FormTab
+    _name: GovernancePolicy
+    label: Policy
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: Identity
+        label: Identification
+        layoutDirection: COLUMN
+        content:
+          - _type: IdField
+            _name: Code
+            value: Code
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Natural key of the policy, entered by the author and never changed (for example POL-PRIV).
+            helperTextValueInterpreter: LITERAL
+          - _type: TextField
+            _name: Name
+            value: Name
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Name of the policy.
+            helperTextValueInterpreter: LITERAL
+          - _type: TextField
+            _name: Description
+            value: Description
+            useCustomLabel: false
+            dataType: STRING
+            helperText: What the policy covers.
+            helperTextValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Details
+        label: Details
+        layoutDirection: COLUMN
+        content:
+          - _type: TextField
+            _name: Purpose
+            value: Purpose
+            useCustomLabel: false
+            dataType: STRING
+            componentProperties:
+              isMultiline: '1'
+              isMultilineValueInterpreter: LITERAL
+              multilineMinLines: '3'
+              multilineMinLinesValueInterpreter: LITERAL
+            helperText: The objective of the policy.
+            helperTextValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Compliance
+        label: Status and compliance
+        layoutDirection: COLUMN
+        content:
+          - _type: MenuField
+            _name: LifecycleStatus
+            value: LifecycleStatus
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Lifecycle status, code DRAFT (Draft), IN_REVIEW (In review), APPROVED (Approved), RETIREMENT_REQUESTED (Retirement requested) or RETIRED (Retired).
+            helperTextValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Links
+        label: Relationships
+        layoutDirection: COLUMN
+        content:
+          - _type: ReferenceField
+            _name: FDN_OwnerBody
+            value: FDN_OwnerBody
+            useCustomLabel: true
+            label: Owner
+            dataType: STRING
+            referencedEntity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+            displayCard: GovernanceRules.entities.GovernanceBody.display_cards.GovernanceBodyDisplayCard
+            helperText: The governance body that owns the policy.
+            helperTextValueInterpreter: LITERAL

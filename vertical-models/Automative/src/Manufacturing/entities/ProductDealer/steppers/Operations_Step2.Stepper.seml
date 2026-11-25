@@ -1,0 +1,81 @@
+_name: Operations_Step2
+_package: Manufacturing.entities.ProductDealer.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductDealer.ProductDealer
+rootStep:
+  _name: ProductDealers
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductDealer.collection_views.ProductDealerCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Dealers
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductDealer.ProductDealer.Name
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.DealersAddress.Address
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.DealersAddress.Address
+  stepTriggers: []
+  childSteps:
+    - _name: ProductDealer
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Dealer
+      formTab: Manufacturing.entities.ProductDealer.forms.Operations_Step2.ProductDealer
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.DealersAddress.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.DealersAddress.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductDealer.ProductDealer.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.DealersAddress.Address
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductDealer.ProductDealer.Name
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.DealersAddress.Address
+      stepTriggers: []
+label: Add Operational Detail-Sector
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.DealersAddress.Address
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductDealer.ProductDealer.Name
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.DealersAddress.Address
+triggers: []

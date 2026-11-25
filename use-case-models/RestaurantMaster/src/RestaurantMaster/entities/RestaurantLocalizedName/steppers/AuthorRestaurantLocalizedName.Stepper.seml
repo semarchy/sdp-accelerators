@@ -1,0 +1,38 @@
+_package: RestaurantMaster.entities.RestaurantLocalizedName.steppers
+_type: Stepper
+_name: AuthorRestaurantLocalizedName
+entity: RestaurantMaster.entities.RestaurantLocalizedName.RestaurantLocalizedName
+label: Localized names
+rootStep:
+  _type: CollectionStep
+  _name: RestaurantLocalizedNameCollection
+  label: Localized names
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: RestaurantMaster.entities.RestaurantLocalizedName.collection_views.RestaurantLocalizedNameCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+  - _type: FormStep
+    _name: RestaurantLocalizedName
+    label: Localized name
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    enableMasterValuePicking: false
+    formTab: RestaurantMaster.entities.RestaurantLocalizedName.forms.RestaurantLocalizedNameForm.RestaurantLocalizedName
+    formStepValidations:
+    - validationType: CHECK
+      validator: RestaurantMaster.entities.RestaurantLocalizedName.validations.KeyConvention
+      executedOnDataChange: true
+      executedOnFormOpen: true

@@ -1,0 +1,77 @@
+_package: LifeAndAnnuityInsurance.entities.CoverageStatus
+_type: Entity
+_name: CoverageStatus
+label: "Coverage Status"
+pluralLabel: "Coverage Statuses"
+physicalTableName: COV_STAT
+iconUrl: images://mdi/shield-check-outline.svg
+description: "Defines coverage status values for base coverage, supplemental benefits, and riders."
+documentation: "Defines coverage status values for base coverage, supplemental benefits, and riders."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CoverageStatusID
+    label: "Coverage Status ID"
+    physicalName: COV_STAT_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the coverage status."
+    documentation: "Unique identifier for the coverage status."
+  - _type: EntityAttribute
+    _name: StatusCode
+    label: "Status Code"
+    physicalName: STAT_CODE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Coverage status code."
+    documentation: "Coverage status code."
+  - _type: EntityAttribute
+    _name: StatusName
+    label: "Status Name"
+    physicalName: STAT_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Coverage status name."
+    documentation: "Coverage status name."
+  - _type: EntityAttribute
+    _name: StatusCategory
+    label: "Status Category"
+    physicalName: STAT_CATEGORY
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Lifecycle category for the coverage status."
+    documentation: "Lifecycle category for the coverage status."
+  - _type: EntityAttribute
+    _name: Description
+    label: "Description"
+    physicalName: DESC_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Business meaning and service implications of the coverage status."
+    documentation: "Business meaning and service implications of the coverage status."
+  - _type: EntityAttribute
+    _name: ActiveIndicator
+    label: "Active Indicator"
+    physicalName: ACTIVE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the coverage status is active."
+    documentation: "Indicates whether the coverage status is active."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.CoverageStatus.CoverageStatus.CoverageStatusID
+entityType: BASIC

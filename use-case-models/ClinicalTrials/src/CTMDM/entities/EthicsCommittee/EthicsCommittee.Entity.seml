@@ -1,0 +1,170 @@
+_package: CTMDM.entities.EthicsCommittee
+_type: Entity
+_name: EthicsCommittee
+label: Ethics Committee / IRB
+pluralLabel: Ethics Committees / IRBs
+entityType: FUZZY_MATCHED
+physicalTableName: ETHICS_COMM
+iconUrl: images://mdi/shield-check-outline.svg
+description: "Golden record for ethics committees and institutional review boards overseeing clinical research."
+documentation: "Golden record for ethics committees and institutional review boards overseeing clinical research."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: EthicsCommitteeID
+    label: Ethics Committee ID
+    description: Surrogate identifier for the ethics committee master.
+    documentation: Surrogate identifier for the ethics committee master.
+    physicalName: ETHICS_COMM_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CommitteeName
+    label: Committee Name
+    description: Official committee or IRB name.
+    documentation: Official committee or IRB name.
+    physicalName: COMM_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedCommitteeName
+    label: Normalized Committee Name
+    description: Trimmed and uppercased committee name.
+    documentation: Trimmed and uppercased committee name.
+    physicalName: NORM_COMM_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhonetizedCommitteeName
+    label: Phonetized Committee Name
+    description: Phonetic key derived from committee name.
+    documentation: Phonetic key derived from committee name.
+    physicalName: PHON_COMM_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CommitteeType
+    label: Committee Type
+    description: Committee classification such as IRB, ethics committee, or central IRB.
+    documentation: Committee classification such as IRB, ethics committee, or central IRB.
+    physicalName: COMM_TYPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RegistrationNumber
+    label: Registration Number
+    description: Official registration or accreditation number.
+    documentation: Official registration or accreditation number.
+    physicalName: REGISTRATION_NUMBER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedRegistrationNumber
+    label: Normalized Registration Number
+    description: Trimmed and uppercased registration number.
+    documentation: Trimmed and uppercased registration number.
+    physicalName: NORM_REGISTRATION_NUMBER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Email
+    label: Email
+    description: Primary contact email.
+    documentation: Primary contact email.
+    physicalName: EMAIL
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Phone
+    label: Phone
+    description: Primary contact phone.
+    documentation: Primary contact phone.
+    physicalName: PHONE
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    description: Current operational status.
+    documentation: Current operational status.
+    physicalName: STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CTMDM.entities.EthicsCommittee.EthicsCommittee.EthicsCommitteeID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: EthicsCommitteeMatcher
+  description: Strategies for matching Ethics Committees / IRBs
+
+  matchRules:
+    - _name: EthicsCommitteeStrongMatch
+      _type: SemQLMatchRule
+      label: Strong Ethics Committee / IRB Match
+      documentation: "Matches records using normalized identity attributes and business identifiers."
+      color: md:purple 900
+      condition: Record1.NormalizedCommitteeName = Record2.NormalizedCommitteeName AND Record1.PhonetizedCommitteeName = Record2.PhonetizedCommitteeName AND Record1.NormalizedRegistrationNumber = Record2.NormalizedRegistrationNumber
+      matchScore: 95
+
+    - _name: EthicsCommitteePhoneticMatch
+      _type: SemQLMatchRule
+      label: Phonetic Ethics Committee / IRB Match
+      documentation: "Matches records using phonetic and normalized attributes for likely duplicates."
+      color: md:purple 700
+      condition: Record1.PhonetizedCommitteeName = Record2.PhonetizedCommitteeName AND Record1.NormalizedRegistrationNumber = Record2.NormalizedRegistrationNumber
+      matchScore: 88
+
+    - _name: EthicsCommitteeCandidateMatch
+      _type: SemQLMatchRule
+      label: Candidate Ethics Committee / IRB Match
+      documentation: "Suggests candidate duplicates for steward review using a reduced attribute set."
+      color: md:purple 400
+      condition: Record1.NormalizedCommitteeName = Record2.NormalizedCommitteeName AND Record1.PhonetizedCommitteeName = Record2.PhonetizedCommitteeName
+      matchScore: 65
+      
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 87
+  autoConfirmSingletons: false

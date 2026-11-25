@@ -1,0 +1,42 @@
+_package: RestaurantMaster.entities.RestaurantStatusHistory.steppers
+_type: Stepper
+_name: AuthorRestaurantStatusHistory
+entity: RestaurantMaster.entities.RestaurantStatusHistory.RestaurantStatusHistory
+label: Status history
+rootStep:
+  _type: CollectionStep
+  _name: RestaurantStatusHistoryCollection
+  label: Status history
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: RestaurantMaster.entities.RestaurantStatusHistory.collection_views.RestaurantStatusHistoryCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+  - _type: FormStep
+    _name: RestaurantStatusHistory
+    label: Status history
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    enableMasterValuePicking: false
+    formTab: RestaurantMaster.entities.RestaurantStatusHistory.forms.RestaurantStatusHistoryForm.RestaurantStatusHistory
+    formStepValidations:
+    - validationType: CHECK
+      validator: RestaurantMaster.entities.RestaurantStatusHistory.validations.KeyConvention
+      executedOnDataChange: true
+      executedOnFormOpen: true
+    - validationType: CHECK
+      validator: RestaurantMaster.entities.RestaurantStatusHistory.validations.ReasonFitsStatus
+      executedOnDataChange: true
+      executedOnFormOpen: true

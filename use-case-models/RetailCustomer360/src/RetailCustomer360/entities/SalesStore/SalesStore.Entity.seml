@@ -1,0 +1,181 @@
+_package: RetailCustomer360.entities.SalesStore
+_type: Entity
+_name: SalesStore
+label: Sales Store
+pluralLabel: Sales Stores
+entityType: BASIC
+physicalTableName: SALES_STORE
+iconUrl: https://api.iconify.design/mdi/storefront.svg?color=%230D1B2A&width=64
+
+description: "Physical or virtual selling location where orders are placed and fulfilled."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: StoreId
+    label: Store Id
+    physicalName: STORE_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the store."
+
+  - _type: EntityAttribute
+    _name: StoreCode
+    label: Store Code
+    physicalName: STORE_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the store."
+
+  - _type: EntityAttribute
+    _name: StoreName
+    label: Store Name
+    physicalName: STORE_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the store."
+
+  - _type: EntityAttribute
+    _name: StoreType
+    label: Store Type
+    physicalName: STORE_TYPE
+    dataType: RetailCustomer360.list_of_values.StoreType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Retail format of the store."
+
+  - _type: EntityAttribute
+    _name: StoreStatus
+    label: Store Status
+    physicalName: STORE_STATUS
+    dataType: RetailCustomer360.list_of_values.StoreStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Operating status of the store."
+
+  - _type: EntityAttribute
+    _name: Address
+    label: Address
+    physicalName: ADR
+    dataType: RetailCustomer360.complex_types.PostalAddress
+    searchable: true
+    description: "Postal address of the store."
+
+  - _type: EntityAttribute
+    _name: Coordinates
+    label: Coordinates
+    physicalName: GEO
+    dataType: RetailCustomer360.complex_types.GeoCoordinates
+    searchable: true
+    description: "Geographic position of the store."
+
+  - _type: EntityAttribute
+    _name: OpeningDate
+    label: Opening Date
+    physicalName: OPENING_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the store opened for trading."
+
+  - _type: EntityAttribute
+    _name: ClosingDate
+    label: Closing Date
+    physicalName: CLOSING_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the store ceased trading."
+
+  - _type: EntityAttribute
+    _name: SellingAreaSqm
+    label: Selling Area Sqm
+    physicalName: SELLING_AREA_SQM
+    dataType: Decimal
+    precision: 10
+    scale: 2
+    searchable: true
+    description: "Selling floor area in square metres."
+
+  - _type: EntityAttribute
+    _name: EmployeeCount
+    label: Employee Count
+    physicalName: EMPLOYEE_COUNT
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of staff assigned to the store."
+
+  - _type: EntityAttribute
+    _name: PhoneNumber
+    label: Phone Number
+    physicalName: PHONE_NUMBER
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Contact phone number for the store."
+
+  - _type: EntityAttribute
+    _name: EmailAddress
+    label: Email Address
+    physicalName: EMAIL_ADDRESS
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Contact email address for the store."
+
+  - _type: EntityAttribute
+    _name: ManagerName
+    label: Manager Name
+    physicalName: MANAGER_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Name of the store manager."
+
+  - _type: EntityAttribute
+    _name: TimeZone
+    label: Time Zone
+    physicalName: TIME_ZONE
+    dataType: String
+    length: 60
+    searchable: true
+    description: "Time zone the store operates in."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the store record originates from."
+
+  - _type: EntityAttribute
+    _name: SourceStoreKey
+    label: Source Store Key
+    physicalName: SOURCE_STORE_KEY
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Natural key of the store in the source system."
+
+  - _type: EntityAttribute
+    _name: StoreNameNormalized
+    label: Store Name Normalized
+    physicalName: STORE_NAME_NORM
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Uppercased and trimmed store name used for lookups."
+
+primaryKey: RetailCustomer360.entities.SalesStore.SalesStore.StoreId
+
+sourceIdGeneration:
+  mode: MANUAL

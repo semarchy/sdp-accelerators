@@ -1,0 +1,155 @@
+_package: PropertyAndCasualtyInsurance.entities.InclusionExclusion.forms
+_type: Form
+_name: InclusionExclusionForm
+entity: PropertyAndCasualtyInsurance.entities.InclusionExclusion.InclusionExclusion
+default: true
+description: Form for browsing inclusion and exclusion clauses
+formTabs:
+  - _type: FormTab
+    _name: General
+    label: Inclusion Exclusion
+    iconUrl: images://mdi/shield-alert.svg
+    documentation: This form provides a comprehensive view of inclusion and exclusion clauses, allowing users to browse and manage clause records effectively. It includes key attributes such as inclusion exclusion ID, type, title, description, rule text, jurisdiction state, and effective dates.
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: GeneralContainer01
+        content:
+          - _type: FormContainer
+            _name: GeneralContainer01A
+            content:
+              - _type: IdField
+                _name: InclusionExclusionID
+                dataType: LONG_INTEGER
+                useCustomLabel: false
+                value: InclusionExclusionID
+                componentProperties:
+                  textAlign: left
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+              - _type: MenuField
+                _name: Type
+                dataType: STRING
+                useCustomLabel: false
+                value: Type
+                documentation: The Type field indicates whether the clause is an inclusion or an exclusion. It helps users quickly identify the nature of the clause and its impact on coverage.
+                documentationInterpreter: LITERAL
+                
+                componentProperties:
+                  textAlign: left
+                  useAvatarInMenu: '1'
+                  useAvatarInMenuValueInterpreter: LITERAL
+                  textColor: CASE WHEN Type = 'INCLUSION' THEN 'md:green 600' WHEN Type = 'EXCLUSION' THEN 'md:red 600' ELSE 'md:black 600' END
+                  textColorValueInterpreter: SEMQL
+
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+              - _type: TextField
+                _name: Title
+                dataType: STRING
+                useCustomLabel: false
+                value: Title
+                componentProperties:
+                  textAlign: left
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+              - _type: ReferenceField
+                _name: FDN_LineOfBusiness
+                dataType: STRING
+                referencedEntity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness
+                useCustomLabel: false
+                value: FDN_LineOfBusiness
+                componentProperties:
+                  textAlign: left
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  chipMaxWidth: '300'
+                  chipMaxWidthValueInterpreter: LITERAL
+                  useAvatarInChip: '1'
+                  useAvatarInChipValueInterpreter: LITERAL
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+            layoutDirection: COLUMN
+          - _type: FormContainer
+            _name: GeneralContainer01B
+            content:
+              - _type: TextField
+                _name: Description
+                dataType: LONG_TEXT
+                useCustomLabel: false
+                value: Description
+                componentProperties:
+                  textAlign: left
+                  isMultiline: '1'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+              - _type: TextField
+                _name: RuleText
+                dataType: LONG_TEXT
+                useCustomLabel: false
+                value: RuleText
+                componentProperties:
+                  textAlign: left
+                  isMultiline: '1'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+              - _type: TextField
+                _name: JurisdictionState
+                dataType: STRING
+                useCustomLabel: false
+                value: JurisdictionState
+                componentProperties:
+                  textAlign: left
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+            layoutDirection: COLUMN
+          - _type: FormContainer
+            _name: GeneralContainer01C
+            content:
+              - _type: TextField
+                _name: EffectiveFrom
+                dataType: DATE
+                useCustomLabel: false
+                value: EffectiveFrom
+                componentProperties:
+                  textAlign: left
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+              - _type: TextField
+                _name: EffectiveTo
+                dataType: DATE
+                useCustomLabel: false
+                value: EffectiveTo
+                componentProperties:
+                  textAlign: left
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+            layoutDirection: COLUMN
+        layoutDirection: ROW

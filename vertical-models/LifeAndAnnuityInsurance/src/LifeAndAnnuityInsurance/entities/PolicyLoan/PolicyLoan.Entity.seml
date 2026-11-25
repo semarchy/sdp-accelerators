@@ -1,0 +1,130 @@
+_package: LifeAndAnnuityInsurance.entities.PolicyLoan
+_type: Entity
+_name: PolicyLoan
+label: "Policy Loan"
+pluralLabel: "Policy Loans"
+physicalTableName: POL_LOAN
+iconUrl: images://mdi/cash-multiple.svg
+description: "Represents policy loan details for cash-value life insurance and loan-eligible contracts."
+documentation: "Represents policy loan details for cash-value life insurance and loan-eligible contracts."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PolicyLoanID
+    label: "Policy Loan ID"
+    physicalName: POL_LOAN_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the policy loan."
+    documentation: "Unique identifier for the policy loan."
+  - _type: EntityAttribute
+    _name: LoanNumber
+    label: "Loan Number"
+    physicalName: LOAN_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Policy loan number."
+    documentation: "Policy loan number."
+  - _type: EntityAttribute
+    _name: LoanDate
+    label: "Loan Date"
+    physicalName: LOAN_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the loan was opened."
+    documentation: "Date the loan was opened."
+  - _type: EntityAttribute
+    _name: LoanStatus
+    label: "Loan Status"
+    physicalName: LOAN_STAT
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Current status of the loan."
+    documentation: "Current status of the loan."
+  - _type: EntityAttribute
+    _name: LoanPrincipalAmount
+    label: "Loan Principal Amount"
+    physicalName: LOAN_PRINCIPAL_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Original or current principal amount of the loan."
+    documentation: "Original or current principal amount of the loan."
+  - _type: EntityAttribute
+    _name: LoanInterestRate
+    label: "Loan Interest Rate"
+    physicalName: LOAN_INT_RATE
+    dataType: Decimal
+    precision: 9
+    scale: 4
+    mandatory: false
+    searchable: true
+    description: "Loan interest rate."
+    documentation: "Loan interest rate."
+  - _type: EntityAttribute
+    _name: OutstandingBalance
+    label: "Outstanding Balance"
+    physicalName: OUTST_BALANCE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Current outstanding loan balance."
+    documentation: "Current outstanding loan balance."
+  - _type: EntityAttribute
+    _name: InterestAccruedAmount
+    label: "Interest Accrued Amount"
+    physicalName: INT_ACCRUED_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Accrued interest amount on the loan."
+    documentation: "Accrued interest amount on the loan."
+  - _type: EntityAttribute
+    _name: RepaymentDueDate
+    label: "Repayment Due Date"
+    physicalName: REPAYMENT_DUE_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Next repayment due date, if applicable."
+    documentation: "Next repayment due date, if applicable."
+  - _type: EntityAttribute
+    _name: CollateralValue
+    label: "Collateral Value"
+    physicalName: COLLATERAL_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Policy value used to collateralize the loan."
+    documentation: "Policy value used to collateralize the loan."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional policy loan notes."
+    documentation: "Additional policy loan notes."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.PolicyLoan.PolicyLoan.PolicyLoanID
+entityType: ID_MATCHED

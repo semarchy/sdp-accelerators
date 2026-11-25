@@ -1,0 +1,1464 @@
+_package: sapbp360.applications
+_name: BusinessPartner360Hub
+_type: Application
+applicationTitle: SAP Business Partner 360
+avatarImageUrl: images://sapbusinesspartner/logo.svg
+coverImageUrl: images://sapbusinesspartner/logo.svg
+favIcon: images://sapbusinesspartner/logo.svg
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ""
+logoUrl: images://sapbusinesspartner/logo.svg
+visibility: VISIBLE
+description: Trusted business partner data hub for SAP landscape consolidation.
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: BPCore
+      _type: DocumentationConfigDiagram
+      modelDiagram: sapbp360.model_diagrams.BPCore
+      label: Business Partner Core
+    - _name: FinancialRelationships
+      _type: DocumentationConfigDiagram
+      modelDiagram: sapbp360.model_diagrams.FinancialRelationships
+      label: Financial & Relationships
+    - _name: SupplierBranch
+      _type: DocumentationConfigDiagram
+      modelDiagram: sapbp360.model_diagrams.SupplierBranch
+      label: Supplier Branch
+label: SAP Business Partner 360
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: BusinessPartners
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sapbp360.entities.BusinessPartner.business_views.BusinessPartner
+      label: Business Partners
+      maxResults: 5
+      searchTypeConfig: sapbp360.entities.BusinessPartner.business_views.BusinessPartner.BusinessPartner.TextConfig
+    - _name: Suppliers
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sapbp360.entities.Supplier.business_views.Supplier
+      label: Suppliers
+      maxResults: 5
+      searchTypeConfig: sapbp360.entities.Supplier.business_views.Supplier.Supplier.TextConfig
+    - _name: BPAddresses
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sapbp360.entities.BPAddress.business_views.BPAddress
+      label: BP Addresses
+      maxResults: 5
+      searchTypeConfig: sapbp360.entities.BPAddress.business_views.BPAddress.BPAddress.TextConfig
+    - _name: BPContacts
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sapbp360.entities.BPContact.business_views.BPContact
+      label: BP Contacts
+      maxResults: 5
+      searchTypeConfig: sapbp360.entities.BPContact.business_views.BPContact.BPContact.TextConfig
+defaultAction: sapbp360.applications.BusinessPartner360Hub.Root.GlobalSearch
+navDrawer:
+  - _name: PlatformActions
+    _type: NavigationGroup
+    dividerVisible: true
+    label: Platform Actions
+    labelVisible: true
+    actions:
+      - appAction: sapbp360.applications.BusinessPartner360Hub.Root.MyTasks
+      - appAction: sapbp360.applications.BusinessPartner360Hub.Root.GlobalSearch
+      - appAction: sapbp360.applications.BusinessPartner360Hub.Root.StartHere
+  - _name: BusinessPartnerCore
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sapbp360.applications.BusinessPartner360Hub.Root.BusinessPartnerCore
+  - _name: AddressCommunication
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sapbp360.applications.BusinessPartner360Hub.Root.AddressCommunication
+  - _name: FinancialArea
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sapbp360.applications.BusinessPartner360Hub.Root.FinancialArea
+  - _name: SupplierManagement
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sapbp360.applications.BusinessPartner360Hub.Root.SupplierManagement
+  - _name: ReferenceData
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sapbp360.applications.BusinessPartner360Hub.Root.ReferenceData
+  - _name: Manage
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sapbp360.applications.BusinessPartner360Hub.Root.Manage
+  - _name: Administration
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sapbp360.applications.BusinessPartner360Hub.Root.Administration
+  - _name: Documentation
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sapbp360.applications.BusinessPartner360Hub.Root.Documentation
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+    - _type: MyTasksAction
+      _name: MyTasks
+      label: Inbox
+      iconColor: "#04342C"
+      labelColor: "#04342C"
+      image: images://mdi/inbox-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: false
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      description: Search business partners, suppliers, addresses, and contacts.
+      label: Global Search
+      iconColor: "#04342C"
+      labelColor: "#04342C"
+      image: images://mdi/magnify.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+    - _type: FolderAction
+      _name: StartHere
+      icon: images://mdi/rocket-launch-outline.svg
+      description: Import data into the fuzzy-matched entities in the recommended load sequence.
+      label: Start Here
+      iconColor: "#0F6E56"
+      labelColor: "#0F6E56"
+      image: images://mdi/rocket-launch-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: ImportDataAppAction
+          _name: ImportBusinessPartners
+          description: Import Business Partners, the parent golden record all other entities reference.
+          label: Import Business Partners
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+          iconColor: "#0F6E56"
+          labelColor: "#0F6E56"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          importAction: sapbp360.entities.BusinessPartner.action_sets.BusinessPartnerActionSet.ImportAuthorBusinessPartners
+        - _type: ImportDataAppAction
+          _name: ImportBPAddresses
+          description: Import BP Addresses (references Business Partner).
+          label: Import BP Addresses
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+          iconColor: "#0F6E56"
+          labelColor: "#0F6E56"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          importAction: sapbp360.entities.BPAddress.action_sets.BPAddressActionSet.ImportAuthorBPAddresses
+        - _type: ImportDataAppAction
+          _name: ImportBPBanks
+          description: Import BP Banks (references Business Partner).
+          label: Import BP Banks
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+          iconColor: "#0F6E56"
+          labelColor: "#0F6E56"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          importAction: sapbp360.entities.BPBank.action_sets.BPBankActionSet.ImportAuthorBPBanks
+        - _type: ImportDataAppAction
+          _name: ImportBPContacts
+          description: Import BP Contacts (references Business Partner).
+          label: Import BP Contacts
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+          iconColor: "#0F6E56"
+          labelColor: "#0F6E56"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          importAction: sapbp360.entities.BPContact.action_sets.BPContactActionSet.ImportAuthorBPContacts
+        - _type: ImportDataAppAction
+          _name: ImportSuppliers
+          description: Import Suppliers (references Business Partner).
+          label: Import Suppliers
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+          iconColor: "#0F6E56"
+          labelColor: "#0F6E56"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          importAction: sapbp360.entities.Supplier.action_sets.SupplierActionSet.ImportAuthorSuppliers
+        - _type: ImportDataAppAction
+          _name: ImportSupplierPurchasingOrgs
+          description: Import Supplier Purchasing Orgs (references Supplier, imported last).
+          label: Import Supplier Purchasing Orgs
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+          iconColor: "#0F6E56"
+          labelColor: "#0F6E56"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          importAction: sapbp360.entities.SupplierPurchasingOrg.action_sets.SupplierPurchasingOrgActionSet.ImportAuthorSupplierPurchasingOrgs
+    - _type: FolderAction
+      _name: BusinessPartnerCore
+      icon: images://mdi/account-group.svg
+      description: Business Partner Core
+      label: Business Partner Core
+      iconColor: "#0F6E56"
+      labelColor: "#0F6E56"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseBUSINESSPARTNER
+          description: Browse Business Partner records.
+          label: Business Partners
+          iconColor: "#0F6E56"
+          labelColor: "#0F6E56"
+          image: images://sapbusinesspartner/BusinessPartner.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sapbp360.entities.BusinessPartner.business_views.BusinessPartner
+          nbRecordsBadgeVisible: true
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: FolderAction
+          _name: BPDetails
+          icon: images://mdi/account-details.svg
+          description: BP Details
+          label: BP Details
+          iconColor: "#0F6E56"
+          labelColor: "#0F6E56"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBPROLE
+              description: Browse BP Role records.
+              label: BP Roles
+              iconColor: "#0F6E56"
+              labelColor: "#0F6E56"
+              image: images://sapbusinesspartner/BPRole.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPRole.business_views.BPRole
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBPIDENTIFICATION
+              description: Browse BP Identification records.
+              label: BP Identifications
+              iconColor: "#0F6E56"
+              labelColor: "#0F6E56"
+              image: images://sapbusinesspartner/BPIdentification.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPIdentification.business_views.BPIdentification
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBPINDUSTRY
+              description: Browse BP Industry records.
+              label: BP Industries
+              iconColor: "#0F6E56"
+              labelColor: "#0F6E56"
+              image: images://sapbusinesspartner/BPIndustry.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPIndustry.business_views.BPIndustry
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+    - _type: FolderAction
+      _name: AddressCommunication
+      icon: images://mdi/map-marker.svg
+      description: Addresses & Communication
+      label: Addresses & Communication
+      iconColor: "#26215C"
+      labelColor: "#26215C"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseBPADDRESS
+          description: Browse BP Address records.
+          label: BP Addresses
+          iconColor: "#26215C"
+          labelColor: "#26215C"
+          image: images://sapbusinesspartner/BPAddress.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sapbp360.entities.BPAddress.business_views.BPAddress
+          nbRecordsBadgeVisible: true
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: FolderAction
+          _name: Communication
+          icon: images://mdi/card-account-phone.svg
+          description: Communication
+          label: Communication
+          iconColor: "#26215C"
+          labelColor: "#26215C"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBPADDRESSUSAGE
+              description: Browse BP Address Usage records.
+              label: BP Address Usages
+              iconColor: "#26215C"
+              labelColor: "#26215C"
+              image: images://sapbusinesspartner/BPAddressUsage.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPAddressUsage.business_views.BPAddressUsage
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBPADDRESSEMAIL
+              description: Browse BP Address Email records.
+              label: BP Address Emails
+              iconColor: "#26215C"
+              labelColor: "#26215C"
+              image: images://sapbusinesspartner/BPAddressEmail.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPAddressEmail.business_views.BPAddressEmail
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBPADDRESSPHONE
+              description: Browse BP Address Phone records.
+              label: BP Address Phones
+              iconColor: "#26215C"
+              labelColor: "#26215C"
+              image: images://sapbusinesspartner/BPAddressPhone.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPAddressPhone.business_views.BPAddressPhone
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+    - _type: FolderAction
+      _name: FinancialArea
+      icon: images://mdi/cash-multiple.svg
+      description: Financial & Relationships
+      label: Financial & Relationships
+      iconColor: "#854F0B"
+      labelColor: "#854F0B"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseBPBANK
+          description: Browse BP Bank records.
+          label: BP Banks
+          iconColor: "#854F0B"
+          labelColor: "#854F0B"
+          image: images://sapbusinesspartner/BPBank.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sapbp360.entities.BPBank.business_views.BPBank
+          nbRecordsBadgeVisible: true
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          _name: BrowseBPTAXNUMBER
+          description: Browse BP Tax Number records.
+          label: BP Tax Numbers
+          iconColor: "#854F0B"
+          labelColor: "#854F0B"
+          image: images://sapbusinesspartner/BPTaxNumber.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sapbp360.entities.BPTaxNumber.business_views.BPTaxNumber
+          nbRecordsBadgeVisible: true
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          _name: BrowseBPCONTACT
+          description: Browse BP Contact records.
+          label: BP Contacts
+          iconColor: "#854F0B"
+          labelColor: "#854F0B"
+          image: images://sapbusinesspartner/BPContact.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sapbp360.entities.BPContact.business_views.BPContact
+          nbRecordsBadgeVisible: true
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          _name: BrowseBPRELATIONSHIP
+          description: Browse BP Relationship records.
+          label: BP Relationships
+          iconColor: "#854F0B"
+          labelColor: "#854F0B"
+          image: images://sapbusinesspartner/BPRelationship.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sapbp360.entities.BPRelationship.business_views.BPRelationship
+          nbRecordsBadgeVisible: true
+          useSearchOnOpen: false
+          viewType: GD
+    - _type: FolderAction
+      _name: SupplierManagement
+      icon: images://mdi/truck.svg
+      description: Supplier Management
+      label: Supplier Management
+      iconColor: "#04342C"
+      labelColor: "#04342C"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseSUPPLIER
+          description: Browse Supplier records.
+          label: Suppliers
+          iconColor: "#04342C"
+          labelColor: "#04342C"
+          image: images://sapbusinesspartner/Supplier.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sapbp360.entities.Supplier.business_views.Supplier
+          nbRecordsBadgeVisible: true
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: FolderAction
+          _name: SupplierDetails
+          icon: images://mdi/dolly.svg
+          description: Supplier Details
+          label: Supplier Details
+          iconColor: "#04342C"
+          labelColor: "#04342C"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSUPPLIERCOMPANY
+              description: Browse Supplier Company records.
+              label: Supplier Companies
+              iconColor: "#04342C"
+              labelColor: "#04342C"
+              image: images://sapbusinesspartner/SupplierCompany.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SupplierCompany.business_views.SupplierCompany
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSUPPLIERPURCHASINGORG
+              description: Browse Supplier Purchasing Org records.
+              label: Supplier Purchasing Orgs
+              iconColor: "#04342C"
+              labelColor: "#04342C"
+              image: images://sapbusinesspartner/SupplierPurchasingOrg.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SupplierPurchasingOrg.business_views.SupplierPurchasingOrg
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSUPPLIERPARTNERFUNC
+              description: Browse Supplier Partner Function records.
+              label: Supplier Partner Functions
+              iconColor: "#04342C"
+              labelColor: "#04342C"
+              image: images://sapbusinesspartner/SupplierPartnerFunc.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SupplierPartnerFunc.business_views.SupplierPartnerFunc
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSUPPLIERTEXT
+              description: Browse Supplier Text records.
+              label: Supplier Texts
+              iconColor: "#04342C"
+              labelColor: "#04342C"
+              image: images://sapbusinesspartner/SupplierText.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SupplierText.business_views.SupplierText
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+    - _type: FolderAction
+      _name: ReferenceData
+      icon: images://mdi/book-open-variant.svg
+      description: Reference Data
+      label: Reference Data
+      iconColor: "#5F5E5A"
+      labelColor: "#5F5E5A"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: FolderAction
+          _name: PartyAddressReference
+          icon: images://mdi/tag-multiple.svg
+          description: Party & Address Reference
+          label: Party & Address
+          iconColor: "#5F5E5A"
+          labelColor: "#5F5E5A"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCountry
+              description: Browse Country records.
+              label: Countries
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/Country.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.Country.business_views.Country
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseLanguage
+              description: Browse Language records.
+              label: Languages
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/Language.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.Language.business_views.Language
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCurrency
+              description: Browse Currency records.
+              label: Currencies
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/Currency.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.Currency.business_views.Currency
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBusinessPartnerCategory
+              description: Browse Business Partner Category records.
+              label: Business Partner Categories
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/BusinessPartnerCategory.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BusinessPartnerCategory.business_views.BusinessPartnerCategory
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBusinessPartnerGrouping
+              description: Browse Business Partner Grouping records.
+              label: Business Partner Groupings
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/BusinessPartnerGrouping.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BusinessPartnerGrouping.business_views.BusinessPartnerGrouping
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBusinessPartnerRole
+              description: Browse Business Partner Role records.
+              label: Business Partner Roles
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/BusinessPartnerRole.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BusinessPartnerRole.business_views.BusinessPartnerRole
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBPStatus
+              description: Browse BP Status records.
+              label: BP Statuses
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/BPStatus.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPStatus.business_views.BPStatus
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSourceSystem
+              description: Browse Source System records.
+              label: Source Systems
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/SourceSystem.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SourceSystem.business_views.SourceSystem
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBpIdentificationType
+              description: Browse BP Identification Type records.
+              label: BP Identification Types
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/BpIdentificationType.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BpIdentificationType.business_views.BpIdentificationType
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseIndustry
+              description: Browse Industry records.
+              label: Industries
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/Industry.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.Industry.business_views.Industry
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseIndustrySector
+              description: Browse Industry Sector records.
+              label: Industry Sectors
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/IndustrySector.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.IndustrySector.business_views.IndustrySector
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRegion
+              description: Browse Region records.
+              label: Regions
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/Region.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.Region.business_views.Region
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseAddressUsage
+              description: Browse Address Usage records.
+              label: Address Usages
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/AddressUsage.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.AddressUsage.business_views.AddressUsage
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePhoneNumberType
+              description: Browse Phone Number Type records.
+              label: Phone Number Types
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/PhoneNumberType.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.PhoneNumberType.business_views.PhoneNumberType
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseTaxJurisdiction
+              description: Browse Tax Jurisdiction records.
+              label: Tax Jurisdictions
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/TaxJurisdiction.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.TaxJurisdiction.business_views.TaxJurisdiction
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseTransportZone
+              description: Browse Transport Zone records.
+              label: Transport Zones
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/TransportZone.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.TransportZone.business_views.TransportZone
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBPTaxType
+              description: Browse BP Tax Type records.
+              label: BP Tax Types
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/BPTaxType.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPTaxType.business_views.BPTaxType
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseTaxNumberCategory
+              description: Browse Tax Number Category records.
+              label: Tax Number Categories
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/TaxNumberCategory.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.TaxNumberCategory.business_views.TaxNumberCategory
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseContactPersonFunction
+              description: Browse Contact Person Function records.
+              label: Contact Person Functions
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/ContactPersonFunction.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.ContactPersonFunction.business_views.ContactPersonFunction
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseContactPersonDepartment
+              description: Browse Contact Person Department records.
+              label: Contact Person Departments
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/ContactPersonDepartment.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.ContactPersonDepartment.business_views.ContactPersonDepartment
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRelationshipCategory
+              description: Browse Relationship Category records.
+              label: Relationship Categories
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/RelationshipCategory.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.RelationshipCategory.business_views.RelationshipCategory
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+        - _type: FolderAction
+          _name: FinancialPurchasingReference
+          icon: images://mdi/tag-multiple.svg
+          description: Financial & Purchasing Reference
+          label: Financial & Purchasing Reference
+          iconColor: "#5F5E5A"
+          labelColor: "#5F5E5A"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSupplierAccountGroup
+              description: Browse Supplier Account Group records.
+              label: Supplier Account Groups
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/SupplierAccountGroup.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SupplierAccountGroup.business_views.SupplierAccountGroup
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSupplierCorporateGroup
+              description: Browse Supplier Corporate Group records.
+              label: Supplier Corporate Groups
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/SupplierCorporateGroup.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SupplierCorporateGroup.business_views.SupplierCorporateGroup
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseAlternativePayee
+              description: Browse Alternative Payee records.
+              label: Alternative Payees
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/AlternativePayee.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.AlternativePayee.business_views.AlternativePayee
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseAuthorizationGroup
+              description: Browse Authorization Group records.
+              label: Authorization Groups
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/AuthorizationGroup.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.AuthorizationGroup.business_views.AuthorizationGroup
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseTradingPartner
+              description: Browse Trading Partner records.
+              label: Trading Partners
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/TradingPartner.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.TradingPartner.business_views.TradingPartner
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseResponsibleType
+              description: Browse Responsible Type records.
+              label: Responsible Types
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/ResponsibleType.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.ResponsibleType.business_views.ResponsibleType
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCompanyCode
+              description: Browse Company Code records.
+              label: Company Codes
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/CompanyCode.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.CompanyCode.business_views.CompanyCode
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePaymentTerms
+              description: Browse Payment Terms records.
+              label: Payment Terms
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/PaymentTerms.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.PaymentTerms.business_views.PaymentTerms
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseReconciliationAccount
+              description: Browse Reconciliation Account records.
+              label: Reconciliation Accounts
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/ReconciliationAccount.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.ReconciliationAccount.business_views.ReconciliationAccount
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseHouseBank
+              description: Browse House Bank records.
+              label: House Banks
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/HouseBank.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.HouseBank.business_views.HouseBank
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSortKey
+              description: Browse Sort Key records.
+              label: Sort Keys
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/SortKey.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SortKey.business_views.SortKey
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCashPlanningGroup
+              description: Browse Cash Planning Group records.
+              label: Cash Planning Groups
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/CashPlanningGroup.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.CashPlanningGroup.business_views.CashPlanningGroup
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseInterestCalculationCode
+              description: Browse Interest Calculation Code records.
+              label: Interest Calculation Codes
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/InterestCalculationCode.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.InterestCalculationCode.business_views.InterestCalculationCode
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseToleranceGroup
+              description: Browse Tolerance Group records.
+              label: Tolerance Groups
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/ToleranceGroup.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.ToleranceGroup.business_views.ToleranceGroup
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePaymentBlockingReason
+              description: Browse Payment Blocking Reason records.
+              label: Payment Blocking Reasons
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/PaymentBlockingReason.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.PaymentBlockingReason.business_views.PaymentBlockingReason
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePurchasingOrganization
+              description: Browse Purchasing Organization records.
+              label: Purchasing Organizations
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/PurchasingOrganization.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.PurchasingOrganization.business_views.PurchasingOrganization
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseIncotermsClassification
+              description: Browse Incoterms Classification records.
+              label: Incoterms Classifications
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/IncotermsClassification.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.IncotermsClassification.business_views.IncotermsClassification
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePurchasingGroup
+              description: Browse Purchasing Group records.
+              label: Purchasing Groups
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/PurchasingGroup.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.PurchasingGroup.business_views.PurchasingGroup
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseABCClassification
+              description: Browse ABC Classification records.
+              label: ABC Classifications
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/ABCClassification.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.ABCClassification.business_views.ABCClassification
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePlanningCycle
+              description: Browse Planning Cycle records.
+              label: Planning Cycles
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/PlanningCycle.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.PlanningCycle.business_views.PlanningCycle
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePricingDateControl
+              description: Browse Pricing Date Control records.
+              label: Pricing Date Controls
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/PricingDateControl.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.PricingDateControl.business_views.PricingDateControl
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseShippingCondition
+              description: Browse Shipping Condition records.
+              label: Shipping Conditions
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/ShippingCondition.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.ShippingCondition.business_views.ShippingCondition
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseLongTextID
+              description: Browse Long Text ID records.
+              label: Long Text IDs
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/LongTextID.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.LongTextID.business_views.LongTextID
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePartnerFunction
+              description: Browse Partner Function records.
+              label: Partner Functions
+              iconColor: "#5F5E5A"
+              labelColor: "#5F5E5A"
+              image: images://sapbusinesspartner/PartnerFunction.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.PartnerFunction.business_views.PartnerFunction
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+    - _type: FolderAction
+      _name: Manage
+      icon: images://mdi/clipboard-check-outline.svg
+      description: Data stewardship for reviewing match suggestions and source data errors.
+      label: Manage
+      iconColor: "#1A3772"
+      labelColor: "#1A3772"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: FolderAction
+          _name: MatchSuggestions
+          description: Review all pending duplicate match suggestions.
+          icon: images://mdi/message-question-outline.svg
+          label: Match Suggestions
+          iconColor: "#1A3772"
+          labelColor: "#1A3772"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BusinessPartnerSuggestions
+              description: Review duplicate match suggestions for Business Partners.
+              label: Match Suggestions in Business Partners
+              icon: images://sapbusinesspartner/MatchSuggestionsBusinessPartner.svg
+              image: images://sapbusinesspartner/MatchSuggestionsBusinessPartner.svg
+              iconColor: "#1A3772"
+              labelColor: "#1A3772"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BusinessPartner.business_views.BusinessPartnerReviewSuggestion
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: SupplierSuggestions
+              description: Review duplicate match suggestions for Suppliers.
+              label: Match Suggestions in Suppliers
+              icon: images://sapbusinesspartner/MatchSuggestionsSupplier.svg
+              image: images://sapbusinesspartner/MatchSuggestionsSupplier.svg
+              iconColor: "#1A3772"
+              labelColor: "#1A3772"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.Supplier.business_views.SupplierReviewSuggestion
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BPAddressSuggestions
+              description: Review duplicate match suggestions for BP Addresses.
+              label: Match Suggestions in BP Addresses
+              icon: images://sapbusinesspartner/MatchSuggestionsBPAddress.svg
+              image: images://sapbusinesspartner/MatchSuggestionsBPAddress.svg
+              iconColor: "#1A3772"
+              labelColor: "#1A3772"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPAddress.business_views.BPAddressReviewSuggestion
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BPContactSuggestions
+              description: Review duplicate match suggestions for BP Contacts.
+              label: Match Suggestions in BP Contacts
+              icon: images://sapbusinesspartner/MatchSuggestionsBPContact.svg
+              image: images://sapbusinesspartner/MatchSuggestionsBPContact.svg
+              iconColor: "#1A3772"
+              labelColor: "#1A3772"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPContact.business_views.BPContactReviewSuggestion
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BPBankSuggestions
+              description: Review duplicate match suggestions for BP Banks.
+              label: Match Suggestions in BP Banks
+              icon: images://sapbusinesspartner/MatchSuggestionsBPBank.svg
+              image: images://sapbusinesspartner/MatchSuggestionsBPBank.svg
+              iconColor: "#1A3772"
+              labelColor: "#1A3772"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPBank.business_views.BPBankReviewSuggestion
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: SupplierPurchOrgSuggestions
+              description: Review duplicate match suggestions for Supplier Purchasing Orgs.
+              label: Match Suggestions in Supplier Purchasing Orgs
+              icon: images://sapbusinesspartner/MatchSuggestionsSupplierPurchasingOrgs.svg
+              image: images://sapbusinesspartner/MatchSuggestionsSupplierPurchasingOrgs.svg
+              iconColor: "#1A3772"
+              labelColor: "#1A3772"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SupplierPurchasingOrg.business_views.SupplierPurchasingOrgReviewSuggestion
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+        - _type: FolderAction
+          _name: SourceErrors
+          description: Review and correct all source data errors.
+          icon: images://mdi/alert-decagram-outline.svg
+          label: Source Errors
+          iconColor: "#B71C1C"
+          labelColor: "#B71C1C"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BusinessPartnerErrors
+              description: Review source data errors in Business Partners.
+              label: Source Errors in Business Partners
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BusinessPartner.business_views.BusinessPartner
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _type: BrowseBusinessViewAction
+              _name: SupplierErrors
+              description: Review source data errors in Suppliers.
+              label: Source Errors in Suppliers
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.Supplier.business_views.Supplier
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _type: BrowseBusinessViewAction
+              _name: SupplierPurchOrgErrors
+              description: Review source data errors in Supplier Purchasing Orgs.
+              label: Source Errors in Supplier Purchasing Orgs
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.SupplierPurchasingOrg.business_views.SupplierPurchasingOrg
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _type: BrowseBusinessViewAction
+              _name: BPAddressErrors
+              description: Review source data errors in BP Addresses.
+              label: Source Errors in BP Addresses
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg 
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPAddress.business_views.BPAddress
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _type: BrowseBusinessViewAction
+              _name: BPAddressEmailErrors
+              description: Review source data errors in BP Address Emails.
+              label: Source Errors in BP Address Emails
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPAddressEmail.business_views.BPAddressEmail
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _type: BrowseBusinessViewAction
+              _name: BPAddressPhoneErrors
+              description: Review source data errors in BP Address Phones.
+              label: Source Errors in BP Address Phones
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPAddressPhone.business_views.BPAddressPhone
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _type: BrowseBusinessViewAction
+              _name: BPAddressUsageErrors
+              description: Review source data errors in BP Address Usages.
+              label: Source Errors in BP Address Usages
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPAddressUsage.business_views.BPAddressUsage
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _type: BrowseBusinessViewAction
+              _name: BPContactErrors
+              description: Review source data errors in BP Contacts.
+              label: Source Errors in BP Contacts
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPContact.business_views.BPContact
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _type: BrowseBusinessViewAction
+              _name: BPBankErrors
+              description: Review source data errors in BP Banks.
+              label: Source Errors in BP Banks
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPBank.business_views.BPBank
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _type: BrowseBusinessViewAction
+              _name: BPRelationshipErrors
+              description: Review source data errors in BP Relationships.
+              label: Source Errors in BP Relationships
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPRelationship.business_views.BPRelationship
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _type: BrowseBusinessViewAction
+              _name: BPRoleErrors
+              description: Review source data errors in BP Roles.
+              label: Source Errors in BP Roles
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPRole.business_views.BPRole
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _type: BrowseBusinessViewAction
+              _name: BPTaxNumberErrors
+              description: Review source data errors in BP Tax Numbers.
+              label: Source Errors in BP Tax Numbers
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPTaxNumber.business_views.BPTaxNumber
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+            - _type: BrowseBusinessViewAction
+              _name: BPIdentificationErrors
+              description: Review source data errors in BP Identifications.
+              label: Source Errors in BP Identifications
+              icon: images://sapbusinesspartner/SourceErrors.svg
+              image: images://sapbusinesspartner/SourceErrors.svg
+              iconColor: "#B71C1C"
+              labelColor: "#B71C1C"
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sapbp360.entities.BPIdentification.business_views.BPIdentification
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+    - _type: FolderAction
+      _name: Administration
+      icon: images://mdi/cog.svg
+      description: Administration
+      label: Administration
+      iconColor: "#455a64"
+      labelColor: "#455a64"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseEntitiesFolderAction
+          _name: BrowseAllData
+          label: Browse All Data
+          iconColor: "#455a64"
+          labelColor: "#455a64"
+          icon: images://mdi/database-search.svg
+          lineageEnabled: true
+          requiredRole: semarchyAdmin
+    - _type: FolderAction
+      _name: Documentation
+      icon: images://mdi/book-open-page-variant-outline.svg
+      description: Data model diagrams and Semarchy online documentation.
+      label: Documentation
+      iconColor: "#26215C"
+      labelColor: "#26215C"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: OpenDocumentationAction
+          _name: ModelDocumentation
+          description: View the data model diagrams — Business Partner Core, Financial & Relationships, and Supplier Branch.
+          label: Model Documentation
+          icon: images://mdi/clipboard-flow-outline.svg
+          iconColor: "#26215C"
+          labelColor: "#26215C"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: UrlAction
+          _name: SemarchyDocumentation
+          description: Access Semarchy online documentation.
+          label: Semarchy Documentation
+          icon: images://mdi/help-circle-outline.svg
+          iconColor: "#26215C"
+          labelColor: "#26215C"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          url: https://docs.semarchy.com/sdp/platform
+          target: NEW_BROWSER_TAB

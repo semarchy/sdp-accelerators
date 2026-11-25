@@ -1,0 +1,47 @@
+_name: Account
+_package: PrivateEquity.entities.Account.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: PrivateEquity.entities.Account.Account
+rootLabel: Account
+rootPluralLabel: Accounts
+useHierarchyOnOpen: false
+label: Accounts
+rootBusinessViewEntity:
+  _name: AccountEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.Account.collection_views.AccountCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.Account.Account
+  form: PrivateEquity.entities.Account.forms.AccountForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.Account.action_sets.AccountActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: PrivateEquity.entities.Account.forms.AccountForm.Account.AccountInfo.FDN_AccountType
+      navigationMode: MODAL_FORM
+  transitions: []

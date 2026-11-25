@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: Manufacturing.entities.Item.enrichers
+_name: DefaultItemCondition
+entity: Manufacturing.entities.Item.Item
+label: Default Item Condition
+description: "Defaults missing item condition values to New so item records have a usable condition classification."
+enricherExecutionScope: NONE
+condition: FID_ItemCondition is null
+semQlEnricherExpressions:
+  - attributeName: FID_ItemCondition
+    expression: "'New'"

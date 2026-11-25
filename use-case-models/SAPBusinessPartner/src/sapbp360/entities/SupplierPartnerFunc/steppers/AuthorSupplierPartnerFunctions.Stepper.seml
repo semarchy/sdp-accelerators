@@ -1,0 +1,93 @@
+_name: AuthorSupplierPartnerFunctions
+_package: sapbp360.entities.SupplierPartnerFunc.steppers
+_type: Stepper
+entity: sapbp360.entities.SupplierPartnerFunc.SupplierPartnerFunc
+description: Stepper for authoring Supplier Partner Functions.
+rootStep:
+  _name: SupplierPartnerFunctions
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.SupplierPartnerFunc.collection_views.SupplierPartnerFuncCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Supplier Partner Functions
+  description: Manage Supplier Partner Function data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPartnerFunc_PartnerFunction.PartnerFunction
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPartnerFunc_SupplierPurchOrg.SupplierPurchOrg
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPartnerFunc_BPPartner.BPPartner
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Supplier Partner Function.
+      formTab: sapbp360.entities.SupplierPartnerFunc.forms.SupplierPartnerFuncDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPartnerFunc.forms.SupplierPartnerFuncDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_PartnerFunction
+          referencePickerCollectionView: sapbp360.entities.PartnerFunction.collection_views.PartnerFunctionCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPartnerFunc.forms.SupplierPartnerFuncDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_SupplierPurchOrg
+          referencePickerCollectionView: sapbp360.entities.SupplierPurchasingOrg.collection_views.SupplierPurchasingOrgCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPartnerFunc.forms.SupplierPartnerFuncDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_BPPartner
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPartnerFunc_PartnerFunction.PartnerFunction
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPartnerFunc_SupplierPurchOrg.SupplierPurchOrg
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPartnerFunc_BPPartner.BPPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author Supplier Partner Functions
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPartnerFunc_PartnerFunction.PartnerFunction
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPartnerFunc_SupplierPurchOrg.SupplierPurchOrg
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPartnerFunc_BPPartner.BPPartner
+triggers: []

@@ -1,0 +1,240 @@
+_package: RetailCustomer360.entities.Case
+_type: Entity
+_name: Case
+label: Case
+pluralLabel: Cases
+entityType: ID_MATCHED
+physicalTableName: SERVICE_CASE
+iconUrl: https://api.iconify.design/mdi/lifebuoy.svg?color=%230D1B2A&width=64
+
+description: "Customer service issue tracked from first contact through to resolution."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CaseNumber
+    label: Case Number
+    physicalName: CASE_NUMBER
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Universal identifier of the case across systems."
+
+  - _type: EntityAttribute
+    _name: Subject
+    label: Subject
+    physicalName: SUBJECT
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Short statement of what the case is about."
+
+  - _type: EntityAttribute
+    _name: CaseType
+    label: Case Type
+    physicalName: CASE_TYPE
+    dataType: RetailCustomer360.list_of_values.CaseType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Nature of the issue raised."
+
+  - _type: EntityAttribute
+    _name: CaseStatus
+    label: Case Status
+    physicalName: CASE_STATUS
+    dataType: RetailCustomer360.list_of_values.CaseStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Lifecycle status of the case."
+
+  - _type: EntityAttribute
+    _name: CasePriority
+    label: Case Priority
+    physicalName: CASE_PRIORITY
+    dataType: RetailCustomer360.list_of_values.CasePriority
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Urgency assigned to the case."
+
+  - _type: EntityAttribute
+    _name: CaseOrigin
+    label: Case Origin
+    physicalName: CASE_ORIGIN
+    dataType: RetailCustomer360.list_of_values.CaseOrigin
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Channel the case was raised through."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "Detailed account of the customer's issue."
+
+  - _type: EntityAttribute
+    _name: OpenedDate
+    label: Opened Date
+    physicalName: OPENED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the case was opened."
+
+  - _type: EntityAttribute
+    _name: FirstResponseDate
+    label: First Response Date
+    physicalName: FIRST_RESPONSE_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the first agent response was sent."
+
+  - _type: EntityAttribute
+    _name: DueDate
+    label: Due Date
+    physicalName: DUE_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the case must be resolved by."
+
+  - _type: EntityAttribute
+    _name: ClosedDate
+    label: Closed Date
+    physicalName: CLOSED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the case was closed."
+
+  - _type: EntityAttribute
+    _name: Resolution
+    label: Resolution
+    physicalName: RESOLUTION
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "Explanation of how the case was resolved."
+
+  - _type: EntityAttribute
+    _name: SatisfactionScore
+    label: Satisfaction Score
+    physicalName: SATISFACTION_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Score the customer gave for handling of the case."
+
+  - _type: EntityAttribute
+    _name: EscalationCount
+    label: Escalation Count
+    physicalName: ESCALATION_COUNT
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of times the case was escalated."
+
+  - _type: EntityAttribute
+    _name: OwnerName
+    label: Owner Name
+    physicalName: OWNER_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Agent accountable for resolving the case."
+
+  - _type: EntityAttribute
+    _name: IsEscalated
+    label: Is Escalated
+    physicalName: IS_ESCALATED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the case is currently escalated."
+
+  - _type: EntityAttribute
+    _name: IsClosed
+    label: Is Closed
+    physicalName: IS_CLOSED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the case has been closed."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the case originates from."
+
+  - _type: EntityAttribute
+    _name: SourceCaseKey
+    label: Source Case Key
+    physicalName: SOURCE_CASE_KEY
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Natural key of the case in the source system."
+
+  - _type: EntityAttribute
+    _name: ResolutionHours
+    label: Resolution Hours
+    physicalName: RESOLUTION_HOURS
+    dataType: Decimal
+    precision: 10
+    scale: 2
+    searchable: true
+    description: "Derived number of hours between opening and closing."
+
+  - _type: EntityAttribute
+    _name: CaseAgeDays
+    label: Case Age Days
+    physicalName: CASE_AGE_DAYS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Derived number of days the case has been open."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)."
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated."
+
+primaryKey: RetailCustomer360.entities.Case.Case.CaseNumber
+
+sourceIdGeneration:
+  mode: MANUAL

@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: InsurableAssetHasVehicleAsset
+description: "Links an insurable asset to its vehicle-specific asset record."
+_type: Reference
+label: "Vehicle Asset"
+
+fromEntity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+fromRoleLabel: "Insurable Asset"
+fromRoleName: InsurableAsset
+fromRolePluralLabel: "Insurable Assets"
+physicalName: INS_ASSET_HAS_VEHICLE
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset
+toRoleLabel: "Vehicle Asset"
+toRoleName: VehicleAsset
+documentation: "Links an insurable asset to its vehicle-specific asset record."
+toRolePhysicalName: VEHICLE_ASSET_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: VehicleAsset
+  label: "Vehicle Asset"
+  description: "Links an insurable asset to its vehicle-specific asset record."
+  physicalName: VEHICLE_ASSET_ID
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset

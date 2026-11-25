@@ -1,0 +1,27 @@
+﻿# Description: Age-related enrichments for the Customer entity.
+# Contains: SemQL expressions to compute Age and AgeGroup from BirthDate.
+# Role: Provides derived demographic attributes for analytics and segmentation.
+_package: RetailCustomer360.entities.Customer.enrichers
+_name: AgeEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Customer.Customer
+label: Customer Age Enricher
+description: "Computes Age and AgeGroup from BirthDate."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: Age
+    expression: FLOOR(DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', BirthDate))
+  - attributeName: AgeGroup
+    expression: CASE
+        WHEN BirthDate IS NULL THEN 'Unknown'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', BirthDate)) < 18 THEN 'Under 18'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', BirthDate)) < 25 THEN '18-24'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', BirthDate)) < 35 THEN '25-34'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', BirthDate)) < 45 THEN '35-44'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', BirthDate)) < 55 THEN '45-54'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', BirthDate)) < 65 THEN '55-64'
+        ELSE '65+'
+      END
+
+

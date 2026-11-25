@@ -1,0 +1,829 @@
+_name: BusinessPartner
+_package: sapbp360.entities.BusinessPartner.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.BusinessPartner.BusinessPartner
+rootLabel: Business Partner
+rootPluralLabel: Business Partners
+useHierarchyOnOpen: false
+label: Business Partner
+description: Business view for Business Partner.
+rootBusinessViewEntity:
+  _name: BusinessPartner
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.BusinessPartner.BusinessPartner
+  form: sapbp360.entities.BusinessPartner.forms.BusinessPartnerBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.BusinessPartner.action_sets.BusinessPartnerActionSet
+  displayCard: sapbp360.entities.BusinessPartner.display_cards.BusinessPartnerDisplayCard
+  sortExpression: NormalizedName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: BusinessPartnerMaster
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerMasterCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BusinessPartner.BusinessPartner
+        form: sapbp360.entities.BusinessPartner.forms.BusinessPartnerBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sapbp360.entities.BusinessPartner.action_sets.BusinessPartnerActionSet
+        displayCard: sapbp360.entities.BusinessPartner.display_cards.BusinessPartnerDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BusinessPartner.forms.BusinessPartnerBrowsingForm.Identity.Categories.CategoriesRow.CategoriesCol1.FDN_BusinessPartnerCategory
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BusinessPartner.forms.BusinessPartnerBrowsingForm.Identity.Categories.CategoriesRow.CategoriesCol2.FDN_BusinessPartnerGrouping
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BusinessPartner.forms.BusinessPartnerBrowsingForm.Identity.Categories.CategoriesRow.CategoriesCol3.FDN_CorrespondenceLanguage
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BusinessPartner.forms.BusinessPartnerBrowsingForm.Identity.StatusAndDates.StatusAndDatesRow.StatusAndDatesCol1.FDN_Status
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Roles
+      _type: BusinessViewTransition
+      transitionPath: Roles
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/badge-account-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY Roles HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPRole
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPRole.collection_views.BPRoleCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPRole.BPRole
+        form: sapbp360.entities.BPRole.forms.BPRoleBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPRole.action_sets.BPRoleActionSet
+        displayCard: sapbp360.entities.BPRole.display_cards.BPRoleDisplayCard
+        sortExpression: RoleID
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPRole.forms.BPRoleBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartnerRole
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPRole.forms.BPRoleBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Identifications
+      _type: BusinessViewTransition
+      transitionPath: Identifications
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/card-account-details-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY Identifications HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPIdentification
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPIdentification.collection_views.BPIdentificationCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPIdentification.BPIdentification
+        form: sapbp360.entities.BPIdentification.forms.BPIdentificationBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPIdentification.action_sets.BPIdentificationActionSet
+        displayCard: sapbp360.entities.BPIdentification.display_cards.BPIdentificationDisplayCard
+        sortExpression: BpIdentificationNumber
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPIdentification.forms.BPIdentificationBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BpIdentificationType
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPIdentification.forms.BPIdentificationBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_IssuingCountry
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPIdentification.forms.BPIdentificationBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Industries
+      _type: BusinessViewTransition
+      transitionPath: Industries
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/factory.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY Industries HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPIndustry
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPIndustry.collection_views.BPIndustryCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPIndustry.BPIndustry
+        form: sapbp360.entities.BPIndustry.forms.BPIndustryBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPIndustry.action_sets.BPIndustryActionSet
+        displayCard: sapbp360.entities.BPIndustry.display_cards.BPIndustryDisplayCard
+        sortExpression: IndustryID
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPIndustry.forms.BPIndustryBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Industry
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPIndustry.forms.BPIndustryBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_IndustrySector
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPIndustry.forms.BPIndustryBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Addresses
+      _type: BusinessViewTransition
+      transitionPath: Addresses
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/map-marker-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY Addresses HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPAddress
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPAddress.collection_views.BPAddressCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPAddress.BPAddress
+        form: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPAddress.action_sets.BPAddressActionSet
+        displayCard: sapbp360.entities.BPAddress.display_cards.BPAddressDisplayCard
+        sortExpression: CityName
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol2.FDN_Region
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol1.FDN_Country
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol2.FDN_AddressLanguage
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol3.FDN_TaxJurisdiction
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol1.FDN_TransportZone
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_BusinessPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: BankAccounts
+      _type: BusinessViewTransition
+      transitionPath: BankAccounts
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/bank-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY BankAccounts HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPBank
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPBank.collection_views.BPBankCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPBank.BPBank
+        form: sapbp360.entities.BPBank.forms.BPBankBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPBank.action_sets.BPBankActionSet
+        displayCard: sapbp360.entities.BPBank.display_cards.BPBankDisplayCard
+        sortExpression: BankAccountHolderName
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPBank.forms.BPBankBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_BankCountryKey
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPBank.forms.BPBankBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol3.FDN_BusinessPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: TaxNumbers
+      _type: BusinessViewTransition
+      transitionPath: TaxNumbers
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-percent-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY TaxNumbers HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPTaxNumber
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPTaxNumber.collection_views.BPTaxNumberCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPTaxNumber.BPTaxNumber
+        form: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPTaxNumber.action_sets.BPTaxNumberActionSet
+        displayCard: sapbp360.entities.BPTaxNumber.display_cards.BPTaxNumberDisplayCard
+        sortExpression: BPTaxNumber
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BPTaxType
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_TaxNumberCategory
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: CompanyContacts
+      _type: BusinessViewTransition
+      transitionPath: CompanyContacts
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/account-box-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY CompanyContacts HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPContact_CompanyContacts
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPContact.collection_views.BPContactCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPContact.BPContact
+        form: sapbp360.entities.BPContact.forms.BPContactBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPContact.action_sets.BPContactActionSet
+        displayCard: sapbp360.entities.BPContact.display_cards.BPContactDisplayCard
+        sortExpression: NormalizedName
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol1.FDN_BusinessPartnerCompany
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol2.FDN_BusinessPartnerPerson
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol1.FDN_ContactPersonFunction
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol2.FDN_ContactPersonDepartment
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol3.FDN_ContactRelationshipType
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: PersonContacts
+      _type: BusinessViewTransition
+      transitionPath: PersonContacts
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/account-box-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY PersonContacts HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPContact_PersonContacts
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPContact.collection_views.BPContactCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPContact.BPContact
+        form: sapbp360.entities.BPContact.forms.BPContactBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPContact.action_sets.BPContactActionSet
+        displayCard: sapbp360.entities.BPContact.display_cards.BPContactDisplayCard
+        sortExpression: NormalizedName
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol1.FDN_BusinessPartnerCompany
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol2.FDN_BusinessPartnerPerson
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol1.FDN_ContactPersonFunction
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol2.FDN_ContactPersonDepartment
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol3.FDN_ContactRelationshipType
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: OutboundRelationships
+      _type: BusinessViewTransition
+      transitionPath: OutboundRelationships
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/relation-many-to-many.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY OutboundRelationships HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPRelationship_OutboundRelationships
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPRelationship.collection_views.BPRelationshipCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPRelationship.BPRelationship
+        form: sapbp360.entities.BPRelationship.forms.BPRelationshipBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPRelationship.action_sets.BPRelationshipActionSet
+        displayCard: sapbp360.entities.BPRelationship.display_cards.BPRelationshipDisplayCard
+        sortExpression: RelationshipID
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPRelationship.forms.BPRelationshipBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_RelationshipCategory
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPRelationship.forms.BPRelationshipBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Party1
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPRelationship.forms.BPRelationshipBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Party2
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: InboundRelationships
+      _type: BusinessViewTransition
+      transitionPath: InboundRelationships
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/relation-many-to-many.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY InboundRelationships HAVE (1 = 1)
+      businessViewEntity:
+        _name: BPRelationship_InboundRelationships
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPRelationship.collection_views.BPRelationshipCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPRelationship.BPRelationship
+        form: sapbp360.entities.BPRelationship.forms.BPRelationshipBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPRelationship.action_sets.BPRelationshipActionSet
+        displayCard: sapbp360.entities.BPRelationship.display_cards.BPRelationshipDisplayCard
+        sortExpression: RelationshipID
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPRelationship.forms.BPRelationshipBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_RelationshipCategory
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPRelationship.forms.BPRelationshipBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Party1
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPRelationship.forms.BPRelationshipBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Party2
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Suppliers
+      _type: BusinessViewTransition
+      transitionPath: Suppliers
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/truck-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY Suppliers HAVE (1 = 1)
+      businessViewEntity:
+        _name: Supplier
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.Supplier.collection_views.SupplierCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.Supplier.Supplier
+        form: sapbp360.entities.Supplier.forms.SupplierBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.Supplier.action_sets.SupplierActionSet
+        displayCard: sapbp360.entities.Supplier.display_cards.SupplierDisplayCard
+        sortExpression: NormalizedName
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.Supplier.forms.SupplierBrowsingForm.Main.Classification.ClassificationRow.ClassificationCol1.FDN_SupplierAccountGroup
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.Supplier.forms.SupplierBrowsingForm.Main.Classification.ClassificationRow.ClassificationCol2.FDN_SupplierCorporateGroup
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.Supplier.forms.SupplierBrowsingForm.Main.Classification.ClassificationRow.ClassificationCol1.FDN_AlternativePayeeAccountNumber
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.Supplier.forms.SupplierBrowsingForm.Main.Classification.ClassificationRow.ClassificationCol3.FDN_Industry
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.Supplier.forms.SupplierBrowsingForm.Main.Classification.ClassificationRow.ClassificationCol2.FDN_AuthorizationGroup
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.Supplier.forms.SupplierBrowsingForm.Main.Classification.ClassificationRow.ClassificationCol3.FDN_TradingPartner
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.Supplier.forms.SupplierBrowsingForm.Main.Classification.ClassificationRow.ClassificationCol1.FDN_ResponsibleType
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.Supplier.forms.SupplierBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol3.FDN_BusinessPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: AsSupplierPartner
+      _type: BusinessViewTransition
+      transitionPath: AsSupplierPartner
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/account-switch-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: ANY AsSupplierPartner HAVE (1 = 1)
+      businessViewEntity:
+        _name: SupplierPartnerFunc
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.SupplierPartnerFunc.collection_views.SupplierPartnerFuncCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.SupplierPartnerFunc.SupplierPartnerFunc
+        form: sapbp360.entities.SupplierPartnerFunc.forms.SupplierPartnerFuncBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.SupplierPartnerFunc.action_sets.SupplierPartnerFuncActionSet
+        displayCard: sapbp360.entities.SupplierPartnerFunc.display_cards.SupplierPartnerFuncDisplayCard
+        sortExpression: PartnerFuncID
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.SupplierPartnerFunc.forms.SupplierPartnerFuncBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_PartnerFunction
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.SupplierPartnerFunc.forms.SupplierPartnerFuncBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_SupplierPurchOrg
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.SupplierPartnerFunc.forms.SupplierPartnerFuncBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BPPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.BusinessPartner.business_views.BusinessPartner.BusinessPartner
+rootIconUrl: images://mdi/account-group.svg

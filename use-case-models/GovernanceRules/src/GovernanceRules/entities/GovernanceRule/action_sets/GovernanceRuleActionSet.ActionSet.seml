@@ -1,0 +1,43 @@
+# GovernanceRuleActionSet: action set on GovernanceRule of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceRule.action_sets
+_type: ActionSet
+_name: GovernanceRuleActionSet
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Governance rule
+defaultActionSet: true
+actions:
+- _type: CreateAction
+  _name: CreateNewGovernanceRule
+  label: New rule
+  useCustomLabel: true
+  stepper: GovernanceRules.entities.GovernanceRule.steppers.NewGovernanceRule
+  createMultiple: false
+  createdRecordType: GOLDEN
+  allowOtherPublishers: true
+  waitDialogEnabled: false
+- _type: EditAction
+  _name: EditGovernanceRule
+  label: Edit
+  useCustomLabel: true
+  stepper: GovernanceRules.entities.GovernanceRule.steppers.NewGovernanceRule
+  multipleSelectionAllowed: false
+  availableForGoldenData: true
+  availableForMasterData: false
+  availableForErrorData: false
+  waitDialogEnabled: false
+- _type: StartWorkflowEntityAction
+  _name: RequestRuleReview
+  label: Request review
+  useCustomLabel: true
+  startEvent: GovernanceRules.workflows.RuleReview.Start
+  waitDialogEnabled: false
+- _type: ExportAction
+  _name: Export
+  label: Export
+  useCustomLabel: true
+  waitDialogEnabled: false
+- _type: BrowseGraphAction
+  _name: BrowseGraph
+  label: Browse graph
+  useCustomLabel: true
+  waitDialogEnabled: false

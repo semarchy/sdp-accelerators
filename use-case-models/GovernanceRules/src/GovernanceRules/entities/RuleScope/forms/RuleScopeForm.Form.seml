@@ -1,0 +1,70 @@
+# RuleScopeForm: Form on RuleScope of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleScope.forms
+_type: Form
+_name: RuleScopeForm
+entity: GovernanceRules.entities.RuleScope.RuleScope
+default: true
+formTabs:
+  - _type: FormTab
+    _name: RuleScope
+    label: Rule scope
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: Identity
+        label: Identification
+        layoutDirection: COLUMN
+        content:
+          - _type: IdField
+            _name: ID
+            value: ID
+            useCustomLabel: false
+            dataType: LONG_INTEGER
+      - _type: FormSection
+        _name: Links
+        label: Relationships
+        layoutDirection: COLUMN
+        content:
+          - _type: ReferenceField
+            _name: FDN_AttributeType
+            value: FDN_AttributeType
+            useCustomLabel: true
+            label: Attribute type
+            dataType: STRING
+            referencedEntity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+            displayCard: GovernanceRules.entities.BusinessAttributeType.display_cards.BusinessAttributeTypeDisplayCard
+            helperText: Attribute type of the scope row; empty means any attribute type.
+            helperTextValueInterpreter: LITERAL
+          - _type: ReferenceField
+            _name: FDN_DataClassification
+            value: FDN_DataClassification
+            useCustomLabel: true
+            label: Classification
+            dataType: STRING
+            referencedEntity: GovernanceRules.entities.DataClassification.DataClassification
+            displayCard: GovernanceRules.entities.DataClassification.display_cards.DataClassificationDisplayCard
+            helperText: Data classification of the scope row; empty means any classification.
+            helperTextValueInterpreter: LITERAL
+          - _type: ReferenceField
+            _name: FDN_DataDomain
+            value: FDN_DataDomain
+            useCustomLabel: true
+            label: Domain
+            dataType: STRING
+            referencedEntity: GovernanceRules.entities.DataDomain.DataDomain
+            displayCard: GovernanceRules.entities.DataDomain.display_cards.DataDomainDisplayCard
+            helperText: Data domain of the scope row; empty means any domain.
+            helperTextValueInterpreter: LITERAL
+          - _type: ReferenceField
+            _name: FDN_Rule
+            value: FDN_Rule
+            useCustomLabel: true
+            label: Rule
+            dataType: STRING
+            referencedEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+            displayCard: GovernanceRules.entities.GovernanceRule.display_cards.GovernanceRuleDisplayCard
+            helperText: The rule that the scope row applies to. Scope rows belong to their rule and are deleted with it.
+            helperTextValueInterpreter: LITERAL

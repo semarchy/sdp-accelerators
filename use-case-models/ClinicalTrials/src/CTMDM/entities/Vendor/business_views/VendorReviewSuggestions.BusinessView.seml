@@ -1,0 +1,64 @@
+_package: CTMDM.entities.Vendor.business_views
+_type: BusinessView
+_name: VendorReviewSuggestions
+
+entity: CTMDM.entities.Vendor.Vendor
+label: CROs / Vendors Review Suggestions
+rootLabel: CRO / Vendor
+rootPluralLabel: CROs / Vendors
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: images://mdi/account-alert.svg
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Vendor
+  entity: CTMDM.entities.Vendor.Vendor
+
+  actionSet: CTMDM.entities.Vendor.action_sets.VendorReviewSuggestionsActionSet
+  collection: CTMDM.entities.Vendor.collection_views.VendorReviewSuggestionsCollectionView
+  form: CTMDM.entities.Vendor.forms.VendorForm
+  displayCard: CTMDM.entities.Vendor.display_cards.VendorDisplayCard
+
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.Vendor.business_views.VendorReviewSuggestions.Vendor
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

@@ -1,0 +1,11 @@
+_package: Merchant.entities.SubIndustry.validations
+# Description: Validation ensuring a `SubIndustry` references a valid `Industry` when specified.
+# Contains SemQL condition and validation message to enforce referential integrity.
+# Role: Prevents inconsistent sub-industry entries that lack an associated industry.
+_name: Industry
+_type: SemQLValidation
+entity: Merchant.entities.SubIndustry.SubIndustry
+label: Validate Industry
+condition: FDN_Industry IS NOT NULL 
+validationScope: PRE_CONSO
+validationLabel: Industry must be specified if Sub Industry is specified

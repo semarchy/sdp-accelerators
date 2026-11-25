@@ -1,0 +1,120 @@
+_package: PropertyAndCasualtyInsurance.entities.VehicleAsset.business_views
+_type: BusinessView
+_name: VehicleAssetBusinessView
+label: "Vehicle Asset"
+entity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset
+rootLabel: "Vehicle Assets"
+rootPluralLabel: "Vehicle Assets"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: VehicleAsset
+  displayCard: PropertyAndCasualtyInsurance.entities.VehicleAsset.display_cards.VehicleAssetDisplayCard
+  entity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset
+  actionSet: PropertyAndCasualtyInsurance.entities.VehicleAsset.action_sets.VehicleAssetActionSet
+  collection: PropertyAndCasualtyInsurance.entities.VehicleAsset.collection_views.VehicleAssetCollectionView
+  form: PropertyAndCasualtyInsurance.entities.VehicleAsset.forms.VehicleAssetForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: InsurancePolicy
+      label: Insurance Policy
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: Insurance Policies
+      iconUrl: images://mdi/file-document-outline.svg
+      transitionPath: InsurableAsset
+      useCustomLabel: true
+      description: Transition from Vehicle Asset to related Insurance Policies.
+      visibleInFormTabCondition: any InsurableAsset has (1=1)
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: InsurableAsset
+        displayCard: PropertyAndCasualtyInsurance.entities.InsurableAsset.display_cards.InsurableAssetPolicy
+        entity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+        actionSet: PropertyAndCasualtyInsurance.entities.InsurableAsset.action_sets.InsurableAssetActionSet
+        collection: PropertyAndCasualtyInsurance.entities.InsurableAsset.collection_views.InsurableAssetPolicyCollection
+        form: PropertyAndCasualtyInsurance.entities.InsurableAsset.forms.InsurableAssetForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: VehicleAssets
+        _type: BusinessViewEntity
+        displayCard: PropertyAndCasualtyInsurance.entities.VehicleAsset.display_cards.VehicleAssetDisplayCard
+        collection: PropertyAndCasualtyInsurance.entities.VehicleAsset.collection_views.VehicleAssetCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset
+        form: PropertyAndCasualtyInsurance.entities.VehicleAsset.forms.VehicleAssetForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: PropertyAndCasualtyInsurance.entities.VehicleAsset.action_sets.VehicleAssetActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PropertyAndCasualtyInsurance.entities.VehicleAsset.business_views.VehicleAssetBusinessView.VehicleAsset
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/car-outline.svg

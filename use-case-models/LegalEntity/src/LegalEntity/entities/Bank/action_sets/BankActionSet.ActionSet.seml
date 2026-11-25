@@ -1,0 +1,56 @@
+#This is an action set for the Bank entity in the Legal Entity application.
+# It includes actions for creating, editing, mass updating, and deleting bank records.
+# The action set is used to manage bank information within the application.
+_package: LegalEntity.entities.Bank.action_sets
+_type: ActionSet
+entity: LegalEntity.entities.Bank.Bank
+_name: BankActionSet
+label:  Bank Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateBanks
+    label: Create
+    useCustomLabel: true
+    stepper: LegalEntity.entities.Bank.steppers.AuthorBanks
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditBanks
+    label: Edit
+    useCustomLabel: true
+    stepper: LegalEntity.entities.Bank.steppers.AuthorBanks
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateBanks
+    label: Mass Update
+    useCustomLabel: true
+    stepper: LegalEntity.entities.Bank.steppers.AuthorBanks
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ImportAction
+    _name: ImportBank
+    label: Import
+    stepper : LegalEntity.entities.Bank.steppers.AuthorBanks
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    importedRecordType: GOLDEN
+    allowOtherPublishers: true  
+    waitDialogEnabled: false

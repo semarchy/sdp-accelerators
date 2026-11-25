@@ -1,0 +1,97 @@
+# RuleChecklist: named query of the GovernanceRules accelerator. Compact checklist of the in-force governance rules that apply to a whole design change in one call: one data domain, a comma-separated list of data...
+_package: GovernanceRules.named_queries
+_type: NamedQuery
+_name: RuleChecklist
+active: true
+description: 'Compact checklist of the in-force governance rules that apply to a whole design change in one call: one data domain,
+  a comma-separated list of data classification codes and a comma-separated list of business attribute type codes (for example EMAIL,PHONE_NUMBER,PERSON_NAME).
+  Each rule comes once, with its code, title, requirement level, category, implementation pattern, implementation guidance, policy
+  and its scope rows (to see which attribute type or classification triggers it). Statements, examples and citations are left out
+  to keep the answer small: call RuleDetail for one rule. In a scope row an empty dimension means any value; an omitted parameter
+  only matches scope rows where that dimension is empty. Sorted by code.
+
+
+  AI agent instructions: Use this query first when you design or review a change. Classify each attribute you add or change with
+  AttributeTypeCatalog, then call RuleChecklist once with the data domain code, the distinct default classifications of these attributes
+  and all their attribute type codes, each list separated by commas with no spaces. Implement every MUST rule with its ImplementationPattern and ImplementationGuidance, apply SHOULD rules unless you state why
+  not, and cite each applied rule code in the description of the object that implements it. Call RuleDetail for the statement and
+  the citations of a rule you need to explain. Rules: META-002, AI-002.'
+defaultLimit: 200
+rootQueryObject: GovernanceRules.named_queries.RuleChecklist.Rule
+filter: LifecycleStatus = 'APPROVED' AND EffectiveDate <= CURRENT_DATE() AND (RetirementDate IS NULL OR RetirementDate > CURRENT_DATE()) AND any
+  Scopes have ((FID_DataDomain IS NULL OR FID_DataDomain = :DOMAIN) AND (FID_DataClassification IS NULL OR (',' || :CLASSIFICATIONS || ',') LIKE ('%,' || FID_DataClassification || ',%'))
+  AND (FID_AttributeType IS NULL OR (',' || :ATTRIBUTE_TYPES || ',') LIKE ('%,' || FID_AttributeType || ',%')))
+sort: Code
+queryParameters:
+- _type: QueryParameter
+  _name: domain
+  bindingName: DOMAIN
+  dataType: STRING
+  mandatory: false
+- _type: QueryParameter
+  _name: classifications
+  bindingName: CLASSIFICATIONS
+  dataType: STRING
+  mandatory: false
+- _type: QueryParameter
+  _name: attributeTypes
+  bindingName: ATTRIBUTE_TYPES
+  dataType: STRING
+  mandatory: false
+queryObjects:
+- _type: QueryObject
+  _name: Rule
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  description: Governance rule in compact form.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: Code
+    type: VALUE
+    semQlExpression: Code
+  - _type: ObjectProperty
+    _name: Title
+    type: VALUE
+    semQlExpression: Title
+  - _type: ObjectProperty
+    _name: RequirementLevel
+    type: VALUE
+    semQlExpression: RequirementLevel
+  - _type: ObjectProperty
+    _name: Category
+    type: VALUE
+    semQlExpression: Category
+  - _type: ObjectProperty
+    _name: ImplementationPattern
+    type: VALUE
+    semQlExpression: ImplementationPattern
+  - _type: ObjectProperty
+    _name: ImplementationGuidance
+    type: VALUE
+    semQlExpression: ImplementationGuidance
+  - _type: ObjectProperty
+    _name: PolicyCode
+    type: VALUE
+    semQlExpression: Policy.Code
+  - _type: ObjectProperty
+    _name: Scopes
+    type: MULTI_RECORDS
+    semQlExpression: Scopes
+    targetObject: GovernanceRules.named_queries.RuleChecklist.Scope
+    sort: ID
+- _type: QueryObject
+  _name: Scope
+  entity: GovernanceRules.entities.RuleScope.RuleScope
+  description: One applicability row of the rule; an empty code means any value of that dimension.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: DataDomainCode
+    type: VALUE
+    semQlExpression: FID_DataDomain
+  - _type: ObjectProperty
+    _name: DataClassificationCode
+    type: VALUE
+    semQlExpression: FID_DataClassification
+  - _type: ObjectProperty
+    _name: AttributeTypeCode
+    type: VALUE
+    semQlExpression: FID_AttributeType

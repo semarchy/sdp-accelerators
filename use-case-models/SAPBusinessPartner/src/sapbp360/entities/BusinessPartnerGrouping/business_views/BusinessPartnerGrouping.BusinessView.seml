@@ -1,0 +1,67 @@
+_name: BusinessPartnerGrouping
+_package: sapbp360.entities.BusinessPartnerGrouping.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.BusinessPartnerGrouping.BusinessPartnerGrouping
+rootLabel: Business Partner Grouping
+rootPluralLabel: Business Partner Groupings
+useHierarchyOnOpen: false
+label: Business Partner Grouping
+description: Business view for Business Partner Grouping.
+rootBusinessViewEntity:
+  _name: BusinessPartnerGrouping
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.BusinessPartnerGrouping.collection_views.BusinessPartnerGroupingCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.BusinessPartnerGrouping.BusinessPartnerGrouping
+  form: sapbp360.entities.BusinessPartnerGrouping.forms.BusinessPartnerGroupingBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.BusinessPartnerGrouping.action_sets.BusinessPartnerGroupingActionSet
+  displayCard: sapbp360.entities.BusinessPartnerGrouping.display_cards.BusinessPartnerGroupingDisplayCard
+  sortExpression: BusinessPartnerGroupingName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.BusinessPartnerGrouping.business_views.BusinessPartnerGrouping.BusinessPartnerGrouping
+rootIconUrl: images://mdi/book-open-page-variant-outline.svg

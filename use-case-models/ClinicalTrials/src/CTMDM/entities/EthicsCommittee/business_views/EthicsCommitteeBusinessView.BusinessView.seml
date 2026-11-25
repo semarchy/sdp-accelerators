@@ -1,0 +1,134 @@
+_package: CTMDM.entities.EthicsCommittee.business_views
+_type: BusinessView
+_name: EthicsCommitteeBusinessView
+
+entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+rootLabel: Ethics Committee / IRB
+rootPluralLabel: Ethics Committees / IRBs
+rootIconUrl: images://mdi/shield-check-outline.svg
+displayRootNodeAs: ICON_LABEL
+label: Ethics Committees / IRBs
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: EthicsCommittee
+  entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+  actionSet: CTMDM.entities.EthicsCommittee.action_sets.EthicsCommitteeActionSet
+  collection: CTMDM.entities.EthicsCommittee.collection_views.EthicsCommitteeCollectionView
+  form: CTMDM.entities.EthicsCommittee.forms.EthicsCommitteeForm
+  displayCard: CTMDM.entities.EthicsCommittee.display_cards.EthicsCommitteeDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _name: ToSiteEthicsCommittee
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/clipboard-check-outline.svg
+      useCustomLabel: false
+
+      transitionPath: siteEthicsCommittee
+      visibleInFormTabCondition: any siteEthicsCommittee has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToSiteEthicsCommittee
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.SiteEthicsCommittee.collection_views.SiteEthicsCommitteeCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.SiteEthicsCommittee.SiteEthicsCommittee
+        form: CTMDM.entities.SiteEthicsCommittee.forms.SiteEthicsCommitteeForm
+        displayCard: CTMDM.entities.SiteEthicsCommittee.display_cards.SiteEthicsCommitteeDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MasterRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.EthicsCommittee.collection_views.EthicsCommitteeCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+        form: CTMDM.entities.EthicsCommittee.forms.EthicsCommitteeForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.EthicsCommittee.action_sets.EthicsCommitteeActionSet
+        displayCard: CTMDM.entities.EthicsCommittee.display_cards.EthicsCommitteeDisplayCard
+
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: HistoryRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.EthicsCommittee.collection_views.EthicsCommitteeCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+        form: CTMDM.entities.EthicsCommittee.forms.EthicsCommitteeForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.EthicsCommittee.action_sets.EthicsCommitteeActionSet
+        displayCard: CTMDM.entities.EthicsCommittee.display_cards.EthicsCommitteeDisplayCard

@@ -1,0 +1,93 @@
+_name: AuthorBPAddressPhones
+_package: sapbp360.entities.BPAddressPhone.steppers
+_type: Stepper
+entity: sapbp360.entities.BPAddressPhone.BPAddressPhone
+description: Stepper for authoring BP Address Phones.
+rootStep:
+  _name: BPAddressPhones
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPAddressPhone.collection_views.BPAddressPhoneCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Address Phones
+  description: Manage BP Address Phone data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddressPhone_PhoneNumberType.PhoneNumberType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddressPhone_DestinationLocationCountry.DestinationLocationCountry
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddressPhone_Address.Address
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Address Phone.
+      formTab: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_PhoneNumberType
+          referencePickerCollectionView: sapbp360.entities.PhoneNumberType.collection_views.PhoneNumberTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_DestinationLocationCountry
+          referencePickerCollectionView: sapbp360.entities.Country.collection_views.CountryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_Address
+          referencePickerCollectionView: sapbp360.entities.BPAddress.collection_views.BPAddressCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddressPhone_PhoneNumberType.PhoneNumberType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddressPhone_DestinationLocationCountry.DestinationLocationCountry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddressPhone_Address.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Address Phones
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddressPhone_PhoneNumberType.PhoneNumberType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddressPhone_DestinationLocationCountry.DestinationLocationCountry
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddressPhone_Address.Address
+triggers: []

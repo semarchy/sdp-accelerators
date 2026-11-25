@@ -1,0 +1,47 @@
+# This is the AuthorForecastCategories Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing forecast categories within the Salesforce context.
+_name: AuthorForecastCategories
+_package: sales360.entities.ForecastCategory.steppers
+_type: Stepper
+entity: sales360.entities.ForecastCategory.ForecastCategory
+description: Stepper for managing Forecast Categories
+rootStep:
+  _name: ForecastCategorys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.ForecastCategory.collection_views.ForecastCategoryCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Forecast Categories
+  description: Step for managing Forecast Categories
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Forecast Category
+      formTab: sales360.entities.ForecastCategory.forms.ForecastCategoryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Forecast Categories
+stepperFinishValidations: []
+triggers: []

@@ -1,0 +1,36 @@
+_package: CTMDM.entities.ClinicalSite.steppers
+_type: Stepper
+_name: AuthorClinicalSites
+
+entity: CTMDM.entities.ClinicalSite.ClinicalSite
+label: Clinical Sites
+
+rootStep:
+  _type: CollectionStep
+  _name: ClinicalSites
+  label: Clinical Sites
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: CTMDM.entities.ClinicalSite.collection_views.ClinicalSiteImportMasterCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  
+  childSteps:
+    - _type: FormStep
+      _name: ClinicalSite
+      label: Clinical Site
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CTMDM.entities.ClinicalSite.forms.ClinicalSiteForm.General

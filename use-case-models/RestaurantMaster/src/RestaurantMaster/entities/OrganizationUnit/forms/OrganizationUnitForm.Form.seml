@@ -1,0 +1,95 @@
+_package: RestaurantMaster.entities.OrganizationUnit.forms
+_type: Form
+_name: OrganizationUnitForm
+entity: RestaurantMaster.entities.OrganizationUnit.OrganizationUnit
+default: true
+formTabs:
+- _type: FormTab
+  _name: OrganizationUnit
+  label: Organization unit
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  displayFormTabAs: ICON_LABEL
+  iconUrl: images://mdi/sitemap.svg
+  labelWidth: '150'
+  content:
+  - _type: FormContainer
+    _name: Main
+    layoutDirection: COLUMN
+    content:
+    - _type: FormSection
+      _name: Sec1
+      label: Unit
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S1Row1
+        layoutDirection: ROW
+        content:
+        - _type: IdField
+          _name: UnitCode
+          value: UnitCode
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: UnitName
+          value: UnitName
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: ManagerName
+          value: ManagerName
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S1Row2
+        layoutDirection: ROW
+        content:
+        - _type: TextField
+          _name: HierarchyType
+          value: HierarchyType
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: UnitLevel
+          value: UnitLevel
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_Brand
+          value: FDN_Brand
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.Brand.Brand
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S1Row3
+        layoutDirection: ROW
+        content:
+        - _type: ReferenceField
+          _name: FDN_ParentUnit
+          value: FDN_ParentUnit
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.OrganizationUnit.OrganizationUnit
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 66

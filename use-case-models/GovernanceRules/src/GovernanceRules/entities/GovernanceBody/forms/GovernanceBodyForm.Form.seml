@@ -1,0 +1,75 @@
+# GovernanceBodyForm: Form on GovernanceBody of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceBody.forms
+_type: Form
+_name: GovernanceBodyForm
+entity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+default: true
+formTabs:
+  - _type: FormTab
+    _name: GovernanceBody
+    label: Governance body
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: Identity
+        label: Identification
+        layoutDirection: COLUMN
+        content:
+          - _type: IdField
+            _name: Code
+            value: Code
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Natural key of the governance body, entered by the author and never changed (for example DPO).
+            helperTextValueInterpreter: LITERAL
+          - _type: TextField
+            _name: Name
+            value: Name
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Name of the body.
+            helperTextValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Details
+        label: Details
+        layoutDirection: COLUMN
+        content:
+          - _type: TextField
+            _name: Description
+            value: Description
+            useCustomLabel: false
+            dataType: STRING
+            componentProperties:
+              isMultiline: '1'
+              isMultilineValueInterpreter: LITERAL
+              multilineMinLines: '3'
+              multilineMinLinesValueInterpreter: LITERAL
+            helperText: Mission of the body.
+            helperTextValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Contact
+        label: Contact details
+        layoutDirection: COLUMN
+        content:
+          - _type: TextField
+            _name: ContactEmail
+            value: ContactEmail
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Email address to contact the body.
+            helperTextValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Preferences
+        label: Classification
+        layoutDirection: COLUMN
+        content:
+          - _type: MenuField
+            _name: Type
+            value: Type
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Kind, code COUNCIL, OFFICE or ROLE.
+            helperTextValueInterpreter: LITERAL

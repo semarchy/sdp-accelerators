@@ -1,0 +1,26 @@
+_type: JavaPluginEnricher
+_package: PrivateEquity.entities.Office.enrichers
+_name: StandarizePhone
+entity: PrivateEquity.entities.Office.Office
+label: Standarize Phone
+description: "Standardizes office phone numbers using country context for consistent phone formatting."
+pluginId: com.semarchy.engine.plugins.convergence.phone
+batchUpdateSize: 1000
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_PHONE
+    expression: Phone
+  - inputName: IN_COUNTRY_CODE
+    expression: COALESCE( SourceAddress.Country, 'US' )
+  - inputName: IN_REGION_CALLING_FROM
+    expression: "'US'"
+  - inputName: IN_PHONE_FORMAT
+    expression: "'NATIONAL'"
+pluginOutputs:
+  - outputName: ENRICHED_PHONE
+    attributeName: StandarizedPhone
+afterEnrichers: PrivateEquity.entities.Office.enrichers.NormalizedName

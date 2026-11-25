@@ -1,0 +1,27 @@
+_package: CTMDM.entities.EthicsCommittee.enrichers
+_name: PhonetizeEthicsCommittee
+_type: JavaPluginEnricher
+entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+label: Phonetize Ethics Committee / IRB
+enricherExecutionScope: PRE_CONSO
+description: "Generates a phonetic key for Ethics Committee / IRB duplicate detection."
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+afterEnrichers: 
+  CTMDM.entities.EthicsCommittee.enrichers.NormalizeEthicsCommittee
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedCommitteeName
+
+pluginOutputs:
+  - attributeName: PhonetizedCommitteeName
+    outputName: OUT_TRANSFORMED_TEXT

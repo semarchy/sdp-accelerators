@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.LegalEntity.validations
+_name: LegalEntityKeyFormat
+_type: SemQLValidation
+entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+label: Legal entity key format
+description: The key must be US- or CA- followed by 9 digits.
+validationScope: POST_CONSO
+validationLabel: The key must be US- or CA- followed by 9 digits.
+condition: REGEXP_REPLACE(LegalEntityKey, '^(US|CA)-[0-9]{9}$', 'X') = 'X'

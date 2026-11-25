@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: EthicsCommitteeHasOrganization
+_type: Reference
+label: Ethics Committee Has Organization
+description: "Links ethics committees to an affiliated healthcare organization."
+documentation: "Links ethics committees to an affiliated healthcare organization."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+fromRoleLabel: Ethics Committee / IRB
+fromRoleName: ethicsCommittee
+fromRolePluralLabel: Ethics Committees / IRBs
+physicalName: ETHICS_COMM_HAS_ORG
+fromNavigable: true
+
+toEntity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+toRoleLabel: Healthcare Organization
+toRoleName: healthcareOrganization
+toRolePhysicalName: HC_ORG
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: healthcareOrganization
+  label: Healthcare Organization
+  physicalName: HC_ORG
+  searchable: true
+  entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization

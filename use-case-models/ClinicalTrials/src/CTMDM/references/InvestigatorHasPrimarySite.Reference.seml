@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: InvestigatorHasPrimarySite
+_type: Reference
+label: Investigator Has Primary Site
+description: "Links investigators to their primary affiliated clinical site."
+documentation: "Links investigators to their primary affiliated clinical site."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.Investigator.Investigator
+fromRoleLabel: Investigator
+fromRoleName: investigator
+fromRolePluralLabel: Investigators
+physicalName: INV_HAS_PRI_SITE
+fromNavigable: true
+
+toEntity: CTMDM.entities.ClinicalSite.ClinicalSite
+toRoleLabel: Primary Site
+toRoleName: primarySite
+toRolePhysicalName: PRI_SITE
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: primarySite
+  label: Primary Site
+  physicalName: PRI_SITE
+  searchable: true
+  entity: CTMDM.entities.ClinicalSite.ClinicalSite

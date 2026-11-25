@@ -1,0 +1,20 @@
+_package: RetailCustomer360.entities.LoyaltyLedger.display_cards
+_type: DisplayCard
+_name: LoyaltyLedgerDisplayCard
+entity: RetailCustomer360.entities.LoyaltyLedger.LoyaltyLedger
+default: true
+primaryTextExpression: "COALESCE(FDN_LoyaltyProgramMember, 'Unknown Member') || ' • ' || COALESCE(TransactionType, 'Unknown Type') || CASE WHEN SEM_BOOLEAN_TO_CHAR(IsReversed) = 'true' THEN ' [Reversed]' ELSE '' END"
+secondaryTextExpression: "CASE WHEN Points IS NOT NULL THEN CASE WHEN Points >= 0 THEN '+' ELSE '' END || TO_CHAR(Points, '999999') || ' pts' ELSE '' END || CASE WHEN PointsBalanceAfter IS NOT NULL THEN ' • Balance: ' || TO_CHAR(PointsBalanceAfter, '999999') ELSE '' END || CASE WHEN TransactionDate IS NOT NULL THEN ' • ' || TO_CHAR(TransactionDate, 'YYYY-MM-DD') ELSE '' END || CASE WHEN ReferenceNumber IS NOT NULL THEN ' • ' || ReferenceNumber ELSE '' END"
+primaryImageValueInterpreter: LITERAL
+primaryImageValue: https://api.iconify.design/mdi/book-clock.svg?color=%232563EB&width=128
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackValue: https://api.iconify.design/mdi/book-clock.svg?color=%232563EB&width=128
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageValue: https://api.iconify.design/mdi/book-clock.svg?color=%232563EB&width=128
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

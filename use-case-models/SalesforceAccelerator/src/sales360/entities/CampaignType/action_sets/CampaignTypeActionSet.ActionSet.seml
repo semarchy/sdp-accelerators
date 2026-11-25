@@ -1,0 +1,58 @@
+# This is the CampaignTypeActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on campaign types, such as creating, editing,
+# deleting, exporting, importing campaign types.
+_name: CampaignTypeActionSet
+_package: sales360.entities.CampaignType.action_sets
+_type: ActionSet
+entity: sales360.entities.CampaignType.CampaignType
+label: Campaign Type Action Set
+description: Action set for Campaign Type entity in Salesforce Accelerator
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorCampaignTypes
+    label: Create
+    description: Create a new Campaign Type
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.CampaignType.steppers.AuthorCampaignTypes
+  - _name: EditAuthorCampaignTypes
+    label: Edit
+    description: Edit an existing Campaign Type
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.CampaignType.steppers.AuthorCampaignTypes
+  - _name: Delete
+    label: Delete
+    description: Delete selected Campaign Types
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export Campaign Types
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorCampaignTypes
+    label: Import
+    description: Import Campaign Types
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.CampaignType.steppers.AuthorCampaignTypes

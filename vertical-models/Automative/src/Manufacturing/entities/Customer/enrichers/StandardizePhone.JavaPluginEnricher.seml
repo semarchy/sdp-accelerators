@@ -1,0 +1,28 @@
+_type: JavaPluginEnricher
+_package: Manufacturing.entities.Customer.enrichers
+_name: StandardizePhone
+entity: Manufacturing.entities.Customer.Customer
+label: Standardize Phone
+description: "Standardizes customer phone numbers and returns geocoding context for customer matching and contact quality."
+pluginId: com.semarchy.engine.plugins.convergence.phone
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_REGION_CALLING_FROM
+    expression: "'US'"
+  - inputName: IN_PHONE
+    expression: SourcePhone
+  - inputName: IN_COUNTRY_CODE
+    expression: COALESCE( InputCountry, 'US' )
+  - inputName: IN_PHONE_FORMAT
+    expression: "'NATIONAL'"
+pluginOutputs:
+  - outputName: ENRICHED_PHONE
+    attributeName: StandardizedPhone
+  - outputName: GEOCODE_DATA
+    attributeName: PhoneGeocodingData
+afterEnrichers: Manufacturing.entities.Customer.enrichers.CleanseEmail

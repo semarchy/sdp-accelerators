@@ -1,0 +1,46 @@
+# This is the AuthorSicCodes Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing SicCodes within the Salesforce context.
+_name: AuthorSicCodes
+_package: sales360.entities.SicCode.steppers
+_type: Stepper
+entity: sales360.entities.SicCode.SicCode
+description: Stepper for managing Sic Codes in Salesforce Accelerator
+rootStep:
+  _name: SicCodes
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.SicCode.collection_views.SicCodeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Sic Codes
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Sic Code
+      formTab: sales360.entities.SicCode.forms.SicCodeForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Sic Codes
+stepperFinishValidations: []
+triggers: []

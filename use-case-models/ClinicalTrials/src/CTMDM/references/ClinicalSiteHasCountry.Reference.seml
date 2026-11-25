@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: ClinicalSiteHasCountry
+_type: Reference
+label: Clinical Site Has Country
+description: "Links clinical sites to country reference data."
+documentation: "Links clinical sites to country reference data."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.ClinicalSite.ClinicalSite
+fromRoleLabel: Clinical Site
+fromRoleName: clinicalSite
+fromRolePluralLabel: Clinical Sites
+physicalName: CLINICAL_SITE_HAS_CTRY
+fromNavigable: true
+
+toEntity: CTMDM.entities.Country.Country
+toRoleLabel: Country
+toRoleName: country
+toRolePhysicalName: CTRY
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: country
+  label: Country Code
+  physicalName: CTRY
+  searchable: true
+  entity: CTMDM.entities.Country.Country

@@ -1,0 +1,210 @@
+_package: RetailCustomer360.entities.Opportunity
+_type: Entity
+_name: Opportunity
+label: Opportunity
+pluralLabel: Opportunities
+entityType: ID_MATCHED
+physicalTableName: OPPORTUNITY
+iconUrl: https://api.iconify.design/mdi/trending-up.svg?color=%230D1B2A&width=64
+
+description: "In-progress sales deal tracked to a win or loss outcome."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: OpportunityNumber
+    label: Opportunity Number
+    physicalName: OPPORTUNITY_NUMBER
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Universal identifier of the opportunity across systems."
+
+  - _type: EntityAttribute
+    _name: OpportunityName
+    label: Opportunity Name
+    physicalName: OPPORTUNITY_NAME
+    dataType: String
+    length: 200
+    searchable: true
+    description: "Business name of the opportunity."
+
+  - _type: EntityAttribute
+    _name: OpportunityStage
+    label: Opportunity Stage
+    physicalName: OPPORTUNITY_STAGE
+    dataType: RetailCustomer360.list_of_values.OpportunityStage
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Sales stage the opportunity has reached."
+
+  - _type: EntityAttribute
+    _name: ForecastCategory
+    label: Forecast Category
+    physicalName: FORECAST_CATEGORY
+    dataType: RetailCustomer360.list_of_values.ForecastCategory
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Forecast bucket the opportunity contributes to."
+
+  - _type: EntityAttribute
+    _name: Amount
+    label: Amount
+    physicalName: AMT
+    dataType: RetailCustomer360.complex_types.MonetaryAmount
+    searchable: true
+    description: "Expected value of the opportunity."
+
+  - _type: EntityAttribute
+    _name: Probability
+    label: Probability
+    physicalName: PROBABILITY
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Estimated percentage likelihood of winning."
+
+  - _type: EntityAttribute
+    _name: OpenDate
+    label: Open Date
+    physicalName: OPEN_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the opportunity was created."
+
+  - _type: EntityAttribute
+    _name: CloseDate
+    label: Close Date
+    physicalName: CLOSE_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the opportunity is expected to close or did close."
+
+  - _type: EntityAttribute
+    _name: SalesChannel
+    label: Sales Channel
+    physicalName: SALES_CHANNEL
+    dataType: RetailCustomer360.list_of_values.SalesChannel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Channel the opportunity is being pursued through."
+
+  - _type: EntityAttribute
+    _name: LossReason
+    label: Loss Reason
+    physicalName: LOSS_REASON
+    dataType: RetailCustomer360.list_of_values.LossReason
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Reason recorded when the opportunity was lost."
+
+  - _type: EntityAttribute
+    _name: NextStep
+    label: Next Step
+    physicalName: NEXT_STEP
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Agreed next action to progress the opportunity."
+
+  - _type: EntityAttribute
+    _name: OwnerName
+    label: Owner Name
+    physicalName: OWNER_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Salesperson accountable for the opportunity."
+
+  - _type: EntityAttribute
+    _name: IsClosed
+    label: Is Closed
+    physicalName: IS_CLOSED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the opportunity has reached a final outcome."
+
+  - _type: EntityAttribute
+    _name: IsWon
+    label: Is Won
+    physicalName: IS_WON
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the closed opportunity was won."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the opportunity originates from."
+
+  - _type: EntityAttribute
+    _name: SourceOpportunityKey
+    label: Source Opportunity Key
+    physicalName: SOURCE_OPP_KEY
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Natural key of the opportunity in the source system."
+
+  - _type: EntityAttribute
+    _name: WeightedAmount
+    label: Weighted Amount
+    physicalName: WEIGHTED_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Derived expected value weighted by win probability."
+
+  - _type: EntityAttribute
+    _name: DaysOpen
+    label: Days Open
+    physicalName: DAYS_OPEN
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Derived number of days the opportunity has been open."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)."
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated."
+
+primaryKey: RetailCustomer360.entities.Opportunity.Opportunity.OpportunityNumber
+
+sourceIdGeneration:
+  mode: MANUAL

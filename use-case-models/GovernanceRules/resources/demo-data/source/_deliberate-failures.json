@@ -1,0 +1,62 @@
+{
+  "_comment": "DELIBERATE VALIDATION FAILURES - not part of the governance corpus. build_demo_data.py appends these GovernanceRule rows after the corpus rows so that the first INTEGRATE_ALL run leaves exactly three records in error, one per check. No RuleScope or RuleCitation row references them. Each row fails one check only.",
+  "GovernanceRule": [
+    {
+      "Code": "DQ-BAD1",
+      "Title": "[DELIBERATE FAILURE] Retired before it took effect",
+      "Statement": "This deliberate test record MUST be rejected: its retirement date (2025-01-01) is before its effective date (2026-01-01).",
+      "Rationale": "Demonstrates the RetirementAfterEffective validation.",
+      "RequirementLevel": "MUST",
+      "Category": "DATA_QUALITY",
+      "ImplementationPattern": "VALIDATION",
+      "ImplementationGuidance": null,
+      "Example": null,
+      "LifecycleStatus": "RETIRED",
+      "EffectiveDate": "2026-01-01",
+      "RetirementDate": "2025-01-01",
+      "RetirementReason": "Deliberate test record.",
+      "ApprovedOn": "2025-12-15",
+      "ApprovedBy": "governance.owner",
+      "Policy": "POL-DQ",
+      "OwnerBody": "DQO"
+    },
+    {
+      "Code": "DQ-BAD2",
+      "Title": "[DELIBERATE FAILURE] Approved rule without any scope",
+      "Statement": "This deliberate test record MUST be rejected: it is APPROVED but has no scope row, so no design agent could ever find it.",
+      "Rationale": "Demonstrates the ApprovedRuleHasScope validation.",
+      "RequirementLevel": "MUST",
+      "Category": "DATA_QUALITY",
+      "ImplementationPattern": "VALIDATION",
+      "ImplementationGuidance": null,
+      "Example": null,
+      "LifecycleStatus": "APPROVED",
+      "EffectiveDate": "2026-01-01",
+      "RetirementDate": null,
+      "RetirementReason": null,
+      "ApprovedOn": "2025-12-15",
+      "ApprovedBy": "governance.owner",
+      "Policy": "POL-DQ",
+      "OwnerBody": "DQO"
+    },
+    {
+      "Code": "DQ-BAD3",
+      "Title": "[DELIBERATE FAILURE] Rule without a statement",
+      "Statement": null,
+      "Rationale": "Demonstrates the mandatory check on Statement.",
+      "RequirementLevel": "SHOULD",
+      "Category": "DATA_QUALITY",
+      "ImplementationPattern": "VALIDATION",
+      "ImplementationGuidance": null,
+      "Example": null,
+      "LifecycleStatus": "DRAFT",
+      "EffectiveDate": "2027-01-01",
+      "RetirementDate": null,
+      "RetirementReason": null,
+      "ApprovedOn": null,
+      "ApprovedBy": null,
+      "Policy": "POL-DQ",
+      "OwnerBody": "DQO"
+    }
+  ]
+}

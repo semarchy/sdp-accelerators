@@ -1,0 +1,9 @@
+_package: CTMDM.entities.GcpCertification.validations
+_name: CertificateDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.GcpCertification.GcpCertification
+label: Certification expiration must not be before issue date
+validationScope: PRE_CONSO
+description: "Certification expiration must not be before issue date before consolidation."
+
+condition: ExpirationDate IS NULL OR IssueDate IS NULL OR ExpirationDate >= IssueDate

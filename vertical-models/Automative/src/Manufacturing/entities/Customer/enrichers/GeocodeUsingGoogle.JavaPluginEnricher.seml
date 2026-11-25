@@ -1,0 +1,45 @@
+_type: JavaPluginEnricher
+_package: Manufacturing.entities.Customer.enrichers
+_name: GeocodeUsingGoogle
+entity: Manufacturing.entities.Customer.Customer
+label: Geocode Using Google
+description: "Uses Google Maps geocoding to enrich customer address inputs with standardized location components and coordinates."
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+enricherCache: Manufacturing.enricher_caches.Address
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+  - paramName: PARAM_PRIVATE_KEY
+    value: ""
+pluginInputs:
+  - inputName: IN_COUNTRY
+    expression: InputCountry
+  - inputName: IN_ADDRESSLINE
+    expression: InputAddressLine
+  - inputName: IN_CITY
+    expression: InputCity
+  - inputName: IN_POSTALCODE
+    expression: InputZipCode
+pluginOutputs:
+  - outputName: COUNTRY_LONGNAME
+    attributeName: GeocodedCountry
+  - outputName: LOCALITY_LONGNAME
+    attributeName: GeocodedLocality
+  - outputName: COORDINATES_LONGITUDE
+    attributeName: GeocodedLongitude
+  - outputName: ADM_AREA_LEV1_SHORTNAME
+    attributeName: GeocodedState
+  - outputName: STREETNUMBER_LONGNAME
+    attributeName: GeocodedStreetNumber
+  - outputName: POSTALCODE_LONGNAME
+    attributeName: GeocodedPostalCode
+  - outputName: COORDINATES_LATITUDE
+    attributeName: GeocodedLatitude
+  - outputName: ROUTE_LONGNAME
+    attributeName: GeocodedStreetName
+afterEnrichers: Manufacturing.entities.Customer.enrichers.StandardizePhone

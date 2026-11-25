@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: InsuranceTypeHasInsurancePlan
+description: Indicates the Insurance Type associated with an Insurance Plan in the Property and Casualty Insurance domain. This reference establishes a relationship between the InsurancePlan entity and the InsuranceType entity, allowing plan configurations to be organized and managed under their corresponding insurance types.
+_type: Reference
+label: Insurance Plan Has Insurance Type
+
+fromEntity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+fromRoleLabel: Insurance Plan
+fromRoleName: InsurancePlan
+fromRolePluralLabel: Insurance Plans
+physicalName: INSURANCE_PLAN_HAS_TYPE
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType
+toRoleLabel: Insurance Type
+toRoleName: InsuranceType
+documentation: Indicates the Insurance Type associated with an Insurance Plan in the Property and Casualty Insurance domain. This reference establishes a relationship between the InsurancePlan entity and the InsuranceType entity, allowing plan configurations to be organized and managed under their corresponding insurance types.
+toRolePhysicalName: INSURANCE_TYPE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: InsuranceType
+  label: Insurance Type Code
+  description: The code of the insurance type associated with the insurance plan. This attribute serves as a foreign key linking the InsuranceTypeHasInsurancePlan reference to the InsuranceType entity, allowing retrieval of insurance type information from each plan.
+  physicalName: INSURANCE_TYPE_CODE
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType

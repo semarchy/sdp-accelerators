@@ -1,0 +1,161 @@
+_package: CTMDM.entities.HealthcareOrganization.business_views
+_type: BusinessView
+_name: HealthcareOrganizationBusinessView
+
+entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+rootLabel: Healthcare Organization
+rootPluralLabel: Healthcare Organizations
+rootIconUrl: images://mdi/hospital-building.svg
+displayRootNodeAs: ICON_LABEL
+label: Healthcare Organizations
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: HealthcareOrganization
+  entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+  actionSet: CTMDM.entities.HealthcareOrganization.action_sets.HealthcareOrganizationActionSet
+  collection: CTMDM.entities.HealthcareOrganization.collection_views.HealthcareOrganizationCollectionView
+  form: CTMDM.entities.HealthcareOrganization.forms.HealthcareOrganizationForm
+  displayCard: CTMDM.entities.HealthcareOrganization.display_cards.HealthcareOrganizationDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _name: ToClinicalSite
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/domain.svg
+      useCustomLabel: false
+
+      transitionPath: clinicalSite
+      visibleInFormTabCondition: any clinicalSite has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToClinicalSite
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.ClinicalSite.collection_views.ClinicalSiteCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.ClinicalSite.ClinicalSite
+        form: CTMDM.entities.ClinicalSite.forms.ClinicalSiteForm
+        displayCard: CTMDM.entities.ClinicalSite.display_cards.ClinicalSiteDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: ToEthicsCommittee
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/shield-check-outline.svg
+      useCustomLabel: false
+
+      transitionPath: ethicsCommittee
+      visibleInFormTabCondition: any ethicsCommittee has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToEthicsCommittee
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.EthicsCommittee.collection_views.EthicsCommitteeCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+        form: CTMDM.entities.EthicsCommittee.forms.EthicsCommitteeForm
+        displayCard: CTMDM.entities.EthicsCommittee.display_cards.EthicsCommitteeDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MasterRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.HealthcareOrganization.collection_views.HealthcareOrganizationCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+        form: CTMDM.entities.HealthcareOrganization.forms.HealthcareOrganizationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.HealthcareOrganization.action_sets.HealthcareOrganizationActionSet
+        displayCard: CTMDM.entities.HealthcareOrganization.display_cards.HealthcareOrganizationDisplayCard
+
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: HistoryRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.HealthcareOrganization.collection_views.HealthcareOrganizationCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+        form: CTMDM.entities.HealthcareOrganization.forms.HealthcareOrganizationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.HealthcareOrganization.action_sets.HealthcareOrganizationActionSet
+        displayCard: CTMDM.entities.HealthcareOrganization.display_cards.HealthcareOrganizationDisplayCard

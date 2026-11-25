@@ -1,0 +1,134 @@
+_package: CTMDM.entities.Vendor.business_views
+_type: BusinessView
+_name: VendorBusinessView
+
+entity: CTMDM.entities.Vendor.Vendor
+rootLabel: CRO / Vendor
+rootPluralLabel: CROs / Vendors
+rootIconUrl: images://mdi/handshake-outline.svg
+displayRootNodeAs: ICON_LABEL
+label: CROs / Vendors
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Vendor
+  entity: CTMDM.entities.Vendor.Vendor
+  actionSet: CTMDM.entities.Vendor.action_sets.VendorActionSet
+  collection: CTMDM.entities.Vendor.collection_views.VendorCollectionView
+  form: CTMDM.entities.Vendor.forms.VendorForm
+  displayCard: CTMDM.entities.Vendor.display_cards.VendorDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _name: ToStudyVendor
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/briefcase-check-outline.svg
+      useCustomLabel: false
+
+      transitionPath: studyVendor
+      visibleInFormTabCondition: any studyVendor has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToStudyVendor
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.StudyVendor.collection_views.StudyVendorCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.StudyVendor.StudyVendor
+        form: CTMDM.entities.StudyVendor.forms.StudyVendorForm
+        displayCard: CTMDM.entities.StudyVendor.display_cards.StudyVendorDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MasterRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.Vendor.collection_views.VendorCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.Vendor.Vendor
+        form: CTMDM.entities.Vendor.forms.VendorForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.Vendor.action_sets.VendorActionSet
+        displayCard: CTMDM.entities.Vendor.display_cards.VendorDisplayCard
+
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: HistoryRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.Vendor.collection_views.VendorCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.Vendor.Vendor
+        form: CTMDM.entities.Vendor.forms.VendorForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.Vendor.action_sets.VendorActionSet
+        displayCard: CTMDM.entities.Vendor.display_cards.VendorDisplayCard

@@ -1,0 +1,55 @@
+_name: AuthorSpecialtys
+_package: HCO_HCP.entities.Specialty.steppers
+_type: Stepper
+entity: HCO_HCP.entities.Specialty.Specialty
+rootStep:
+  _name: Specialtys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.Specialty.collection_views.SpecialtyCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Specialties
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: HCO_HCP.entities.Specialty.Specialty.Name
+  stepTriggers: []
+  childSteps:
+    - _name: Specialty
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Specialty
+      formTab: HCO_HCP.entities.Specialty.forms.SpecialtyForm.Specialty
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: HCO_HCP.entities.Specialty.Specialty.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: HCO_HCP.entities.Specialty.Specialty.Name
+      stepTriggers: []
+label: Author Specialties
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: HCO_HCP.entities.Specialty.Specialty.Name
+triggers: []

@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: InsuranceProductHasProductStatus
+description: "Indicates the Product Status associated with a Insurance Product."
+_type: Reference
+label: "Insurance Product Has Product Status"
+
+fromEntity: LifeAndAnnuityInsurance.entities.InsuranceProduct.InsuranceProduct
+fromRoleLabel: "Insurance Product"
+fromRoleName: InsuranceProduct
+fromRolePluralLabel: "Insurance Products"
+physicalName: INS_PROD_HAS_PROD_STAT
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.ProductStatus.ProductStatus
+toRoleLabel: "Product Status"
+toRoleName: ProductStatus
+toRolePhysicalName: PROD_STAT
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: ProductStatus
+  label: "Product Status ID"
+  description: "The identifier of the Product Status associated with the Insurance Product."
+  physicalName: PROD_STAT_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.ProductStatus.ProductStatus

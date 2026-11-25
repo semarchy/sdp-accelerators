@@ -1,0 +1,478 @@
+﻿_package: RetailCustomer360.entities.Customer.business_views
+_type: BusinessView
+_name: CustomerBusinessView
+label: Customers
+entity: RetailCustomer360.entities.Customer.Customer
+
+rootLabel: Customers
+rootPluralLabel: Customers
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Customer
+  displayCard: RetailCustomer360.entities.Customer.display_cards.Customer
+  entity: RetailCustomer360.entities.Customer.Customer
+  actionSet: RetailCustomer360.entities.Customer.action_sets.CustomerActionSet
+  collection: RetailCustomer360.entities.Customer.collection_views.CustomerCollectionView
+  form: RetailCustomer360.entities.Customer.forms.CustomerForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AssociatedContactPointEmail
+      transitionPath: BelongsToCustomerFromEmail
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/email-outline.svg?color=%230D1B2A&width=64
+      label: Email
+      pluralLabel: Emails
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCustomerFromEmail has (1 = 1)
+      businessViewEntity:
+        _name: ContactPointEmailRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.ContactPointEmail.collection_views.ContactPointEmailCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.ContactPointEmail.ContactPointEmail
+        form: RetailCustomer360.entities.ContactPointEmail.forms.ContactPointEmailForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.ContactPointEmail.action_sets.ContactPointEmailActionSet
+        displayCard: RetailCustomer360.entities.ContactPointEmail.display_cards.ContactPointEmail
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedContactPointPhone
+      transitionPath: BelongsToCustomerFromPhone
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/phone-outline.svg?color=%230D1B2A&width=64
+      label: Phone
+      pluralLabel: Phones
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCustomerFromPhone has (1 = 1)
+      businessViewEntity:
+        _name: ContactPointPhoneRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.ContactPointPhone.collection_views.ContactPointPhoneCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.ContactPointPhone.ContactPointPhone
+        form: RetailCustomer360.entities.ContactPointPhone.forms.ContactPointPhoneForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.ContactPointPhone.action_sets.ContactPointPhoneActionSet
+        displayCard: RetailCustomer360.entities.ContactPointPhone.display_cards.ContactPointPhone
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedContactPointAddress
+      transitionPath: BelongsToCustomerFromAddress
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/map-marker-outline.svg?color=%230D1B2A&width=64
+      label: Address
+      pluralLabel: Addresses
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCustomerFromAddress has (1 = 1)
+      businessViewEntity:
+        _name: ContactPointAddressRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.ContactPointAddress.collection_views.ContactPointAddressCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.ContactPointAddress.ContactPointAddress
+        form: RetailCustomer360.entities.ContactPointAddress.forms.ContactPointAddressForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.ContactPointAddress.action_sets.ContactPointAddressActionSet
+        displayCard: RetailCustomer360.entities.ContactPointAddress.display_cards.ContactPointAddress
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedSalesOrder
+      transitionPath: BelongsToCustomerFromSalesOrder
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/receipt.svg?color=%230D1B2A&width=64
+      label: Order
+      pluralLabel: Orders
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCustomerFromSalesOrder has (1 = 1)
+      businessViewEntity:
+        _name: SalesOrderRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.SalesOrder.collection_views.SalesOrderCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.SalesOrder.SalesOrder
+        form: RetailCustomer360.entities.SalesOrder.forms.SalesOrderForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.SalesOrder.action_sets.SalesOrderActionSet
+        displayCard: RetailCustomer360.entities.SalesOrder.display_cards.SalesOrderDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedLoyaltyProgramMember
+      transitionPath: BelongsToCustomerFromLoyaltyMember
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/account-heart-outline.svg?color=%230D1B2A&width=64
+      label: Member
+      pluralLabel: Members
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCustomerFromLoyaltyMember has (1 = 1)
+      businessViewEntity:
+        _name: LoyaltyProgramMemberRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.LoyaltyProgramMember.collection_views.LoyaltyProgramMemberCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+        form: RetailCustomer360.entities.LoyaltyProgramMember.forms.LoyaltyProgramMemberForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.LoyaltyProgramMember.action_sets.LoyaltyProgramMemberActionSet
+        displayCard: RetailCustomer360.entities.LoyaltyProgramMember.display_cards.LoyaltyProgramMemberDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedConsent
+      transitionPath: BelongsToCustomerFromConsent
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/shield-check-outline.svg?color=%230D1B2A&width=64
+      label: Consent
+      pluralLabel: Consents
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCustomerFromConsent has (1 = 1)
+      businessViewEntity:
+        _name: ConsentRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Consent.collection_views.ConsentCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Consent.Consent
+        form: RetailCustomer360.entities.Consent.forms.ConsentForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.Consent.action_sets.ConsentActionSet
+        displayCard: RetailCustomer360.entities.Consent.display_cards.ConsentDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedCase
+      transitionPath: BelongsToCustomerFromCase
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/lifebuoy.svg?color=%230D1B2A&width=64
+      label: Case
+      pluralLabel: Cases
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCustomerFromCase has (1 = 1)
+      businessViewEntity:
+        _name: CaseRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Case.collection_views.CaseCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Case.Case
+        form: RetailCustomer360.entities.Case.forms.CaseForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.Case.action_sets.CaseActionSet
+        displayCard: RetailCustomer360.entities.Case.display_cards.CaseDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: MasterRecords
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/file-tree-outline.svg?color=%230D1B2A&width=64
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: CustomerMaster
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Customer.collection_views.CustomerCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Customer.Customer
+        form: RetailCustomer360.entities.Customer.forms.CustomerForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: RetailCustomer360.entities.Customer.display_cards.Customer
+    - _type: BusinessViewTransition
+      _name: History
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/history.svg?color=%230D1B2A&width=64
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: CustomerGoldenHistory
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Customer.collection_views.CustomerCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Customer.Customer
+        form: RetailCustomer360.entities.Customer.forms.CustomerForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: RetailCustomer360.entities.Customer.display_cards.Customer
+enableHierarchyView: false
+useHierarchyOnOpen: false

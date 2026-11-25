@@ -1,0 +1,1338 @@
+_package: LifeAndAnnuityInsurance.applications
+_type: Application
+_name: LifeAndAnnuityInsuranceApplication
+label: Life and Annuity Insurance
+visibility: VISIBLE
+applicationTitle: Life and Annuity Insurance MDM
+avatarImageUrl: images://life-annuity-ins/lna-ins-avatar.png
+logoUrl: images://life-annuity-ins/lna-ins-cover.png
+coverImageUrl: images://life-annuity-ins/lna-ins-logo.png
+favIcon: images://life-annuity-ins/lna-ins-avatar.png
+titleColor: md:blue 800
+titleBarDefaultColor: md:teal 800
+titleBarAuthoringColor: md:green 300
+titleBarErrorColor: md:red 300
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+defaultAction: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.GlobalSearch
+documentationConfig:
+  documentation: ""
+  documentationConfigDiagrams:
+    - _type: DocumentationConfigDiagram
+      _name: AllEntitiesDiagram
+      modelDiagram: LifeAndAnnuityInsurance.model_diagrams.AllEntities
+
+    - _type: DocumentationConfigDiagram
+      _name: ProductDiagram
+      modelDiagram: LifeAndAnnuityInsurance.model_diagrams.Product
+
+    - _type: DocumentationConfigDiagram
+      _name: PolicyDiagram
+      modelDiagram: LifeAndAnnuityInsurance.model_diagrams.Policy
+
+    - _type: DocumentationConfigDiagram
+      _name: AnnuitiesDiagram
+      modelDiagram: LifeAndAnnuityInsurance.model_diagrams.Annuity
+
+    - _type: DocumentationConfigDiagram
+      _name: ClaimsDiagram
+      modelDiagram: LifeAndAnnuityInsurance.model_diagrams.Claims
+
+    - _type: DocumentationConfigDiagram
+      _name: UnderwritingDiagram
+      modelDiagram: LifeAndAnnuityInsurance.model_diagrams.Underwriting
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: false
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: Individual
+      label: "Individuals"
+      viewType: GD
+      businessView: LifeAndAnnuityInsurance.entities.Individual.business_views.IndividualBusinessView
+      searchTypeConfig: LifeAndAnnuityInsurance.entities.Individual.business_views.IndividualBusinessView.Individual.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: Party
+      label: "Parties"
+      viewType: GD
+      businessView: LifeAndAnnuityInsurance.entities.Party.business_views.PartyBusinessView
+      searchTypeConfig: LifeAndAnnuityInsurance.entities.Party.business_views.PartyBusinessView.Party.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: Policy
+      label: "Policies"
+      viewType: GD
+      businessView: LifeAndAnnuityInsurance.entities.Policy.business_views.PolicyBusinessView
+      searchTypeConfig: LifeAndAnnuityInsurance.entities.Policy.business_views.PolicyBusinessView.Policy.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: InsuranceProduct
+      label: "Insurance Products"
+      viewType: GD
+      businessView: LifeAndAnnuityInsurance.entities.InsuranceProduct.business_views.InsuranceProductBusinessView
+      searchTypeConfig: LifeAndAnnuityInsurance.entities.InsuranceProduct.business_views.InsuranceProductBusinessView.InsuranceProduct.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: AnnuityContract
+      label: "Annuity Contracts"
+      viewType: GD
+      businessView: LifeAndAnnuityInsurance.entities.AnnuityContract.business_views.AnnuityContractBusinessView
+      searchTypeConfig: LifeAndAnnuityInsurance.entities.AnnuityContract.business_views.AnnuityContractBusinessView.AnnuityContract.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: Claim
+      label: "Claims"
+      viewType: GD
+      businessView: LifeAndAnnuityInsurance.entities.Claim.business_views.ClaimBusinessView
+      searchTypeConfig: LifeAndAnnuityInsurance.entities.Claim.business_views.ClaimBusinessView.Claim.TextConfig
+      maxResults: 5
+navDrawer:
+  - _type: NavigationGroup
+    _name: RootFolder
+    label: Root Folder
+    dividerVisible: false
+    labelVisible: false
+    actions:
+      - appAction: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.MyTasks
+      - appAction: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.GlobalSearch
+  - _type: FolderNavGroup
+    _name: ProductManagement
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.ProductManagement
+  - _type: FolderNavGroup
+    _name: PartyManagement
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.PartyManagement
+  - _type: FolderNavGroup
+    _name: PolicyAdministration
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.PolicyAdministration
+  - _type: FolderNavGroup
+    _name: Underwriting
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.Underwriting
+  - _type: FolderNavGroup
+    _name: AnnuityAndValues
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.AnnuityAndValues
+  - _type: FolderNavGroup
+    _name: ClaimsAndBenefits
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.ClaimsAndBenefits
+
+  - _type: FolderNavGroup
+    _name: Stewardship
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.Stewardship
+  - _type: FolderNavGroup
+    _name: Admin
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: LifeAndAnnuityInsurance.applications.LifeAndAnnuityInsuranceApplication.Root.Admin
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+    - _type: MyTasksAction
+      _name: MyTasks
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: false
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+    - _type: FolderAction
+      _name: ProductManagement
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "Product Management"
+      icon: images://mdi/package-variant-closed.svg
+      iconColor: md:blue 700
+      labelColor: md:blue 700
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseLineOfBusiness
+          businessView: LifeAndAnnuityInsurance.entities.LineOfBusiness.business_views.LineOfBusinessBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:light-blue 600
+          labelColor: md:light-blue 600
+          label: "Line Of Businesses"
+          description: "Browse Line Of Businesses records."
+          image: images://life-annuity-ins/lna-ins-line-of-business.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: BrowseBusinessViewAction
+          _name: BrowseInsuranceProduct
+          businessView: LifeAndAnnuityInsurance.entities.InsuranceProduct.business_views.InsuranceProductBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:light-blue 600
+          labelColor: md:light-blue 600
+          label: "Insurance Products"
+          description: "Browse Insurance Products records."
+          image: images://life-annuity-ins/lna-ins-insurance-product.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: FolderAction
+          _name: ProductConfigurations
+          description: "Browse reference data for life and annuity product management."
+          label: "Product Configurations"
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:light-blue 600
+          labelColor: md:light-blue 600
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            
+            - _type: BrowseBusinessViewAction
+              _name: BrowseInsurancePlan
+              businessView: LifeAndAnnuityInsurance.entities.InsurancePlan.business_views.InsurancePlanBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:light-blue 800
+              labelColor: md:light-blue 800
+              label: "Insurance Plans"
+              description: "Browse Insurance Plans records."
+              image: images://life-annuity-ins/lna-ins-insurance-plan.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductType
+              businessView: LifeAndAnnuityInsurance.entities.ProductType.business_views.ProductTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:teal 800
+              labelColor: md:teal 800
+              label: "Product Types"
+              description: "Browse Product Types records."
+              image: images://life-annuity-ins/lna-ins-product-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductStatus
+              businessView: LifeAndAnnuityInsurance.entities.ProductStatus.business_views.ProductStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:teal 800
+              labelColor: md:teal 800
+              label: "Product Statuses"
+              description: "Browse Product Statuses records."
+              image: images://life-annuity-ins/lna-ins-product-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePlanStatus
+              businessView: LifeAndAnnuityInsurance.entities.PlanStatus.business_views.PlanStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:teal 800
+              labelColor: md:teal 800
+              label: "Plan Statuses"
+              description: "Browse Plan Statuses records."
+              image: images://life-annuity-ins/lna-ins-plan-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRegulatoryTest
+              businessView: LifeAndAnnuityInsurance.entities.RegulatoryTest.business_views.RegulatoryTestBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:teal 800
+              labelColor: md:teal 800
+              label: "Regulatory Tests"
+              description: "Browse Regulatory Tests records."
+              image: images://life-annuity-ins/lna-ins-regulatory-test.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+    - _type: FolderAction
+      _name: PartyManagement
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "Party Management"
+      icon: images://mdi/account-multiple-outline.svg
+      iconColor: md:teal 700
+      labelColor: md:teal 700
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseIndividual
+          businessView: LifeAndAnnuityInsurance.entities.Individual.business_views.IndividualBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:cyan 800
+          labelColor: md:cyan 800
+          label: "Individuals"
+          description: "Browse Individuals records."
+          image: images://life-annuity-ins/lna-ins-individual.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: BrowseBusinessViewAction
+          _name: BrowseParty
+          businessView: LifeAndAnnuityInsurance.entities.Party.business_views.PartyBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:cyan 800
+          labelColor: md:cyan 800
+          label: "Parties"
+          description: "Browse Parties records."
+          image: images://life-annuity-ins/lna-ins-party.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: BrowseBusinessViewAction
+          _name: BrowsePolicyPartyRole
+          businessView: LifeAndAnnuityInsurance.entities.PolicyPartyRole.business_views.PolicyPartyRoleBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:cyan 800
+          labelColor: md:cyan 800
+          label: "Policy Party Roles"
+          description: "Browse Policy Party Roles records."
+          image: images://life-annuity-ins/lna-ins-policy-party-role.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: FolderAction
+          _name: PartyConfigurations
+          description: "Browse party role and individual reference data."
+          label: "Party Configurations"
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:cyan 800
+          labelColor: md:cyan 800
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePartyRoleType
+              businessView: LifeAndAnnuityInsurance.entities.PartyRoleType.business_views.PartyRoleTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:green 600
+              labelColor: md:green 600
+              label: "Party Role Types"
+              description: "Browse Party Role Types records."
+              image: images://life-annuity-ins/lna-ins-party-role-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePartyStatus
+              businessView: LifeAndAnnuityInsurance.entities.PartyStatus.business_views.PartyStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:green 600
+              labelColor: md:green 600
+              label: "Party Statuses"
+              description: "Browse Party Statuses records."
+              image: images://life-annuity-ins/lna-ins-party-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseIndividualStatus
+              businessView: LifeAndAnnuityInsurance.entities.IndividualStatus.business_views.IndividualStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:green 600
+              labelColor: md:green 600
+              label: "Individual Statuses"
+              description: "Browse Individual Statuses records."
+              image: images://life-annuity-ins/lna-ins-individual-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBeneficiaryDesignation
+              businessView: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.business_views.BeneficiaryDesignationBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:cyan 600
+              labelColor: md:cyan 600
+              label: "Beneficiary Designations"
+              description: "Browse Beneficiary Designations records."
+              image: images://life-annuity-ins/lna-ins-beneficiary-designation.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseEmploymentStatus
+              businessView: LifeAndAnnuityInsurance.entities.EmploymentStatus.business_views.EmploymentStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:green 600
+              labelColor: md:green 600
+              label: "Employment Statuses"
+              description: "Browse Employment Statuses records."
+              image: images://life-annuity-ins/lna-ins-employment-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseMaritalStatus
+              businessView: LifeAndAnnuityInsurance.entities.MaritalStatus.business_views.MaritalStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:green 600
+              labelColor: md:green 600
+              label: "Marital Statuses"
+              description: "Browse Marital Statuses records."
+              image: images://life-annuity-ins/lna-ins-marital-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+    - _type: FolderAction
+      _name: PolicyAdministration
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "Policy Administration"
+      icon: images://mdi/file-document-outline.svg
+      iconColor: md:indigo 700
+      labelColor: md:indigo 700
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowsePolicy
+          businessView: LifeAndAnnuityInsurance.entities.Policy.business_views.PolicyBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:indigo 600
+          labelColor: md:indigo 600
+          label: "Policies"
+          description: "Browse Policies records."
+          image: images://life-annuity-ins/lna-ins-policy.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: BrowseBusinessViewAction
+          _name: BrowseCoverage
+          businessView: LifeAndAnnuityInsurance.entities.Coverage.business_views.CoverageBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:indigo 600
+          labelColor: md:indigo 600
+          label: "Coverages"
+          description: "Browse Coverages records."
+          image: images://life-annuity-ins/lna-ins-coverage.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: BrowseBusinessViewAction
+          _name: BrowseRider
+          businessView: LifeAndAnnuityInsurance.entities.Rider.business_views.RiderBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:indigo 600
+          labelColor: md:indigo 600
+          label: "Riders"
+          description: "Browse Riders records."
+          image: images://life-annuity-ins/lna-ins-rider.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: FolderAction
+          _name: PolicyConfigurations
+          description: "Browse reference data for policy, coverage, rider, and premium administration."
+          label: "Policy Configurations"
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:indigo 600
+          labelColor: md:indigo 600
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePremiumTransaction
+              businessView: LifeAndAnnuityInsurance.entities.PremiumTransaction.business_views.PremiumTransactionBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:indigo 600
+              labelColor: md:indigo 600
+              label: "Premium Transactions"
+              description: "Browse Premium Transactions records."
+              image: images://life-annuity-ins/lna-ins-premium-transaction.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePolicyStatus
+              businessView: LifeAndAnnuityInsurance.entities.PolicyStatus.business_views.PolicyStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:deep-purple 600
+              labelColor: md:deep-purple 600
+              label: "Policy Statuses"
+              description: "Browse Policy Statuses records."
+              image: images://life-annuity-ins/lna-ins-policy-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCoverageStatus
+              businessView: LifeAndAnnuityInsurance.entities.CoverageStatus.business_views.CoverageStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:deep-purple 600
+              labelColor: md:deep-purple 600
+              label: "Coverage Statuses"
+              description: "Browse Coverage Statuses records."
+              image: images://life-annuity-ins/lna-ins-coverage-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRiderType
+              businessView: LifeAndAnnuityInsurance.entities.RiderType.business_views.RiderTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:deep-purple 600
+              labelColor: md:deep-purple 600
+              label: "Rider Types"
+              description: "Browse Rider Types records."
+              image: images://life-annuity-ins/lna-ins-rider-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseDistributionChannel
+              businessView: LifeAndAnnuityInsurance.entities.DistributionChannel.business_views.DistributionChannelBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:deep-purple 600
+              labelColor: md:deep-purple 600
+              label: "Distribution Channels"
+              description: "Browse Distribution Channels records."
+              image: images://life-annuity-ins/lna-ins-distribution-channel.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePaymentPlan
+              businessView: LifeAndAnnuityInsurance.entities.PaymentPlan.business_views.PaymentPlanBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:deep-purple 600
+              labelColor: md:deep-purple 600
+              label: "Payment Plans"
+              description: "Browse Payment Plans records."
+              image: images://life-annuity-ins/lna-ins-payment-plan.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePaymentStatus
+              businessView: LifeAndAnnuityInsurance.entities.PaymentStatus.business_views.PaymentStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:deep-purple 600
+              labelColor: md:deep-purple 600
+              label: "Payment Statuses"
+              description: "Browse Payment Statuses records."
+              image: images://life-annuity-ins/lna-ins-payment-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+    - _type: FolderAction
+      _name: Underwriting
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "Underwriting"
+      icon: images://mdi/stethoscope.svg
+      iconColor: md:cyan 700
+      labelColor: md:cyan 700
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseUnderwritingCase
+          businessView: LifeAndAnnuityInsurance.entities.UnderwritingCase.business_views.UnderwritingCaseBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:blue-grey 600
+          labelColor: md:blue-grey 600
+          label: "Underwriting Cases"
+          description: "Browse Underwriting Cases records."
+          image: images://life-annuity-ins/lna-ins-underwriting-case.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: BrowseBusinessViewAction
+          _name: BrowseUnderwritingRequirement
+          businessView: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.business_views.UnderwritingRequirementBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:blue-grey 600
+          labelColor: md:blue-grey 600
+          label: "Underwriting Requirements"
+          description: "Browse Underwriting Requirements records."
+          image: images://life-annuity-ins/lna-ins-underwriting-requirement.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: FolderAction
+          _name: UnderwritingConfigurations
+          description: "Browse underwriting decision, requirement, and risk reference data."
+          label: "Underwriting Configurations"
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:blue-grey 600
+          labelColor: md:blue-grey 600
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRiskClass
+              businessView: LifeAndAnnuityInsurance.entities.RiskClass.business_views.RiskClassBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:amber 700
+              labelColor: md:amber 700
+              label: "Risk Classes"
+              description: "Browse Risk Classes records."
+              image: images://life-annuity-ins/lna-ins-risk-class.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRequirementType
+              businessView: LifeAndAnnuityInsurance.entities.RequirementType.business_views.RequirementTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:amber 700
+              labelColor: md:amber 700
+              label: "Requirement Types"
+              description: "Browse Requirement Types records."
+              image: images://life-annuity-ins/lna-ins-requirement-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseUnderwritingDecisionStatus
+              businessView: LifeAndAnnuityInsurance.entities.UnderwritingDecisionStatus.business_views.UnderwritingDecisionStatusBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:amber 700
+              labelColor: md:amber 700
+              label: "Underwriting Decision Statuses"
+              description: "Browse Underwriting Decision Statuses records."
+              image: images://life-annuity-ins/lna-ins-underwriting-decision-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+    - _type: FolderAction
+      _name: AnnuityAndValues
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "Annuity & Values"
+      icon: images://mdi/chart-line.svg
+      iconColor: md:green 700
+      labelColor: md:green 700
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseAnnuityContract
+          businessView: LifeAndAnnuityInsurance.entities.AnnuityContract.business_views.AnnuityContractBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:green 700
+          labelColor: md:green 700
+          label: "Annuity Contracts"
+          description: "Browse Annuity Contracts records."
+          image: images://life-annuity-ins/lna-ins-annuity-contract.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: BrowseBusinessViewAction
+          _name: BrowsePolicyLoan
+          businessView: LifeAndAnnuityInsurance.entities.PolicyLoan.business_views.PolicyLoanBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:green 700
+          labelColor: md:green 700
+          label: "Policy Loans"
+          description: "Browse Policy Loans records."
+          image: images://life-annuity-ins/lna-ins-policy-loan.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: FolderAction
+          _name: AnnuityConfigurations
+          description: "Browse annuity, investment, tax, and surrender charge reference data."
+          label: "Annuity Configurations"
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:green 700
+          labelColor: md:green 700
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            
+            - _type: BrowseBusinessViewAction
+              _name: BrowseInvestmentAllocation
+              businessView: LifeAndAnnuityInsurance.entities.InvestmentAllocation.business_views.InvestmentAllocationBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:green 600
+              labelColor: md:green 600
+              label: "Investment Allocations"
+              description: "Browse Investment Allocations records."
+              image: images://life-annuity-ins/lna-ins-investment-allocation.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCashValueSnapshot
+              businessView: LifeAndAnnuityInsurance.entities.CashValueSnapshot.business_views.CashValueSnapshotBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:green 600
+              labelColor: md:green 600
+              label: "Cash Value Snapshots"
+              description: "Browse Cash Value Snapshots records."
+              image: images://life-annuity-ins/lna-ins-cash-value-snapshot.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseAnnuityPayoutOption
+              businessView: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.business_views.AnnuityPayoutOptionBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:light-green 600
+              labelColor: md:light-green 600
+              label: "Annuity Payout Options"
+              description: "Browse Annuity Payout Options records."
+              image: images://life-annuity-ins/lna-ins-annuity-payout-option.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseFund
+              businessView: LifeAndAnnuityInsurance.entities.Fund.business_views.FundBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:light-green 600
+              labelColor: md:light-green 600
+              label: "Funds"
+              description: "Browse Funds records."
+              image: images://life-annuity-ins/lna-ins-fund.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseTaxQualification
+              businessView: LifeAndAnnuityInsurance.entities.TaxQualification.business_views.TaxQualificationBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:light-green 600
+              labelColor: md:light-green 600
+              label: "Tax Qualifications"
+              description: "Browse Tax Qualifications records."
+              image: images://life-annuity-ins/lna-ins-tax-qualification.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSurrenderChargeSchedule
+              businessView: LifeAndAnnuityInsurance.entities.SurrenderChargeSchedule.business_views.SurrenderChargeScheduleBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:light-green 600
+              labelColor: md:light-green 600
+              label: "Surrender Charge Schedules"
+              description: "Browse Surrender Charge Schedules records."
+              image: images://life-annuity-ins/lna-ins-surrender-charge-schedule.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+    - _type: FolderAction
+      _name: ClaimsAndBenefits
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "Claims & Benefits"
+      icon: images://mdi/file-alert-outline.svg
+      iconColor: md:light-blue 700
+      labelColor: md:light-blue 700
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseClaim
+          businessView: LifeAndAnnuityInsurance.entities.Claim.business_views.ClaimBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:blue 600
+          labelColor: md:blue 600
+          label: "Claims"
+          description: "Browse Claims records."
+          image: images://life-annuity-ins/lna-ins-claim.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: BrowseBusinessViewAction
+          _name: BrowseClaimBenefitPayment
+          businessView: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.business_views.ClaimBenefitPaymentBusinessView
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          iconColor: md:blue 600
+          labelColor: md:blue 600
+          label: "Claim Benefit Payments"
+          description: "Browse Claim Benefit Payments records."
+          image: images://life-annuity-ins/lna-ins-claim-benefit-payment.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: FolderAction
+          _name: ClaimConfigurations
+          description: "Browse claim and benefit payment reference data."
+          label: "Claim Configurations"
+          icon: images://mdi/cog-outline.svg
+          iconColor: md:blue 600
+          labelColor: md:blue 600
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseBenefitType
+              businessView: LifeAndAnnuityInsurance.entities.BenefitType.business_views.BenefitTypeBusinessView
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              iconColor: md:orange 600
+              labelColor: md:orange 600
+              label: "Benefit Types"
+              description: "Browse Benefit Types records."
+              image: images://life-annuity-ins/lna-ins-benefit-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+    - _name: Stewardship
+      label: Stewardship
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: ReviewSuggestions
+          description: Review all the pending match suggestions
+          icon: images://mdi/message-question-outline.svg
+          iconColor: "#1A3772"
+          label: Match Suggestions
+          labelColor: "#1A3772"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: IndividualSuggestions
+              image: images://life-annuity-ins/lna-ins-individual-match-suggestions.png
+              label: Match Suggestions in Individuals
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.Individual.business_views.IndividualBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: PartySuggestions
+              image: images://life-annuity-ins/lna-ins-party-match-suggestions.png
+              label: Match Suggestions in Parties
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.Party.business_views.PartyBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+
+        - _name: ManageErrors
+          description: Review and correct all Source Data Errors
+          icon: images://mdi/alert-decagram-outline.svg
+          iconColor: md:red 400
+          label: Source Errors
+          labelColor: md:red 400
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: IndividualErrors
+              image: images://life-annuity-ins/lna-ins-individual-errors.png
+              label: Source Errors in Individuals
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.Individual.business_views.IndividualBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: PartyErrors
+              image: images://life-annuity-ins/lna-ins-party-errors.png
+              label: Source Errors in Parties
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.Party.business_views.PartyBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: PolicyErrors
+              image: images://life-annuity-ins/lna-ins-policy-errors.png
+              label: Source Errors in Policies
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.Policy.business_views.PolicyBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: PolicyPartyRoleErrors
+              image: images://life-annuity-ins/lna-ins-policy-party-role-errors.png
+              label: Source Errors in Policy Party Roles
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.PolicyPartyRole.business_views.PolicyPartyRoleBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: CoverageErrors
+              image: images://life-annuity-ins/lna-ins-coverage-errors.png
+              label: Source Errors in Coverages
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.Coverage.business_views.CoverageBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: RiderErrors
+              image: images://life-annuity-ins/lna-ins-rider-errors.png
+              label: Source Errors in Riders
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.Rider.business_views.RiderBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: UnderwritingCaseErrors
+              image: images://life-annuity-ins/lna-ins-underwriting-case-errors.png
+              label: Source Errors in Underwriting Cases
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.UnderwritingCase.business_views.UnderwritingCaseBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: UnderwritingRequirementErrors
+              image: images://life-annuity-ins/lna-ins-underwriting-requirement-errors.png
+              label: Source Errors in Underwriting Requirements
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.business_views.UnderwritingRequirementBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: PremiumTransactionErrors
+              image: images://life-annuity-ins/lna-ins-premium-transaction-errors.png
+              label: Source Errors in Premium Transactions
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.PremiumTransaction.business_views.PremiumTransactionBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: AnnuityContractErrors
+              image: images://life-annuity-ins/lna-ins-annuity-contract-errors.png
+              label: Source Errors in Annuity Contracts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.AnnuityContract.business_views.AnnuityContractBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: InvestmentAllocationErrors
+              image: images://life-annuity-ins/lna-ins-investment-allocation-errors.png
+              label: Source Errors in Investment Allocations
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.InvestmentAllocation.business_views.InvestmentAllocationBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: BeneficiaryDesignationErrors
+              image: images://life-annuity-ins/lna-ins-beneficiary-designation-errors.png
+              label: Source Errors in Beneficiary Designations
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.business_views.BeneficiaryDesignationBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: ClaimErrors
+              image: images://life-annuity-ins/lna-ins-claim-errors.png
+              label: Source Errors in Claims
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.Claim.business_views.ClaimBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: ClaimBenefitPaymentErrors
+              image: images://life-annuity-ins/lna-ins-claim-benefit-payment-errors.png
+              label: Source Errors in Claim Benefit Payments
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.business_views.ClaimBenefitPaymentBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: PolicyLoanErrors
+              image: images://life-annuity-ins/lna-ins-policy-loan-errors.png
+              label: Source Errors in Policy Loans
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.PolicyLoan.business_views.PolicyLoanBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: CashValueSnapshotErrors
+              image: images://life-annuity-ins/lna-ins-cash-value-snapshot-errors.png
+              label: Source Errors in Cash Value Snapshots
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: LifeAndAnnuityInsurance.entities.CashValueSnapshot.business_views.CashValueSnapshotBusinessView
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+ 
+    
+    - _type: FolderAction
+      _name: Admin
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Administration
+      appActions:
+        - _type: OpenDocumentationAction
+          _name: OpenModelDoc
+          iconColor: md:black
+          label: Model Documentation
+        - _type: FolderAction
+          _name: ImportData
+          icon: images://mdi/database-import.svg
+          image: images://default/folder-item-import.png
+          iconColor: md:black
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Import Data
+          requiredRole: semarchyAdmin
+          appActions:
+            - _type: ImportDataAppAction
+              _name: ImportLineOfBusiness
+              label: "01-Import Line Of Business"
+              image: images://life-annuity-ins/lna-ins-line-of-business-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.LineOfBusiness.action_sets.LineOfBusinessActionSet.ImportAuthorLineOfBusinesses
+            - _type: ImportDataAppAction
+              _name: ImportProductType
+              label: "02-Import Product Type"
+              image: images://life-annuity-ins/lna-ins-product-type-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.ProductType.action_sets.ProductTypeActionSet.ImportAuthorProductTypes
+            - _type: ImportDataAppAction
+              _name: ImportProductStatus
+              label: "03-Import Product Status"
+              image: images://life-annuity-ins/lna-ins-product-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.ProductStatus.action_sets.ProductStatusActionSet.ImportAuthorProductStatuses
+            - _type: ImportDataAppAction
+              _name: ImportPlanStatus
+              label: "04-Import Plan Status"
+              image: images://life-annuity-ins/lna-ins-plan-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PlanStatus.action_sets.PlanStatusActionSet.ImportAuthorPlanStatuses
+            - _type: ImportDataAppAction
+              _name: ImportPolicyStatus
+              label: "05-Import Policy Status"
+              image: images://life-annuity-ins/lna-ins-policy-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PolicyStatus.action_sets.PolicyStatusActionSet.ImportAuthorPolicyStatuses
+            - _type: ImportDataAppAction
+              _name: ImportCoverageStatus
+              label: "06-Import Coverage Status"
+              image: images://life-annuity-ins/lna-ins-coverage-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.CoverageStatus.action_sets.CoverageStatusActionSet.ImportAuthorCoverageStatuses
+            - _type: ImportDataAppAction
+              _name: ImportPartyStatus
+              label: "07-Import Party Status"
+              image: images://life-annuity-ins/lna-ins-party-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PartyStatus.action_sets.PartyStatusActionSet.ImportAuthorPartyStatuses
+            - _type: ImportDataAppAction
+              _name: ImportIndividualStatus
+              label: "08-Import Individual Status"
+              image: images://life-annuity-ins/lna-ins-individual-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.IndividualStatus.action_sets.IndividualStatusActionSet.ImportAuthorIndividualStatuses
+            - _type: ImportDataAppAction
+              _name: ImportEmploymentStatus
+              label: "09-Import Employment Status"
+              image: images://life-annuity-ins/lna-ins-employment-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.EmploymentStatus.action_sets.EmploymentStatusActionSet.ImportAuthorEmploymentStatuses
+            - _type: ImportDataAppAction
+              _name: ImportMaritalStatus
+              label: "10-Import Marital Status"
+              image: images://life-annuity-ins/lna-ins-marital-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.MaritalStatus.action_sets.MaritalStatusActionSet.ImportAuthorMaritalStatuses
+            - _type: ImportDataAppAction
+              _name: ImportPartyRoleType
+              label: "11-Import Party Role Type"
+              image: images://life-annuity-ins/lna-ins-party-role-type-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PartyRoleType.action_sets.PartyRoleTypeActionSet.ImportAuthorPartyRoleTypes
+            - _type: ImportDataAppAction
+              _name: ImportDistributionChannel
+              label: "12-Import Distribution Channel"
+              image: images://life-annuity-ins/lna-ins-distribution-channel-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.DistributionChannel.action_sets.DistributionChannelActionSet.ImportAuthorDistributionChannels
+            - _type: ImportDataAppAction
+              _name: ImportPaymentPlan
+              label: "13-Import Payment Plan"
+              image: images://life-annuity-ins/lna-ins-payment-plan-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PaymentPlan.action_sets.PaymentPlanActionSet.ImportAuthorPaymentPlans
+            - _type: ImportDataAppAction
+              _name: ImportPaymentStatus
+              label: "14-Import Payment Status"
+              image: images://life-annuity-ins/lna-ins-payment-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PaymentStatus.action_sets.PaymentStatusActionSet.ImportAuthorPaymentStatuses
+            - _type: ImportDataAppAction
+              _name: ImportRiskClass
+              label: "15-Import Risk Class"
+              image: images://life-annuity-ins/lna-ins-risk-class-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.RiskClass.action_sets.RiskClassActionSet.ImportAuthorRiskClasses
+            - _type: ImportDataAppAction
+              _name: ImportUnderwritingDecisionStatus
+              label: "16-Import Underwriting Decision Status"
+              image: images://life-annuity-ins/lna-ins-underwriting-decision-status-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.UnderwritingDecisionStatus.action_sets.UnderwritingDecisionStatusActionSet.ImportAuthorUnderwritingDecisionStatuses
+            - _type: ImportDataAppAction
+              _name: ImportRequirementType
+              label: "17-Import Requirement Type"
+              image: images://life-annuity-ins/lna-ins-requirement-type-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.RequirementType.action_sets.RequirementTypeActionSet.ImportAuthorRequirementTypes
+            - _type: ImportDataAppAction
+              _name: ImportRiderType
+              label: "18-Import Rider Type"
+              image: images://life-annuity-ins/lna-ins-rider-type-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.RiderType.action_sets.RiderTypeActionSet.ImportAuthorRiderTypes
+            - _type: ImportDataAppAction
+              _name: ImportBenefitType
+              label: "19-Import Benefit Type"
+              image: images://life-annuity-ins/lna-ins-benefit-type-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.BenefitType.action_sets.BenefitTypeActionSet.ImportAuthorBenefitTypes
+            - _type: ImportDataAppAction
+              _name: ImportTaxQualification
+              label: "20-Import Tax Qualification"
+              image: images://life-annuity-ins/lna-ins-tax-qualification-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.TaxQualification.action_sets.TaxQualificationActionSet.ImportAuthorTaxQualifications
+            - _type: ImportDataAppAction
+              _name: ImportAnnuityPayoutOption
+              label: "21-Import Annuity Payout Option"
+              image: images://life-annuity-ins/lna-ins-annuity-payout-option-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.action_sets.AnnuityPayoutOptionActionSet.ImportAuthorAnnuityPayoutOptions
+            - _type: ImportDataAppAction
+              _name: ImportFund
+              label: "22-Import Fund"
+              image: images://life-annuity-ins/lna-ins-fund-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.Fund.action_sets.FundActionSet.ImportAuthorFunds
+            - _type: ImportDataAppAction
+              _name: ImportRegulatoryTest
+              label: "23-Import Regulatory Test"
+              image: images://life-annuity-ins/lna-ins-regulatory-test-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.RegulatoryTest.action_sets.RegulatoryTestActionSet.ImportAuthorRegulatoryTests
+            - _type: ImportDataAppAction
+              _name: ImportInsuranceProduct
+              label: "24-Import Insurance Product"
+              image: images://life-annuity-ins/lna-ins-insurance-product-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.InsuranceProduct.action_sets.InsuranceProductActionSet.ImportAuthorInsuranceProducts
+            - _type: ImportDataAppAction
+              _name: ImportInsurancePlan
+              label: "25-Import Insurance Plan"
+              image: images://life-annuity-ins/lna-ins-insurance-plan-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.InsurancePlan.action_sets.InsurancePlanActionSet.ImportAuthorInsurancePlans
+            - _type: ImportDataAppAction
+              _name: ImportIndividual
+              label: "26-Import Individual"
+              image: images://life-annuity-ins/lna-ins-individual-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.Individual.action_sets.IndividualActionSet.ImportAuthorIndividuals
+            - _type: ImportDataAppAction
+              _name: ImportParty
+              label: "27-Import Party"
+              image: images://life-annuity-ins/lna-ins-party-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.Party.action_sets.PartyActionSet.ImportAuthorParties
+            - _type: ImportDataAppAction
+              _name: ImportPolicy
+              label: "28-Import Policy"
+              image: images://life-annuity-ins/lna-ins-policy-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.Policy.action_sets.PolicyActionSet.ImportAuthorPolicies
+            - _type: ImportDataAppAction
+              _name: ImportPolicyPartyRole
+              label: "29-Import Policy Party Role"
+              image: images://life-annuity-ins/lna-ins-policy-party-role-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PolicyPartyRole.action_sets.PolicyPartyRoleActionSet.ImportAuthorPolicyPartyRoles
+            - _type: ImportDataAppAction
+              _name: ImportCoverage
+              label: "30-Import Coverage"
+              image: images://life-annuity-ins/lna-ins-coverage-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.Coverage.action_sets.CoverageActionSet.ImportAuthorCoverages
+            - _type: ImportDataAppAction
+              _name: ImportRider
+              label: "31-Import Rider"
+              image: images://life-annuity-ins/lna-ins-rider-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.Rider.action_sets.RiderActionSet.ImportAuthorRiders
+            - _type: ImportDataAppAction
+              _name: ImportUnderwritingCase
+              label: "32-Import Underwriting Case"
+              image: images://life-annuity-ins/lna-ins-underwriting-case-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.UnderwritingCase.action_sets.UnderwritingCaseActionSet.ImportAuthorUnderwritingCases
+            - _type: ImportDataAppAction
+              _name: ImportUnderwritingRequirement
+              label: "33-Import Underwriting Requirement"
+              image: images://life-annuity-ins/lna-ins-underwriting-requirement-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.action_sets.UnderwritingRequirementActionSet.ImportAuthorUnderwritingRequirements
+            - _type: ImportDataAppAction
+              _name: ImportPremiumTransaction
+              label: "34-Import Premium Transaction"
+              image: images://life-annuity-ins/lna-ins-premium-transaction-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PremiumTransaction.action_sets.PremiumTransactionActionSet.ImportAuthorPremiumTransactions
+            - _type: ImportDataAppAction
+              _name: ImportAnnuityContract
+              label: "35-Import Annuity Contract"
+              image: images://life-annuity-ins/lna-ins-annuity-contract-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.AnnuityContract.action_sets.AnnuityContractActionSet.ImportAuthorAnnuityContracts
+            - _type: ImportDataAppAction
+              _name: ImportInvestmentAllocation
+              label: "36-Import Investment Allocation"
+              image: images://life-annuity-ins/lna-ins-investment-allocation-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.InvestmentAllocation.action_sets.InvestmentAllocationActionSet.ImportAuthorInvestmentAllocations
+            - _type: ImportDataAppAction
+              _name: ImportBeneficiaryDesignation
+              label: "37-Import Beneficiary Designation"
+              image: images://life-annuity-ins/lna-ins-beneficiary-designation-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.action_sets.BeneficiaryDesignationActionSet.ImportAuthorBeneficiaryDesignations
+            - _type: ImportDataAppAction
+              _name: ImportClaim
+              label: "38-Import Claim"
+              image: images://life-annuity-ins/lna-ins-claim-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.Claim.action_sets.ClaimActionSet.ImportAuthorClaims
+            - _type: ImportDataAppAction
+              _name: ImportClaimBenefitPayment
+              label: "39-Import Claim Benefit Payment"
+              image: images://life-annuity-ins/lna-ins-claim-benefit-payment-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.action_sets.ClaimBenefitPaymentActionSet.ImportAuthorClaimBenefitPayments
+            - _type: ImportDataAppAction
+              _name: ImportPolicyLoan
+              label: "40-Import Policy Loan"
+              image: images://life-annuity-ins/lna-ins-policy-loan-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.PolicyLoan.action_sets.PolicyLoanActionSet.ImportAuthorPolicyLoans
+            - _type: ImportDataAppAction
+              _name: ImportCashValueSnapshot
+              label: "41-Import Cash Value Snapshot"
+              image: images://life-annuity-ins/lna-ins-cash-value-snapshot-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.CashValueSnapshot.action_sets.CashValueSnapshotActionSet.ImportAuthorCashValueSnapshots
+            - _type: ImportDataAppAction
+              _name: ImportSurrenderChargeSchedule
+              label: "42-Import Surrender Charge Schedule"
+              image: images://life-annuity-ins/lna-ins-surrender-charge-schedule-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: LifeAndAnnuityInsurance.entities.SurrenderChargeSchedule.action_sets.SurrenderChargeScheduleActionSet.ImportAuthorSurrenderChargeSchedules
+        - _type: BrowseEntitiesFolderAction
+          _name: Entities
+          lineageEnabled: true
+          label: Browse All Data
+          requiredRole: semarchyAdmin
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT

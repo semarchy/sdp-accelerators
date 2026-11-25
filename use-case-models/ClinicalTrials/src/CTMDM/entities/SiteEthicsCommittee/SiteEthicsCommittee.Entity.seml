@@ -1,0 +1,68 @@
+_package: CTMDM.entities.SiteEthicsCommittee
+_type: Entity
+_name: SiteEthicsCommittee
+label: Site Ethics Committee
+pluralLabel: Site Ethics Committees
+entityType: ID_MATCHED
+physicalTableName: SITE_ETHICS_COMM
+iconUrl: images://mdi/clipboard-check-outline.svg
+description: "Associates clinical sites with ethics committees and captures oversight status."
+documentation: "Associates clinical sites with ethics committees and captures oversight status."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SiteEthicsCommitteeID
+    label: Site Ethics Committee ID
+    description: Business identifier for the site ethics committee assignment.
+    documentation: Business identifier for the site ethics committee assignment.
+    physicalName: SITE_ETHICS_COMM_ID
+    dataType: String
+    length: 60
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: OversightType
+    label: Oversight Type
+    description: Type of ethics oversight for the site.
+    documentation: Type of ethics oversight for the site.
+    physicalName: OVERSIGHT_TYPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ApprovalDate
+    label: Approval Date
+    description: Date ethics oversight approval was granted.
+    documentation: Date ethics oversight approval was granted.
+    physicalName: APPROVAL_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ExpirationDate
+    label: Expiration Date
+    description: Date ethics approval expires.
+    documentation: Date ethics approval expires.
+    physicalName: EXPIRATION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: OversightStatus
+    label: Oversight Status
+    description: Current oversight status.
+    documentation: Current oversight status.
+    physicalName: OVERSIGHT_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CTMDM.entities.SiteEthicsCommittee.SiteEthicsCommittee.SiteEthicsCommitteeID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

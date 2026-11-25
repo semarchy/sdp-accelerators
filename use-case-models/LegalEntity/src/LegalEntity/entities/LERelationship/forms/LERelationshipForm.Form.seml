@@ -1,0 +1,37 @@
+_package: LegalEntity.entities.LERelationship.forms
+_type: Form
+_name: LERelationshipForm
+entity: LegalEntity.entities.LERelationship.LERelationship
+default: true
+formTabs:
+  - _type: FormTab
+    _name: LERelationship
+    label: Legal Entity Relationship
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: IdField
+        _name: ID
+        value: ID
+        useCustomLabel: false
+        dataType: LONG_INTEGER
+      - _type: ReferenceField
+        referencedEntity: LegalEntity.entities.LegalEntity.LegalEntity
+        _name: FDN_FromLegalEntity
+        value: FDN_FromLegalEntityRel
+        useCustomLabel: false
+        dataType: STRING
+      - _type: ReferenceField
+        referencedEntity: LegalEntity.entities.Relationship.Relationship
+        _name: FDN_RelationshipType
+        value: FDN_Relationship
+        useCustomLabel: false
+        dataType: STRING
+      - _type: ReferenceField
+        referencedEntity: LegalEntity.entities.LegalEntity.LegalEntity
+        _name: FDN_ToLegalEntity
+        value: FDN_ToLegalEntityRel
+        useCustomLabel: false
+        dataType: STRING

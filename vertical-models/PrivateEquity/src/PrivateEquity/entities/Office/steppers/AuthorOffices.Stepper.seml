@@ -1,0 +1,93 @@
+_name: AuthorOffices
+_package: PrivateEquity.entities.Office.steppers
+_type: Stepper
+entity: PrivateEquity.entities.Office.Office
+rootStep:
+  _name: Offices
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.Office.collection_views.OfficeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Offices
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.OfficesLegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.OfficesLegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Office.Office.Name
+  stepTriggers: []
+  childSteps:
+    - _name: Office
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Office
+      formTab: PrivateEquity.entities.Office.forms.OfficeForm.Office
+      formStepEnrichers:
+        - enricher: PrivateEquity.entities.Office.enrichers.StandarizePhone
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Office.enrichers.GeocodeUsingGoogle
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Office.enrichers.NormalizedName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.OfficesLegalEntity.LegalEntity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Office.Office.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.OfficesLegalEntity.LegalEntity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Office.Office.Name
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.OfficesLegalEntity.LegalEntity
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.OfficesLegalEntity.LegalEntity
+      stepTriggers: []
+label: Author Offices
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.OfficesLegalEntity.LegalEntity
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Office.Office.Name
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.OfficesLegalEntity.LegalEntity
+triggers: []

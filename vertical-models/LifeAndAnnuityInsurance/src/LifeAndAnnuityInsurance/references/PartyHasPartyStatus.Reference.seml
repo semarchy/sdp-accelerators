@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: PartyHasPartyStatus
+description: "Indicates the Party Status associated with a Party."
+_type: Reference
+label: "Party Has Party Status"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Party.Party
+fromRoleLabel: "Party"
+fromRoleName: Party
+fromRolePluralLabel: "Parties"
+physicalName: PARTY_HAS_PARTY_STAT
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.PartyStatus.PartyStatus
+toRoleLabel: "Party Status"
+toRoleName: PartyStatus
+toRolePhysicalName: PARTY_STAT
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PartyStatus
+  label: "Party Status ID"
+  description: "The identifier of the Party Status associated with the Party."
+  physicalName: PARTY_STAT_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.PartyStatus.PartyStatus

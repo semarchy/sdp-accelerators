@@ -1,0 +1,11 @@
+_package: CTMDM.entities.RegulatoryAuthority.enrichers
+_name: NormalizeRegulatoryAuthority
+_type: SemQLEnricher
+entity: CTMDM.entities.RegulatoryAuthority.RegulatoryAuthority
+label: Normalize Regulatory Authority
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Regulatory Authority values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedAuthorityName
+    expression: "RTRIM(LTRIM(UPPER(AuthorityName)))"

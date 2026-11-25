@@ -1,0 +1,77 @@
+_package: LifeAndAnnuityInsurance.entities.IndividualStatus
+_type: Entity
+_name: IndividualStatus
+label: "Individual Status"
+pluralLabel: "Individual Statuses"
+physicalTableName: INDIVIDUAL_STAT
+iconUrl: images://mdi/account-badge-outline.svg
+description: "Defines lifecycle statuses for individual person profiles maintained by the carrier."
+documentation: "Defines lifecycle statuses for individual person profiles maintained by the carrier."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: IndividualStatusID
+    label: "Individual Status ID"
+    physicalName: INDIVIDUAL_STAT_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the individual status."
+    documentation: "Unique identifier for the individual status."
+  - _type: EntityAttribute
+    _name: StatusCode
+    label: "Status Code"
+    physicalName: STAT_CODE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Individual status code."
+    documentation: "Individual status code."
+  - _type: EntityAttribute
+    _name: StatusName
+    label: "Status Name"
+    physicalName: STAT_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Individual status name."
+    documentation: "Individual status name."
+  - _type: EntityAttribute
+    _name: StatusCategory
+    label: "Status Category"
+    physicalName: STAT_CATEGORY
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Lifecycle category for the individual status."
+    documentation: "Lifecycle category for the individual status."
+  - _type: EntityAttribute
+    _name: Description
+    label: "Description"
+    physicalName: DESC_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Business meaning and servicing implication of the individual status."
+    documentation: "Business meaning and servicing implication of the individual status."
+  - _type: EntityAttribute
+    _name: ActiveIndicator
+    label: "Active Indicator"
+    physicalName: ACTIVE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the individual status is active."
+    documentation: "Indicates whether the individual status is active."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.IndividualStatus.IndividualStatus.IndividualStatusID
+entityType: BASIC

@@ -1,0 +1,31 @@
+_package: FinanceKYC.entities.Address.action_sets
+_type: ActionSet
+_name: AddressConfirmMatchesActionSet
+
+entity: FinanceKYC.entities.Address.Address
+label: Address Confirm Matches Action Set
+defaultActionSet: false
+
+actions:
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: false
+    waitDialogEnabled: false
+
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnAddress
+    label: Review and Confirm Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.Address.dups_managers.ConfirmMatchesOnAddress
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnAddress
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.Address.dups_managers.ConfirmMatchesOnAddress
+    enableEdit: true
+    waitDialogEnabled: false

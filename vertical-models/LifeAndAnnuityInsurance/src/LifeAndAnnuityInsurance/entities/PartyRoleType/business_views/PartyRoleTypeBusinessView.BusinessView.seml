@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.PartyRoleType.business_views
+_type: BusinessView
+_name: PartyRoleTypeBusinessView
+label: "Party Role Type"
+entity: LifeAndAnnuityInsurance.entities.PartyRoleType.PartyRoleType
+rootLabel: "Party Role Types"
+rootPluralLabel: "Party Role Types"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PartyRoleType
+  displayCard: LifeAndAnnuityInsurance.entities.PartyRoleType.display_cards.PartyRoleTypeDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.PartyRoleType.PartyRoleType
+  actionSet: LifeAndAnnuityInsurance.entities.PartyRoleType.action_sets.PartyRoleTypeActionSet
+  collection: LifeAndAnnuityInsurance.entities.PartyRoleType.collection_views.PartyRoleTypeCollectionView
+  form: LifeAndAnnuityInsurance.entities.PartyRoleType.forms.PartyRoleTypeForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: PolicyPartyRole
+      label: "Policy Party Role"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Policy Party Roles"
+      iconUrl: images://mdi/account-switch-outline.svg
+      transitionPath: PolicyPartyRole
+      useCustomLabel: true
+      description: "Transition from Party Role Type to related Policy Party Roles."
+      visibleInFormTabCondition: any PolicyPartyRole has (1=1)
+      enableHierarchy: any PolicyPartyRole has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: PolicyPartyRole
+        displayCard: LifeAndAnnuityInsurance.entities.PolicyPartyRole.display_cards.PolicyPartyRoleDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.PolicyPartyRole.PolicyPartyRole
+        actionSet: LifeAndAnnuityInsurance.entities.PolicyPartyRole.action_sets.PolicyPartyRoleActionSet
+        collection: LifeAndAnnuityInsurance.entities.PolicyPartyRole.collection_views.PolicyPartyRoleCollectionView
+        form: LifeAndAnnuityInsurance.entities.PolicyPartyRole.forms.PolicyPartyRoleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/account-tag-outline.svg

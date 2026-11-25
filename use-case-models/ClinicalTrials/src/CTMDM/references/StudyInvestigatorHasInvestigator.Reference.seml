@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: StudyInvestigatorHasInvestigator
+_type: Reference
+label: Study Investigator Has Investigator
+description: "Links investigator assignments to the investigator."
+documentation: "Links investigator assignments to the investigator."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.StudyInvestigator.StudyInvestigator
+fromRoleLabel: Study Investigator
+fromRoleName: studyInvestigator
+fromRolePluralLabel: Study Investigators
+physicalName: STUDY_INV_HAS_INV
+fromNavigable: true
+
+toEntity: CTMDM.entities.Investigator.Investigator
+toRoleLabel: Investigator
+toRoleName: investigator
+toRolePhysicalName: INV
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: investigator
+  label: Investigator
+  physicalName: INV
+  searchable: true
+  entity: CTMDM.entities.Investigator.Investigator

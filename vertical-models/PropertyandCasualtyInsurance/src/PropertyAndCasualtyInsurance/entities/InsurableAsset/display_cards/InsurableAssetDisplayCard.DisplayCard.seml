@@ -1,0 +1,20 @@
+_package: PropertyAndCasualtyInsurance.entities.InsurableAsset.display_cards
+_type: DisplayCard
+_name: InsurableAssetDisplayCard
+entity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+default: true
+primaryTextExpression: COALESCE(FDN_VehicleAsset, FDN_HomeAsset)
+primaryImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageValue: CASE 
+                    WHEN FDN_VehicleAsset IS NOT NULL THEN 'images://mdi/car.svg' 
+                    WHEN FDN_HomeAsset IS NOT NULL THEN 'images://mdi/home.svg' 
+                    ELSE 'images://mdi/alert-circle-outline.svg' END
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: SEMQL
+primaryImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

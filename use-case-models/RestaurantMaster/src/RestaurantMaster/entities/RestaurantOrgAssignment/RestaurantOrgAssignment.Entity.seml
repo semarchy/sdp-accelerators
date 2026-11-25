@@ -1,0 +1,59 @@
+_package: RestaurantMaster.entities.RestaurantOrgAssignment
+_type: Entity
+_name: RestaurantOrgAssignment
+label: Organization assignment
+pluralLabel: Organization assignments
+entityType: BASIC
+physicalTableName: REST_ORG_ASSIGNMENT
+iconUrl: images://mdi/file-tree-outline.svg
+description: Places a restaurant in the Finance, Operations or Marketing hierarchy at a unit, from a start date.
+documentation: Places a restaurant in the Finance, Operations or Marketing hierarchy at a unit, from a start date.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: RestaurantOrgAssignmentID
+  label: Key
+  physicalName: REST_ORG_ASSIGNMENT_ID
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  documentation: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  length: 100
+- _type: EntityAttribute
+  _name: HierarchyType
+  label: Hierarchy
+  physicalName: HIERARCHYTYPE
+  dataType: RestaurantMaster.list_of_values.OrganizationHierarchy
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Hierarchy the assignment belongs to.
+  documentation: Hierarchy the assignment belongs to.
+- _type: EntityAttribute
+  _name: EffectiveFrom
+  label: Effective from
+  physicalName: EFFECTIVEFROM
+  dataType: Date
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Day the assignment starts; it ends when the next assignment in the same hierarchy starts.
+  documentation: Day the assignment starts; it ends when the next assignment in the same hierarchy starts.
+- _type: EntityAttribute
+  _name: NaturalKey
+  label: Natural key
+  physicalName: NATURALKEY
+  dataType: String
+  length: 300
+  mandatory: false
+  searchable: false
+  description: Business key of the row, built from its restaurant and its distinguishing fields; enforces uniqueness.
+  documentation: Business key of the row, built from its restaurant and its distinguishing fields; enforces uniqueness.
+primaryKey: RestaurantMaster.entities.RestaurantOrgAssignment.RestaurantOrgAssignment.RestaurantOrgAssignmentID
+sourceIdGeneration:
+  mode: MANUAL

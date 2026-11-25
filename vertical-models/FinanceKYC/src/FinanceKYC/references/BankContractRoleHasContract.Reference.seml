@@ -1,0 +1,30 @@
+﻿_package: FinanceKYC.references
+_name: BankContractRoleHasContract
+_type: Reference
+label: Banking Contract Role Has Contract
+description: 'Defines the reference from Banking Contract Role records to Contract records, enforcing the relationship between B an ki ng Co nt ra ct Ro le and B an ki ng Co nt ra ct data.'
+documentation: 'Defines the reference from Banking Contract Role records to Contract records, enforcing the relationship between B an ki ng Co nt ra ct Ro le and B an ki ng Co nt ra ct data.'
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.BankingContractRole.BankingContractRole
+fromRoleLabel: Banking Contract Role
+fromRoleName: bankingContractRole
+fromRolePluralLabel: Banking Contract Roles
+physicalName: BNK_CON_ROL_HAS_CON
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.BankingContract.BankingContract
+toRoleLabel: Contract
+toRoleName: Contract
+toRolePhysicalName: CON_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Contract
+  label: Contract
+  physicalName: CONTRACT
+  searchable: true
+  entity: FinanceKYC.entities.BankingContractRole.BankingContractRole

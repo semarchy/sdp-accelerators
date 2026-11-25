@@ -1,0 +1,119 @@
+_package: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment
+_type: Entity
+_name: ClaimBenefitPayment
+label: "Claim Benefit Payment"
+pluralLabel: "Claim Benefit Payments"
+physicalTableName: CLM_BENEFIT_PAY
+iconUrl: images://mdi/cash-check.svg
+description: "Represents payments made for Life & Annuity claims and benefit disbursements."
+documentation: "Represents payments made for Life & Annuity claims and benefit disbursements."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: ClaimBenefitPaymentID
+    label: "Claim Benefit Payment ID"
+    physicalName: CLM_BENEFIT_PAY_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the claim benefit payment."
+    documentation: "Unique identifier for the claim benefit payment."
+  - _type: EntityAttribute
+    _name: PaymentNumber
+    label: "Payment Number"
+    physicalName: PAY_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Payment number assigned by claims or disbursement processing."
+    documentation: "Payment number assigned by claims or disbursement processing."
+  - _type: EntityAttribute
+    _name: PaymentDate
+    label: "Payment Date"
+    physicalName: PAY_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the benefit payment was issued."
+    documentation: "Date the benefit payment was issued."
+  - _type: EntityAttribute
+    _name: PaymentAmount
+    label: "Payment Amount"
+    physicalName: PAY_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Total payment amount."
+    documentation: "Total payment amount."
+  - _type: EntityAttribute
+    _name: TaxableAmount
+    label: "Taxable Amount"
+    physicalName: TAXABLE_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Taxable portion of the payment."
+    documentation: "Taxable portion of the payment."
+  - _type: EntityAttribute
+    _name: WithholdingAmount
+    label: "Withholding Amount"
+    physicalName: WITHHOLDING_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Tax withholding amount."
+    documentation: "Tax withholding amount."
+  - _type: EntityAttribute
+    _name: PaymentMethod
+    label: "Payment Method"
+    physicalName: PAY_METHOD
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Payment method such as check, EFT, wire, or annuity income."
+    documentation: "Payment method such as check, EFT, wire, or annuity income."
+  - _type: EntityAttribute
+    _name: CheckNumber
+    label: "Check Number"
+    physicalName: CHECK_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Check number when payment is issued by check."
+    documentation: "Check number when payment is issued by check."
+  - _type: EntityAttribute
+    _name: EFTTraceNumber
+    label: "EFTTrace Number"
+    physicalName: EFT_TRACE_NUM
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "EFT trace number when payment is electronic."
+    documentation: "EFT trace number when payment is electronic."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional benefit payment notes."
+    documentation: "Additional benefit payment notes."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment.ClaimBenefitPaymentID
+entityType: ID_MATCHED

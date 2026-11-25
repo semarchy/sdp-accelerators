@@ -1,0 +1,36 @@
+_package: CTMDM.entities.Vendor.steppers
+_type: Stepper
+_name: AuthorCROsVendors
+
+entity: CTMDM.entities.Vendor.Vendor
+label: CROs / Vendors
+
+rootStep:
+  _type: CollectionStep
+  _name: CROsVendors
+  label: CROs / Vendors
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: CTMDM.entities.Vendor.collection_views.VendorImportMasterCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  
+  childSteps:
+    - _type: FormStep
+      _name: Vendor
+      label: CRO / Vendor
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CTMDM.entities.Vendor.forms.VendorForm.General

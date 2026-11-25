@@ -1,0 +1,82 @@
+_package: RestaurantMaster.entities.Restaurant.action_sets
+_type: ActionSet
+_name: RestaurantActionSet
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Restaurant actions
+defaultActionSet: true
+actions:
+- _type: CreateAction
+  _name: Create
+  label: Create
+  useCustomLabel: true
+  stepper: RestaurantMaster.entities.Restaurant.steppers.AuthorRestaurant
+  createMultiple: false
+  createdRecordType: GOLDEN
+  waitDialogEnabled: false
+  allowOtherPublishers: true
+- _type: EditAction
+  _name: Edit
+  label: Edit
+  useCustomLabel: true
+  stepper: RestaurantMaster.entities.Restaurant.steppers.AuthorRestaurant
+  multipleSelectionAllowed: true
+  availableForGoldenData: true
+  availableForMasterData: false
+  availableForErrorData: false
+  waitDialogEnabled: false
+- _type: MassUpdateAction
+  _name: MassUpdate
+  label: Mass update
+  useCustomLabel: true
+  stepper: RestaurantMaster.entities.Restaurant.steppers.AuthorRestaurant
+  availableForGoldenData: true
+  availableForErrorData: false
+  availableForMasterData: false
+  waitDialogEnabled: false
+- _type: DeleteAction
+  _name: Delete
+  label: Delete
+  useCustomLabel: true
+  multipleSelectionAllowed: true
+  deleteType: HARD_DELETE
+  waitDialogEnabled: false
+  availableForGoldenData: true
+  availableForMasterData: false
+- _type: ExportAction
+  _name: Export
+  label: Export
+  useCustomLabel: true
+  waitDialogEnabled: false
+- _type: ImportAction
+  _name: Import
+  label: Import
+  useCustomLabel: true
+  importMode: CREATE_AND_UPDATE
+  stepper: RestaurantMaster.entities.Restaurant.steppers.AuthorRestaurant
+  importedRecordType: GOLDEN
+  waitDialogEnabled: false
+  allowOtherPublishers: true
+- _type: StartWorkflowEntityAction
+  _name: StartOnboarding
+  label: Onboard restaurant
+  useCustomLabel: true
+  startEvent: RestaurantMaster.workflows.OnboardRestaurant.Start
+  waitDialogEnabled: false
+- _type: StartWorkflowEntityAction
+  _name: StartChange
+  label: Change restaurant data
+  useCustomLabel: true
+  startEvent: RestaurantMaster.workflows.ChangeRestaurantData.Start
+  waitDialogEnabled: false
+- _type: StartWorkflowEntityAction
+  _name: StartStatusChange
+  label: Change lifecycle status
+  useCustomLabel: true
+  startEvent: RestaurantMaster.workflows.ChangeLifecycleStatus.Start
+  waitDialogEnabled: false
+- _type: StartWorkflowEntityAction
+  _name: StartOperatorTransfer
+  label: Transfer operator
+  useCustomLabel: true
+  startEvent: RestaurantMaster.workflows.TransferOperator.Start
+  waitDialogEnabled: false

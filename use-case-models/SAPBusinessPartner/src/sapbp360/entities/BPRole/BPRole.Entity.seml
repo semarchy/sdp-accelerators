@@ -1,0 +1,53 @@
+# BP Role entity for the SAP Business Partner 360 accelerator.
+_name: BPRole
+_package: sapbp360.entities.BPRole
+_type: Entity
+primaryKey: sapbp360.entities.BPRole.BPRole.RoleID
+sourceIdGeneration:
+  mode: MANUAL
+label: BP Role
+documentation: Roles assigned to a business partner such as customer, vendor, or contact person.
+description: Roles assigned to a business partner such as customer, vendor, or contact person.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/BPRole.svg
+pluralLabel: BP Roles
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BP_ROLE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: RoleID
+    physicalName: ROLE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Role ID
+    documentation: Unique identifier for the business partner role assignment.
+    description: Unique identifier for the business partner role assignment.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Role ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: ValidFrom
+    physicalName: VALID_FROM
+    dataType: Date
+    goldenAttribute: true
+    label: Valid From
+    documentation: Date from which the role is valid.
+    description: Date from which the role is valid.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: ValidTo
+    physicalName: VALID_TO
+    dataType: Date
+    goldenAttribute: true
+    label: Valid To
+    documentation: Date through which the role is valid.
+    description: Date through which the role is valid.
+    mandatory: false
+    searchable: true

@@ -1,0 +1,81 @@
+# BP Identification entity for the SAP Business Partner 360 accelerator.
+_name: BPIdentification
+_package: sapbp360.entities.BPIdentification
+_type: Entity
+primaryKey: sapbp360.entities.BPIdentification.BPIdentification.IdentificationID
+sourceIdGeneration:
+  mode: MANUAL
+label: BP Identification
+documentation: External identification numbers such as passports, national IDs, and D-U-N-S numbers.
+description: External identification numbers such as passports, national IDs, and D-U-N-S numbers.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/BPIdentification.svg
+pluralLabel: BP Identifications
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BP_IDENT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: IdentificationID
+    physicalName: IDENT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Identification ID
+    documentation: Unique identifier for the identification record.
+    description: Unique identifier for the identification record.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Identification ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: BpIdentificationNumber
+    physicalName: BP_IDENT_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: BP Identification Number
+    documentation: External identification number value.
+    description: External identification number value.
+    mandatory: true
+    length: 60
+    mandatoryValidationLabel: BP Identification Number is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: IdentificationEntryDate
+    physicalName: IDENT_ENTRY_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: Identification Entry Date
+    documentation: Date the identification was recorded.
+    description: Date the identification was recorded.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: InstitutionName
+    physicalName: INST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Institution Name
+    documentation: Issuing authority for the identification.
+    description: Issuing authority for the identification.
+    mandatory: false
+    length: 60
+    searchable: true
+  - _type: EntityAttribute
+    _name: NormalizedIdNumber
+    physicalName: NORM_ID_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Identification Number
+    documentation: Identification number in upper case with spaces removed used for search and comparison.
+    description: Identification number in upper case with spaces removed used for search and comparison.
+    mandatory: false
+    length: 60
+    searchable: true

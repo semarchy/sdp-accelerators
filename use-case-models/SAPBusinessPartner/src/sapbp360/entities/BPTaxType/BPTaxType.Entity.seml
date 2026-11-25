@@ -1,0 +1,85 @@
+# BP Tax Type entity for the SAP Business Partner 360 accelerator.
+_name: BPTaxType
+_package: sapbp360.entities.BPTaxType
+_type: Entity
+primaryKey: sapbp360.entities.BPTaxType.BPTaxType.BPTaxTypeID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: BPTaxTypeCode
+label: BP Tax Type
+documentation: BP Tax Type reference data used by the SAP Business Partner 360 model.
+description: BP Tax Type reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/BPTaxType.svg
+pluralLabel: BP Tax Types
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BP_TAX_TYPE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: BPTaxTypeID
+    physicalName: BP_TAX_TYPE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: BP Tax Type ID
+    documentation: Unique identifier for the bp tax type.
+    description: Unique identifier for the bp tax type.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: BP Tax Type ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: BPTaxTypeCode
+    physicalName: BP_TAX_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: BP Tax Type Code
+    documentation: Code for the bp tax type.
+    description: Code for the bp tax type.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: BP Tax Type Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: BPTaxTypeName
+    physicalName: BP_TAX_TYPE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: BP Tax Type Name
+    documentation: Name of the bp tax type.
+    description: Name of the bp tax type.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: BP Tax Type Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the bp tax type.
+    description: Description for the bp tax type.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the bp tax type is active.
+    description: Indicates whether the bp tax type is active.
+    mandatory: false
+    length: 1
+    searchable: true

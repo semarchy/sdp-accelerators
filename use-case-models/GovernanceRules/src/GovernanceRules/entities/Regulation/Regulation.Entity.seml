@@ -1,0 +1,74 @@
+# Regulation: entity of the GovernanceRules accelerator. A regulation, standard or framework that rules cite (for example GDPR, ISO 3166-1, DAMA-DMBOK).
+_package: GovernanceRules.entities.Regulation
+_type: Entity
+_name: Regulation
+label: Regulation or standard
+pluralLabel: Regulations and standards
+physicalTableName: GOV_REGULATION
+entityType: BASIC
+description: A regulation, standard or framework that rules cite (for example GDPR, ISO 3166-1, DAMA-DMBOK).
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+primaryKey: GovernanceRules.entities.Regulation.Regulation.Code
+sourceIdGeneration:
+  mode: MANUAL
+attributes:
+- _type: EntityAttribute
+  _name: Code
+  label: Code
+  physicalName: RG_CODE
+  dataType: String
+  length: 40
+  mandatory: true
+  description: Natural key of the regulation or standard, entered by the author and never changed (for example GDPR or ISO-3166-1).
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Name
+  label: Name
+  physicalName: RG_NAME
+  dataType: String
+  length: 200
+  mandatory: true
+  description: Official name.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Type
+  label: Type
+  physicalName: RG_TYPE
+  dataType: GovernanceRules.list_of_values.RegulationType
+  lovValidationScope: PRE_CONSO
+  mandatory: false
+  description: Kind, code REGULATION, STANDARD, FRAMEWORK or INTERNAL.
+- _type: EntityAttribute
+  _name: Issuer
+  label: Issuer
+  physicalName: RG_ISSUER
+  dataType: String
+  length: 200
+  mandatory: false
+  description: Body that issues the regulation or standard (for example European Union, ISO).
+- _type: EntityAttribute
+  _name: Jurisdiction
+  label: Jurisdiction
+  physicalName: RG_JURISDICTION
+  dataType: String
+  length: 100
+  mandatory: false
+  description: Where it applies (for example EU, US, Canada, Global).
+- _type: EntityAttribute
+  _name: URL
+  label: URL
+  physicalName: RG_URL
+  dataType: String
+  length: 500
+  mandatory: false
+  description: Link to the official text.
+- _type: EntityAttribute
+  _name: Description
+  label: Description
+  physicalName: RG_DESCRIPTION
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: What the regulation or standard covers.

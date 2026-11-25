@@ -1,0 +1,42 @@
+# This file defines the Study entity in the Organization module.
+# It specifies the entity attributes, source ID generation, and primary key.
+# Study entities represent research or academic studies level that Employee has.
+_package: Organization.entities.Study
+_type: Entity
+_name: Study
+label: Study
+pluralLabel: Study
+entityType: BASIC
+physicalTableName: STUDY
+iconUrl: images://hr-img-lib/school.svg
+description: This entity represents studies within the organization, which can be used for categorization and filtering of employees.
+documentation: This entity is used to define various studies, which can be referenced in other entities.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: StudyID
+    label: Study ID
+    description: Unique identifier for the study.
+    documentation: This attribute is the primary key for the Study entity and is used to uniquely identify each record.
+    physicalName: STUDY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    description: Name of the study.
+    documentation: This attribute holds the name of the study, which is used for display purposes.
+    physicalName: NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 11
+primaryKey: Organization.entities.Study.Study.StudyID

@@ -1,0 +1,149 @@
+_package: RetailCustomer360.entities.CommunicationSubscription
+_type: Entity
+_name: CommunicationSubscription
+label: Communication Subscription
+pluralLabel: Communication Subscriptions
+entityType: BASIC
+physicalTableName: COMM_SUBSCRIPTION
+iconUrl: https://api.iconify.design/mdi/email-newsletter.svg?color=%230D1B2A&width=64
+
+description: "Named communication stream a customer has subscribed to or unsubscribed from."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SubscriptionId
+    label: Subscription Id
+    physicalName: SUBSCRIPTION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the subscription."
+
+  - _type: EntityAttribute
+    _name: SubscriptionName
+    label: Subscription Name
+    physicalName: SUBSCRIPTION_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the communication stream."
+
+  - _type: EntityAttribute
+    _name: SubscriptionStatus
+    label: Subscription Status
+    physicalName: SUBSCRIPTION_STATUS
+    dataType: RetailCustomer360.list_of_values.SubscriptionStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Current state of the subscription."
+
+  - _type: EntityAttribute
+    _name: EngagementChannelType
+    label: Engagement Channel
+    physicalName: ENGAGEMENT_CHANNEL
+    dataType: RetailCustomer360.list_of_values.EngagementChannelType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Channel the subscription is delivered on."
+
+  - _type: EntityAttribute
+    _name: Frequency
+    label: Frequency
+    physicalName: FREQUENCY
+    dataType: String
+    length: 50
+    searchable: true
+    description: "How often the customer chose to receive the communication."
+
+  - _type: EntityAttribute
+    _name: SubscribedDate
+    label: Subscribed Date
+    physicalName: SUBSCRIBED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the customer subscribed."
+
+  - _type: EntityAttribute
+    _name: UnsubscribedDate
+    label: Unsubscribed Date
+    physicalName: UNSUBSCRIBED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the customer unsubscribed."
+
+  - _type: EntityAttribute
+    _name: UnsubscribeReason
+    label: Unsubscribe Reason
+    physicalName: UNSUBSCRIBE_REASON
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Reason captured when the customer unsubscribed."
+
+  - _type: EntityAttribute
+    _name: PreferredSendTime
+    label: Preferred Send Time
+    physicalName: PREFERRED_SEND_TIME
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Time of day the customer prefers to receive the communication."
+
+  - _type: EntityAttribute
+    _name: IsTransactional
+    label: Is Transactional
+    physicalName: IS_TRANSACTIONAL
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the stream is transactional and therefore exempt from marketing opt-out."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the subscription originates from."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)."
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated."
+
+primaryKey: RetailCustomer360.entities.CommunicationSubscription.CommunicationSubscription.SubscriptionId
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1

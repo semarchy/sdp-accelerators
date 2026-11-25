@@ -1,0 +1,85 @@
+# Shipping Condition entity for the SAP Business Partner 360 accelerator.
+_name: ShippingCondition
+_package: sapbp360.entities.ShippingCondition
+_type: Entity
+primaryKey: sapbp360.entities.ShippingCondition.ShippingCondition.ShippingConditionID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ShippingConditionCode
+label: Shipping Condition
+documentation: Shipping Condition reference data used by the SAP Business Partner 360 model.
+description: Shipping Condition reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/ShippingCondition.svg
+pluralLabel: Shipping Conditions
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SHIP_COND
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ShippingConditionID
+    physicalName: SHIP_COND_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Shipping Condition ID
+    documentation: Unique identifier for the shipping condition.
+    description: Unique identifier for the shipping condition.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Shipping Condition ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: ShippingConditionCode
+    physicalName: SHIP_COND_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Shipping Condition Code
+    documentation: Code for the shipping condition.
+    description: Code for the shipping condition.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Shipping Condition Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: ShippingConditionName
+    physicalName: SHIP_COND_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Shipping Condition Name
+    documentation: Name of the shipping condition.
+    description: Name of the shipping condition.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Shipping Condition Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the shipping condition.
+    description: Description for the shipping condition.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the shipping condition is active.
+    description: Indicates whether the shipping condition is active.
+    mandatory: false
+    length: 1
+    searchable: true

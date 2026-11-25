@@ -1,0 +1,140 @@
+_package: RetailCustomer360.entities.SMSEngagement
+_type: Entity
+_name: SMSEngagement
+label: SMS Engagement
+pluralLabel: SMS Engagements
+entityType: BASIC
+physicalTableName: SMS_ENGAGEMENT
+iconUrl: https://api.iconify.design/mdi/message-text.svg?color=%230D1B2A&width=64
+
+description: "Interaction between a customer and an SMS message sent by the brand."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SmsEngagementId
+    label: Sms Engagement Id
+    physicalName: SMS_ENGAGEMENT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the SMS engagement."
+
+  - _type: EntityAttribute
+    _name: MessageId
+    label: Message Id
+    physicalName: MESSAGE_ID
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Identifier of the SMS message in the sending platform."
+
+  - _type: EntityAttribute
+    _name: PhoneNumber
+    label: Phone Number
+    physicalName: PHONE_NUMBER
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Number the message was sent to."
+
+  - _type: EntityAttribute
+    _name: EventType
+    label: Event Type
+    physicalName: SMS_EVENT_TYPE
+    dataType: RetailCustomer360.list_of_values.SMSEventType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Event recorded against the message."
+
+  - _type: EntityAttribute
+    _name: EventTimestamp
+    label: Event Timestamp
+    physicalName: EVENT_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the event occurred."
+
+  - _type: EntityAttribute
+    _name: MessageBody
+    label: Message Body
+    physicalName: MESSAGE_BODY
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "Text content of the message."
+
+  - _type: EntityAttribute
+    _name: ShortCode
+    label: Short Code
+    physicalName: SHORT_CODE
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Short code or sender id the message was sent from."
+
+  - _type: EntityAttribute
+    _name: SegmentCount
+    label: Segment Count
+    physicalName: SEGMENT_COUNT
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of SMS segments the message consumed."
+
+  - _type: EntityAttribute
+    _name: DeliveryStatus
+    label: Delivery Status
+    physicalName: DELIVERY_STATUS
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Carrier delivery status reported for the message."
+
+  - _type: EntityAttribute
+    _name: FailureReason
+    label: Failure Reason
+    physicalName: FAILURE_REASON
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Reason the message failed to deliver."
+
+  - _type: EntityAttribute
+    _name: LinkUrl
+    label: Link Url
+    physicalName: LINK_URL
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Tracked link included in the message."
+
+  - _type: EntityAttribute
+    _name: Locale
+    label: Locale
+    physicalName: LOCALE
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Locale the message was composed in."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the SMS engagement originates from."
+
+primaryKey: RetailCustomer360.entities.SMSEngagement.SMSEngagement.SmsEngagementId
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1

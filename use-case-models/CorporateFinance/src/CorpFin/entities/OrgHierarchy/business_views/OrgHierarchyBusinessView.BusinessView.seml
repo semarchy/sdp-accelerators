@@ -1,0 +1,105 @@
+_package: CorpFin.entities.OrgHierarchy.business_views
+_type: BusinessView
+_name: OrgHierarchyBusinessView
+entity: CorpFin.entities.OrgHierarchy.OrgHierarchy
+rootLabel: Org Hierarchies
+label: Org Hierarchies
+rootPluralLabel: Org Hierarchies
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: OrgHierarchy
+  entity: CorpFin.entities.OrgHierarchy.OrgHierarchy
+  displayCard: CorpFin.entities.OrgHierarchy.display_cards.OrgHierarchyDisplayCard
+  actionSet: CorpFin.entities.OrgHierarchy.action_sets.OrgHierarchyActionSet
+  collection: CorpFin.entities.OrgHierarchy.collection_views.OrgHierarchyCollectionView
+  form: CorpFin.entities.OrgHierarchy.forms.OrgHierarchyForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _type: BusinessViewTransition
+      _name: TopLevelNodes
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: Org Unit
+      pluralLabel: Org Units
+      visibleInFormTabCondition: any OrgHierarchyNodeToHier has (1 = 1)
+
+      enableHierarchy: any OrgHierarchyNodeToHier has (1=1)    
+      enableHierarchyInterpreter: SEMQL
+      filter: FID_parentNode IS NULL
+
+      expandHierarchyByDefault: true
+      transitionPath: OrgHierarchyNodeToHier
+      transitionType: FULLY_QUALIFIED
+      transitionVisible: '0'
+      useCustomLabel: true
+
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: TopLevelNode
+        entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+        actionSet: CorpFin.entities.OrgHierarchyNode.action_sets.OrgHierarchyNodeActionSet
+        collection: CorpFin.entities.OrgHierarchyNode.collection_views.OrgHierarchyNodeCollectionView 
+        form: CorpFin.entities.OrgHierarchyNode.forms.OrgHierarchyNodeForm
+        displayCard: CorpFin.entities.OrgHierarchyNode.display_cards.OrgHierarchyNodeDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+
+        referenceAttributeNavigationConfigs:
+          - formField: CorpFin.entities.OrgHierarchyNode.forms.OrgHierarchyNodeForm.OrgHierarchyNode.Container1.Container2.OrgUnitInformation.FDN_orgUnit
+            businessView: CorpFin.entities.OrgUnit.business_views.OrgUnitBusinessView
+            form: CorpFin.entities.OrgUnit.forms.OrgUnitForm
+            navigationMode: BUSINESS_OBJECT_VIEW
+
+        transitions:
+          - _type: BusinessViewTransition   
+            _name: NextLevelNodes
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            label: Sub-Unit
+            pluralLabel: Sub-Units
+            visibleInFormTabCondition: any OrgHierarchyNodeToParent has (1 = 1)
+
+            enableHierarchy: any OrgHierarchyNodeToParent has (1=1)            
+            enableHierarchyInterpreter: SEMQL
+
+            expandHierarchyByDefault: true
+            transitionPath: OrgHierarchyNodeToParent
+            transitionType: FULLY_QUALIFIED
+            transitionVisible: '0'
+            useCustomLabel: true            
+
+            businessViewEntity: 
+              _type: BusinessViewEntityReference
+              ref: CorpFin.entities.OrgHierarchy.business_views.OrgHierarchyBusinessView.OrgHierarchy.TopLevelNodes.TopLevelNode
+
+enableHierarchyView: true
+useHierarchyOnOpen: true

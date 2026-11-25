@@ -1,0 +1,145 @@
+_package: LifeAndAnnuityInsurance.entities.Party
+_type: Entity
+_name: Party
+label: "Party"
+pluralLabel: "Parties"
+physicalTableName: PARTY
+iconUrl: images://mdi/account-multiple-outline.svg
+description: "Represents an umbrella party wrapper that can point to an individual, group, or organization and participate in policy, claim, and annuity relationships."
+documentation: "Represents an umbrella party wrapper that can point to an individual, group, or organization and participate in policy, claim, and annuity relationships."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PartyID
+    label: "Party ID"
+    physicalName: PARTY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "System-generated golden identifier for the mastered party wrapper."
+    documentation: "System-generated golden identifier for the mastered party wrapper."
+  - _type: EntityAttribute
+    _name: PartyNumber
+    label: "Party Number"
+    physicalName: PARTY_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Enterprise party number."
+    documentation: "Enterprise party number."
+  - _type: EntityAttribute
+    _name: PartyType
+    label: "Party Type"
+    physicalName: PARTY_TYPE
+    dataType: LifeAndAnnuityInsurance.list_of_values.PartyType
+    mandatory: false
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Classifies the party as individual, group, or organization."
+    documentation: "Classifies the party as individual, group, or organization."
+  - _type: EntityAttribute
+    _name: PartyStartDate
+    label: "Party Start Date"
+    physicalName: PARTY_START_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which the party wrapper is active for relationship management."
+    documentation: "Date from which the party wrapper is active for relationship management."
+  - _type: EntityAttribute
+    _name: PartyEndDate
+    label: "Party End Date"
+    physicalName: PARTY_END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which the party wrapper ends or becomes inactive."
+    documentation: "Date on which the party wrapper ends or becomes inactive."
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: "Source System"
+    physicalName: SOURCE_SYSTEM
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "System that originated or most recently asserted the party wrapper."
+    documentation: "System that originated or most recently asserted the party wrapper."
+  - _type: EntityAttribute
+    _name: SourceRecordID
+    label: "Source Record ID"
+    physicalName: SOURCE_RECORD_ID
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Source-system record identifier for traceability."
+    documentation: "Source-system record identifier for traceability."
+  - _type: EntityAttribute
+    _name: VerificationDate
+    label: "Verification Date"
+    physicalName: VERIFICATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which the party wrapper was verified."
+    documentation: "Date on which the party wrapper was verified."
+  - _type: EntityAttribute
+    _name: VerifiedIndicator
+    label: "Verified Indicator"
+    physicalName: VERIFIED_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the party wrapper has been verified."
+    documentation: "Indicates whether the party wrapper has been verified."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional party wrapper notes."
+    documentation: "Additional party wrapper notes."
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 130000
+sourceIdGeneration:
+  mode: UUID
+primaryKey: LifeAndAnnuityInsurance.entities.Party.Party.PartyID
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherParty
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 91
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 75
+  mergeThresholdMergingConfirmedWithUnconfirmed: 75
+  mergeThresholdMergingUnconfirmed: 75
+  mergeThresholdMergingUnconfirmedWithNewMasters: 75
+  mergeThresholdNewGroup: 75
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: "Party match rules using the linked individual profile."
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactIndividualReference
+      condition: >-
+        Record1.FID_Individual IS NOT NULL
+        and Record2.FID_Individual IS NOT NULL
+        and Record1.FID_Individual = Record2.FID_Individual
+      label: "Exact Individual Reference"
+      matchScore: 100
+      color: md:green 900
+      documentation: "Matches party wrappers that reference the same mastered individual."
+      description: "Matches party wrappers that reference the same mastered individual."
+      usingMatchOn: false

@@ -1,0 +1,55 @@
+_name: AuthorProductOptionOrFeatures
+_package: Manufacturing.entities.ProductOptionOrFeature.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductOptionOrFeature.ProductOptionOrFeature
+rootStep:
+  _name: ProductOptionOrFeatures
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductOptionOrFeature.collection_views.ProductOptionOrFeatureCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Option Or Features
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductOptionOrFeature.ProductOptionOrFeature.Name
+  stepTriggers: []
+  childSteps:
+    - _name: ProductOptionOrFeature
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Option Or Feature
+      formTab: Manufacturing.entities.ProductOptionOrFeature.forms.ProductOptionOrFeatureForm.ProductOptionOrFeature
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductOptionOrFeature.ProductOptionOrFeature.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductOptionOrFeature.ProductOptionOrFeature.Name
+      stepTriggers: []
+label: Author Option Or Features
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductOptionOrFeature.ProductOptionOrFeature.Name
+triggers: []

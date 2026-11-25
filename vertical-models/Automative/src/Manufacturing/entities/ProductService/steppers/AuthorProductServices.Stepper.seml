@@ -1,0 +1,55 @@
+_name: AuthorProductServices
+_package: Manufacturing.entities.ProductService.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductService.ProductService
+rootStep:
+  _name: ProductServices
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductService.collection_views.ProductServiceCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Services
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductService.ProductService.Name
+  stepTriggers: []
+  childSteps:
+    - _name: ProductService
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Service
+      formTab: Manufacturing.entities.ProductService.forms.ProductServiceForm.ProductService
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductService.ProductService.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductService.ProductService.Name
+      stepTriggers: []
+label: Author Services
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductService.ProductService.Name
+triggers: []

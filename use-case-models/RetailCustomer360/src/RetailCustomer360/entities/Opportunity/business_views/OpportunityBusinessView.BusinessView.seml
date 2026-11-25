@@ -1,0 +1,136 @@
+_package: RetailCustomer360.entities.Opportunity.business_views
+_type: BusinessView
+_name: OpportunityBusinessView
+label: Opportunities
+description: "Browse and steward Opportunities."
+entity: RetailCustomer360.entities.Opportunity.Opportunity
+rootLabel: Opportunities
+rootPluralLabel: Opportunities
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Opportunity
+  displayCard: RetailCustomer360.entities.Opportunity.display_cards.OpportunityDisplayCard
+  entity: RetailCustomer360.entities.Opportunity.Opportunity
+  actionSet: RetailCustomer360.entities.Opportunity.action_sets.OpportunityActionSet
+  collection: RetailCustomer360.entities.Opportunity.collection_views.OpportunityCollectionView
+  form: RetailCustomer360.entities.Opportunity.forms.OpportunityForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AssociatedOpportunityProduct
+      transitionPath: BelongsToOpportunityFromOpportunityProduct
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/package-variant-closed.svg?color=%230D1B2A&width=64
+      label: Opportunity Line
+      pluralLabel: Opportunity Lines
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToOpportunityFromOpportunityProduct has (1 = 1)
+      businessViewEntity:
+        _name: OpportunityProductRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.OpportunityProduct.collection_views.OpportunityProductCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.OpportunityProduct.OpportunityProduct
+        form: RetailCustomer360.entities.OpportunityProduct.forms.OpportunityProductForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.OpportunityProduct.action_sets.OpportunityProductActionSet
+        displayCard: RetailCustomer360.entities.OpportunityProduct.display_cards.OpportunityProductDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: MasterRecords
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/file-tree-outline.svg?color=%230D1B2A&width=64
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: OpportunityMaster
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Opportunity.collection_views.OpportunityCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Opportunity.Opportunity
+        form: RetailCustomer360.entities.Opportunity.forms.OpportunityForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayCard: RetailCustomer360.entities.Opportunity.display_cards.OpportunityDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+enableHierarchyView: false
+useHierarchyOnOpen: false

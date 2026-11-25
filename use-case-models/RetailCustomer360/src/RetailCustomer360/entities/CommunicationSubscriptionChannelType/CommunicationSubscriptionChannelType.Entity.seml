@@ -1,0 +1,103 @@
+_package: RetailCustomer360.entities.CommunicationSubscriptionChannelType
+_type: Entity
+_name: CommunicationSubscriptionChannelType
+label: Subscription Channel Type
+pluralLabel: Subscription Channel Types
+entityType: BASIC
+physicalTableName: COMM_SUB_CHANNEL
+iconUrl: https://api.iconify.design/mdi/swap-horizontal.svg?color=%230D1B2A&width=64
+
+description: "Reference list of channels on which communication subscriptions can be offered."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: ChannelTypeId
+    label: Channel Type Id
+    physicalName: CHANNEL_TYPE_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the channel type."
+
+  - _type: EntityAttribute
+    _name: ChannelCode
+    label: Channel Code
+    physicalName: CHANNEL_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the channel type."
+
+  - _type: EntityAttribute
+    _name: ChannelName
+    label: Channel Name
+    physicalName: CHANNEL_NAME
+    dataType: String
+    length: 120
+    searchable: true
+    description: "Business name of the channel type."
+
+  - _type: EntityAttribute
+    _name: EngagementChannelType
+    label: Engagement Channel
+    physicalName: ENGAGEMENT_CHANNEL
+    dataType: RetailCustomer360.list_of_values.EngagementChannelType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Underlying engagement channel this type maps to."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Explanation of what the channel type covers."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the channel type is currently offered."
+
+  - _type: EntityAttribute
+    _name: RequiresDoubleOptIn
+    label: Requires Double Opt In
+    physicalName: REQUIRES_DOUBLE_OPT_IN
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether subscriptions on this channel need confirmed opt-in."
+
+  - _type: EntityAttribute
+    _name: DefaultFrequency
+    label: Default Frequency
+    physicalName: DEFAULT_FREQUENCY
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Frequency applied when the customer expresses no preference."
+
+  - _type: EntityAttribute
+    _name: DisplayOrder
+    label: Display Order
+    physicalName: DISPLAY_ORDER
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Position of the channel type in preference centre listings."
+
+primaryKey: RetailCustomer360.entities.CommunicationSubscriptionChannelType.CommunicationSubscriptionChannelType.ChannelTypeId
+
+sourceIdGeneration:
+  mode: MANUAL

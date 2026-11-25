@@ -1,0 +1,15 @@
+﻿# Description: Name normalization enrichments for the Account entity.
+# Contains: SemQL expressions to compute AccountNameNormalized.
+# Role: Provides consistent account name representation for search and matching.
+_package: RetailCustomer360.entities.Account.enrichers
+_name: AccountNameEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Account.Account
+label: Account Name Enricher
+description: "Computes uppercase normalized account name for matching and search."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: AccountNameNormalized
+    expression: UPPER(REGEXP_REPLACE(BTRIM(AccountName), '\\s+', ' '))
+

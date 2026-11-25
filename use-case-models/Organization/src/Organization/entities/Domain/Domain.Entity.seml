@@ -1,0 +1,66 @@
+# This file defines the Domain entity in the Organization domain.
+# This entity can be used to manage various aspects of domains within the organization,
+# including attributes such as DomainID, Name, and FDN_Company.
+# It is designed to be used in conjunction with forms, collection views, and display cards
+# to provide a comprehensive management interface for domain entities.
+_package: Organization.entities.Domain
+_type: Entity
+_name: Domain
+label: Domain
+pluralLabel: Domain
+entityType: BASIC
+physicalTableName: DOMAIN_ENTITY
+iconUrl: images://hr-img-lib/network-pos.svg
+description: This entity represents the domains within the organization, which are used for organizational structure and management.
+documentation: This entity is used to define various domains, which can be referenced in other entities.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: DomainID
+    label: Domain ID
+    physicalName: DOMAIN_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+    description: Unique identifier for the domain.
+    documentation: This attribute is the primary key for the Domain entity and is used to uniquely identify
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    physicalName: NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    description: Name of the domain.
+    documentation: This attribute holds the name of the domain, which is used for display purposes.
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: Label
+    label: Label
+    physicalName: LABEL
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    description: Label of the domain.
+    documentation: This attribute holds the label of the domain, which is used for display purposes.
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 4000
+    mandatory: false
+    searchable: true
+    description: Description of the domain.
+    documentation: This attribute provides a detailed description of the domain.
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100
+primaryKey: Organization.entities.Domain.Domain.DomainID

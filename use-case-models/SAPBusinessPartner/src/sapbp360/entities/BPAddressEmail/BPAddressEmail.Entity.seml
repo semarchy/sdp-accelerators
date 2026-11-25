@@ -1,0 +1,70 @@
+# BP Address Email entity for the SAP Business Partner 360 accelerator.
+_name: BPAddressEmail
+_package: sapbp360.entities.BPAddressEmail
+_type: Entity
+primaryKey: sapbp360.entities.BPAddressEmail.BPAddressEmail.EmailID
+sourceIdGeneration:
+  mode: MANUAL
+label: BP Address Email
+documentation: Email address associated with a business partner address.
+description: Email address associated with a business partner address.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/BPAddressEmail.svg
+pluralLabel: BP Address Emails
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BP_ADDR_EMAIL
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: EmailID
+    physicalName: EMAIL_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Email ID
+    documentation: Unique identifier for the email record.
+    description: Unique identifier for the email record.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Email ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: EmailAddress
+    physicalName: EMAIL_ADDR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Email Address
+    documentation: Email address value.
+    description: Email address value.
+    mandatory: true
+    length: 241
+    mandatoryValidationLabel: Email Address is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: IsDefaultEmailAddress
+    physicalName: IS_DEF_EMAIL_ADDR
+    dataType: Boolean
+    goldenAttribute: true
+    label: Is Default Email Address
+    documentation: Indicates whether this is the default email address.
+    description: Indicates whether this is the default email address.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: SearchEmailAddress
+    physicalName: SEARCH_EMAIL_ADDR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Search Email Address
+    documentation: Normalized email address used for search.
+    description: Normalized email address used for search.
+    mandatory: false
+    length: 241
+    searchable: true

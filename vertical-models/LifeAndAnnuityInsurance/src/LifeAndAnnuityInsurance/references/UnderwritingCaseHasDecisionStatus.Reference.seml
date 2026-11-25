@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: UnderwritingCaseHasDecisionStatus
+description: "Indicates the Underwriting Decision Status associated with a Underwriting Case."
+_type: Reference
+label: "Underwriting Case Has Underwriting Decision Status"
+
+fromEntity: LifeAndAnnuityInsurance.entities.UnderwritingCase.UnderwritingCase
+fromRoleLabel: "Underwriting Case"
+fromRoleName: UnderwritingCase
+fromRolePluralLabel: "Underwriting Cases"
+physicalName: UW_CASE_HAS_DEC_STAT
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.UnderwritingDecisionStatus.UnderwritingDecisionStatus
+toRoleLabel: "Underwriting Decision Status"
+toRoleName: UnderwritingDecisionStatus
+toRolePhysicalName: UW_DEC_STAT
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: UnderwritingDecisionStatus
+  label: "Underwriting Decision Status ID"
+  description: "The identifier of the Underwriting Decision Status associated with the Underwriting Case."
+  physicalName: UW_DEC_STAT_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.UnderwritingDecisionStatus.UnderwritingDecisionStatus

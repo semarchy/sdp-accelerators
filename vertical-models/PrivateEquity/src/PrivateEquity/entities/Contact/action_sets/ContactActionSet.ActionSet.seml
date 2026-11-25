@@ -1,0 +1,63 @@
+_name: ContactActionSet
+_package: PrivateEquity.entities.Contact.action_sets
+_type: ActionSet
+entity: PrivateEquity.entities.Contact.Contact
+label: Contact Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorContacts
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: PrivateEquity.entities.Contact.steppers.AuthorContacts
+  - _name: EditAuthorContacts
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: PrivateEquity.entities.Contact.steppers.EditContacts
+  - _name: MassUpdateAuthorContacts
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: PrivateEquity.entities.Contact.steppers.AuthorContacts
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorContacts
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: PrivateEquity.entities.Contact.steppers.AuthorContacts
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

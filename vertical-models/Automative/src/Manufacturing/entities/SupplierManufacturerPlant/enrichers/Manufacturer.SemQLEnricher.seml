@@ -1,0 +1,16 @@
+_type: SemQLEnricher
+_package: Manufacturing.entities.SupplierManufacturerPlant.enrichers
+_name: Manufacturer
+entity: Manufacturing.entities.SupplierManufacturerPlant.SupplierManufacturerPlant
+label: Manufacturer
+description: "Derives the manufacturer on a supplier-manufacturer-plant relationship from the related manufacturing plant."
+enricherExecutionScope: PRE_CONSO
+condition: >-
+  FID_Manufacturer is null and FID_ManufacturingPlant is not null
+
+
+  /* If we have the MFG plant, Semarchy should automatically fill the
+  Manufacturer*/
+semQlEnricherExpressions:
+  - attributeName: FID_Manufacturer
+    expression: ManufacturingPlant.FID_Manufacturer

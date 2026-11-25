@@ -1,0 +1,22 @@
+_type: StandardSurvivorshipRule
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+_package: PrivateEquity.entities.LegalEntity.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Default Rule
+description: "Applies the default preferred-publisher survivorship strategy for legal entity attributes not handled by a specific rule."
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.Salesforce
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.Investran
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.EntityHub
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.GENEVA
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes: []

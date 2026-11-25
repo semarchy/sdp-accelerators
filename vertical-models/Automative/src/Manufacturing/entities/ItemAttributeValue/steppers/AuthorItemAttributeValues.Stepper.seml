@@ -1,0 +1,81 @@
+_name: AuthorItemAttributeValues
+_package: Manufacturing.entities.ItemAttributeValue.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue
+rootStep:
+  _name: ItemAttributeValues
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemAttributeValue.collection_views.ItemAttributeValueCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Attribute Values
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue.Value
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+  stepTriggers: []
+  childSteps:
+    - _name: ItemAttributeValue
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Attribute Value
+      formTab: Manufacturing.entities.ItemAttributeValue.forms.ItemAttributeValueForm.ItemAttributeValue
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue.Value
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue.Value
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+      stepTriggers: []
+label: Author Item Attribute Values
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.AttributeValuesBelongsToItemAttribute.ItemAttribute
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue.Value
+triggers: []

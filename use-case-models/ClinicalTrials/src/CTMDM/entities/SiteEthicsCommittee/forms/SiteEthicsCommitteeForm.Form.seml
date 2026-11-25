@@ -1,0 +1,162 @@
+_package: CTMDM.entities.SiteEthicsCommittee.forms
+_type: Form
+_name: SiteEthicsCommitteeForm
+description: "Defines the form used to view and maintain Site Ethics Committee records in Clinical Trial MDM workflows."
+documentation: "Defines the form used to view and maintain Site Ethics Committee records in Clinical Trial MDM workflows."
+
+entity: CTMDM.entities.SiteEthicsCommittee.SiteEthicsCommittee
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: General
+    label: Site Ethics Committee
+    documentation: This form provides a comprehensive view of Site Ethics Committee details, allowing users to browse and manage records effectively
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/clipboard-check-outline.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: IdField
+                    _name: SiteEthicsCommitteeID
+                    value: SiteEthicsCommitteeID
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: OversightType
+                    value: OversightType
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: ApprovalDate
+                    value: ApprovalDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: OperationalDetails
+                label: Operational Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: DateField
+                    _name: ExpirationDate
+                    value: ExpirationDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: OversightStatus
+                    value: OversightStatus
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container4
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: RelationshipDetails
+                label: Relationship Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_clinicalSite
+                    value: FDN_clinicalSite
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CTMDM.entities.ClinicalSite.ClinicalSite
+
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_ethicsCommittee
+                    value: FDN_ethicsCommittee
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption

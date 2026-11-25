@@ -1,0 +1,120 @@
+_package: RetailCustomer360.entities.SoftwareApplication
+_type: Entity
+_name: SoftwareApplication
+label: Software Application
+pluralLabel: Software Applications
+entityType: BASIC
+physicalTableName: SOFTWARE_APP
+iconUrl: https://api.iconify.design/mdi/application-cog.svg?color=%230D1B2A&width=64
+
+description: "Branded application through which customers engage, such as a mobile or web app."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: ApplicationId
+    label: Application Id
+    physicalName: APPLICATION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the application."
+
+  - _type: EntityAttribute
+    _name: ApplicationCode
+    label: Application Code
+    physicalName: APPLICATION_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the application."
+
+  - _type: EntityAttribute
+    _name: ApplicationName
+    label: Application Name
+    physicalName: APPLICATION_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the application."
+
+  - _type: EntityAttribute
+    _name: AppPlatform
+    label: App Platform
+    physicalName: APP_PLATFORM
+    dataType: RetailCustomer360.list_of_values.AppPlatform
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Platform the application is published on."
+
+  - _type: EntityAttribute
+    _name: AppVersion
+    label: App Version
+    physicalName: APP_VERSION
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Current released version of the application."
+
+  - _type: EntityAttribute
+    _name: BundleIdentifier
+    label: Bundle Identifier
+    physicalName: BUNDLE_IDENTIFIER
+    dataType: String
+    length: 200
+    searchable: true
+    description: "Store bundle or package identifier."
+
+  - _type: EntityAttribute
+    _name: ReleaseDate
+    label: Release Date
+    physicalName: RELEASE_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the current version was released."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the application is still supported."
+
+  - _type: EntityAttribute
+    _name: SupportUrl
+    label: Support Url
+    physicalName: SUPPORT_URL
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Link to customer support for the application."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Purpose of the application."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the application record originates from."
+
+primaryKey: RetailCustomer360.entities.SoftwareApplication.SoftwareApplication.ApplicationId
+
+sourceIdGeneration:
+  mode: MANUAL

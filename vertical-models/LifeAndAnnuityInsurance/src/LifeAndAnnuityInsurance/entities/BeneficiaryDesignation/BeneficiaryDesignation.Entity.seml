@@ -1,0 +1,128 @@
+_package: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation
+_type: Entity
+_name: BeneficiaryDesignation
+label: "Beneficiary Designation"
+pluralLabel: "Beneficiary Designations"
+physicalTableName: BEN_DESIG
+iconUrl: images://mdi/account-heart-outline.svg
+description: "Represents beneficiary designation details for a policy or annuity contract, including percentage share, class, and revocability."
+documentation: "Represents beneficiary designation details for a policy or annuity contract, including percentage share, class, and revocability."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: BeneficiaryDesignationID
+    label: "Beneficiary Designation ID"
+    physicalName: BEN_DESIG_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the beneficiary designation."
+    documentation: "Unique identifier for the beneficiary designation."
+  - _type: EntityAttribute
+    _name: DesignationDate
+    label: "Designation Date"
+    physicalName: DESIG_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the beneficiary designation was made."
+    documentation: "Date the beneficiary designation was made."
+  - _type: EntityAttribute
+    _name: DesignationType
+    label: "Designation Type"
+    physicalName: DESIG_TYPE
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Designation type such as primary, contingent, or tertiary."
+    documentation: "Designation type such as primary, contingent, or tertiary."
+  - _type: EntityAttribute
+    _name: BeneficiaryClass
+    label: "Beneficiary Class"
+    physicalName: BEN_CLASS
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Class or grouping of the beneficiary designation."
+    documentation: "Class or grouping of the beneficiary designation."
+  - _type: EntityAttribute
+    _name: PercentageShare
+    label: "Percentage Share"
+    physicalName: PCT_SHARE
+    dataType: Decimal
+    precision: 9
+    scale: 4
+    mandatory: false
+    searchable: true
+    description: "Percentage share assigned to the beneficiary."
+    documentation: "Percentage share assigned to the beneficiary."
+  - _type: EntityAttribute
+    _name: PerStirpesIndicator
+    label: "Per Stirpes Indicator"
+    physicalName: PER_STIRPES_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether per stirpes distribution applies."
+    documentation: "Indicates whether per stirpes distribution applies."
+  - _type: EntityAttribute
+    _name: RevocableIndicator
+    label: "Revocable Indicator"
+    physicalName: REVOCABLE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the designation is revocable."
+    documentation: "Indicates whether the designation is revocable."
+  - _type: EntityAttribute
+    _name: ContingencyLevel
+    label: "Contingency Level"
+    physicalName: CONTINGENCY_LEVEL
+    dataType: Decimal
+    precision: 9
+    scale: 0
+    mandatory: false
+    searchable: true
+    description: "Numeric contingency priority level."
+    documentation: "Numeric contingency priority level."
+  - _type: EntityAttribute
+    _name: TrustIndicator
+    label: "Trust Indicator"
+    physicalName: TRUST_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the beneficiary is a trust."
+    documentation: "Indicates whether the beneficiary is a trust."
+  - _type: EntityAttribute
+    _name: MinorIndicator
+    label: "Minor Indicator"
+    physicalName: MINOR_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the beneficiary is a minor."
+    documentation: "Indicates whether the beneficiary is a minor."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional beneficiary designation notes."
+    documentation: "Additional beneficiary designation notes."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.BeneficiaryDesignation.BeneficiaryDesignationID
+entityType: ID_MATCHED

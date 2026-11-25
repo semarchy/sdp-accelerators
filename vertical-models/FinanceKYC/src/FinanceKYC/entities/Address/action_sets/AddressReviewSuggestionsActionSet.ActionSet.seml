@@ -1,0 +1,26 @@
+_package: FinanceKYC.entities.Address.action_sets
+_type: ActionSet
+_name: AddressReviewSuggestionsActionSet
+
+entity: FinanceKYC.entities.Address.Address
+label: Address Review Suggestions Action Set
+defaultActionSet: false
+
+actions:
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnAddress
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.Address.dups_managers.ReviewSuggestionsOnAddress
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnAddress
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.Address.dups_managers.ReviewSuggestionsOnAddress
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false

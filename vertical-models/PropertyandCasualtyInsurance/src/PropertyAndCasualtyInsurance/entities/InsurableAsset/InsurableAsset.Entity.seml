@@ -1,0 +1,100 @@
+_package: PropertyAndCasualtyInsurance.entities.InsurableAsset
+_type: Entity
+_name: InsurableAsset
+label: "Insurable Asset"
+pluralLabel: "Insurable Assets"
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 120000
+entityType: FUZZY_MATCHED
+physicalTableName: INSURABLE_ASSET
+iconUrl: images://mdi/shield-home-outline.svg
+description: "Enterprise-level insured asset record linking policy exposure to vehicle, home, owner, and risk location context."
+documentation: "Enterprise-level insured asset record linking policy exposure to vehicle, home, owner, and risk location context."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: AssetId
+    label: "Asset ID"
+    physicalName: ASSET_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "System-generated unique identifier representing an insurable asset across the enterprise."
+    documentation: "System-generated unique identifier representing an insurable asset across the enterprise."
+  - _type: EntityAttribute
+    _name: AssetDescription
+    label: "Asset Description"
+    physicalName: ASSET_DESCRIPTION
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Human-readable description summarizing the insured asset."
+    documentation: "Human-readable description summarizing the insured asset."
+  - _type: EntityAttribute
+    _name: StartDate
+    label: "Start Date"
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the asset becomes eligible or scheduled for insurance coverage."
+    documentation: "Date the asset becomes eligible or scheduled for insurance coverage."
+  - _type: EntityAttribute
+    _name: EndDate
+    label: "End Date"
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the asset is removed from insurance coverage."
+    documentation: "Date the asset is removed from insurance coverage."
+sourceIdGeneration:
+  mode: UUID
+primaryKey: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset.AssetId
+matcher:
+  _name: SemQLMatcherInsurableAsset
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 91
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 75
+  mergeThresholdMergingConfirmedWithUnconfirmed: 75
+  mergeThresholdMergingUnconfirmed: 75
+  mergeThresholdMergingUnconfirmedWithNewMasters: 75
+  mergeThresholdNewGroup: 75
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Insurable Asset Match Rules
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: PolicyAndLinkedAsset
+      condition: >-
+        Record1.AssignedPolicy.PolicyID IS NOT NULL
+        and Record2.AssignedPolicy.PolicyID IS NOT NULL
+        and Record1.AssignedPolicy.PolicyID = Record2.AssignedPolicy.PolicyID
+        and (
+          (
+            Record1.VehicleAsset.VehicleAssetId IS NOT NULL
+            and Record2.VehicleAsset.VehicleAssetId IS NOT NULL
+            and Record1.VehicleAsset.VehicleAssetId = Record2.VehicleAsset.VehicleAssetId
+          )
+          or
+          (
+            Record1.HomeAsset.HomeAssetId IS NOT NULL
+            and Record2.HomeAsset.HomeAssetId IS NOT NULL
+            and Record1.HomeAsset.HomeAssetId = Record2.HomeAsset.HomeAssetId
+          )
+        )
+      label: Policy And Linked Asset
+      matchScore: 96
+      color: md:green 800
+      documentation: Matches insurable assets by assigned policy and either linked vehicle asset or linked home asset.
+      description: Matches insurable assets by assigned policy and either linked vehicle asset or linked home asset.
+      usingMatchOn: false

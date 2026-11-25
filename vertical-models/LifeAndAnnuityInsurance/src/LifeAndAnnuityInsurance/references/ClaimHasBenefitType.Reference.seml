@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: ClaimHasBenefitType
+description: "Indicates the Benefit Type associated with a Claim."
+_type: Reference
+label: "Claim Has Benefit Type"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Claim.Claim
+fromRoleLabel: "Claim"
+fromRoleName: Claim
+fromRolePluralLabel: "Claims"
+physicalName: CLM_HAS_BENEFIT_TYPE
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.BenefitType.BenefitType
+toRoleLabel: "Benefit Type"
+toRoleName: BenefitType
+toRolePhysicalName: BENEFIT_TYPE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: BenefitType
+  label: "Benefit Type ID"
+  description: "The identifier of the Benefit Type associated with the Claim."
+  physicalName: BENEFIT_TYPE_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.BenefitType.BenefitType

@@ -1,0 +1,113 @@
+# Supplier Company entity for the SAP Business Partner 360 accelerator.
+_name: SupplierCompany
+_package: sapbp360.entities.SupplierCompany
+_type: Entity
+primaryKey: sapbp360.entities.SupplierCompany.SupplierCompany.SupplierCompanyID
+sourceIdGeneration:
+  mode: MANUAL
+label: Supplier Company
+documentation: Company-code-level financial data for a supplier.
+description: Company-code-level financial data for a supplier.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/SupplierCompany.svg
+pluralLabel: Supplier Companies
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SUP_COMPANY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SupplierCompanyID
+    physicalName: SUP_COMPANY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Company ID
+    documentation: Unique identifier for the supplier company assignment.
+    description: Unique identifier for the supplier company assignment.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Supplier Company ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: SupplierAccountNote
+    physicalName: SUP_ACCT_NOTE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Account Note
+    documentation: Supplier account note.
+    description: Supplier account note.
+    mandatory: false
+    length: 30
+    searchable: true
+  - _type: EntityAttribute
+    _name: PaymentMethodsList
+    physicalName: PMT_METHODS_LIST
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Methods List
+    documentation: Allowed payment methods.
+    description: Allowed payment methods.
+    mandatory: false
+    length: 10
+    searchable: true
+  - _type: EntityAttribute
+    _name: PaymentIsBlockedForSupplier
+    physicalName: PMT_IS_BLOCKED_FOR_SUP
+    dataType: Boolean
+    goldenAttribute: true
+    label: Payment Is Blocked For Supplier
+    documentation: Company-code payment block flag.
+    description: Company-code payment block flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: CheckPaidDuringPaymentRun
+    physicalName: CHECK_PAID_DURING_PMT_RUN
+    dataType: Boolean
+    goldenAttribute: true
+    label: Check Paid During Payment Run
+    documentation: Check paid during payment run flag.
+    description: Check paid during payment run flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: PostingIsBlocked
+    physicalName: POSTING_IS_BLOCKED
+    dataType: Boolean
+    goldenAttribute: true
+    label: Posting Is Blocked
+    documentation: Posting block flag.
+    description: Posting block flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: DeletionIndicator
+    physicalName: DELETION_IND
+    dataType: Boolean
+    goldenAttribute: true
+    label: Deletion Indicator
+    documentation: Deletion indicator.
+    description: Deletion indicator.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: SupplierClerk
+    physicalName: SUP_CLERK
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Clerk
+    documentation: Supplier accounting clerk.
+    description: Supplier accounting clerk.
+    mandatory: false
+    length: 15
+    searchable: true

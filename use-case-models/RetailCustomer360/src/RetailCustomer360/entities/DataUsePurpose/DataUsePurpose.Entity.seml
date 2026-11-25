@@ -1,0 +1,103 @@
+_package: RetailCustomer360.entities.DataUsePurpose
+_type: Entity
+_name: DataUsePurpose
+label: Data Use Purpose
+pluralLabel: Data Use Purposes
+entityType: BASIC
+physicalTableName: DATA_USE_PURPOSE
+iconUrl: https://api.iconify.design/mdi/target-account.svg?color=%230D1B2A&width=64
+
+description: "Business purpose for which customer personal data may be processed."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: PurposeId
+    label: Purpose Id
+    physicalName: PURPOSE_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the data use purpose."
+
+  - _type: EntityAttribute
+    _name: PurposeCode
+    label: Purpose Code
+    physicalName: PURPOSE_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the purpose."
+
+  - _type: EntityAttribute
+    _name: PurposeName
+    label: Purpose Name
+    physicalName: PURPOSE_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the purpose."
+
+  - _type: EntityAttribute
+    _name: PurposeType
+    label: Purpose Type
+    physicalName: PURPOSE_TYPE
+    dataType: RetailCustomer360.list_of_values.DataUsePurposeType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Category the purpose belongs to."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Explanation of how data is used for this purpose."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the purpose is currently in use."
+
+  - _type: EntityAttribute
+    _name: RetentionMonths
+    label: Retention Months
+    physicalName: RETENTION_MONTHS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of months data may be retained for this purpose."
+
+  - _type: EntityAttribute
+    _name: RequiresExplicitConsent
+    label: Requires Explicit Consent
+    physicalName: REQ_EXPLICIT_CONSENT
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the purpose needs affirmative customer consent."
+
+  - _type: EntityAttribute
+    _name: DisplayOrder
+    label: Display Order
+    physicalName: DISPLAY_ORDER
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Position of the purpose in preference centre listings."
+
+primaryKey: RetailCustomer360.entities.DataUsePurpose.DataUsePurpose.PurposeId
+
+sourceIdGeneration:
+  mode: MANUAL

@@ -1,0 +1,12 @@
+_type: SemQLEnricher
+_package: Manufacturing.entities.ItemBillOfMaterial.enrichers
+_name: DefaultRelationshipType
+entity: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial
+label: Default Relationship Type
+description: "Defaults missing bill of material relationship types to AssemblyComponent for component relationships."
+enricherExecutionScope: PRE_CONSO
+condition: RelationshipType is NULL
+semQlEnricherExpressions:
+  - attributeName: RelationshipType
+    expression: "'AssemblyComponent'"
+afterEnrichers: Manufacturing.entities.ItemBillOfMaterial.enrichers.SetName

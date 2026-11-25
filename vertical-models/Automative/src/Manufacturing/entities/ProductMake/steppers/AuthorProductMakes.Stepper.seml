@@ -1,0 +1,55 @@
+_name: AuthorProductMakes
+_package: Manufacturing.entities.ProductMake.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductMake.ProductMake
+rootStep:
+  _name: ProductMakes
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductMake.collection_views.ProductMakeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Makes
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductMake.ProductMake.Name
+  stepTriggers: []
+  childSteps:
+    - _name: ProductMake
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Make
+      formTab: Manufacturing.entities.ProductMake.forms.ProductMakeForm.ProductMake
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductMake.ProductMake.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductMake.ProductMake.Name
+      stepTriggers: []
+label: Author Makes
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductMake.ProductMake.Name
+triggers: []

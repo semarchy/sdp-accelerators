@@ -1,0 +1,224 @@
+﻿_package: RetailCustomer360.entities.Product
+_type: Entity
+_name: Product
+label: Product
+pluralLabel: Products
+entityType: BASIC
+physicalTableName: PRODUCT
+iconUrl: https://api.iconify.design/mdi/tag.svg?color=%230D1B2A&width=64
+
+description: "Product master data with brand, category, and standard pricing."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: ProductId
+    label: Product Id
+    physicalName: PRODUCT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: ProductCode
+    label: Product Code
+    physicalName: PRODUCT_CODE
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Product business code"
+
+  - _type: EntityAttribute
+    _name: ProductName
+    label: Product Name
+    physicalName: PRODUCT_NAME
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Product name"
+
+  - _type: EntityAttribute
+    _name: ProductDescription
+    label: Product Description
+    physicalName: PRODUCT_DESCRIPTION
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "Product description"
+
+  - _type: EntityAttribute
+    _name: SKU
+    label: SKU
+    physicalName: SKU
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Stock keeping unit"
+
+  - _type: EntityAttribute
+    _name: Barcode
+    label: Barcode
+    physicalName: BARCODE
+    dataType: String
+    length: 100
+    searchable: true
+    description: "EAN/UPC/GTIN"
+
+  - _type: EntityAttribute
+    _name: ProductType
+    label: Product Type
+    physicalName: PRODUCT_TYPE
+    dataType: RetailCustomer360.list_of_values.ProductType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Physical, Digital, Service, Bundle"
+
+  - _type: EntityAttribute
+    _name: ProductStatus
+    label: Product Status
+    physicalName: PRODUCT_STATUS
+    dataType: RetailCustomer360.list_of_values.ProductStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Active, Inactive, Discontinued"
+
+  - _type: EntityAttribute
+    _name: Price
+    label: Price
+    physicalName: PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Current selling price"
+
+  - _type: EntityAttribute
+    _name: ListPrice
+    label: List Price
+    physicalName: LIST_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Standard list price"
+
+  - _type: EntityAttribute
+    _name: CostPrice
+    label: Cost Price
+    physicalName: COST_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Product cost, if maintained"
+
+  - _type: EntityAttribute
+    _name: LaunchDate
+    label: Launch Date
+    physicalName: LAUNCH_DATE
+    dataType: Date
+    searchable: true
+    description: "Product launch date"
+
+  - _type: EntityAttribute
+    _name: DiscontinueDate
+    label: Discontinue Date
+    physicalName: DISCONTINUE_DATE
+    dataType: Date
+    searchable: true
+    description: "Product discontinue date"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: SourceProductKey
+    label: Source Product Key
+    physicalName: SOURCE_PRODUCT_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source product identifier"
+
+  - _type: EntityAttribute
+    _name: MarginAmount
+    label: Margin Amount
+    physicalName: MARGIN_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Derived gross margin amount (Price - CostPrice)"
+
+  - _type: EntityAttribute
+    _name: MarginPercent
+    label: Margin Percent
+    physicalName: MARGIN_PERCENT
+    dataType: Decimal
+    precision: 7
+    scale: 2
+    searchable: true
+    description: "Derived gross margin percentage"
+
+  - _type: EntityAttribute
+    _name: ProductLifecycleStatus
+    label: Product Lifecycle Status
+    physicalName: PROD_LIFECYCLE_STATUS
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived lifecycle state from launch/discontinue dates and status"
+
+  - _type: EntityAttribute
+    _name: PricingHealthStatus
+    label: Pricing Health Status
+    physicalName: PRICING_HEALTH_STATUS
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived pricing quality status"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.Product.Product.ProductId

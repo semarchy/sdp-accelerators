@@ -1,0 +1,87 @@
+_package: LifeAndAnnuityInsurance.entities.PaymentPlan
+_type: Entity
+_name: PaymentPlan
+label: "Payment Plan"
+pluralLabel: "Payment Plans"
+physicalTableName: PAY_PLAN
+iconUrl: images://mdi/calendar-cash.svg
+description: "Defines billing modes and premium payment plans for policies and annuity contracts."
+documentation: "Defines billing modes and premium payment plans for policies and annuity contracts."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PaymentPlanID
+    label: "Payment Plan ID"
+    physicalName: PAY_PLAN_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the payment plan."
+    documentation: "Unique identifier for the payment plan."
+  - _type: EntityAttribute
+    _name: PlanCode
+    label: "Plan Code"
+    physicalName: PLAN_CODE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Payment plan code."
+    documentation: "Payment plan code."
+  - _type: EntityAttribute
+    _name: PlanName
+    label: "Plan Name"
+    physicalName: PLAN_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Business name of the payment plan."
+    documentation: "Business name of the payment plan."
+  - _type: EntityAttribute
+    _name: BillingFrequency
+    label: "Billing Frequency"
+    physicalName: BILLING_FREQUENCY
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Billing frequency such as monthly, quarterly, semiannual, or annual."
+    documentation: "Billing frequency such as monthly, quarterly, semiannual, or annual."
+  - _type: EntityAttribute
+    _name: PaymentMode
+    label: "Payment Mode"
+    physicalName: PAY_MODE
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Payment mode supported by the plan."
+    documentation: "Payment mode supported by the plan."
+  - _type: EntityAttribute
+    _name: Description
+    label: "Description"
+    physicalName: DESC_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Business description of the payment plan."
+    documentation: "Business description of the payment plan."
+  - _type: EntityAttribute
+    _name: ActiveIndicator
+    label: "Active Indicator"
+    physicalName: ACTIVE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the payment plan is active."
+    documentation: "Indicates whether the payment plan is active."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.PaymentPlan.PaymentPlan.PaymentPlanID
+entityType: BASIC

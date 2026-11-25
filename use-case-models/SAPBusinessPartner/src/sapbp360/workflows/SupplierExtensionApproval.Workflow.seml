@@ -1,0 +1,226 @@
+_package: sapbp360.workflows
+_type: Workflow
+_name: SupplierExtensionApproval
+label: Supplier Extension Approval
+workflowAdminRole: semarchyAdmin
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+  - entity: sapbp360.entities.Supplier.Supplier
+    _type: RootEntity
+    _name: Supplier
+    cardinality: SINGLE_RECORD
+    displayCard: sapbp360.entities.Supplier.display_cards.SupplierDisplayCard
+    childEntities:
+      - ref: sapbp360.references.SupplierCompany_Supplier
+      - ref: sapbp360.references.SupplierPurchasingOrg_Supplier
+      - ref: sapbp360.references.SupplierText_Supplier
+steps:
+  - _type: StartFromSelectionEvent
+    _name: StartFromSelection
+    position:
+      x: -520
+      y: -30
+    label: Start From Supplier
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: sapbp360.workflows.SupplierExtensionApproval.CaptureSupplier
+      bendPoints: []
+    authoredEntity: sapbp360.entities.Supplier.Supplier
+    selectionSourceType: GOLDEN_DATA
+  - _type: StartFromEmptySelectionEvent
+    _name: StartFromScratch
+    position:
+      x: -520
+      y: -100
+    label: Start From Scratch
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: sapbp360.workflows.SupplierExtensionApproval.CaptureSupplier
+      bendPoints: []
+  - _type: UserTask
+    _name: CaptureSupplier
+    label: Capture Supplier Request
+    icon: images://mdi/truck-plus.svg
+    position:
+      x: -320
+      y: -75
+    application: sapbp360.applications.BusinessPartner360Hub
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sapbp360.entities.Supplier.Supplier
+    stepper: sapbp360.entities.Supplier.steppers.AuthorSuppliers
+    myTasksConfiguration:
+      collection: sapbp360.entities.Supplier.collection_views.SupplierCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: CaptureSupplierNext
+        label: Proceed
+        toStep: sapbp360.workflows.SupplierExtensionApproval.ProcurementReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: ProcurementReview
+    label: Procurement Review
+    icon: images://mdi/cart-check.svg
+    position:
+      x: -80
+      y: -75
+    application: sapbp360.applications.BusinessPartner360Hub
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sapbp360.entities.Supplier.Supplier
+    stepper: sapbp360.entities.Supplier.steppers.AuthorSuppliers
+    myTasksConfiguration:
+      collection: sapbp360.entities.Supplier.collection_views.SupplierCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: ProcurementReviewNext
+        label: Proceed
+        toStep: sapbp360.workflows.SupplierExtensionApproval.FinalApproval
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: FinalApproval
+    label: Final Approval
+    icon: images://mdi/check-circle.svg
+    position:
+      x: 160
+      y: -75
+    application: sapbp360.applications.BusinessPartner360Hub
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sapbp360.entities.Supplier.Supplier
+    stepper: sapbp360.entities.Supplier.steppers.AuthorSuppliers
+    myTasksConfiguration:
+      collection: sapbp360.entities.Supplier.collection_views.SupplierCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: FinalApprovalNext
+        label: Approve and Submit
+        toStep: sapbp360.workflows.SupplierExtensionApproval.SubmitData
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 400
+      y: -75
+    integrationJob: sapbp360.certification_jobs.INTEGRATE_ALL
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: sapbp360.workflows.SupplierExtensionApproval.End
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 620
+      y: -75

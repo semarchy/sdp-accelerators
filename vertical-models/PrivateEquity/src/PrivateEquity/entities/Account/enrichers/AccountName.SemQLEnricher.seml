@@ -1,0 +1,12 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.Account.enrichers
+_name: AccountName
+entity: PrivateEquity.entities.Account.Account
+label: Account Name
+description: "Populates missing account names from the related legal entity and bank names for easier account identification."
+enricherExecutionScope: PRE_POST
+condition: Name is null
+semQlEnricherExpressions:
+  - attributeName: Name
+    expression: FDN_LegalEntity || '~' || FDN_Bank
+afterEnrichers: PrivateEquity.entities.Account.enrichers.AccountKey

@@ -1,0 +1,9 @@
+_name: OlderThan18Years
+_package: Manufacturing.entities.Customer.validations
+description: "Ensures customers are at least 18 years old before they can purchase an automobile."
+entity: Manufacturing.entities.Customer.Customer
+label: Older Than18 Years
+validationScope: PRE_CONSO
+validationLabel: Minors cannot purchase a car. Please come back once you turn 18
+_type: SemQLValidation
+condition: AGE(CURRENT_DATE(), DateOfBirth) >= MAKE_INTERVAL (18,0,0,0,0,0,0)

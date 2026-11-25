@@ -1,0 +1,30 @@
+﻿_package: FinanceKYC.references
+_name: BankContractRoleHasCustomer
+_type: Reference
+label: Banking Contract Role Has Customer
+description: 'Defines the reference from Banking Contract Role records to Customer records, enforcing the relationship between B an ki ng Co nt ra ct Ro le and C us to me r data.'
+documentation: 'Defines the reference from Banking Contract Role records to Customer records, enforcing the relationship between B an ki ng Co nt ra ct Ro le and C us to me r data.'
+deletePropagation: RESTRICT
+
+fromEntity: FinanceKYC.entities.BankingContractRole.BankingContractRole
+fromRoleLabel: Banking Contract Role
+fromRoleName: bankingContractRole
+fromRolePluralLabel: Banking Contract Roles
+physicalName: BNK_CON_ROL_HAS_CUS
+fromNavigable: true
+
+toEntity: FinanceKYC.entities.Customer.Customer
+toRoleLabel: Customer
+toRoleName: Customer
+toRolePhysicalName: CUS_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Customer
+  label: Customer
+  physicalName: CUSTOMER
+  searchable: true
+  entity: FinanceKYC.entities.BankingContractRole.BankingContractRole

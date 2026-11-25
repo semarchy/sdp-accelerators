@@ -1,0 +1,67 @@
+_name: PaymentTerms
+_package: sapbp360.entities.PaymentTerms.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.PaymentTerms.PaymentTerms
+rootLabel: Payment Terms
+rootPluralLabel: Payment Terms
+useHierarchyOnOpen: false
+label: Payment Terms
+description: Business view for Payment Terms.
+rootBusinessViewEntity:
+  _name: PaymentTerms
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.PaymentTerms.collection_views.PaymentTermsCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.PaymentTerms.PaymentTerms
+  form: sapbp360.entities.PaymentTerms.forms.PaymentTermsBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.PaymentTerms.action_sets.PaymentTermsActionSet
+  displayCard: sapbp360.entities.PaymentTerms.display_cards.PaymentTermsDisplayCard
+  sortExpression: PaymentTermsName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.PaymentTerms.business_views.PaymentTerms.PaymentTerms
+rootIconUrl: images://mdi/book-open-page-variant-outline.svg

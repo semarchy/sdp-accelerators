@@ -1,0 +1,70 @@
+_package: RestaurantMaster.entities.Franchisee
+_type: Entity
+_name: Franchisee
+label: Franchisee
+pluralLabel: Franchisees
+entityType: BASIC
+physicalTableName: FRANCHISEE
+iconUrl: images://mdi/account-group.svg
+description: A franchise organization behind one or more legal entities, possibly across several brands. Copperline's own companies roll up to a 'Corporate' franchisee record.
+documentation: A franchise organization behind one or more legal entities, possibly across several brands. Copperline's own companies roll up to a 'Corporate' franchisee record.
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: FranchiseeNumber
+  label: Franchisee number
+  physicalName: FRANCHISEENUMBER
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Number of the franchisee group.
+  documentation: Number of the franchisee group.
+  length: 20
+- _type: EntityAttribute
+  _name: FranchiseeName
+  label: Franchisee name
+  physicalName: FRANCHISEENAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Name of the franchisee group.
+  documentation: Name of the franchisee group.
+- _type: EntityAttribute
+  _name: FranchiseeStatus
+  label: Status
+  physicalName: FRANCHISEESTATUS
+  dataType: RestaurantMaster.list_of_values.ActiveStatus
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Whether the franchisee is active.
+  documentation: Whether the franchisee is active.
+- _type: EntityAttribute
+  _name: PrincipalName
+  label: Principal
+  physicalName: PRINCIPALNAME
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: '[PII] The person with operational control of the group.'
+  documentation: '[PII] The person with operational control of the group.'
+- _type: EntityAttribute
+  _name: PrincipalEmail
+  label: Principal email
+  physicalName: PRINCIPALEMAIL
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: '[PII] Business email of the principal.'
+  documentation: '[PII] Business email of the principal.'
+primaryKey: RestaurantMaster.entities.Franchisee.Franchisee.FranchiseeNumber
+sourceIdGeneration:
+  mode: MANUAL

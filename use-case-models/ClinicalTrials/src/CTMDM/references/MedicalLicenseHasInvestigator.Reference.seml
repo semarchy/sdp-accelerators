@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: MedicalLicenseHasInvestigator
+_type: Reference
+label: Medical License Has Investigator
+description: "Links medical licenses to the owning investigator."
+documentation: "Links medical licenses to the owning investigator."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.MedicalLicense.MedicalLicense
+fromRoleLabel: Medical License
+fromRoleName: medicalLicense
+fromRolePluralLabel: Medical Licenses
+physicalName: MED_LIC_HAS_INV
+fromNavigable: true
+
+toEntity: CTMDM.entities.Investigator.Investigator
+toRoleLabel: Investigator
+toRoleName: investigator
+toRolePhysicalName: INV
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: investigator
+  label: Investigator
+  physicalName: INV
+  searchable: true
+  entity: CTMDM.entities.Investigator.Investigator

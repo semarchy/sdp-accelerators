@@ -1,0 +1,20 @@
+﻿# Description: Masking enrichment for PartyIdentification.
+# Contains: SemQL expression to compute MaskedIdentificationNumber from IdentificationNumber.
+# Role: Preserves readable suffix while masking sensitive identifier prefixes.
+_package: RetailCustomer360.entities.PartyIdentification.enrichers
+_name: MaskIdentificationNumber
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.PartyIdentification.PartyIdentification
+label: Identification Number Masking Enricher
+description: "Builds a masked identifier display such as ****-CA-7788 from IdentificationNumber."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: MaskedIdentificationNumber
+    expression: CASE
+        WHEN IdentificationNumber IS NULL OR BTRIM(IdentificationNumber) = '' THEN NULL
+        WHEN STRPOS(IdentificationNumber, '-') > 0 THEN '****' || SUBSTR(IdentificationNumber, STRPOS(IdentificationNumber, '-'))
+        WHEN LENGTH(IdentificationNumber) > 4 THEN '****' || SUBSTR(IdentificationNumber, LENGTH(IdentificationNumber) - 3, 4)
+        ELSE '****'
+      END
+

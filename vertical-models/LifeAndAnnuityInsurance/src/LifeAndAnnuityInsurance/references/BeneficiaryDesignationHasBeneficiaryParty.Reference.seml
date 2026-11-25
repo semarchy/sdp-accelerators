@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: BeneficiaryDesignationHasBeneficiaryParty
+description: "Indicates the Beneficiary Party associated with a Beneficiary Designation."
+_type: Reference
+label: "Beneficiary Designation Has Beneficiary Party"
+
+fromEntity: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.BeneficiaryDesignation
+fromRoleLabel: "Beneficiary Designation"
+fromRoleName: BeneficiaryDesignations
+fromRolePluralLabel: "Beneficiary Designations"
+physicalName: BEN_DESIG_HAS_BEN_PARTY
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Party.Party
+toRoleLabel: "Beneficiary Party"
+toRoleName: BeneficiaryParty
+toRolePhysicalName: BEN_PARTY
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: BeneficiaryParty
+  label: "Beneficiary Party ID"
+  description: "The identifier of the Beneficiary Party associated with the Beneficiary Designation."
+  physicalName: BEN_PARTY_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Party.Party

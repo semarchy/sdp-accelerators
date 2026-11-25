@@ -1,0 +1,102 @@
+# GovernanceBodyBusinessView: business view on GovernanceBody of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceBody.business_views
+_type: BusinessView
+_name: GovernanceBodyBusinessView
+entity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+rootLabel: Governance bodies
+rootPluralLabel: Governance bodies
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: GovernanceBody
+  entity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+  actionSet: GovernanceRules.entities.GovernanceBody.action_sets.GovernanceBodyActionSet
+  collection: GovernanceRules.entities.GovernanceBody.collection_views.GovernanceBodyCollectionView
+  form: GovernanceRules.entities.GovernanceBody.forms.GovernanceBodyForm
+  displayCard: GovernanceRules.entities.GovernanceBody.display_cards.GovernanceBodyDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: CustomFormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: GovernanceRules.entities.GovernanceBody.search_forms.GovernanceBodySearchForm
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: true
+  sortExpression: Name asc
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: false
+  transitions:
+    - _type: BusinessViewTransition
+      _name: OwnedPoliciesTab
+      label: Owned policies
+      pluralLabel: Owned policies
+      useCustomLabel: true
+      transitionPath: OwnedPolicies
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: LABEL
+      displayTransitionNodeAs: LABEL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: GovernanceBodyOwnedPolicies
+        entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+        actionSet: GovernanceRules.entities.GovernancePolicy.action_sets.GovernancePolicyActionSet
+        collection: GovernanceRules.entities.GovernancePolicy.collection_views.GovernancePolicyByOwnerBodyCollectionView
+        form: GovernanceRules.entities.GovernancePolicy.forms.GovernancePolicyForm
+        displayCard: GovernanceRules.entities.GovernancePolicy.display_cards.GovernancePolicyDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        overrideDefaultSort: true
+        sortExpression: Name asc
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: false
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+    - _type: BusinessViewTransition
+      _name: OwnedRulesTab
+      label: Owned rules
+      pluralLabel: Owned rules
+      useCustomLabel: true
+      transitionPath: OwnedRules
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: LABEL
+      displayTransitionNodeAs: LABEL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: GovernanceBodyOwnedRules
+        entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+        actionSet: GovernanceRules.entities.GovernanceRule.action_sets.GovernanceRuleActionSet
+        collection: GovernanceRules.entities.GovernanceRule.collection_views.GovernanceRuleByOwnerBodyCollectionView
+        form: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm
+        displayCard: GovernanceRules.entities.GovernanceRule.display_cards.GovernanceRuleDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        overrideDefaultSort: true
+        sortExpression: EffectiveDate desc
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: false
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+enableHierarchyView: false
+useHierarchyOnOpen: false

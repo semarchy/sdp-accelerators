@@ -1,0 +1,386 @@
+_name: WorkflowStep2Sales
+_package: Manufacturing.entities.Customer.steppers
+_type: Stepper
+entity: Manufacturing.entities.Customer.Customer
+rootStep:
+  _name: Customers
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.Customer.collection_views.CustomerCollectionNameOnly
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Customers
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+      definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: Manufacturing.entities.Customer.Customer.SemlQLMatcherCustomer
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.CustomersHousehold.Household
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.Customer.Customer.LastName
+  stepTriggers: []
+  childSteps:
+    - _name: Customer
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Customer
+      formTab: Manufacturing.entities.Customer.forms.CustomerForm.Customer
+      formStepEnrichers:
+        - enricher: Manufacturing.entities.Customer.enrichers.StandardizePhone
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.Household
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.GeocodeUsingGoogle
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.HouseholdIDToInteger
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.LookupNickname
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.NormalizeName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.PhonetizeFirstName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.FillInUnknownNicknames
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.MelissaPersonatorEnricher
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.CleanseEmail
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.PhonetizeLastName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.Customer.forms.CustomerForm.Customer.Information.Container5.FDN_Household2
+          referencePickerCollectionView: Manufacturing.entities.Address.collection_views.AddressCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: CHECK
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.Customer.Customer.SemlQLMatcherCustomer
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+      stepTriggers: []
+    - _name: Information
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Information
+      formSection: Manufacturing.entities.Customer.forms.CustomerForm.Customer.Information
+      formStepEnrichers:
+        - enricher: Manufacturing.entities.Customer.enrichers.GeocodeUsingGoogle
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.NormalizeName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.CleanseEmail
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.Household
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.HouseholdIDToInteger
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.StandardizePhone
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.FillInUnknownNicknames
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.PhonetizeFirstName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.PhonetizeLastName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.LookupNickname
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - enricher: Manufacturing.entities.Customer.enrichers.MelissaPersonatorEnricher
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.Customer.forms.CustomerForm.Customer.Information.Container5.FDN_Household2
+          referencePickerCollectionView: Manufacturing.entities.Address.collection_views.AddressCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: CHECK
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.Customer.Customer.SemlQLMatcherCustomer
+      stepTriggers: []
+    - _name: Vehicles
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: Manufacturing.entities.CustomerVehicle.collection_views.CustomerVehicleCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Vehicles
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Customer.Customer.LastName
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.Customer.Customer.SemlQLMatcherCustomer
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomersHousehold.Household
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+          definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: Manufacturing.references.CustomerVehiclesCustomer
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: CustomerVehicle
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Customer Vehicle
+          formTab: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm.CustomerVehicle
+          formStepEnrichers: []
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm.CustomerVehicle.FDN_Vehicle
+              referencePickerCollectionView: Manufacturing.entities.ProductVehicle.collection_views.ProductVehicleCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm.CustomerVehicle.FDN_Customer
+              referencePickerCollectionView: Manufacturing.entities.Customer.collection_views.CustomerCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+          stepTriggers: []
+label: Workflow Step2 Sales
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.Customer.Customer.LastName
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.CustomersHousehold.Household
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+    definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: Manufacturing.entities.Customer.validations.OlderThan18Years
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

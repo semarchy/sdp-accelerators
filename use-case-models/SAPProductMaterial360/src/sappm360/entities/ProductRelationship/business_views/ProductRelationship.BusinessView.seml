@@ -1,0 +1,73 @@
+_name: ProductRelationship
+_package: sappm360.entities.ProductRelationship.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.ProductRelationship.ProductRelationship
+rootLabel: Product Relationship
+rootPluralLabel: Product Relationships
+useHierarchyOnOpen: false
+label: Product Relationship
+description: Business view for Product Relationship.
+rootBusinessViewEntity:
+  _name: ProductRelationship
+  _type: BusinessViewEntity
+  collection: sappm360.entities.ProductRelationship.collection_views.ProductRelationshipCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.ProductRelationship.ProductRelationship
+  form: sappm360.entities.ProductRelationship.forms.ProductRelationshipBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.ProductRelationship.action_sets.ProductRelationshipActionSet
+  displayCard: sappm360.entities.ProductRelationship.display_cards.ProductRelationshipDisplayCard
+  sortExpression: RelationshipCode
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.ProductRelationship.forms.ProductRelationshipBrowsingForm.Main.Details.DetailsContainer.Container2.FDN_FromProduct
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.ProductRelationship.forms.ProductRelationshipBrowsingForm.Main.Details.DetailsContainer.Container3.FDN_ToProduct
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.ProductRelationship.forms.ProductRelationshipBrowsingForm.Main.Details.DetailsContainer.Container4.FDN_RelationshipType
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.ProductRelationship.business_views.ProductRelationship.ProductRelationship
+rootIconUrl: images://mdi/relation-many-to-many.svg

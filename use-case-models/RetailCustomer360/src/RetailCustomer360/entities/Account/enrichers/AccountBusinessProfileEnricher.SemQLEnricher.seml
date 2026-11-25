@@ -1,0 +1,44 @@
+﻿# Description: Business profile enrichments for the Account entity.
+# Contains: SemQL expressions to compute relationship age and business-size/revenue segmentation.
+# Role: Provides derived operational insights for analytics and prioritization.
+_package: RetailCustomer360.entities.Account.enrichers
+_name: AccountBusinessProfileEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Account.Account
+label: Account Business Profile Enricher
+description: "Computes RevenueBand, AccountAgeYears, AccountAgeSegment, and EmployeeSizeBand."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: RevenueBand
+    expression: CASE
+        WHEN Revenue IS NULL THEN 'Unknown'
+        WHEN Revenue < 100000 THEN 'Micro'
+        WHEN Revenue < 1000000 THEN 'Small'
+        WHEN Revenue < 10000000 THEN 'Mid-Market'
+        WHEN Revenue < 100000000 THEN 'Enterprise'
+        ELSE 'Strategic'
+      END
+  - attributeName: AccountAgeYears
+    expression: CASE
+        WHEN AccountSinceDate IS NULL THEN NULL
+        ELSE FLOOR(DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', AccountSinceDate))
+      END
+  - attributeName: AccountAgeSegment
+    expression: CASE
+        WHEN AccountSinceDate IS NULL THEN 'Unknown'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', AccountSinceDate)) < 1 THEN 'New'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', AccountSinceDate)) < 3 THEN 'Growing'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', AccountSinceDate)) < 7 THEN 'Mature'
+        ELSE 'Legacy'
+      END
+  - attributeName: EmployeeSizeBand
+    expression: CASE
+        WHEN EmployeeCount IS NULL THEN 'Unknown'
+        WHEN EmployeeCount < 10 THEN '1-9'
+        WHEN EmployeeCount < 50 THEN '10-49'
+        WHEN EmployeeCount < 250 THEN '50-249'
+        WHEN EmployeeCount < 1000 THEN '250-999'
+        ELSE '1000+'
+      END
+

@@ -1,0 +1,47 @@
+# This is the AuthorCampaignStatuses Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing campaign statuses within the Salesforce context.
+_name: AuthorCampaignStatuses
+_package: sales360.entities.CampaignStatus.steppers
+_type: Stepper
+entity: sales360.entities.CampaignStatus.CampaignStatus
+description: Stepper for managing Campaign Statuses
+rootStep:
+  _name: CampaignStatuss
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.CampaignStatus.collection_views.CampaignStatusCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Campaign Statuses
+  description: Manage Campaign Statuses
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Campaign Status
+      formTab: sales360.entities.CampaignStatus.forms.CampaignStatusForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Campaign Statuses
+stepperFinishValidations: []
+triggers: []

@@ -1,0 +1,85 @@
+# Source System entity for the SAP Business Partner 360 accelerator.
+_name: SourceSystem
+_package: sapbp360.entities.SourceSystem
+_type: Entity
+primaryKey: sapbp360.entities.SourceSystem.SourceSystem.SourceSystemID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: SourceSystemCode
+label: Source System
+documentation: Source System reference data used by the SAP Business Partner 360 model.
+description: Source System reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/SourceSystem.svg
+pluralLabel: Source Systems
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SOURCE_SYSTEM
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SourceSystemID
+    physicalName: SOURCE_SYSTEM_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Source System ID
+    documentation: Unique identifier for the source system.
+    description: Unique identifier for the source system.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Source System ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: SourceSystemCode
+    physicalName: SOURCE_SYSTEM_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Source System Code
+    documentation: Code for the source system.
+    description: Code for the source system.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Source System Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: SourceSystemName
+    physicalName: SOURCE_SYSTEM_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Source System Name
+    documentation: Name of the source system.
+    description: Name of the source system.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Source System Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the source system.
+    description: Description for the source system.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the source system is active.
+    description: Indicates whether the source system is active.
+    mandatory: false
+    length: 1
+    searchable: true

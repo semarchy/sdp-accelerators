@@ -1,0 +1,102 @@
+_package: CTMDM.entities.StudyVendor.collection_views
+_type: CollectionView
+_name: StudyVendorCollectionView
+
+entity: CTMDM.entities.StudyVendor.StudyVendor
+default: true
+displayCard: CTMDM.entities.StudyVendor.display_cards.StudyVendorDisplayCard
+tableDisplayCardColumnWidth: 300
+
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+
+tableAllowed: true
+tableDisplayCardColumnLabel: Study Vendor
+tableRowLines: 2
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_study
+    value: FDN_study
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.Study.Study
+
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_vendor
+    value: FDN_vendor
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.Vendor.Vendor
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: ContractStatus
+    value: ContractStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: DateColumn
+    _name: StartDate
+    value: StartDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: DateColumn
+    _name: EndDate
+    value: EndDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: ServiceScope
+    value: ServiceScope
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 300
+  - _type: TextColumn
+    _name: OversightOwner
+    value: OversightOwner
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 180

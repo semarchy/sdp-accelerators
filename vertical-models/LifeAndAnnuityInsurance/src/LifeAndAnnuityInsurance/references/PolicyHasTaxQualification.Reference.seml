@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: PolicyHasTaxQualification
+description: "Indicates the Tax Qualification associated with a Policy."
+_type: Reference
+label: "Policy Has Tax Qualification"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+fromRoleLabel: "Policy"
+fromRoleName: Policy
+fromRolePluralLabel: "Policies"
+physicalName: POL_HAS_TAX_QUAL
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.TaxQualification.TaxQualification
+toRoleLabel: "Tax Qualification"
+toRoleName: TaxQualification
+toRolePhysicalName: TAX_QUAL
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: TaxQualification
+  label: "Tax Qualification ID"
+  description: "The identifier of the Tax Qualification associated with the Policy."
+  physicalName: TAX_QUAL_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.TaxQualification.TaxQualification

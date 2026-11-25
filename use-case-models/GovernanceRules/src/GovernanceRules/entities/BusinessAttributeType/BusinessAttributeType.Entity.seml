@@ -1,0 +1,62 @@
+# BusinessAttributeType: entity of the GovernanceRules accelerator. A business attribute type (for example EMAIL, PHONE, COUNTRY_CODE, NDC), with its default classification, the standard that governs its format and a format...
+_package: GovernanceRules.entities.BusinessAttributeType
+_type: Entity
+_name: BusinessAttributeType
+label: Attribute type
+pluralLabel: Attribute types
+physicalTableName: GOV_ATTR_TYPE
+entityType: BASIC
+description: 'A business attribute type (for example EMAIL, PHONE, COUNTRY_CODE, NDC), with its default classification, the
+  standard that governs its format and a format pattern. Used to scope rules.
+
+
+  AI agent instructions: Classify each new attribute of a design against this list before asking for the applicable rules.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+primaryKey: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType.Code
+sourceIdGeneration:
+  mode: MANUAL
+attributes:
+- _type: EntityAttribute
+  _name: Code
+  label: Code
+  physicalName: AT_CODE
+  dataType: String
+  length: 40
+  mandatory: true
+  description: Natural key of the attribute type, entered by the author and never changed (for example EMAIL).
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Name
+  label: Name
+  physicalName: AT_NAME
+  dataType: String
+  length: 200
+  mandatory: true
+  description: Name of the attribute type.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Description
+  label: Description
+  physicalName: AT_DESCRIPTION
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: What values of this type hold.
+- _type: EntityAttribute
+  _name: FormatPattern
+  label: Format pattern
+  physicalName: AT_FORMAT
+  dataType: String
+  length: 500
+  mandatory: false
+  description: Regular expression that a valid value matches.
+- _type: EntityAttribute
+  _name: Example
+  label: Example
+  physicalName: AT_EXAMPLE
+  dataType: String
+  length: 500
+  mandatory: false
+  description: An example of a valid value.

@@ -1,0 +1,23 @@
+# This is a definition file for the default Survivorship Rule in the Salesforce Accelerator application.
+# It defines the survivorship rule based on preferred publisher rankings: 1 - SFDC, 2 - ERP, 3 - MKT.
+_type: StandardSurvivorshipRule
+entity: sales360.entities.Account.Account
+_package: sales360.entities.Account.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+consolidationOrderByExpression: CreationDate ASC
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Default Rule
+description: Default Survivorship Rule for Account entity based on preferred publisher rankings
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: sales360.publishers.SFDC
+  - _type: ConsoPublisherRanking
+    publisher: sales360.publishers.ERP
+  - _type: ConsoPublisherRanking
+    publisher: sales360.publishers.MKT
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+attributes: []

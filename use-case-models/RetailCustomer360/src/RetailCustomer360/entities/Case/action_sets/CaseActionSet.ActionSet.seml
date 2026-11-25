@@ -1,0 +1,64 @@
+_package: RetailCustomer360.entities.Case.action_sets
+_type: ActionSet
+_name: CaseActionSet
+entity: RetailCustomer360.entities.Case.Case
+label: Case Action Set
+description: "Actions available to stewards on Cases."
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateCase
+    label: Create
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Case.steppers.AuthorCase
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditCase
+    label: Edit
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Case.steppers.AuthorCase
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateCase
+    label: Mass Update
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Case.steppers.AuthorCase
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: DeleteCase
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: ExportCase
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportCase
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: RetailCustomer360.entities.Case.steppers.ImportCase
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraphCase
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

@@ -1,0 +1,58 @@
+# GovernanceBody: entity of the GovernanceRules accelerator. A body that owns rules and policies: a council, an office or a role (for example DPO, the Data Governance Council).
+_package: GovernanceRules.entities.GovernanceBody
+_type: Entity
+_name: GovernanceBody
+label: Governance body
+pluralLabel: Governance bodies
+physicalTableName: GOV_BODY
+entityType: BASIC
+description: 'A body that owns rules and policies: a council, an office or a role (for example DPO, the Data Governance Council).'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+primaryKey: GovernanceRules.entities.GovernanceBody.GovernanceBody.Code
+sourceIdGeneration:
+  mode: MANUAL
+attributes:
+- _type: EntityAttribute
+  _name: Code
+  label: Code
+  physicalName: GB_CODE
+  dataType: String
+  length: 40
+  mandatory: true
+  description: Natural key of the governance body, entered by the author and never changed (for example DPO).
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Name
+  label: Name
+  physicalName: GB_NAME
+  dataType: String
+  length: 200
+  mandatory: true
+  description: Name of the body.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Type
+  label: Type
+  physicalName: GB_TYPE
+  dataType: GovernanceRules.list_of_values.GovernanceBodyType
+  lovValidationScope: PRE_CONSO
+  mandatory: false
+  description: Kind, code COUNCIL, OFFICE or ROLE.
+- _type: EntityAttribute
+  _name: ContactEmail
+  label: Contact email
+  physicalName: GB_EMAIL
+  dataType: String
+  length: 200
+  mandatory: false
+  description: Email address to contact the body.
+- _type: EntityAttribute
+  _name: Description
+  label: Description
+  physicalName: GB_DESCRIPTION
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: Mission of the body.

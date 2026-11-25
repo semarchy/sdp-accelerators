@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.Contact.enrichers
+_name: AutopopulateOfficePhone
+entity: PrivateEquity.entities.Contact.Contact
+label: Autopopulate Office Phone
+description: "Copies the standardized office phone number onto the contact phone field before consolidation."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: Phone
+    expression: Office.StandarizedPhone
+afterEnrichers: PrivateEquity.entities.Contact.enrichers.AutopopulateFullName

@@ -1,0 +1,44 @@
+﻿_package: RetailCustomer360.entities.AccountContact.business_views
+_type: BusinessView
+_name: AccountContactReviewSuggestedMatches
+label: Account Contacts - Suggested Matches
+entity: RetailCustomer360.entities.AccountContact.AccountContact
+
+rootLabel: Account Contact
+rootPluralLabel: Account Contacts
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: https://api.iconify.design/mdi/account-tie.svg?color=%230D1B2A&width=64
+
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: AccountContact
+  entity: RetailCustomer360.entities.AccountContact.AccountContact
+  actionSet: RetailCustomer360.entities.AccountContact.action_sets.AccountContactReviewSuggestedMatchesActionSet
+  collection: RetailCustomer360.entities.AccountContact.collection_views.AccountContactCollectionView
+  form: RetailCustomer360.entities.AccountContact.forms.AccountContactForm
+  displayCard: RetailCustomer360.entities.AccountContact.display_cards.AccountContactDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

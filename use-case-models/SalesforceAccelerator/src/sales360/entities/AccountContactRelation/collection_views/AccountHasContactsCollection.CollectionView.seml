@@ -1,0 +1,72 @@
+# This is a Collection View definition for AccountContactRelation entity in Salesforce Accelerator application.
+# It defines how Account having Contact records are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.AccountContactRelation.collection_views
+_name: AccountHasContactsCollection
+_type: CollectionView
+entity: sales360.entities.AccountContactRelation.AccountContactRelation
+default: true
+displayCard: sales360.entities.AccountContactRelation.display_cards.RelationDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Contact Relation
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: true
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: Contact_FirstName
+    columnAlign: LEFT
+    dataType: STRING
+    label: First Name
+    useCustomLabel: true
+    value: Contact.FirstName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Contact_LastName
+    columnAlign: LEFT
+    dataType: STRING
+    label: Last Name
+    useCustomLabel: true
+    value: Contact.LastName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Contact_Title
+    columnAlign: LEFT
+    dataType: STRING
+    label: Title
+    useCustomLabel: true
+    value: Contact.Title
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: Contact_Department
+    columnAlign: LEFT
+    dataType: STRING
+    label: Department
+    useCustomLabel: true
+    value: Contact.Department
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: ReferenceColumn
+    _name: Contact_FDN_Account
+    columnAlign: LEFT
+    dataType: STRING
+    label: Direct Contact Of
+    useCustomLabel: true
+    value: Contact.FDN_Account
+    visibleByDefault: true
+    defaultWidth: 200
+    displayCard: sales360.entities.Account.display_cards.AccountNameAddress
+    referencedEntity: sales360.entities.Account.Account
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL

@@ -1,0 +1,18 @@
+_package: RestaurantMaster.entities.Restaurant.display_cards
+_type: DisplayCard
+_name: RestaurantDisplayCard
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+default: true
+primaryTextExpression: COALESCE(RestaurantName, 'Unnamed restaurant') || ' (' || RestaurantID || ')'
+avatarImageValue: CASE WHEN FID_Brand = 'FUEGO' THEN 'images://restaurantmaster/brand-fuego.svg' WHEN FID_Brand = 'KETTLE_CRUST' THEN 'images://restaurantmaster/brand-kettle-crust.svg' WHEN FID_Brand = 'BLUEBIRD' THEN 'images://restaurantmaster/brand-bluebird.svg' ELSE 'images://mdi/storefront.svg' END
+primaryImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: SEMQL
+primaryImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT
+secondaryTextExpression: COALESCE(City, '') || COALESCE(', ' || FID_StateProvince, '') || COALESCE(' - ' || FID_LifecycleStatus, '')

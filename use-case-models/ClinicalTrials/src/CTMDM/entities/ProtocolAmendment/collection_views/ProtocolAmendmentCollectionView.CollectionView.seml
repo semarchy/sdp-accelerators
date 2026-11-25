@@ -1,0 +1,128 @@
+_package: CTMDM.entities.ProtocolAmendment.collection_views
+_type: CollectionView
+_name: ProtocolAmendmentCollectionView
+
+entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+default: true
+displayCard: CTMDM.entities.ProtocolAmendment.display_cards.ProtocolAmendmentDisplayCard
+tableDisplayCardColumnWidth: 300
+
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+
+tableAllowed: true
+tableDisplayCardColumnLabel: Protocol Amendment
+tableRowLines: 2
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: TextColumn
+    _name: AmendmentNumber
+    value: AmendmentNumber
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 220
+  - _type: ReferenceColumn
+    _name: FDN_protocol
+    value: FDN_protocol
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.Protocol.Protocol
+
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_regulatoryAuthority
+    value: FDN_regulatoryAuthority
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.RegulatoryAuthority.RegulatoryAuthority
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: AmendmentType
+    value: AmendmentType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: Status
+    value: Status
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: DateColumn
+    _name: EffectiveDate
+    value: EffectiveDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: DateColumn
+    _name: ApprovalDate
+    value: ApprovalDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: DateColumn
+    _name: SubmissionDate
+    value: SubmissionDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: ChangeReason
+    value: ChangeReason
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 300
+  - _type: TextColumn
+    _name: ImpactAssessment
+    value: ImpactAssessment
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 300

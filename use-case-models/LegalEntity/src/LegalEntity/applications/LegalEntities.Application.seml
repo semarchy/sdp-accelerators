@@ -1,0 +1,574 @@
+# This is a main application definition file for Legal Entity application
+_package: LegalEntity.applications
+_type: Application
+_name: LegalEntities
+label: Legal Entities
+applicationTitle: Legal Entities
+description: Application to manage Legal Entities
+visibility: VISIBLE
+titleColor: md:green
+avatarImageUrl: images://le-img-lib/office-building.svg
+logoUrl: images://le-img-lib/logo.png
+coverImageUrl: images://le-img-lib/cover.png
+favIcon: images://le-img-lib/office-building.svg
+sortStrategy: POSITION
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ''
+navDrawer:
+    - _type: FolderNavGroup
+      _name: TopActionsNavigation
+      dividerVisible: true
+      labelVisible: false
+      linkedFolder: LegalEntity.applications.LegalEntities.Root.TopActions
+    - _type: FolderNavGroup
+      _name: LegalEntityNavigation
+      dividerVisible: true
+      labelVisible: false
+      linkedFolder: LegalEntity.applications.LegalEntities.Root.LegalEntity
+    - _type: FolderNavGroup
+      _name: ReferenceDataNavigation
+      dividerVisible: true
+      labelVisible: false
+      linkedFolder: LegalEntity.applications.LegalEntities.Root.ReferenceData
+    - _type: FolderNavGroup
+      _name: AdministrationNavigation
+      dividerVisible: true
+      labelVisible: false
+      linkedFolder: LegalEntity.applications.LegalEntities.Root.Administration
+
+documentationConfig:
+  documentation: Legal entity diagram
+  documentationConfigDiagrams:
+    - _type: DocumentationConfigDiagram
+      _name: LegalEntityDiagram
+      label: Legal Entity Diagram
+      modelDiagram: LegalEntity.model_diagrams.LegalEntityDiagram
+defaultAction: LegalEntity.applications.LegalEntities.Root.TopActions.Inbox
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Top
+  description: Top
+  icon: images://le-img-lib/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+    - _name: TopActions
+      _type: FolderAction
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Quick links
+      appActions:
+      - _name: GlobalSearchConfig
+        _type: GlobalSearchAction
+        icon: images://le-img-lib/magnify.svg
+        iconColor: md:blue
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        label: Search
+      - _name: Inbox
+        _type: MyTasksAction
+        badgeVisible: true
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+      - _name: StartHere
+        _type: FolderAction
+        label: Start Here
+        requiredRole: DataSteward
+        icon: images://mdi/arrow-right.svg
+        iconColor: md:green
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        appActions:
+          - _type: ImportDataAppAction
+            _name: ImportNameType
+            label: Import Name Types
+            importAction: LegalEntity.entities.NameType.action_sets.NameTypeActionSet.ImportAuthorNameTypes
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportInvestmentStructure
+            label: Import Investment Structures 
+            importAction: LegalEntity.entities.InvestmentStructure.action_sets.InvestmentStructureActionSet.ImportAuthorInvestmentStructures
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportIndustry
+            label: Import Industries 
+            importAction: LegalEntity.entities.Industry.action_sets.IndustryActionSet.ImportAuthorIndustries
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportGroupType
+            label: Import Group Types
+            importAction: LegalEntity.entities.GroupType.action_sets.GroupTypeActionSet.ImportAuthorGroupTypes
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportGeographyType
+            label: Import Geography Types
+            importAction: LegalEntity.entities.GeographyType.action_sets.GeographyTypeActionSet.ImportAuthorGeographyTypes
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportCurrency
+            label: Import Currencies 
+            importAction: LegalEntity.entities.Currency.action_sets.CurrencyActionSet.ImportAuthorCurrencies
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportCountry
+            label: Import Countries 
+            importAction: LegalEntity.entities.Country.action_sets.CountryActionSet.ImportAuthorCountries
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportState
+            label: Import States
+            importAction: LegalEntity.entities.State.action_sets.StateActionSet.ImportAuthorStates
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportRegion
+            label: Import Regions
+            importAction: LegalEntity.entities.Region.action_sets.RegionActionSet.ImportAuthorRegions
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportAccountType
+            label: Import Account Types
+            importAction: LegalEntity.entities.AccountType.action_sets.AccountTypeActionSet.ImportAuthorAccountTypes
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportBank
+            label: Import Banks
+            importAction: LegalEntity.entities.Bank.action_sets.BankActionSet.ImportBank
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportEntityRole
+            label: Import Entity Roles 
+            importAction: LegalEntity.entities.EntityRole.action_sets.EntityRoleActionSet.ImportAuthorEntityRoles
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportEntityStructure
+            label: Import Entity Structures
+            importAction: LegalEntity.entities.EntityStructure.action_sets.EntityStructureActionSet.ImportAuthorEntityStructures
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportStatus
+            label: Import Status
+            importAction: LegalEntity.entities.Status.action_sets.StatusActionSet.ImportAuthorStatuses
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportCategory
+            label: Import Categories
+            importAction: LegalEntity.entities.Category.action_sets.CategoryActionSet.ImportAuthorCategories
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+            
+          - _type: ImportDataAppAction
+            label: Import Entity Types 
+            importAction: LegalEntity.entities.EntityType.action_sets.EntityTypeActionSet.ImportAuthorEntityTypes
+            _name: ImportEntityType
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportForm
+            label: Import Forms
+            importAction: LegalEntity.entities.Form.action_sets.FormActionSet.ImportAuthorForms
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportRelationship
+            label: Import Relationships 
+            importAction: LegalEntity.entities.Relationship.action_sets.RelationshipActionSet.ImportAuthorRelationships
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportStrategy
+            label: Import Strategies 
+            importAction: LegalEntity.entities.Strategy.action_sets.StrategyActionSet.ImportAuthorStrategies
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportLegalEntity
+            label: Import Legal Entities
+            importAction: LegalEntity.entities.LegalEntity.action_sets.LegalEntityActionSet.ImportAuthorLegalEntities
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportDocument
+            label: Import Documents
+            importAction: LegalEntity.entities.Document.action_sets.DocumentActionSet.ImportAuthorDocuments
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportLERelationship
+            label: Import LE Relationships
+            importAction: LegalEntity.entities.LERelationship.action_sets.LERelationshipActionSet.ImportAuthorLERelationships
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportFund
+            label: Import Funds
+            importAction: LegalEntity.entities.Fund.action_sets.FundActionSet.ImportAuthorFunds
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportPortfolio
+            label: Import Portfolios
+            importAction: LegalEntity.entities.Portfolio.action_sets.PortfolioActionSet.ImportAuthorPortfolios
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportparentChildRelationship
+            label: Import Parent Child Relationships
+            importAction: LegalEntity.entities.ParentChild.action_sets.ParentChildActionSet.ImportAuthorParentChildren
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportfundLE 
+            label: Import Fund Legal Entities
+            importAction: LegalEntity.entities.FundLE.action_sets.FundLEActionSet.ImportAuthorFundLES
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportLEGroup
+            label: Import LE Groups
+            importAction: LegalEntity.entities.LEGroup.action_sets.LEGroupActionSet.ImportAuthorLEGroups
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportGroupLE
+            label: Import Group - Legal Entities Relationships
+            importAction: LegalEntity.entities.GroupLegalEntity.action_sets.GroupLegalEntityActionSet.ImportAuthorGroupLegalEntities
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportName
+            label: Import Names
+            importAction: LegalEntity.entities.Name.action_sets.NameActionSet.ImportAuthorNames
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportSite
+            label: Import Sites
+            importAction: LegalEntity.entities.Site.action_sets.SiteActionSet.ImportAuthorSites
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportGroupLegalEntities
+            label: Import Group Legal Entities
+            importAction: LegalEntity.entities.GroupLegalEntity.action_sets.GroupLegalEntityActionSet.ImportAuthorGroupLegalEntities
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportContact
+            label: Import Contacts
+            importAction: LegalEntity.entities.Contact.action_sets.ContactActionSet.ImportAuthorContacts
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+          - _type: ImportDataAppAction
+            _name: ImportAccount
+            label: Import Accounts
+            importAction: LegalEntity.entities.Account.action_sets.AccountActionSet.ImportAuthorAccounts
+            icon: images://mdi/arrow-right.svg
+            image: images://mdi/arrow-right.svg
+
+    - _name: ReferenceData
+      _type: FolderAction
+      label: Reference Data
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Reference Data
+      appActions:
+      - _type: FolderAction
+        _name: ExternalRDM
+        icon: images://le-img-lib/bookshelf.svg
+        iconColor: md:blue
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        label: Industry RDM
+        description: Industry RDM
+        appActions:
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Currency.business_views.CurrencyBusinessView
+          _name: BrowseCurrency
+          label: Currencies
+          icon: images://le-img-lib/cash.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Currencies
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Country.business_views.CountryBusinessView
+          _name: BrowseCountry
+          label: Countries
+          icon: images://le-img-lib/map-marker.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Countries
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Form.business_views.FormBusinessView
+          _name: BrowseForm
+          label: Forms
+          icon: images://le-img-lib/bookshelf.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Forms
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.State.business_views.StateBusinessView
+          _name: BrowseState
+          label: States
+          icon: images://le-img-lib/map.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: States
+      - _type: FolderAction
+        _name: InternalRDM
+        icon: images://le-img-lib/office-building-outline.svg
+        iconColor: md:blue
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        label: Corporate RDM
+        description: Corporate RDM
+        appActions:
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.EntityType.business_views.EntityTypeBusinessView
+          _name: BrowseEntityTypes
+          label: Entity Types
+          icon: images://le-img-lib/bookshelf.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: EntityTypes
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Industry.business_views.IndustryBusinessView
+          _name: BrowseIndustries
+          label: Industries
+          icon: images://le-img-lib/file-tree-outline.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Industries
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Region.business_views.RegionBusinessView
+          _name: BrowseRegions
+          label: Regions
+          icon: images://le-img-lib/map-marker-distance.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Regions
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Category.business_views.CategoryBusinessView
+          _name: BrowseCategories
+          label: Categories
+          icon: images://le-img-lib/bookshelf.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Categories
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.EntityStructure.business_views.EntityStructureBusinessView
+          _name: BrowseEntityStructure
+          label: Entity Structures
+          icon: images://le-img-lib/file-tree.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Entity Structures
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.NameType.business_views.NameTypeBusinessView
+          _name: BrowseNameType
+          label: Name Types
+          icon: images://le-img-lib/bookshelf.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Name Types
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Relationship.business_views.RelationshipBusinessView
+          _name: BrowseRelationships
+          label: Relationships
+          icon: images://le-img-lib/handshake.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Relationships
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Strategy.business_views.StrategyBusinessView
+          _name: BrowseStrategy
+          label: Strategies
+          icon: images://le-img-lib/sign-direction.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Strategies
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Status.business_views.StatusBusinessView
+          _name: BrowseStatus
+          label: Status
+          icon: images://le-img-lib/bookshelf.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Status
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Portfolio.business_views.PortfolioBusinessView
+          _name: BrowsePortfolio
+          label: Portfolios
+          icon: images://le-img-lib/briefcase-variant-outline.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Portfolios
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.GeographyType.business_views.GeographyTypeBusinessView
+          _name: BrowseGeographyType
+          label: Geography Types
+          icon: images://le-img-lib/map.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Geography Types
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Region.business_views.RegionBusinessView
+          _name: BrowseRegion
+          label: Geography Regions
+          icon: images://le-img-lib/map-marker-distance.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Geography Regions
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.InvestmentStructure.business_views.InvestmentStructureBusinessView
+          _name: BrowseInvestmentStructure
+          label: Investments Structure
+          icon: images://le-img-lib/view-quilt.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Investments Structure
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.GroupType.business_views.GroupTypeBusinessView
+          _name: BrowseGroupType
+          label: GroupType
+          icon: images://le-img-lib/bookshelf.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: GroupType
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Site.business_views.SiteBusinessView
+          _name: BrowseSite
+          label: Sites
+          icon: images://le-img-lib/office-building-marker.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Sites
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Bank.business_views.BankBusinessView
+          _name: BrowseBank
+          label: Banks
+          description: Browse Banks
+          icon: images://le-img-lib/bank.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+    - _name: LegalEntity
+      _type: FolderAction
+      label: Legal Entities & Funds
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+     
+      appActions:
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Name.business_views.NameBusinessView
+          _name: BrowseNames
+          label: Browse Names
+          icon: images://le-img-lib/bookshelf.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Names
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.LEGroup.business_views.LEGroupBusinessView
+          _name: BrowseLEGroup
+          label: LE Groups
+          icon: images://le-img-lib/group.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: LE Groups
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.LegalEntity.business_views.LegalEntityBusinessView
+          _name: BrowseLegalEntity
+          label: Legal Entities
+          icon: images://le-img-lib/office-building.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Legal Entities
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Fund.business_views.FundBusinessView
+          _name: BrowseFunds
+          label: Funds
+          icon: images://le-img-lib/vector-square.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Funds
+        - _type: BrowseBusinessViewAction
+          businessView: LegalEntity.entities.Account.business_views.AccountBusinessView
+          _name: BrowseAccount
+          label: Accounts
+          icon: images://le-img-lib/account-outline.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Accounts
+
+    - _type: FolderAction
+      _name: Administration
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Administrative tasks
+      label: Administration
+      image: images://hr-img-lib/bookshelf.svg
+      appActions:
+        - _type: FolderAction
+          _name: AdministrationFolder
+          label: Admin & Documentation
+          image: images://hr-img-lib/bookshelf.svg
+          icon: images://hr-img-lib/bookshelf.svg
+          iconColor: md:grey
+          labelColor: md:grey
+          appActions:
+            - _type: OpenDocumentationAction
+              _name: OpenModelDoc
+              iconColor: md:grey
+              label: Model Documentation
+            - _type: BrowseEntitiesFolderAction
+              _name: Entities
+              lineageEnabled: true
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: false
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: LegalEntity
+      viewType: GD
+      businessView: LegalEntity.entities.LegalEntity.business_views.LegalEntityBusinessView
+      searchTypeConfig: LegalEntity.entities.LegalEntity.business_views.LegalEntityBusinessView.LegalEntity.TextConfig
+      maxResults: 5       

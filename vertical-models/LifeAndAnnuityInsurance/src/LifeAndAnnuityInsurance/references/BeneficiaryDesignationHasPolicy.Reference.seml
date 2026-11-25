@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: BeneficiaryDesignationHasPolicy
+description: "Indicates the Policy associated with a Beneficiary Designation."
+_type: Reference
+label: "Beneficiary Designation Has Policy"
+
+fromEntity: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.BeneficiaryDesignation
+fromRoleLabel: "Beneficiary Designation"
+fromRoleName: BeneficiaryDesignation
+fromRolePluralLabel: "Beneficiary Designations"
+physicalName: BEN_DESIG_HAS_POL
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+toRoleLabel: "Policy"
+toRoleName: Policy
+toRolePhysicalName: POL
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Policy
+  label: "Policy ID"
+  description: "The identifier of the Policy associated with the Beneficiary Designation."
+  physicalName: POL_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Policy.Policy

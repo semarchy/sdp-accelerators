@@ -1,0 +1,34 @@
+_package: RetailCustomer360.entities.Promotion.steppers
+_type: Stepper
+_name: AuthorPromotion
+entity: RetailCustomer360.entities.Promotion.Promotion
+label: Promotions
+description: "Guided authoring flow for Promotions."
+rootStep:
+  _type: CollectionStep
+  _name: PromotionCollection
+  label: Promotions
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: RetailCustomer360.entities.Promotion.collection_views.PromotionCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Details
+      label: Details
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RetailCustomer360.entities.Promotion.forms.PromotionForm.Overview

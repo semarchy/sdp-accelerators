@@ -1,0 +1,62 @@
+_package: CTMDM.entities.RegulatoryAuthority.business_views
+_type: BusinessView
+_name: RegulatoryAuthorityBusinessView
+
+entity: CTMDM.entities.RegulatoryAuthority.RegulatoryAuthority
+rootLabel: Regulatory Authority
+rootPluralLabel: Regulatory Authorities
+rootIconUrl: images://mdi/gavel.svg
+displayRootNodeAs: ICON_LABEL
+label: Regulatory Authorities
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: RegulatoryAuthority
+  entity: CTMDM.entities.RegulatoryAuthority.RegulatoryAuthority
+  actionSet: CTMDM.entities.RegulatoryAuthority.action_sets.RegulatoryAuthorityActionSet
+  collection: CTMDM.entities.RegulatoryAuthority.collection_views.RegulatoryAuthorityCollectionView
+  form: CTMDM.entities.RegulatoryAuthority.forms.RegulatoryAuthorityForm
+  displayCard: CTMDM.entities.RegulatoryAuthority.display_cards.RegulatoryAuthorityDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: SourceAuthoringRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.RegulatoryAuthority.business_views.RegulatoryAuthorityBusinessView.RegulatoryAuthority
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

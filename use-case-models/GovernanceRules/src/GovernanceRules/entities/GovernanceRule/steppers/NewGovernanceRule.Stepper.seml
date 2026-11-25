@@ -1,0 +1,169 @@
+# NewGovernanceRule: stepper on GovernanceRule of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceRule.steppers
+_type: Stepper
+_name: NewGovernanceRule
+description: 'Creates a governance rule with its scopes and citations in one journey (New rule action), and edits a rule (Edit action). A new rule starts as DRAFT; the Rule review workflow approves it.'
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: New rule
+rootStep:
+  _type: CollectionStep
+  _name: GovernanceRules
+  label: Governance rules
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.GovernanceRule.collection_views.GovernanceRuleCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+  - _type: FormStep
+    _name: Definition
+    label: Definition
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    enableMasterValuePicking: false
+    formTab: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm.Definition
+    referenceFormFieldConfigs:
+    - fdnFormField: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm.Definition.DefinitionColumns.DefinitionRight.Classification.FDN_Policy
+      referencePickerType: AUTO_COMPLETE
+      enableUserSort: true
+      sortExpression: Name
+    - fdnFormField: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm.Definition.DefinitionColumns.DefinitionRight.Classification.FDN_OwnerBody
+      referencePickerType: AUTO_COMPLETE
+      enableUserSort: true
+      sortExpression: Name
+    formStepEnrichers:
+    - enricher: GovernanceRules.entities.GovernanceRule.enrichers.SetDraftStatus
+      executedOnFormOpen: true
+      executedOnDataChange: true
+    formStepValidations:
+    - validationType: CHECK
+      validator: GovernanceRules.entities.GovernanceRule.validations.RetirementAfterEffective
+      executedOnDataChange: true
+    stepTransitionValidations:
+    - validationType: CHECK
+      validator: GovernanceRules.entities.GovernanceRule.validations.RetirementAfterEffective
+      onStepExit: BLOCK
+  - _type: FormStep
+    _name: Implementation
+    label: Implementation
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    enableMasterValuePicking: false
+    formTab: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm.Implementation
+  - _type: CollectionStep
+    _name: Scopes
+    label: Scopes
+    oneToManyReference: GovernanceRules.references.RuleScopeHasRule
+    collectionView: GovernanceRules.entities.RuleScope.collection_views.RuleScopeByRuleCollectionView
+    displayCard: GovernanceRules.entities.RuleScope.display_cards.RuleScopeDisplayCard
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    linear: false
+    childDeleteType: HARD_DELETE
+    defaultDisplayType: TABLE
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    useCustomCollectionLabel: false
+    enableChildCreationOnParentCreate: true
+    enableChildRemoveOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildRemoveOnParentEdit: true
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildDeleteOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    childSteps:
+    - _type: FormStep
+      _name: ScopesDetails
+      label: Scopes
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope
+      referenceFormFieldConfigs:
+      - fdnFormField: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope.Links.FDN_DataDomain
+        referencePickerType: AUTO_COMPLETE
+        enableUserSort: true
+        sortExpression: Name
+      - fdnFormField: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope.Links.FDN_DataClassification
+        referencePickerType: AUTO_COMPLETE
+        enableUserSort: true
+        sortExpression: Name
+      - fdnFormField: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope.Links.FDN_AttributeType
+        referencePickerType: AUTO_COMPLETE
+        enableUserSort: true
+        sortExpression: Name
+  - _type: CollectionStep
+    _name: Citations
+    label: Citations
+    oneToManyReference: GovernanceRules.references.RuleCitationHasRule
+    collectionView: GovernanceRules.entities.RuleCitation.collection_views.RuleCitationByRuleCollectionView
+    displayCard: GovernanceRules.entities.RuleCitation.display_cards.RuleCitationDisplayCard
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    linear: false
+    childDeleteType: HARD_DELETE
+    defaultDisplayType: TABLE
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    useCustomCollectionLabel: false
+    enableChildCreationOnParentCreate: true
+    enableChildRemoveOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildRemoveOnParentEdit: true
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildDeleteOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    childSteps:
+    - _type: FormStep
+      _name: CitationsDetails
+      label: Citations
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.RuleCitation.forms.RuleCitationForm.RuleCitation
+      referenceFormFieldConfigs:
+      - fdnFormField: GovernanceRules.entities.RuleCitation.forms.RuleCitationForm.RuleCitation.Links.FDN_Regulation
+        referencePickerType: AUTO_COMPLETE
+        enableUserSort: true
+        sortExpression: Name

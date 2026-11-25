@@ -1,0 +1,13 @@
+_package: CTMDM.entities.HealthcareOrganization.enrichers
+_name: NormalizeHealthcareOrganization
+_type: SemQLEnricher
+entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+label: Normalize Healthcare Organization
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Healthcare Organization values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedOrganizationName
+    expression: "RTRIM(LTRIM(UPPER(OrganizationName)))"
+  - attributeName: NormalizedTaxIdentifier
+    expression: "RTRIM(LTRIM(UPPER(TaxIdentifier)))"

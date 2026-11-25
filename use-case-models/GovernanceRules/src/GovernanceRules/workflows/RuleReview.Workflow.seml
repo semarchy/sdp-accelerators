@@ -1,0 +1,332 @@
+# RuleReview: workflow of the GovernanceRules accelerator.
+_package: GovernanceRules.workflows
+_type: Workflow
+_name: RuleReview
+label: Rule review
+workflowAdminRole: GovernanceOwner
+dataScope:
+- _type: RootEntity
+  _name: GovernanceRule
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  cardinality: SINGLE_RECORD
+  displayCard: GovernanceRules.entities.GovernanceRule.display_cards.GovernanceRuleDisplayCard
+  childEntities:
+  - ref: GovernanceRules.references.RuleScopeHasRule
+  - ref: GovernanceRules.references.RuleCitationHasRule
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: '*'
+notifications:
+  workflowAdminOnDueDate: false
+retentionPolicy:
+  retentionType: FOREVER
+  retentionTimeUnit: DAYS
+steps:
+- _type: StartFromSelectionEvent
+  _name: Start
+  label: Request a rule review
+  authoredEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  selectionSourceType: GOLDEN_DATA
+  defaultPriority: NORMAL
+  initiatorRequiredRole: GovernanceSteward
+  startupParameters:
+    attachmentParamRequired: false
+    attachmentParamSupported: true
+    commentParamRequired: false
+    commentParamSupported: true
+    descriptionParamSupported: true
+    dueDateParamRequired: false
+    dueDateParamSupported: false
+    nextTaskAssigneeRequired: false
+    nextTaskAssigneeSupported: false
+    priorityParamSupported: false
+    showWaitDialog: false
+  position:
+    x: 40
+    y: 200
+  transition:
+    _type: StartEventTransition
+    _name: outgoing
+    toStep: GovernanceRules.workflows.RuleReview.PrepareRequest
+- _type: UserTask
+  _name: PrepareRequest
+  label: Prepare the review request
+  icon: images://mdi/pencil.svg
+  application: GovernanceRules.applications.GovernanceRules
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  taskType: DATA_AUTHORING
+  stepper: GovernanceRules.entities.GovernanceRule.steppers.ReviewGovernanceRule
+  assigneeRequiredRole: GovernanceSteward
+  assigneeCanRelease: true
+  myTasksConfiguration:
+    collection: GovernanceRules.entities.GovernanceRule.collection_views.GovernanceRuleCollectionView
+  notificationsOnTaskAssignment:
+    toAssignee: true
+    toCandidates: true
+  notificationsOnTaskExpiration:
+    taskMaxDuration: 2880
+    toAdmin: false
+    toCandidatesOrAssignee: false
+  notificationsOnWorkflowDueDate:
+    toCandidatesOrAssignee: false
+  position:
+    x: 200
+    y: 200
+  transitions:
+  - _type: UserTaskTransition
+    _name: Submit
+    label: Submit for approval
+    toStep: GovernanceRules.workflows.RuleReview.NotifyOwner
+    behaviorOnTransition: KEEP_DATA
+    showWaitDialog: false
+    userTaskCompletionRequired: true
+    transitionParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+    icon: images://mdi/send.svg
+    transitionValidations:
+    - validationType: CHECK
+      validator: GovernanceRules.entities.GovernanceRule.validations.RetirementAfterEffective
+      onTransitionFinish: BLOCK
+    - validationType: MANDATORY
+      attribute: GovernanceRules.entities.GovernanceRule.GovernanceRule.Title
+      onTransitionFinish: BLOCK
+    - validationType: MANDATORY
+      attribute: GovernanceRules.entities.GovernanceRule.GovernanceRule.Statement
+      onTransitionFinish: BLOCK
+    - validationType: MANDATORY
+      attribute: GovernanceRules.entities.GovernanceRule.GovernanceRule.RequirementLevel
+      onTransitionFinish: BLOCK
+    - validationType: MANDATORY
+      attribute: GovernanceRules.entities.GovernanceRule.GovernanceRule.Category
+      onTransitionFinish: BLOCK
+  - _type: UserTaskTransition
+    _name: Cancel
+    label: Cancel the request
+    toStep: GovernanceRules.workflows.RuleReview.Cancelled
+    behaviorOnTransition: REVERT_DATA
+    showWaitDialog: false
+    userTaskCompletionRequired: false
+    transitionParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+    icon: images://mdi/close-circle-outline.svg
+  assigneeCondition: Username = StepInstance.WorkflowInstance.InitiatorName
+- _type: SendEmailAutomation
+  _name: NotifyOwner
+  label: Notify the governance owner
+  icon: images://mdi/email-outline.svg
+  application: GovernanceRules.applications.GovernanceRules
+  contentType: HTML_PREFORMATTED
+  subject: Governance rule to approve
+  body: <p>Hello {PARAM_B_RECIPIENT_FIRST_NAME},</p><p>{NotifyOwnerRequester} asks you to review this governance rule (new or changed rule, or
+    retirement):</p><p>{NotifyOwnerRule}</p><p>Open <b>My tasks</b> in Governance Rules to approve or reject it.</p>
+  customParameters:
+  - _type: EmailCustomParameter
+    _name: NotifyOwnerRule
+    parameterType: CURRENT_DATASET_AS_CHIPS
+    rootEntity: GovernanceRules.workflows.RuleReview.GovernanceRule
+    maxRecordCount: 1
+    maxChipsPerRow: 1
+  - _type: EmailCustomParameter
+    _name: NotifyOwnerRequester
+    parameterType: SEMQL
+    expression: WorkflowInstance.InitiatorName
+  to:
+  - _type: EmailRecipientSource
+    _name: GovernanceOwners
+    sourceType: USERS_FROM_ROLE
+    roleValue: GovernanceOwner
+  recipientMaxCount: 50
+  failOnError: false
+  senderName: Governance Rules
+  position:
+    x: 380
+    y: 200
+  transition:
+    _type: AutomationTransition
+    _name: outgoing
+    toStep: GovernanceRules.workflows.RuleReview.Approval
+- _type: UserTask
+  _name: Approval
+  label: Approve the governance rule
+  icon: images://mdi/gavel.svg
+  application: GovernanceRules.applications.GovernanceRules
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  taskType: DATA_AUTHORING
+  stepper: GovernanceRules.entities.GovernanceRule.steppers.ApproveGovernanceRule
+  assigneeRequiredRole: GovernanceOwner
+  assigneeCanRelease: true
+  myTasksConfiguration:
+    collection: GovernanceRules.entities.GovernanceRule.collection_views.GovernanceRuleCollectionView
+  notificationsOnTaskAssignment:
+    toAssignee: true
+    toCandidates: true
+  notificationsOnTaskExpiration:
+    taskMaxDuration: 2880
+    toAdmin: false
+    toCandidatesOrAssignee: false
+  notificationsOnWorkflowDueDate:
+    toCandidatesOrAssignee: false
+  position:
+    x: 560
+    y: 200
+  transitions:
+  - _type: UserTaskTransition
+    _name: Approve
+    label: Approve
+    toStep: GovernanceRules.workflows.RuleReview.ApplyDecision
+    behaviorOnTransition: KEEP_DATA
+    showWaitDialog: false
+    userTaskCompletionRequired: true
+    transitionParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+    icon: images://mdi/check-circle-outline.svg
+    requiredRole: GovernanceOwner
+    transitionValidations:
+    - validationType: CHECK
+      validator: GovernanceRules.entities.GovernanceRule.validations.ApprovedRuleHasScope
+      onTransitionFinish: BLOCK
+    - validationType: CHECK
+      validator: GovernanceRules.entities.GovernanceRule.validations.RetirementAfterEffective
+      onTransitionFinish: BLOCK
+    - validationType: MANDATORY
+      attribute: GovernanceRules.entities.GovernanceRule.GovernanceRule.Title
+      onTransitionFinish: BLOCK
+    - validationType: MANDATORY
+      attribute: GovernanceRules.entities.GovernanceRule.GovernanceRule.Statement
+      onTransitionFinish: BLOCK
+    - validationType: MANDATORY
+      attribute: GovernanceRules.entities.GovernanceRule.GovernanceRule.RequirementLevel
+      onTransitionFinish: BLOCK
+    - validationType: MANDATORY
+      attribute: GovernanceRules.entities.GovernanceRule.GovernanceRule.Category
+      onTransitionFinish: BLOCK
+  - _type: UserTaskTransition
+    _name: Reject
+    label: Reject
+    toStep: GovernanceRules.workflows.RuleReview.NotifyRejected
+    behaviorOnTransition: REVERT_DATA
+    showWaitDialog: false
+    userTaskCompletionRequired: false
+    transitionParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: true
+      commentParamSupported: true
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+    icon: images://mdi/close-circle-outline.svg
+    requiredRole: GovernanceOwner
+- _type: SubmitAutomation
+  _name: ApplyDecision
+  label: Apply the decision
+  icon: images://mdi/database-check.svg
+  integrationJob: GovernanceRules.jobs.INTEGRATE_ALL
+  submitUserExpression: WorkflowInstance.InitiatorName
+  position:
+    x: 740
+    y: 120
+  transition:
+    _type: AutomationTransition
+    _name: outgoing
+    toStep: GovernanceRules.workflows.RuleReview.NotifyApproved
+- _type: SendEmailAutomation
+  _name: NotifyApproved
+  label: Notify the steward (approved)
+  icon: images://mdi/email-outline.svg
+  application: GovernanceRules.applications.GovernanceRules
+  contentType: HTML_PREFORMATTED
+  subject: Governance rule approved
+  body: <p>Hello {PARAM_B_RECIPIENT_FIRST_NAME},</p><p>The governance owner approved your request on this rule:</p><p>{NotifyApprovedRule}</p>
+  customParameters:
+  - _type: EmailCustomParameter
+    _name: NotifyApprovedRule
+    parameterType: CURRENT_DATASET_AS_CHIPS
+    rootEntity: GovernanceRules.workflows.RuleReview.GovernanceRule
+    maxRecordCount: 1
+    maxChipsPerRow: 1
+  to:
+  - &id002
+    _type: EmailRecipientSource
+    _name: Requester
+    sourceType: SEMQL_USERNAMES
+    semqlValue: WorkflowInstance.InitiatorName
+  recipientMaxCount: 50
+  failOnError: false
+  senderName: Governance Rules
+  position:
+    x: 920
+    y: 120
+  transition:
+    _type: AutomationTransition
+    _name: outgoing
+    toStep: GovernanceRules.workflows.RuleReview.Approved
+- _type: SendEmailAutomation
+  _name: NotifyRejected
+  label: Notify the steward (rejected)
+  icon: images://mdi/email-outline.svg
+  application: GovernanceRules.applications.GovernanceRules
+  contentType: HTML_PREFORMATTED
+  subject: Governance rule rejected
+  body: <p>Hello {PARAM_B_RECIPIENT_FIRST_NAME},</p><p>The governance owner rejected your request on this rule:</p><p>{NotifyRejectedRule}</p><p>The
+    reason is in the workflow comments. Open <b>My tasks</b> to rework and resubmit it, or cancel the request.</p>
+  customParameters:
+  - _type: EmailCustomParameter
+    _name: NotifyRejectedRule
+    parameterType: CURRENT_DATASET_AS_CHIPS
+    rootEntity: GovernanceRules.workflows.RuleReview.GovernanceRule
+    maxRecordCount: 1
+    maxChipsPerRow: 1
+  to:
+  - *id002
+  recipientMaxCount: 50
+  failOnError: false
+  senderName: Governance Rules
+  position:
+    x: 740
+    y: 320
+  transition:
+    _type: AutomationTransition
+    _name: outgoing
+    toStep: GovernanceRules.workflows.RuleReview.PrepareRequest
+- _type: EndEvent
+  _name: Approved
+  position:
+    x: 1100
+    y: 120
+- _type: EndEvent
+  _name: Cancelled
+  position:
+    x: 380
+    y: 360

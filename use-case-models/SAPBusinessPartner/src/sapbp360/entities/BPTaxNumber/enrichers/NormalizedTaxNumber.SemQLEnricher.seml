@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: sapbp360.entities.BPTaxNumber.enrichers
+_name: NormalizedTaxNumber
+entity: sapbp360.entities.BPTaxNumber.BPTaxNumber
+label: Normalized tax number for search and comparison.
+description: Normalized tax number for search and comparison.
+enricherExecutionScope: PRE_CONSO
+condition: BPTaxNumber is not null
+semQlEnricherExpressions:
+  - attributeName: NormalizedTaxNumber
+    expression: REPLACE(UPPER(BPTaxNumber), ' ', '')

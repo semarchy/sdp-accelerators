@@ -1,0 +1,45 @@
+﻿_package: RetailCustomer360.entities.LoyaltyProgramMember.enrichers
+_name: LoyaltyProgramMemberDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+label: LoyaltyProgramMember Data Quality Enricher
+description: "Computes standard completeness enrichment fields for LoyaltyProgramMember."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN LoyaltyMemberId IS NULL AND LoyaltyMemberNumber IS NULL AND MembershipStatus IS NULL THEN 0
+        ELSE (
+          CASE WHEN LoyaltyMemberId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN LoyaltyMemberNumber IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN MembershipStatus IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN LoyaltyMemberId IS NULL AND LoyaltyMemberNumber IS NULL AND MembershipStatus IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN LoyaltyMemberId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN LoyaltyMemberNumber IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN MembershipStatus IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()
+  - attributeName: ActivityRecencyBand
+    expression: CASE
+        WHEN LastActivityDate IS NULL THEN 'No Activity'
+        WHEN PointsExpiryDate IS NOT NULL AND PointsExpiryDate < CURRENT_DATE() THEN 'At Risk'
+        WHEN MembershipStatus IN ('Inactive', 'Closed', 'Suspended') THEN 'Dormant'
+        ELSE 'Active'
+      END
+  - attributeName: MemberHealthStatus
+    expression: CASE
+        WHEN MembershipStatus IS NULL THEN 'Unknown'
+        WHEN MembershipStatus IN ('Inactive', 'Closed') THEN 'Inactive'
+        WHEN MembershipStatus = 'Suspended' THEN 'At Risk'
+        WHEN PointsExpiryDate IS NOT NULL AND PointsExpiryDate < CURRENT_DATE() THEN 'Expired Points'
+        ELSE 'Healthy'
+      END

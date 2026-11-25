@@ -1,0 +1,26 @@
+# RuleCitationHasRule: reference of the GovernanceRules accelerator. The rule that cites the regulation.
+_package: GovernanceRules.references
+_type: Reference
+_name: RuleCitationHasRule
+label: Rule of the citation
+physicalName: FK_RC_RULE
+deletePropagation: CASCADE
+validationScope: PRE_CONSO
+oneToMany: true
+fromEntity: GovernanceRules.entities.RuleCitation.RuleCitation
+fromRoleName: Citations
+fromRoleLabel: Citation
+fromRolePluralLabel: Citations
+toEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+toRoleName: Rule
+toRoleLabel: Rule
+toRolePhysicalName: RC_RULE
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Rule
+  label: Rule
+  entity: GovernanceRules.entities.RuleCitation.RuleCitation
+  physicalName: RC_RULE
+  description: The rule that cites the regulation. Citations belong to their rule and are deleted with it.
+description: The rule that cites the regulation. Citations belong to their rule and are deleted with it.
+mandatoryValidationLabel: A RuleCitation needs a rule.

@@ -1,0 +1,85 @@
+# Reconciliation Account entity for the SAP Business Partner 360 accelerator.
+_name: ReconciliationAccount
+_package: sapbp360.entities.ReconciliationAccount
+_type: Entity
+primaryKey: sapbp360.entities.ReconciliationAccount.ReconciliationAccount.ReconciliationAccountID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ReconciliationAccountCode
+label: Reconciliation Account
+documentation: Reconciliation Account reference data used by the SAP Business Partner 360 model.
+description: Reconciliation Account reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/ReconciliationAccount.svg
+pluralLabel: Reconciliation Accounts
+historizeGolden: true
+historizeMaster: false
+physicalTableName: RECON_ACCT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ReconciliationAccountID
+    physicalName: RECON_ACCT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Reconciliation Account ID
+    documentation: Unique identifier for the reconciliation account.
+    description: Unique identifier for the reconciliation account.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Reconciliation Account ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: ReconciliationAccountCode
+    physicalName: RECON_ACCT_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Reconciliation Account Code
+    documentation: Code for the reconciliation account.
+    description: Code for the reconciliation account.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Reconciliation Account Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: ReconciliationAccountName
+    physicalName: RECON_ACCT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Reconciliation Account Name
+    documentation: Name of the reconciliation account.
+    description: Name of the reconciliation account.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Reconciliation Account Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the reconciliation account.
+    description: Description for the reconciliation account.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the reconciliation account is active.
+    description: Indicates whether the reconciliation account is active.
+    mandatory: false
+    length: 1
+    searchable: true

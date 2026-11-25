@@ -1,0 +1,263 @@
+# Business Partner entity for the SAP Business Partner 360 accelerator.
+_name: BusinessPartner
+_package: sapbp360.entities.BusinessPartner
+_type: Entity
+primaryKey: sapbp360.entities.BusinessPartner.BusinessPartner.BPGoldenID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: UUID
+label: Business Partner
+documentation: Trusted business partner golden record consolidating SAP and CRM party information.
+description: Trusted business partner golden record consolidating SAP and CRM party information.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://sapbusinesspartner/BusinessPartner.svg
+pluralLabel: Business Partners
+historizeGolden: true
+historizeMaster: true
+physicalTableName: BUSINESS_PARTNER
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: BPGoldenID
+    physicalName: BP_GOLDEN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    label: BP Golden ID
+    documentation: System generated golden identifier for the trusted business partner record.
+    description: System generated golden identifier for the trusted business partner record.
+    mandatory: true
+    mandatoryValidationLabel: BP Golden ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    precision: 38
+    searchable: true
+  - _type: EntityAttribute
+    _name: BusinessPartner
+    physicalName: BUS_PTNR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Business Partner
+    documentation: SAP business partner number kept for traceability.
+    description: SAP business partner number kept for traceability.
+    mandatory: false
+    length: 10
+    searchable: true
+  - _type: EntityAttribute
+    _name: BusinessPartnerFullName
+    physicalName: BUS_PTNR_FULL_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Business Partner Full Name
+    documentation: Concatenated full name of the business partner.
+    description: Concatenated full name of the business partner.
+    mandatory: false
+    length: 80
+    searchable: true
+  - _type: EntityAttribute
+    _name: NormalizedName
+    physicalName: NORM_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Name
+    documentation: Standardized business partner name used for matching and search.
+    description: Standardized business partner name used for matching and search.
+    mandatory: false
+    length: 80
+    searchable: true
+  - _type: EntityAttribute
+    _name: OrganizationBPName1
+    physicalName: ORG_BP_NAME_1
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Organization BP Name 1
+    documentation: Organization name line 1.
+    description: Organization name line 1.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: OrganizationBPName2
+    physicalName: ORG_BP_NAME_2
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Organization BP Name 2
+    documentation: Organization name line 2.
+    description: Organization name line 2.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: LastName
+    physicalName: LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Last Name
+    documentation: Person surname.
+    description: Person surname.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: FirstName
+    physicalName: FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: First Name
+    documentation: Person first name.
+    description: Person first name.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: MiddleName
+    physicalName: MIDDLE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Middle Name
+    documentation: Person middle name.
+    description: Person middle name.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: BirthDate
+    physicalName: BIRTH_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: Birth Date
+    documentation: Date of birth for a natural person business partner.
+    description: Date of birth for a natural person business partner.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: BusinessPartnerIsBlocked
+    physicalName: BUS_PTNR_IS_BLOCKED
+    dataType: Boolean
+    goldenAttribute: true
+    label: Business Partner Is Blocked
+    documentation: Central block flag for the business partner.
+    description: Central block flag for the business partner.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: IsNaturalPerson
+    physicalName: IS_NATURAL_PRSN
+    dataType: Boolean
+    goldenAttribute: true
+    label: Is Natural Person
+    documentation: Indicates whether the business partner is a natural person.
+    description: Indicates whether the business partner is a natural person.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: SearchTerm1
+    physicalName: SEARCH_TERM_1
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Search Term 1
+    documentation: Search term used for matching and deduplication.
+    description: Search term used for matching and deduplication.
+    mandatory: false
+    length: 20
+    searchable: true
+  - _type: EntityAttribute
+    _name: SearchTerm2
+    physicalName: SEARCH_TERM_2
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Search Term 2
+    documentation: Secondary search term.
+    description: Secondary search term.
+    mandatory: false
+    length: 20
+    searchable: true
+  - _type: EntityAttribute
+    _name: GoldenRecordFlag
+    physicalName: GOLDEN_RECORD_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    label: Golden Record Flag
+    documentation: Indicates the surviving golden record.
+    description: Indicates the surviving golden record.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: CreatedDate
+    physicalName: CREATED_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    label: Created Date
+    documentation: Creation timestamp of the business partner record.
+    description: Creation timestamp of the business partner record.
+    mandatory: false
+    precision: 0
+    searchable: true
+  - _type: EntityAttribute
+    _name: LastModifiedDate
+    physicalName: LAST_MODIFIED_DATE
+    dataType: Timestamp
+    goldenAttribute: true
+    label: Last Modified Date
+    documentation: Last change timestamp of the business partner record.
+    description: Last change timestamp of the business partner record.
+    mandatory: false
+    precision: 0
+    searchable: true
+matcher:
+  _name: SemQLMatcherBUSINESSPARTNER
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 94
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Business Partner matching rules for golden record consolidation.
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameBusinessPartnerNumber
+      condition: Record1.BusinessPartner is not null and Record1.BusinessPartner = Record2.BusinessPartner
+      label: Same Business Partner Number
+      documentation: Same Business Partner Number matching rule.
+      description: Same Business Partner Number matching rule.
+      matchScore: 96
+      color: md:teal 800
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameFullName
+      condition: Record1.NormalizedName is not null and Record1.NormalizedName = Record2.NormalizedName
+      label: Same Full Name
+      documentation: Same Full Name matching rule.
+      description: Same Full Name matching rule.
+      matchScore: 88
+      color: md:teal 600
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameOrgAndSearchTerm
+      condition: COALESCE(Record1.OrganizationBPName1,'') = COALESCE(Record2.OrganizationBPName1,'') and COALESCE(Record1.SearchTerm1,'') = COALESCE(Record2.SearchTerm1,'')
+      label: Same Organization And Search Term
+      documentation: Same Organization And Search Term matching rule.
+      description: Same Organization And Search Term matching rule.
+      matchScore: 85
+      color: md:amber 700
+      usingMatchOn: false

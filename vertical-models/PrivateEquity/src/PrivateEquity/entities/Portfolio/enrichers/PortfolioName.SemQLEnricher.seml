@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.Portfolio.enrichers
+_name: PortfolioName
+entity: PrivateEquity.entities.Portfolio.Portfolio
+label: Portfolio Name
+description: "Populates missing portfolio names from the related fund and industry names before consolidation."
+enricherExecutionScope: PRE_CONSO
+condition: Name is null
+semQlEnricherExpressions:
+  - attributeName: Name
+    expression: FDN_Fund || ' ' || FDN_Industry

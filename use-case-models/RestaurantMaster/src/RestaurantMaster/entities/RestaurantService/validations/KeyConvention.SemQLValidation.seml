@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.RestaurantService.validations
+_name: KeyConvention
+_type: SemQLValidation
+entity: RestaurantMaster.entities.RestaurantService.RestaurantService
+label: Key follows the restaurant ID convention
+description: The key must start with the restaurant ID followed by a dash (for example R0000123-POS-4471).
+validationScope: PRE_CONSO
+validationLabel: The key must start with the restaurant ID followed by a dash (for example R0000123-POS-4471).
+condition: SUBSTR(RestaurantServiceID, 1, LENGTH(FID_Restaurant) + 1) = FID_Restaurant || '-'

@@ -1,0 +1,28 @@
+_type: StandardSurvivorshipRule
+entity: HCO_HCP.entities.HCP.HCP
+_package: HCO_HCP.entities.HCP.survivorship_rules
+defaultRule: false
+_name: Name
+consolidationOrderByExpression: UpdateDate DESC
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Name
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.HCO_HCP
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberJSON
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberXLS
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.Encounters
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: FirstName
+  - attributeName: MiddleName
+  - attributeName: LastName
+  - attributeName: NameSuffix
+  - attributeName: LastNamePhonetic
+  - attributeName: FirstNamePhonetic

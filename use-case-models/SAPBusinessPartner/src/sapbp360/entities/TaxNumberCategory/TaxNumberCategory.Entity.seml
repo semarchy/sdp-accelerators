@@ -1,0 +1,85 @@
+# Tax Number Category entity for the SAP Business Partner 360 accelerator.
+_name: TaxNumberCategory
+_package: sapbp360.entities.TaxNumberCategory
+_type: Entity
+primaryKey: sapbp360.entities.TaxNumberCategory.TaxNumberCategory.TaxNumberCategoryID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: TaxNumberCategoryCode
+label: Tax Number Category
+documentation: Tax Number Category reference data used by the SAP Business Partner 360 model.
+description: Tax Number Category reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/TaxNumberCategory.svg
+pluralLabel: Tax Number Categories
+historizeGolden: true
+historizeMaster: false
+physicalTableName: TAX_NO_CAT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: TaxNumberCategoryID
+    physicalName: TAX_NO_CAT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Tax Number Category ID
+    documentation: Unique identifier for the tax number category.
+    description: Unique identifier for the tax number category.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Tax Number Category ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: TaxNumberCategoryCode
+    physicalName: TAX_NO_CAT_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Tax Number Category Code
+    documentation: Code for the tax number category.
+    description: Code for the tax number category.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Tax Number Category Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: TaxNumberCategoryName
+    physicalName: TAX_NO_CAT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Tax Number Category Name
+    documentation: Name of the tax number category.
+    description: Name of the tax number category.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Tax Number Category Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the tax number category.
+    description: Description for the tax number category.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the tax number category is active.
+    description: Indicates whether the tax number category is active.
+    mandatory: false
+    length: 1
+    searchable: true

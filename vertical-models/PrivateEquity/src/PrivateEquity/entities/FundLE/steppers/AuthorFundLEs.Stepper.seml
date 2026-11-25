@@ -1,0 +1,94 @@
+_name: AuthorFundLEs
+_package: PrivateEquity.entities.FundLE.steppers
+_type: Stepper
+entity: PrivateEquity.entities.FundLE.FundLE
+rootStep:
+  _name: FundLEs
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.FundLE.collection_views.FundLECollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Fund LEs
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.FundLELegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.FundLEFund.Fund
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.FundLELegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.FundLEFund.Fund
+  stepTriggers: []
+  childSteps:
+    - _name: FundLE
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Fund LE
+      formTab: PrivateEquity.entities.FundLE.forms.FundLEForm.FundLE
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.FundLELegalEntity.LegalEntity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.FundLELegalEntity.LegalEntity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.FundLEFund.Fund
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.FundLEFund.Fund
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.FundLELegalEntity.LegalEntity
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.FundLEFund.Fund
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.FundLELegalEntity.LegalEntity
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.FundLEFund.Fund
+      stepTriggers: []
+label: Author Fund LEs
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.FundLEFund.Fund
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.FundLELegalEntity.LegalEntity
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.FundLELegalEntity.LegalEntity
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.FundLEFund.Fund
+triggers: []

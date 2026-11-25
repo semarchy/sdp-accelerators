@@ -1,0 +1,87 @@
+_name: AuthorBPAddressUsages
+_package: sapbp360.entities.BPAddressUsage.steppers
+_type: Stepper
+entity: sapbp360.entities.BPAddressUsage.BPAddressUsage
+description: Stepper for authoring BP Address Usages.
+rootStep:
+  _name: BPAddressUsages
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPAddressUsage.collection_views.BPAddressUsageCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Address Usages
+  description: Manage BP Address Usage data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddressUsage_AddressUsage.AddressUsage
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddressUsage_Address.Address
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sapbp360.entities.BPAddressUsage.validations.UsageValidity
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Address Usage.
+      formTab: sapbp360.entities.BPAddressUsage.forms.BPAddressUsageDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddressUsage.forms.BPAddressUsageDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_AddressUsage
+          referencePickerCollectionView: sapbp360.entities.AddressUsage.collection_views.AddressUsageCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddressUsage.forms.BPAddressUsageDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_Address
+          referencePickerCollectionView: sapbp360.entities.BPAddress.collection_views.BPAddressCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddressUsage_AddressUsage.AddressUsage
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddressUsage_Address.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sapbp360.entities.BPAddressUsage.validations.UsageValidity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Address Usages
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddressUsage_AddressUsage.AddressUsage
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddressUsage_Address.Address
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sapbp360.entities.BPAddressUsage.validations.UsageValidity
+triggers: []

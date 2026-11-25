@@ -1,0 +1,181 @@
+_package: PropertyAndCasualtyInsurance.entities.InsurancePlan.business_views
+_type: BusinessView
+_name: InsurancePlanBusinessView
+label: Insurance Plan
+entity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+rootLabel: Insurance Plans
+rootPluralLabel: Insurance Plans
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: InsurancePlan
+  displayCard: PropertyAndCasualtyInsurance.entities.InsurancePlan.display_cards.InsurancePlanDisplayCard
+  entity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+  actionSet: PropertyAndCasualtyInsurance.entities.InsurancePlan.action_sets.InsurancePlanActionSet
+  collection: PropertyAndCasualtyInsurance.entities.InsurancePlan.collection_views.InsurancePlanCollectionView
+  form: PropertyAndCasualtyInsurance.entities.InsurancePlan.forms.InsurancePlanForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Coverage
+      description: Insurance coverage under a plan
+      transitionVisible: '1'
+      transitionVisibleInterpreter: LITERAL
+      iconUrl: images://mdi/umbrella-outline.svg
+      label: Coverage
+      pluralLabel: Coverages
+      transitionPath: Coverage
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      businessViewEntity:
+        _name: Coverage
+        _type: BusinessViewEntity
+        collection: PropertyAndCasualtyInsurance.entities.Coverage.collection_views.CoverageCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PropertyAndCasualtyInsurance.entities.Coverage.Coverage
+        form: PropertyAndCasualtyInsurance.entities.Coverage.forms.CoverageForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: PropertyAndCasualtyInsurance.entities.Coverage.action_sets.CoverageActionSet
+        displayCard: PropertyAndCasualtyInsurance.entities.Coverage.display_cards.CoverageDisplayCard
+    - _type: BusinessViewTransition
+      _name: Rating
+      description: Ratings under a plan
+      transitionVisible: '1'
+      transitionVisibleInterpreter: LITERAL
+      iconUrl: images://mdi/calculator-variant-outline.svg
+      label: Rating
+      pluralLabel: Ratings
+      transitionPath: Rating
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      businessViewEntity:
+        _name: Rating
+        _type: BusinessViewEntity
+        collection: PropertyAndCasualtyInsurance.entities.Rating.collection_views.RatingCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PropertyAndCasualtyInsurance.entities.Rating.Rating
+        form: PropertyAndCasualtyInsurance.entities.Rating.forms.RatingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: PropertyAndCasualtyInsurance.entities.Rating.action_sets.RatingActionSet
+        displayCard: PropertyAndCasualtyInsurance.entities.Rating.display_cards.RatingDisplayCard
+
+    - _type: BusinessViewTransition
+      _name: FormEndorsement
+      description: Form Endorsements under a plan
+      transitionVisible: '1'
+      transitionVisibleInterpreter: LITERAL
+      iconUrl: images://mdi/file-document-outline.svg
+      label: Form Endorsement
+      pluralLabel: Form Endorsements
+      transitionPath: FormEndorsement
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      businessViewEntity:
+        _name: FormEndorsement
+        _type: BusinessViewEntity
+        collection: PropertyAndCasualtyInsurance.entities.FormEndorsement.collection_views.FormEndorsementCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PropertyAndCasualtyInsurance.entities.FormEndorsement.FormEndorsement
+        form: PropertyAndCasualtyInsurance.entities.FormEndorsement.forms.FormEndorsementForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: PropertyAndCasualtyInsurance.entities.FormEndorsement.action_sets.FormEndorsementActionSet
+        displayCard: PropertyAndCasualtyInsurance.entities.FormEndorsement.display_cards.FormEndorsementDisplayCard
+
+    - _type: BusinessViewTransition
+      _name: RegulatoryTest
+      description: Regulatory Tests under a plan
+      transitionVisible: '1'
+      transitionVisibleInterpreter: LITERAL
+      iconUrl: images://mdi/clipboard-check-outline.svg
+      label: Regulatory Test
+      pluralLabel: Regulatory Tests
+      transitionPath: RegulatoryTest
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      businessViewEntity:
+        _name: RegulatoryTest
+        _type: BusinessViewEntity
+        collection: PropertyAndCasualtyInsurance.entities.RegulatoryTest.collection_views.RegulatoryTestCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PropertyAndCasualtyInsurance.entities.RegulatoryTest.RegulatoryTest
+        form: PropertyAndCasualtyInsurance.entities.RegulatoryTest.forms.RegulatoryTestForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: PropertyAndCasualtyInsurance.entities.RegulatoryTest.action_sets.RegulatoryTestActionSet
+        displayCard: PropertyAndCasualtyInsurance.entities.RegulatoryTest.display_cards.RegulatoryTestDisplayCard
+        
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: Transition from Line of Business to related Golden History Records.
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PropertyAndCasualtyInsurance.entities.InsurancePlan.business_views.InsurancePlanBusinessView.InsurancePlan
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false

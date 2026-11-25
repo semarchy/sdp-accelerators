@@ -1,0 +1,105 @@
+_package: PropertyAndCasualtyInsurance.entities.PolicyStatus.business_views
+_type: BusinessView
+_name: PolicyByStatusBusinessView
+label: Policy by Status
+entity: PropertyAndCasualtyInsurance.entities.PolicyStatus.PolicyStatus
+rootLabel: Policy Statuses
+rootPluralLabel: Policy Statuses
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PolicyStatus
+  displayCard: PropertyAndCasualtyInsurance.entities.PolicyStatus.display_cards.PolicyStatusDisplayCard
+  entity: PropertyAndCasualtyInsurance.entities.PolicyStatus.PolicyStatus
+  actionSet: PropertyAndCasualtyInsurance.entities.PolicyStatus.action_sets.PolicyStatusActionSet
+  collection: PropertyAndCasualtyInsurance.entities.PolicyStatus.collection_views.PolicyStatusCollectionView
+  form: PropertyAndCasualtyInsurance.entities.PolicyStatus.forms.PolicyStatusForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Policy
+      label: Policy
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: Policies
+      iconUrl: images://mdi/file-document-outline.svg
+      transitionPath: Policy
+      useCustomLabel: true
+      description: Transition from Policy Status to related Policies.
+      visibleInFormTabCondition: any Policy has (1=1)
+      enableHierarchy: any Policy has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: true
+      transitionVisible: '1'
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Policy
+        displayCard: PropertyAndCasualtyInsurance.entities.Policy.display_cards.PolicyDisplayCard
+        entity: PropertyAndCasualtyInsurance.entities.Policy.Policy
+        actionSet: PropertyAndCasualtyInsurance.entities.Policy.action_sets.PolicyActionSet
+        collection: PropertyAndCasualtyInsurance.entities.Policy.collection_views.PolicyCollectionView
+        form: PropertyAndCasualtyInsurance.entities.Policy.forms.PolicyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        transitions:
+          - _type: BusinessViewTransition
+            _name: LineOfCoverage
+            label: Line Of Coverage
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            pluralLabel: Lines Of Coverage
+            iconUrl: images://mdi/shield-outline.svg
+            transitionPath: LineOfCoverage
+            useCustomLabel: true
+            description: Transition from Policy to related Lines Of Coverage.
+            visibleInFormTabCondition: any LineOfCoverage has (1=1)
+            enableHierarchy: any LineOfCoverage has (1=1)
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: true
+            transitionVisible: '1'
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _type: BusinessViewEntity
+              _name: LineOfCoverage
+              displayCard: PropertyAndCasualtyInsurance.entities.LineOfCoverage.display_cards.LineOfCoverageDisplayCard
+              entity: PropertyAndCasualtyInsurance.entities.LineOfCoverage.LineOfCoverage
+              actionSet: PropertyAndCasualtyInsurance.entities.LineOfCoverage.action_sets.LineOfCoverageActionSet
+              collection: PropertyAndCasualtyInsurance.entities.LineOfCoverage.collection_views.LineOfCoverageCollectionView
+              form: PropertyAndCasualtyInsurance.entities.LineOfCoverage.forms.LineOfCoverageForm
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: true
+useHierarchyOnOpen: true
+rootIconUrl: images://mdi/format-list-bulleted-type.svg

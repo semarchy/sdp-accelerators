@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: PolicyHasPaymentStatus
+description: Indicates the Payment Status associated with a Policy.
+_type: Reference
+label: Policy Has Payment Status
+
+fromEntity: PropertyAndCasualtyInsurance.entities.Policy.Policy
+fromRoleLabel: Policy
+fromRoleName: Policy
+fromRolePluralLabel: Policies
+physicalName: POLICY_HAS_PAYMENT_STATUS
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.PaymentStatus.PaymentStatus
+toRoleLabel: Payment Status
+toRoleName: PaymentStatus
+documentation: Indicates the Payment Status associated with a Policy.
+toRolePhysicalName: PAYMENT_STATUS
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PaymentStatus
+  label: Payment Status Code
+  description: The code of the payment status associated with the policy.
+  physicalName: PAYMENT_STATUS_CODE
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.PaymentStatus.PaymentStatus

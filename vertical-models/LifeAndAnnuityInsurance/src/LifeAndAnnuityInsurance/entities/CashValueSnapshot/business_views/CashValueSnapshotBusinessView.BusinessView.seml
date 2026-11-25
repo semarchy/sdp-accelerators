@@ -1,0 +1,89 @@
+_package: LifeAndAnnuityInsurance.entities.CashValueSnapshot.business_views
+_type: BusinessView
+_name: CashValueSnapshotBusinessView
+label: "Cash Value Snapshot"
+entity: LifeAndAnnuityInsurance.entities.CashValueSnapshot.CashValueSnapshot
+rootLabel: "Cash Value Snapshots"
+rootPluralLabel: "Cash Value Snapshots"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: CashValueSnapshot
+  displayCard: LifeAndAnnuityInsurance.entities.CashValueSnapshot.display_cards.CashValueSnapshotDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.CashValueSnapshot.CashValueSnapshot
+  actionSet: LifeAndAnnuityInsurance.entities.CashValueSnapshot.action_sets.CashValueSnapshotActionSet
+  collection: LifeAndAnnuityInsurance.entities.CashValueSnapshot.collection_views.CashValueSnapshotCollectionView
+  form: LifeAndAnnuityInsurance.entities.CashValueSnapshot.forms.CashValueSnapshotForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Records
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: CashValueSnapshotMasterRecords
+        _type: BusinessViewEntity
+        displayCard: LifeAndAnnuityInsurance.entities.CashValueSnapshot.display_cards.CashValueSnapshotDisplayCard
+        collection: LifeAndAnnuityInsurance.entities.CashValueSnapshot.collection_views.CashValueSnapshotCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: LifeAndAnnuityInsurance.entities.CashValueSnapshot.CashValueSnapshot
+        form: LifeAndAnnuityInsurance.entities.CashValueSnapshot.forms.CashValueSnapshotForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: LifeAndAnnuityInsurance.entities.CashValueSnapshot.action_sets.CashValueSnapshotActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: "Transition from Cash Value Snapshot to related golden history records."
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: LifeAndAnnuityInsurance.entities.CashValueSnapshot.business_views.CashValueSnapshotBusinessView.CashValueSnapshot
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/wallet-outline.svg

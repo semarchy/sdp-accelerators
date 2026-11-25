@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: PolicyHasPaymentStatus
+description: "Indicates the Payment Status associated with a Policy."
+_type: Reference
+label: "Policy Has Payment Status"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+fromRoleLabel: "Policy"
+fromRoleName: Policy
+fromRolePluralLabel: "Policies"
+physicalName: POL_HAS_PAY_STAT
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus
+toRoleLabel: "Payment Status"
+toRoleName: PaymentStatus
+toRolePhysicalName: PAY_STAT
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PaymentStatus
+  label: "Payment Status ID"
+  description: "The identifier of the Payment Status associated with the Policy."
+  physicalName: PAY_STAT_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus

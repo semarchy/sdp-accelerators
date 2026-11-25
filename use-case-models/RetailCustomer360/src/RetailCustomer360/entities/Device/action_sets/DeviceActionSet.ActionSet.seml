@@ -1,0 +1,64 @@
+_package: RetailCustomer360.entities.Device.action_sets
+_type: ActionSet
+_name: DeviceActionSet
+entity: RetailCustomer360.entities.Device.Device
+label: Device Action Set
+description: "Actions available to stewards on Devices."
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateDevice
+    label: Create
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Device.steppers.AuthorDevice
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditDevice
+    label: Edit
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Device.steppers.AuthorDevice
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateDevice
+    label: Mass Update
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Device.steppers.AuthorDevice
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: DeleteDevice
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: ExportDevice
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportDevice
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: RetailCustomer360.entities.Device.steppers.ImportDevice
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraphDevice
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

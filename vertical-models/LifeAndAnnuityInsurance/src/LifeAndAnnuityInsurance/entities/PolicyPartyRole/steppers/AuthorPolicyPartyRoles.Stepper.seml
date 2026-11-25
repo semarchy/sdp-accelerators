@@ -1,0 +1,42 @@
+_package: LifeAndAnnuityInsurance.entities.PolicyPartyRole.steppers
+_type: Stepper
+_name: AuthorPolicyPartyRoles
+entity: LifeAndAnnuityInsurance.entities.PolicyPartyRole.PolicyPartyRole
+label: "Policy Party Roles"
+rootStep:
+  _type: CollectionStep
+  _name: PolicyPartyRoles
+  label: "Policy Party Roles"
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: LifeAndAnnuityInsurance.entities.PolicyPartyRole.collection_views.PolicyPartyRoleImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: PolicyPartyRole
+      label: "Policy Party Role"
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: LifeAndAnnuityInsurance.entities.PolicyPartyRole.forms.PolicyPartyRoleForm.PolicyPartyRole
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.PolicyPartyRole.validations.PolicyPartyRoleDateRangeCheck
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.PolicyPartyRole.validations.BeneficiaryPercentageCheck

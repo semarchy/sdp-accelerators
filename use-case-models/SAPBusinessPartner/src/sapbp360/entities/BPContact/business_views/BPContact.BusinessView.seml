@@ -1,0 +1,138 @@
+_name: BPContact
+_package: sapbp360.entities.BPContact.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.BPContact.BPContact
+rootLabel: BP Contact
+rootPluralLabel: BP Contacts
+useHierarchyOnOpen: false
+label: BP Contact
+description: Business view for BP Contact.
+rootBusinessViewEntity:
+  _name: BPContact
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.BPContact.collection_views.BPContactCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.BPContact.BPContact
+  form: sapbp360.entities.BPContact.forms.BPContactBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.BPContact.action_sets.BPContactActionSet
+  displayCard: sapbp360.entities.BPContact.display_cards.BPContactDisplayCard
+  sortExpression: NormalizedName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol1.FDN_BusinessPartnerCompany
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol2.FDN_BusinessPartnerPerson
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol1.FDN_ContactPersonFunction
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol2.FDN_ContactPersonDepartment
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol3.FDN_ContactRelationshipType
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: BPContactMaster
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPContact.collection_views.BPContactMasterCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPContact.BPContact
+        form: sapbp360.entities.BPContact.forms.BPContactBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPContact.action_sets.BPContactActionSet
+        displayCard: sapbp360.entities.BPContact.display_cards.BPContactDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol1.FDN_BusinessPartnerCompany
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol2.FDN_BusinessPartnerPerson
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol1.FDN_ContactPersonFunction
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol2.FDN_ContactPersonDepartment
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPContact.forms.BPContactBrowsingForm.Main.Relationship.RelationshipRow.RelationshipCol3.FDN_ContactRelationshipType
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.BPContact.business_views.BPContact.BPContact
+rootIconUrl: images://mdi/account-box-outline.svg

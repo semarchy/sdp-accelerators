@@ -1,0 +1,38 @@
+_package: LifeAndAnnuityInsurance.entities.UnderwritingCase.steppers
+_type: Stepper
+_name: AuthorUnderwritingCases
+entity: LifeAndAnnuityInsurance.entities.UnderwritingCase.UnderwritingCase
+label: "Underwriting Cases"
+rootStep:
+  _type: CollectionStep
+  _name: UnderwritingCases
+  label: "Underwriting Cases"
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: LifeAndAnnuityInsurance.entities.UnderwritingCase.collection_views.UnderwritingCaseImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: UnderwritingCase
+      label: "Underwriting Case"
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: LifeAndAnnuityInsurance.entities.UnderwritingCase.forms.UnderwritingCaseForm.UnderwritingCase
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.UnderwritingCase.validations.UnderwritingDecisionDateCheck

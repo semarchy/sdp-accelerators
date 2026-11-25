@@ -1,0 +1,62 @@
+_package: CTMDM.entities.StudyInvestigator.business_views
+_type: BusinessView
+_name: StudyInvestigatorBusinessView
+
+entity: CTMDM.entities.StudyInvestigator.StudyInvestigator
+rootLabel: Study Investigator
+rootPluralLabel: Study Investigators
+rootIconUrl: images://mdi/account-group-outline.svg
+displayRootNodeAs: ICON_LABEL
+label: Study Investigators
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: StudyInvestigator
+  entity: CTMDM.entities.StudyInvestigator.StudyInvestigator
+  actionSet: CTMDM.entities.StudyInvestigator.action_sets.StudyInvestigatorActionSet
+  collection: CTMDM.entities.StudyInvestigator.collection_views.StudyInvestigatorCollectionView
+  form: CTMDM.entities.StudyInvestigator.forms.StudyInvestigatorForm
+  displayCard: CTMDM.entities.StudyInvestigator.display_cards.StudyInvestigatorDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.StudyInvestigator.business_views.StudyInvestigatorBusinessView.StudyInvestigator
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

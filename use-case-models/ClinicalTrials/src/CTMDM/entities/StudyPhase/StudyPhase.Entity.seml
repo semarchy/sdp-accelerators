@@ -1,0 +1,82 @@
+_package: CTMDM.entities.StudyPhase
+_type: Entity
+_name: StudyPhase
+label: Study Phase
+pluralLabel: Study Phases
+entityType: BASIC
+physicalTableName: STUDY_PHASE
+iconUrl: images://mdi/chart-timeline-variant.svg
+description: "Reference list of clinical study phases used for governance and reporting."
+documentation: "Reference list of clinical study phases used for governance and reporting."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: StudyPhaseID
+    label: Study Phase ID
+    description: Business identifier for the study phase.
+    documentation: Business identifier for the study phase.
+    physicalName: STUDY_PHASE_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhaseCode
+    label: Phase Code
+    description: Short phase code.
+    documentation: Short phase code.
+    physicalName: PHASE_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhaseName
+    label: Phase Name
+    description: Study phase name.
+    documentation: Study phase name.
+    physicalName: PHASE_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhaseSequence
+    label: Phase Sequence
+    description: Sort sequence for study phases.
+    documentation: Sort sequence for study phases.
+    physicalName: PHASE_SEQUENCE
+    dataType: Integer
+    precision: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Description of the study phase.
+    documentation: Description of the study phase.
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ActiveFlag
+    label: Active Flag
+    description: Indicates whether this reference value is active.
+    documentation: Indicates whether this reference value is active.
+    physicalName: ACTIVE_FLAG
+    dataType: Boolean
+    mandatory: false
+    length: 1
+
+primaryKey: CTMDM.entities.StudyPhase.StudyPhase.StudyPhaseID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

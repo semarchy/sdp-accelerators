@@ -1,0 +1,70 @@
+_name: HouseBankActionSet
+_package: sapbp360.entities.HouseBank.action_sets
+_type: ActionSet
+entity: sapbp360.entities.HouseBank.HouseBank
+label: House Bank Action Set
+description: Action set for managing House Banks in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorHouseBanks
+    label: Create
+    description: Create a new House Bank record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.HouseBank.steppers.AuthorHouseBanks
+  - _name: EditAuthorHouseBanks
+    label: Edit
+    description: Edit House Bank records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.HouseBank.steppers.AuthorHouseBanks
+  - _name: MassUpdateAuthorHouseBanks
+    label: Mass Update
+    description: Mass update House Bank records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.HouseBank.steppers.AuthorHouseBanks
+  - _name: Delete
+    label: Delete
+    description: Delete selected House Bank records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorHouseBanks
+    label: Import
+    description: Import House Bank records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.HouseBank.steppers.HouseBankImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

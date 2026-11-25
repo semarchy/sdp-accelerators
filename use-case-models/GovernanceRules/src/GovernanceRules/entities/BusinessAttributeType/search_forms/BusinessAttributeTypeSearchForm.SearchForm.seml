@@ -1,0 +1,38 @@
+# BusinessAttributeTypeSearchForm: search form on BusinessAttributeType of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.BusinessAttributeType.search_forms
+_type: SearchForm
+_name: BusinessAttributeTypeSearchForm
+entity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+label: Find attribute types
+searchTip: Every criterion is optional.
+semQlCondition: (:SEARCH_TEXT IS NULL OR UPPER(Code) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Name) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Description) LIKE '%' || UPPER(:SEARCH_TEXT) || '%') AND (:DEFAULTCLASSIFICATION_ID IS NULL OR FID_DefaultClassification = :DEFAULTCLASSIFICATION_ID) AND (:REFERENCESTANDARD_ID IS NULL OR FID_ReferenceStandard = :REFERENCESTANDARD_ID)
+searchParameters:
+  - _type: SearchParameter
+    _name: SearchText
+    label: Search text
+    bindVariableName: SEARCH_TEXT
+    dataType: String
+    length: 200
+    displayType: TEXT_FIELD
+  - _type: SearchParameter
+    _name: DefaultClassification
+    label: Default classification
+    bindVariableName: DEFAULTCLASSIFICATION_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.DataClassification.DataClassification
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name
+  - _type: SearchParameter
+    _name: ReferenceStandard
+    label: Reference standard
+    bindVariableName: REFERENCESTANDARD_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.Regulation.Regulation
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name

@@ -1,0 +1,25 @@
+_package: RestaurantMaster.references
+_type: Reference
+label: Opening hours - Restaurant
+_name: RestaurantHoursHasRestaurant
+description: Attaches each opening hours to its restaurant; deleted with the restaurant.
+documentation: Attaches each opening hours to its restaurant; deleted with the restaurant.
+deletePropagation: CASCADE
+fromEntity: RestaurantMaster.entities.RestaurantHours.RestaurantHours
+fromRoleName: Hours
+fromRoleLabel: Opening hours
+fromRolePluralLabel: Opening hours
+physicalName: HOURS_RESTAURANT
+toEntity: RestaurantMaster.entities.Restaurant.Restaurant
+toRoleName: Restaurant
+toRolePhysicalName: RESTAURANT_ID
+toRoleLabel: Restaurant
+validationScope: PRE_CONSO
+oneToMany: true
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Restaurant
+  entity: RestaurantMaster.entities.Restaurant.Restaurant
+  label: Restaurant
+  physicalName: RESTAURANT_ID
+  searchable: true

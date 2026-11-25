@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.CoverageStatus.business_views
+_type: BusinessView
+_name: CoverageStatusBusinessView
+label: "Coverage Status"
+entity: LifeAndAnnuityInsurance.entities.CoverageStatus.CoverageStatus
+rootLabel: "Coverage Statuses"
+rootPluralLabel: "Coverage Statuses"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: CoverageStatus
+  displayCard: LifeAndAnnuityInsurance.entities.CoverageStatus.display_cards.CoverageStatusDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.CoverageStatus.CoverageStatus
+  actionSet: LifeAndAnnuityInsurance.entities.CoverageStatus.action_sets.CoverageStatusActionSet
+  collection: LifeAndAnnuityInsurance.entities.CoverageStatus.collection_views.CoverageStatusCollectionView
+  form: LifeAndAnnuityInsurance.entities.CoverageStatus.forms.CoverageStatusForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Coverage
+      label: "Coverage"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Coverages"
+      iconUrl: images://mdi/shield-outline.svg
+      transitionPath: Coverage
+      useCustomLabel: true
+      description: "Transition from Coverage Status to related Coverages."
+      visibleInFormTabCondition: any Coverage has (1=1)
+      enableHierarchy: any Coverage has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Coverage
+        displayCard: LifeAndAnnuityInsurance.entities.Coverage.display_cards.CoverageDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Coverage.Coverage
+        actionSet: LifeAndAnnuityInsurance.entities.Coverage.action_sets.CoverageActionSet
+        collection: LifeAndAnnuityInsurance.entities.Coverage.collection_views.CoverageCollectionView
+        form: LifeAndAnnuityInsurance.entities.Coverage.forms.CoverageForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/shield-check-outline.svg

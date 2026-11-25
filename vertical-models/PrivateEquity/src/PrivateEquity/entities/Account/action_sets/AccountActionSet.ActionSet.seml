@@ -1,0 +1,63 @@
+_name: AccountActionSet
+_package: PrivateEquity.entities.Account.action_sets
+_type: ActionSet
+entity: PrivateEquity.entities.Account.Account
+label: Account Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorAccounts
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: PrivateEquity.entities.Account.steppers.AuthorAccounts
+  - _name: EditAuthorAccounts
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: PrivateEquity.entities.Account.steppers.AuthorAccounts
+  - _name: MassUpdateAuthorAccounts
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: PrivateEquity.entities.Account.steppers.AuthorAccounts
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorAccounts
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: PrivateEquity.entities.Account.steppers.AuthorAccounts
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

@@ -1,0 +1,15 @@
+_package: CTMDM.entities.ClinicalSite.enrichers
+_name: NormalizeClinicalSite
+_type: SemQLEnricher
+entity: CTMDM.entities.ClinicalSite.ClinicalSite
+label: Normalize Clinical Site
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Clinical Site values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedSiteName
+    expression: "RTRIM(LTRIM(UPPER(SiteName)))"
+  - attributeName: NormalizedAddressLine1
+    expression: "RTRIM(LTRIM(UPPER(AddressLine1)))"
+  - attributeName: NormalizedCity
+    expression: "RTRIM(LTRIM(UPPER(City)))"

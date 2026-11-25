@@ -1,0 +1,31 @@
+﻿_package: RetailCustomer360.entities.Currency.enrichers
+_name: CurrencyDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Currency.Currency
+label: Currency Data Quality Enricher
+description: "Computes standard completeness enrichment fields for Currency."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN CurrencyCode IS NULL AND CurrencyName IS NULL AND CurrencySymbol IS NULL THEN 0
+        ELSE (
+          CASE WHEN CurrencyCode IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN CurrencyName IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN CurrencySymbol IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN CurrencyCode IS NULL AND CurrencyName IS NULL AND CurrencySymbol IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN CurrencyCode IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN CurrencyName IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN CurrencySymbol IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()
+

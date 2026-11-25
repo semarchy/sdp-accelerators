@@ -1,0 +1,11 @@
+_package: CTMDM.entities.TherapeuticArea.enrichers
+_name: NormalizeTherapeuticArea
+_type: SemQLEnricher
+entity: CTMDM.entities.TherapeuticArea.TherapeuticArea
+label: Normalize Therapeutic Area
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Therapeutic Area values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedTherapeuticAreaCode
+    expression: "RTRIM(LTRIM(UPPER(TherapeuticAreaCode)))"

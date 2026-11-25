@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: AnnuityContractHasPolicy
+description: "Indicates the Policy associated with a Annuity Contract."
+_type: Reference
+label: "Annuity Contract Has Policy"
+
+fromEntity: LifeAndAnnuityInsurance.entities.AnnuityContract.AnnuityContract
+fromRoleLabel: "Annuity Contract"
+fromRoleName: AnnuityContract
+fromRolePluralLabel: "Annuity Contracts"
+physicalName: ANN_CONT_HAS_POL
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+toRoleLabel: "Policy"
+toRoleName: Policy
+toRolePhysicalName: POL
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Policy
+  label: "Policy ID"
+  description: "The identifier of the Policy associated with the Annuity Contract."
+  physicalName: POL_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Policy.Policy

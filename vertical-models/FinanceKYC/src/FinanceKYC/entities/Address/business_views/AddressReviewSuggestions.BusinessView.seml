@@ -1,0 +1,60 @@
+_package: FinanceKYC.entities.Address.business_views
+_type: BusinessView
+_name: AddressReviewSuggestions
+
+entity: FinanceKYC.entities.Address.Address
+label: Address Review Suggestions
+rootLabel: Addresses
+rootPluralLabel: Addresses
+displayRootNodeAs: ICON_LABEL
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: images://mdi/account-alert.svg
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Address
+  entity: FinanceKYC.entities.Address.Address
+  actionSet: FinanceKYC.entities.Address.action_sets.AddressReviewSuggestionsActionSet
+  collection: FinanceKYC.entities.Address.collection_views.AddressReviewSuggestionsCollectionView
+  form: FinanceKYC.entities.Address.forms.AddressForm
+  displayCard: FinanceKYC.entities.Address.display_cards.AddressDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: FinanceKYC.entities.Address.business_views.AddressReviewSuggestions.Address
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

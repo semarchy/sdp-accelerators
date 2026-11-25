@@ -1,0 +1,78 @@
+_package: CTMDM.entities.StudyVendor
+_type: Entity
+_name: StudyVendor
+label: Study Vendor
+pluralLabel: Study Vendors
+entityType: ID_MATCHED
+physicalTableName: STUDY_VENDOR
+iconUrl: images://mdi/briefcase-check-outline.svg
+description: "Associates vendors with studies and tracks service scope and oversight status."
+documentation: "Associates vendors with studies and tracks service scope and oversight status."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: StudyVendorID
+    label: Study Vendor ID
+    description: Business identifier for the study-vendor assignment.
+    documentation: Business identifier for the study-vendor assignment.
+    physicalName: STUDY_VENDOR_ID
+    dataType: String
+    length: 60
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: ServiceScope
+    label: Service Scope
+    description: Services provided by the vendor for the study.
+    documentation: Services provided by the vendor for the study.
+    physicalName: SERVICE_SCOPE
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ContractStatus
+    label: Contract Status
+    description: Contracting status for the study vendor.
+    documentation: Contracting status for the study vendor.
+    physicalName: CONTRACT_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    description: Date vendor work starts for the study.
+    documentation: Date vendor work starts for the study.
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    description: Date vendor work ends for the study.
+    documentation: Date vendor work ends for the study.
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: OversightOwner
+    label: Oversight Owner
+    description: Business owner responsible for vendor oversight.
+    documentation: Business owner responsible for vendor oversight.
+    physicalName: OVERSIGHT_OWNER
+    dataType: String
+    length: 100
+    mandatory: false
+
+primaryKey: CTMDM.entities.StudyVendor.StudyVendor.StudyVendorID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

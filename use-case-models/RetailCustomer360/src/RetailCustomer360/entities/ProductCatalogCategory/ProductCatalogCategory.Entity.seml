@@ -1,0 +1,103 @@
+_package: RetailCustomer360.entities.ProductCatalogCategory
+_type: Entity
+_name: ProductCatalogCategory
+label: Catalog Category
+pluralLabel: Catalog Categories
+entityType: BASIC
+physicalTableName: CATALOG_CATEGORY
+iconUrl: https://api.iconify.design/mdi/file-tree.svg?color=%230D1B2A&width=64
+
+description: "Merchandising grouping used to navigate a product catalog."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CatalogCategoryId
+    label: Catalog Category Id
+    physicalName: CAT_CATEGORY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the catalog category."
+
+  - _type: EntityAttribute
+    _name: CatalogCategoryCode
+    label: Catalog Category Code
+    physicalName: CAT_CATEGORY_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the catalog category."
+
+  - _type: EntityAttribute
+    _name: CatalogCategoryName
+    label: Catalog Category Name
+    physicalName: CAT_CATEGORY_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the catalog category."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Explanation of what the category groups."
+
+  - _type: EntityAttribute
+    _name: DisplayOrder
+    label: Display Order
+    physicalName: DISPLAY_ORDER
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Position of the category in catalog navigation."
+
+  - _type: EntityAttribute
+    _name: HierarchyLevel
+    label: Hierarchy Level
+    physicalName: HIERARCHY_LEVEL
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Depth of the category within the catalog hierarchy."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the category is currently shown."
+
+  - _type: EntityAttribute
+    _name: IsVisibleOnline
+    label: Is Visible Online
+    physicalName: IS_VISIBLE_ONLINE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the category is exposed on the online storefront."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the catalog category originates from."
+
+primaryKey: RetailCustomer360.entities.ProductCatalogCategory.ProductCatalogCategory.CatalogCategoryId
+
+sourceIdGeneration:
+  mode: MANUAL

@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: StudyHasPhase
+_type: Reference
+label: Study Has Phase
+description: "Classifies studies by phase."
+documentation: "Classifies studies by phase."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.Study.Study
+fromRoleLabel: Study
+fromRoleName: study
+fromRolePluralLabel: Studies
+physicalName: STUDY_HAS_PHASE
+fromNavigable: true
+
+toEntity: CTMDM.entities.StudyPhase.StudyPhase
+toRoleLabel: Study Phase
+toRoleName: studyPhase
+toRolePhysicalName: STUDY_PHASE
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: studyPhase
+  label: Study Phase
+  physicalName: STUDY_PHASE
+  searchable: true
+  entity: CTMDM.entities.StudyPhase.StudyPhase

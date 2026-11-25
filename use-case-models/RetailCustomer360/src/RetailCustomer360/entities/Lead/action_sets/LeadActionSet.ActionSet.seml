@@ -1,0 +1,64 @@
+_package: RetailCustomer360.entities.Lead.action_sets
+_type: ActionSet
+_name: LeadActionSet
+entity: RetailCustomer360.entities.Lead.Lead
+label: Lead Action Set
+description: "Actions available to stewards on Leads."
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateLead
+    label: Create
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Lead.steppers.AuthorLead
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditLead
+    label: Edit
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Lead.steppers.AuthorLead
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateLead
+    label: Mass Update
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Lead.steppers.AuthorLead
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: DeleteLead
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: ExportLead
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportLead
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: RetailCustomer360.entities.Lead.steppers.ImportLead
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraphLead
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

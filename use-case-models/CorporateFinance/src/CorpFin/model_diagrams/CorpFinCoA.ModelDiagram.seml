@@ -1,0 +1,175 @@
+_package: CorpFin.model_diagrams
+_name: CorpFinCoA
+_type: ModelDiagram
+attributeNameFormat: NAME
+description: Visual map of the Corporate Finance data model and its relationships.
+entityNameFormat: LABEL
+label: Chart of Accounts sub-Model
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    entity: CorpFin.entities.ChartOfAccounts.ChartOfAccounts
+    _name: ChartOfAccounts
+    borderColor: "#FF7F50"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 631.0629764065337
+      y: 87.74392014519054
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Currency.Currency
+    _name: Currency
+    borderColor: "#4F81BD"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 989.7723230490021
+      y: 193.75943738656997
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.OrgUnit.OrgUnit
+    _name: OrgUnit
+    borderColor: "#9BBB59"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 909.6408195191125
+      y: -324.3793088435556
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.Account.Account
+    _name: Account
+    borderColor: "#32CD32"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 694.1075317604354
+      y: 507.88221415607995
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.AccountMapping.AccountMapping
+    _name: AccountMapping
+    borderColor: "#FF8C00"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 280.7999850272473
+      y: 143.56525946807983
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.MappingRule.MappingRule
+    _name: MappingRule
+    borderColor: "#8A2BE2"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 46.9070693461951
+      y: -304.9929582245676
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.MappingSet.MappingSet
+    _name: MappingSet
+    borderColor: "#FF69B4"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 423.3479133594402
+      y: -322.68522368418644
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.SplitAllocation.SplitAllocation
+    _name: SplitAllocation
+    borderColor: "#20B2AA"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: -46.30762250453762
+      y: 474.0717785843922
+    width: -1
+  - _type: EntityShape
+    entity: CorpFin.entities.MappingType.MappingType
+    _name: MappingType
+    borderColor: "#FFFF00"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: -15.642468239564607
+      y: 95.88221415607995
+    width: -1
+referenceLinks:
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.Account
+    reference: CorpFin.references.AccountBelongsToChart
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.ChartOfAccounts
+  - bendPoints:
+      - x: 810
+        y: 960
+      - x: 960
+        y: 960
+      - x: 960
+        y: 705
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.Account
+    reference: CorpFin.references.AccountHasParent
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.Account
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.ChartOfAccounts
+    reference: CorpFin.references.ChartOfAccountsHasCurrency
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.Currency
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.ChartOfAccounts
+    reference: CorpFin.references.ChartOfAccountsIsGovernedByOrgUnit
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.OrgUnit
+  - bendPoints:
+      - x: 675
+        y: 30
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.MappingSet
+    reference: CorpFin.references.MappingSetHasSourceCoA
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.ChartOfAccounts
+  - bendPoints:
+      - x: 795
+        y: -15
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.MappingSet
+    reference: CorpFin.references.MappingSetHasTargetCoA
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.ChartOfAccounts
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.MappingSet
+    reference: CorpFin.references.MappingSetHasOwningOrgUnit
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.OrgUnit
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.AccountMapping
+    reference: CorpFin.references.AccountMappingBelongsToMappingSet
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.MappingSet
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.AccountMapping
+    reference: CorpFin.references.AccountMappingHasSourceAccount
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.Account
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.AccountMapping
+    reference: CorpFin.references.AccountMappingHasTargetAccount
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.Account
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.AccountMapping
+    reference: CorpFin.references.AccountMappingUsesRule
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.MappingRule
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.AccountMapping
+    reference: CorpFin.references.AccountMappingHasType
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.MappingType
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.SplitAllocation
+    reference: CorpFin.references.SplitAllocationBelongsToMapping
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.AccountMapping
+  - bendPoints: []
+    fromEntityShape: CorpFin.model_diagrams.CorpFinCoA.SplitAllocation
+    reference: CorpFin.references.SplitAllocationHasTargetAccount
+    toEntityShape: CorpFin.model_diagrams.CorpFinCoA.Account
+inheritLinks: []

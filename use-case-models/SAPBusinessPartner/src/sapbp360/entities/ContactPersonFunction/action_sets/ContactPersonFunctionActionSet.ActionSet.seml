@@ -1,0 +1,70 @@
+_name: ContactPersonFunctionActionSet
+_package: sapbp360.entities.ContactPersonFunction.action_sets
+_type: ActionSet
+entity: sapbp360.entities.ContactPersonFunction.ContactPersonFunction
+label: Contact Person Function Action Set
+description: Action set for managing Contact Person Functions in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorContactPersonFunctions
+    label: Create
+    description: Create a new Contact Person Function record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.ContactPersonFunction.steppers.AuthorContactPersonFunctions
+  - _name: EditAuthorContactPersonFunctions
+    label: Edit
+    description: Edit Contact Person Function records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.ContactPersonFunction.steppers.AuthorContactPersonFunctions
+  - _name: MassUpdateAuthorContactPersonFunctions
+    label: Mass Update
+    description: Mass update Contact Person Function records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.ContactPersonFunction.steppers.AuthorContactPersonFunctions
+  - _name: Delete
+    label: Delete
+    description: Delete selected Contact Person Function records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorContactPersonFunctions
+    label: Import
+    description: Import Contact Person Function records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.ContactPersonFunction.steppers.ContactPersonFunctionImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

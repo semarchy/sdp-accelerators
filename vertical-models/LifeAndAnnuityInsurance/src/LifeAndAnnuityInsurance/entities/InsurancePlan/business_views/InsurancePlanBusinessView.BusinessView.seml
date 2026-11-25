@@ -1,0 +1,104 @@
+_package: LifeAndAnnuityInsurance.entities.InsurancePlan.business_views
+_type: BusinessView
+_name: InsurancePlanBusinessView
+label: "Insurance Plan"
+entity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan
+rootLabel: "Insurance Plans"
+rootPluralLabel: "Insurance Plans"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: InsurancePlan
+  displayCard: LifeAndAnnuityInsurance.entities.InsurancePlan.display_cards.InsurancePlanDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan
+  actionSet: LifeAndAnnuityInsurance.entities.InsurancePlan.action_sets.InsurancePlanActionSet
+  collection: LifeAndAnnuityInsurance.entities.InsurancePlan.collection_views.InsurancePlanCollectionView
+  form: LifeAndAnnuityInsurance.entities.InsurancePlan.forms.InsurancePlanForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Policy
+      label: "Policy"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Policies"
+      iconUrl: images://mdi/file-document-outline.svg
+      transitionPath: Policy
+      useCustomLabel: true
+      description: "Transition from Insurance Plan to related Policies."
+      visibleInFormTabCondition: any Policy has (1=1)
+      enableHierarchy: any Policy has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Policy
+        displayCard: LifeAndAnnuityInsurance.entities.Policy.display_cards.PolicyDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Policy.Policy
+        actionSet: LifeAndAnnuityInsurance.entities.Policy.action_sets.PolicyActionSet
+        collection: LifeAndAnnuityInsurance.entities.Policy.collection_views.PolicyCollectionView
+        form: LifeAndAnnuityInsurance.entities.Policy.forms.PolicyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: SurrenderChargeSchedule
+      label: "Surrender Charge Schedule"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Surrender Charge Schedules"
+      iconUrl: images://mdi/percent-outline.svg
+      transitionPath: SurrenderChargeSchedule
+      useCustomLabel: true
+      description: "Transition from Insurance Plan to related Surrender Charge Schedules."
+      visibleInFormTabCondition: any SurrenderChargeSchedule has (1=1)
+      enableHierarchy: any SurrenderChargeSchedule has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: SurrenderChargeSchedule
+        displayCard: LifeAndAnnuityInsurance.entities.SurrenderChargeSchedule.display_cards.SurrenderChargeScheduleDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.SurrenderChargeSchedule.SurrenderChargeSchedule
+        actionSet: LifeAndAnnuityInsurance.entities.SurrenderChargeSchedule.action_sets.SurrenderChargeScheduleActionSet
+        collection: LifeAndAnnuityInsurance.entities.SurrenderChargeSchedule.collection_views.SurrenderChargeScheduleCollectionView
+        form: LifeAndAnnuityInsurance.entities.SurrenderChargeSchedule.forms.SurrenderChargeScheduleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/file-cog-outline.svg

@@ -1,0 +1,68 @@
+_name: AuthorForms
+_package: PrivateEquity.entities.Form.steppers
+_type: Stepper
+entity: PrivateEquity.entities.Form.Form
+rootStep:
+  _name: Forms
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.Form.collection_views.FormCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Forms
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.FormsEntityType.EntityType
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Form.Form.Name
+  stepTriggers: []
+  childSteps:
+    - _name: Form
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Form
+      formTab: PrivateEquity.entities.Form.forms.FormForm.Form
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Form.Form.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.FormsEntityType.EntityType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Form.Form.Name
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.FormsEntityType.EntityType
+      stepTriggers: []
+label: Author Forms
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.FormsEntityType.EntityType
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Form.Form.Name
+triggers: []

@@ -1,0 +1,160 @@
+# ApplicableRules: named query of the GovernanceRules accelerator. Returns the in-force governance rules that apply to a design context: a data domain, a data classification and a business attribute type, each given by its...
+_package: GovernanceRules.named_queries
+_type: NamedQuery
+_name: ApplicableRules
+active: true
+description: 'Returns the in-force governance rules that apply to a design context: a data domain, a data classification and a business attribute
+  type, each given by its code (DataDomain.Code such as CUSTOMER, DataClassification.Code such as PERSONAL, BusinessAttributeType.Code such as
+  EMAIL). Parameters domain, classification and attributeType (STRING, all optional). A rule applies when any of its scope rows matches; in a
+  scope row an empty dimension means any value; an omitted parameter means you are not asking about that dimension, so it only
+  matches scope rows where that dimension is empty (a domain-only call returns the rules not restricted to an attribute type or a
+  classification). Each rule comes with its statement,
+  requirement level, category, implementation pattern and guidance, policy, owner, citations (regulation code, clause) and scope rows. Sorted
+  by code.
+
+
+  AI agent instructions: This is the detailed variant of RuleChecklist for one attribute type: call RuleChecklist first for the whole change, and
+  call this query when you need the full statements and citations of the rules for one attribute type. Call AttributeTypeCatalog first to find
+  the attribute type code, then call this query with the data domain (always pass it), the classification (the attribute type''s default
+  classification when the design does not say otherwise) and the attribute type. Apply every MUST rule, apply SHOULD rules unless you state why not,
+  consider MAY rules. Implement each rule with its ImplementationPattern and ImplementationGuidance, and cite its Code (for example PRIV-003)
+  in the description of the object that implements it. An empty result means no rule applies beyond the general ones: call it again with only
+  the domain to get the domain-wide rules.'
+defaultLimit: 200
+rootQueryObject: GovernanceRules.named_queries.ApplicableRules.Rule
+filter: LifecycleStatus = 'APPROVED' AND EffectiveDate <= CURRENT_DATE() AND (RetirementDate IS NULL OR RetirementDate > CURRENT_DATE()) AND any
+  Scopes have ((FID_DataDomain IS NULL OR FID_DataDomain = :DOMAIN) AND (FID_DataClassification IS NULL OR FID_DataClassification = :CLASSIFICATION)
+  AND (FID_AttributeType IS NULL OR FID_AttributeType = :ATTRIBUTE_TYPE))
+sort: Code
+queryParameters:
+- _type: QueryParameter
+  _name: domain
+  bindingName: DOMAIN
+  dataType: STRING
+  mandatory: false
+- _type: QueryParameter
+  _name: classification
+  bindingName: CLASSIFICATION
+  dataType: STRING
+  mandatory: false
+- _type: QueryParameter
+  _name: attributeType
+  bindingName: ATTRIBUTE_TYPE
+  dataType: STRING
+  mandatory: false
+queryObjects:
+- _type: QueryObject
+  _name: Rule
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  description: Governance rule with its citations and scopes.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: Code
+    type: VALUE
+    semQlExpression: Code
+  - _type: ObjectProperty
+    _name: Title
+    type: VALUE
+    semQlExpression: Title
+  - _type: ObjectProperty
+    _name: Statement
+    type: VALUE
+    semQlExpression: Statement
+  - _type: ObjectProperty
+    _name: RequirementLevel
+    type: VALUE
+    semQlExpression: RequirementLevel
+  - _type: ObjectProperty
+    _name: Category
+    type: VALUE
+    semQlExpression: Category
+  - _type: ObjectProperty
+    _name: ImplementationPattern
+    type: VALUE
+    semQlExpression: ImplementationPattern
+  - _type: ObjectProperty
+    _name: ImplementationGuidance
+    type: VALUE
+    semQlExpression: ImplementationGuidance
+  - _type: ObjectProperty
+    _name: Example
+    type: VALUE
+    semQlExpression: Example
+  - _type: ObjectProperty
+    _name: EffectiveDate
+    type: VALUE
+    semQlExpression: EffectiveDate
+  - _type: ObjectProperty
+    _name: PolicyCode
+    type: VALUE
+    semQlExpression: Policy.Code
+  - _type: ObjectProperty
+    _name: PolicyName
+    type: VALUE
+    semQlExpression: Policy.Name
+  - _type: ObjectProperty
+    _name: OwnerCode
+    type: VALUE
+    semQlExpression: OwnerBody.Code
+  - _type: ObjectProperty
+    _name: OwnerName
+    type: VALUE
+    semQlExpression: OwnerBody.Name
+  - _type: ObjectProperty
+    _name: Citations
+    type: MULTI_RECORDS
+    semQlExpression: Citations
+    targetObject: GovernanceRules.named_queries.ApplicableRules.Citation
+    sort: Regulation.Code
+  - _type: ObjectProperty
+    _name: Scopes
+    type: MULTI_RECORDS
+    semQlExpression: Scopes
+    targetObject: GovernanceRules.named_queries.ApplicableRules.Scope
+    sort: ID
+- _type: QueryObject
+  _name: Citation
+  entity: GovernanceRules.entities.RuleCitation.RuleCitation
+  description: A regulation or standard cited by the rule, with the article or clause.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: RegulationCode
+    type: VALUE
+    semQlExpression: Regulation.Code
+  - _type: ObjectProperty
+    _name: RegulationName
+    type: VALUE
+    semQlExpression: Regulation.Name
+  - _type: ObjectProperty
+    _name: RegulationType
+    type: VALUE
+    semQlExpression: Regulation.Type
+  - _type: ObjectProperty
+    _name: Clause
+    type: VALUE
+    semQlExpression: Clause
+  - _type: ObjectProperty
+    _name: Note
+    type: VALUE
+    semQlExpression: Note
+  - _type: ObjectProperty
+    _name: URL
+    type: VALUE
+    semQlExpression: Regulation.URL
+- _type: QueryObject
+  _name: Scope
+  entity: GovernanceRules.entities.RuleScope.RuleScope
+  description: One applicability row of the rule; an empty code means any value of that dimension.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: DataDomainCode
+    type: VALUE
+    semQlExpression: DataDomain.Code
+  - _type: ObjectProperty
+    _name: DataClassificationCode
+    type: VALUE
+    semQlExpression: DataClassification.Code
+  - _type: ObjectProperty
+    _name: AttributeTypeCode
+    type: VALUE
+    semQlExpression: AttributeType.Code

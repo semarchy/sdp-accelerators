@@ -1,0 +1,361 @@
+# Description: Application configuration for the Merchant UI in Semarchy.
+# Contains navigation, actions, views and application-level settings for the Merchant application.
+# Role: Defines how users interact with the Merchant model through the Semarchy application.
+_package: Merchant.applications
+_type: Application
+_name: Merchant
+label: Merchant
+visibility: VISIBLE
+applicationTitle: Merchant Master
+avatarImageUrl: images://Merchant/Merchant.jpg
+logoUrl: images://Merchant/Merchant.jpg
+coverImageUrl: images://default/cover.png
+favIcon: images://default/dm-favicon.svg
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+defaultAction: Merchant.applications.Merchant.Root.GeneralActions.GlobalSearch
+
+documentationConfig:
+  documentation: "Merchant Application Documentation"
+  documentationConfigDiagrams:
+    - _type: DocumentationConfigDiagram
+      _name: Diagram
+      modelDiagram: Merchant.model_diagrams.MasterEntities
+      label: Merchant Model Diagram
+
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: Merchant
+      businessView: Merchant.entities.Merchant.business_views.MerchantBusinessView
+      searchTypeConfig: Merchant.entities.Merchant.business_views.MerchantBusinessView.Merchant.TextConfig
+      viewType: GD
+      maxResults: 10
+
+navDrawer:
+  - _type: FolderNavGroup
+    _name: BrowseGroup
+    linkedFolder: Merchant.applications.Merchant.Root.GeneralActions
+    labelVisible: true
+    dividerVisible: true
+  - _type: FolderNavGroup
+    _name: MasterData
+    linkedFolder: Merchant.applications.Merchant.Root.MasterData
+    labelVisible: true
+    dividerVisible: true
+  - _type: FolderNavGroup
+    _name: PartyTypeGroup
+    linkedFolder: Merchant.applications.Merchant.Root.PartyType
+    labelVisible: true
+    dividerVisible: true
+  - _type: FolderNavGroup
+    _name: ReferenceDataGroup
+    linkedFolder: Merchant.applications.Merchant.Root.ReferenceData
+    labelVisible: true
+    dividerVisible: true
+  - _type: FolderNavGroup
+    _name: DocumentationGroup
+    linkedFolder: Merchant.applications.Merchant.Root.Documentation
+    labelVisible: true
+    dividerVisible: true
+
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: "Top Actions"
+  image: images://Merchant/top.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+
+    - _type: FolderAction
+      _name: GeneralActions
+      label: General Actions
+      icon: images://Merchant/general-actions.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+
+      - _type: MyTasksAction
+        _name: MyTasks
+        label: My Tasks
+        image: images://mdi-account-box
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        badgeVisible: true
+
+      - _type: GlobalSearchAction
+        _name: GlobalSearch
+        label: Global Search
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+      
+      - _type: BrowseEntitiesFolderAction
+        _name: Entities
+        description: Default access to all the entities
+        iconColor: "#1A3772"
+        label: Entities
+        labelColor: "#1A3772"
+        requiredRole: semarchyAdmin
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        lineageEnabled: true  
+
+      - _type: FolderAction
+        _name: ImportData
+        label: Import Data
+        requiredRole: DataSteward
+        icon: images://mdi/arrow-right.svg
+        image: images://mdi/arrow-right.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        appActions:
+
+        - _type: ImportDataAppAction
+          _name: ImportContactRole
+          label: Import Contact Roles
+          importAction: Merchant.entities.ContactRole.action_sets.ContactRoleActionSet.ImportAuthorContactRoles
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportCountry
+          label: Import Countries
+          importAction: Merchant.entities.Country.action_sets.CountryActionSet.ImportAuthorCountries
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportCurrency
+          label: Import Currencies
+          importAction: Merchant.entities.Currency.action_sets.CurrencyActionSet.ImportAuthorCurrencies
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportIndustry
+          label: Import Industries
+          importAction: Merchant.entities.Industry.action_sets.IndustryActionSet.ImportAuthorIndustries
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportSubIndustry
+          label: Import Sub Industries
+          importAction: Merchant.entities.SubIndustry.action_sets.SubIndustryActionSet.ImportAuthorSubIndustries
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportProductCategory
+          label: Import Product Categories
+          importAction: Merchant.entities.ProductCategory.action_sets.ProductCategoryActionSet.ImportAuthorProductCategories
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportParty
+          label: Import Parties
+          importAction: Merchant.entities.Party.action_sets.PartyActionSet.ImportParties
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportPartyContact
+          label: Import Party Contacts
+          importAction: Merchant.entities.PartyContact.action_sets.PartyContactActionSet.ImportAuthorPartyContacts
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportPartyAddress
+          label: Import Party Addresses
+          importAction: Merchant.entities.PartyAddress.action_sets.PartyAddressActionSet.ImportAuthorPartyAddresses
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportIndividual
+          label: Import Individuals
+          importAction: Merchant.entities.Individual.action_sets.Individual.ImportAuthorIndividuals
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportLegalEntity
+          label: Import Legal Entities
+          importAction: Merchant.entities.LegalEntity.action_sets.LegalEntityActionSet.ImportLegalEntity
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportMerchant
+          label: Import Merchants
+          importAction: Merchant.entities.Merchant.action_sets.MerchantActionSet.ImportAuthorMerchants
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+        - _type: ImportDataAppAction
+          _name: ImportProduct
+          label: Import Products
+          importAction: Merchant.entities.Product.action_sets.ProductActionSet.ImportAuthorProducts
+          icon: images://mdi/arrow-right.svg
+          image: images://mdi/arrow-right.svg
+
+    - _type: FolderAction
+      _name: MasterData
+      label: Master Entities
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      icon: images://Merchant/master-data.svg
+      appActions:
+        # Fuzzy / primary (editable) entities - listed directly (outside Reference Data)
+      - _type: BrowseBusinessViewAction
+        _name: Merchants
+        label: Merchants
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        icon: images://Merchant/merchants.svg
+        businessView: Merchant.entities.Merchant.business_views.MerchantBusinessView
+        viewType: GD
+        nbRecordsBadgeVisible: false
+
+      - _type: BrowseBusinessViewAction
+        _name: Party
+        label: Party
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        icon: images://Merchant/party-contacts.svg
+        businessView: Merchant.entities.Party.business_views.PartyBusinessView
+        viewType: GD
+        nbRecordsBadgeVisible: false
+
+    - _type: FolderAction
+      _name: PartyType
+      label: Party Type 
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      icon: images://Merchant/reference-data.svg
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: LegalEntity
+          label: Legal Entity
+          icon: images://Merchant/subindustries.svg
+          businessView: Merchant.entities.LegalEntity.business_views.LegalEntityBusinessView
+          viewType: GD
+          nbRecordsBadgeVisible: false
+        - _type: BrowseBusinessViewAction
+          _name: Individual
+          label: Individual
+          icon: images://Merchant/party-contacts.svg
+          businessView: Merchant.entities.Individual.business_views.Individual
+          viewType: GD
+          nbRecordsBadgeVisible: false
+
+    # Reference Data folder - all referenced / lookup entities
+    - _type: FolderAction
+      _name: ReferenceData
+      label: Reference Data
+      image: images://Merchant/reference-data.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      icon: images://Merchant/reference-data.svg
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: ProductsRef
+          label: Products
+          icon: images://Merchant/products.svg
+          businessView: Merchant.entities.Product.business_views.ProductBusinessView
+          viewType: GD
+          nbRecordsBadgeVisible: true
+
+        - _type: BrowseBusinessViewAction
+          _name: CountriesRef
+          label: Countries
+          icon: images://Merchant/countries.svg
+          businessView: Merchant.entities.Country.business_views.CountryBusinessView
+          viewType: GD
+          nbRecordsBadgeVisible: true
+
+        - _type: FolderAction
+          _name: AdditionalRDM
+          label: Additional RDM
+          icon: images://Merchant/product-categories.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: PartyContactsRef
+              label: Party Contacts
+              icon: images://Merchant/party-contacts.svg
+              businessView: Merchant.entities.PartyContact.business_views.PartyContactBusinessView
+              viewType: GD
+              nbRecordsBadgeVisible: true
+
+            - _type: BrowseBusinessViewAction
+              _name: ProductCategoriesRef
+              label: Product Categories
+              icon: images://Merchant/product-categories.svg
+              businessView: Merchant.entities.ProductCategory.business_views.ProductCategoryBusinessView
+              viewType: GD
+              nbRecordsBadgeVisible: true
+
+            - _type: BrowseBusinessViewAction
+              _name: IndustriesRef
+              label: Industries
+              icon: images://Merchant/industries.svg
+              businessView: Merchant.entities.Industry.business_views.IndustryBusinessView
+              viewType: GD
+              nbRecordsBadgeVisible: true
+
+            - _type: BrowseBusinessViewAction
+              _name: SubIndustriesRef
+              label: Sub Industries
+              icon: images://Merchant/subindustries.svg
+              businessView: Merchant.entities.SubIndustry.business_views.SubIndustryBusinessView
+              viewType: GD
+              nbRecordsBadgeVisible: true
+
+            - _type: BrowseBusinessViewAction
+              _name: CurrenciesRef
+              label: Currencies
+              icon: images://Merchant/currencies.svg
+              businessView: Merchant.entities.Currency.business_views.CurrencyBusinessView
+              viewType: GD
+              nbRecordsBadgeVisible: true
+
+            - _type: BrowseBusinessViewAction
+              _name: ContactRolesRef
+              label: Contact Roles
+              icon: images://Merchant/contact-roles.svg
+              businessView: Merchant.entities.ContactRole.business_views.ContactRoleBusinessView
+              viewType: GD
+              nbRecordsBadgeVisible: true
+
+            - _type: BrowseBusinessViewAction
+              _name: PartyAddressesRef
+              label: Party Addresses
+              icon: images://Merchant/party-addresses.svg
+              businessView: Merchant.entities.PartyAddress.business_views.PartyAddressBusinessView
+              viewType: GD
+              nbRecordsBadgeVisible: true
+
+
+    # Documentation folder
+    - _type: FolderAction
+      _name: Documentation
+      label: Documentation
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Access documentation
+      image: images://Merchant/bookshelf.svg
+      appActions:
+        - _type: OpenDocumentationAction
+          _name: OpenModelDoc
+          label: Model diagram
+
+
+

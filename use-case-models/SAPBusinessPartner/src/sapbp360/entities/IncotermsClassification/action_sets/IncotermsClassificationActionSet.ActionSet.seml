@@ -1,0 +1,70 @@
+_name: IncotermsClassificationActionSet
+_package: sapbp360.entities.IncotermsClassification.action_sets
+_type: ActionSet
+entity: sapbp360.entities.IncotermsClassification.IncotermsClassification
+label: Incoterms Classification Action Set
+description: Action set for managing Incoterms Classifications in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorIncotermsClassifications
+    label: Create
+    description: Create a new Incoterms Classification record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.IncotermsClassification.steppers.AuthorIncotermsClassifications
+  - _name: EditAuthorIncotermsClassifications
+    label: Edit
+    description: Edit Incoterms Classification records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.IncotermsClassification.steppers.AuthorIncotermsClassifications
+  - _name: MassUpdateAuthorIncotermsClassifications
+    label: Mass Update
+    description: Mass update Incoterms Classification records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.IncotermsClassification.steppers.AuthorIncotermsClassifications
+  - _name: Delete
+    label: Delete
+    description: Delete selected Incoterms Classification records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorIncotermsClassifications
+    label: Import
+    description: Import Incoterms Classification records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.IncotermsClassification.steppers.IncotermsClassificationImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

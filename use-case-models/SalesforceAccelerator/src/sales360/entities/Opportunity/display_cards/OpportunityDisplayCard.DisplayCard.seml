@@ -1,0 +1,32 @@
+# This is the display card for opportunities in the Salesforce Accelerator application.
+_name: OpportunityDisplayCard
+_package: sales360.entities.Opportunity.display_cards
+_type: DisplayCard
+entity: sales360.entities.Opportunity.Opportunity
+default: true
+primaryTextExpression: Name
+secondaryTextExpression: FDN_Account
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: >-
+  CASE WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(IsWon), 'false') = 'true'
+  THEN  'images://mdi/cash-check.svg' 
+
+  ELSE
+
+  CASE WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(IsWon), 'false') = 'false' and
+  FDN_StageName = 'Closed Lost' THEN 'images://mdi/cash-remove.svg' 
+
+  ELSE 'images://mdi/cash.svg' 
+
+  END 
+
+  END
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

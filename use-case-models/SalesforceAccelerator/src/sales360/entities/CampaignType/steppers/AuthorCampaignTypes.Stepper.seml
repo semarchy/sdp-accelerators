@@ -1,0 +1,47 @@
+# This is the AuthorCampaignTypes Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing campaign types within the Salesforce context.
+_name: AuthorCampaignTypes
+_package: sales360.entities.CampaignType.steppers
+_type: Stepper
+entity: sales360.entities.CampaignType.CampaignType
+description: Stepper for authoring Campaign Types in Salesforce Accelerator
+rootStep:
+  _name: CampaignTypes
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.CampaignType.collection_views.CampaignTypeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Campaign Types
+  description: Manage Campaign Types
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Campaign Type
+      formTab: sales360.entities.CampaignType.forms.CampaignTypeForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Campaign Types
+stepperFinishValidations: []
+triggers: []

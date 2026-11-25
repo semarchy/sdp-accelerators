@@ -1,0 +1,85 @@
+# Purchasing Organization entity for the SAP Business Partner 360 accelerator.
+_name: PurchasingOrganization
+_package: sapbp360.entities.PurchasingOrganization
+_type: Entity
+primaryKey: sapbp360.entities.PurchasingOrganization.PurchasingOrganization.PurchasingOrganizationID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: PurchasingOrganizationCode
+label: Purchasing Organization
+documentation: Purchasing Organization reference data used by the SAP Business Partner 360 model.
+description: Purchasing Organization reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/PurchasingOrganization.svg
+pluralLabel: Purchasing Organizations
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PURCH_ORG
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PurchasingOrganizationID
+    physicalName: PURCH_ORG_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Purchasing Organization ID
+    documentation: Unique identifier for the purchasing organization.
+    description: Unique identifier for the purchasing organization.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Purchasing Organization ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PurchasingOrganizationCode
+    physicalName: PURCH_ORG_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Purchasing Organization Code
+    documentation: Code for the purchasing organization.
+    description: Code for the purchasing organization.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Purchasing Organization Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PurchasingOrganizationName
+    physicalName: PURCH_ORG_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Purchasing Organization Name
+    documentation: Name of the purchasing organization.
+    description: Name of the purchasing organization.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Purchasing Organization Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the purchasing organization.
+    description: Description for the purchasing organization.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the purchasing organization is active.
+    description: Indicates whether the purchasing organization is active.
+    mandatory: false
+    length: 1
+    searchable: true

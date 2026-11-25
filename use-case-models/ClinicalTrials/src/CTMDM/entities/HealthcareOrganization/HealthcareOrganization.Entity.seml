@@ -1,0 +1,170 @@
+_package: CTMDM.entities.HealthcareOrganization
+_type: Entity
+_name: HealthcareOrganization
+label: Healthcare Organization
+pluralLabel: Healthcare Organizations
+entityType: FUZZY_MATCHED
+physicalTableName: HC_ORG
+iconUrl: images://mdi/hospital-building.svg
+description: "Golden record for hospitals, academic medical centers, and research organizations."
+documentation: "Golden record for hospitals, academic medical centers, and research organizations."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: OrganizationID
+    label: Organization ID
+    description: Surrogate identifier for the healthcare organization master.
+    documentation: Surrogate identifier for the healthcare organization master.
+    physicalName: ORG_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: OrganizationName
+    label: Organization Name
+    description: Official organization name.
+    documentation: Official organization name.
+    physicalName: ORG_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedOrganizationName
+    label: Normalized Organization Name
+    description: Trimmed and uppercased organization name.
+    documentation: Trimmed and uppercased organization name.
+    physicalName: NORM_ORG_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhonetizedOrganizationName
+    label: Phonetized Organization Name
+    description: Phonetic key derived from organization name.
+    documentation: Phonetic key derived from organization name.
+    physicalName: PHON_ORG_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: OrganizationType
+    label: Organization Type
+    description: Type such as hospital, research institute, or academic center.
+    documentation: Type such as hospital, research institute, or academic center.
+    physicalName: ORG_TYPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: TaxIdentifier
+    label: Tax Identifier
+    description: Tax or registration identifier for the organization.
+    documentation: Tax or registration identifier for the organization.
+    physicalName: TAX_IDENTIFIER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedTaxIdentifier
+    label: Normalized Tax Identifier
+    description: Trimmed and uppercased tax identifier.
+    documentation: Trimmed and uppercased tax identifier.
+    physicalName: NORM_TAX_IDENTIFIER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Website
+    label: Website
+    description: Public website for the organization.
+    documentation: Public website for the organization.
+    physicalName: WEBSITE
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: AccreditationStatus
+    label: Accreditation Status
+    description: Current accreditation standing.
+    documentation: Current accreditation standing.
+    physicalName: ACCREDITATION_STATUS
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    description: Operational lifecycle status.
+    documentation: Operational lifecycle status.
+    physicalName: STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CTMDM.entities.HealthcareOrganization.HealthcareOrganization.OrganizationID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: HealthcareOrganizationMatcher
+  description: Strategies for matching Healthcare Organizations
+
+  matchRules:
+    - _name: HealthcareOrganizationStrongMatch
+      _type: SemQLMatchRule
+      label: Strong Healthcare Organization Match
+      documentation: "Matches records using normalized identity attributes and business identifiers."
+      color: md:purple 900
+      condition: Record1.NormalizedOrganizationName = Record2.NormalizedOrganizationName AND Record1.PhonetizedOrganizationName = Record2.PhonetizedOrganizationName AND Record1.NormalizedTaxIdentifier = Record2.NormalizedTaxIdentifier
+      matchScore: 95
+
+    - _name: HealthcareOrganizationPhoneticMatch
+      _type: SemQLMatchRule
+      label: Phonetic Healthcare Organization Match
+      documentation: "Matches records using phonetic and normalized attributes for likely duplicates."
+      color: md:purple 700
+      condition: Record1.PhonetizedOrganizationName = Record2.PhonetizedOrganizationName AND Record1.NormalizedTaxIdentifier = Record2.NormalizedTaxIdentifier
+      matchScore: 88
+
+    - _name: HealthcareOrganizationCandidateMatch
+      _type: SemQLMatchRule
+      label: Candidate Healthcare Organization Match
+      documentation: "Suggests candidate duplicates for steward review using a reduced attribute set."
+      color: md:purple 400
+      condition: Record1.NormalizedOrganizationName = Record2.NormalizedOrganizationName AND Record1.PhonetizedOrganizationName = Record2.PhonetizedOrganizationName
+      matchScore: 65
+      
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 87
+  autoConfirmSingletons: false

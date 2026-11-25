@@ -1,0 +1,669 @@
+_package: CorpFin.entities.CounterpartyGroup.business_views
+_type: BusinessView
+_name: CounterpartyGroupBusinessView
+entity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+rootLabel: Counterparties by Group
+label: Counterparties by Group
+rootPluralLabel: Counterparties by Group
+displayRootNodeAs: ICON_LABEL
+
+# use rootFilter to show orphan groups only, at root level
+rootFilter: FID_parentCounterpartyGroup IS NULL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: CounterpartyGroup
+  entity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+  displayCard: CorpFin.entities.CounterpartyGroup.display_cards.CounterpartyGroupDisplayCard
+  actionSet: CorpFin.entities.CounterpartyGroup.action_sets.CounterpartyGroupActionSet
+  collection: CorpFin.entities.CounterpartyGroup.collection_views.CounterpartyGroupCollectionView
+  form: CorpFin.entities.CounterpartyGroup.forms.CounterpartyGroupForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _type: BusinessViewTransition
+      _name: ToSubGroups
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: Sub-Groups
+      pluralLabel: Sub-Groups
+
+      enableHierarchy: any counterpartyGroup has (1=1)
+      enableHierarchyInterpreter: SEMQL
+
+      expandHierarchyByDefault: false
+      transitionPath: counterpartyGroup
+      transitionType: FULLY_QUALIFIED
+      transitionVisible: '0'
+      visibleInFormTabCondition: any counterpartyGroup has (1 = 1)
+      useCustomLabel: true
+
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: SubGroup
+        entity: CorpFin.entities.CounterpartyGroup.CounterpartyGroup
+        actionSet: CorpFin.entities.CounterpartyGroup.action_sets.CounterpartyGroupActionSet
+        collection: CorpFin.entities.CounterpartyGroup.collection_views.CounterpartyGroupCollectionView
+        form: CorpFin.entities.CounterpartyGroup.forms.CounterpartyGroupForm
+        displayCard: CorpFin.entities.CounterpartyGroup.display_cards.CounterpartyGroupDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+
+        referenceAttributeNavigationConfigs:
+          - formField: CorpFin.entities.CounterpartyGroup.forms.CounterpartyGroupForm.CounterpartyGroup.Container1.Container2.LegalInformation.FDN_parentCounterpartyGroup
+            businessView: CorpFin.entities.CounterpartyGroup.business_views.CounterpartyGroupBusinessView
+            form: CorpFin.entities.CounterpartyGroup.forms.CounterpartyGroupForm
+            navigationMode: BUSINESS_OBJECT_VIEW
+
+        transitions:
+          - _type: BusinessViewTransition
+            _name: NextSubGroups
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            label: Sub-Groups
+            pluralLabel: Sub-Groups
+            enableHierarchy: any counterpartyGroup has (1 = 1)
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: false
+            transitionPath: counterpartyGroup
+            transitionType: FULLY_QUALIFIED
+            transitionVisible: '0'
+            visibleInFormTabCondition: any counterpartyGroup has (1 = 1)
+            useCustomLabel: true
+
+            businessViewEntity: 
+              _type: BusinessViewEntityReference
+              ref: CorpFin.entities.CounterpartyGroup.business_views.CounterpartyGroupBusinessView.CounterpartyGroup.ToSubGroups.SubGroup
+              
+          - _type: BusinessViewTransition
+            _name: ToCounterparties
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            label: Counterparties
+            pluralLabel: Counterparties
+            enableHierarchy: any counterparty has (1 = 1)
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: false
+            transitionPath: counterparty
+            transitionType: FULLY_QUALIFIED
+            transitionVisible: '0'
+            visibleInFormTabCondition: any counterparty has (1 = 1)
+            useCustomLabel: false
+
+            businessViewEntity: 
+              _type: BusinessViewEntity
+              _name: Counterparty1
+              entity: CorpFin.entities.Counterparty.Counterparty
+              actionSet: CorpFin.entities.Counterparty.action_sets.CounterpartyActionSet
+              collection: CorpFin.entities.Counterparty.collection_views.CounterpartyCollectionView
+              form: CorpFin.entities.Counterparty.forms.CounterpartyForm
+              displayCard: CorpFin.entities.Counterparty.display_cards.CounterpartyDisplayCard
+              outlineVisible: false
+              displayRecordCount: ALWAYS
+              overrideDefaultSort: false
+              enableUserDefinedSort: true
+              listAllowed: true
+              tableAllowed: true
+              gridAllowed: true    
+
+              referenceAttributeNavigationConfigs:
+                - formField: CorpFin.entities.Counterparty.forms.CounterpartyForm.Counterparty.Container1.Container2.LegalInformation.FDN_counterpartyGroup
+                  businessView: CorpFin.entities.CounterpartyGroup.business_views.CounterpartyGroupBusinessView
+                  form: CorpFin.entities.CounterpartyGroup.forms.CounterpartyGroupForm
+                  navigationMode: BUSINESS_OBJECT_VIEW 
+
+              transitions:
+                - _name: MasterRecords
+                  _type: BusinessViewTransition
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  enableHierarchyInterpreter: LITERAL
+                  expandHierarchyByDefault: false
+                  filter: 1 = 1
+                  iconUrl: images://mdi/puzzle.svg
+                  transitionPath: MasterRecords
+                  useCustomLabel: false
+
+                  businessViewEntity:
+                    _name: CounterpartyMaster
+                    _type: BusinessViewEntity
+
+                    businessEntitySearchConfigs:
+                      - _name: TextConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: TEXT
+                      - _name: FormConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: BY_FORM
+                      - _name: AdvancedConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: ADVANCED
+                      - _name: SemqlConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: SEMQL
+
+                    collection: CorpFin.entities.Counterparty.collection_views.CounterpartyBrowseMasterCollectionView
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: CorpFin.entities.Counterparty.Counterparty
+                    form: CorpFin.entities.Counterparty.forms.CounterpartyForm
+                    displayCard: CorpFin.entities.Counterparty.display_cards.CounterpartyDisplayCard
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    # sortExpression: ''
+                    tableAllowed: true
+
+                - _name: ToContactInfo
+                  _type: BusinessViewTransition
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  iconUrl: images://mdi/badge-account-horizontal-outline.svg
+                  useCustomLabel: false
+
+                  transitionPath: contactInformation
+                  visibleInFormTabCondition: any contactInformation has (1 = 1)
+                  
+                  businessViewEntity:
+                    _name: ToContactInfo
+                    _type: BusinessViewEntity
+
+                    collection: CorpFin.entities.ContactInformation.collection_views.ContactInformationCollectionView
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: CorpFin.entities.ContactInformation.ContactInformation
+                    form: CorpFin.entities.ContactInformation.forms.ContactInformationForm
+                    displayCard: CorpFin.entities.ContactInformation.display_cards.ContactInformationDisplayCard
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    # sortExpression: ''
+                    tableAllowed: true
+
+                - _name: ToRiskProfile
+                  _type: BusinessViewTransition
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  iconUrl: images://mdi/shield-account.svg
+                  useCustomLabel: false
+
+                  transitionPath: riskComplianceProfile
+                  visibleInFormTabCondition: any riskComplianceProfile has (1 = 1)
+                  
+                  businessViewEntity:
+                    _name: ToRiskProfile
+                    _type: BusinessViewEntity
+
+                    collection: CorpFin.entities.RiskComplianceProfile.collection_views.RiskComplianceProfileCollectionView
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: CorpFin.entities.RiskComplianceProfile.RiskComplianceProfile
+                    form: CorpFin.entities.RiskComplianceProfile.forms.RiskComplianceProfileForm
+                    displayCard: CorpFin.entities.RiskComplianceProfile.display_cards.RiskComplianceProfileDisplayCard
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    # sortExpression: ''
+                    tableAllowed: true
+
+                - _name: ToAddress
+                  _type: BusinessViewTransition
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  iconUrl: images://mdi/map-marker.svg
+                  useCustomLabel: false
+
+                  transitionPath: counterpartyAddress
+                  visibleInFormTabCondition: any counterpartyAddress has (1 = 1)
+                  
+                  businessViewEntity:
+                    _name: ToAddress
+                    _type: BusinessViewEntity
+
+                    collection: CorpFin.entities.CounterpartyAddress.collection_views.CounterpartyAddressCollectionView
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: CorpFin.entities.CounterpartyAddress.CounterpartyAddress
+                    form: CorpFin.entities.CounterpartyAddress.forms.CounterpartyAddressForm
+                    displayCard: CorpFin.entities.CounterpartyAddress.display_cards.CounterpartyAddressDisplayCard
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    # sortExpression: ''
+                    tableAllowed: true
+
+                - _name: ToSupplier
+                  _type: BusinessViewTransition
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  iconUrl: images://mdi/truck.svg
+                  label: Supplier Details
+                  pluralLabel: Supplier Details
+                  useCustomLabel: true
+
+                  transitionPath: supplier
+                  visibleInFormTabCondition: any supplier has (1 = 1)
+                  
+                  businessViewEntity:
+                    _name: ToSupplier
+                    _type: BusinessViewEntity
+
+                    collection: CorpFin.entities.Supplier.collection_views.SupplierCollectionView
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: CorpFin.entities.Supplier.Supplier
+                    form: CorpFin.entities.Supplier.forms.SupplierForm
+                    displayCard: CorpFin.entities.Supplier.display_cards.SupplierDisplayCard
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    # sortExpression: ''
+                    tableAllowed: true
+
+                - _name: ToCustomer
+                  _type: BusinessViewTransition
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  iconUrl: images://mdi/cart-variant.svg
+                  pluralLabel: Customer Details
+                  label: Customer Details
+                  useCustomLabel: true
+
+                  transitionPath: customer
+                  visibleInFormTabCondition: any customer has (1 = 1)
+                  
+                  businessViewEntity:
+                    _name: ToCustomer
+                    _type: BusinessViewEntity
+
+                    collection: CorpFin.entities.Customer.collection_views.CustomerCollectionView
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: CorpFin.entities.Customer.Customer
+                    form: CorpFin.entities.Customer.forms.CustomerForm
+                    displayCard: CorpFin.entities.Customer.display_cards.CustomerDisplayCard
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    # sortExpression: ''
+                    tableAllowed: true
+
+                - _name: ToBankAccount
+                  _type: BusinessViewTransition
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  iconUrl: images://mdi/piggy-bank.svg
+                  useCustomLabel: false
+
+                  transitionPath: bankAccount
+                  visibleInFormTabCondition: any bankAccount has (1 = 1)
+                  
+                  businessViewEntity:
+                    _name: ToBankAccount
+                    _type: BusinessViewEntity
+
+                    collection: CorpFin.entities.BankAccount.collection_views.BankAccountCollectionView
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: CorpFin.entities.BankAccount.BankAccount
+                    form: CorpFin.entities.BankAccount.forms.BankAccountForm
+                    displayCard: CorpFin.entities.BankAccount.display_cards.BankAccountDisplayCard
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    # sortExpression: ''
+                    tableAllowed: true
+
+                - _name: ToInternalEntity
+                  _type: BusinessViewTransition
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  iconUrl: images://mdi/office-building.svg
+                  pluralLabel: Internal Org Unit Details
+                  label: Internal Org Unit Details
+                  useCustomLabel: true
+
+                  transitionPath: orgUnit
+                  visibleInFormTabCondition: any orgUnit has (1 = 1)
+                  
+                  businessViewEntity:
+                    _name: ToInternalEntity
+                    _type: BusinessViewEntity
+
+                    collection: CorpFin.entities.OrgUnit.collection_views.OrgUnitCollectionView
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: CorpFin.entities.OrgUnit.OrgUnit
+                    form: CorpFin.entities.OrgUnit.forms.OrgUnitForm
+                    displayCard: CorpFin.entities.OrgUnit.display_cards.OrgUnitDisplayCard
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    # sortExpression: ''
+                    tableAllowed: true
+
+    - _type: BusinessViewTransition
+      _name: ToCounterparties
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      label: Counterparties
+      pluralLabel: Counterparties
+      enableHierarchy: any counterparty has (1 = 1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionPath: counterparty
+      transitionType: FULLY_QUALIFIED
+      transitionVisible: '0'
+      visibleInFormTabCondition: any counterparty has (1 = 1)
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: Counterparty2
+        entity: CorpFin.entities.Counterparty.Counterparty
+        actionSet: CorpFin.entities.Counterparty.action_sets.CounterpartyActionSet
+        collection: CorpFin.entities.Counterparty.collection_views.CounterpartyCollectionView
+        form: CorpFin.entities.Counterparty.forms.CounterpartyForm
+        displayCard: CorpFin.entities.Counterparty.display_cards.CounterpartyDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        overrideDefaultSort: false
+        enableUserDefinedSort: true
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: true     
+
+        referenceAttributeNavigationConfigs:
+          - formField: CorpFin.entities.Counterparty.forms.CounterpartyForm.Counterparty.Container1.Container2.LegalInformation.FDN_counterpartyGroup
+            businessView: CorpFin.entities.CounterpartyGroup.business_views.CounterpartyGroupBusinessView
+            form: CorpFin.entities.CounterpartyGroup.forms.CounterpartyGroupForm
+            navigationMode: BUSINESS_OBJECT_VIEW 
+
+        transitions:
+          - _name: MasterRecords
+            _type: BusinessViewTransition
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            enableHierarchyInterpreter: LITERAL
+            expandHierarchyByDefault: false
+            filter: 1 = 1
+            iconUrl: images://mdi/puzzle.svg
+            transitionPath: MasterRecords
+            useCustomLabel: false
+
+            businessViewEntity:
+              _name: CounterpartyMaster1
+              _type: BusinessViewEntity
+
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+
+              collection: CorpFin.entities.Counterparty.collection_views.CounterpartyBrowseMasterCollectionView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: CorpFin.entities.Counterparty.Counterparty
+              form: CorpFin.entities.Counterparty.forms.CounterpartyForm
+              displayCard: CorpFin.entities.Counterparty.display_cards.CounterpartyDisplayCard
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              # sortExpression: ''
+              tableAllowed: true
+
+          - _name: ToContactInfo1
+            _type: BusinessViewTransition
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            iconUrl: images://mdi/badge-account-horizontal-outline.svg
+            useCustomLabel: false
+
+            transitionPath: contactInformation
+            visibleInFormTabCondition: any contactInformation has (1 = 1)
+            
+            businessViewEntity:
+              _name: ToContactInfo1
+              _type: BusinessViewEntity
+
+              collection: CorpFin.entities.ContactInformation.collection_views.ContactInformationCollectionView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: CorpFin.entities.ContactInformation.ContactInformation
+              form: CorpFin.entities.ContactInformation.forms.ContactInformationForm
+              displayCard: CorpFin.entities.ContactInformation.display_cards.ContactInformationDisplayCard
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              # sortExpression: ''
+              tableAllowed: true
+
+          - _name: ToRiskProfile1
+            _type: BusinessViewTransition
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            iconUrl: images://mdi/shield-account.svg
+            useCustomLabel: false
+
+            transitionPath: riskComplianceProfile
+            visibleInFormTabCondition: any riskComplianceProfile has (1 = 1)
+            
+            businessViewEntity:
+              _name: ToRiskProfile1
+              _type: BusinessViewEntity
+
+              collection: CorpFin.entities.RiskComplianceProfile.collection_views.RiskComplianceProfileCollectionView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: CorpFin.entities.RiskComplianceProfile.RiskComplianceProfile
+              form: CorpFin.entities.RiskComplianceProfile.forms.RiskComplianceProfileForm
+              displayCard: CorpFin.entities.RiskComplianceProfile.display_cards.RiskComplianceProfileDisplayCard
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              # sortExpression: ''
+              tableAllowed: true
+
+          - _name: ToAddress1
+            _type: BusinessViewTransition
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            iconUrl: images://mdi/map-marker.svg
+            useCustomLabel: false
+
+            transitionPath: counterpartyAddress
+            visibleInFormTabCondition: any counterpartyAddress has (1 = 1)
+            
+            businessViewEntity:
+              _name: ToAddress1
+              _type: BusinessViewEntity
+
+              collection: CorpFin.entities.CounterpartyAddress.collection_views.CounterpartyAddressCollectionView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: CorpFin.entities.CounterpartyAddress.CounterpartyAddress
+              form: CorpFin.entities.CounterpartyAddress.forms.CounterpartyAddressForm
+              displayCard: CorpFin.entities.CounterpartyAddress.display_cards.CounterpartyAddressDisplayCard
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              # sortExpression: ''
+              tableAllowed: true
+
+          - _name: ToSupplier1
+            _type: BusinessViewTransition
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            iconUrl: images://mdi/truck.svg
+            label: Supplier Details
+            pluralLabel: Supplier Details
+            useCustomLabel: true
+
+            transitionPath: supplier
+            visibleInFormTabCondition: any supplier has (1 = 1)
+            
+            businessViewEntity:
+              _name: ToSupplier1
+              _type: BusinessViewEntity
+
+              collection: CorpFin.entities.Supplier.collection_views.SupplierCollectionView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: CorpFin.entities.Supplier.Supplier
+              form: CorpFin.entities.Supplier.forms.SupplierForm
+              displayCard: CorpFin.entities.Supplier.display_cards.SupplierDisplayCard
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              # sortExpression: ''
+              tableAllowed: true
+
+          - _name: ToCustomer1
+            _type: BusinessViewTransition
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            iconUrl: images://mdi/cart-variant.svg
+            pluralLabel: Customer Details
+            label: Customer Details
+            useCustomLabel: true
+
+            transitionPath: customer
+            visibleInFormTabCondition: any customer has (1 = 1)
+            
+            businessViewEntity:
+              _name: ToCustomer11
+              _type: BusinessViewEntity
+
+              collection: CorpFin.entities.Customer.collection_views.CustomerCollectionView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: CorpFin.entities.Customer.Customer
+              form: CorpFin.entities.Customer.forms.CustomerForm
+              displayCard: CorpFin.entities.Customer.display_cards.CustomerDisplayCard
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              # sortExpression: ''
+              tableAllowed: true
+
+          - _name: ToBankAccount1
+            _type: BusinessViewTransition
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            iconUrl: images://mdi/piggy-bank.svg
+            useCustomLabel: false
+
+            transitionPath: bankAccount
+            visibleInFormTabCondition: any bankAccount has (1 = 1)
+            
+            businessViewEntity:
+              _name: ToBankAccount1
+              _type: BusinessViewEntity
+
+              collection: CorpFin.entities.BankAccount.collection_views.BankAccountCollectionView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: CorpFin.entities.BankAccount.BankAccount
+              form: CorpFin.entities.BankAccount.forms.BankAccountForm
+              displayCard: CorpFin.entities.BankAccount.display_cards.BankAccountDisplayCard
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              # sortExpression: ''
+              tableAllowed: true
+
+          - _name: ToInternalEntity1
+            _type: BusinessViewTransition
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            iconUrl: images://mdi/office-building.svg
+            pluralLabel: Internal Org Unit Details
+            label: Internal Org Unit Details
+            useCustomLabel: true
+
+            transitionPath: orgUnit
+            visibleInFormTabCondition: any orgUnit has (1 = 1)
+            
+            businessViewEntity:
+              _name: ToInternalEntity1
+              _type: BusinessViewEntity
+
+              collection: CorpFin.entities.OrgUnit.collection_views.OrgUnitCollectionView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: CorpFin.entities.OrgUnit.OrgUnit
+              form: CorpFin.entities.OrgUnit.forms.OrgUnitForm
+              displayCard: CorpFin.entities.OrgUnit.display_cards.OrgUnitDisplayCard
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              # sortExpression: ''
+              tableAllowed: true
+
+enableHierarchyView: true
+useHierarchyOnOpen: true

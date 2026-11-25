@@ -1,0 +1,99 @@
+# This file defines the action set for managing Employee entities in the Organization domain.
+# It includes actions for editing, mass updating, deleting, exporting, importing,
+# and browsing graphs of Employee entities. 
+# This action are available on Golden data records.
+_package: Organization.entities.Employee.action_sets
+_type: ActionSet
+entity: Organization.entities.Employee.Employee
+_name: EmployeeGoldenActionSet
+label: Employee Golden Action Set
+description: ''
+defaultActionSet: true
+actions:
+  - _type: EditAction
+    _name: EditAuthorEmployees
+    useCustomLabel: true
+    label: Edit
+    description: ''
+    multipleSelectionAllowed: true
+    waitDialogEnabled: false
+    itemsLimit: 1000
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    stepper: Organization.entities.Employee.steppers.AuthorEmployees
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorEmployees
+    useCustomLabel: true
+    label: Mass Update
+    description: ''
+    availableForGoldenData: true
+    waitDialogEnabled: false
+    stepper: Organization.entities.Employee.steppers.AuthorEmployees
+  - _type: DeleteAction
+    _name: DeleteAuthorEmployees
+    useCustomLabel: true
+    label: Delete
+    description: ''
+    requiredRole: DataSteward
+    multipleSelectionAllowed: true
+    waitDialogEnabled: false
+    deleteType: HARD_DELETE
+  - _type: ExportAction
+    _name: Export
+    useCustomLabel: true
+    label: Export
+    description: ''
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorEmployees
+    useCustomLabel: true
+    label: Import
+    description: ''
+    waitDialogEnabled: false
+    importMode: CREATE_AND_UPDATE
+    importedRecordType: GOLDEN
+    stepper: Organization.entities.Employee.steppers.AuthorEmployeesImport
+    allowOtherPublishers: false
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    useCustomLabel: true
+    label: Browse Graph
+    description: ''
+    waitDialogEnabled: false
+  - _type: ExplainRecordAction
+    _name: ExplainRecord
+    useCustomLabel: true
+    label: Explain Record
+    description: ''
+    waitDialogEnabled: false
+    displayCard: Organization.entities.Employee.display_cards.ReviewEmployeeDisplayCard
+    formTab: Organization.entities.Employee.forms.EmployeeReviewSuggestionsForm.Employee
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Merge Or Split Duplicates
+    description: ''
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    waitDialogEnabled: false
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Review Matches
+    description: ''
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Review Suggestions
+    description: ''
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false
+

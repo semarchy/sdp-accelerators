@@ -1,0 +1,138 @@
+_package: RetailCustomer360.entities.ProductCatalog.business_views
+_type: BusinessView
+_name: ProductCatalogBusinessView
+label: Product Catalogs
+description: "Browse and steward Product Catalogs."
+entity: RetailCustomer360.entities.ProductCatalog.ProductCatalog
+rootLabel: Product Catalogs
+rootPluralLabel: Product Catalogs
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ProductCatalog
+  displayCard: RetailCustomer360.entities.ProductCatalog.display_cards.ProductCatalogDisplayCard
+  entity: RetailCustomer360.entities.ProductCatalog.ProductCatalog
+  actionSet: RetailCustomer360.entities.ProductCatalog.action_sets.ProductCatalogActionSet
+  collection: RetailCustomer360.entities.ProductCatalog.collection_views.ProductCatalogCollectionView
+  form: RetailCustomer360.entities.ProductCatalog.forms.ProductCatalogForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AssociatedProduct
+      transitionPath: BelongsToProductCatalogFromProduct
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/package-variant.svg?color=%230D1B2A&width=64
+      label: Product
+      pluralLabel: Products
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToProductCatalogFromProduct has (1 = 1)
+      businessViewEntity:
+        _name: ProductRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Product.collection_views.ProductCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Product.Product
+        form: RetailCustomer360.entities.Product.forms.ProductForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.Product.action_sets.ProductActionSet
+        displayCard: RetailCustomer360.entities.Product.display_cards.ProductDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedProductCatalogCategory
+      transitionPath: BelongsToProductCatalogFromProductCatalogCategory
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/file-tree.svg?color=%230D1B2A&width=64
+      label: Category
+      pluralLabel: Categories
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToProductCatalogFromProductCatalogCategory has (1 = 1)
+      businessViewEntity:
+        _name: ProductCatalogCategoryRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.ProductCatalogCategory.collection_views.ProductCatalogCategoryCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.ProductCatalogCategory.ProductCatalogCategory
+        form: RetailCustomer360.entities.ProductCatalogCategory.forms.ProductCatalogCategoryForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.ProductCatalogCategory.action_sets.ProductCatalogCategoryActionSet
+        displayCard: RetailCustomer360.entities.ProductCatalogCategory.display_cards.ProductCatalogCategoryDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+enableHierarchyView: false
+useHierarchyOnOpen: false

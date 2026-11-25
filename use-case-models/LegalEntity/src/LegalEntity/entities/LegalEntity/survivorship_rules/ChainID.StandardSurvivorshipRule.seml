@@ -1,0 +1,20 @@
+# This is a definition file for the ChainID Standard Survivorship Rule in the Legal Entity application.
+# The Chain ID is based on prefered publisher rankings: 1 - CRM, 2 - Investran, 3 - TAX.
+_package: LegalEntity.entities.LegalEntity.survivorship_rules
+_name: ChainID
+entity: LegalEntity.entities.LegalEntity.LegalEntity
+defaultRule: true
+consolidationSkipNulls: false
+_type: StandardSurvivorshipRule
+label: Chain ID
+attributes:
+  - attributeName: ChainID
+consolidationStrategy: PREFERRED_PUBLISHER
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: LegalEntity.publishers.CRM
+  - _type: ConsoPublisherRanking
+    publisher: LegalEntity.publishers.Investran
+  - _type: ConsoPublisherRanking
+    publisher: LegalEntity.publishers.TAX
+overrideStrategy: UNTIL_NEXT_USER_CHANGE

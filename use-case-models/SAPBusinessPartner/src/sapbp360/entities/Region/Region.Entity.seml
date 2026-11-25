@@ -1,0 +1,85 @@
+# Region entity for the SAP Business Partner 360 accelerator.
+_name: Region
+_package: sapbp360.entities.Region
+_type: Entity
+primaryKey: sapbp360.entities.Region.Region.RegionID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: RegionCode
+label: Region
+documentation: Region reference data used by the SAP Business Partner 360 model.
+description: Region reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/Region.svg
+pluralLabel: Regions
+historizeGolden: true
+historizeMaster: false
+physicalTableName: REGION
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: RegionID
+    physicalName: REGION_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Region ID
+    documentation: Unique identifier for the region.
+    description: Unique identifier for the region.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Region ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: RegionCode
+    physicalName: REGION_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Region Code
+    documentation: Code for the region.
+    description: Code for the region.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Region Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: RegionName
+    physicalName: REGION_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Region Name
+    documentation: Name of the region.
+    description: Name of the region.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Region Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the region.
+    description: Description for the region.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the region is active.
+    description: Indicates whether the region is active.
+    mandatory: false
+    length: 1
+    searchable: true

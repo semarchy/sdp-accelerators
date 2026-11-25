@@ -1,0 +1,104 @@
+_package: RetailCustomer360.entities.UnitOfMeasure
+_type: Entity
+_name: UnitOfMeasure
+label: Unit Of Measure
+pluralLabel: Units Of Measure
+entityType: BASIC
+physicalTableName: UNIT_OF_MEASURE
+iconUrl: https://api.iconify.design/mdi/scale-balance.svg?color=%230D1B2A&width=64
+
+description: "Standard unit in which product quantities are expressed and converted."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: UomId
+    label: Unit Of Measure Id
+    physicalName: UOM_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the unit of measure."
+
+  - _type: EntityAttribute
+    _name: UomCode
+    label: Unit Code
+    physicalName: UOM_CODE
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Short code identifying the unit."
+
+  - _type: EntityAttribute
+    _name: UomName
+    label: Unit Name
+    physicalName: UOM_NAME
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Business name of the unit."
+
+  - _type: EntityAttribute
+    _name: UomType
+    label: Unit Type
+    physicalName: UOM_TYPE
+    dataType: RetailCustomer360.list_of_values.UnitOfMeasureType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Dimension the unit measures."
+
+  - _type: EntityAttribute
+    _name: BaseUnitCode
+    label: Base Unit Code
+    physicalName: BASE_UNIT_CODE
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Code of the base unit this unit converts to."
+
+  - _type: EntityAttribute
+    _name: ConversionFactor
+    label: Conversion Factor
+    physicalName: CONVERSION_FACTOR
+    dataType: Decimal
+    precision: 18
+    scale: 6
+    searchable: true
+    description: "Multiplier that converts this unit into the base unit."
+
+  - _type: EntityAttribute
+    _name: DecimalPrecision
+    label: Decimal Precision
+    physicalName: DECIMAL_PRECISION
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of decimal places quantities are expressed with."
+
+  - _type: EntityAttribute
+    _name: IsBaseUnit
+    label: Is Base Unit
+    physicalName: IS_BASE_UNIT
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether this unit is the base of its dimension."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the unit is currently in use."
+
+primaryKey: RetailCustomer360.entities.UnitOfMeasure.UnitOfMeasure.UomId
+
+sourceIdGeneration:
+  mode: MANUAL

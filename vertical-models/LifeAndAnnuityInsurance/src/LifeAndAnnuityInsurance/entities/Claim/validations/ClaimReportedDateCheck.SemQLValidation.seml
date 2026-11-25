@@ -1,0 +1,9 @@
+_name: ClaimReportedDateCheck
+_type: SemQLValidation
+_package: LifeAndAnnuityInsurance.entities.Claim.validations
+entity: LifeAndAnnuityInsurance.entities.Claim.Claim
+label: "Claim Reported Date Check"
+condition: ReportedDate IS NULL OR LossDate IS NULL OR LossDate <= ReportedDate
+validationScope: PRE_CONSO
+description: "Checks claim reported date check for Claim."
+validationLabel: "ReportedDate must be greater than or equal to LossDate."

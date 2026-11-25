@@ -1,0 +1,38 @@
+# This file defines the Author Banks Stepper in the Legal Entity application.
+# It provides a stepper for managing bank authorizations, including account details and related actions.
+_package: LegalEntity.entities.Bank.steppers
+_type: Stepper
+_name: AuthorBanks
+entity: LegalEntity.entities.Bank.Bank
+label: Banks
+rootStep:
+  _type: CollectionStep
+  _name: AuthorBanksCollectionStep
+  label: Banks
+  canFinishSubLevel: true
+  childDeleteType: SOFT_DELETE
+  collectionView: LegalEntity.entities.Bank.collection_views.BankCollectionView
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  childSteps:
+    - _type: FormStep
+      _name: AuthorAccountFormStep
+      label: Account
+      canFinishSubLevel: true
+      formTab: LegalEntity.entities.Bank.forms.BankForm.Bank
+      formFieldsMode: AUTO
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      
+      
+      

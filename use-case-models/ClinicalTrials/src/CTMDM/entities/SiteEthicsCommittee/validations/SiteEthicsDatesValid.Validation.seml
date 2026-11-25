@@ -1,0 +1,9 @@
+_package: CTMDM.entities.SiteEthicsCommittee.validations
+_name: SiteEthicsDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.SiteEthicsCommittee.SiteEthicsCommittee
+label: Ethics approval expiration must not be before approval
+validationScope: PRE_CONSO
+description: "Ethics approval expiration must not be before approval before consolidation."
+
+condition: ExpirationDate IS NULL OR ApprovalDate IS NULL OR ExpirationDate >= ApprovalDate

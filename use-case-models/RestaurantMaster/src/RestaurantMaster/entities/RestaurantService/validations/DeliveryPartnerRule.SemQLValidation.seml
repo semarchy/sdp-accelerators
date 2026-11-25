@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.RestaurantService.validations
+_name: DeliveryPartnerRule
+_type: SemQLValidation
+entity: RestaurantMaster.entities.RestaurantService.RestaurantService
+label: Delivery partner set for delivery only
+description: A delivery service names its delivery partner, other services do not; dates in order.
+validationScope: PRE_CONSO
+validationLabel: A delivery service names its delivery partner, other services do not; dates in order.
+condition: ((FID_ServiceType = 'DELIVERY' AND FID_DeliveryPartner IS NOT NULL) OR (FID_ServiceType <> 'DELIVERY' AND FID_DeliveryPartner IS NULL)) AND (EffectiveTo IS NULL OR EffectiveTo >= EffectiveFrom)

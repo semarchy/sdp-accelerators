@@ -1,0 +1,65 @@
+dataSource: GovernanceRules
+sql: "select r.gr_code as \"Code\",\n       coalesce(r.gr_title, '(no title)') as \"Title\",\n       case r.gr_category when 'DATA_QUALITY' then\
+  \ 'Data quality' when 'PRIVACY' then 'Privacy' when 'SECURITY_ACCESS' then 'Security and access' when 'RETENTION' then 'Retention' when 'REFERENCE_DATA'\
+  \ then 'Reference data' when 'IDENTITY_MATCHING' then 'Identity and matching' when 'METADATA_DOCUMENTATION' then 'Metadata and documentation'\
+  \ when 'AI_USAGE' then 'AI usage' when 'STEWARDSHIP' then 'Stewardship' when 'MODELING_CONVENTIONS' then 'Modeling conventions' else '(not set)'\
+  \ end as \"Category\",\n       case r.gr_level when 'MUST' then 'Must' when 'SHOULD' then 'Should' when 'MAY' then 'May' else '(not set)' end\
+  \ as \"Level\",\n       case r.gr_status when 'DRAFT' then 'Draft' when 'IN_REVIEW' then 'In review' when 'APPROVED' then 'Approved' when 'RETIREMENT_REQUESTED'\
+  \ then 'Retirement requested' when 'RETIRED' then 'Retired' else '(not set)' end as \"Status\",\n       case when r.gr_status = 'APPROVED' and\
+  \ r.gr_effective <= current_date\n                 and (r.gr_retirement is null or r.gr_retirement > current_date) then 'Yes' else 'No' end\
+  \ as \"In force\",\n       1 as \"Rules\"\n  from gd_gov_rule r"
+attributes:
+  Code:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+  Title:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+  Category:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+  Level:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+  Status:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+  In force:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+  Rules:
+    dataType: NUMBER
+    usableAsMeasure: true
+    usableAsDimension: false
+    usableAsTimeDimension: false
+    showInDrilldown: false
+    sortable: true
+    format:
+      decimalPlaces: 0
+      showThousandsSeparator: true
+queryActions: []
+exportEnabled: true

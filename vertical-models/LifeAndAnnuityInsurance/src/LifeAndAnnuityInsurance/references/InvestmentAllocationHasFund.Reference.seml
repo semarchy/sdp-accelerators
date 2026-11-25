@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: InvestmentAllocationHasFund
+description: "Indicates the Fund associated with a Investment Allocation."
+_type: Reference
+label: "Investment Allocation Has Fund"
+
+fromEntity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+fromRoleLabel: "Investment Allocation"
+fromRoleName: InvestmentAllocation
+fromRolePluralLabel: "Investment Allocations"
+physicalName: INV_ALLOC_HAS_FUND
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Fund.Fund
+toRoleLabel: "Fund"
+toRoleName: Fund
+toRolePhysicalName: FUND
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Fund
+  label: "Fund ID"
+  description: "The identifier of the Fund associated with the Investment Allocation."
+  physicalName: FUND_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Fund.Fund

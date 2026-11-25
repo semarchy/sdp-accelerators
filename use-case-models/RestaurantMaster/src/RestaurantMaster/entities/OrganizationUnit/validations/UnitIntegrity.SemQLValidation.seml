@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.OrganizationUnit.validations
+_name: UnitIntegrity
+_type: SemQLValidation
+entity: RestaurantMaster.entities.OrganizationUnit.OrganizationUnit
+label: Unit consistent with its hierarchy
+description: The parent must be in the same hierarchy and not create a loop; a market has a brand, other units none.
+validationScope: PRE_CONSO
+validationLabel: The parent must be in the same hierarchy and not create a loop; a market has a brand, other units none.
+condition: (FID_ParentUnit IS NULL OR (FID_ParentUnit <> UnitCode AND (ParentUnit.HierarchyType IS NULL OR ParentUnit.HierarchyType = HierarchyType) AND (ParentUnit.FID_ParentUnit IS NULL OR ParentUnit.FID_ParentUnit <> UnitCode) AND (ParentUnit.ParentUnit.FID_ParentUnit IS NULL OR ParentUnit.ParentUnit.FID_ParentUnit <> UnitCode))) AND ((UnitLevel = 'MARKET' AND FID_Brand IS NOT NULL) OR (UnitLevel <> 'MARKET' AND FID_Brand IS NULL))

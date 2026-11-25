@@ -1,0 +1,26 @@
+_package: FinanceKYC.entities.IndividualPerson.action_sets
+_type: ActionSet
+_name: IndividualPersonReviewSuggestionsActionSet
+
+entity: FinanceKYC.entities.IndividualPerson.IndividualPerson
+label: Individual Person Review Suggestions Action Set
+defaultActionSet: false
+
+actions:
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnIndividualPerson
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.IndividualPerson.dups_managers.ReviewSuggestionsOnIndividualPerson
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnIndividualPerson
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.IndividualPerson.dups_managers.ReviewSuggestionsOnIndividualPerson
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false

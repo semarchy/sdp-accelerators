@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: StudyHasTherapeuticArea
+_type: Reference
+label: Study Has Therapeutic Area
+description: "Classifies studies by therapeutic area."
+documentation: "Classifies studies by therapeutic area."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.Study.Study
+fromRoleLabel: Study
+fromRoleName: study
+fromRolePluralLabel: Studies
+physicalName: STUDY_HAS_THER_AREA
+fromNavigable: true
+
+toEntity: CTMDM.entities.TherapeuticArea.TherapeuticArea
+toRoleLabel: Therapeutic Area
+toRoleName: therapeuticArea
+toRolePhysicalName: THER_AREA
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: therapeuticArea
+  label: Therapeutic Area
+  physicalName: THER_AREA
+  searchable: true
+  entity: CTMDM.entities.TherapeuticArea.TherapeuticArea

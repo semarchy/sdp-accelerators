@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: UnderwritingCaseHasRiskClass
+description: "Indicates the Risk Class associated with a Underwriting Case."
+_type: Reference
+label: "Underwriting Case Has Risk Class"
+
+fromEntity: LifeAndAnnuityInsurance.entities.UnderwritingCase.UnderwritingCase
+fromRoleLabel: "Underwriting Case"
+fromRoleName: UnderwritingCase
+fromRolePluralLabel: "Underwriting Cases"
+physicalName: UW_CASE_HAS_RISK_CLASS
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.RiskClass.RiskClass
+toRoleLabel: "Risk Class"
+toRoleName: RiskClass
+toRolePhysicalName: RISK_CLASS
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: RiskClass
+  label: "Risk Class ID"
+  description: "The identifier of the Risk Class associated with the Underwriting Case."
+  physicalName: RISK_CLASS_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.RiskClass.RiskClass

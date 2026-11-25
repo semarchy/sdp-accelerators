@@ -1,0 +1,28 @@
+_name: CustomerSuggestedMatchesActionSet
+_package: Manufacturing.entities.Customer.action_sets
+_type: ActionSet
+entity: Manufacturing.entities.Customer.Customer
+label: Customer Suggested Matches Action Set
+defaultActionSet: false
+actions:
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnCustomer
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: Manufacturing.entities.Customer.dups_managers.ManageDuplicatesOnCustomer
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: Manufacturing.entities.Customer.display_cards.CustomerDisplayCard
+    formTab: Manufacturing.entities.Customer.forms.CustomerForm.Customer
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

@@ -1,0 +1,68 @@
+_package: RestaurantMaster.entities.RestaurantIdentifier
+_type: Entity
+_name: RestaurantIdentifier
+label: Restaurant identifier
+pluralLabel: Restaurant identifiers
+entityType: BASIC
+physicalTableName: REST_IDENTIFIER
+iconUrl: images://mdi/identifier.svg
+description: 'The restaurant''s own ID in another system: ERP Restaurant Number, POS ID, delivery merchant ID, listing ID, HR location code.'
+documentation: 'The restaurant''s own ID in another system: ERP Restaurant Number, POS ID, delivery merchant ID, listing ID, HR location code.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: RestaurantIdentifierID
+  label: Key
+  physicalName: REST_IDENTIFIER_ID
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  documentation: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  length: 100
+- _type: EntityAttribute
+  _name: IdentifierValue
+  label: Identifier value
+  physicalName: IDENTIFIERVALUE
+  dataType: String
+  length: 128
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: The identifier as the system knows it.
+  documentation: The identifier as the system knows it.
+- _type: EntityAttribute
+  _name: ValidFrom
+  label: Valid from
+  physicalName: VALIDFROM
+  dataType: Date
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: First day the identifier designates this restaurant.
+  documentation: First day the identifier designates this restaurant.
+- _type: EntityAttribute
+  _name: ValidTo
+  label: Valid to
+  physicalName: VALIDTO
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Last day the identifier designates this restaurant; empty while in use.
+  documentation: Last day the identifier designates this restaurant; empty while in use.
+- _type: EntityAttribute
+  _name: NaturalKey
+  label: Natural key
+  physicalName: NATURALKEY
+  dataType: String
+  length: 300
+  mandatory: false
+  searchable: false
+  description: Business key of the row, built from its restaurant and its distinguishing fields; enforces uniqueness.
+  documentation: Business key of the row, built from its restaurant and its distinguishing fields; enforces uniqueness.
+primaryKey: RestaurantMaster.entities.RestaurantIdentifier.RestaurantIdentifier.RestaurantIdentifierID
+sourceIdGeneration:
+  mode: MANUAL

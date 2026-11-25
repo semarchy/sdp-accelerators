@@ -1,0 +1,10 @@
+_package: RestaurantMaster.entities.RestaurantStatusHistory.enrichers
+_name: BuildNaturalKey
+_type: SemQLEnricher
+entity: RestaurantMaster.entities.RestaurantStatusHistory.RestaurantStatusHistory
+label: Build the natural key
+description: Builds the key that allows only one row per restaurant and start date.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+- attributeName: NaturalKey
+  expression: FID_Restaurant || '|' || TO_CHAR(StartDate, 'YYYY-MM-DD')

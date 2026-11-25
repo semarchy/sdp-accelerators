@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: PolicyPartyRoleHasPartyRoleType
+description: "Indicates the Party Role Type associated with a Policy Party Role."
+_type: Reference
+label: "Policy Party Role Has Party Role Type"
+
+fromEntity: LifeAndAnnuityInsurance.entities.PolicyPartyRole.PolicyPartyRole
+fromRoleLabel: "Policy Party Role"
+fromRoleName: PolicyPartyRole
+fromRolePluralLabel: "Policy Party Roles"
+physicalName: POLPARTYROLEHASPARTY_W4RM
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.PartyRoleType.PartyRoleType
+toRoleLabel: "Party Role Type"
+toRoleName: PartyRoleType
+toRolePhysicalName: PARTY_ROLE_TYPE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PartyRoleType
+  label: "Party Role Type ID"
+  description: "The identifier of the Party Role Type associated with the Policy Party Role."
+  physicalName: PARTY_ROLE_TYPE_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.PartyRoleType.PartyRoleType

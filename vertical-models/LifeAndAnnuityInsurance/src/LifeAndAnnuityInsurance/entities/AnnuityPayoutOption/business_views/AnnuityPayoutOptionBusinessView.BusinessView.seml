@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.business_views
+_type: BusinessView
+_name: AnnuityPayoutOptionBusinessView
+label: "Annuity Payout Option"
+entity: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.AnnuityPayoutOption
+rootLabel: "Annuity Payout Options"
+rootPluralLabel: "Annuity Payout Options"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: AnnuityPayoutOption
+  displayCard: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.display_cards.AnnuityPayoutOptionDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.AnnuityPayoutOption
+  actionSet: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.action_sets.AnnuityPayoutOptionActionSet
+  collection: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.collection_views.AnnuityPayoutOptionCollectionView
+  form: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.forms.AnnuityPayoutOptionForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AnnuityContract
+      label: "Annuity Contract"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Annuity Contracts"
+      iconUrl: images://mdi/calendar-star.svg
+      transitionPath: AnnuityContract
+      useCustomLabel: true
+      description: "Transition from Annuity Payout Option to related Annuity Contracts."
+      visibleInFormTabCondition: any AnnuityContract has (1=1)
+      enableHierarchy: any AnnuityContract has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: AnnuityContract
+        displayCard: LifeAndAnnuityInsurance.entities.AnnuityContract.display_cards.AnnuityContractDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.AnnuityContract.AnnuityContract
+        actionSet: LifeAndAnnuityInsurance.entities.AnnuityContract.action_sets.AnnuityContractActionSet
+        collection: LifeAndAnnuityInsurance.entities.AnnuityContract.collection_views.AnnuityContractCollectionView
+        form: LifeAndAnnuityInsurance.entities.AnnuityContract.forms.AnnuityContractForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/timetable.svg

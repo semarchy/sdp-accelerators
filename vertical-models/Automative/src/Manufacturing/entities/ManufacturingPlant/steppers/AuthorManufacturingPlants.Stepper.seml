@@ -1,0 +1,231 @@
+_name: AuthorManufacturingPlants
+_package: Manufacturing.entities.ManufacturingPlant.steppers
+_type: Stepper
+entity: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant
+rootStep:
+  _name: ManufacturingPlants
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ManufacturingPlant.collection_views.ManufacturingPlantCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Manufacturing Plants
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantOwnership
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ManufacturingPlantsBelongToManufacturingPlantType.ManufacturingPlantType
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.OutputProduct
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantName
+  stepTriggers: []
+  childSteps:
+    - _name: ManufacturingPlant
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Manufacturing Plant
+      formTab: Manufacturing.entities.ManufacturingPlant.forms.ManufacturingPlantForm.ManufacturingPlant
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantsBelongToManufacturingPlantType.ManufacturingPlantType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantOwnership
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantName
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: LOV
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.OutputProduct
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantOwnership
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantsBelongToManufacturingPlantType.ManufacturingPlantType
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.OutputProduct
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+      stepTriggers: []
+    - _name: WorkShift
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: Manufacturing.entities.ManufacturingPlantWorkShift.collection_views.ManufacturingPlantWorkShiftCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Work Shift
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantName
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant.ManufacturingPlant
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantOwnership
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant.ManufacturingPlant
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantsBelongToManufacturingPlantType.ManufacturingPlantType
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.OutputProduct
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: true
+      skipToChildEditingOnParentEdit: true
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: ManufacturingPlantWorkShift
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Manufacturing Plant Work Shift
+          formTab: Manufacturing.entities.ManufacturingPlantWorkShift.forms.ManufacturingPlantWorkShiftForm.ManufacturingPlantWorkShift
+          formStepEnrichers: []
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.ManufacturingPlantWorkShift.forms.ManufacturingPlantWorkShiftForm.ManufacturingPlantWorkShift.Container2.FDN_ManufacturingPlant
+              referencePickerCollectionView: Manufacturing.entities.ManufacturingPlant.collection_views.ManufacturingPlantCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.ManufacturingPlantWorkShift.forms.ManufacturingPlantWorkShiftForm.ManufacturingPlantWorkShift.Container2.ManufacturingPlant_FDN_Manufacturer
+              referencePickerCollectionView: Manufacturing.entities.Manufacturer.collection_views.ManufacturerCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant.ManufacturingPlant
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant.ManufacturingPlant
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant.ManufacturingPlant
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant.ManufacturingPlant
+          stepTriggers: []
+label: Author Manufacturing Plants
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant.ManufacturingPlant
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.WorkShiftsBelongsToManufacturingPlant.ManufacturingPlant
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantOwnership
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ManufacturingPlantsBelongsToManufacturer.Manufacturer
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.OutputProduct
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ManufacturingPlant.ManufacturingPlant.PlantName
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ManufacturingPlantsBelongToManufacturingPlantType.ManufacturingPlantType
+triggers: []

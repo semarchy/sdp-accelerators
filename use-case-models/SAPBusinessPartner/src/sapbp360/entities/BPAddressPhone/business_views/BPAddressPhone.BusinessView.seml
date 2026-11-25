@@ -1,0 +1,73 @@
+_name: BPAddressPhone
+_package: sapbp360.entities.BPAddressPhone.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.BPAddressPhone.BPAddressPhone
+rootLabel: BP Address Phone
+rootPluralLabel: BP Address Phones
+useHierarchyOnOpen: false
+label: BP Address Phone
+description: Business view for BP Address Phone.
+rootBusinessViewEntity:
+  _name: BPAddressPhone
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.BPAddressPhone.collection_views.BPAddressPhoneCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.BPAddressPhone.BPAddressPhone
+  form: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.BPAddressPhone.action_sets.BPAddressPhoneActionSet
+  displayCard: sapbp360.entities.BPAddressPhone.display_cards.BPAddressPhoneDisplayCard
+  sortExpression: PhoneNumber
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_PhoneNumberType
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_DestinationLocationCountry
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Address
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.BPAddressPhone.business_views.BPAddressPhone.BPAddressPhone
+rootIconUrl: images://mdi/phone-outline.svg

@@ -1,0 +1,11 @@
+_package: CTMDM.entities.MedicalLicense.enrichers
+_name: NormalizeMedicalLicense
+_type: SemQLEnricher
+entity: CTMDM.entities.MedicalLicense.MedicalLicense
+label: Normalize Medical License
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Medical License values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedLicenseNumber
+    expression: "RTRIM(LTRIM(UPPER(LicenseNumber)))"

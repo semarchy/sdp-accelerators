@@ -1,0 +1,55 @@
+_name: AuthorProductDriveTrains
+_package: Manufacturing.entities.ProductDriveTrain.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductDriveTrain.ProductDriveTrain
+rootStep:
+  _name: ProductDriveTrains
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductDriveTrain.collection_views.ProductDriveTrainCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Drive Trains
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductDriveTrain.ProductDriveTrain.DriveTrain
+  stepTriggers: []
+  childSteps:
+    - _name: ProductDriveTrain
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Drive Train
+      formTab: Manufacturing.entities.ProductDriveTrain.forms.ProductDriveTrainForm.ProductDriveTrain
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductDriveTrain.ProductDriveTrain.DriveTrain
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductDriveTrain.ProductDriveTrain.DriveTrain
+      stepTriggers: []
+label: Author Drive Trains
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductDriveTrain.ProductDriveTrain.DriveTrain
+triggers: []

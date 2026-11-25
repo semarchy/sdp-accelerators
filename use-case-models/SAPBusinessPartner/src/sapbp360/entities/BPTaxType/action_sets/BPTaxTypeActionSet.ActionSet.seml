@@ -1,0 +1,70 @@
+_name: BPTaxTypeActionSet
+_package: sapbp360.entities.BPTaxType.action_sets
+_type: ActionSet
+entity: sapbp360.entities.BPTaxType.BPTaxType
+label: BP Tax Type Action Set
+description: Action set for managing BP Tax Types in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorBPTaxTypes
+    label: Create
+    description: Create a new BP Tax Type record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.BPTaxType.steppers.AuthorBPTaxTypes
+  - _name: EditAuthorBPTaxTypes
+    label: Edit
+    description: Edit BP Tax Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.BPTaxType.steppers.AuthorBPTaxTypes
+  - _name: MassUpdateAuthorBPTaxTypes
+    label: Mass Update
+    description: Mass update BP Tax Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.BPTaxType.steppers.AuthorBPTaxTypes
+  - _name: Delete
+    label: Delete
+    description: Delete selected BP Tax Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorBPTaxTypes
+    label: Import
+    description: Import BP Tax Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.BPTaxType.steppers.BPTaxTypeImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

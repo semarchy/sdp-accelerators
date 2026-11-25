@@ -1,0 +1,59 @@
+# GovernancePolicy: entity of the GovernanceRules accelerator. A governance policy that groups related rules (for example the privacy policy), owned by a governance body.
+_package: GovernanceRules.entities.GovernancePolicy
+_type: Entity
+_name: GovernancePolicy
+label: Policy
+pluralLabel: Policies
+physicalTableName: GOV_POLICY
+entityType: BASIC
+description: A governance policy that groups related rules (for example the privacy policy), owned by a governance body.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+primaryKey: GovernanceRules.entities.GovernancePolicy.GovernancePolicy.Code
+sourceIdGeneration:
+  mode: MANUAL
+attributes:
+- _type: EntityAttribute
+  _name: Code
+  label: Code
+  physicalName: GP_CODE
+  dataType: String
+  length: 40
+  mandatory: true
+  description: Natural key of the policy, entered by the author and never changed (for example POL-PRIV).
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Name
+  label: Name
+  physicalName: GP_NAME
+  dataType: String
+  length: 200
+  mandatory: true
+  description: Name of the policy.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Description
+  label: Description
+  physicalName: GP_DESCRIPTION
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: What the policy covers.
+- _type: EntityAttribute
+  _name: Purpose
+  label: Purpose
+  physicalName: GP_PURPOSE
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: The objective of the policy.
+- _type: EntityAttribute
+  _name: LifecycleStatus
+  label: Status
+  physicalName: GP_STATUS
+  dataType: GovernanceRules.list_of_values.LifecycleStatus
+  lovValidationScope: PRE_CONSO
+  mandatory: false
+  description: Lifecycle status, code DRAFT (Draft), IN_REVIEW (In review), APPROVED (Approved), RETIREMENT_REQUESTED (Retirement
+    requested) or RETIRED (Retired).

@@ -1,0 +1,42 @@
+_package: PropertyAndCasualtyInsurance.entities.InsuranceProduct.steppers
+_type: Stepper
+_name: AuthorInsuranceProducts
+entity: PropertyAndCasualtyInsurance.entities.InsuranceProduct.InsuranceProduct
+label: Insurance Products
+rootStep:
+  _type: CollectionStep
+  _name: InsuranceProducts
+  label: Insurance Products
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.InsuranceProduct.collection_views.InsuranceProductImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: InsuranceProduct
+      label: Insurance Product
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.InsuranceProduct.forms.InsuranceProductDEForm.General
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.InsuranceProduct.validations.DateRangeCheck
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.InsuranceProduct.validations.ProductNameMandatory

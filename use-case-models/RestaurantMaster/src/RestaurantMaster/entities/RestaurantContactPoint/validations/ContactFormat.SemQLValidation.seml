@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.RestaurantContactPoint.validations
+_name: ContactFormat
+_type: SemQLValidation
+entity: RestaurantMaster.entities.RestaurantContactPoint.RestaurantContactPoint
+label: Contact value format
+description: An email must look like name@domain.tld and a link must start with http.
+validationScope: PRE_CONSO
+validationLabel: An email must look like name@domain.tld and a link must start with http.
+condition: (ContactPointType <> 'EMAIL' OR ContactValue LIKE '%_@_%._%') AND (ContactPointType NOT IN ('WEBSITE', 'ORDERING', 'SOCIAL') OR ContactValue LIKE 'http%')

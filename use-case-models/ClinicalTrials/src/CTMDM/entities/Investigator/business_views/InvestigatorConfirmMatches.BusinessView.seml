@@ -1,0 +1,64 @@
+_package: CTMDM.entities.Investigator.business_views
+_type: BusinessView
+_name: InvestigatorConfirmMatches
+
+entity: CTMDM.entities.Investigator.Investigator
+label: Confirm Matches
+rootLabel: Investigator
+rootPluralLabel: Investigators
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: MastersCount > 1 AND ConfirmationStatus != 'CONFIRMED'
+rootIconUrl: images://mdi/account-check.svg
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Investigator
+  entity: CTMDM.entities.Investigator.Investigator
+
+  actionSet: CTMDM.entities.Investigator.action_sets.InvestigatorConfirmMatchesActionSet
+  collection: CTMDM.entities.Investigator.collection_views.InvestigatorConfirmMatchesCollectionView
+  form: CTMDM.entities.Investigator.forms.InvestigatorForm
+  displayCard: CTMDM.entities.Investigator.display_cards.InvestigatorDisplayCard
+
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.Investigator.business_views.InvestigatorConfirmMatches.Investigator
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

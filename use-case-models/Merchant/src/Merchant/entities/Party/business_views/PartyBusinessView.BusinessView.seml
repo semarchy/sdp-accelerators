@@ -1,0 +1,91 @@
+_package: Merchant.entities.Party.business_views
+# Description: Business view for `Party` exposing forms, collections and actions.
+# Contains configuration used by the application for navigation and global search.
+# Role: Central business view that groups party-related UI artifacts for users.
+_type: BusinessView
+_name: PartyBusinessView
+entity: Merchant.entities.Party.Party
+rootLabel: Party
+rootPluralLabel: Parties
+displayRootNodeAs: ICON_LABEL
+label: Party Business View
+rootIconUrl: images://mdi/people.svg
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Party
+  displayCard: Merchant.entities.Party.display_cards.Party
+  entity: Merchant.entities.Party.Party
+  actionSet: Merchant.entities.Party.action_sets.PartyActionSet
+  collection: Merchant.entities.Party.collection_views.PartyCollectionView
+  form: Merchant.entities.Party.forms.PartyForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: MasterRecords
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MerchantMaster
+        _type: BusinessViewEntity
+        collection: Merchant.entities.Party.collection_views.PartyCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Merchant.entities.Party.Party
+        form: Merchant.entities.Party.forms.PartyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: Merchant.entities.Party.display_cards.Party
+enableHierarchyView: false
+useHierarchyOnOpen: false

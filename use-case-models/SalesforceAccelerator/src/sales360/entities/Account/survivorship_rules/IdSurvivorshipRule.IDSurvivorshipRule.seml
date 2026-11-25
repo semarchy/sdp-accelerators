@@ -1,0 +1,20 @@
+# This file defines the ID survivorship rule for the Salesforce Accelerator application.
+# It specifies the consolidation strategy and publisher rankings for determining survivorship.
+_type: IDSurvivorshipRule
+entity: sales360.entities.Account.Account
+_package: sales360.entities.Account.survivorship_rules
+_name: IdSurvivorshipRule
+consolidationOrderByExpression: CreationDate ASC
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Id Survivorship Rule
+description: ID Survivorship Rule for Account entity based on preferred publisher rankings
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: sales360.publishers.SFDC
+  - _type: ConsoPublisherRanking
+    publisher: sales360.publishers.MKT
+  - _type: ConsoPublisherRanking
+    publisher: sales360.publishers.ERP
+  - _type: ConsoPublisherRanking
+    publisher: sales360.publishers.FIN

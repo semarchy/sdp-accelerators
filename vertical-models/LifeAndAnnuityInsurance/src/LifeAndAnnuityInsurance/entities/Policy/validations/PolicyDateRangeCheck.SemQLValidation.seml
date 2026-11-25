@@ -1,0 +1,9 @@
+_name: PolicyDateRangeCheck
+_type: SemQLValidation
+_package: LifeAndAnnuityInsurance.entities.Policy.validations
+entity: LifeAndAnnuityInsurance.entities.Policy.Policy
+label: "Policy Date Range Check"
+condition: MaturityDate IS NULL OR EffectiveDate IS NULL OR EffectiveDate <= MaturityDate
+validationScope: PRE_CONSO
+description: "Checks policy date range check for Policy."
+validationLabel: "MaturityDate must be greater than or equal to EffectiveDate."

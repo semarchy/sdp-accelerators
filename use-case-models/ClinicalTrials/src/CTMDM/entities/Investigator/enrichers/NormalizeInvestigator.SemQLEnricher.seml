@@ -1,0 +1,19 @@
+_package: CTMDM.entities.Investigator.enrichers
+_name: NormalizeInvestigator
+_type: SemQLEnricher
+entity: CTMDM.entities.Investigator.Investigator
+label: Normalize Investigator
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Investigator values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedFirstName
+    expression: "RTRIM(LTRIM(UPPER(FirstName)))"
+  - attributeName: NormalizedLastName
+    expression: "RTRIM(LTRIM(UPPER(LastName)))"
+  - attributeName: NormalizedEmail
+    expression: "RTRIM(LTRIM(UPPER(Email)))"
+  - attributeName: NormalizedMedicalLicenseNumber
+    expression: "RTRIM(LTRIM(UPPER(MedicalLicenseNumber)))"
+  - attributeName: NormalizedInstitution
+    expression: "RTRIM(LTRIM(UPPER(Institution)))"

@@ -1,0 +1,188 @@
+# This is the Opportunity business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for opportunities,
+# including the root entity, labels, and display options.
+_name: Opportunity
+_package: sales360.entities.Opportunity.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.Opportunity.Opportunity
+rootLabel: Opportunity
+rootPluralLabel: Opportunity
+useHierarchyOnOpen: false
+label: Opportunity
+description: Business view for managing opportunities
+rootBusinessViewEntity:
+  _name: Opportunity
+  _type: BusinessViewEntity
+  collection: sales360.entities.Opportunity.collection_views.OpportunityCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.Opportunity.Opportunity
+  form: sales360.entities.Opportunity.forms.OpportunityBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sales360.entities.Opportunity.action_sets.OpportunityActionSet
+  displayCard: sales360.entities.Opportunity.display_cards.OpportunityDisplayCard
+  sortExpression: Name
+  recordNodeDisplayCard: sales360.entities.Opportunity.display_cards.OpportunityDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sales360.entities.Opportunity.forms.OpportunityBrowsingForm.Main.Container.Container2.FDN_Account
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: OpportunityMaster
+        _type: BusinessViewEntity
+        collection: sales360.entities.Opportunity.collection_views.OpportunityMasterCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sales360.entities.Opportunity.Opportunity
+        form: sales360.entities.Opportunity.forms.OpportunityMasterForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sales360.entities.Opportunity.action_sets.OpportunityActionSet
+        displayCard: sales360.entities.Opportunity.display_cards.OpportunityDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sales360.entities.Opportunity.forms.OpportunityMasterForm.Main.Container.Container3.FDN_Type
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.Opportunity.forms.OpportunityMasterForm.Main.Container.Container2.FDN_Account
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.Opportunity.forms.OpportunityMasterForm.Main.Container.Container2.FDN_ForecastCategory
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.Opportunity.forms.OpportunityMasterForm.Main.Container.Container3.FDN_LeadSource
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.Opportunity.forms.OpportunityMasterForm.Main.Container.Container2.FDN_StageName
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: History
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.Opportunity.business_views.Opportunity.Opportunity
+    - _name: OpportunityContactRoles
+      _type: BusinessViewTransition
+      transitionPath: OpportunityContactRoles
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/account-cash-outline.svg
+      label: Associated Contact
+      pluralLabel: Associated Contacts
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: OpportunityContactRole
+        _type: BusinessViewEntity
+        collection: sales360.entities.OpportunityContactRole.collection_views.OpportunityContactRoleCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+        form: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sales360.entities.OpportunityContactRole.action_sets.OpportunityContactRoleActionSet
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Opportunity
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Role
+            navigationMode: MODAL_FORM
+          - formField: sales360.entities.OpportunityContactRole.forms.OpportunityContactRoleForm.Main.FDN_Contact
+            navigationMode: MODAL_FORM
+        transitions: []
+        displayCard: sales360.entities.OpportunityContactRole.display_cards.OpportunityContactRoleDisplayCard

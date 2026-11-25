@@ -1,0 +1,28 @@
+# It is an enricher for the Contact entity in the Salesforce Accelerator application.
+# It is a Java Plugin Enricher that standardizes mobile phone numbers.
+# This enricher is executed before the consumption of the entity data.
+_type: JavaPluginEnricher
+_package: sales360.entities.Contact.enrichers
+_name: StandardizeMobilePhone
+entity: sales360.entities.Contact.Contact
+label: Standardize Mobile Phone
+description: Standardizes the mobile phone number format for Contact entities.
+pluginId: com.semarchy.engine.plugins.convergence.phone
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_PHONE_FORMAT
+    expression: "'NATIONAL'"
+  - inputName: IN_COUNTRY_CODE
+    expression: "'US'"
+  - inputName: IN_PHONE
+    expression: MobilePhone.InpPhoneNumber
+pluginOutputs:
+  - outputName: GEOCODE_DATA
+    attributeName: MobilePhone.PhoneGeocodingData
+  - outputName: ENRICHED_PHONE
+    attributeName: MobilePhone.StandardizedPhoneNumber
+afterEnrichers: sales360.entities.Contact.enrichers.CleansedEmail

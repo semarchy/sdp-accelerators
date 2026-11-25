@@ -1,0 +1,62 @@
+_package: CTMDM.entities.StudyPhase.business_views
+_type: BusinessView
+_name: StudyPhaseBusinessView
+
+entity: CTMDM.entities.StudyPhase.StudyPhase
+rootLabel: Study Phase
+rootPluralLabel: Study Phases
+rootIconUrl: images://mdi/chart-timeline-variant.svg
+displayRootNodeAs: ICON_LABEL
+label: Study Phases
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: StudyPhase
+  entity: CTMDM.entities.StudyPhase.StudyPhase
+  actionSet: CTMDM.entities.StudyPhase.action_sets.StudyPhaseActionSet
+  collection: CTMDM.entities.StudyPhase.collection_views.StudyPhaseCollectionView
+  form: CTMDM.entities.StudyPhase.forms.StudyPhaseForm
+  displayCard: CTMDM.entities.StudyPhase.display_cards.StudyPhaseDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: SourceAuthoringRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.StudyPhase.business_views.StudyPhaseBusinessView.StudyPhase
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

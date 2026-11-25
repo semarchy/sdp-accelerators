@@ -1,0 +1,16 @@
+_package: RestaurantMaster.entities.Restaurant.enrichers
+_name: DeriveListingAndKeys
+_type: SemQLEnricher
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Derive public listing, time zone and check keys
+description: Sets what public channels must show from the lifecycle status, defaults the time zone from the state, and builds the keys that flag duplicate sites and addresses.
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+- attributeName: PublicChannelStatus
+  expression: COALESCE(LifecycleStatus.PublicChannelStatus, 'NOT_LISTED')
+- attributeName: TimeZone
+  expression: COALESCE(TimeZone, StateProvince.DefaultTimeZone)
+- attributeName: DuplicateCheckKey
+  expression: CASE WHEN FID_Brand IS NULL OR AddressLine1 IS NULL OR PostalCode IS NULL THEN 'ID|' || RestaurantID ELSE FID_Brand || '|' || UPPER(REGEXP_REPLACE(AddressLine1, '[^A-Za-z0-9]', '', 'g')) || '|' || UPPER(REPLACE(PostalCode, ' ', '')) END
+- attributeName: SiteCheckKey
+  expression: COALESCE(SiteID, 'ID|' || RestaurantID)

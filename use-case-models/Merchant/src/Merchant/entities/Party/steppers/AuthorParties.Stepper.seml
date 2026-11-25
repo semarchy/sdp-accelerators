@@ -1,0 +1,38 @@
+ # Description: Stepper definition for authoring `Party` records.
+ # Contains the step-by-step UI flow used when creating or editing parties.
+ # Role: Provides guided input flow for party data maintenance in the application.
+ _package: Merchant.entities.Party.steppers
+ _type: Stepper
+ _name: AuthorParties
+ entity: Merchant.entities.Party.Party
+ label: Parties
+ 
+ rootStep:
+   _type: CollectionStep
+   _name: Parties
+   label: Parties
+   canFinishSubLevel: true
+   enabledOnParentCreate: true
+   enabledOnParentEdit: true
+   formFieldsMode: AUTO
+   linear: false
+   childDeleteType: HARD_DELETE
+   collectionView: Merchant.entities.Party.collection_views.PartyCollectionView
+   defaultDisplayType: TABLE
+   customSortEnabled: false
+   userDefinedSortEnabled: true
+   displayGridAllowed: false
+   displayListAllowed: true
+   displayTableAllowed: true
+   useCustomCollectionLabel: false
+   childSteps:
+     - _type: FormStep
+       _name: Party
+       label: Party
+       canFinishSubLevel: true
+       enabledOnParentCreate: true
+       enabledOnParentEdit: true
+       formFieldsMode: AUTO
+       enableMasterValuePicking: false
+       formTab: Merchant.entities.Party.forms.PartyForm.Party
+    

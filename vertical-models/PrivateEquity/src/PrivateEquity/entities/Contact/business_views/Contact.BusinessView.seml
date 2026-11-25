@@ -1,0 +1,47 @@
+_name: Contact
+_package: PrivateEquity.entities.Contact.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: PrivateEquity.entities.Contact.Contact
+rootLabel: Contact
+rootPluralLabel: Contacts
+useHierarchyOnOpen: false
+label: Contacts
+rootBusinessViewEntity:
+  _name: ContactEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.Contact.collection_views.ContactCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.Contact.Contact
+  form: PrivateEquity.entities.Contact.forms.ContactForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.Contact.action_sets.ContactActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: PrivateEquity.entities.Contact.forms.ContactForm.Contact.ContactInformation.Container2.FDN_Office
+      navigationMode: MODAL_FORM
+  transitions: []

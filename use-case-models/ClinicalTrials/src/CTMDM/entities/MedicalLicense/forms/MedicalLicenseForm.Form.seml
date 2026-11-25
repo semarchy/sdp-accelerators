@@ -1,0 +1,216 @@
+_package: CTMDM.entities.MedicalLicense.forms
+_type: Form
+_name: MedicalLicenseForm
+description: "Defines the form used to view and maintain Medical License records in Clinical Trial MDM workflows."
+documentation: "Defines the form used to view and maintain Medical License records in Clinical Trial MDM workflows."
+
+entity: CTMDM.entities.MedicalLicense.MedicalLicense
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: General
+    label: Medical License
+    documentation: This form provides a comprehensive view of Medical License details, allowing users to browse and manage records effectively
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/card-account-details-star.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: IdField
+                    _name: LicenseID
+                    value: LicenseID
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: LicenseNumber
+                    value: LicenseNumber
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: LicenseCountry
+                    value: LicenseCountry
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: IssueDate
+                    value: IssueDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: ExpirationDate
+                    value: ExpirationDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: OperationalDetails
+                label: Operational Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: LicenseStatus
+                    value: LicenseStatus
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: IssuingBoard
+                    value: IssuingBoard
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: VerificationDate
+                    value: VerificationDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: VerificationSource
+                    value: VerificationSource
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container4
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: EnrichedInformation
+                label: Enriched Information
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: NormalizedLicenseNumber
+                    value: NormalizedLicenseNumber
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container5
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: RelationshipDetails
+                label: Relationship Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_investigator
+                    value: FDN_investigator
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CTMDM.entities.Investigator.Investigator
+
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption

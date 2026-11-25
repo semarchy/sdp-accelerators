@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: InsurancePlanHasCoverages
+description: Indicates the Insurance Plan associated with a Coverage 
+_type: Reference
+label: Coverage Has Insurance Plan
+
+fromEntity: PropertyAndCasualtyInsurance.entities.Coverage.Coverage
+fromRoleLabel: Coverage
+fromRoleName: Coverage
+fromRolePluralLabel: Coverages
+physicalName: COVERAGE_HAS_PLAN
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+toRoleLabel: Insurance Plan
+toRoleName: InsurancePlan
+documentation: Indicates the Insurance Plan associated with a Coverage 
+toRolePhysicalName: INSURANCE_PLAN
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: InsurancePlan
+  label: Insurance Plan Code
+  description: The code of the insurance plan associated with the coverage.
+  physicalName: INSURANCE_PLAN_CODE
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan

@@ -1,0 +1,30 @@
+_package: RetailCustomer360.entities.ContactPointApp.enrichers
+_name: ContactPointAppDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.ContactPointApp.ContactPointApp
+label: ContactPointApp Data Quality Enricher
+description: "Computes standard completeness enrichment fields for ContactPointApp."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN AppContactId IS NULL AND AppInstallId IS NULL AND AppPlatform IS NULL THEN 0
+        ELSE (
+          CASE WHEN AppContactId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN AppInstallId IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN AppPlatform IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN AppContactId IS NULL AND AppInstallId IS NULL AND AppPlatform IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN AppContactId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN AppInstallId IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN AppPlatform IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()

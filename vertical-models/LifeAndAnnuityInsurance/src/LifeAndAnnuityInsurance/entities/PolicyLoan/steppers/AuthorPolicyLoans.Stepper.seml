@@ -1,0 +1,38 @@
+_package: LifeAndAnnuityInsurance.entities.PolicyLoan.steppers
+_type: Stepper
+_name: AuthorPolicyLoans
+entity: LifeAndAnnuityInsurance.entities.PolicyLoan.PolicyLoan
+label: "Policy Loans"
+rootStep:
+  _type: CollectionStep
+  _name: PolicyLoans
+  label: "Policy Loans"
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: LifeAndAnnuityInsurance.entities.PolicyLoan.collection_views.PolicyLoanImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: PolicyLoan
+      label: "Policy Loan"
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: LifeAndAnnuityInsurance.entities.PolicyLoan.forms.PolicyLoanForm.PolicyLoan
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.PolicyLoan.validations.PolicyLoanBalanceCheck

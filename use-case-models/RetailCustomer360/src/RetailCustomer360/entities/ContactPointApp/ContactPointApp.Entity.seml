@@ -1,0 +1,236 @@
+_package: RetailCustomer360.entities.ContactPointApp
+_type: Entity
+_name: ContactPointApp
+label: App Contact Point
+pluralLabel: App Contact Points
+entityType: FUZZY_MATCHED
+physicalTableName: CP_APP
+iconUrl: https://api.iconify.design/mdi/cellphone-cog.svg?color=%230D1B2A&width=64
+
+description: "Installed application instance through which a customer can receive push communication."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AppContactId
+    label: App Contact Id
+    physicalName: APP_CONTACT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the app contact point."
+
+  - _type: EntityAttribute
+    _name: AppInstallId
+    label: App Install Id
+    physicalName: APP_INSTALL_ID
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Unique identifier of the application installation."
+
+  - _type: EntityAttribute
+    _name: PushToken
+    label: Push Token
+    physicalName: PUSH_TOKEN
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Token used to deliver push notifications to the installation."
+
+  - _type: EntityAttribute
+    _name: PushOptInStatus
+    label: Push Opt In Status
+    physicalName: PUSH_OPT_IN_STATUS
+    dataType: RetailCustomer360.list_of_values.PushOptInStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Whether the customer accepted push notifications."
+
+  - _type: EntityAttribute
+    _name: AppPlatform
+    label: App Platform
+    physicalName: APP_PLATFORM
+    dataType: RetailCustomer360.list_of_values.AppPlatform
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Platform the application instance runs on."
+
+  - _type: EntityAttribute
+    _name: AppVersion
+    label: App Version
+    physicalName: APP_VERSION
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Version of the application installed."
+
+  - _type: EntityAttribute
+    _name: InstallDate
+    label: Install Date
+    physicalName: INSTALL_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the application was installed."
+
+  - _type: EntityAttribute
+    _name: LastOpenDate
+    label: Last Open Date
+    physicalName: LAST_OPEN_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the application was last opened."
+
+  - _type: EntityAttribute
+    _name: NotificationEnabled
+    label: Notification Enabled
+    physicalName: NOTIFICATION_ENABLED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether notifications are enabled at operating-system level."
+
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether this is the customer's main application installation."
+
+  - _type: EntityAttribute
+    _name: Locale
+    label: Locale
+    physicalName: LOCALE
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Locale configured in the application."
+
+  - _type: EntityAttribute
+    _name: TimeZone
+    label: Time Zone
+    physicalName: TIME_ZONE
+    dataType: String
+    length: 60
+    searchable: true
+    description: "Time zone reported by the installation."
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    physicalName: APP_STATUS
+    dataType: RetailCustomer360.list_of_values.AccountStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Lifecycle status of the app contact point."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the app contact point originates from."
+
+  - _type: EntityAttribute
+    _name: SourceAppKey
+    label: Source App Key
+    physicalName: SOURCE_APP_KEY
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Natural key of the record in the source system."
+
+  - _type: EntityAttribute
+    _name: DaysSinceLastOpen
+    label: Days Since Last Open
+    physicalName: DAYS_SINCE_LAST_OPEN
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Derived number of days since the application was last opened."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)."
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated."
+
+primaryKey: RetailCustomer360.entities.ContactPointApp.ContactPointApp.AppContactId
+
+sourceIdGeneration:
+  mode: MANUAL
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: "Matching strategy for ContactPointApp records."
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: InstallIdExact
+      label: Same application installation
+      matchScore: 100
+      condition: Record1.AppInstallId IS NOT NULL AND Record2.AppInstallId IS NOT NULL AND Record1.AppInstallId = Record2.AppInstallId
+      usingMatchOn: false
+      binningExpressions:
+        - expression: AppInstallId
+    - _type: SemQLMatchRule
+      _name: PushTokenExact
+      label: Same push token
+      matchScore: 95
+      condition: Record1.PushToken IS NOT NULL AND Record2.PushToken IS NOT NULL AND Record1.PushToken = Record2.PushToken
+      usingMatchOn: false
+      binningExpressions:
+        - expression: PushToken
+    - _type: SemQLMatchRule
+      _name: SameCustomerSamePlatform
+      label: Same customer on same app platform
+      matchScore: 68
+      condition: Record1.FID_Customer IS NOT NULL AND Record2.FID_Customer IS NOT NULL AND Record1.FID_Customer = Record2.FID_Customer AND Record1.AppPlatform IS NOT NULL AND Record2.AppPlatform IS NOT NULL AND Record1.AppPlatform = Record2.AppPlatform
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 68
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 98
+  mergeThresholdMergingConfirmedWithUnconfirmed: 99
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 99
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false

@@ -1,0 +1,113 @@
+_package: LifeAndAnnuityInsurance.entities.UnderwritingRequirement
+_type: Entity
+_name: UnderwritingRequirement
+label: "Underwriting Requirement"
+pluralLabel: "Underwriting Requirements"
+physicalTableName: UW_REQ
+iconUrl: images://mdi/clipboard-check.svg
+description: "Represents an underwriting requirement ordered, received, waived, or evaluated during underwriting."
+documentation: "Represents an underwriting requirement ordered, received, waived, or evaluated during underwriting."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: UnderwritingRequirementID
+    label: "Underwriting Requirement ID"
+    physicalName: UW_REQ_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the underwriting requirement."
+    documentation: "Unique identifier for the underwriting requirement."
+  - _type: EntityAttribute
+    _name: RequirementStatus
+    label: "Requirement Status"
+    physicalName: REQ_STAT
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Current status of the requirement."
+    documentation: "Current status of the requirement."
+  - _type: EntityAttribute
+    _name: OrderedDate
+    label: "Ordered Date"
+    physicalName: ORDERED_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the requirement was ordered."
+    documentation: "Date the requirement was ordered."
+  - _type: EntityAttribute
+    _name: ReceivedDate
+    label: "Received Date"
+    physicalName: RECEIVED_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the requirement was received."
+    documentation: "Date the requirement was received."
+  - _type: EntityAttribute
+    _name: ExpirationDate
+    label: "Expiration Date"
+    physicalName: EXPIRATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the requirement result expires."
+    documentation: "Date the requirement result expires."
+  - _type: EntityAttribute
+    _name: RequirementResult
+    label: "Requirement Result"
+    physicalName: REQ_RESULT
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Recorded result or finding for the requirement."
+    documentation: "Recorded result or finding for the requirement."
+  - _type: EntityAttribute
+    _name: VendorName
+    label: "Vendor Name"
+    physicalName: VENDOR_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Vendor used to fulfill the requirement."
+    documentation: "Vendor used to fulfill the requirement."
+  - _type: EntityAttribute
+    _name: FollowUpDate
+    label: "Follow Up Date"
+    physicalName: FOLLOW_UP_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date for next follow-up on the requirement."
+    documentation: "Date for next follow-up on the requirement."
+  - _type: EntityAttribute
+    _name: WaivedIndicator
+    label: "Waived Indicator"
+    physicalName: WAIVED_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the requirement was waived."
+    documentation: "Indicates whether the requirement was waived."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional notes about the requirement."
+    documentation: "Additional notes about the requirement."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.UnderwritingRequirement.UnderwritingRequirementID
+entityType: ID_MATCHED

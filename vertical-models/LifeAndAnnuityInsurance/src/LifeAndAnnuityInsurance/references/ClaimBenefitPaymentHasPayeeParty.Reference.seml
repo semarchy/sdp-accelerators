@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: ClaimBenefitPaymentHasPayeeParty
+description: "Indicates the Payee Party associated with a Claim Benefit Payment."
+_type: Reference
+label: "Claim Benefit Payment Has Payee Party"
+
+fromEntity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+fromRoleLabel: "Claim Benefit Payment as Payee"
+fromRoleName: ClaimBenefitPaymentsAsPayee
+fromRolePluralLabel: "Claim Benefit Payments as Payee"
+physicalName: CLMBENEFITPAYHASPAYE_4H2E
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Party.Party
+toRoleLabel: "Payee Party"
+toRoleName: PayeeParty
+toRolePhysicalName: PAYEE_PARTY
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PayeeParty
+  label: "Payee Party ID"
+  description: "The identifier of the Payee Party associated with the Claim Benefit Payment."
+  physicalName: PAYEE_PARTY_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Party.Party

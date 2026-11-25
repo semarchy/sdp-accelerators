@@ -1,0 +1,275 @@
+_package: CTMDM.entities.Study.forms
+_type: Form
+_name: StudyForm
+description: "Defines the form used to view and maintain Study records in Clinical Trial MDM workflows."
+documentation: "Defines the form used to view and maintain Study records in Clinical Trial MDM workflows."
+
+entity: CTMDM.entities.Study.Study
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: General
+    label: Study
+    documentation: This form provides a comprehensive view of Study details, allowing users to browse and manage records effectively
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/flask-outline.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: IdField
+                    _name: StudyID
+                    value: StudyID
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: StudyNumber
+                    value: StudyNumber
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: StudyTitle
+                    value: StudyTitle
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                      isMultiline: '1'
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: '3'
+                      multilineMaxLinesValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: StudyAcronym
+                    value: StudyAcronym
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: Status
+                    value: Status
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: Sponsor
+                    value: Sponsor
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: OperationalDetails
+                label: Operational Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: DateField
+                    _name: PlannedStartDate
+                    value: PlannedStartDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: ActualStartDate
+                    value: ActualStartDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: PlannedEndDate
+                    value: PlannedEndDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: ActualEndDate
+                    value: ActualEndDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: TargetEnrollment
+                    value: TargetEnrollment
+                    useCustomLabel: false
+                    dataType: INTEGER
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: StudyDesign
+                    value: StudyDesign
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container4
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: EnrichedInformation
+                label: Enriched Information
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: NormalizedStudyNumber
+                    value: NormalizedStudyNumber
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container5
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: RelationshipDetails
+                label: Relationship Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_therapeuticArea
+                    value: FDN_therapeuticArea
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CTMDM.entities.TherapeuticArea.TherapeuticArea
+
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_studyPhase
+                    value: FDN_studyPhase
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CTMDM.entities.StudyPhase.StudyPhase
+
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption

@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: RiderHasCoverage
+description: "Indicates the Coverage associated with a Rider."
+_type: Reference
+label: "Rider Has Coverage"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Rider.Rider
+fromRoleLabel: "Rider"
+fromRoleName: Rider
+fromRolePluralLabel: "Riders"
+physicalName: RIDER_HAS_COV
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Coverage.Coverage
+toRoleLabel: "Coverage"
+toRoleName: Coverage
+toRolePhysicalName: COV
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Coverage
+  label: "Coverage ID"
+  description: "The identifier of the Coverage associated with the Rider."
+  physicalName: COV_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Coverage.Coverage

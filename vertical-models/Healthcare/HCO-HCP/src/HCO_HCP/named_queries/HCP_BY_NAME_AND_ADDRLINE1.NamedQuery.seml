@@ -1,0 +1,118 @@
+_name: HCP_BY_NAME_AND_ADDRLINE1
+_package: HCO_HCP.named_queries
+_type: NamedQuery
+active: true
+defaultLimit: 100
+filter: |-
+  StreetAddressLine1 LIKE '%' || :QUERY_PARAM_HCP_ADDRLI || '%'
+  AND LastName LIKE '%' || :QUERY_PARAM_HCP_NAME || '%'
+queryObjects:
+  - _name: Encounter
+    _type: QueryObject
+    entity: HCO_HCP.entities.Encounter.Encounter
+    objectProperties:
+      - _name: EncounterID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EncounterID
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.Encounter
+      - _name: EncounterDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EncounterDate
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.Encounter
+      - _name: Medication
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Medication
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.Encounter
+      - _name: Condition
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Condition
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.Encounter
+  - _name: HCP
+    _type: QueryObject
+    entity: HCO_HCP.entities.HCP.HCP
+    objectProperties:
+      - _name: ID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ID
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP
+      - _name: PhysicianProfileID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PhysicianProfileID
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP
+      - _name: FirstName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FirstName
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP
+      - _name: LastName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LastName
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP
+      - _name: StreetAddressLine1
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: StreetAddressLine1
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP
+      - _name: StreetAddressLine2
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: StreetAddressLine2
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP
+      - _name: State
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: State
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP
+      - _name: ZipCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ZipCode
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP
+      - _name: Encounters
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: Encounters
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.Encounter
+      - _name: HpcSpecialties
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: HpcSpecialties
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCPSpecialty
+  - _name: HCPSpecialty
+    _type: QueryObject
+    entity: HCO_HCP.entities.HCPSpecialty.HCPSpecialty
+    objectProperties:
+      - _name: ID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ID
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCPSpecialty
+      - _name: SpecialtyCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Specialty.Code
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCPSpecialty
+      - _name: SpecialtyName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Specialty.Name
+        targetObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCPSpecialty
+queryParameters:
+  - _name: HCP_ADDRLINE1
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_HCP_ADDRLI
+    dataType: STRING
+    mandatory: true
+  - _name: HCP_NAME
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_HCP_NAME
+    dataType: STRING
+    mandatory: true
+rootQueryObject: HCO_HCP.named_queries.HCP_BY_NAME_AND_ADDRLINE1.HCP

@@ -1,0 +1,87 @@
+ # Description: Collection view for `PartyContact` records (tables and lists).
+ # Contains: Column and list configuration for displaying contacts.
+ # Role: Defines how PartyContact entries appear in collections and tables.
+_package: Merchant.entities.PartyContact.collection_views
+_type: CollectionView
+_name: PartyContactCollectionView
+entity: Merchant.entities.PartyContact.PartyContact
+default: true
+
+displayCard: Merchant.entities.PartyContact.display_cards.PartyContactDisplayCard
+
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Merchant Contact
+tableRowLines: 1
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: ReferenceColumn
+    _name: Party
+    value: FDN_Party
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: Merchant.entities.Party.Party
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: ContactType
+    value: ContactType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FirstName
+    value: FirstName
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LastName
+    value: LastName
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Email
+    value: Email
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PhoneNumber
+    value: PhoneNumber
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: ContactRole
+    value: FDN_ContactRole
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: Merchant.entities.ContactRole.ContactRole
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL

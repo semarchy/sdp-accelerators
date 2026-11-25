@@ -1,0 +1,153 @@
+_name: AuthorBusinessPartners
+_package: sapbp360.entities.BusinessPartner.steppers
+_type: Stepper
+entity: sapbp360.entities.BusinessPartner.BusinessPartner
+description: Stepper for authoring Business Partners.
+rootStep:
+  _name: BusinessPartners
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Business Partners
+  description: Manage Business Partner data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BusinessPartner_BusinessPartnerCategory.BusinessPartnerCategory
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BusinessPartner_BusinessPartnerGrouping.BusinessPartnerGrouping
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BusinessPartner_CorrespondenceLanguage.CorrespondenceLanguage
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BusinessPartner_Status.Status
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sapbp360.entities.BusinessPartner.validations.AuditDates
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sapbp360.entities.BusinessPartner.validations.NaturalPersonLastName
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sapbp360.entities.BusinessPartner.BusinessPartner.SemQLMatcherBUSINESSPARTNER
+  stepTriggers: []
+  childSteps:
+    - _name: PartnerDetails
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Business Partner
+      description: Form step for entering business partner identity and name details.
+      formTab: sapbp360.entities.BusinessPartner.forms.BusinessPartnerDataEntryForm.PartnerDetails
+      formStepEnrichers:
+        - enricher: sapbp360.entities.BusinessPartner.enrichers.NormalizedBusinessPartnerName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: CHECK
+          validator: sapbp360.entities.BusinessPartner.validations.NaturalPersonLastName
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+    - _name: Classification
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Classification
+      description: Form step for entering business partner categories, status and dates.
+      formTab: sapbp360.entities.BusinessPartner.forms.BusinessPartnerDataEntryForm.Classification
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BusinessPartner.forms.BusinessPartnerDataEntryForm.Classification.Categories.CategoriesRow.CategoriesCol1.FDN_BusinessPartnerCategory
+          referencePickerCollectionView: sapbp360.entities.BusinessPartnerCategory.collection_views.BusinessPartnerCategoryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BusinessPartner.forms.BusinessPartnerDataEntryForm.Classification.Categories.CategoriesRow.CategoriesCol2.FDN_BusinessPartnerGrouping
+          referencePickerCollectionView: sapbp360.entities.BusinessPartnerGrouping.collection_views.BusinessPartnerGroupingCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BusinessPartner.forms.BusinessPartnerDataEntryForm.Classification.Categories.CategoriesRow.CategoriesCol3.FDN_CorrespondenceLanguage
+          referencePickerCollectionView: sapbp360.entities.Language.collection_views.LanguageCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BusinessPartner.forms.BusinessPartnerDataEntryForm.Classification.StatusAndDates.StatusAndDatesRow.StatusAndDatesCol1.FDN_Status
+          referencePickerCollectionView: sapbp360.entities.BPStatus.collection_views.BPStatusCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BusinessPartner_BusinessPartnerCategory.BusinessPartnerCategory
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BusinessPartner_BusinessPartnerGrouping.BusinessPartnerGrouping
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BusinessPartner_CorrespondenceLanguage.CorrespondenceLanguage
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BusinessPartner_Status.Status
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sapbp360.entities.BusinessPartner.validations.AuditDates
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author Business Partners
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BusinessPartner_BusinessPartnerCategory.BusinessPartnerCategory
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BusinessPartner_BusinessPartnerGrouping.BusinessPartnerGrouping
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BusinessPartner_CorrespondenceLanguage.CorrespondenceLanguage
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BusinessPartner_Status.Status
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sapbp360.entities.BusinessPartner.validations.AuditDates
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sapbp360.entities.BusinessPartner.validations.NaturalPersonLastName
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

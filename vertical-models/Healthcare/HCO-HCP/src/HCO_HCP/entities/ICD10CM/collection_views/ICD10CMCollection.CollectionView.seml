@@ -1,0 +1,66 @@
+_package: HCO_HCP.entities.ICD10CM.collection_views
+_name: ICD10CMCollection
+_type: CollectionView
+entity: HCO_HCP.entities.ICD10CM.ICD10CM
+default: true
+displayCard: HCO_HCP.entities.ICD10CM.display_cards.ICD10CMDisplayCard
+tableAllowed: true
+tableRowLines: 1
+tableDisplayCardColumnLabel: ICD10CM
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: OrderNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: OrderNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ShortDescription
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ShortDescription
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LongDescription
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LongDescription
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FormattedICD10Code
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FormattedICD10Code
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_ParentICD10
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_ParentICD10
+    visibleByDefault: true
+    referencedEntity: HCO_HCP.entities.ICD10CM.ICD10CM
+    componentProperties:
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL

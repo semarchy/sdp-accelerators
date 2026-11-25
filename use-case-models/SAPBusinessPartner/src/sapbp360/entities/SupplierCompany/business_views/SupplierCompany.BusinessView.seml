@@ -1,0 +1,91 @@
+_name: SupplierCompany
+_package: sapbp360.entities.SupplierCompany.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.SupplierCompany.SupplierCompany
+rootLabel: Supplier Company
+rootPluralLabel: Supplier Companies
+useHierarchyOnOpen: false
+label: Supplier Company
+description: Business view for Supplier Company.
+rootBusinessViewEntity:
+  _name: SupplierCompany
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.SupplierCompany.collection_views.SupplierCompanyCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.SupplierCompany.SupplierCompany
+  form: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.SupplierCompany.action_sets.SupplierCompanyActionSet
+  displayCard: sapbp360.entities.SupplierCompany.display_cards.SupplierCompanyDisplayCard
+  sortExpression: SupplierCompanyID
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol2.FDN_CompanyCode
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.Payment.PaymentRow.PaymentCol1.FDN_PaymentTerms
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol1.FDN_ReconciliationAccount
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol1.FDN_HouseBank
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol2.FDN_SortKey
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol2.FDN_CashPlanningGroup
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol3.FDN_InterestCalculationCode
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol3.FDN_ToleranceGroup
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.Payment.PaymentRow.PaymentCol2.FDN_PaymentBlockingReason
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.Payment.PaymentRow.PaymentCol3.FDN_AlternativePayeeAccountNumber
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol1.FDN_WithholdingTaxCountry
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_Supplier
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.SupplierCompany.business_views.SupplierCompany.SupplierCompany
+rootIconUrl: images://mdi/office-building-outline.svg

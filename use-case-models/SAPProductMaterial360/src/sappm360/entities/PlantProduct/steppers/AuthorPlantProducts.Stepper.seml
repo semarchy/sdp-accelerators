@@ -1,0 +1,121 @@
+_name: AuthorPlantProducts
+_package: sappm360.entities.PlantProduct.steppers
+_type: Stepper
+entity: sappm360.entities.PlantProduct.PlantProduct
+description: Stepper for authoring plant products.
+rootStep:
+  _name: PlantProducts
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sappm360.entities.PlantProduct.collection_views.PlantProductCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Plant Products
+  description: Manage Plant Product data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.PlantProductProduct.Product
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.PlantProductMaterial.Material
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.PlantProductPlant.Plant
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.PlantProductStorageLocation.StorageLocation
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Plant Product.
+      formTab: sappm360.entities.PlantProduct.forms.PlantProductDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.PlantProduct.forms.PlantProductDataEntryForm.Main.Details.DetailsContainer.Container2.FDN_Product
+          referencePickerCollectionView: sappm360.entities.Product.collection_views.ProductCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.PlantProduct.forms.PlantProductDataEntryForm.Main.Details.DetailsContainer.Container3.FDN_Material
+          referencePickerCollectionView: sappm360.entities.Material.collection_views.MaterialCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.PlantProduct.forms.PlantProductDataEntryForm.Main.Details.DetailsContainer.Container2.FDN_Plant
+          referencePickerCollectionView: sappm360.entities.Plant.collection_views.PlantCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.PlantProduct.forms.PlantProductDataEntryForm.Main.Details.DetailsContainer.Container3.FDN_StorageLocation
+          referencePickerCollectionView: sappm360.entities.StorageLocation.collection_views.StorageLocationCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sappm360.references.PlantProductProduct.Product
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.PlantProductMaterial.Material
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.PlantProductPlant.Plant
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sappm360.references.PlantProductStorageLocation.StorageLocation
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.PlantProductProduct.Product
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.PlantProductMaterial.Material
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.PlantProductPlant.Plant
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.PlantProductStorageLocation.StorageLocation
+      stepTriggers: []
+label: Author Plant Products
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.PlantProductProduct.Product
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.PlantProductMaterial.Material
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.PlantProductPlant.Plant
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.PlantProductStorageLocation.StorageLocation
+triggers: []

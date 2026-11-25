@@ -1,0 +1,9 @@
+_name: AnnuityPayoutDateCheck
+_type: SemQLValidation
+_package: LifeAndAnnuityInsurance.entities.AnnuityContract.validations
+entity: LifeAndAnnuityInsurance.entities.AnnuityContract.AnnuityContract
+label: "Annuity Payout Date Check"
+condition: PayoutStartDate IS NULL OR IssueDate IS NULL OR IssueDate <= PayoutStartDate
+validationScope: PRE_CONSO
+description: "Checks annuity payout date check for Annuity Contract."
+validationLabel: "PayoutStartDate must be greater than or equal to IssueDate."

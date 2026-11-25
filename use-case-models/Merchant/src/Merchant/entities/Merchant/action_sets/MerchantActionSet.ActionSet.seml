@@ -1,0 +1,66 @@
+_package: Merchant.entities.Merchant.action_sets
+# Description: Action set for `Merchant` providing create/edit/mass-update and delete actions.
+# Contains UI action definitions used to manage merchant records from collections and views.
+# Role: Supplies user-facing actions for merchant maintenance and batch operations.
+_type: ActionSet
+_name: MerchantActionSet
+entity: Merchant.entities.Merchant.Merchant
+label: Merchant Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorMerchants
+    label: Create
+    useCustomLabel: true
+    stepper: Merchant.entities.Merchant.steppers.AuthorMerchants
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorMerchants
+    label: Edit
+    useCustomLabel: true
+    stepper: Merchant.entities.Merchant.steppers.AuthorMerchants
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorMerchants
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Merchant.entities.Merchant.steppers.AuthorMerchants
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorMerchants
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Merchant.entities.Merchant.steppers.ImportMerchants
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

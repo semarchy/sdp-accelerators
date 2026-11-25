@@ -1,0 +1,9 @@
+_package: CTMDM.entities.StudySite.validations
+_name: StudySiteDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.StudySite.StudySite
+label: Study site close date must not be before activation date
+validationScope: PRE_CONSO
+description: "Study site close date must not be before activation date before consolidation."
+
+condition: SiteCloseDate IS NULL OR SiteActivationDate IS NULL OR SiteCloseDate >= SiteActivationDate

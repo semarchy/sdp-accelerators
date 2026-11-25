@@ -1,0 +1,46 @@
+_package: PropertyAndCasualtyInsurance.entities.VehicleAsset.steppers
+_type: Stepper
+_name: AuthorVehicleAssets
+entity: PropertyAndCasualtyInsurance.entities.VehicleAsset.VehicleAsset
+label: "Vehicle Assets"
+rootStep:
+  _type: CollectionStep
+  _name: VehicleAssets
+  label: "Vehicle Assets"
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.VehicleAsset.collection_views.VehicleAssetImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: VehicleAsset
+      label: "Vehicle Asset"
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.VehicleAsset.forms.VehicleDEForm.VehicleAsset
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.VehicleAsset.validations.DateRangeCheck
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.VehicleAsset.validations.VINMandatory
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.VehicleAsset.validations.PlateNumberMandatory

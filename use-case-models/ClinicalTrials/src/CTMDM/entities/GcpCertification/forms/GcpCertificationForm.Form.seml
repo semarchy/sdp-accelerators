@@ -1,0 +1,192 @@
+_package: CTMDM.entities.GcpCertification.forms
+_type: Form
+_name: GcpCertificationForm
+description: "Defines the form used to view and maintain GCP Certification records in Clinical Trial MDM workflows."
+documentation: "Defines the form used to view and maintain GCP Certification records in Clinical Trial MDM workflows."
+
+entity: CTMDM.entities.GcpCertification.GcpCertification
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: General
+    label: Gcp Certification
+    documentation: This form provides a comprehensive view of Gcp Certification details, allowing users to browse and manage records effectively
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/certificate-outline.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: IdField
+                    _name: CertificateID
+                    value: CertificateID
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: CertificateNumber
+                    value: CertificateNumber
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: IssuingOrganization
+                    value: IssuingOrganization
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: IssueDate
+                    value: IssueDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: OperationalDetails
+                label: Operational Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: DateField
+                    _name: ExpirationDate
+                    value: ExpirationDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: CertificationStatus
+                    value: CertificationStatus
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: TrainingVersion
+                    value: TrainingVersion
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container4
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: EnrichedInformation
+                label: Enriched Information
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: TextField
+                    _name: NormalizedIssuingOrganization
+                    value: NormalizedIssuingOrganization
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container5
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: RelationshipDetails
+                label: Relationship Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_investigator
+                    value: FDN_investigator
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CTMDM.entities.Investigator.Investigator
+
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption

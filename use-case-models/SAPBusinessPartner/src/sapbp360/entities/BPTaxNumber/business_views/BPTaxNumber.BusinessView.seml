@@ -1,0 +1,73 @@
+_name: BPTaxNumber
+_package: sapbp360.entities.BPTaxNumber.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.BPTaxNumber.BPTaxNumber
+rootLabel: BP Tax Number
+rootPluralLabel: BP Tax Numbers
+useHierarchyOnOpen: false
+label: BP Tax Number
+description: Business view for BP Tax Number.
+rootBusinessViewEntity:
+  _name: BPTaxNumber
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.BPTaxNumber.collection_views.BPTaxNumberCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.BPTaxNumber.BPTaxNumber
+  form: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.BPTaxNumber.action_sets.BPTaxNumberActionSet
+  displayCard: sapbp360.entities.BPTaxNumber.display_cards.BPTaxNumberDisplayCard
+  sortExpression: BPTaxNumber
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BPTaxType
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_TaxNumberCategory
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.BPTaxNumber.business_views.BPTaxNumber.BPTaxNumber
+rootIconUrl: images://mdi/file-percent-outline.svg

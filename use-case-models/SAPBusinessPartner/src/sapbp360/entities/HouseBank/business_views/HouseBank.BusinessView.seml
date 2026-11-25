@@ -1,0 +1,67 @@
+_name: HouseBank
+_package: sapbp360.entities.HouseBank.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.HouseBank.HouseBank
+rootLabel: House Bank
+rootPluralLabel: House Banks
+useHierarchyOnOpen: false
+label: House Bank
+description: Business view for House Bank.
+rootBusinessViewEntity:
+  _name: HouseBank
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.HouseBank.collection_views.HouseBankCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.HouseBank.HouseBank
+  form: sapbp360.entities.HouseBank.forms.HouseBankBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.HouseBank.action_sets.HouseBankActionSet
+  displayCard: sapbp360.entities.HouseBank.display_cards.HouseBankDisplayCard
+  sortExpression: HouseBankName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.HouseBank.business_views.HouseBank.HouseBank
+rootIconUrl: images://mdi/book-open-page-variant-outline.svg

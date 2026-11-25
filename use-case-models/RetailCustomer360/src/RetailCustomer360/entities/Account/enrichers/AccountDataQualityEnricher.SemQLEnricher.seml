@@ -1,0 +1,30 @@
+﻿_package: RetailCustomer360.entities.Account.enrichers
+_name: AccountDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Account.Account
+label: Account Data Quality Enricher
+description: "Computes standard completeness enrichment fields for Account."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN AccountId IS NULL AND AccountNumber IS NULL AND AccountName IS NULL THEN 0
+        ELSE (
+          CASE WHEN AccountId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN AccountNumber IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN AccountName IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN AccountId IS NULL AND AccountNumber IS NULL AND AccountName IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN AccountId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN AccountNumber IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN AccountName IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()

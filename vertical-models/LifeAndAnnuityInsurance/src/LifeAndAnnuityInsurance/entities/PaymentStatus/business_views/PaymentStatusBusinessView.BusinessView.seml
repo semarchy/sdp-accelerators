@@ -1,0 +1,136 @@
+_package: LifeAndAnnuityInsurance.entities.PaymentStatus.business_views
+_type: BusinessView
+_name: PaymentStatusBusinessView
+label: "Payment Status"
+entity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus
+rootLabel: "Payment Statuses"
+rootPluralLabel: "Payment Statuses"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PaymentStatus
+  displayCard: LifeAndAnnuityInsurance.entities.PaymentStatus.display_cards.PaymentStatusDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus
+  actionSet: LifeAndAnnuityInsurance.entities.PaymentStatus.action_sets.PaymentStatusActionSet
+  collection: LifeAndAnnuityInsurance.entities.PaymentStatus.collection_views.PaymentStatusCollectionView
+  form: LifeAndAnnuityInsurance.entities.PaymentStatus.forms.PaymentStatusForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Policy
+      label: "Policy"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Policies"
+      iconUrl: images://mdi/file-document-outline.svg
+      transitionPath: Policy
+      useCustomLabel: true
+      description: "Transition from Payment Status to related Policies."
+      visibleInFormTabCondition: any Policy has (1=1)
+      enableHierarchy: any Policy has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Policy
+        displayCard: LifeAndAnnuityInsurance.entities.Policy.display_cards.PolicyDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Policy.Policy
+        actionSet: LifeAndAnnuityInsurance.entities.Policy.action_sets.PolicyActionSet
+        collection: LifeAndAnnuityInsurance.entities.Policy.collection_views.PolicyCollectionView
+        form: LifeAndAnnuityInsurance.entities.Policy.forms.PolicyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: PremiumTransaction
+      label: "Premium Transaction"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Premium Transactions"
+      iconUrl: images://mdi/cash-multiple.svg
+      transitionPath: PremiumTransaction
+      useCustomLabel: true
+      description: "Transition from Payment Status to related Premium Transactions."
+      visibleInFormTabCondition: any PremiumTransaction has (1=1)
+      enableHierarchy: any PremiumTransaction has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: PremiumTransaction
+        displayCard: LifeAndAnnuityInsurance.entities.PremiumTransaction.display_cards.PremiumTransactionDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.PremiumTransaction.PremiumTransaction
+        actionSet: LifeAndAnnuityInsurance.entities.PremiumTransaction.action_sets.PremiumTransactionActionSet
+        collection: LifeAndAnnuityInsurance.entities.PremiumTransaction.collection_views.PremiumTransactionCollectionView
+        form: LifeAndAnnuityInsurance.entities.PremiumTransaction.forms.PremiumTransactionForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: ClaimBenefitPayment
+      label: "Claim Benefit Payment"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Claim Benefit Payments"
+      iconUrl: images://mdi/cash-check.svg
+      transitionPath: ClaimBenefitPayment
+      useCustomLabel: true
+      description: "Transition from Payment Status to related Claim Benefit Payments."
+      visibleInFormTabCondition: any ClaimBenefitPayment has (1=1)
+      enableHierarchy: any ClaimBenefitPayment has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: ClaimBenefitPayment
+        displayCard: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.display_cards.ClaimBenefitPaymentDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+        actionSet: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.action_sets.ClaimBenefitPaymentActionSet
+        collection: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.collection_views.ClaimBenefitPaymentCollectionView
+        form: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.forms.ClaimBenefitPaymentForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/cash-check.svg

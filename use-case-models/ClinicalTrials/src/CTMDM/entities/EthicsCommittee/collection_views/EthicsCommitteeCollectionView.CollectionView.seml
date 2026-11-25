@@ -1,0 +1,113 @@
+_package: CTMDM.entities.EthicsCommittee.collection_views
+_type: CollectionView
+_name: EthicsCommitteeCollectionView
+
+entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+default: true
+displayCard: CTMDM.entities.EthicsCommittee.display_cards.EthicsCommitteeDisplayCard
+tableDisplayCardColumnWidth: 300
+
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+
+tableAllowed: true
+tableDisplayCardColumnLabel: Ethics Committee / IRB
+tableRowLines: 2
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: TextColumn
+    _name: CommitteeName
+    value: CommitteeName
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 300
+  - _type: TextColumn
+    _name: RegistrationNumber
+    value: RegistrationNumber
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 220
+  - _type: ReferenceColumn
+    _name: FDN_country
+    value: FDN_country
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.Country.Country
+
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_healthcareOrganization
+    value: FDN_healthcareOrganization
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: CommitteeType
+    value: CommitteeType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: Status
+    value: Status
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: Email
+    value: Email
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 220
+  - _type: TextColumn
+    _name: Phone
+    value: Phone
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 220

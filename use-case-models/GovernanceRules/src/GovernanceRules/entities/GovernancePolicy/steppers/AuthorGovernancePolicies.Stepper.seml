@@ -1,0 +1,40 @@
+# AuthorGovernancePolicies: stepper on GovernancePolicy of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernancePolicy.steppers
+_type: Stepper
+_name: AuthorGovernancePolicies
+description: 'Creates and edits policies (Create, Edit, Mass update and Import actions), with the owner body picked by name. Used by the governance steward, without workflow.'
+entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+label: Enter policies
+rootStep:
+  _type: CollectionStep
+  _name: GovernancePolicies
+  label: Policies
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.GovernancePolicy.collection_views.GovernancePolicyCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: GovernancePolicy
+      label: Policy
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.GovernancePolicy.forms.GovernancePolicyForm.GovernancePolicy
+      referenceFormFieldConfigs:
+        - fdnFormField: GovernanceRules.entities.GovernancePolicy.forms.GovernancePolicyForm.GovernancePolicy.Links.FDN_OwnerBody
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Name

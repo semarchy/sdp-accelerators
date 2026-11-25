@@ -1,0 +1,206 @@
+# This file defines the model diagram for the Organization application.
+# It specifies the entities, their shapes, and the relationships between them.
+_package: Organization.model_diagrams
+_name: Organization
+_type: ModelDiagram
+label: Organization Model Diagram
+description: Model diagram for the Organization application
+entityShapes:
+  - _type: EntityShape
+    entity: Organization.entities.Address.Address
+    _name: Address
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1787.9972483239503
+      y: 1183.4938265112066
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Company.Company
+    _name: Company
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1215.9692305053895
+      y: 1796.1459389037213
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Contract.Contract
+    _name: Contract
+    borderColor: "#bb6167"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 608.5646234791259
+      y: 958.76270391961
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.ContractCostCenter.ContractCostCenter
+    _name: ContractCostCenter
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 209.74117332050537
+      y: 1023.8340497912743
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.ContractType.ContractType
+    _name: ContractType
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 604.9822118453263
+      y: 634.9450152517021
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.CostCenter.CostCenter
+    _name: CostCenter
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 229.66857072476142
+      y: 746.5200278877439
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Country.Country
+    _name: Country
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1502.623351046595
+      y: 1609.1097611669445
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Division.Division
+    _name: Division
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 928.7336661512974
+      y: 1287.2894168495918
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Domain.Domain
+    _name: Domain
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 953.186818395001
+      y: 1787.8279031219552
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Employee.Employee
+    _name: Employee
+    borderColor: "#bb6167"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1344.1640463851827
+      y: 637.158870217718
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Gender.Gender
+    _name: Gender
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1380.5153505716955
+      y: 347.04263650300356
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Region.Region
+    _name: Region
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 921.2191524868266
+      y: 1499.166289337946
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Study.Study
+    _name: Study
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1760.5234908296804
+      y: 758.1229589204003
+    width: -1
+  - _type: EntityShape
+    entity: Organization.entities.Position.Position
+    _name: Position
+    borderColor: "#9dbb61"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1786.7809129247664
+      y: 972.310394245722
+    width: -1
+referenceLinks:
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Address
+    reference: Organization.references.AdressHasCountry
+    toEntityShape: Organization.model_diagrams.Organization.Country
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Company
+    reference: Organization.references.CompanyHasCountry
+    toEntityShape: Organization.model_diagrams.Organization.Country
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.ContractCostCenter
+    reference: Organization.references.ContractCostCenterHasContract
+    toEntityShape: Organization.model_diagrams.Organization.Contract
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.ContractCostCenter
+    reference: Organization.references.ContractCostCenterHasCostCenter
+    toEntityShape: Organization.model_diagrams.Organization.CostCenter
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Division
+    reference: Organization.references.DivisionHasRegion
+    toEntityShape: Organization.model_diagrams.Organization.Region
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Domain
+    reference: Organization.references.DomainHasCompany
+    toEntityShape: Organization.model_diagrams.Organization.Company
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Employee
+    reference: Organization.references.EmployeeHasAddress
+    toEntityShape: Organization.model_diagrams.Organization.Address
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Employee
+    reference: Organization.references.EmployeeHasGender
+    toEntityShape: Organization.model_diagrams.Organization.Gender
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Region
+    reference: Organization.references.RegionHasDomain
+    toEntityShape: Organization.model_diagrams.Organization.Domain
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Contract
+    reference: Organization.references.ContractHasEmployee
+    toEntityShape: Organization.model_diagrams.Organization.Employee
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Contract
+    reference: Organization.references.ContractHasDivision
+    toEntityShape: Organization.model_diagrams.Organization.Division
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Employee
+    reference: Organization.references.EmployeeHasPosition
+    toEntityShape: Organization.model_diagrams.Organization.Position
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Employee
+    reference: Organization.references.EmployeeHasStudy
+    toEntityShape: Organization.model_diagrams.Organization.Study
+  - bendPoints: []
+    fromEntityShape: Organization.model_diagrams.Organization.Contract
+    reference: Organization.references.ContractHasContractType
+    toEntityShape: Organization.model_diagrams.Organization.ContractType
+inheritLinks: []

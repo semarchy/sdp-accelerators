@@ -1,0 +1,58 @@
+_package: RestaurantMaster.entities.RestaurantService
+_type: Entity
+_name: RestaurantService
+label: Service
+pluralLabel: Services
+entityType: BASIC
+physicalTableName: REST_SERVICE
+iconUrl: images://mdi/room-service-outline.svg
+description: A service or amenity a restaurant offers (drive-thru, delivery with a given partner, catering, curbside...), with its availability.
+documentation: A service or amenity a restaurant offers (drive-thru, delivery with a given partner, catering, curbside...), with its availability.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: RestaurantServiceID
+  label: Key
+  physicalName: REST_SERVICE_ID
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  documentation: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  length: 100
+- _type: EntityAttribute
+  _name: Available
+  label: Available
+  physicalName: AVAILABLE
+  dataType: RestaurantMaster.list_of_values.YesNoFlag
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Currently offered (No when temporarily unavailable, for example a drive-thru under repair).
+  documentation: Currently offered (No when temporarily unavailable, for example a drive-thru under repair).
+- _type: EntityAttribute
+  _name: EffectiveFrom
+  label: Effective from
+  physicalName: EFFECTIVEFROM
+  dataType: Date
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: First day the service is offered.
+  documentation: First day the service is offered.
+- _type: EntityAttribute
+  _name: EffectiveTo
+  label: Effective to
+  physicalName: EFFECTIVETO
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Last day the service is offered; empty when open-ended.
+  documentation: Last day the service is offered; empty when open-ended.
+primaryKey: RestaurantMaster.entities.RestaurantService.RestaurantService.RestaurantServiceID
+sourceIdGeneration:
+  mode: MANUAL

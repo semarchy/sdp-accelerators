@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: InsuranceTypeHasRiskClass
+description: Indicates the Risk Class associated with a Insurance Type in the Property and Casualty Insurance domain. This reference establishes a relationship between the Insurance Type entity and the Risk Class entity, allowing for better organization and categorization of insurance types based on their associated risk classes.
+_type: Reference
+label: Insurance Type Has Risk Class
+
+fromEntity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType
+fromRoleLabel: Insurance Type
+fromRoleName: InsuranceType
+fromRolePluralLabel: Insurance Types
+physicalName: INS_TYPE_HAS_RISK_CLASS
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.RiskClass.RiskClass
+toRoleLabel: Risk Class
+toRoleName: RiskClass
+documentation: Indicates the Risk Class associated with a Insurance Type in the Property and Casualty Insurance domain. This reference establishes a relationship between the Insurance Type entity and the Risk Class entity, allowing for better organization and categorization of insurance types based on their associated risk classes.
+toRolePhysicalName: RISK_CLASS_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: RiskClass
+  label: Risk Class Name
+  description: The name of the risk class associated with the insurance type. This attribute serves as a foreign key linking the InsuranceTypeHasRiskClass reference to the RiskClass entity, allowing for easy retrieval of risk class information
+  physicalName: RISK_CLASS_NAME
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.RiskClass.RiskClass

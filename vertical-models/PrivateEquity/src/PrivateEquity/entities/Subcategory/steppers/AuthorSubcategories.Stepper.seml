@@ -1,0 +1,68 @@
+_name: AuthorSubcategories
+_package: PrivateEquity.entities.Subcategory.steppers
+_type: Stepper
+entity: PrivateEquity.entities.Subcategory.Subcategory
+rootStep:
+  _name: Subcategorys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.Subcategory.collection_views.SubcategoryCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Subcategories
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.SubcategoriesCategory.Category
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.SubcategoriesCategory.Category
+  stepTriggers: []
+  childSteps:
+    - _name: Subcategory
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Subcategory
+      formTab: PrivateEquity.entities.Subcategory.forms.SubcategoryForm.Subcategory
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.SubcategoriesCategory.Category
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.SubcategoriesCategory.Category
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.SubcategoriesCategory.Category
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.SubcategoriesCategory.Category
+      stepTriggers: []
+label: Author Subcategories
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.SubcategoriesCategory.Category
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.SubcategoriesCategory.Category
+triggers: []

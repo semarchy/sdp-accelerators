@@ -1,0 +1,160 @@
+_package: RetailCustomer360.entities.ShoppingCartEngagement
+_type: Entity
+_name: ShoppingCartEngagement
+label: Shopping Cart Engagement
+pluralLabel: Shopping Cart Engagements
+entityType: BASIC
+physicalTableName: CART_ENGAGEMENT
+iconUrl: https://api.iconify.design/mdi/cart-outline.svg?color=%230D1B2A&width=64
+
+description: "Shopping cart session showing what a customer assembled and whether it converted."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CartId
+    label: Cart Id
+    physicalName: CART_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the cart session."
+
+  - _type: EntityAttribute
+    _name: SessionId
+    label: Session Id
+    physicalName: SESSION_ID
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Browsing session the cart belongs to."
+
+  - _type: EntityAttribute
+    _name: CartStatus
+    label: Cart Status
+    physicalName: CART_STATUS
+    dataType: RetailCustomer360.list_of_values.CartStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Outcome state of the cart."
+
+  - _type: EntityAttribute
+    _name: ItemCount
+    label: Item Count
+    physicalName: ITEM_COUNT
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of items placed in the cart."
+
+  - _type: EntityAttribute
+    _name: CartValue
+    label: Cart Value
+    physicalName: CART_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Total value of the items in the cart."
+
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: Currency Code
+    physicalName: CURRENCY_CODE
+    dataType: String
+    length: 3
+    searchable: true
+    description: "Currency the cart value is expressed in."
+
+  - _type: EntityAttribute
+    _name: CreatedTimestamp
+    label: Created Timestamp
+    physicalName: CREATED_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the cart was created."
+
+  - _type: EntityAttribute
+    _name: LastUpdatedTimestamp
+    label: Last Updated Timestamp
+    physicalName: LAST_UPD_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the cart was last modified."
+
+  - _type: EntityAttribute
+    _name: AbandonedTimestamp
+    label: Abandoned Timestamp
+    physicalName: ABANDONED_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the cart was considered abandoned."
+
+  - _type: EntityAttribute
+    _name: ConvertedTimestamp
+    label: Converted Timestamp
+    physicalName: CONVERTED_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the cart became an order."
+
+  - _type: EntityAttribute
+    _name: CouponCode
+    label: Coupon Code
+    physicalName: COUPON_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Coupon applied to the cart."
+
+  - _type: EntityAttribute
+    _name: SalesChannel
+    label: Sales Channel
+    physicalName: SALES_CHANNEL
+    dataType: RetailCustomer360.list_of_values.SalesChannel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Channel the cart was assembled in."
+
+  - _type: EntityAttribute
+    _name: RecoveryEmailSent
+    label: Recovery Email Sent
+    physicalName: RECOVERY_EMAIL_SENT
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether an abandonment recovery email was sent."
+
+  - _type: EntityAttribute
+    _name: CartAgeHours
+    label: Cart Age Hours
+    physicalName: CART_AGE_HOURS
+    dataType: Decimal
+    precision: 10
+    scale: 2
+    searchable: true
+    description: "Derived number of hours between creation and last update."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the cart engagement originates from."
+
+primaryKey: RetailCustomer360.entities.ShoppingCartEngagement.ShoppingCartEngagement.CartId
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1

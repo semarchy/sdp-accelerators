@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.Restaurant.validations
+_name: LifecycleCoherence
+_type: SemQLValidation
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Lifecycle status and dates agree
+description: 'Status and dates disagree: an open restaurant needs an opening date in the past, a temporarily closed one a closure date, a permanently closed or relocated one a permanent closure date, and the reason must belong to the status.'
+validationScope: POST_CONSO
+validationLabel: 'Status and dates disagree: an open restaurant needs an opening date in the past, a temporarily closed one a closure date, a permanently closed or relocated one a permanent closure date, and the reason must belong to the status.'
+condition: (FID_LifecycleStatus IS NULL OR FID_LifecycleStatus <> 'OPEN' OR (OriginalOpenDate IS NOT NULL AND OriginalOpenDate <= CURRENT_DATE())) AND (FID_LifecycleStatus IS NULL OR FID_LifecycleStatus <> 'TEMP_CLOSED' OR TemporaryClosureDate IS NOT NULL) AND (FID_LifecycleStatus IS NULL OR FID_LifecycleStatus NOT IN ('PERM_CLOSED', 'RELOCATED') OR PermanentClosureDate IS NOT NULL) AND (FID_LifecycleStatusReason IS NULL OR LifecycleStatusReason.FID_LifecycleStatus = FID_LifecycleStatus)

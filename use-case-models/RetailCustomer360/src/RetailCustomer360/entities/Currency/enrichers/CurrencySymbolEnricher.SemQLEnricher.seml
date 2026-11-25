@@ -1,0 +1,61 @@
+﻿_package: RetailCustomer360.entities.Currency.enrichers
+_name: CurrencySymbolEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Currency.Currency
+label: Currency Symbol Enricher
+description: "Auto-fills currency symbols from ISO currency code when CurrencySymbol is missing."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: CurrencySymbol
+    expression: CASE
+        WHEN CurrencySymbol IS NOT NULL THEN CurrencySymbol
+        WHEN CurrencyCode IS NULL THEN CurrencySymbol
+        WHEN UPPER(CurrencyCode) = 'USD' THEN '$'
+        WHEN UPPER(CurrencyCode) = 'EUR' THEN 'â‚¬'
+        WHEN UPPER(CurrencyCode) = 'GBP' THEN 'Â£'
+        WHEN UPPER(CurrencyCode) = 'JPY' THEN 'Â¥'
+        WHEN UPPER(CurrencyCode) = 'CNY' THEN 'Â¥'
+        WHEN UPPER(CurrencyCode) = 'INR' THEN 'â‚¹'
+        WHEN UPPER(CurrencyCode) = 'KRW' THEN 'â‚©'
+        WHEN UPPER(CurrencyCode) = 'RUB' THEN 'â‚½'
+        WHEN UPPER(CurrencyCode) = 'TRY' THEN 'â‚º'
+        WHEN UPPER(CurrencyCode) = 'VND' THEN 'â‚«'
+        WHEN UPPER(CurrencyCode) = 'THB' THEN 'à¸¿'
+        WHEN UPPER(CurrencyCode) = 'ILS' THEN 'â‚ª'
+        WHEN UPPER(CurrencyCode) = 'PHP' THEN 'â‚±'
+        WHEN UPPER(CurrencyCode) = 'UAH' THEN 'â‚´'
+        WHEN UPPER(CurrencyCode) = 'PLN' THEN 'zÅ‚'
+        WHEN UPPER(CurrencyCode) = 'CZK' THEN 'KÄ'
+        WHEN UPPER(CurrencyCode) = 'HUF' THEN 'Ft'
+        WHEN UPPER(CurrencyCode) = 'RON' THEN 'lei'
+        WHEN UPPER(CurrencyCode) = 'CHF' THEN 'CHF'
+        WHEN UPPER(CurrencyCode) = 'SEK' THEN 'kr'
+        WHEN UPPER(CurrencyCode) = 'NOK' THEN 'kr'
+        WHEN UPPER(CurrencyCode) = 'DKK' THEN 'kr'
+        WHEN UPPER(CurrencyCode) = 'ISK' THEN 'kr'
+        WHEN UPPER(CurrencyCode) = 'CAD' THEN 'C$'
+        WHEN UPPER(CurrencyCode) = 'AUD' THEN 'A$'
+        WHEN UPPER(CurrencyCode) = 'NZD' THEN 'NZ$'
+        WHEN UPPER(CurrencyCode) = 'SGD' THEN 'S$'
+        WHEN UPPER(CurrencyCode) = 'HKD' THEN 'HK$'
+        WHEN UPPER(CurrencyCode) = 'TWD' THEN 'NT$'
+        WHEN UPPER(CurrencyCode) = 'MXN' THEN 'MX$'
+        WHEN UPPER(CurrencyCode) = 'BRL' THEN 'R$'
+        WHEN UPPER(CurrencyCode) = 'ARS' THEN 'AR$'
+        WHEN UPPER(CurrencyCode) = 'CLP' THEN 'CLP$'
+        WHEN UPPER(CurrencyCode) = 'COP' THEN 'COP$'
+        WHEN UPPER(CurrencyCode) = 'ZAR' THEN 'R'
+        WHEN UPPER(CurrencyCode) = 'AED' THEN 'Ø¯.Ø¥'
+        WHEN UPPER(CurrencyCode) = 'SAR' THEN 'ï·¼'
+        WHEN UPPER(CurrencyCode) = 'QAR' THEN 'Ø±.Ù‚'
+        WHEN UPPER(CurrencyCode) = 'KWD' THEN 'Ø¯.Ùƒ'
+        WHEN UPPER(CurrencyCode) = 'BHD' THEN '.Ø¯.Ø¨'
+        WHEN UPPER(CurrencyCode) = 'OMR' THEN 'Ø±.Ø¹.'
+        WHEN UPPER(CurrencyCode) = 'EGP' THEN 'EÂ£'
+        WHEN UPPER(CurrencyCode) = 'NGN' THEN 'â‚¦'
+        WHEN UPPER(CurrencyCode) = 'KES' THEN 'KSh'
+        WHEN UPPER(CurrencyCode) = 'GHS' THEN 'GHâ‚µ'
+        ELSE UPPER(CurrencyCode)
+      END
+

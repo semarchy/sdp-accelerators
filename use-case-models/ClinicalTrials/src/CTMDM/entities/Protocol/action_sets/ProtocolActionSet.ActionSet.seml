@@ -1,0 +1,71 @@
+_package: CTMDM.entities.Protocol.action_sets
+_type: ActionSet
+_name: ProtocolActionSet
+
+entity: CTMDM.entities.Protocol.Protocol
+label: Protocol Action Set
+defaultActionSet: true
+
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorProtocols
+    label: Create
+    useCustomLabel: true
+    stepper: CTMDM.entities.Protocol.steppers.AuthorProtocols
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+
+  - _type: EditAction
+    _name: EditAuthorProtocols
+    label: Edit
+    useCustomLabel: true
+    stepper: CTMDM.entities.Protocol.steppers.AuthorProtocols
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorProtocols
+    label: Mass Update
+    useCustomLabel: true
+    stepper: CTMDM.entities.Protocol.steppers.AuthorProtocols
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+
+  - _type: ImportAction
+    _name: ImportAuthorProtocols
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: CTMDM.entities.Protocol.steppers.AuthorProtocols
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

@@ -1,0 +1,26 @@
+# RuleScopeHasRule: reference of the GovernanceRules accelerator. The rule that the scope row applies to.
+_package: GovernanceRules.references
+_type: Reference
+_name: RuleScopeHasRule
+label: Rule of the scope
+physicalName: FK_RS_RULE
+deletePropagation: CASCADE
+validationScope: PRE_CONSO
+oneToMany: true
+fromEntity: GovernanceRules.entities.RuleScope.RuleScope
+fromRoleName: Scopes
+fromRoleLabel: Scope
+fromRolePluralLabel: Scopes
+toEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+toRoleName: Rule
+toRoleLabel: Rule
+toRolePhysicalName: RS_RULE
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Rule
+  label: Rule
+  entity: GovernanceRules.entities.RuleScope.RuleScope
+  physicalName: RS_RULE
+  description: The rule that the scope row applies to. Scope rows belong to their rule and are deleted with it.
+description: The rule that the scope row applies to. Scope rows belong to their rule and are deleted with it.
+mandatoryValidationLabel: A RuleScope needs a rule.

@@ -1,0 +1,94 @@
+_name: AuthorManufacturingPlantAddresses
+_package: Manufacturing.entities.ManufacturingPlantAddress.steppers
+_type: Stepper
+entity: Manufacturing.entities.ManufacturingPlantAddress.ManufacturingPlantAddress
+rootStep:
+  _name: ManufacturingPlantAddresss
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ManufacturingPlantAddress.collection_views.ManufacturingPlantAddressCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Manufacturing Plant Addresses
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ManufacturingPlantAddressesBelongsToManufacturingPlant.ManufacturingPlant
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ManufacturingPlantAddressesHasAddress.Address
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ManufacturingPlantAddressesHasAddress.Address
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ManufacturingPlantAddressesBelongsToManufacturingPlant.ManufacturingPlant
+  stepTriggers: []
+  childSteps:
+    - _name: ManufacturingPlantAddress
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Manufacturing Plant Address
+      formTab: Manufacturing.entities.ManufacturingPlantAddress.forms.ManufacturingPlantAddressForm.ManufacturingPlantAddress
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantAddressesBelongsToManufacturingPlant.ManufacturingPlant
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturingPlantAddressesBelongsToManufacturingPlant.ManufacturingPlant
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantAddressesHasAddress.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturingPlantAddressesHasAddress.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturingPlantAddressesBelongsToManufacturingPlant.ManufacturingPlant
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantAddressesBelongsToManufacturingPlant.ManufacturingPlant
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturingPlantAddressesHasAddress.Address
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturingPlantAddressesHasAddress.Address
+      stepTriggers: []
+label: Author Manufacturing Plant Addresses
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ManufacturingPlantAddressesBelongsToManufacturingPlant.ManufacturingPlant
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ManufacturingPlantAddressesBelongsToManufacturingPlant.ManufacturingPlant
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ManufacturingPlantAddressesHasAddress.Address
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ManufacturingPlantAddressesHasAddress.Address
+triggers: []

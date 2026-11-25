@@ -1,0 +1,150 @@
+_package: RetailCustomer360.entities.LoyaltyLedger.collection_views
+_type: CollectionView
+_name: LoyaltyLedgerCollectionView
+entity: RetailCustomer360.entities.LoyaltyLedger.LoyaltyLedger
+default: true
+description: "Default list of Loyalty Ledger Entries records."
+displayCard: RetailCustomer360.entities.LoyaltyLedger.display_cards.LoyaltyLedgerDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: LoyaltyLedger
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: TextColumn
+    _name: LedgerEntryId
+    value: LedgerEntryId
+    useCustomLabel: false
+    dataType: INTEGER
+    columnAlign: RIGHT
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: TransactionDate
+    value: TransactionDate
+    useCustomLabel: false
+    dataType: TIMESTAMP
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: TransactionType
+    value: TransactionType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      useAvatarInMenu: '1'
+      useAvatarInMenuValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: PointsType
+    value: PointsType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      useAvatarInMenu: '1'
+      useAvatarInMenuValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Points
+    value: Points
+    useCustomLabel: false
+    dataType: INTEGER
+    columnAlign: RIGHT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PointsBalanceAfter
+    value: PointsBalanceAfter
+    useCustomLabel: false
+    dataType: INTEGER
+    columnAlign: RIGHT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MonetaryValue
+    value: MonetaryValue
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: RIGHT
+    visibleByDefault: false
+    componentProperties:
+      displayFormat: '$ #,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  - _type: DateColumn
+    _name: ExpirationDate
+    value: ExpirationDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: ReferenceNumber
+    value: ReferenceNumber
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Description
+    value: Description
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: CheckboxColumn
+    _name: IsReversed
+    value: IsReversed
+    useCustomLabel: false
+    dataType: BOOLEAN
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: MenuColumn
+    _name: SourceSystem
+    value: SourceSystem
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+    componentProperties:
+      useAvatarInMenu: '1'
+      useAvatarInMenuValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: SourceLedgerKey
+    value: SourceLedgerKey
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: ReferenceColumn
+    _name: LoyaltyProgramMember
+    value: FDN_LoyaltyProgramMember
+    useCustomLabel: true
+    label: Loyalty Program Member
+    referencedEntity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: false
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+  - _type: ReferenceColumn
+    _name: SalesOrder
+    value: FDN_SalesOrder
+    useCustomLabel: true
+    label: Sales Order
+    referencedEntity: RetailCustomer360.entities.SalesOrder.SalesOrder
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: false
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"

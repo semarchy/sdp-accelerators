@@ -1,0 +1,36 @@
+_package: CTMDM.entities.MedicalLicense.steppers
+_type: Stepper
+_name: AuthorMedicalLicenses
+
+entity: CTMDM.entities.MedicalLicense.MedicalLicense
+label: Medical Licenses
+
+rootStep:
+  _type: CollectionStep
+  _name: MedicalLicenses
+  label: Medical Licenses
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: CTMDM.entities.MedicalLicense.collection_views.MedicalLicenseCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  
+  childSteps:
+    - _type: FormStep
+      _name: MedicalLicense
+      label: Medical License
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CTMDM.entities.MedicalLicense.forms.MedicalLicenseForm.General

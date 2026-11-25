@@ -1,0 +1,42 @@
+# This file defines the Cost Center entity in the Organization domain.
+# It includes attributes such as CostCenterID and Name, along with their data types and properties.
+# This entity is used to manage cost center information within the organization.
+_package: Organization.entities.CostCenter
+_type: Entity
+_name: CostCenter
+label: Cost Center
+pluralLabel: Cost Center
+entityType: BASIC
+physicalTableName: COST_CENTER
+iconUrl: images://hr-img-lib/cash-multiple.svg
+description: This entity represents the cost centers within the organization, which are used for financial tracking and management.
+documentation: This entity is used to define various cost centers, which can be referenced in other entities
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CostCenterID
+    label: Cost Center ID
+    physicalName: COST_CENTER_ID
+    description: Unique identifier for the cost center.
+    documentation: This attribute is the primary key for the Cost Center entity and is used to uniquely
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    description: Name of the cost center.
+    documentation: This attribute holds the name of the cost center, which is used for display purposes
+    physicalName: NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100
+primaryKey: Organization.entities.CostCenter.CostCenter.CostCenterID

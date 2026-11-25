@@ -1,0 +1,36 @@
+ # Description: Stepper used for Industry create/edit/import workflows.
+ # Contains: Wizard steps and panels for authoring Industry records.
+ # Role: Drives multi-step actions for Industry management in the UI.
+_package: Merchant.entities.Industry.steppers
+_type: Stepper
+_name: AuthorIndustries
+entity: Merchant.entities.Industry.Industry
+label: Industries
+rootStep:
+  _type: CollectionStep
+  _name: Industries
+  label: Industries
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.Industry.collection_views.IndustryCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Industry
+      label: Industry
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.Industry.forms.IndustryForm.Industry

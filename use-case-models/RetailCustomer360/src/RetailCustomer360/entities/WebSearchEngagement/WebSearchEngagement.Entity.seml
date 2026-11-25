@@ -1,0 +1,140 @@
+_package: RetailCustomer360.entities.WebSearchEngagement
+_type: Entity
+_name: WebSearchEngagement
+label: Web Search Engagement
+pluralLabel: Web Search Engagements
+entityType: BASIC
+physicalTableName: WEB_SEARCH_ENG
+iconUrl: https://api.iconify.design/mdi/magnify.svg?color=%230D1B2A&width=64
+
+description: "Search a customer performed before or while browsing the brand's site."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SearchEngagementId
+    label: Search Engagement Id
+    physicalName: SEARCH_ENG_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the search engagement."
+
+  - _type: EntityAttribute
+    _name: SessionId
+    label: Session Id
+    physicalName: SESSION_ID
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Browsing session the search belongs to."
+
+  - _type: EntityAttribute
+    _name: SearchEngine
+    label: Search Engine
+    physicalName: SEARCH_ENGINE
+    dataType: RetailCustomer360.list_of_values.SearchEngine
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Provider that served the search."
+
+  - _type: EntityAttribute
+    _name: SearchTerm
+    label: Search Term
+    physicalName: SEARCH_TERM
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Text the customer searched for."
+
+  - _type: EntityAttribute
+    _name: ResultCount
+    label: Result Count
+    physicalName: RESULT_COUNT
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of results returned for the search."
+
+  - _type: EntityAttribute
+    _name: ClickedPosition
+    label: Clicked Position
+    physicalName: CLICKED_POSITION
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Rank of the result the customer clicked."
+
+  - _type: EntityAttribute
+    _name: LandingPageUrl
+    label: Landing Page Url
+    physicalName: LANDING_PAGE_URL
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Page the customer arrived on after the search."
+
+  - _type: EntityAttribute
+    _name: EventTimestamp
+    label: Event Timestamp
+    physicalName: EVENT_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the search was performed."
+
+  - _type: EntityAttribute
+    _name: WebBrowser
+    label: Web Browser
+    physicalName: WEB_BROWSER
+    dataType: RetailCustomer360.list_of_values.WebBrowser
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Browser used to perform the search."
+
+  - _type: EntityAttribute
+    _name: DeviceType
+    label: Device Type
+    physicalName: DEVICE_TYPE
+    dataType: RetailCustomer360.list_of_values.DeviceType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Type of device the search came from."
+
+  - _type: EntityAttribute
+    _name: CountryCode
+    label: Country Code
+    physicalName: COUNTRY_CODE
+    dataType: String
+    length: 3
+    searchable: true
+    description: "Country the search originated from."
+
+  - _type: EntityAttribute
+    _name: IsInternalSearch
+    label: Is Internal Search
+    physicalName: IS_INTERNAL_SEARCH
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the search used the site's own search box."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the search engagement originates from."
+
+primaryKey: RetailCustomer360.entities.WebSearchEngagement.WebSearchEngagement.SearchEngagementId
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1

@@ -1,0 +1,25 @@
+_package: RestaurantMaster.references
+_type: Reference
+label: Status history - Status
+_name: RestaurantStatusHistoryHasStatus
+description: Status of the history row.
+documentation: Status of the history row.
+deletePropagation: RESTRICT
+fromEntity: RestaurantMaster.entities.RestaurantStatusHistory.RestaurantStatusHistory
+fromRoleName: StatusHistoryRows
+fromRoleLabel: Status history
+fromRolePluralLabel: Status history
+physicalName: STATUSHIST_STATUS
+toEntity: RestaurantMaster.entities.LifecycleStatus.LifecycleStatus
+toRoleName: LifecycleStatus
+toRolePhysicalName: LIFECYCLE_STATUS
+toRoleLabel: Status
+validationScope: PRE_CONSO
+oneToMany: true
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: LifecycleStatus
+  entity: RestaurantMaster.entities.LifecycleStatus.LifecycleStatus
+  label: Status
+  physicalName: LIFECYCLE_STATUS
+  searchable: true

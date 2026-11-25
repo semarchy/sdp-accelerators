@@ -1,0 +1,90 @@
+# Description: Collection view definition for `PartyAddress`.
+# Contains list/grid view configuration for address records in the UI.
+# Role: Displays address collections and supports filtering/sorting in the application.
+ # Description: Collection view for `PartyAddress` records (tables and lists).
+ # Contains: Column definitions and display options for PartyAddress collections.
+ # Role: Controls how address records are presented in collections and tables.
+_package: Merchant.entities.PartyAddress.collection_views
+_type: CollectionView
+_name: PartyAddressCollectionView
+entity: Merchant.entities.PartyAddress.PartyAddress
+default: true
+displayCard: Merchant.entities.PartyAddress.display_cards.PartyAddressDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Merchant Address
+tableRowLines: 1
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_Party
+    value: FDN_Party
+    useCustomLabel: true
+    label: Party
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: Merchant.entities.Party.Party
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: MenuColumn
+    _name: AddressType
+    value: AddressType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EnrichedStreet
+    value: EnrichedStreet
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EnrichedCity
+    value: EnrichedCity
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EnrichedState
+    value: EnrichedState
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EnrichedPostalCode
+    value: EnrichedPostalCode
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EnrichedLatitude
+    value: EnrichedLatitude
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EnrichedLongitude
+    value: EnrichedLongitude
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true

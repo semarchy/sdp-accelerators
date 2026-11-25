@@ -1,0 +1,85 @@
+# Payment Terms entity for the SAP Business Partner 360 accelerator.
+_name: PaymentTerms
+_package: sapbp360.entities.PaymentTerms
+_type: Entity
+primaryKey: sapbp360.entities.PaymentTerms.PaymentTerms.PaymentTermsID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: PaymentTermsCode
+label: Payment Terms
+documentation: Payment Terms reference data used by the SAP Business Partner 360 model.
+description: Payment Terms reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/PaymentTerms.svg
+pluralLabel: Payment Terms
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PMT_TERMS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PaymentTermsID
+    physicalName: PMT_TERMS_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Terms ID
+    documentation: Unique identifier for the payment terms.
+    description: Unique identifier for the payment terms.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Payment Terms ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PaymentTermsCode
+    physicalName: PMT_TERMS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Terms Code
+    documentation: Code for the payment terms.
+    description: Code for the payment terms.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Payment Terms Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PaymentTermsName
+    physicalName: PMT_TERMS_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Terms Name
+    documentation: Name of the payment terms.
+    description: Name of the payment terms.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Payment Terms Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the payment terms.
+    description: Description for the payment terms.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the payment terms is active.
+    description: Indicates whether the payment terms is active.
+    mandatory: false
+    length: 1
+    searchable: true

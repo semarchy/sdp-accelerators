@@ -1,0 +1,70 @@
+# This is the IndustryBusinessView business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for industries,
+# including the root entity, labels, and display options.
+_name: Industry
+_package: sales360.entities.Industry.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.Industry.Industry
+rootLabel: Industry
+rootPluralLabel: Industry
+useHierarchyOnOpen: false
+label: Industry
+description: Business view for managing industries
+rootBusinessViewEntity:
+  _name: Industry
+  _type: BusinessViewEntity
+  collection: sales360.entities.Industry.collection_views.IndustryCollection
+  displayRecordCount: ALWAYS
+  recordNodeDisplayCard: sales360.entities.Industry.display_cards.IndustryDisplayCard
+  displayCard: sales360.entities.Industry.display_cards.IndustryDisplayCard
+  enableUserDefinedSort: true
+  entity: sales360.entities.Industry.Industry
+  form: sales360.entities.Industry.forms.IndustryForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.Industry.business_views.Industry.Industry
+
+

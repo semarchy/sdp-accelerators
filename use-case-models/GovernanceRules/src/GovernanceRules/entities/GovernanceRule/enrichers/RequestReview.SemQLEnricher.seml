@@ -1,0 +1,12 @@
+# RequestReview: SemQL enricher on GovernanceRule of the GovernanceRules accelerator. Stepper only (Rule review workflow, steward task): sets the requested outcome.
+_package: GovernanceRules.entities.GovernanceRule.enrichers
+_type: SemQLEnricher
+_name: RequestReview
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Request review
+description: 'Stepper only (Rule review workflow, steward task): sets the requested outcome. With a retirement date and a retirement reason the
+  status becomes RETIREMENT_REQUESTED, otherwise IN_REVIEW (approval of a new or changed rule).'
+enricherExecutionScope: NONE
+semQlEnricherExpressions:
+- attributeName: LifecycleStatus
+  expression: CASE WHEN RetirementDate IS NOT NULL AND RetirementReason IS NOT NULL THEN 'RETIREMENT_REQUESTED' ELSE 'IN_REVIEW' END

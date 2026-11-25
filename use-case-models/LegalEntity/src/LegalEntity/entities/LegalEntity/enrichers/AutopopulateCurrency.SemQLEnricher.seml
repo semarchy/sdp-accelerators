@@ -1,0 +1,10 @@
+_package: LegalEntity.entities.LegalEntity.enrichers
+_name: AutopopulateCurrency
+_type: SemQLEnricher
+entity: LegalEntity.entities.LegalEntity.LegalEntity
+label: Autopopulate Full Name
+description: ''
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_Currency
+    expression: "case  when FID_Country = 'US' then 'USD' else null end"

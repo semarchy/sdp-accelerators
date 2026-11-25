@@ -1,0 +1,52 @@
+# AuthorRuleScopes: stepper on RuleScope of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleScope.steppers
+_type: Stepper
+_name: AuthorRuleScopes
+description: 'Creates and edits rule scopes outside the rule journeys (Create, Edit, Mass update and Import actions), with the rule, domain, classification and attribute type picked by name.'
+entity: GovernanceRules.entities.RuleScope.RuleScope
+label: Enter rule scopes
+rootStep:
+  _type: CollectionStep
+  _name: RuleScopes
+  label: Rule scopes
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.RuleScope.collection_views.RuleScopeCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: RuleScope
+      label: Rule scope
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope
+      referenceFormFieldConfigs:
+        - fdnFormField: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope.Links.FDN_AttributeType
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Name
+        - fdnFormField: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope.Links.FDN_DataClassification
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Name
+        - fdnFormField: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope.Links.FDN_DataDomain
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Name
+        - fdnFormField: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope.Links.FDN_Rule
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Title

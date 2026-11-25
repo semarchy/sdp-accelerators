@@ -1,0 +1,116 @@
+_package: RetailCustomer360.entities.OpportunityProduct
+_type: Entity
+_name: OpportunityProduct
+label: Opportunity Product
+pluralLabel: Opportunity Products
+entityType: BASIC
+physicalTableName: OPPORTUNITY_PRODUCT
+iconUrl: https://api.iconify.design/mdi/playlist-plus.svg?color=%230D1B2A&width=64
+
+description: "Product line quoted on a sales opportunity."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: OpportunityProductId
+    label: Opportunity Product Id
+    physicalName: OPP_PRODUCT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the opportunity line."
+
+  - _type: EntityAttribute
+    _name: LineNumber
+    label: Line Number
+    physicalName: LINE_NUMBER
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Position of the line within the opportunity."
+
+  - _type: EntityAttribute
+    _name: Quantity
+    label: Quantity
+    physicalName: QUANTITY
+    dataType: Decimal
+    precision: 18
+    scale: 3
+    searchable: true
+    description: "Quantity of the product quoted."
+
+  - _type: EntityAttribute
+    _name: UnitPrice
+    label: Unit Price
+    physicalName: UNIT_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Price quoted per unit."
+
+  - _type: EntityAttribute
+    _name: TotalPrice
+    label: Total Price
+    physicalName: TOTAL_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Total value of the line before discount."
+
+  - _type: EntityAttribute
+    _name: DiscountAmount
+    label: Discount Amount
+    physicalName: DISCOUNT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Discount applied to the line."
+
+  - _type: EntityAttribute
+    _name: ExpectedDeliveryDate
+    label: Expected Delivery Date
+    physicalName: EXP_DELIVERY_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the customer expects the product."
+
+  - _type: EntityAttribute
+    _name: IsPrimaryLine
+    label: Is Primary Line
+    physicalName: IS_PRIMARY_LINE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether this line drives the opportunity value."
+
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    physicalName: NOTES
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Free-text commentary on the quoted line."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the opportunity line originates from."
+
+primaryKey: RetailCustomer360.entities.OpportunityProduct.OpportunityProduct.OpportunityProductId
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1

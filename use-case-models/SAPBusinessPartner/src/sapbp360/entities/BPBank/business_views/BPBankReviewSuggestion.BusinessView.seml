@@ -1,0 +1,54 @@
+_name: BPBankReviewSuggestion
+_package: sapbp360.entities.BPBank.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.BPBank.BPBank
+rootLabel: BP Bank Review Suggestion
+rootPluralLabel: BP Bank Review Suggestions
+useHierarchyOnOpen: false
+label: BP Bank Review Suggestion
+description: Business view for reviewing duplicate BP Banks.
+rootBusinessViewEntity:
+  _name: BPBank
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.BPBank.collection_views.BPBankCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.BPBank.BPBank
+  form: sapbp360.entities.BPBank.forms.BPBankBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.BPBank.action_sets.BPBankReviewSuggestionsActionSet
+  displayCard: sapbp360.entities.BPBank.display_cards.BPBankDisplayCard
+  sortExpression: BankAccountHolderName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sapbp360.entities.BPBank.forms.BPBankBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_BankCountryKey
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPBank.forms.BPBankBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol3.FDN_BusinessPartner
+      navigationMode: MODAL_FORM
+  transitions: []
+rootIconUrl: images://mdi/bank-outline.svg
+rootFilter: HasSuggestedMerge = '1'

@@ -1,0 +1,38 @@
+_package: RestaurantMaster.entities.LegalEntity.steppers
+_type: Stepper
+_name: AuthorLegalEntity
+entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+label: Legal entities
+rootStep:
+  _type: CollectionStep
+  _name: LegalEntityCollection
+  label: Legal entities
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: RestaurantMaster.entities.LegalEntity.collection_views.LegalEntityCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+  - _type: FormStep
+    _name: LegalEntity
+    label: Legal entity
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    enableMasterValuePicking: false
+    formTab: RestaurantMaster.entities.LegalEntity.forms.LegalEntityForm.LegalEntity
+    formStepValidations:
+    - validationType: CHECK
+      validator: RestaurantMaster.entities.LegalEntity.validations.LegalEntityKeyFormat
+      executedOnDataChange: true
+      executedOnFormOpen: true

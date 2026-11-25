@@ -1,0 +1,28 @@
+# It is an enricher for the account entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that sets the BusinessShippingAddressSame attribute to 1 if the Billing Address 
+# and Shipping Address are the same, otherwise sets it to 0.
+# This enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.Account.enrichers
+_name: BusinessShippingAdrSame
+entity: sales360.entities.Account.Account
+label: Business Shipping Adr Same
+description: Sets BusinessShippingAddressSame to 1 if Billing and Shipping addresses are the same, else 0
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: BusinessShippingAddressSame
+    expression: >-
+      CASE 
+
+      WHEN 
+                      COALESCE(BillingAddress.GeoStreetNumber, '') = COALESCE(BillingAddress.GeoStreetNumber, ' ') 
+              and     COALESCE(BillingAddress.GeoStreetName, '') = COALESCE(BillingAddress.GeoStreetName, ' ')
+              and     COALESCE(BillingAddress.GeoLocality, '') = COALESCE(BillingAddress.GeoLocality , ' ')
+              and     COALESCE(BillingAddress.GeoPostalCode, '') = COALESCE(BillingAddress.GeoPostalCode, ' ')
+              and     COALESCE(BillingAddress.GeoState, '') = COALESCE(BillingAddress.GeoState, ' ')
+      THEN 1
+
+      ELSE 0
+
+      END
+afterEnrichers: sales360.entities.Account.enrichers.StandardizePhone

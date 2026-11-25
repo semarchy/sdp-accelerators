@@ -1,0 +1,11 @@
+_package: CTMDM.entities.GcpCertification.enrichers
+_name: NormalizeGcpCertification
+_type: SemQLEnricher
+entity: CTMDM.entities.GcpCertification.GcpCertification
+label: Normalize GCP Certification
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key GCP Certification values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedIssuingOrganization
+    expression: "RTRIM(LTRIM(UPPER(IssuingOrganization)))"

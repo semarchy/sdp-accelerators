@@ -1,0 +1,10 @@
+_package: RestaurantMaster.entities.RestaurantOrgAssignment.enrichers
+_name: BuildNaturalKey
+_type: SemQLEnricher
+entity: RestaurantMaster.entities.RestaurantOrgAssignment.RestaurantOrgAssignment
+label: Build the natural key
+description: Builds the key that allows only one row per restaurant, hierarchy and start date.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+- attributeName: NaturalKey
+  expression: FID_Restaurant || '|' || HierarchyType || '|' || TO_CHAR(EffectiveFrom, 'YYYY-MM-DD')

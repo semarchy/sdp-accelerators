@@ -1,0 +1,210 @@
+_package: RetailCustomer360.entities.ContactPointSocial
+_type: Entity
+_name: ContactPointSocial
+label: Social Contact Point
+pluralLabel: Social Contact Points
+entityType: FUZZY_MATCHED
+physicalTableName: CP_SOCIAL
+iconUrl: https://api.iconify.design/mdi/account-multiple.svg?color=%230D1B2A&width=64
+
+description: "Social media identity through which a customer can be reached or observed."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SocialId
+    label: Social Id
+    physicalName: SOCIAL_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the social contact point."
+
+  - _type: EntityAttribute
+    _name: SocialNetwork
+    label: Social Network
+    physicalName: SOCIAL_NETWORK
+    dataType: RetailCustomer360.list_of_values.SocialNetwork
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Platform the social identity belongs to."
+
+  - _type: EntityAttribute
+    _name: SocialHandle
+    label: Social Handle
+    physicalName: SOCIAL_HANDLE
+    dataType: String
+    length: 120
+    searchable: true
+    description: "Public handle or username on the platform."
+
+  - _type: EntityAttribute
+    _name: ProfileUrl
+    label: Profile Url
+    physicalName: PROFILE_URL
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Direct link to the public profile."
+
+  - _type: EntityAttribute
+    _name: FollowerCount
+    label: Follower Count
+    physicalName: FOLLOWER_COUNT
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of followers the profile has."
+
+  - _type: EntityAttribute
+    _name: EngagementScore
+    label: Engagement Score
+    physicalName: ENGAGEMENT_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived measure of how actively the profile engages with the brand."
+
+  - _type: EntityAttribute
+    _name: IsVerified
+    label: Is Verified
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the platform has verified the profile."
+
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether this is the customer's main social identity."
+
+  - _type: EntityAttribute
+    _name: LastActivityDate
+    label: Last Activity Date
+    physicalName: LAST_ACTIVITY_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time of the most recent observed activity."
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    physicalName: SOCIAL_STATUS
+    dataType: RetailCustomer360.list_of_values.AccountStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Lifecycle status of the social contact point."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the social contact point originates from."
+
+  - _type: EntityAttribute
+    _name: SourceSocialKey
+    label: Source Social Key
+    physicalName: SOURCE_SOCIAL_KEY
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Natural key of the record in the source system."
+
+  - _type: EntityAttribute
+    _name: HandleNormalized
+    label: Handle Normalized
+    physicalName: HANDLE_NORM
+    dataType: String
+    length: 120
+    searchable: true
+    description: "Lowercased handle without leading punctuation, used for matching."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)."
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated."
+
+primaryKey: RetailCustomer360.entities.ContactPointSocial.ContactPointSocial.SocialId
+
+sourceIdGeneration:
+  mode: MANUAL
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: "Matching strategy for ContactPointSocial records."
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: HandleAndNetwork
+      label: Same handle on the same network
+      matchScore: 100
+      condition: Record1.HandleNormalized IS NOT NULL AND Record2.HandleNormalized IS NOT NULL AND Record1.HandleNormalized = Record2.HandleNormalized AND Record1.SocialNetwork = Record2.SocialNetwork
+      usingMatchOn: false
+      binningExpressions:
+        - expression: HandleNormalized
+    - _type: SemQLMatchRule
+      _name: ProfileUrlExact
+      label: Same profile url
+      matchScore: 95
+      condition: Record1.ProfileUrl IS NOT NULL AND Record2.ProfileUrl IS NOT NULL AND LOWER(Record1.ProfileUrl) = LOWER(Record2.ProfileUrl)
+      usingMatchOn: false
+      binningExpressions:
+        - expression: ProfileUrl
+    - _type: SemQLMatchRule
+      _name: SameCustomerSameNetwork
+      label: Same customer on same social network
+      matchScore: 65
+      condition: Record1.FID_Customer IS NOT NULL AND Record2.FID_Customer IS NOT NULL AND Record1.FID_Customer = Record2.FID_Customer AND Record1.SocialNetwork IS NOT NULL AND Record2.SocialNetwork IS NOT NULL AND Record1.SocialNetwork = Record2.SocialNetwork
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 65
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 98
+  mergeThresholdMergingConfirmedWithUnconfirmed: 99
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 99
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false

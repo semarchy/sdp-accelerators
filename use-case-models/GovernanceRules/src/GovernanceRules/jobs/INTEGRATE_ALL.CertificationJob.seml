@@ -1,0 +1,90 @@
+# INTEGRATE_ALL: certification job of the GovernanceRules accelerator. Certifies every entity of Governance Rules in dependency order: reference lists, policies, rules, then their scopes and citations.
+_package: GovernanceRules.jobs
+_type: CertificationJob
+_name: INTEGRATE_ALL
+jobType: INTEGRATION
+queueName: GovernanceRules
+description: 'Certifies every entity of Governance Rules in dependency order: reference lists, policies, rules, then their
+  scopes and citations. Used by REST loads (SEED corpus), steppers and the Rule review workflow.'
+modelTasks:
+- _type: ModelJobTask
+  _name: GovernanceBody
+  entity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true
+- _type: ModelJobTask
+  _name: DataDomain
+  entity: GovernanceRules.entities.DataDomain.DataDomain
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true
+- _type: ModelJobTask
+  _name: DataClassification
+  entity: GovernanceRules.entities.DataClassification.DataClassification
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true
+- _type: ModelJobTask
+  _name: Regulation
+  entity: GovernanceRules.entities.Regulation.Regulation
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true
+- _type: ModelJobTask
+  _name: BusinessAttributeType
+  entity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true
+- _type: ModelJobTask
+  _name: GovernancePolicy
+  entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true
+- _type: ModelJobTask
+  _name: GovernanceRule
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true
+- _type: ModelJobTask
+  _name: RuleScope
+  entity: GovernanceRules.entities.RuleScope.RuleScope
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true
+- _type: ModelJobTask
+  _name: RuleCitation
+  entity: GovernanceRules.entities.RuleCitation.RuleCitation
+  sourceDataEnrichmentEnabled: true
+  sourceValidationEnabled: true
+  matchEnabled: true
+  consolidationEnabled: true
+  consolidatedDataEnrichmentEnabled: true
+  postConsoValidationEnabled: true

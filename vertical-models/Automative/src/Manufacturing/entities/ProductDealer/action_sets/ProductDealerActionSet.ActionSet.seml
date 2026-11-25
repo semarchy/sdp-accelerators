@@ -1,0 +1,69 @@
+_name: ProductDealerActionSet
+_package: Manufacturing.entities.ProductDealer.action_sets
+_type: ActionSet
+entity: Manufacturing.entities.ProductDealer.ProductDealer
+label: Product Dealer Action Set
+defaultActionSet: true
+actions:
+  - _name: StartWorkflow
+    _type: StartWorkflowEntityAction
+    label: Onboard Dealer
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: Manufacturing.workflows.OnboardDealer.Start
+  - _name: CreateAuthorProductDealers
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.ProductDealer.steppers.AuthorProductDealers
+  - _name: EditAuthorProductDealers
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.ProductDealer.steppers.AuthorProductDealers
+  - _name: MassUpdateAuthorProductDealers
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: Manufacturing.entities.ProductDealer.steppers.AuthorProductDealers
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorProductDealers
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.ProductDealer.steppers.AuthorProductDealers
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

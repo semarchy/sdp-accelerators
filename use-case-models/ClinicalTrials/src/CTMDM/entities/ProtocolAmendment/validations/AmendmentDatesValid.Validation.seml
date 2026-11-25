@@ -1,0 +1,9 @@
+_package: CTMDM.entities.ProtocolAmendment.validations
+_name: AmendmentDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+label: Amendment approval must not be before submission
+validationScope: PRE_CONSO
+description: "Amendment approval must not be before submission before consolidation."
+
+condition: ApprovalDate IS NULL OR SubmissionDate IS NULL OR ApprovalDate >= SubmissionDate

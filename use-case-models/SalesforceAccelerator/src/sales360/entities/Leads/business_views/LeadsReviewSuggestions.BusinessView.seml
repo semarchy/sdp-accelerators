@@ -1,0 +1,59 @@
+# This is the LeadsReviewSuggestionsBusinessView business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for leads,
+# including the root entity, labels, and display options.
+_name: LeadsReviewSuggestions
+_package: sales360.entities.Leads.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.Leads.Leads
+rootLabel: Leads Review Suggestions
+rootPluralLabel: Leads Review Suggestions
+useHierarchyOnOpen: false
+label: Leads Review Suggestions
+description: Business view for Leads entity with review suggestions
+rootBusinessViewEntity:
+  _name: Leads
+  _type: BusinessViewEntity
+  collection: sales360.entities.Leads.collection_views.LeadsCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.Leads.Leads
+  form: sales360.entities.Leads.forms.LeadsBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.Leads.action_sets.LeadsReviewSuggestionsActionSet
+  displayCard: sales360.entities.Leads.display_cards.LeadDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sales360.entities.Leads.forms.LeadsBrowsingForm.Main.ConversionDetails.Container7.Container9.FDN_ConvertedOpportunity
+      navigationMode: MODAL_FORM
+    - formField: sales360.entities.Leads.forms.LeadsBrowsingForm.Main.ConversionDetails.Container7.Container9.FDN_ConvertedAccount
+      navigationMode: MODAL_FORM
+    - formField: sales360.entities.Leads.forms.LeadsBrowsingForm.Main.ConversionDetails.Container7.Container8.FDN_ConvertedContact
+      navigationMode: MODAL_FORM
+    - formField: sales360.entities.Leads.forms.LeadsBrowsingForm.Main.Company.Container4.Container5.FDN_Industry
+      navigationMode: MODAL_FORM
+  transitions: []
+rootFilter: HasSuggestedMerge = '1'

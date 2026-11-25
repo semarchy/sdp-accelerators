@@ -1,0 +1,108 @@
+_package: CTMDM.entities.ProtocolAmendment
+_type: Entity
+_name: ProtocolAmendment
+label: Protocol Amendment
+pluralLabel: Protocol Amendments
+entityType: ID_MATCHED
+physicalTableName: PROTOCOL_AMD
+iconUrl: images://mdi/file-document-refresh-outline.svg
+description: "Governed amendment record preserving protocol change history and approval context."
+documentation: "Governed amendment record preserving protocol change history and approval context."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AmendmentID
+    label: Amendment ID
+    description: Business identifier for the protocol amendment.
+    documentation: Business identifier for the protocol amendment.
+    physicalName: AMD_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AmendmentNumber
+    label: Amendment Number
+    description: Official amendment number.
+    documentation: Official amendment number.
+    physicalName: AMD_NUMBER
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AmendmentType
+    label: Amendment Type
+    description: Type of protocol change.
+    documentation: Type of protocol change.
+    physicalName: AMD_TYPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ChangeReason
+    label: Change Reason
+    description: Business or regulatory reason for the amendment.
+    documentation: Business or regulatory reason for the amendment.
+    physicalName: CHANGE_REASON
+    dataType: String
+    length: 500
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ImpactAssessment
+    label: Impact Assessment
+    description: Operational impact assessment summary.
+    documentation: Operational impact assessment summary.
+    physicalName: IMPACT_ASSESSMENT
+    dataType: String
+    length: 1000
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: Effective Date
+    description: Date the amendment takes effect.
+    documentation: Date the amendment takes effect.
+    physicalName: EFFECTIVE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ApprovalDate
+    label: Approval Date
+    description: Date the amendment was approved.
+    documentation: Date the amendment was approved.
+    physicalName: APPROVAL_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SubmissionDate
+    label: Submission Date
+    description: Date the amendment was submitted for review.
+    documentation: Date the amendment was submitted for review.
+    physicalName: SUBMISSION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    description: Current amendment lifecycle status.
+    documentation: Current amendment lifecycle status.
+    physicalName: STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CTMDM.entities.ProtocolAmendment.ProtocolAmendment.AmendmentID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

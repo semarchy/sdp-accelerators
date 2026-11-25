@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: AnnuityContractHasTaxQualification
+description: "Indicates the Tax Qualification associated with a Annuity Contract."
+_type: Reference
+label: "Annuity Contract Has Tax Qualification"
+
+fromEntity: LifeAndAnnuityInsurance.entities.AnnuityContract.AnnuityContract
+fromRoleLabel: "Annuity Contract"
+fromRoleName: AnnuityContract
+fromRolePluralLabel: "Annuity Contracts"
+physicalName: ANN_CONT_HAS_TAX_QUAL
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.TaxQualification.TaxQualification
+toRoleLabel: "Tax Qualification"
+toRoleName: TaxQualification
+toRolePhysicalName: TAX_QUAL
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: TaxQualification
+  label: "Tax Qualification ID"
+  description: "The identifier of the Tax Qualification associated with the Annuity Contract."
+  physicalName: TAX_QUAL_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.TaxQualification.TaxQualification

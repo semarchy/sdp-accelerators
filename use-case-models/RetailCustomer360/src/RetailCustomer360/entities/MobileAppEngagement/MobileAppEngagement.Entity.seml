@@ -1,0 +1,186 @@
+﻿_package: RetailCustomer360.entities.MobileAppEngagement
+_type: Entity
+_name: MobileAppEngagement
+label: Mobile App Engagement
+pluralLabel: Mobile App Engagements
+entityType: BASIC
+physicalTableName: MOBILE_APP_ENGAGEMENT
+iconUrl: https://api.iconify.design/mdi/cellphone.svg?color=%230D1B2A&width=64
+
+description: "Customer activity in the mobile app."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AppEventId
+    label: App Event Id
+    physicalName: APP_EVENT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: AppSessionId
+    label: App Session Id
+    physicalName: APP_SESSION_ID
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Mobile app session identifier"
+
+  - _type: EntityAttribute
+    _name: DeviceId
+    label: Device Id
+    physicalName: DEVICE_ID
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Device identifier"
+
+  - _type: EntityAttribute
+    _name: EventType
+    label: Event Type
+    physicalName: EVENT_TYPE
+    dataType: RetailCustomer360.list_of_values.MobileAppEventType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "App Open, Product View, Search, Add to Cart, Purchase"
+
+  - _type: EntityAttribute
+    _name: ScreenName
+    label: Screen Name
+    physicalName: SCREEN_NAME
+    dataType: String
+    length: 255
+    searchable: true
+    description: "App screen name"
+
+  - _type: EntityAttribute
+    _name: AppVersion
+    label: App Version
+    physicalName: APP_VERSION
+    dataType: String
+    length: 50
+    searchable: true
+    description: "App version"
+
+  - _type: EntityAttribute
+    _name: OperatingSystem
+    label: Operating System
+    physicalName: OPERATING_SYSTEM
+    dataType: RetailCustomer360.list_of_values.OperatingSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "iOS, Android"
+
+  - _type: EntityAttribute
+    _name: OperatingSystemVersion
+    label: Operating System Version
+    physicalName: OPERATING_SYSTEM_VERSION
+    dataType: String
+    length: 50
+    searchable: true
+    description: "OS version"
+
+  - _type: EntityAttribute
+    _name: DeviceModel
+    label: Device Model
+    physicalName: DEVICE_MODEL
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Device model"
+
+  - _type: EntityAttribute
+    _name: EventTimestamp
+    label: Event Timestamp
+    physicalName: EVENT_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Event date/time"
+
+  - _type: EntityAttribute
+    _name: PushOptInStatus
+    label: Push Opt In Status
+    physicalName: PUSH_OPT_IN_STATUS
+    dataType: RetailCustomer360.list_of_values.PushOptInStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Opted In, Opted Out, Unknown"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: EngagementRecencyBand
+    label: Engagement Recency Band
+    physicalName: ENGAGEMENT_RECENCY_BAND
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived recency classification for the mobile event"
+
+  - _type: EntityAttribute
+    _name: MobilePlatformFamily
+    label: Mobile Platform Family
+    physicalName: MOBILE_PLATFORM_FAMILY
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived platform family"
+
+  - _type: EntityAttribute
+    _name: EngagementQualityStatus
+    label: Engagement Quality Status
+    physicalName: ENGAGEMENT_QUALITY_STATUS
+    dataType: String
+    length: 40
+    searchable: true
+    description: "Derived quality and actionability status"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.MobileAppEngagement.MobileAppEngagement.AppEventId
+

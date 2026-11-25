@@ -1,0 +1,224 @@
+_package: PropertyAndCasualtyInsurance.entities.LineOfBusiness.business_views
+_type: BusinessView
+_name: LineOfBusinessBusinessView
+label: Line Of Business
+description: Business view for line of business entity
+entity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness
+rootLabel: Line Of Business
+rootPluralLabel: Line Of Business
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: LineOfBusiness
+  displayCard: PropertyAndCasualtyInsurance.entities.LineOfBusiness.display_cards.LineOfBusinessDisplayCard
+  entity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness
+  actionSet: PropertyAndCasualtyInsurance.entities.LineOfBusiness.action_sets.LineOfBusinessActionSet
+  collection: PropertyAndCasualtyInsurance.entities.LineOfBusiness.collection_views.LineOfBusinessCollectionView
+  form: PropertyAndCasualtyInsurance.entities.LineOfBusiness.forms.LineOfBusinessForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  sortExpression: LOBCode DESC
+  transitions:
+    - _type: BusinessViewTransition
+      _name: InsuranceProduct
+      label: Insurance Product
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: Insurance Products
+      iconUrl: images://mdi/package-variant.svg
+      transitionPath: Product
+      useCustomLabel: true
+      description: Transition from Line of Business to related Insurance Products.
+      visibleInFormTabCondition: any Product has (1=1)
+      enableHierarchy: any Product has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: true
+      transitionVisible: '1'
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity: 
+        _type: BusinessViewEntity
+        _name: InsuranceProduct
+        displayCard: PropertyAndCasualtyInsurance.entities.InsuranceProduct.display_cards.InsuranceProductDisplayCard
+        entity: PropertyAndCasualtyInsurance.entities.InsuranceProduct.InsuranceProduct
+        actionSet: PropertyAndCasualtyInsurance.entities.InsuranceProduct.action_sets.InsuranceProductActionSet
+        collection: PropertyAndCasualtyInsurance.entities.InsuranceProduct.collection_views.InsuranceProductCollectionView
+        form: PropertyAndCasualtyInsurance.entities.InsuranceProduct.forms.InsuranceProductForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        sortExpression: ProductCode DESC
+        transitions:
+          - _type: BusinessViewTransition
+            _name: InsuranceType
+            label: Insurance Type
+            transitionType: FULLY_QUALIFIED
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            pluralLabel: Insurance Types
+            iconUrl: images://mdi/shield-half-full.svg
+            transitionPath: InsuranceType
+            useCustomLabel: true
+            description: Transition from Insurance Product to related Insurance Types.
+            enableHierarchy: any InsuranceType has (1=1)
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: true
+            transitionVisible: '1'
+            transitionVisibleInterpreter: LITERAL
+            visibleInFormTabCondition: any InsuranceType has (1=1)
+            businessViewEntity:
+              _type: BusinessViewEntity
+              _name: InsuranceType
+              displayCard: PropertyAndCasualtyInsurance.entities.InsuranceType.display_cards.InsuranceTypeDisplayCard
+              entity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType
+              actionSet: PropertyAndCasualtyInsurance.entities.InsuranceType.action_sets.InsuranceTypeActionSet
+              collection: PropertyAndCasualtyInsurance.entities.InsuranceType.collection_views.InsuranceTypeCollectionView
+              form: PropertyAndCasualtyInsurance.entities.InsuranceType.forms.InsuranceTypeForm
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              transitions:
+                - _type: BusinessViewTransition
+                  _name: InsurancePlan
+                  label: Insurance Plan
+                  transitionType: FULLY_QUALIFIED
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  pluralLabel: Insurance Plans
+                  iconUrl: images://mdi/book-open-page-variant.svg
+                  transitionPath: InsurancePlan
+                  useCustomLabel: true
+                  description: Transition from Insurance Type to related Insurance Plans.
+                  enableHierarchy: any InsurancePlan has (1=1)
+                  enableHierarchyInterpreter: SEMQL
+                  expandHierarchyByDefault: true
+                  transitionVisible: '1'
+                  transitionVisibleInterpreter: LITERAL
+                  visibleInFormTabCondition: any InsurancePlan has (1=1)
+                  businessViewEntity:
+                    _type: BusinessViewEntity
+                    _name: InsurancePlan
+                    displayCard: PropertyAndCasualtyInsurance.entities.InsurancePlan.display_cards.InsurancePlanDisplayCard
+                    entity: PropertyAndCasualtyInsurance.entities.InsurancePlan.InsurancePlan
+                    actionSet: PropertyAndCasualtyInsurance.entities.InsurancePlan.action_sets.InsurancePlanActionSet
+                    collection: PropertyAndCasualtyInsurance.entities.InsurancePlan.collection_views.InsurancePlanCollectionView
+                    form: PropertyAndCasualtyInsurance.entities.InsurancePlan.forms.InsurancePlanForm
+                    gridAllowed: true
+                    listAllowed: true
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    tableAllowed: true
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    transitions:
+                      - _type: BusinessViewTransition
+                        _name: Coverage
+                        label: Coverages
+                        transitionType: FULLY_QUALIFIED
+                        displayFormTabAs: ICON_LABEL
+                        displayTransitionNodeAs: ICON_LABEL
+                        pluralLabel: Coverages
+                        iconUrl: images://mdi/umbrella-outline.svg
+                        transitionPath: Coverage
+                        useCustomLabel: true
+                        description: Transition from Insurance Plan to related Coverages.
+                        enableHierarchy: any Coverage has (1=1)
+                        enableHierarchyInterpreter: SEMQL
+                        expandHierarchyByDefault: true
+                        transitionVisible: '1'
+                        transitionVisibleInterpreter: LITERAL
+                        visibleInFormTabCondition: any Coverage has (1=1)
+                        businessViewEntity:
+                          _type: BusinessViewEntity
+                          _name: Coverage
+                          displayCard: PropertyAndCasualtyInsurance.entities.Coverage.display_cards.CoverageDisplayCard
+                          entity: PropertyAndCasualtyInsurance.entities.Coverage.Coverage
+                          actionSet: PropertyAndCasualtyInsurance.entities.Coverage.action_sets.CoverageActionSet
+                          collection: PropertyAndCasualtyInsurance.entities.Coverage.collection_views.CoverageCollectionView
+                          form: PropertyAndCasualtyInsurance.entities.Coverage.forms.CoverageForm
+                          gridAllowed: true
+                          listAllowed: true
+                          outlineVisible: false
+                          overrideDefaultSort: false
+                          tableAllowed: true
+                          displayRecordCount: ALWAYS
+                          enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: InclusionExclusion
+      label: Inclusion Exclusion
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: Inclusion Exclusions
+      iconUrl: images://mdi/shield-alert.svg
+      transitionPath: InclusionExclusion
+      useCustomLabel: true
+      description: Transition from Line of Business to related Inclusion and Exclusion clauses.
+      enableHierarchy: '0'
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: '1'
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: InclusionExclusion
+        displayCard: PropertyAndCasualtyInsurance.entities.InclusionExclusion.display_cards.InclusionExclusionDisplayCard
+        entity: PropertyAndCasualtyInsurance.entities.InclusionExclusion.InclusionExclusion
+        actionSet: PropertyAndCasualtyInsurance.entities.InclusionExclusion.action_sets.InclusionExclusionActionSet
+        collection: PropertyAndCasualtyInsurance.entities.InclusionExclusion.collection_views.InclusionExclusionCollectionView
+        form: PropertyAndCasualtyInsurance.entities.InclusionExclusion.forms.InclusionExclusionForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: Transition from Line of Business to related Golden History Records.
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PropertyAndCasualtyInsurance.entities.LineOfBusiness.business_views.LineOfBusinessBusinessView.LineOfBusiness
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: true
+useHierarchyOnOpen: true
+rootIconUrl: images://mdi/family-tree.svg

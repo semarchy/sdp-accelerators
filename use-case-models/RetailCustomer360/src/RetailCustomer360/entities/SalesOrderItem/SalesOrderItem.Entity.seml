@@ -1,0 +1,211 @@
+﻿_package: RetailCustomer360.entities.SalesOrderItem
+_type: Entity
+_name: SalesOrderItem
+label: Sales Order Item
+pluralLabel: Sales Order Items
+entityType: BASIC
+physicalTableName: SALES_ORDER_ITEM
+iconUrl: https://api.iconify.design/mdi/cart.svg?color=%230D1B2A&width=64
+
+description: "Sales order line item data for Customer 360."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: OrderItemId
+    label: Order Item Id
+    physicalName: ORDER_ITEM_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: LineNumber
+    label: Line Number
+    physicalName: LINE_NUMBER
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Order line number"
+
+  - _type: EntityAttribute
+    _name: ItemType
+    label: Item Type
+    physicalName: ITEM_TYPE
+    dataType: RetailCustomer360.list_of_values.ItemType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Product, Service, Shipping, Discount, Gift Wrap"
+
+  - _type: EntityAttribute
+    _name: Quantity
+    label: Quantity
+    physicalName: QUANTITY
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Quantity ordered"
+
+  - _type: EntityAttribute
+    _name: UnitPrice
+    label: Unit Price
+    physicalName: UNIT_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Unit selling price"
+
+  - _type: EntityAttribute
+    _name: ListPrice
+    label: List Price
+    physicalName: LIST_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Original list price"
+
+  - _type: EntityAttribute
+    _name: DiscountAmount
+    label: Discount Amount
+    physicalName: DISCOUNT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Discount amount for item"
+
+  - _type: EntityAttribute
+    _name: TaxAmount
+    label: Tax Amount
+    physicalName: TAX_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Tax amount for item"
+
+  - _type: EntityAttribute
+    _name: TotalPrice
+    label: Total Price
+    physicalName: TOTAL_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Final line amount"
+
+  - _type: EntityAttribute
+    _name: FulfillmentStatus
+    label: Fulfillment Status
+    physicalName: FULFILLMENT_STATUS
+    dataType: RetailCustomer360.list_of_values.FulfillmentStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Pending, Packed, Shipped, Delivered, Cancelled, Returned"
+
+  - _type: EntityAttribute
+    _name: ReturnStatus
+    label: Return Status
+    physicalName: RETURN_STATUS
+    dataType: RetailCustomer360.list_of_values.ReturnStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Not Returned, Return Requested, Returned, Refunded"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: SourceOrderItemKey
+    label: Source Order Item Key
+    physicalName: SOURCE_ORDER_ITEM_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source order item identifier"
+
+  - _type: EntityAttribute
+    _name: GrossAmount
+    label: Gross Amount
+    physicalName: GROSS_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Derived gross amount before discounts and taxes"
+
+  - _type: EntityAttribute
+    _name: EffectiveUnitPrice
+    label: Effective Unit Price
+    physicalName: EFFECTIVE_UNIT_PRICE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Derived effective unit price after discount"
+
+  - _type: EntityAttribute
+    _name: ItemLifecycleStatus
+    label: Item Lifecycle Status
+    physicalName: ITEM_LIFECYCLE_STATUS
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived lifecycle status from fulfillment and return states"
+
+  - _type: EntityAttribute
+    _name: ItemFinancialHealthStatus
+    label: Item Financial Health Status
+    physicalName: ITEM_FIN_HEALTH
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived financial consistency status for item amounts"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.SalesOrderItem.SalesOrderItem.OrderItemId
+

@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: CoverageHasCoverageStatus
+description: "Indicates the Coverage Status associated with a Coverage."
+_type: Reference
+label: "Coverage Has Coverage Status"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Coverage.Coverage
+fromRoleLabel: "Coverage"
+fromRoleName: Coverage
+fromRolePluralLabel: "Coverages"
+physicalName: COV_HAS_COV_STAT
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.CoverageStatus.CoverageStatus
+toRoleLabel: "Coverage Status"
+toRoleName: CoverageStatus
+toRolePhysicalName: COV_STAT
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: CoverageStatus
+  label: "Coverage Status ID"
+  description: "The identifier of the Coverage Status associated with the Coverage."
+  physicalName: COV_STAT_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.CoverageStatus.CoverageStatus

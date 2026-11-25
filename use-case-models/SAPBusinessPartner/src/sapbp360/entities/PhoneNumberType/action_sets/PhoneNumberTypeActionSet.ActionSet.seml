@@ -1,0 +1,70 @@
+_name: PhoneNumberTypeActionSet
+_package: sapbp360.entities.PhoneNumberType.action_sets
+_type: ActionSet
+entity: sapbp360.entities.PhoneNumberType.PhoneNumberType
+label: Phone Number Type Action Set
+description: Action set for managing Phone Number Types in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorPhoneNumberTypes
+    label: Create
+    description: Create a new Phone Number Type record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.PhoneNumberType.steppers.AuthorPhoneNumberTypes
+  - _name: EditAuthorPhoneNumberTypes
+    label: Edit
+    description: Edit Phone Number Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.PhoneNumberType.steppers.AuthorPhoneNumberTypes
+  - _name: MassUpdateAuthorPhoneNumberTypes
+    label: Mass Update
+    description: Mass update Phone Number Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.PhoneNumberType.steppers.AuthorPhoneNumberTypes
+  - _name: Delete
+    label: Delete
+    description: Delete selected Phone Number Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorPhoneNumberTypes
+    label: Import
+    description: Import Phone Number Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.PhoneNumberType.steppers.PhoneNumberTypeImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

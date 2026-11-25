@@ -1,0 +1,15 @@
+dataSource: GovernanceRules
+sql: "select count(*) as \"Domains\"\n  from gd_gov_data_domain d\n where not exists (select 1 from gd_gov_rule_scope s join gd_gov_rule r on r.gr_code = s.f_rs_rule and r.gr_status = 'APPROVED' and r.gr_effective <= current_date and (r.gr_retirement is null or r.gr_retirement > current_date)\n                    where s.f_rs_domain = d.dd_code)"
+attributes:
+  Domains:
+    dataType: NUMBER
+    usableAsMeasure: true
+    usableAsDimension: false
+    usableAsTimeDimension: false
+    showInDrilldown: false
+    sortable: true
+    format:
+      decimalPlaces: 0
+      showThousandsSeparator: true
+queryActions: []
+exportEnabled: true

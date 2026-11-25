@@ -1,0 +1,67 @@
+ # Description: Action set for `Party` entity (create/edit/manage actions).
+ # Contains: Action definitions and linked steppers for party workflows.
+ # Role: Controls UI actions available for Party records.
+_package: Merchant.entities.Party.action_sets
+_type: ActionSet
+_name: PartyActionSet
+entity: Merchant.entities.Party.Party
+label: Party Action Set
+defaultActionSet: true
+
+actions:
+- _type: CreateAction
+  _name: CreateAuthorParties
+  label: Create
+  useCustomLabel: true
+  stepper: Merchant.entities.Party.steppers.AuthorParties
+  createMultiple: false
+  createdRecordType: GOLDEN
+  waitDialogEnabled: false
+  allowOtherPublishers: true
+- _type: EditAction
+  _name: EditAuthorParties
+  label: Edit
+  useCustomLabel: true
+  stepper: Merchant.entities.Party.steppers.AuthorParties
+  multipleSelectionAllowed: true
+  availableForGoldenData: true
+  availableForMasterData: false
+  availableForErrorData: false
+  waitDialogEnabled: false
+- _type: MassUpdateAction
+  _name: MassUpdateAuthorParties
+  label: Mass Update
+  useCustomLabel: true
+  stepper: Merchant.entities.Party.steppers.AuthorParties
+  availableForGoldenData: true
+  availableForErrorData: false
+  availableForMasterData: false
+  waitDialogEnabled: false
+- _type: DeleteAction
+  _name: Delete
+  label: Delete
+  useCustomLabel: true
+  multipleSelectionAllowed: true
+  deleteType: HARD_DELETE
+  waitDialogEnabled: false
+  availableForGoldenData: true
+  availableForMasterData: false
+- _type: ExportAction
+  _name: Export
+  label: Export
+  useCustomLabel: true
+  waitDialogEnabled: false
+- _type: ImportAction
+  _name: ImportParties
+  label: Import Master Records
+  useCustomLabel: true
+  importMode: CREATE_AND_UPDATE
+  stepper: Merchant.entities.Party.steppers.AuthorParties
+  importedRecordType: MASTER
+  waitDialogEnabled: false
+  allowOtherPublishers: true
+- _type: BrowseGraphAction
+  _name: BrowseGraph
+  label: Browse Graph
+  useCustomLabel: true
+  waitDialogEnabled: false

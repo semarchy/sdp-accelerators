@@ -1,0 +1,1187 @@
+# This is the ContactBrowsingForm form used in the Salesforce Accelerator application.
+# It defines the structure and fields for the Contact entity form,
+# including various text fields and their properties
+_package: sales360.entities.Contact.forms
+_type: Form
+_name: ContactBrowsingForm
+entity: sales360.entities.Contact.Contact
+default: true
+formTabs:
+  - _name: Details
+    _type: FormTab
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    iconUrl: images://mdi/account-card-details-outline.svg
+    label: Details
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: GeneralInformation
+        label: General Information
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: Container2
+                layoutDirection: COLUMN
+                content:
+                  - _name: FullName
+                    label: Full Name
+                    value: COALESCE(FullName , SEM_CONCAT(' ','1',FirstName,LastName))
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: BirthDate
+                    value: BirthDate
+                    dataType: DATE
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: Phone_StandardizedPhoneNumber
+                    label: Phone
+                    value: Phone.StandardizedPhoneNumber
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress
+                    label: Mailing Address
+                    value: SEM_CONCAT('','1', 'https://www.google.com/search?q=',
+                      SEM_CONCAT('+','1',MailingAddress.GeoStreetNumber,
+                      MailingAddress.GeoStreetName , MailingAddress.GeoLocality,
+                      MailingAddress.GeoPostalCode, MailingAddress.GeoState,
+                      MailingAddress.GeoCountryShort) )
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: HyperlinkField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      linkDisplayText: >-
+                        REPLACE(SEM_CONCAT(' ', '1',
+                        MailingAddress.GeoStreetNumber,
+                        MailingAddress.GeoStreetName, '
+
+                        ', MailingAddress.GeoLocality, ',',
+                        MailingAddress.GeoState , MailingAddress.GeoPostalCode ,
+                        ',',  MailingAddress.GeoCountryShort ),' ,', '')
+                      linkDisplayTextValueInterpreter: SEMQL
+                      linkSourceType: url
+                      linkSourceTypeValueInterpreter: LITERAL
+                      linkTarget: new-window
+                      linkTargetValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: FDN_ReportsToId
+                    value: FDN_ReportsToId
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    displayCard: sales360.entities.Contact.display_cards.ContactDisplayCard
+                    referencedEntity: sales360.entities.Contact.Contact
+                    _type: ReferenceField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      useAvatarInChip: "1"
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+              - _type: FormContainer
+                _name: Container3
+                layoutDirection: COLUMN
+                content:
+                  - _name: Title
+                    value: Title
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: Department
+                    value: Department
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: CleansedEmail
+                    label: Email
+                    value: SEM_CONCAT('','1', 'mailto://', CleansedEmail)
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: HyperlinkField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      linkDisplayText: CleansedEmail
+                      linkDisplayTextValueInterpreter: SEMQL
+                      linkSourceType: url
+                      linkSourceTypeValueInterpreter: LITERAL
+                      linkTarget: new-window
+                      linkTargetValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MobilePhone_StandardizedPhoneNumber
+                    label: Mobile Phone
+                    value: MobilePhone.StandardizedPhoneNumber
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: FDN_Account
+                    value: FDN_Account
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    displayCard: sales360.entities.Account.display_cards.AccountNameAddress
+                    referencedEntity: sales360.entities.Account.Account
+                    _type: ReferenceField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      chipMaxWidth: "500"
+                      chipMaxWidthValueInterpreter: LITERAL
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      useAvatarInChip: "1"
+                      useAvatarInChipValueInterpreter: LITERAL
+                      useSecondaryTextInChip: "1"
+                      useSecondaryTextInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: Relation
+                    label: Relation
+                    value: >-
+                      lookup
+                      	STRING_AGG FDN_Role 
+                      	FROM AccountContactRelations
+                      	WHERE COALESCE(SEM_BOOLEAN_TO_CHAR(IsDirect), 'false') = 'true'
+                      end
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: ANY AccountContactRelations HAVE (FDN_Role IS NOT NULL)
+                    visibleValueInterpreter: SEMQL
+                    relativeWidth: 20
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textColor: md:green 600
+                      textColorValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+  - _name: EnrichedDetails
+    _type: FormTab
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    iconUrl: images://mdi/silverware-clean.svg
+    label: Enriched Details
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: EnrichedName
+        label: Enriched Name
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container4
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: Container7
+                layoutDirection: COLUMN
+                content:
+                  - _name: NormalizedFirstName
+                    value: NormalizedFirstName
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+              - _type: FormContainer
+                _name: Container8
+                layoutDirection: COLUMN
+                content:
+                  - _name: NormalizedLastName
+                    value: NormalizedLastName
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+              - _type: FormContainer
+                _name: Container13
+                layoutDirection: ROW
+                content:
+                  - _name: Nickname
+                    value: Nickname
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: EnrichedPhone
+        label: Enriched Phone
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container5
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: Container9
+                layoutDirection: COLUMN
+                content:
+                  - _name: Phone_InpPhoneNumber
+                    label: Source Phone
+                    value: Phone.InpPhoneNumber
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MobilePhone_InpPhoneNumber
+                    label: Source Mobile Phone
+                    value: MobilePhone.InpPhoneNumber
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: HomePhone_InpPhoneNumber
+                    label: Source Home Phone
+                    value: HomePhone.InpPhoneNumber
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+              - _type: FormContainer
+                _name: Container10
+                layoutDirection: COLUMN
+                content:
+                  - _name: Phone_StandardizedPhoneNumber2
+                    label: Standardized Phone
+                    value: Phone.StandardizedPhoneNumber
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MobilePhone_StandardizedPhoneNumber2
+                    label: Standardized Mobile Phone
+                    value: MobilePhone.StandardizedPhoneNumber
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: HomePhone_StandardizedPhoneNumber
+                    label: Standardized Home Phone
+                    value: HomePhone.StandardizedPhoneNumber
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: EnrichedMailingAddress
+        label: Enriched Mailing Address
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container6
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: Container11
+                layoutDirection: COLUMN
+                content:
+                  - _name: MailingAddress_InpAddressLine
+                    value: MailingAddress.InpAddressLine
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_InpCity
+                    value: MailingAddress.InpCity
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_InpZipCode
+                    value: MailingAddress.InpZipCode
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_InpState
+                    value: MailingAddress.InpState
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_InpCountry
+                    value: MailingAddress.InpCountry
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+              - _type: FormContainer
+                _name: Container12
+                layoutDirection: COLUMN
+                content:
+                  - _name: MailingAddress_GeoStreetNumber
+                    value: MailingAddress.GeoStreetNumber
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_GeoStreetName
+                    value: MailingAddress.GeoStreetName
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_GeoLocality
+                    value: MailingAddress.GeoLocality
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_GeoPostalCode
+                    value: MailingAddress.GeoPostalCode
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_GeoState
+                    value: MailingAddress.GeoState
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_GeoCountry
+                    value: MailingAddress.GeoCountry
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_GeoLongitude
+                    value: MailingAddress.GeoLongitude
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MailingAddress_GeoLatitude
+                    value: MailingAddress.GeoLatitude
+                    dataType: STRING
+                    useCustomLabel: false
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "0"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "3"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL

@@ -1,0 +1,110 @@
+_package: FinanceKYC.entities.ContactInformation
+_type: Entity
+_name: ContactInformation
+label: Contact Information
+pluralLabel: Contact Information
+entityType: BASIC
+physicalTableName: CONTACT_INFORMATION
+iconUrl: images://mdi/book.svg
+description: 'Stores contact channels used to communicate with customers, individuals, and corporate entities.'
+documentation: 'Stores contact channels used to communicate with customers, individuals, and corporate entities.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: ContactID
+    _type: EntityAttribute
+    label: Contact Information ID
+    description: 'Contact Information ID value captured for the contact information record.'
+    documentation: 'Contact Information ID value captured for the contact information record.'
+    physicalName: CONTACT_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _name: ContactType
+    _type: EntityAttribute
+    label: Contact Type
+    description: 'Contact Type value captured for the contact information record.'
+    documentation: 'Contact Type value captured for the contact information record.'
+    physicalName: CONTACT_TYPE
+    dataType: String
+    length: 20
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: ContactValue
+    _type: EntityAttribute
+    label: Contact Value
+    description: 'Contact Value value captured for the contact information record.'
+    documentation: 'Contact Value value captured for the contact information record.'
+    physicalName: CONTACT_VALUE
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: IsPrimary
+    _type: EntityAttribute
+    label: Is Primary
+    description: 'Is Primary value captured for the contact information record.'
+    documentation: 'Is Primary value captured for the contact information record.'
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: IsVerified
+    _type: EntityAttribute
+    label: Is Verified
+    description: 'Is Verified value captured for the contact information record.'
+    documentation: 'Is Verified value captured for the contact information record.'
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _name: ValidFrom
+    _type: EntityAttribute
+    label: Valid From
+    description: 'Valid From value captured for the contact information record.'
+    documentation: 'Valid From value captured for the contact information record.'
+    physicalName: VALID_FROM
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ValidTo
+    label: Valid To
+    description: 'Date until which the record or value is valid.'
+    documentation: 'Date until which the record or value is valid.'
+    physicalName: VALID_TO
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    description: 'Free-form notes providing additional context for the record.'
+    documentation: 'Free-form notes providing additional context for the record.'
+    physicalName: NOTES
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Preferred
+    label: Preferred
+    description: 'Indicates whether this contact method is preferred.'
+    documentation: 'Indicates whether this contact method is preferred.'
+    physicalName: PREFERRED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.ContactInformation.ContactInformation.ContactID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

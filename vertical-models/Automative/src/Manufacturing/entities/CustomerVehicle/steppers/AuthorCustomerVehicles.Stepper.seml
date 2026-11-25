@@ -1,0 +1,94 @@
+_name: AuthorCustomerVehicles
+_package: Manufacturing.entities.CustomerVehicle.steppers
+_type: Stepper
+entity: Manufacturing.entities.CustomerVehicle.CustomerVehicle
+rootStep:
+  _name: CustomerVehicles
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.CustomerVehicle.collection_views.CustomerVehicleCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Customer Vehicles
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+  stepTriggers: []
+  childSteps:
+    - _name: CustomerVehicle
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Customer Vehicle
+      formTab: Manufacturing.entities.CustomerVehicle.forms.CustomerVehicleForm.CustomerVehicle
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+      stepTriggers: []
+label: Author Customer Vehicles
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.CustomerVehiclesVehicle.Vehicle
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.CustomerVehiclesCustomer.Customer
+triggers: []

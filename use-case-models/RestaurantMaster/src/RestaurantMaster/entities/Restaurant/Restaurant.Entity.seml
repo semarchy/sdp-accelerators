@@ -1,0 +1,341 @@
+_package: RestaurantMaster.entities.Restaurant
+_type: Entity
+_name: Restaurant
+label: Restaurant
+pluralLabel: Restaurants
+entityType: ID_MATCHED
+physicalTableName: RESTAURANT
+iconUrl: images://mdi/storefront.svg
+description: One physical restaurant of the group, across brands and lifecycle stages, from pipeline site to closure. Its identifier is the common restaurant ID issued by Real Estate and carried by every publishing system (Real Estate, ERP, POS), so records from those systems consolidate into one trusted record.
+documentation: One physical restaurant of the group, across brands and lifecycle stages, from pipeline site to closure. Its identifier is the common restaurant ID issued by Real Estate and carried by every publishing system (Real Estate, ERP, POS), so records from those systems consolidate into one trusted record.
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: RestaurantID
+  label: Restaurant ID
+  physicalName: RESTAURANTID
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Common restaurant ID: ''R'' followed by 7 digits, issued by Real Estate when the site enters the pipeline and stored by every system.'
+  documentation: 'Common restaurant ID: ''R'' followed by 7 digits, issued by Real Estate when the site enters the pipeline and stored by every system.'
+  length: 20
+- _type: EntityAttribute
+  _name: RestaurantName
+  label: Restaurant name
+  physicalName: RESTAURANTNAME
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: Public name of the restaurant.
+  documentation: Public name of the restaurant.
+- _type: EntityAttribute
+  _name: SiteID
+  label: Site ID
+  physicalName: SITEID
+  dataType: String
+  length: 64
+  mandatory: false
+  searchable: true
+  description: Site identifier of the Real Estate system, assigned at lease signing; empty for early pipeline sites. Never a matching key.
+  documentation: Site identifier of the Real Estate system, assigned at lease signing; empty for early pipeline sites. Never a matching key.
+- _type: EntityAttribute
+  _name: StatusEffectiveDate
+  label: Status effective date
+  physicalName: STATUSEFFECTIVEDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Date the current lifecycle status took effect.
+  documentation: Date the current lifecycle status took effect.
+- _type: EntityAttribute
+  _name: LeaseSignedDate
+  label: Lease signed date
+  physicalName: LEASESIGNEDDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Date the lease was signed.
+  documentation: Date the lease was signed.
+- _type: EntityAttribute
+  _name: LeaseExpirationDate
+  label: Lease expiration date
+  physicalName: LEASEEXPIRATIONDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: End of the current lease term.
+  documentation: End of the current lease term.
+- _type: EntityAttribute
+  _name: ConstructionStartDate
+  label: Construction start date
+  physicalName: CONSTRUCTIONSTARTDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Start of construction works.
+  documentation: Start of construction works.
+- _type: EntityAttribute
+  _name: PlannedOpenDate
+  label: Planned open date
+  physicalName: PLANNEDOPENDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Target opening date of a pipeline restaurant.
+  documentation: Target opening date of a pipeline restaurant.
+- _type: EntityAttribute
+  _name: OriginalOpenDate
+  label: Original open date
+  physicalName: ORIGINALOPENDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Date the restaurant first opened.
+  documentation: Date the restaurant first opened.
+- _type: EntityAttribute
+  _name: TemporaryClosureDate
+  label: Temporary closure date
+  physicalName: TEMPORARYCLOSUREDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Start of the current temporary closure.
+  documentation: Start of the current temporary closure.
+- _type: EntityAttribute
+  _name: PlannedReopenDate
+  label: Planned reopen date
+  physicalName: PLANNEDREOPENDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Expected reopening after a temporary closure; published to maps and delivery apps.
+  documentation: Expected reopening after a temporary closure; published to maps and delivery apps.
+- _type: EntityAttribute
+  _name: PermanentClosureDate
+  label: Permanent closure date
+  physicalName: PERMANENTCLOSUREDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Date the restaurant closed for good.
+  documentation: Date the restaurant closed for good.
+- _type: EntityAttribute
+  _name: AddressLine1
+  label: Address line 1
+  physicalName: ADDRESSLINE1
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: Street address of the site.
+  documentation: Street address of the site.
+- _type: EntityAttribute
+  _name: AddressLine2
+  label: Address line 2
+  physicalName: ADDRESSLINE2
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: Suite, unit or mall location.
+  documentation: Suite, unit or mall location.
+- _type: EntityAttribute
+  _name: City
+  label: City
+  physicalName: CITY
+  dataType: String
+  length: 128
+  mandatory: false
+  searchable: true
+  description: City of the site.
+  documentation: City of the site.
+- _type: EntityAttribute
+  _name: PostalCode
+  label: Postal code
+  physicalName: POSTALCODE
+  dataType: String
+  length: 10
+  mandatory: false
+  searchable: true
+  description: US ZIP or ZIP+4, or Canadian postal code (A1A 1A1).
+  documentation: US ZIP or ZIP+4, or Canadian postal code (A1A 1A1).
+- _type: EntityAttribute
+  _name: County
+  label: County
+  physicalName: COUNTY
+  dataType: String
+  length: 128
+  mandatory: false
+  searchable: true
+  description: County of the site (US tax and licensing).
+  documentation: County of the site (US tax and licensing).
+- _type: EntityAttribute
+  _name: Latitude
+  label: Latitude
+  physicalName: LATITUDE
+  dataType: Decimal
+  precision: 9
+  scale: 6
+  mandatory: false
+  searchable: true
+  description: Latitude in decimal degrees (WGS 84).
+  documentation: Latitude in decimal degrees (WGS 84).
+- _type: EntityAttribute
+  _name: Longitude
+  label: Longitude
+  physicalName: LONGITUDE
+  dataType: Decimal
+  precision: 9
+  scale: 6
+  mandatory: false
+  searchable: true
+  description: Longitude in decimal degrees (WGS 84).
+  documentation: Longitude in decimal degrees (WGS 84).
+- _type: EntityAttribute
+  _name: CoordinateSource
+  label: Coordinate source
+  physicalName: COORDINATESOURCE
+  dataType: RestaurantMaster.list_of_values.CoordinateSource
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: How the coordinates were obtained.
+  documentation: How the coordinates were obtained.
+- _type: EntityAttribute
+  _name: TimeZone
+  label: Time zone
+  physicalName: TIMEZONE
+  dataType: RestaurantMaster.list_of_values.TimeZone
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Time zone of the site; defaulted from the state or province when empty, set by a steward in states spanning two zones.
+  documentation: Time zone of the site; defaulted from the state or province when empty, set by a steward in states spanning two zones.
+- _type: EntityAttribute
+  _name: MainPhone
+  label: Main phone
+  physicalName: MAINPHONE
+  dataType: String
+  length: 20
+  mandatory: false
+  searchable: true
+  description: Public phone number, normalized as +1 and 10 digits.
+  documentation: Public phone number, normalized as +1 and 10 digits.
+- _type: EntityAttribute
+  _name: SquareFootage
+  label: Square footage
+  physicalName: SQUAREFOOTAGE
+  dataType: Integer
+  precision: 10
+  mandatory: false
+  searchable: true
+  description: Building area in square feet.
+  documentation: Building area in square feet.
+- _type: EntityAttribute
+  _name: SeatingCapacity
+  label: Seating capacity
+  physicalName: SEATINGCAPACITY
+  dataType: Integer
+  precision: 10
+  mandatory: false
+  searchable: true
+  description: Number of dining-room seats.
+  documentation: Number of dining-room seats.
+- _type: EntityAttribute
+  _name: DriveThruLaneCount
+  label: Drive-thru lanes
+  physicalName: DRIVE_THRU_LANES
+  dataType: Integer
+  precision: 10
+  mandatory: false
+  searchable: true
+  description: Number of drive-thru lanes; 0 when the restaurant has none.
+  documentation: Number of drive-thru lanes; 0 when the restaurant has none.
+- _type: EntityAttribute
+  _name: ProjectNumber
+  label: Project number
+  physicalName: PROJECTNUMBER
+  dataType: String
+  length: 64
+  mandatory: false
+  searchable: true
+  description: Real Estate or construction project number.
+  documentation: Real Estate or construction project number.
+- _type: EntityAttribute
+  _name: CostCenterCode
+  label: Cost center
+  physicalName: COSTCENTERCODE
+  dataType: String
+  length: 64
+  mandatory: false
+  searchable: true
+  description: ERP cost center of the restaurant.
+  documentation: ERP cost center of the restaurant.
+- _type: EntityAttribute
+  _name: PublicChannelStatus
+  label: Public channel status
+  physicalName: PUBLICCHANNELSTATUS
+  dataType: RestaurantMaster.list_of_values.PublicChannelStatus
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: What public channels must show, derived from the lifecycle status after each change.
+  documentation: What public channels must show, derived from the lifecycle status after each change.
+- _type: EntityAttribute
+  _name: InRealEstate
+  label: Known to Real Estate
+  physicalName: INREALESTATE
+  dataType: RestaurantMaster.list_of_values.YesNoFlag
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Yes when Real Estate has published this restaurant (computed).
+  documentation: Yes when Real Estate has published this restaurant (computed).
+- _type: EntityAttribute
+  _name: InERP
+  label: Known to ERP
+  physicalName: INERP
+  dataType: RestaurantMaster.list_of_values.YesNoFlag
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Yes when ERP has published this restaurant (computed).
+  documentation: Yes when ERP has published this restaurant (computed).
+- _type: EntityAttribute
+  _name: InPOS
+  label: Known to POS
+  physicalName: INPOS
+  dataType: RestaurantMaster.list_of_values.YesNoFlag
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Yes when a POS system has published this restaurant (computed).
+  documentation: Yes when a POS system has published this restaurant (computed).
+- _type: EntityAttribute
+  _name: DuplicateCheckKey
+  label: Duplicate check key
+  physicalName: DUPLICATE_CHECK_KEY
+  dataType: String
+  length: 400
+  mandatory: false
+  searchable: false
+  description: Brand, normalized street address and postal code; two restaurants with the same key are flagged as possible duplicates (typically a mistyped restaurant ID in one system).
+  documentation: Brand, normalized street address and postal code; two restaurants with the same key are flagged as possible duplicates (typically a mistyped restaurant ID in one system).
+- _type: EntityAttribute
+  _name: SiteCheckKey
+  label: Site check key
+  physicalName: SITECHECKKEY
+  dataType: String
+  length: 80
+  mandatory: false
+  searchable: false
+  description: The Site ID, or a unique placeholder when the restaurant has none; enforces one restaurant per site.
+  documentation: The Site ID, or a unique placeholder when the restaurant has none; enforces one restaurant per site.
+primaryKey: RestaurantMaster.entities.Restaurant.Restaurant.RestaurantID
+sourceIdGeneration:
+  mode: MANUAL

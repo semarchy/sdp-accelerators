@@ -1,0 +1,12 @@
+_type: SemQLEnricher
+_package: Manufacturing.entities.Customer.enrichers
+_name: FillInUnknownNicknames
+entity: Manufacturing.entities.Customer.Customer
+label: Fill In Unknown Nicknames
+description: "Fills missing customer nickname values from the lowercased first name so matching logic has a usable fallback."
+enricherExecutionScope: PRE_CONSO
+condition: Nickname is null
+semQlEnricherExpressions:
+  - attributeName: Nickname
+    expression: LOWER ( FirstName )
+afterEnrichers: Manufacturing.entities.Customer.enrichers.LookupNickname

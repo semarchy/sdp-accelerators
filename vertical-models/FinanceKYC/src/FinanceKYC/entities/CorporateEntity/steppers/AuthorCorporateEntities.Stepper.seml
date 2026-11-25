@@ -1,0 +1,42 @@
+_package: FinanceKYC.entities.CorporateEntity.steppers
+_type: Stepper
+_name: AuthorCorporateEntities
+
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Corporate Entities
+
+rootStep:
+  _type: CollectionStep
+  _name: CorporateEntities
+  label: Corporate Entities
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: FinanceKYC.entities.CorporateEntity.collection_views.CorporateEntityImportMasterCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+
+
+  childSteps:
+    - _type: FormStep
+      _name: CorporateEntity
+      label: Corporate Entity
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: FinanceKYC.entities.CorporateEntity.forms.CorporateEntityForm.CorporateEntity
+      formStepEnrichers:
+        - enricher: FinanceKYC.entities.CorporateEntity.enrichers.NormalizeCorpName
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false

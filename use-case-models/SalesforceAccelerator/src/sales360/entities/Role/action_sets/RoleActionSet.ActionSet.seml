@@ -1,0 +1,74 @@
+# This is the RRoleActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on roles, such as creating, editing,
+# mass updating, deleting, , exporting,importing roles, browsing graph.
+_name: RoleActionSet
+_package: sales360.entities.Role.action_sets
+_type: ActionSet
+entity: sales360.entities.Role.Role
+label: Role Action Set
+description: Action set for Role entity in Salesforce Accelerator
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorRoles
+    label: Create
+    description: Create a new Author Role
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.Role.steppers.AuthorRoles
+  - _name: EditAuthorRoles
+    label: Edit
+    description: Edit an existing Author Role
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.Role.steppers.AuthorRoles
+  - _name: MassUpdateAuthorRoles
+    label: Mass Update
+    description: Mass update Author Roles
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sales360.entities.Role.steppers.AuthorRoles
+  - _name: Delete
+    label: Delete
+    description: Delete selected Roles
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export Roles
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorRoles
+    label: Import
+    description: Import Author Roles
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.Role.steppers.AuthorRoles
+  - _name: BrowseGraph
+    label: Browse Graph
+    description: Browse Role Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

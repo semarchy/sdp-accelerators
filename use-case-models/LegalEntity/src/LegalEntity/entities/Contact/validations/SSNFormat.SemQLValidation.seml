@@ -1,0 +1,10 @@
+#This file defines the SSN Format validation for the Contact entity in the Legal Entity application.
+# It ensures that the SSN follows the format XXX-XX-XXXX.
+_package: LegalEntity.entities.Contact.validations
+_name: SSNFormat
+_type: SemQLValidation
+label: SSN Format
+entity: LegalEntity.entities.Contact.Contact
+condition: "REGEXP_LIKE(SSN, '^[0-9]{3}-[0-9]{2}-[0-9]{4}$')"
+validationScope: PRE_CONSO
+validationLabel: SSN must be in the format XXX-XX-XXXX

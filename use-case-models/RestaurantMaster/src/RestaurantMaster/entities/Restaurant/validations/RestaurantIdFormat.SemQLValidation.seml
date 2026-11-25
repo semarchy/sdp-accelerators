@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.Restaurant.validations
+_name: RestaurantIdFormat
+_type: SemQLValidation
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Restaurant ID format
+description: The restaurant ID must be R followed by 7 digits (for example R0000123).
+validationScope: POST_CONSO
+validationLabel: The restaurant ID must be R followed by 7 digits (for example R0000123).
+condition: REGEXP_REPLACE(RestaurantID, '^R[0-9]{7}$', 'X') = 'X'

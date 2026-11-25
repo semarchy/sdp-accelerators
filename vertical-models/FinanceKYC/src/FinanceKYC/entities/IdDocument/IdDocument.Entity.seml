@@ -1,0 +1,109 @@
+_package: FinanceKYC.entities.IdDocument
+_type: Entity
+_name: IdDocument
+label: Id Document
+pluralLabel: Id Document
+entityType: BASIC
+physicalTableName: ID_DOCUMENT
+iconUrl: images://mdi/book.svg
+description: 'Captures identity document details used to verify an individual customer or party.'
+documentation: 'Captures identity document details used to verify an individual customer or party.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: DocumentID
+    _type: EntityAttribute
+    label: Id Document ID
+    description: 'Id Document ID value captured for the id document record.'
+    physicalName: ID_DOCUMENT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+    documentation: 'Id Document ID value captured for the id document record.'
+
+  - _name: DocumentType
+    _type: EntityAttribute
+    label: Document Type
+    description: 'Document Type value captured for the id document record.'
+    documentation: 'Document Type value captured for the id document record.'
+    physicalName: DOCUMENT_TYPE
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: DocumentNumber
+    _type: EntityAttribute
+    label: Document Number
+    description: 'Document Number value captured for the id document record.'
+    documentation: 'Document Number value captured for the id document record.'
+    physicalName: DOCUMENT_NUMBER
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _name: IssueDate
+    _type: EntityAttribute
+    label: Issue Date
+    description: 'Issue Date value captured for the id document record.'
+    documentation: 'Issue Date value captured for the id document record.'
+    physicalName: ISSUE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: ExpiryDate
+    _type: EntityAttribute
+    label: Expiry Date
+    description: 'Expiry Date value captured for the id document record.'
+    documentation: 'Expiry Date value captured for the id document record.'
+    physicalName: EXPIRY_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: IssuingCountry
+    _type: EntityAttribute
+    label: Issuing Country
+    description: 'Issuing Country value captured for the id document record.'
+    documentation: 'Issuing Country value captured for the id document record.'
+    physicalName: ISSUING_COUNTRY
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IssuingAuthority
+    label: Issuing Authority
+    description: 'Authority or agency that issued the identity document.'
+    documentation: 'Authority or agency that issued the identity document.'
+    physicalName: ISSUING_AUTHORITY
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    description: 'Indicates whether this is the primary value for the related party or record.'
+    documentation: 'Indicates whether this is the primary value for the related party or record.'
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsVerified
+    label: Is Verified
+    description: 'Indicates whether the value has been verified.'
+    documentation: 'Indicates whether the value has been verified.'
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.IdDocument.IdDocument.DocumentID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

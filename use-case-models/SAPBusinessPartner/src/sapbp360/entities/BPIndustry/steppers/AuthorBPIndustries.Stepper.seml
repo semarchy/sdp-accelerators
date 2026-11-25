@@ -1,0 +1,93 @@
+_name: AuthorBPIndustries
+_package: sapbp360.entities.BPIndustry.steppers
+_type: Stepper
+entity: sapbp360.entities.BPIndustry.BPIndustry
+description: Stepper for authoring BP Industries.
+rootStep:
+  _name: BPIndustries
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPIndustry.collection_views.BPIndustryCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Industries
+  description: Manage BP Industry data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPIndustry_Industry.Industry
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPIndustry_IndustrySector.IndustrySector
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPIndustry_BusinessPartner.BusinessPartner
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Industry.
+      formTab: sapbp360.entities.BPIndustry.forms.BPIndustryDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPIndustry.forms.BPIndustryDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_Industry
+          referencePickerCollectionView: sapbp360.entities.Industry.collection_views.IndustryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPIndustry.forms.BPIndustryDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_IndustrySector
+          referencePickerCollectionView: sapbp360.entities.IndustrySector.collection_views.IndustrySectorCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPIndustry.forms.BPIndustryDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPIndustry_Industry.Industry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPIndustry_IndustrySector.IndustrySector
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPIndustry_BusinessPartner.BusinessPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Industries
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPIndustry_Industry.Industry
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPIndustry_IndustrySector.IndustrySector
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPIndustry_BusinessPartner.BusinessPartner
+triggers: []

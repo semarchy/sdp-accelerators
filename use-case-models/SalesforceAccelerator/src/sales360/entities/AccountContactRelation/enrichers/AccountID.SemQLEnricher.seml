@@ -1,0 +1,14 @@
+# It is an enricher for the AccountContactRelation entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that sets the FID_Account attribute to the Contact's FID_Account value.
+# The enricher scope is NONE and can be updated as per use case.
+_type: SemQLEnricher
+_package: sales360.entities.AccountContactRelation.enrichers
+_name: AccountID
+entity: sales360.entities.AccountContactRelation.AccountContactRelation
+label: Account ID
+description: Sets the FID_Account attribute to the Contact's FID_Account value.
+enricherExecutionScope: NONE
+semQlEnricherExpressions:
+  - attributeName: FID_Account
+    expression: Contact.FID_Account
+afterEnrichers: sales360.entities.AccountContactRelation.enrichers.IsDirect

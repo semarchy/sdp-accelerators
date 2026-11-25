@@ -1,0 +1,69 @@
+_name: BPAddressEmail
+_package: sapbp360.entities.BPAddressEmail.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.BPAddressEmail.BPAddressEmail
+rootLabel: BP Address Email
+rootPluralLabel: BP Address Emails
+useHierarchyOnOpen: false
+label: BP Address Email
+description: Business view for BP Address Email.
+rootBusinessViewEntity:
+  _name: BPAddressEmail
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.BPAddressEmail.collection_views.BPAddressEmailCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.BPAddressEmail.BPAddressEmail
+  form: sapbp360.entities.BPAddressEmail.forms.BPAddressEmailBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.BPAddressEmail.action_sets.BPAddressEmailActionSet
+  displayCard: sapbp360.entities.BPAddressEmail.display_cards.BPAddressEmailDisplayCard
+  sortExpression: EmailAddress
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sapbp360.entities.BPAddressEmail.forms.BPAddressEmailBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Address
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.BPAddressEmail.business_views.BPAddressEmail.BPAddressEmail
+rootIconUrl: images://mdi/email-outline.svg

@@ -1,0 +1,85 @@
+# Tolerance Group entity for the SAP Business Partner 360 accelerator.
+_name: ToleranceGroup
+_package: sapbp360.entities.ToleranceGroup
+_type: Entity
+primaryKey: sapbp360.entities.ToleranceGroup.ToleranceGroup.ToleranceGroupID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: ToleranceGroupCode
+label: Tolerance Group
+documentation: Tolerance Group reference data used by the SAP Business Partner 360 model.
+description: Tolerance Group reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/ToleranceGroup.svg
+pluralLabel: Tolerance Groups
+historizeGolden: true
+historizeMaster: false
+physicalTableName: TOL_GROUP
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ToleranceGroupID
+    physicalName: TOL_GROUP_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Tolerance Group ID
+    documentation: Unique identifier for the tolerance group.
+    description: Unique identifier for the tolerance group.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Tolerance Group ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: ToleranceGroupCode
+    physicalName: TOL_GROUP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Tolerance Group Code
+    documentation: Code for the tolerance group.
+    description: Code for the tolerance group.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Tolerance Group Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: ToleranceGroupName
+    physicalName: TOL_GROUP_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Tolerance Group Name
+    documentation: Name of the tolerance group.
+    description: Name of the tolerance group.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Tolerance Group Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the tolerance group.
+    description: Description for the tolerance group.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the tolerance group is active.
+    description: Indicates whether the tolerance group is active.
+    mandatory: false
+    length: 1
+    searchable: true

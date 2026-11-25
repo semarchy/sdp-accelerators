@@ -1,0 +1,25 @@
+_package: RetailCustomer360.entities.Account.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DataQuality
+entity: RetailCustomer360.entities.Account.Account
+label: Data Quality Rule - Trust Business Data Sources
+description: "Consolidates account financial and business intelligence attributes by ranking third-party data sources (API/enrichment services) first, followed by internal e-commerce records. This ensures the golden record reflects verified external business data (revenue, employee count, industry classification) which are typically more accurate than internal systems for B2C accounts. Applies to attributes that benefit from authoritative external data sources."
+documentation: "B2C accounts often have more reliable revenue and business profile data from external enrichment services and e-commerce systems than from internal CRM records. This rule ranks API (external data providers) and ECOMMERCE (actual customer purchase behavior) as primary sources for business metrics, ensuring analytics and segmentation use verified market data. This differs from operational data governance that prioritizes CRM for relationship attributes."
+defaultRule: false
+consolidationStrategy: PREFERRED_PUBLISHER
+consolidationSkipNulls: false
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+attributes:
+  - attributeName: Revenue
+  - attributeName: EmployeeCount
+  - attributeName: Industry
+  - attributeName: RevenueBand
+  - attributeName: EmployeeSizeBand
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.API
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.ECOMMERCE
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.CRM
+

@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: OrgHierarchyNodeBelongsToHierarchy
+_type: Reference
+label: Org Hierarchy Node Belongs To Org Hierarchy
+description: "Defines the reference from Org Hierarchy Node records to Org Hierarchy records, enforcing the relationship between Org Hierarchy Node and Org Hierarchy data."
+documentation: "Defines the reference from Org Hierarchy Node records to Org Hierarchy records, enforcing the relationship between Org Hierarchy Node and Org Hierarchy data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+fromRoleLabel: Org Node
+fromRoleName: OrgHierarchyNodeToHier
+fromRolePluralLabel: Org Nodes
+physicalName: ORGHIERNODE_HAS_ORGHIER
+fromNavigable: true
+
+toEntity: CorpFin.entities.OrgHierarchy.OrgHierarchy
+toRoleLabel: Org Hierarchy
+toRoleName: orgHierarchy
+toRolePhysicalName: ORG_HIERARCHY_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: orgHierarchy
+  label: Org Hierarchy ID
+  physicalName: ORG_HIERARCHY_ID
+  searchable: true
+  entity: CorpFin.entities.OrgHierarchy.OrgHierarchy

@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: ProtocolAmendmentHasProtocol
+_type: Reference
+label: Protocol Amendment Has Protocol
+description: "Links protocol amendments to the affected protocol."
+documentation: "Links protocol amendments to the affected protocol."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+fromRoleLabel: Protocol Amendment
+fromRoleName: protocolAmendment
+fromRolePluralLabel: Protocol Amendments
+physicalName: PROTOCOL_AMD_HAS_PROTOCOL
+fromNavigable: true
+
+toEntity: CTMDM.entities.Protocol.Protocol
+toRoleLabel: Protocol
+toRoleName: protocol
+toRolePhysicalName: PROTOCOL
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: protocol
+  label: Protocol
+  physicalName: PROTOCOL
+  searchable: true
+  entity: CTMDM.entities.Protocol.Protocol

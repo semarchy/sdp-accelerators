@@ -1,0 +1,88 @@
+_package: PropertyAndCasualtyInsurance.entities.InsurableAsset.business_views
+_type: BusinessView
+_name: InsurableAssetBusinessView
+label: "Insurable Asset"
+entity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+rootLabel: "Insurable Assets"
+rootPluralLabel: "Insurable Assets"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: InsurableAsset
+  displayCard: PropertyAndCasualtyInsurance.entities.InsurableAsset.display_cards.InsurableAssetDisplayCard
+  entity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+  actionSet: PropertyAndCasualtyInsurance.entities.InsurableAsset.action_sets.InsurableAssetActionSet
+  collection: PropertyAndCasualtyInsurance.entities.InsurableAsset.collection_views.InsurableAssetCollectionView
+  form: PropertyAndCasualtyInsurance.entities.InsurableAsset.forms.InsurableAssetForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: InsurableAssets
+        _type: BusinessViewEntity
+        displayCard: PropertyAndCasualtyInsurance.entities.InsurableAsset.display_cards.InsurableAssetDisplayCard
+        collection: PropertyAndCasualtyInsurance.entities.InsurableAsset.collection_views.InsurableAssetCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+        form: PropertyAndCasualtyInsurance.entities.InsurableAsset.forms.InsurableAssetForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: PropertyAndCasualtyInsurance.entities.InsurableAsset.action_sets.InsurableAssetActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PropertyAndCasualtyInsurance.entities.InsurableAsset.business_views.InsurableAssetBusinessView.InsurableAsset
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/shield-home-outline.svg

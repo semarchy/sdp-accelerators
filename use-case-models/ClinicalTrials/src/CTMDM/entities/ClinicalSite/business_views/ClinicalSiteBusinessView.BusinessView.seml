@@ -1,0 +1,215 @@
+_package: CTMDM.entities.ClinicalSite.business_views
+_type: BusinessView
+_name: ClinicalSiteBusinessView
+
+entity: CTMDM.entities.ClinicalSite.ClinicalSite
+rootLabel: Clinical Site
+rootPluralLabel: Clinical Sites
+rootIconUrl: images://mdi/domain.svg
+displayRootNodeAs: ICON_LABEL
+label: Clinical Sites
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ClinicalSite
+  entity: CTMDM.entities.ClinicalSite.ClinicalSite
+  actionSet: CTMDM.entities.ClinicalSite.action_sets.ClinicalSiteActionSet
+  collection: CTMDM.entities.ClinicalSite.collection_views.ClinicalSiteCollectionView
+  form: CTMDM.entities.ClinicalSite.forms.ClinicalSiteForm
+  displayCard: CTMDM.entities.ClinicalSite.display_cards.ClinicalSiteDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _name: ToInvestigator
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/account-tie.svg
+      useCustomLabel: false
+
+      transitionPath: investigator
+      visibleInFormTabCondition: any investigator has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToInvestigator
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.Investigator.collection_views.InvestigatorCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.Investigator.Investigator
+        form: CTMDM.entities.Investigator.forms.InvestigatorForm
+        displayCard: CTMDM.entities.Investigator.display_cards.InvestigatorDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: ToSiteCapabilityAssignment
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/link-variant.svg
+      useCustomLabel: false
+
+      transitionPath: siteCapabilityAssignment
+      visibleInFormTabCondition: any siteCapabilityAssignment has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToSiteCapabilityAssignment
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.SiteCapabilityAssignment.collection_views.SiteCapabilityAssignmentCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.SiteCapabilityAssignment.SiteCapabilityAssignment
+        form: CTMDM.entities.SiteCapabilityAssignment.forms.SiteCapabilityAssignmentForm
+        displayCard: CTMDM.entities.SiteCapabilityAssignment.display_cards.SiteCapabilityAssignmentDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: ToStudySite
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/hospital-marker.svg
+      useCustomLabel: false
+
+      transitionPath: studySite
+      visibleInFormTabCondition: any studySite has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToStudySite
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.StudySite.collection_views.StudySiteCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.StudySite.StudySite
+        form: CTMDM.entities.StudySite.forms.StudySiteForm
+        displayCard: CTMDM.entities.StudySite.display_cards.StudySiteDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: ToSiteEthicsCommittee
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/clipboard-check-outline.svg
+      useCustomLabel: false
+
+      transitionPath: siteEthicsCommittee
+      visibleInFormTabCondition: any siteEthicsCommittee has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToSiteEthicsCommittee
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.SiteEthicsCommittee.collection_views.SiteEthicsCommitteeCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.SiteEthicsCommittee.SiteEthicsCommittee
+        form: CTMDM.entities.SiteEthicsCommittee.forms.SiteEthicsCommitteeForm
+        displayCard: CTMDM.entities.SiteEthicsCommittee.display_cards.SiteEthicsCommitteeDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MasterRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.ClinicalSite.collection_views.ClinicalSiteCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.ClinicalSite.ClinicalSite
+        form: CTMDM.entities.ClinicalSite.forms.ClinicalSiteForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.ClinicalSite.action_sets.ClinicalSiteActionSet
+        displayCard: CTMDM.entities.ClinicalSite.display_cards.ClinicalSiteDisplayCard
+
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: HistoryRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.ClinicalSite.collection_views.ClinicalSiteCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.ClinicalSite.ClinicalSite
+        form: CTMDM.entities.ClinicalSite.forms.ClinicalSiteForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.ClinicalSite.action_sets.ClinicalSiteActionSet
+        displayCard: CTMDM.entities.ClinicalSite.display_cards.ClinicalSiteDisplayCard

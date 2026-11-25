@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: ClaimBenefitPaymentHasPaymentStatus
+description: "Indicates the Payment Status associated with a Claim Benefit Payment."
+_type: Reference
+label: "Claim Benefit Payment Has Payment Status"
+
+fromEntity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+fromRoleLabel: "Claim Benefit Payment"
+fromRoleName: ClaimBenefitPayment
+fromRolePluralLabel: "Claim Benefit Payments"
+physicalName: CLMBENEFITPAYHASPAYSTAT
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus
+toRoleLabel: "Payment Status"
+toRoleName: PaymentStatus
+toRolePhysicalName: PAY_STAT
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PaymentStatus
+  label: "Payment Status ID"
+  description: "The identifier of the Payment Status associated with the Claim Benefit Payment."
+  physicalName: PAY_STAT_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus

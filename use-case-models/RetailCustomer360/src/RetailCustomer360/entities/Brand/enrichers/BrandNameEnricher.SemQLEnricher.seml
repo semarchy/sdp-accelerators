@@ -1,0 +1,11 @@
+_package: RetailCustomer360.entities.Brand.enrichers
+_name: BrandNameEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Brand.Brand
+label: Brand Name Enricher
+description: "Normalizes the brand name for search and matching."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: BrandNameNormalized
+    expression: UPPER(BTRIM(COALESCE(BrandName, '')))

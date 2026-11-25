@@ -1,0 +1,69 @@
+_package: PropertyAndCasualtyInsurance.entities.VehicleModel.collection_views
+_type: CollectionView
+_name: VehicleModelCollectionView
+entity: PropertyAndCasualtyInsurance.entities.VehicleModel.VehicleModel
+default: true
+displayCard: PropertyAndCasualtyInsurance.entities.VehicleModel.display_cards.VehicleModelDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: "Vehicle Model"
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: VehicleModelID
+    value: VehicleModelID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ModelCode
+    value: ModelCode
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: ReferenceColumn
+    _name: FID_Make
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Make"
+    referencedEntity: PropertyAndCasualtyInsurance.entities.VehicleMake.VehicleMake
+    useCustomLabel: true
+    value: FDN_Make
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: ModelName
+    value: ModelName
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: Description
+    value: Description
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    defaultWidth: 500
+  

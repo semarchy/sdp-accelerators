@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: sapbp360.entities.BPContact.enrichers
+_name: NormalizedContactName
+entity: sapbp360.entities.BPContact.BPContact
+label: Normalized contact name for matching.
+description: Normalized contact name for matching.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedName
+    expression: LTRIM(RTRIM(UPPER(ContactFullName)))

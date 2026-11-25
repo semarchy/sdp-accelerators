@@ -1,0 +1,51 @@
+# DataClassification: entity of the GovernanceRules accelerator. A data sensitivity classification (for example PUBLIC, PERSONAL, SPECIAL_CATEGORY).
+_package: GovernanceRules.entities.DataClassification
+_type: Entity
+_name: DataClassification
+label: Data classification
+pluralLabel: Data classifications
+physicalTableName: GOV_DATA_CLASS
+entityType: BASIC
+description: A data sensitivity classification (for example PUBLIC, PERSONAL, SPECIAL_CATEGORY). Used to scope rules and as
+  the default classification of attribute types.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+primaryKey: GovernanceRules.entities.DataClassification.DataClassification.Code
+sourceIdGeneration:
+  mode: MANUAL
+attributes:
+- _type: EntityAttribute
+  _name: Code
+  label: Code
+  physicalName: DC_CODE
+  dataType: String
+  length: 40
+  mandatory: true
+  description: Natural key of the classification, entered by the author and never changed (for example PERSONAL).
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Name
+  label: Name
+  physicalName: DC_NAME
+  dataType: String
+  length: 200
+  mandatory: true
+  description: Name of the classification.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Description
+  label: Description
+  physicalName: DC_DESCRIPTION
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: What data falls under the classification.
+- _type: EntityAttribute
+  _name: SensitivityRank
+  label: Sensitivity rank
+  physicalName: DC_RANK
+  dataType: Integer
+  mandatory: false
+  description: Sensitivity from 1 (public) to 5 (special category).
+  precision: 10

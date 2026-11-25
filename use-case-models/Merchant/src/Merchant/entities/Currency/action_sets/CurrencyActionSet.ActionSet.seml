@@ -1,0 +1,66 @@
+ # Description: Action set for `Currency` entity (create/edit/import/export actions).
+ # Contains: Definitions of actions and associated steppers for Currency records.
+ # Role: Controls available UI actions for Currency master data management.
+_package: Merchant.entities.Currency.action_sets
+_type: ActionSet
+_name: CurrencyActionSet
+entity: Merchant.entities.Currency.Currency
+label: Currency Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorCurrencies
+    label: Create
+    useCustomLabel: true
+    stepper: Merchant.entities.Currency.steppers.AuthorCurrencies
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorCurrencies
+    label: Edit
+    useCustomLabel: true
+    stepper: Merchant.entities.Currency.steppers.AuthorCurrencies
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorCurrencies
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Merchant.entities.Currency.steppers.AuthorCurrencies
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorCurrencies
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Merchant.entities.Currency.steppers.AuthorCurrencies
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

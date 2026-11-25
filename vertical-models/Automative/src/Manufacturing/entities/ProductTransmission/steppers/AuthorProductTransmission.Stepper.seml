@@ -1,0 +1,55 @@
+_name: AuthorProductTransmission
+_package: Manufacturing.entities.ProductTransmission.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductTransmission.ProductTransmission
+rootStep:
+  _name: ProductTransitions
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductTransmission.collection_views.ProductTransmissionCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Transmission
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductTransmission.ProductTransmission.Transmission
+  stepTriggers: []
+  childSteps:
+    - _name: ProductTransition
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Transmission
+      formTab: Manufacturing.entities.ProductTransmission.forms.ProductTransmissionForm.ProductTransmission
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductTransmission.ProductTransmission.Transmission
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductTransmission.ProductTransmission.Transmission
+      stepTriggers: []
+label: Author Product Transmission
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductTransmission.ProductTransmission.Transmission
+triggers: []

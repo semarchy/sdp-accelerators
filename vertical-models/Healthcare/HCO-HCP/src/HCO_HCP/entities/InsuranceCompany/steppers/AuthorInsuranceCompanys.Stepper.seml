@@ -1,0 +1,50 @@
+_name: AuthorInsuranceCompanys
+_package: HCO_HCP.entities.InsuranceCompany.steppers
+_type: Stepper
+entity: HCO_HCP.entities.InsuranceCompany.InsuranceCompany
+rootStep:
+  _name: InsuranceCompanys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.InsuranceCompany.collection_views.InsuranceCompanyCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Insurance Companys
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: InsuranceCompany
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Insurance Company
+      formTab: HCO_HCP.entities.InsuranceCompany.forms.InsuranceCompanyFormCRUD.InsuranceCompany
+      formStepEnrichers:
+        - enricher: HCO_HCP.entities.InsuranceCompany.enrichers.AddressEnricher
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: HCO_HCP.entities.InsuranceCompany.enrichers.NormalizeWebsite
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Insurance Companys
+stepperFinishValidations: []
+triggers: []

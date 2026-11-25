@@ -1,0 +1,160 @@
+# ApproveGovernanceRule: stepper on GovernanceRule of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceRule.steppers
+_type: Stepper
+_name: ApproveGovernanceRule
+description: 'Approval task of the Rule review workflow, for the governance owner: the rule definition, implementation, scopes and citations, all read-only (scopes and citations are loaded with the rule through the workflow data scope). The ApproveRule enricher prepares the decision (status APPROVED or RETIRED, approval date and approver); a rejection reverts these values.'
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Approve rule
+rootStep:
+  _type: CollectionStep
+  _name: GovernanceRules
+  label: Governance rules
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.GovernanceRule.collection_views.GovernanceRuleCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+  - _type: FormStep
+    _name: Definition
+    label: Definition
+    description: Read-only for the approval; the owner approves or rejects, and asks the steward for changes with a rejection comment.
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: FORCE_BROWSING
+    enableMasterValuePicking: false
+    formTab: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm.Definition
+    referenceFormFieldConfigs:
+    - fdnFormField: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm.Definition.DefinitionColumns.DefinitionRight.Classification.FDN_Policy
+      referencePickerType: AUTO_COMPLETE
+      enableUserSort: true
+      sortExpression: Name
+    - fdnFormField: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm.Definition.DefinitionColumns.DefinitionRight.Classification.FDN_OwnerBody
+      referencePickerType: AUTO_COMPLETE
+      enableUserSort: true
+      sortExpression: Name
+    formStepEnrichers:
+    - enricher: GovernanceRules.entities.GovernanceRule.enrichers.ApproveRule
+      executedOnFormOpen: true
+    stepTriggers:
+    - _type: StepEnricherTrigger
+      _name: PrepareApproval
+      description: Runs the ApproveRule enricher when the owner enters the step, independently of the read-only form fields.
+      enricher: GovernanceRules.entities.GovernanceRule.enrichers.ApproveRule
+      event: ON_STEP_ENTER
+    formStepValidations:
+    - validationType: CHECK
+      validator: GovernanceRules.entities.GovernanceRule.validations.RetirementAfterEffective
+      executedOnDataChange: true
+    stepTransitionValidations:
+    - validationType: CHECK
+      validator: GovernanceRules.entities.GovernanceRule.validations.RetirementAfterEffective
+      onStepExit: BLOCK
+  - _type: FormStep
+    _name: Implementation
+    label: Implementation
+    description: Read-only for the approval.
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: FORCE_BROWSING
+    enableMasterValuePicking: false
+    formTab: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm.Implementation
+  - _type: CollectionStep
+    _name: Scopes
+    label: Scopes
+    description: Read-only list of the scope rows of the rule, so the owner checks where the rule applies before approving.
+    oneToManyReference: GovernanceRules.references.RuleScopeHasRule
+    collectionView: GovernanceRules.entities.RuleScope.collection_views.RuleScopeByRuleCollectionView
+    displayCard: GovernanceRules.entities.RuleScope.display_cards.RuleScopeDisplayCard
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    linear: false
+    childDeleteType: HARD_DELETE
+    defaultDisplayType: TABLE
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    useCustomCollectionLabel: false
+    enableChildCreationOnParentCreate: false
+    enableChildRemoveOnParentCreate: false
+    enableChildCreationOnParentEdit: false
+    enableChildRemoveOnParentEdit: false
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildDeleteOnParentEdit: false
+    enableChildEditOnParentCreate: false
+    enableChildEditOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    childSteps:
+    - _type: FormStep
+      _name: ScopesDetails
+      label: Scopes
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: FORCE_BROWSING
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.RuleScope.forms.RuleScopeForm.RuleScope
+  - _type: CollectionStep
+    _name: Citations
+    label: Citations
+    description: Read-only list of the regulations and standards that the rule cites, with the article or clause.
+    oneToManyReference: GovernanceRules.references.RuleCitationHasRule
+    collectionView: GovernanceRules.entities.RuleCitation.collection_views.RuleCitationByRuleCollectionView
+    displayCard: GovernanceRules.entities.RuleCitation.display_cards.RuleCitationDisplayCard
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    linear: false
+    childDeleteType: HARD_DELETE
+    defaultDisplayType: TABLE
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    useCustomCollectionLabel: false
+    enableChildCreationOnParentCreate: false
+    enableChildRemoveOnParentCreate: false
+    enableChildCreationOnParentEdit: false
+    enableChildRemoveOnParentEdit: false
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildDeleteOnParentEdit: false
+    enableChildEditOnParentCreate: false
+    enableChildEditOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    childSteps:
+    - _type: FormStep
+      _name: CitationsDetails
+      label: Citations
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: FORCE_BROWSING
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.RuleCitation.forms.RuleCitationForm.RuleCitation

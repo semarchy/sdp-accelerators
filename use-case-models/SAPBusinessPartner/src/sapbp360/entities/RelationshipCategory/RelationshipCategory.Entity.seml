@@ -1,0 +1,85 @@
+# Relationship Category entity for the SAP Business Partner 360 accelerator.
+_name: RelationshipCategory
+_package: sapbp360.entities.RelationshipCategory
+_type: Entity
+primaryKey: sapbp360.entities.RelationshipCategory.RelationshipCategory.RelationshipCategoryID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: RelationshipCategoryCode
+label: Relationship Category
+documentation: Relationship Category reference data used by the SAP Business Partner 360 model.
+description: Relationship Category reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/RelationshipCategory.svg
+pluralLabel: Relationship Categories
+historizeGolden: true
+historizeMaster: false
+physicalTableName: REL_CAT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: RelationshipCategoryID
+    physicalName: REL_CAT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Relationship Category ID
+    documentation: Unique identifier for the relationship category.
+    description: Unique identifier for the relationship category.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Relationship Category ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: RelationshipCategoryCode
+    physicalName: REL_CAT_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Relationship Category Code
+    documentation: Code for the relationship category.
+    description: Code for the relationship category.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Relationship Category Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: RelationshipCategoryName
+    physicalName: REL_CAT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Relationship Category Name
+    documentation: Name of the relationship category.
+    description: Name of the relationship category.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Relationship Category Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the relationship category.
+    description: Description for the relationship category.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the relationship category is active.
+    description: Indicates whether the relationship category is active.
+    mandatory: false
+    length: 1
+    searchable: true

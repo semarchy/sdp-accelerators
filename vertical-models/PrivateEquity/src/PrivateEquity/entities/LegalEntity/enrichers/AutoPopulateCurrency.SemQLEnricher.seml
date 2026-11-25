@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.LegalEntity.enrichers
+_name: AutoPopulateCurrency
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+label: Auto Populate Currency
+description: "Defaults legal entity currency to USD when the related country is the United States."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_Currency
+    expression: case  when FID_Country = 'US' then 'USD' else null end
+afterEnrichers: PrivateEquity.entities.LegalEntity.enrichers.ReplaceSingleQuotation

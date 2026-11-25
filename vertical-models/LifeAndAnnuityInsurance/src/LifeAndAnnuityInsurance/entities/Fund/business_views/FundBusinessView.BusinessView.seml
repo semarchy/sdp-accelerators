@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.Fund.business_views
+_type: BusinessView
+_name: FundBusinessView
+label: "Fund"
+entity: LifeAndAnnuityInsurance.entities.Fund.Fund
+rootLabel: "Funds"
+rootPluralLabel: "Funds"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Fund
+  displayCard: LifeAndAnnuityInsurance.entities.Fund.display_cards.FundDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.Fund.Fund
+  actionSet: LifeAndAnnuityInsurance.entities.Fund.action_sets.FundActionSet
+  collection: LifeAndAnnuityInsurance.entities.Fund.collection_views.FundCollectionView
+  form: LifeAndAnnuityInsurance.entities.Fund.forms.FundForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: InvestmentAllocation
+      label: "Investment Allocation"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Investment Allocations"
+      iconUrl: images://mdi/chart-pie.svg
+      transitionPath: InvestmentAllocation
+      useCustomLabel: true
+      description: "Transition from Fund to related Investment Allocations."
+      visibleInFormTabCondition: any InvestmentAllocation has (1=1)
+      enableHierarchy: any InvestmentAllocation has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: InvestmentAllocation
+        displayCard: LifeAndAnnuityInsurance.entities.InvestmentAllocation.display_cards.InvestmentAllocationDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+        actionSet: LifeAndAnnuityInsurance.entities.InvestmentAllocation.action_sets.InvestmentAllocationActionSet
+        collection: LifeAndAnnuityInsurance.entities.InvestmentAllocation.collection_views.InvestmentAllocationCollectionView
+        form: LifeAndAnnuityInsurance.entities.InvestmentAllocation.forms.InvestmentAllocationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/chart-line.svg

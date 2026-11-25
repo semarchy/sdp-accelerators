@@ -1,0 +1,148 @@
+_package: RetailCustomer360.entities.Device
+_type: Entity
+_name: Device
+label: Device
+pluralLabel: Devices
+entityType: ID_MATCHED
+physicalTableName: DEVICE
+iconUrl: https://api.iconify.design/mdi/devices.svg?color=%230D1B2A&width=64
+
+description: "Electronic device from which a customer interacts with the brand."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: DeviceIdentifier
+    label: Device Identifier
+    physicalName: DEVICE_IDENTIFIER
+    dataType: String
+    length: 150
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Universal identifier of the device across systems."
+
+  - _type: EntityAttribute
+    _name: DeviceType
+    label: Device Type
+    physicalName: DEVICE_TYPE
+    dataType: RetailCustomer360.list_of_values.DeviceType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Category of hardware the device belongs to."
+
+  - _type: EntityAttribute
+    _name: OperatingSystem
+    label: Operating System
+    physicalName: OPERATING_SYSTEM
+    dataType: RetailCustomer360.list_of_values.OperatingSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Operating system running on the device."
+
+  - _type: EntityAttribute
+    _name: OsVersion
+    label: Os Version
+    physicalName: OS_VERSION
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Version of the operating system."
+
+  - _type: EntityAttribute
+    _name: Manufacturer
+    label: Manufacturer
+    physicalName: MANUFACTURER
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Company that manufactured the device."
+
+  - _type: EntityAttribute
+    _name: DeviceModel
+    label: Device Model
+    physicalName: DEVICE_MODEL
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Commercial model name of the device."
+
+  - _type: EntityAttribute
+    _name: WebBrowser
+    label: Web Browser
+    physicalName: WEB_BROWSER
+    dataType: RetailCustomer360.list_of_values.WebBrowser
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Browser most often used on the device."
+
+  - _type: EntityAttribute
+    _name: ScreenResolution
+    label: Screen Resolution
+    physicalName: SCREEN_RESOLUTION
+    dataType: String
+    length: 30
+    searchable: true
+    description: "Screen resolution reported by the device."
+
+  - _type: EntityAttribute
+    _name: Locale
+    label: Locale
+    physicalName: LOCALE
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Locale configured on the device."
+
+  - _type: EntityAttribute
+    _name: TimeZone
+    label: Time Zone
+    physicalName: TIME_ZONE
+    dataType: String
+    length: 60
+    searchable: true
+    description: "Time zone reported by the device."
+
+  - _type: EntityAttribute
+    _name: FirstSeenDate
+    label: First Seen Date
+    physicalName: FIRST_SEEN_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the device was first observed."
+
+  - _type: EntityAttribute
+    _name: LastSeenDate
+    label: Last Seen Date
+    physicalName: LAST_SEEN_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the device was last observed."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the device is still in active use."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the device record originates from."
+
+primaryKey: RetailCustomer360.entities.Device.Device.DeviceIdentifier
+
+sourceIdGeneration:
+  mode: MANUAL

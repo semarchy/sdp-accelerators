@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.Restaurant.validations
+_name: BrandRequired
+_type: SemQLValidation
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Brand required beyond the pipeline
+description: A restaurant beyond the pipeline stage must have a brand.
+validationScope: POST_CONSO
+validationLabel: A restaurant beyond the pipeline stage must have a brand.
+condition: FID_Brand IS NOT NULL OR FID_LifecycleStatus IS NULL OR FID_LifecycleStatus IN ('PIPELINE', 'CANCELLED')

@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: InsuranceProductHasProductType
+description: "Indicates the Product Type associated with a Insurance Product."
+_type: Reference
+label: "Insurance Product Has Product Type"
+
+fromEntity: LifeAndAnnuityInsurance.entities.InsuranceProduct.InsuranceProduct
+fromRoleLabel: "Insurance Product"
+fromRoleName: InsuranceProduct
+fromRolePluralLabel: "Insurance Products"
+physicalName: INS_PROD_HAS_PROD_TYPE
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.ProductType.ProductType
+toRoleLabel: "Product Type"
+toRoleName: ProductType
+toRolePhysicalName: PROD_TYPE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: ProductType
+  label: "Product Type ID"
+  description: "The identifier of the Product Type associated with the Insurance Product."
+  physicalName: PROD_TYPE_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.ProductType.ProductType

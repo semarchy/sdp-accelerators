@@ -1,0 +1,58 @@
+# This is the NAICCodeActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on NAIC codes, such as creating, editing,
+# deleting, exporting,importing NAIC codes.
+_name: NAICCodeActionSet
+_package: sales360.entities.NAICCode.action_sets
+_type: ActionSet
+entity: sales360.entities.NAICCode.NAICCode
+label: NAIC Code Action Set
+description: Action set for NAIC Codes in the Salesforce Accelerator application.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorNAICCodes
+    label: Create
+    description: Create a new NAIC Code record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.NAICCode.steppers.AuthorNAICCodes
+  - _name: EditAuthorNAICCodes
+    label: Edit
+    description: Edit selected NAIC Code records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.NAICCode.steppers.AuthorNAICCodes
+  - _name: Delete
+    label: Delete
+    description: Delete selected NAIC Code records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    description: Export NAIC Code records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorNAICCodes
+    label: Import
+    description: Import NAIC Code records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.NAICCode.steppers.AuthorNAICCodes

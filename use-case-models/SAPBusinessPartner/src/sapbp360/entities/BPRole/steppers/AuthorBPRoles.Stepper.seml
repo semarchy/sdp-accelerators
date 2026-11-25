@@ -1,0 +1,85 @@
+_name: AuthorBPRoles
+_package: sapbp360.entities.BPRole.steppers
+_type: Stepper
+entity: sapbp360.entities.BPRole.BPRole
+description: Stepper for authoring BP Roles.
+rootStep:
+  _name: BPRoles
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPRole.collection_views.BPRoleCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Roles
+  description: Manage BP Role data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPRole_BusinessPartnerRole.BusinessPartnerRole
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPRole_BusinessPartner.BusinessPartner
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sapbp360.entities.BPRole.validations.RoleValidity
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Role.
+      formTab: sapbp360.entities.BPRole.forms.BPRoleDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPRole.forms.BPRoleDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartnerRole
+          referencePickerCollectionView: sapbp360.entities.BusinessPartnerRole.collection_views.BusinessPartnerRoleCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPRole.forms.BPRoleDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPRole_BusinessPartnerRole.BusinessPartnerRole
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPRole_BusinessPartner.BusinessPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sapbp360.entities.BPRole.validations.RoleValidity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Roles
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPRole_BusinessPartnerRole.BusinessPartnerRole
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPRole_BusinessPartner.BusinessPartner
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sapbp360.entities.BPRole.validations.RoleValidity
+triggers: []

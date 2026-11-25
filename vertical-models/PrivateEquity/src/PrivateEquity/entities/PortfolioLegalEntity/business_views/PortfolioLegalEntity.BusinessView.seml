@@ -1,0 +1,53 @@
+_name: PortfolioLegalEntity
+_package: PrivateEquity.entities.PortfolioLegalEntity.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+rootLabel: Portfolio Legal Entity
+rootPluralLabel: Portfolio Legal Entities
+useHierarchyOnOpen: false
+label: Portfolio Legal Entities
+rootBusinessViewEntity:
+  _name: PortfolioLegalEntityEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.PortfolioLegalEntity.collection_views.PortfolioLegalEntityCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+  form: PrivateEquity.entities.PortfolioLegalEntity.forms.PortfolioLegalEntityForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  sortExpression: FDN_Portfolio ASC
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.PortfolioLegalEntity.action_sets.PortfolioLegalEntityActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: PrivateEquity.entities.PortfolioLegalEntity.forms.PortfolioLegalEntityForm.PortfolioLegalEntity.Container.Container2.FDN_Portfolio
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.PortfolioLegalEntity.forms.PortfolioLegalEntityForm.PortfolioLegalEntity.Container.Container2.FDN_LegalEntity
+      # navigationMode: MODAL_FORM
+      businessView: PrivateEquity.entities.LegalEntity.business_views.LegalEntity
+      form: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm
+      navigationMode: BUSINESS_OBJECT_VIEW
+  transitions: []

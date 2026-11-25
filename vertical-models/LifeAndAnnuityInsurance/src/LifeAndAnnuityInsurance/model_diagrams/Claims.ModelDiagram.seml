@@ -1,0 +1,111 @@
+﻿_package: LifeAndAnnuityInsurance.model_diagrams
+_name: Claims
+_type: ModelDiagram
+label: Claims Subject Area
+attributeNameFormat: NAME
+description: Claims subject area diagram for Life and Annuity model.
+entityNameFormat: LABEL
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    _name: BenefitType
+    entity: LifeAndAnnuityInsurance.entities.BenefitType.BenefitType
+    borderColor: "#ee6a9e"
+    fontTitleColor: ""
+    position:
+      x: 0
+      y: 0
+    height: 300
+    width: 280
+  - _type: EntityShape
+    _name: PaymentStatus
+    entity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus
+    borderColor: "#eecb6a"
+    fontTitleColor: ""
+    position:
+      x: 360
+      y: 0
+    height: 260
+    width: 280
+  - _type: EntityShape
+    _name: Policy
+    entity: LifeAndAnnuityInsurance.entities.Policy.Policy
+    borderColor: "#6aeea5"
+    fontTitleColor: ""
+    position:
+      x: 720
+      y: 0
+    height: 820
+    width: 280
+  - _type: EntityShape
+    _name: Party
+    entity: LifeAndAnnuityInsurance.entities.Party.Party
+    borderColor: "#ee896a"
+    fontTitleColor: ""
+    position:
+      x: 1080
+      y: 0
+    height: 430
+    width: 280
+  - _type: EntityShape
+    _name: Claim
+    entity: LifeAndAnnuityInsurance.entities.Claim.Claim
+    borderColor: "#ee6a9e"
+    fontTitleColor: ""
+    position:
+      x: 360
+      y: 900
+    height: 560
+    width: 280
+  - _type: EntityShape
+    _name: ClaimBenefitPayment
+    entity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+    borderColor: "#ee6a9e"
+    fontTitleColor: ""
+    position:
+      x: 720
+      y: 900
+    height: 430
+    width: 280
+referenceLinks:
+  - reference: LifeAndAnnuityInsurance.references.ClaimHasBenefitType
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Claim
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.BenefitType
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.ClaimHasClaimantParty
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Claim
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Party
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.ClaimHasInsuredParty
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Claim
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Party
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.ClaimHasPolicy
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Claim
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Policy
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.ClaimBenefitPaymentHasClaim
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.ClaimBenefitPayment
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Claim
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.ClaimBenefitPaymentHasBenefitType
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.ClaimBenefitPayment
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.BenefitType
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.ClaimBenefitPaymentHasPayeeParty
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.ClaimBenefitPayment
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.Party
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.ClaimBenefitPaymentHasPaymentStatus
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.ClaimBenefitPayment
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Claims.PaymentStatus
+    bendPoints: []
+inheritLinks: []

@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.Account.enrichers
+_name: AccountKey
+entity: PrivateEquity.entities.Account.Account
+label: Account Key
+description: "Derives the account key by concatenating fund chain ID, portfolio chain ID, and account chain ID for integration alignment."
+enricherExecutionScope: PRE_POST
+semQlEnricherExpressions:
+  - attributeName: AccountKey
+    expression: Fund.ChainID || '~' || Portfolio.ChainID || '~' || ChainID

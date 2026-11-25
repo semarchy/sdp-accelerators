@@ -1,0 +1,63 @@
+# AttributeTypeCatalog: named query of the GovernanceRules accelerator. Returns every business attribute type (no parameter): its code (for example EMAIL, PHONE, COUNTRY_CODE, NDC, NPI), name, description, format pattern...
+_package: GovernanceRules.named_queries
+_type: NamedQuery
+_name: AttributeTypeCatalog
+active: true
+description: 'Returns every business attribute type (no parameter): its code (for example EMAIL, PHONE, COUNTRY_CODE, NDC, NPI), name, description,
+  format pattern (regular expression), example, default data classification (code, name, sensitivity rank from 1 public to 5 special category)
+  and reference standard (regulation or standard code and name, for example ISO-3166-1). Sorted by code.
+
+
+  AI agent instructions: Call it first when you design or change a data product: match each attribute you add or change to an attribute type code
+  and take its default classification, then call RuleChecklist once with the data domain and these codes (or ApplicableRules for one attribute
+  type, with full statements and citations). Use FormatPattern for validations and ReferenceStandard for reference entities. When no attribute
+  type fits, say so and query RuleChecklist with the domain and classification only.'
+defaultLimit: 500
+rootQueryObject: GovernanceRules.named_queries.AttributeTypeCatalog.AttributeType
+sort: Code
+queryObjects:
+- _type: QueryObject
+  _name: AttributeType
+  entity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+  description: Attribute type with its default classification and reference standard.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: Code
+    type: VALUE
+    semQlExpression: Code
+  - _type: ObjectProperty
+    _name: Name
+    type: VALUE
+    semQlExpression: Name
+  - _type: ObjectProperty
+    _name: Description
+    type: VALUE
+    semQlExpression: Description
+  - _type: ObjectProperty
+    _name: FormatPattern
+    type: VALUE
+    semQlExpression: FormatPattern
+  - _type: ObjectProperty
+    _name: Example
+    type: VALUE
+    semQlExpression: Example
+  - _type: ObjectProperty
+    _name: DefaultClassificationCode
+    type: VALUE
+    semQlExpression: DefaultClassification.Code
+  - _type: ObjectProperty
+    _name: DefaultClassificationName
+    type: VALUE
+    semQlExpression: DefaultClassification.Name
+  - _type: ObjectProperty
+    _name: SensitivityRank
+    type: VALUE
+    semQlExpression: DefaultClassification.SensitivityRank
+  - _type: ObjectProperty
+    _name: ReferenceStandardCode
+    type: VALUE
+    semQlExpression: ReferenceStandard.Code
+  - _type: ObjectProperty
+    _name: ReferenceStandardName
+    type: VALUE
+    semQlExpression: ReferenceStandard.Name

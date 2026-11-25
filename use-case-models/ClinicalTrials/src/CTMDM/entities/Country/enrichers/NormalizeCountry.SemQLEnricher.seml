@@ -1,0 +1,13 @@
+_package: CTMDM.entities.Country.enrichers
+_name: NormalizeCountry
+_type: SemQLEnricher
+entity: CTMDM.entities.Country.Country
+label: Normalize Country
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Country values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedCountryCode
+    expression: "RTRIM(LTRIM(UPPER(CountryCode)))"
+  - attributeName: NormalizedCountryName
+    expression: "RTRIM(LTRIM(UPPER(CountryName)))"

@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: ClaimBenefitPaymentHasClaim
+description: "Indicates the Claim associated with a Claim Benefit Payment."
+_type: Reference
+label: "Claim Benefit Payment Has Claim"
+
+fromEntity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+fromRoleLabel: "Claim Benefit Payment"
+fromRoleName: ClaimBenefitPayment
+fromRolePluralLabel: "Claim Benefit Payments"
+physicalName: CLM_BENEFIT_PAY_HAS_CLM
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Claim.Claim
+toRoleLabel: "Claim"
+toRoleName: Claim
+toRolePhysicalName: CLM
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Claim
+  label: "Claim ID"
+  description: "The identifier of the Claim associated with the Claim Benefit Payment."
+  physicalName: CLM_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Claim.Claim

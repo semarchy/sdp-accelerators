@@ -1,0 +1,18 @@
+_package: RetailCustomer360.entities.Lead.enrichers
+_name: LeadNameEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Lead.Lead
+label: Lead Name Enricher
+description: "Computes FullName and FullNameNormalized from first and last name, and LeadAgeDays from CapturedDate."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: FullName
+    expression: BTRIM(CONCAT_WS(' ', INITCAP(FirstName), INITCAP(LastName)))
+  - attributeName: FullNameNormalized
+    expression: UPPER(BTRIM(CONCAT_WS(' ', FirstName, LastName)))
+  - attributeName: LeadAgeDays
+    expression: CASE
+        WHEN CapturedDate IS NULL THEN NULL
+        ELSE DATE_PART('day', CURRENT_TIMESTAMP() - CapturedDate)
+      END

@@ -1,0 +1,70 @@
+# BP Address Phone entity for the SAP Business Partner 360 accelerator.
+_name: BPAddressPhone
+_package: sapbp360.entities.BPAddressPhone
+_type: Entity
+primaryKey: sapbp360.entities.BPAddressPhone.BPAddressPhone.PhoneID
+sourceIdGeneration:
+  mode: MANUAL
+label: BP Address Phone
+documentation: Phone number associated with a business partner address.
+description: Phone number associated with a business partner address.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/BPAddressPhone.svg
+pluralLabel: BP Address Phones
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BP_ADDR_PHONE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PhoneID
+    physicalName: PHONE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Phone ID
+    documentation: Unique identifier for the phone record.
+    description: Unique identifier for the phone record.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Phone ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PhoneNumber
+    physicalName: PHONE_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Phone Number
+    documentation: Phone number value.
+    description: Phone number value.
+    mandatory: true
+    length: 30
+    mandatoryValidationLabel: Phone Number is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PhoneNumberExtension
+    physicalName: PHONE_NO_EXTENSION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Phone Number Extension
+    documentation: Phone number extension.
+    description: Phone number extension.
+    mandatory: false
+    length: 10
+    searchable: true
+  - _type: EntityAttribute
+    _name: IsDefaultPhoneNumber
+    physicalName: IS_DEF_PHONE_NO
+    dataType: Boolean
+    goldenAttribute: true
+    label: Is Default Phone Number
+    documentation: Indicates whether this is the default phone number.
+    description: Indicates whether this is the default phone number.
+    mandatory: false
+    length: 1
+    searchable: true

@@ -1,0 +1,91 @@
+ # Description: Business view for `Individual` exposing navigation and actions.
+ # Contains: Business node linking to collection/form/actionSet for Individual.
+ # Role: Integrates Individual into model navigation and UI.
+_package: Merchant.entities.Individual.business_views
+_type: BusinessView
+_name: Individual
+label: Individual Business View
+entity: Merchant.entities.Individual.Individual
+rootLabel: Individuals
+rootPluralLabel: Individuals
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Individual
+  displayCard: Merchant.entities.Individual.display_cards.Individual
+  entity: Merchant.entities.Individual.Individual
+  actionSet: Merchant.entities.Individual.action_sets.Individual
+  collection: Merchant.entities.Individual.collection_views.IndividualCollectionView
+  form: Merchant.entities.Individual.forms.IndividualForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: MasterRecords
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MerchantMaster
+        _type: BusinessViewEntity
+        collection: Merchant.entities.Individual.collection_views.IndividualCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Merchant.entities.Individual.Individual
+        form: Merchant.entities.Individual.forms.IndividualForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: Merchant.entities.Individual.display_cards.Individual
+
+enableHierarchyView: false
+useHierarchyOnOpen: false

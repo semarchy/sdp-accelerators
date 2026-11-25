@@ -1,0 +1,30 @@
+_package: CorpFin.references
+_name: OrgHierarchyNodeHasParentNode
+_type: Reference
+label: Org Hierarchy Node Has Parent Node
+description: "Defines the reference from Org Hierarchy Node records to Parent Node records, enforcing the relationship between Org Hierarchy Node and Org Hierarchy Node data."
+documentation: "Defines the reference from Org Hierarchy Node records to Parent Node records, enforcing the relationship between Org Hierarchy Node and Org Hierarchy Node data."
+deletePropagation: RESTRICT
+
+fromEntity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+fromRoleLabel: Child Node
+fromRoleName: OrgHierarchyNodeToParent
+fromRolePluralLabel: Children Nodes
+physicalName: ORGHIERNODE_HAS_PARENT
+fromNavigable: true
+
+toEntity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode
+toRoleLabel: Parent Node
+toRoleName: parentNode
+toRolePhysicalName: PARENT_NODE_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: parentNode
+  label: Parent Node ID
+  physicalName: PARENT_NODE_ID
+  searchable: true
+  entity: CorpFin.entities.OrgHierarchyNode.OrgHierarchyNode

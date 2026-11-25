@@ -1,0 +1,20 @@
+# This is the display card for Campaign in the Salesforce Accelerator application.
+# It shows the Campaign Name in the primary text.
+_name: CampaignDisplayCard
+_package: sales360.entities.Campaign.display_cards
+_type: DisplayCard
+entity: sales360.entities.Campaign.Campaign
+default: true
+primaryTextExpression: Name
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: CASE WHEN SEM_BOOLEAN_TO_CHAR(IsActive) = 'true' THEN
+  'images://mdi/bell-check.svg' ELSE 'images://mdi/bell-cancel-outline.svg' END
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

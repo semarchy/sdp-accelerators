@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.DistributionChannel.business_views
+_type: BusinessView
+_name: DistributionChannelBusinessView
+label: "Distribution Channel"
+entity: LifeAndAnnuityInsurance.entities.DistributionChannel.DistributionChannel
+rootLabel: "Distribution Channels"
+rootPluralLabel: "Distribution Channels"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: DistributionChannel
+  displayCard: LifeAndAnnuityInsurance.entities.DistributionChannel.display_cards.DistributionChannelDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.DistributionChannel.DistributionChannel
+  actionSet: LifeAndAnnuityInsurance.entities.DistributionChannel.action_sets.DistributionChannelActionSet
+  collection: LifeAndAnnuityInsurance.entities.DistributionChannel.collection_views.DistributionChannelCollectionView
+  form: LifeAndAnnuityInsurance.entities.DistributionChannel.forms.DistributionChannelForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Policy
+      label: "Policy"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Policies"
+      iconUrl: images://mdi/file-document-outline.svg
+      transitionPath: Policy
+      useCustomLabel: true
+      description: "Transition from Distribution Channel to related Policies."
+      visibleInFormTabCondition: any Policy has (1=1)
+      enableHierarchy: any Policy has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Policy
+        displayCard: LifeAndAnnuityInsurance.entities.Policy.display_cards.PolicyDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Policy.Policy
+        actionSet: LifeAndAnnuityInsurance.entities.Policy.action_sets.PolicyActionSet
+        collection: LifeAndAnnuityInsurance.entities.Policy.collection_views.PolicyCollectionView
+        form: LifeAndAnnuityInsurance.entities.Policy.forms.PolicyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/source-branch.svg

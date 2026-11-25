@@ -1,0 +1,85 @@
+# Currency entity for the SAP Business Partner 360 accelerator.
+_name: Currency
+_package: sapbp360.entities.Currency
+_type: Entity
+primaryKey: sapbp360.entities.Currency.Currency.CurrencyID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: CurrencyCode
+label: Currency
+documentation: Currency reference data used by the SAP Business Partner 360 model.
+description: Currency reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/Currency.svg
+pluralLabel: Currencies
+historizeGolden: true
+historizeMaster: false
+physicalTableName: CURRENCY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CurrencyID
+    physicalName: CURRENCY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Currency ID
+    documentation: Unique identifier for the currency.
+    description: Unique identifier for the currency.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Currency ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    physicalName: CURRENCY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Currency Code
+    documentation: Code for the currency.
+    description: Code for the currency.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Currency Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: CurrencyName
+    physicalName: CURRENCY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Currency Name
+    documentation: Name of the currency.
+    description: Name of the currency.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Currency Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the currency.
+    description: Description for the currency.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the currency is active.
+    description: Indicates whether the currency is active.
+    mandatory: false
+    length: 1
+    searchable: true

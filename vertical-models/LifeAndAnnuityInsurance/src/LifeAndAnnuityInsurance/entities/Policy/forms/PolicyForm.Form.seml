@@ -1,0 +1,487 @@
+_package: LifeAndAnnuityInsurance.entities.Policy.forms
+_type: Form
+_name: PolicyForm
+entity: LifeAndAnnuityInsurance.entities.Policy.Policy
+default: true
+formTabs:
+  - _type: FormTab
+    _name: PolicySummary
+    iconUrl: images://mdi/file-document-box.svg
+    label: Summary
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: PolicySummaryContainer
+        content:
+          - _type: MarkdownField
+            _name: PolicySummaryOverview
+            label: Overview
+            value: >-
+              SEM_CONCAT('', '1',
+                '# Policy ', COALESCE(PolicyNumber, 'Unnumbered policy'), CHR(10), CHR(10),
+                '**Status:** ', COALESCE(FDN_PolicyStatus, 'Not recorded'), CHR(10),
+                '**Version:** ', COALESCE(PolicyVersion, 'Not recorded'), CHR(10),
+                '**Plan:** ', COALESCE(FDN_InsurancePlan, 'Not recorded'), CHR(10),
+                '**Payment status:** ', COALESCE(FDN_PaymentStatus, 'Not recorded'), CHR(10),
+                '**Annual premium:** ', CASE WHEN AnnualPremium IS NOT NULL THEN SEM_CONCAT(' ', '1', COALESCE(CurrencyCode, ''), SEM_NUMBER_TO_CHAR(AnnualPremium)) ELSE 'Not recorded' END
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: title
+              typographyValueInterpreter: LITERAL
+              icon: images://mdi/file-document-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:blue 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+
+  - _type: FormTab
+    _name: Policy
+    label: "Policy"
+    iconUrl: images://mdi/file-document-outline.svg
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: PolicyGeneralSection
+        label: "Policy General"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PolicyGeneralRow
+            content:
+              - _type: FormContainer
+                _name: PolicyGeneralColA
+                content:
+                  - _type: TextField
+                    _name: PolicyID
+                    label: "Policy ID"
+                    dataType: STRING
+                    useCustomLabel: true
+                    value: PolicyID
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: PolicyNumber
+                    label: "Policy Number"
+                    dataType: STRING
+                    useCustomLabel: true
+                    value: PolicyNumber
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: PolicyVersion
+                    label: "Policy Version"
+                    dataType: STRING
+                    useCustomLabel: true
+                    value: PolicyVersion
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: CurrencyCode
+                    label: "Currency Code"
+                    dataType: STRING
+                    useCustomLabel: true
+                    value: CurrencyCode
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_InsurancePlan
+                    label: "Insurance Plan"
+                    dataType: STRING
+                    referencedEntity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan
+                    useCustomLabel: true
+                    value: FDN_InsurancePlan
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_PolicyStatus
+                    label: "Policy Status"
+                    dataType: STRING
+                    referencedEntity: LifeAndAnnuityInsurance.entities.PolicyStatus.PolicyStatus
+                    useCustomLabel: true
+                    value: FDN_PolicyStatus
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: JurisdictionState
+                    label: "Jurisdiction State"
+                    dataType: STRING
+                    useCustomLabel: true
+                    value: JurisdictionState
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyGeneralColB
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_DistributionChannel
+                    label: "Distribution Channel"
+                    dataType: STRING
+                    referencedEntity: LifeAndAnnuityInsurance.entities.DistributionChannel.DistributionChannel
+                    useCustomLabel: true
+                    value: FDN_DistributionChannel
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_TaxQualification
+                    label: "Tax Qualification"
+                    dataType: STRING
+                    referencedEntity: LifeAndAnnuityInsurance.entities.TaxQualification.TaxQualification
+                    useCustomLabel: true
+                    value: FDN_TaxQualification
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_PaymentPlan
+                    label: "Payment Plan"
+                    dataType: STRING
+                    referencedEntity: LifeAndAnnuityInsurance.entities.PaymentPlan.PaymentPlan
+                    useCustomLabel: true
+                    value: FDN_PaymentPlan
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyGeneralColC
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_PaymentStatus
+                    label: "Payment Status"
+                    dataType: STRING
+                    referencedEntity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus
+                    useCustomLabel: true
+                    value: FDN_PaymentStatus
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: CheckboxField
+                    _name: AutoPayIndicator
+                    label: "Auto Pay Indicator"
+                    dataType: BOOLEAN
+                    useCustomLabel: true
+                    value: AutoPayIndicator
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: CheckboxField
+                    _name: LapseIndicator
+                    label: "Lapse Indicator"
+                    dataType: BOOLEAN
+                    useCustomLabel: true
+                    value: LapseIndicator
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+
+      - _type: FormSection
+        _name: PolicyLifecycleSection
+        label: "Lifecycle Dates"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PolicyLifecycleRow
+            content:
+              - _type: FormContainer
+                _name: PolicyLifecycleColA
+                content:
+                  - _type: TextField
+                    _name: IssueDate
+                    label: "Issue Date"
+                    dataType: DATE
+                    useCustomLabel: true
+                    value: IssueDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: EffectiveDate
+                    label: "Effective Date"
+                    dataType: DATE
+                    useCustomLabel: true
+                    value: EffectiveDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: TerminationDate
+                    label: "Termination Date"
+                    dataType: DATE
+                    useCustomLabel: true
+                    value: TerminationDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyLifecycleColB
+                content:
+                  - _type: TextField
+                    _name: MaturityDate
+                    label: "Maturity Date"
+                    dataType: DATE
+                    useCustomLabel: true
+                    value: MaturityDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: SurrenderDate
+                    label: "Surrender Date"
+                    dataType: DATE
+                    useCustomLabel: true
+                    value: SurrenderDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyLifecycleColC
+                content:
+                  - _type: TextField
+                    _name: GracePeriodEndDate
+                    label: "Grace Period End Date"
+                    dataType: DATE
+                    useCustomLabel: true
+                    value: GracePeriodEndDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: FreeLookEndDate
+                    label: "Free Look End Date"
+                    dataType: DATE
+                    useCustomLabel: true
+                    value: FreeLookEndDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+
+      - _type: FormSection
+        _name: PolicyBillingSection
+        label: "Billing and Premium"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PolicyBillingRow
+            content:
+              - _type: FormContainer
+                _name: PolicyBillingColA
+                content:
+                  - _type: TextField
+                    _name: AnnualPremium
+                    label: "Annual Premium"
+                    dataType: DECIMAL
+                    useCustomLabel: true
+                    value: AnnualPremium
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: ModalPremium
+                    label: "Modal Premium"
+                    dataType: DECIMAL
+                    useCustomLabel: true
+                    value: ModalPremium
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyBillingColB
+                content:
+                  - _type: TextField
+                    _name: FaceAmount
+                    label: "Face Amount"
+                    dataType: DECIMAL
+                    useCustomLabel: true
+                    value: FaceAmount
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: DeathBenefitAmount
+                    label: "Death Benefit Amount"
+                    dataType: DECIMAL
+                    useCustomLabel: true
+                    value: DeathBenefitAmount
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyBillingColC
+                content:
+                  - _type: TextField
+                    _name: CashValue
+                    label: "Cash Value"
+                    dataType: DECIMAL
+                    useCustomLabel: true
+                    value: CashValue
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN

@@ -1,0 +1,97 @@
+# This is the CampaignCollection collection view used in the Salesforce Accelerator application.
+# It defines how campaigns are displayed in various formats such as grid, list, and table.
+
+_package: sales360.entities.Campaign.collection_views
+_name: CampaignCollection
+_type: CollectionView
+entity: sales360.entities.Campaign.Campaign
+default: true
+displayCard: sales360.entities.Campaign.display_cards.CampaignDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Campaign Name
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 500
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: true
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_CampaignType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_CampaignType
+    visibleByDefault: true
+    displayCard: sales360.entities.CampaignType.display_cards.CampaignTypeDisplayCard
+    referencedEntity: sales360.entities.CampaignType.CampaignType
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Status
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Status
+    visibleByDefault: true
+    displayCard: sales360.entities.CampaignStatus.display_cards.CampaignStatusDisplayCard
+    referencedEntity: sales360.entities.CampaignStatus.CampaignStatus
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: DateColumn
+    _name: StartDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: StartDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: EndDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: EndDate
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: ExpectedRevenue
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: ExpectedRevenue
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BudgetedCost
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: BudgetedCost
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ExpectedResponse
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: ExpectedResponse
+    visibleByDefault: true

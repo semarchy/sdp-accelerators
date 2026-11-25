@@ -1,0 +1,144 @@
+# BusinessAttributeTypeForm: Form on BusinessAttributeType of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.BusinessAttributeType.forms
+_type: Form
+_name: BusinessAttributeTypeForm
+entity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+default: true
+formTabs:
+  - _type: FormTab
+    _name: BusinessAttributeType
+    label: Attribute type
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormContainer
+        _name: Columns
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: LeftColumn
+            layoutDirection: COLUMN
+            relativeWidth: 50
+            content:
+              - _type: FormSection
+                _name: Identity
+                label: Identification
+                layoutDirection: COLUMN
+                content:
+                  - _type: IdField
+                    _name: Code
+                    value: Code
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: Natural key of the attribute type, entered by the author and never changed (for example EMAIL).
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                  - _type: TextField
+                    _name: Name
+                    value: Name
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: Name of the attribute type.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                  - _type: TextField
+                    _name: Description
+                    value: Description
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: What values of this type hold.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: RightColumn
+            layoutDirection: COLUMN
+            relativeWidth: 50
+            content:
+              - _type: FormSection
+                _name: Details
+                label: Details
+                layoutDirection: COLUMN
+                content:
+                  - _type: TextField
+                    _name: FormatPattern
+                    value: FormatPattern
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      isMultiline: '1'
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMinLines: '3'
+                      multilineMinLinesValueInterpreter: LITERAL
+                    helperText: Regular expression that a valid value matches.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                  - _type: TextField
+                    _name: Example
+                    value: Example
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      isMultiline: '1'
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMinLines: '3'
+                      multilineMinLinesValueInterpreter: LITERAL
+                    helperText: An example of a valid value.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+              - _type: FormSection
+                _name: Links
+                label: Relationships
+                layoutDirection: COLUMN
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_DefaultClassification
+                    value: FDN_DefaultClassification
+                    useCustomLabel: true
+                    label: Default classification
+                    dataType: STRING
+                    referencedEntity: GovernanceRules.entities.DataClassification.DataClassification
+                    displayCard: GovernanceRules.entities.DataClassification.display_cards.DataClassificationDisplayCard
+                    helperText: The classification that an attribute of this type gets by default.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                  - _type: ReferenceField
+                    _name: FDN_ReferenceStandard
+                    value: FDN_ReferenceStandard
+                    useCustomLabel: true
+                    label: Reference standard
+                    dataType: STRING
+                    referencedEntity: GovernanceRules.entities.Regulation.Regulation
+                    displayCard: GovernanceRules.entities.Regulation.display_cards.RegulationDisplayCard
+                    helperText: The standard that governs the format of values of this type (for example ISO 3166-1 for COUNTRY_CODE).
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL

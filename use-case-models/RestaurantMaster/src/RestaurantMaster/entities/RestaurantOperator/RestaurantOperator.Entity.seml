@@ -1,0 +1,78 @@
+_package: RestaurantMaster.entities.RestaurantOperator
+_type: Entity
+_name: RestaurantOperator
+label: Operator
+pluralLabel: Operators
+entityType: BASIC
+physicalTableName: REST_OPERATOR
+iconUrl: images://mdi/account-tie.svg
+description: Which legal entity operates the restaurant, under which ownership type and agreement, from a start date (transfer closing date).
+documentation: Which legal entity operates the restaurant, under which ownership type and agreement, from a start date (transfer closing date).
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: RestaurantOperatorID
+  label: Key
+  physicalName: REST_OPERATOR_ID
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  documentation: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  length: 100
+- _type: EntityAttribute
+  _name: OwnershipType
+  label: Ownership type
+  physicalName: OWNERSHIPTYPE
+  dataType: RestaurantMaster.list_of_values.OwnershipType
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: How the restaurant is operated.
+  documentation: How the restaurant is operated.
+- _type: EntityAttribute
+  _name: AgreementNumber
+  label: Agreement number
+  physicalName: AGREEMENTNUMBER
+  dataType: String
+  length: 64
+  mandatory: false
+  searchable: true
+  description: Franchise or license agreement; empty when company-operated.
+  documentation: Franchise or license agreement; empty when company-operated.
+- _type: EntityAttribute
+  _name: AgreementExpirationDate
+  label: Agreement expiration date
+  physicalName: AGREEMENTEXPIRATIONDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: End of the agreement term (renewal planning).
+  documentation: End of the agreement term (renewal planning).
+- _type: EntityAttribute
+  _name: EffectiveFrom
+  label: Effective from
+  physicalName: EFFECTIVEFROM
+  dataType: Date
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Day this operator takes over; it stays current until the next operator starts.
+  documentation: Day this operator takes over; it stays current until the next operator starts.
+- _type: EntityAttribute
+  _name: NaturalKey
+  label: Natural key
+  physicalName: NATURALKEY
+  dataType: String
+  length: 300
+  mandatory: false
+  searchable: false
+  description: Business key of the row, built from its restaurant and its distinguishing fields; enforces uniqueness.
+  documentation: Business key of the row, built from its restaurant and its distinguishing fields; enforces uniqueness.
+primaryKey: RestaurantMaster.entities.RestaurantOperator.RestaurantOperator.RestaurantOperatorID
+sourceIdGeneration:
+  mode: MANUAL

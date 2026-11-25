@@ -1,0 +1,281 @@
+_package: LifeAndAnnuityInsurance.entities.Party.business_views
+_type: BusinessView
+_name: PartyBusinessView
+label: "Party"
+entity: LifeAndAnnuityInsurance.entities.Party.Party
+rootLabel: "Parties"
+rootPluralLabel: "Parties"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Party
+  displayCard: LifeAndAnnuityInsurance.entities.Party.display_cards.PartyDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.Party.Party
+  actionSet: LifeAndAnnuityInsurance.entities.Party.action_sets.PartyActionSet
+  collection: LifeAndAnnuityInsurance.entities.Party.collection_views.PartyCollectionView
+  form: LifeAndAnnuityInsurance.entities.Party.forms.PartyForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: PolicyPartyRole
+      label: "Policy Party Role"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Policy Party Roles"
+      iconUrl: images://mdi/account-switch-outline.svg
+      transitionPath: PolicyPartyRole
+      useCustomLabel: true
+      description: "Transition from Party to related Policy Party Roles."
+      visibleInFormTabCondition: any PolicyPartyRole has (1=1)
+      enableHierarchy: any PolicyPartyRole has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: PolicyPartyRole
+        displayCard: LifeAndAnnuityInsurance.entities.PolicyPartyRole.display_cards.PolicyPartyRoleDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.PolicyPartyRole.PolicyPartyRole
+        actionSet: LifeAndAnnuityInsurance.entities.PolicyPartyRole.action_sets.PolicyPartyRoleActionSet
+        collection: LifeAndAnnuityInsurance.entities.PolicyPartyRole.collection_views.PolicyPartyRoleCollectionView
+        form: LifeAndAnnuityInsurance.entities.PolicyPartyRole.forms.PolicyPartyRoleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: UnderwritingCasesAsProposedInsured
+      label: "Underwriting Case as Proposed Insured"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Underwriting Cases as Proposed Insured"
+      iconUrl: images://mdi/stethoscope.svg
+      transitionPath: UnderwritingCasesAsProposedInsured
+      useCustomLabel: true
+      description: "Transition from Party to related Underwriting Cases as Proposed Insured."
+      visibleInFormTabCondition: any UnderwritingCasesAsProposedInsured has (1=1)
+      enableHierarchy: any UnderwritingCasesAsProposedInsured has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: UnderwritingCasesAsProposedInsured
+        displayCard: LifeAndAnnuityInsurance.entities.UnderwritingCase.display_cards.UnderwritingCaseDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.UnderwritingCase.UnderwritingCase
+        actionSet: LifeAndAnnuityInsurance.entities.UnderwritingCase.action_sets.UnderwritingCaseActionSet
+        collection: LifeAndAnnuityInsurance.entities.UnderwritingCase.collection_views.UnderwritingCaseCollectionView
+        form: LifeAndAnnuityInsurance.entities.UnderwritingCase.forms.UnderwritingCaseForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: BeneficiaryDesignations
+      label: "Beneficiary Designation"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Beneficiary Designations"
+      iconUrl: images://mdi/account-heart-outline.svg
+      transitionPath: BeneficiaryDesignations
+      useCustomLabel: true
+      description: "Transition from Party to related Beneficiary Designations."
+      visibleInFormTabCondition: any BeneficiaryDesignations has (1=1)
+      enableHierarchy: any BeneficiaryDesignations has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: BeneficiaryDesignations
+        displayCard: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.display_cards.BeneficiaryDesignationDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.BeneficiaryDesignation
+        actionSet: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.action_sets.BeneficiaryDesignationActionSet
+        collection: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.collection_views.BeneficiaryDesignationCollectionView
+        form: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.forms.BeneficiaryDesignationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: ClaimsAsClaimant
+      label: "Claim as Claimant"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Claims as Claimant"
+      iconUrl: images://mdi/file-alert-outline.svg
+      transitionPath: ClaimsAsClaimant
+      useCustomLabel: true
+      description: "Transition from Party to related Claims as Claimant."
+      visibleInFormTabCondition: any ClaimsAsClaimant has (1=1)
+      enableHierarchy: any ClaimsAsClaimant has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: ClaimsAsClaimant
+        displayCard: LifeAndAnnuityInsurance.entities.Claim.display_cards.ClaimDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Claim.Claim
+        actionSet: LifeAndAnnuityInsurance.entities.Claim.action_sets.ClaimActionSet
+        collection: LifeAndAnnuityInsurance.entities.Claim.collection_views.ClaimCollectionView
+        form: LifeAndAnnuityInsurance.entities.Claim.forms.ClaimForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: ClaimsAsInsured
+      label: "Claim as Insured"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Claims as Insured"
+      iconUrl: images://mdi/file-alert-outline.svg
+      transitionPath: ClaimsAsInsured
+      useCustomLabel: true
+      description: "Transition from Party to related Claims as Insured."
+      visibleInFormTabCondition: any ClaimsAsInsured has (1=1)
+      enableHierarchy: any ClaimsAsInsured has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: ClaimsAsInsured
+        displayCard: LifeAndAnnuityInsurance.entities.Claim.display_cards.ClaimDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Claim.Claim
+        actionSet: LifeAndAnnuityInsurance.entities.Claim.action_sets.ClaimActionSet
+        collection: LifeAndAnnuityInsurance.entities.Claim.collection_views.ClaimCollectionView
+        form: LifeAndAnnuityInsurance.entities.Claim.forms.ClaimForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: ClaimBenefitPaymentsAsPayee
+      label: "Claim Benefit Payment as Payee"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Claim Benefit Payments as Payee"
+      iconUrl: images://mdi/cash-check.svg
+      transitionPath: ClaimBenefitPaymentsAsPayee
+      useCustomLabel: true
+      description: "Transition from Party to related Claim Benefit Payments as Payee."
+      visibleInFormTabCondition: any ClaimBenefitPaymentsAsPayee has (1=1)
+      enableHierarchy: any ClaimBenefitPaymentsAsPayee has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: ClaimBenefitPaymentsAsPayee
+        displayCard: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.display_cards.ClaimBenefitPaymentDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+        actionSet: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.action_sets.ClaimBenefitPaymentActionSet
+        collection: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.collection_views.ClaimBenefitPaymentCollectionView
+        form: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.forms.ClaimBenefitPaymentForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Records
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: PartyMasterRecords
+        _type: BusinessViewEntity
+        displayCard: LifeAndAnnuityInsurance.entities.Party.display_cards.PartyDisplayCard
+        collection: LifeAndAnnuityInsurance.entities.Party.collection_views.PartyCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: LifeAndAnnuityInsurance.entities.Party.Party
+        form: LifeAndAnnuityInsurance.entities.Party.forms.PartyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: LifeAndAnnuityInsurance.entities.Party.action_sets.PartyActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: "Transition from Party to related golden history records."
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: LifeAndAnnuityInsurance.entities.Party.business_views.PartyBusinessView.Party
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/account-multiple-outline.svg

@@ -1,0 +1,219 @@
+﻿_package: RetailCustomer360.entities.ContactPointAddress
+_type: Entity
+_name: ContactPointAddress
+label: Contact Point Address
+pluralLabel: Contact Point Addresses
+entityType: FUZZY_MATCHED
+physicalTableName: CONTACT_POINT_ADDRESS
+iconUrl: https://api.iconify.design/mdi/map-marker.svg?color=%230D1B2A&width=64
+description: "Stores customer address contact points for location-based matching and outreach."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AddressId
+    label: Address Id
+    physicalName: ADDRESS_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier for the address contact point record."
+
+  - _type: EntityAttribute
+    _name: AddressLine1
+    label: Address Line 1
+    physicalName: ADDRESS_LINE_1
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Street address line 1."
+
+  - _type: EntityAttribute
+    _name: AddressLine2
+    label: Address Line 2
+    physicalName: ADDRESS_LINE_2
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Street address line 2."
+
+  - _type: EntityAttribute
+    _name: AddressLine3
+    label: Address Line 3
+    physicalName: ADDRESS_LINE_3
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Optional additional address line."
+
+  - _type: EntityAttribute
+    _name: City
+    label: City
+    physicalName: CITY
+    dataType: String
+    length: 100
+    searchable: true
+    description: "City."
+
+  - _type: EntityAttribute
+    _name: StateProvince
+    label: State Province
+    physicalName: STATE_PROVINCE
+    dataType: String
+    length: 100
+    searchable: true
+    description: "State or province."
+
+  - _type: EntityAttribute
+    _name: PostalCode
+    label: Postal Code
+    physicalName: POSTAL_CODE
+    dataType: String
+    length: 20
+    searchable: true
+    description: "ZIP/postal code."
+
+  - _type: EntityAttribute
+    _name: AddressType
+    label: Address Type
+    physicalName: ADDRESS_TYPE
+    dataType: RetailCustomer360.list_of_values.AddressType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Address type classification (Home, Work, Billing, Shipping, Store Pickup)."
+
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates primary address."
+
+  - _type: EntityAttribute
+    _name: IsVerified
+    label: Is Verified
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates standardized/verified address."
+
+  - _type: EntityAttribute
+    _name: VerificationDate
+    label: Verification Date
+    physicalName: VERIFICATION_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date/time address was verified."
+
+  - _type: EntityAttribute
+    _name: Latitude
+    label: Latitude
+    physicalName: LATITUDE
+    dataType: Decimal
+    precision: 10
+    scale: 7
+    searchable: true
+    description: "Optional geocoded latitude."
+
+  - _type: EntityAttribute
+    _name: Longitude
+    label: Longitude
+    physicalName: LONGITUDE
+    dataType: Decimal
+    precision: 10
+    scale: 7
+    searchable: true
+    description: "Optional geocoded longitude."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system."
+
+  - _type: EntityAttribute
+    _name: SourceAddressKey
+    label: Source Address Key
+    physicalName: SOURCE_ADDRESS_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source address identifier."
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: RetailCustomer360.entities.ContactPointAddress.ContactPointAddress.AddressId
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: ContactPointAddressSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: FullAddressExact
+      label: Full address exact match
+      matchScore: 100
+      condition: Record1.AddressLine1 IS NOT NULL AND Record1.City IS NOT NULL AND Record1.StateProvince IS NOT NULL AND Record1.PostalCode IS NOT NULL AND Record1.FID_Country IS NOT NULL AND Record2.AddressLine1 IS NOT NULL AND Record2.City IS NOT NULL AND Record2.StateProvince IS NOT NULL AND Record2.PostalCode IS NOT NULL AND Record2.FID_Country IS NOT NULL AND LOWER(Record1.AddressLine1) = LOWER(Record2.AddressLine1) AND LOWER(Record1.City) = LOWER(Record2.City) AND LOWER(Record1.StateProvince) = LOWER(Record2.StateProvince) AND Record1.PostalCode = Record2.PostalCode AND Record1.FID_Country = Record2.FID_Country
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameCustomerFuzzyAddress
+      label: Same customer with fuzzy street address and same postal code
+      matchScore: 73
+      condition: Record1.FID_Customer IS NOT NULL AND Record2.FID_Customer IS NOT NULL AND Record1.FID_Customer = Record2.FID_Customer AND Record1.PostalCode IS NOT NULL AND Record2.PostalCode IS NOT NULL AND Record1.PostalCode = Record2.PostalCode AND SEM_EDIT_DISTANCE_SIMILARITY(LOWER(Record1.AddressLine1), LOWER(Record2.AddressLine1)) >= 85
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 50
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 98
+  mergeThresholdMergingConfirmedWithUnconfirmed: 99
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 99
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+

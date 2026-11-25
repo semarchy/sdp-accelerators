@@ -1,0 +1,52 @@
+# It is an enricher for the Contact entity in the Salesforce Accelerator application.
+# It is a Java Plugin Enricher that uses a Google Maps API plugin to geocode other addresses.
+# This enricher scope is set to NONE and can be changed as per business use case.
+_type: JavaPluginEnricher
+_package: sales360.entities.Contact.enrichers
+_name: GeocodedOtherAddress
+entity: sales360.entities.Contact.Contact
+label: Geocoded Other Address
+description: Enricher to geocode the Mailing Address using Google Maps API
+pluginId: com.semarchy.integration.rowTransformers.googleMapsEnricher
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: PARAM_CLIENT_ID
+    value: INSERT_YOUR_API_KEY
+pluginInputs:
+  - inputName: IN_POSTALCODE
+    expression: OtherAddress.InpZipCode
+  - inputName: IN_COUNTRY
+    expression: OtherAddress.InpCountry
+  - inputName: IN_CITY
+    expression: OtherAddress.InpCity
+  - inputName: IN_ADDRESSLINE
+    expression: OtherAddress.InpAddressLine
+pluginOutputs:
+  - outputName: COUNTRY_SHORTNAME
+    attributeName: OtherAddress.GeoCountryShort
+  - outputName: COORDINATES_LATITUDE
+    attributeName: OtherAddress.GeoLatitude
+  - outputName: COORDINATES_LONGITUDE
+    attributeName: OtherAddress.GeoLongitude
+  - outputName: QUALITY
+    attributeName: OtherAddress.GeoQuality
+  - outputName: STREETNUMBER_LONGNAME
+    attributeName: OtherAddress.GeoStreetNumber
+  - outputName: ADM_AREA_LEV1_LONGNAME
+    attributeName: OtherAddress.GeoState
+  - outputName: POSTALCODE_LONGNAME
+    attributeName: OtherAddress.GeoPostalCode
+  - outputName: COUNTRY_LONGNAME
+    attributeName: OtherAddress.GeoCountry
+  - outputName: STATUS
+    attributeName: OtherAddress.GeoStatus
+  - outputName: ROUTE_LONGNAME
+    attributeName: OtherAddress.GeoStreetName
+  - outputName: LOCALITY_LONGNAME
+    attributeName: OtherAddress.GeoLocality
+afterEnrichers: sales360.entities.Contact.enrichers.GecodedMailingAddress

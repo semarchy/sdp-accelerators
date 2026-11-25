@@ -1,0 +1,38 @@
+_package: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.steppers
+_type: Stepper
+_name: AuthorClaimBenefitPayments
+entity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+label: "Claim Benefit Payments"
+rootStep:
+  _type: CollectionStep
+  _name: ClaimBenefitPayments
+  label: "Claim Benefit Payments"
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.collection_views.ClaimBenefitPaymentImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: ClaimBenefitPayment
+      label: "Claim Benefit Payment"
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.forms.ClaimBenefitPaymentForm.ClaimBenefitPayment
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.validations.ClaimBenefitPaymentAmountCheck

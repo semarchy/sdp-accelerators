@@ -1,0 +1,923 @@
+_name: AuthorItems
+_package: Manufacturing.entities.Item.steppers
+_type: Stepper
+entity: Manufacturing.entities.Item.Item
+rootStep:
+  _name: Items
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Items
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemsHaveItemCondition.ItemCondition
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.Item.Item.Name
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.Item.Item.SKU
+    - onStepExit: SKIP
+      validationType: UNIQUE
+      uniqueKey: Manufacturing.entities.Item.unique_keys.SKU_ID
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemsHaveItemType.ItemType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+  stepTriggers: []
+  childSteps:
+    - _name: Item
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item
+      formTab: Manufacturing.entities.Item.forms.ItemFormDataEntry.Item
+      formStepEnrichers:
+        - enricher: Manufacturing.entities.Item.enrichers.DefaultItemCondition
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: true
+        - enricher: Manufacturing.entities.Item.enrichers.NormalizeSKU
+          executedOnButtonClick: false
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.Item.forms.ItemFormDataEntry.Item.Container4.FDN_ItemType
+          referencePickerCollectionView: Manufacturing.entities.ItemType.collection_views.ItemTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.Item.forms.ItemFormDataEntry.Item.Container.Container3.FDN_ItemSubFamily
+          referenceFilter: Referenced.FID_ItemFamily = Record.FID_ItemFamily
+          referencePickerCollectionView: Manufacturing.entities.ItemSubFamily.collection_views.ItemSubFamilyCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.Item.forms.ItemFormDataEntry.Item.Container.Container2.FDN_ItemFamily
+          referencePickerCollectionView: Manufacturing.entities.ItemFamily.collection_views.ItemFamilyCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: Manufacturing.entities.Item.forms.ItemFormDataEntry.Item.Container4.FDN_ItemCondition
+          referencePickerCollectionView: Manufacturing.entities.ItemCondition.collection_views.ItemConditionCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemCondition.ItemCondition
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.Name
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: UNIQUE
+          executedOnDataChange: true
+          executedOnFormOpen: false
+          uniqueKey: Manufacturing.entities.Item.unique_keys.SKU_ID
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemType.ItemType
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.SKU
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemType.ItemType
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.Name
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.SKU
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemCondition.ItemCondition
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: BLOCK
+          validationType: UNIQUE
+          uniqueKey: Manufacturing.entities.Item.unique_keys.SKU_ID
+      stepTriggers: []
+    - _name: ItemSpecificAttributes
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: Manufacturing.entities.ItemSpecificAttribute.collection_views.ItemSpecificAttributeCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Item Specific Attributes
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: Manufacturing.entities.ItemSpecificAttribute.validations.MandatoryAttribute
+        - onStepExit: SKIP
+          validationType: UNIQUE
+          uniqueKey: Manufacturing.entities.Item.unique_keys.SKU_ID
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemCondition.ItemCondition
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttributeValue.AttributeValue
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.SKU
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.Name
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemType.ItemType
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: Manufacturing.references.ItemSpecificAttributesHasItem
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: ItemSpecificAttribute
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Item Specific Attribute
+          formTab: Manufacturing.entities.ItemSpecificAttribute.forms.ItemSpecificAttributeForm.ItemSpecificAttribute
+          formStepEnrichers: []
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.ItemSpecificAttribute.forms.ItemSpecificAttributeForm.ItemSpecificAttribute.FDN_Item
+              referencePickerCollectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.ItemSpecificAttribute.forms.ItemSpecificAttributeForm.ItemSpecificAttribute.FDN_AttributeValue
+              referencePickerCollectionView: Manufacturing.entities.ItemAttributeValue.collection_views.ItemAttributeValueCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.ItemSpecificAttribute.forms.ItemSpecificAttributeForm.ItemSpecificAttribute.FDN_Attribute
+              referencePickerCollectionView: Manufacturing.entities.ItemAttribute.collection_views.AttributeCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: CHECK
+              executedOnDataChange: false
+              executedOnFormOpen: false
+              validator: Manufacturing.entities.ItemSpecificAttribute.validations.MandatoryAttribute
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.ItemSpecificAttributesHasAttributeValue.AttributeValue
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.ItemSpecificAttributesHasAttributeValue.AttributeValue
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+            - onStepExit: SKIP
+              validationType: CHECK
+              validator: Manufacturing.entities.ItemSpecificAttribute.validations.MandatoryAttribute
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+          stepTriggers: []
+    - _name: Image
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: Manufacturing.entities.Item_ItemImageJoin.collection_views.Item_ItemImageJoinCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: true
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Image
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: UNIQUE
+          uniqueKey: Manufacturing.entities.Item.unique_keys.SKU_ID
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemType.ItemType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemCondition.ItemCondition
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.Name
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.SKU
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: true
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: LIST
+      manyToManyFdnAttribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+      manyToManyPickerCollectionView: Manufacturing.entities.ItemImage.collection_views.ItemImageCollection
+      oneToManyReference: Manufacturing.references.ItemImageJoinsBelongsToItem
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: Item_ItemImageJoin
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Item Image Join
+          formTab: Manufacturing.entities.Item_ItemImageJoin.forms.Item_ItemImageJoinForm.Item_ItemImageJoin
+          formStepEnrichers: []
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.Item_ItemImageJoin.forms.Item_ItemImageJoinForm.Item_ItemImageJoin.FDN_ItemImage
+              referencePickerCollectionView: Manufacturing.entities.ItemImage.collection_views.ItemImageCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.Item_ItemImageJoin.forms.Item_ItemImageJoinForm.Item_ItemImageJoin.FDN_Item
+              referencePickerCollectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+          stepTriggers: []
+    - _name: AssemblyHierarchy
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: Manufacturing.entities.ItemBillOfMaterial.collection_views.ItemBillOfMaterialCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Assembly Hierarchy
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: UNIQUE
+          uniqueKey: Manufacturing.entities.Item.unique_keys.SKU_ID
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.Name
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemType.ItemType
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemCondition.ItemCondition
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.SKU
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: Manufacturing.references.BillOfMaterialsHaveParentItem
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: ItemBillOfMaterial
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Item Bill Of Material
+          formTab: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm.ItemBillOfMaterial
+          formStepEnrichers:
+            - enricher: Manufacturing.entities.ItemBillOfMaterial.enrichers.DefaultRelationshipType
+              executedOnButtonClick: false
+              executedOnDataChange: false
+              executedOnFormOpen: true
+            - enricher: Manufacturing.entities.ItemBillOfMaterial.enrichers.SetName
+              executedOnButtonClick: false
+              executedOnDataChange: true
+              executedOnFormOpen: false
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm.ItemBillOfMaterial.FDN_ParentItem
+              referencePickerCollectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.ItemBillOfMaterial.forms.ItemBillOfMaterialForm.ItemBillOfMaterial.FDN_ChildItem
+              referencePickerCollectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - validationType: LOV
+              attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+              executedOnDataChange: false
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - validationType: MANDATORY
+              attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+            - onStepExit: SKIP
+              validationType: LOV
+              attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+            - onStepExit: SKIP
+              validationType: MANDATORY
+              attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+          stepTriggers: []
+    - _name: SupplierManufacturer
+      _type: CollectionStep
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      collectionView: Manufacturing.entities.SupplierManufacturerPlant.collection_views.SupplierManufacturerPlantCollection
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      label: Supplier / Manufacturer
+      linear: true
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemType.ItemType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemCondition.ItemCondition
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+        - onStepExit: SKIP
+          validationType: UNIQUE
+          uniqueKey: Manufacturing.entities.Item.unique_keys.SKU_ID
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.SKU
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHaveSupplierAddress.SupplierAddress
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Item.Item.Name
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturerPlantsHasManufacturer.Manufacturer
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersSupplier.Supplier
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+      stepTriggers: []
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      manyToManyCustomSortEnabled: false
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyDefaultDisplayType: TABLE
+      oneToManyReference: Manufacturing.references.SupplierManufacturersHasItem
+      manyToManyPickerSearchTypeConfigs: []
+      childSteps:
+        - _name: SupplierManufacturerPlant
+          _type: FormStep
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          label: Supplier Manufacturer Plant
+          formTab: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant
+          formStepEnrichers:
+            - enricher: Manufacturing.entities.SupplierManufacturerPlant.enrichers.Manufacturer
+              executedOnButtonClick: false
+              executedOnDataChange: false
+              executedOnFormOpen: false
+          referenceFormFieldConfigs:
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_Item
+              referencePickerCollectionView: Manufacturing.entities.Item.collection_views.ItemCollection
+              sortExpression: UpdateDate, ItemID DESC
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_ManufacturingPlant
+              referenceFilter: >-
+                (Referenced.FID_Manufacturer  = Record.FID_Manufacturer )
+
+                OR
+
+                (Record.FID_Manufacturer IS NULL AND Referenced.PlantName like
+                '%')
+              referencePickerCollectionView: Manufacturing.entities.ManufacturingPlant.collection_views.ManufacturingPlantCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_Supplier
+              referencePickerCollectionView: Manufacturing.entities.Supplier.collection_views.SupplierCollection
+              sortExpression: |-
+                (LOOKUP
+                	COUNT ItemID
+                	FROM SupplierManufacturers.Item
+                END) DESC
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_SupplierAddress
+              referenceFilter: >-
+                (ANY Referenced.SupplierAddressJoins.Supplier has (SupplierID =
+                Record.FID_Supplier ))
+
+                OR
+
+                (Record.FID_Supplier IS NULL and Referenced.GeocodedCountry like
+                '%' and Referenced.Household = 'false')
+              referencePickerCollectionView: Manufacturing.entities.Address.collection_views.AddressCollection
+              referencePickerSearchTypeConfigs: []
+            - enableUserSort: true
+              referencePickerType: AUTO_COMPLETE
+              fdnFormField: Manufacturing.entities.SupplierManufacturerPlant.forms.SupplierManufacturerPlantForm.SupplierManufacturerPlant.FDN_Manufacturer
+              referencePickerCollectionView: Manufacturing.entities.Manufacturer.collection_views.ManufacturerCollection
+              sortExpression: |-
+                (LOOKUP
+                	COUNT ItemID
+                	FROM SupplierManufacturerPlants.Item
+                END) DESC
+              referencePickerSearchTypeConfigs: []
+          formStepValidations:
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturersHaveSupplierAddress.SupplierAddress
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturerPlantsHasManufacturer.Manufacturer
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+              executedOnDataChange: true
+              executedOnFormOpen: true
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturersSupplier.Supplier
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - validationType: MANDATORY
+              attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+              executedOnDataChange: true
+              executedOnFormOpen: true
+          stepTransitionValidations:
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturersHaveSupplierAddress.SupplierAddress
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+            - onStepExit: WARN
+              validationType: MANDATORY
+              attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+            - onStepExit: BLOCK
+              validationType: MANDATORY
+              attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturerPlantsHasManufacturer.Manufacturer
+            - onStepExit: SKIP
+              validationType: FOREIGN
+              attribute: Manufacturing.references.SupplierManufacturersSupplier.Supplier
+          stepTriggers: []
+label: Author Items
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.Item.Item.Name
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.BillOfMaterialsHaveParentItem.ParentItem
+  - onStepperFinish: SKIP
+    validationType: UNIQUE
+    uniqueKey: Manufacturing.entities.Item.unique_keys.SKU_ID
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemImageJoinsBelongsToItem.Item
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemSpecificAttributesHasAttributeValue.AttributeValue
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemsHaveItemType.ItemType
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: Manufacturing.entities.ItemSpecificAttribute.validations.MandatoryAttribute
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemsHaveItemCondition.ItemCondition
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturerPlantsHasManufacturer.Manufacturer
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemsHaveItemSubFamily.ItemSubFamily
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemImageJoinsHasItemImage.ItemImage
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturersHaveSupplierAddress.SupplierAddress
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.SupplierManufacturersHasManufacturingPlant.ManufacturingPlant
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.BillOfMaterialsHaveChildItem.ChildItem
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemsBelongsToItemFamily.ItemFamily
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial.RelationshipType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierManufacturersSupplier.Supplier
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.Item.Item.SKU
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.SupplierManufacturersHasItem.Item
+triggers: []

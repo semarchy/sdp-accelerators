@@ -1,0 +1,134 @@
+_package: LifeAndAnnuityInsurance.entities.CashValueSnapshot
+_type: Entity
+_name: CashValueSnapshot
+label: "Cash Value Snapshot"
+pluralLabel: "Cash Value Snapshots"
+physicalTableName: CASH_VALUE_SNAPSHOT
+iconUrl: images://mdi/wallet-outline.svg
+description: "Represents point-in-time policy value measures for life insurance and annuity contracts."
+documentation: "Represents point-in-time policy value measures for life insurance and annuity contracts."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CashValueSnapshotID
+    label: "Cash Value Snapshot ID"
+    physicalName: CASH_VALUE_SNAPSHOT_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the cash value snapshot."
+    documentation: "Unique identifier for the cash value snapshot."
+  - _type: EntityAttribute
+    _name: ValuationDate
+    label: "Valuation Date"
+    physicalName: VALUATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date for which policy values are measured."
+    documentation: "Date for which policy values are measured."
+  - _type: EntityAttribute
+    _name: AccountValue
+    label: "Account Value"
+    physicalName: ACCT_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Account value at valuation date."
+    documentation: "Account value at valuation date."
+  - _type: EntityAttribute
+    _name: CashSurrenderValue
+    label: "Cash Surrender Value"
+    physicalName: CASH_SURR_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Cash surrender value at valuation date."
+    documentation: "Cash surrender value at valuation date."
+  - _type: EntityAttribute
+    _name: LoanBalance
+    label: "Loan Balance"
+    physicalName: LOAN_BALANCE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Loan balance at valuation date."
+    documentation: "Loan balance at valuation date."
+  - _type: EntityAttribute
+    _name: NetCashValue
+    label: "Net Cash Value"
+    physicalName: NET_CASH_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Net cash value after loans and charges."
+    documentation: "Net cash value after loans and charges."
+  - _type: EntityAttribute
+    _name: CostBasis
+    label: "Cost Basis"
+    physicalName: COST_BASIS
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Policy cost basis at valuation date."
+    documentation: "Policy cost basis at valuation date."
+  - _type: EntityAttribute
+    _name: DividendValue
+    label: "Dividend Value"
+    physicalName: DIVIDEND_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Dividend value or accumulation at valuation date."
+    documentation: "Dividend value or accumulation at valuation date."
+  - _type: EntityAttribute
+    _name: InterestCreditedAmount
+    label: "Interest Credited Amount"
+    physicalName: INT_CREDITED_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Interest credited for the valuation period."
+    documentation: "Interest credited for the valuation period."
+  - _type: EntityAttribute
+    _name: MarketValueAdjustmentAmount
+    label: "Market Value Adjustment Amount"
+    physicalName: MKT_VALUE_ADJ_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Market value adjustment amount, if applicable."
+    documentation: "Market value adjustment amount, if applicable."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional valuation notes."
+    documentation: "Additional valuation notes."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.CashValueSnapshot.CashValueSnapshot.CashValueSnapshotID
+entityType: ID_MATCHED

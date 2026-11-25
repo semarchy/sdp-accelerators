@@ -1,0 +1,13 @@
+_package: CTMDM.entities.EthicsCommittee.enrichers
+_name: NormalizeEthicsCommittee
+_type: SemQLEnricher
+entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+label: Normalize Ethics Committee / IRB
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Ethics Committee / IRB values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedCommitteeName
+    expression: "RTRIM(LTRIM(UPPER(CommitteeName)))"
+  - attributeName: NormalizedRegistrationNumber
+    expression: "RTRIM(LTRIM(UPPER(RegistrationNumber)))"

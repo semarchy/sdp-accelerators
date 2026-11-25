@@ -1,0 +1,26 @@
+_package: CTMDM.entities.ClinicalSite.action_sets
+_type: ActionSet
+_name: ClinicalSiteReviewSuggestionsActionSet
+
+entity: CTMDM.entities.ClinicalSite.ClinicalSite
+label: Clinical Site Review Suggestions Action Set
+defaultActionSet: false
+
+actions:
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnClinicalSite
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: CTMDM.entities.ClinicalSite.dups_managers.ReviewSuggestionsOnClinicalSite
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnClinicalSite
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: CTMDM.entities.ClinicalSite.dups_managers.ReviewSuggestionsOnClinicalSite
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false

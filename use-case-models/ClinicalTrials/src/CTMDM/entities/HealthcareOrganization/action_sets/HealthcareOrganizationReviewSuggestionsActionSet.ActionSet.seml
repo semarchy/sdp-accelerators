@@ -1,0 +1,26 @@
+_package: CTMDM.entities.HealthcareOrganization.action_sets
+_type: ActionSet
+_name: HealthcareOrganizationReviewSuggestionsActionSet
+
+entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+label: Healthcare Organization Review Suggestions Action Set
+defaultActionSet: false
+
+actions:
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnHealthcareOrganization
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: CTMDM.entities.HealthcareOrganization.dups_managers.ReviewSuggestionsOnHealthcareOrganization
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnHealthcareOrganization
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: CTMDM.entities.HealthcareOrganization.dups_managers.ReviewSuggestionsOnHealthcareOrganization
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false

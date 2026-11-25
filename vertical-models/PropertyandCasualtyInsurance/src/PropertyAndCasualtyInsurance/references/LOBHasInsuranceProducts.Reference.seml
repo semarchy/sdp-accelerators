@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: LOBHasInsuranceProducts
+description: Indicates the Line of Business (LOB) associated with a Product in the Property and Casualty Insurance domain. This reference establishes a relationship between the Product entity and the LOB entity, allowing for better organization and categorization of insurance products based on their respective lines of business.
+_type: Reference
+label: Product Has LOB
+
+fromEntity: PropertyAndCasualtyInsurance.entities.InsuranceProduct.InsuranceProduct
+fromRoleLabel: Product
+fromRoleName: Product
+fromRolePluralLabel: Products
+physicalName: PRODUCT_HAS_LOB
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness
+toRoleLabel: Line of Business
+toRoleName: LineOfBusiness
+documentation: Indicates the Line of Business (LOB) associated with a Product in the Property and Casualty Insurance domain. This reference establishes a relationship between the Product entity and the LOB entity, allowing for better organization and categorization of insurance products based on their respective lines of business.
+toRolePhysicalName: LINE_OF_BUSINESS
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: LineOfBusiness
+  label: Line of Business Code
+  description: The code of the line of business associated with the product. This attribute serves as a foreign key linking the ProductHasLOB reference to the LineOfBusiness entity, allowing for easy retrieval of line of business information based on the product.
+  physicalName: LINE_OF_BUSINESS_CODE
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness

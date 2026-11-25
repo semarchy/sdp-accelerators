@@ -1,0 +1,21 @@
+﻿_name: MobileAppEngagementDisplayCard
+_package: RetailCustomer360.entities.MobileAppEngagement.display_cards
+_type: DisplayCard
+entity: RetailCustomer360.entities.MobileAppEngagement.MobileAppEngagement
+default: true
+primaryTextExpression: "CASE WHEN FDN_Customer IS NOT NULL THEN FDN_Customer ELSE 'Anonymous App User' END || CASE WHEN EventType IS NOT NULL THEN ' • ' || EventType ELSE '' END"
+secondaryTextExpression: "CASE WHEN ScreenName IS NOT NULL THEN ScreenName ELSE 'Unknown Screen' END || CASE WHEN MobilePlatformFamily IS NOT NULL THEN ' • ' || MobilePlatformFamily ELSE '' END || CASE WHEN EngagementQualityStatus IS NOT NULL THEN ' • ' || EngagementQualityStatus ELSE '' END"
+primaryImageValueInterpreter: SEMQL
+primaryImageValue: "CASE WHEN EngagementQualityStatus = 'Actionable' THEN 'https://api.iconify.design/mdi/cellphone-check.svg?color=%23059669&width=128' WHEN EngagementQualityStatus = 'Reachability Limited' THEN 'https://api.iconify.design/mdi/cellphone-remove.svg?color=%23D97706&width=128' WHEN EngagementQualityStatus = 'Incomplete' THEN 'https://api.iconify.design/mdi/cellphone-alert.svg?color=%23DC2626&width=128' ELSE 'https://api.iconify.design/mdi/cellphone.svg?color=%232563EB&width=128' END"
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackValue: https://api.iconify.design/mdi/cellphone.svg?color=%232563EB&width=128
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: SEMQL
+avatarImageValue: "CASE WHEN EngagementQualityStatus = 'Actionable' THEN 'https://api.iconify.design/mdi/cellphone-check.svg?color=%23059669&width=128' WHEN EngagementQualityStatus = 'Reachability Limited' THEN 'https://api.iconify.design/mdi/cellphone-remove.svg?color=%23D97706&width=128' WHEN EngagementQualityStatus = 'Incomplete' THEN 'https://api.iconify.design/mdi/cellphone-alert.svg?color=%23DC2626&width=128' ELSE 'https://api.iconify.design/mdi/cellphone.svg?color=%232563EB&width=128' END"
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT
+

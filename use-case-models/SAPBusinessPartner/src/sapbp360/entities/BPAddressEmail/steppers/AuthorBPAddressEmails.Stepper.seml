@@ -1,0 +1,75 @@
+_name: AuthorBPAddressEmails
+_package: sapbp360.entities.BPAddressEmail.steppers
+_type: Stepper
+entity: sapbp360.entities.BPAddressEmail.BPAddressEmail
+description: Stepper for authoring BP Address Emails.
+rootStep:
+  _name: BPAddressEmails
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPAddressEmail.collection_views.BPAddressEmailCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Address Emails
+  description: Manage BP Address Email data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddressEmail_Address.Address
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sapbp360.entities.BPAddressEmail.validations.EmailFormat
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Address Email.
+      formTab: sapbp360.entities.BPAddressEmail.forms.BPAddressEmailDataEntryForm.Main
+      formStepEnrichers:
+        - enricher: sapbp360.entities.BPAddressEmail.enrichers.NormalizedEmail
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddressEmail.forms.BPAddressEmailDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_Address
+          referencePickerCollectionView: sapbp360.entities.BPAddress.collection_views.BPAddressCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddressEmail_Address.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sapbp360.entities.BPAddressEmail.validations.EmailFormat
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Address Emails
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddressEmail_Address.Address
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sapbp360.entities.BPAddressEmail.validations.EmailFormat
+triggers: []

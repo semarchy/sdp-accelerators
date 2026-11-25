@@ -1,0 +1,268 @@
+_package: RetailCustomer360.entities.CommunicationSubscription.forms
+_type: Form
+_name: CommunicationSubscriptionForm
+entity: RetailCustomer360.entities.CommunicationSubscription.CommunicationSubscription
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: Overview
+    label: Overview
+    iconUrl: https://api.iconify.design/mdi/view-dashboard-outline.svg?color=%230D1B2A&width=64
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: OverviewRow
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: OverviewCol1
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: OvrSubscription
+                label: Subscription
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrSubscriptionRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: TextField
+                        _name: OvrSubscriptionName
+                        value: SubscriptionName
+                        useCustomLabel: false
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: MenuField
+                        _name: OvrSubscriptionStatus
+                        value: SubscriptionStatus
+                        useCustomLabel: false
+                        dataType: STRING
+                        componentProperties:
+                          textAlign: left
+                          useAvatarInMenu: '1'
+                          useAvatarInMenuValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: MenuField
+                        _name: OvrEngagementChannelType
+                        value: EngagementChannelType
+                        useCustomLabel: false
+                        dataType: STRING
+                        componentProperties:
+                          textAlign: left
+                          useAvatarInMenu: '1'
+                          useAvatarInMenuValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: ReferenceField
+                        _name: OvrFDN_ChannelType
+                        value: FDN_ChannelType
+                        useCustomLabel: true
+                        label: Channel Type
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                        referencedEntity: RetailCustomer360.entities.CommunicationSubscriptionChannelType.CommunicationSubscriptionChannelType
+                        componentProperties:
+                          displayType: chip
+                          useAvatarInChip: '1'
+                          useSecondaryTextInChip: '1'
+                      - _type: CheckboxField
+                        _name: OvrIsTransactional
+                        value: IsTransactional
+                        useCustomLabel: false
+                        dataType: BOOLEAN
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+          - _type: FormContainer
+            _name: OverviewCol2
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: OvrPreferences
+                label: Preferences
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrPreferencesRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: TextField
+                        _name: OvrFrequency
+                        value: Frequency
+                        useCustomLabel: false
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrPreferredSendTime
+                        value: PreferredSendTime
+                        useCustomLabel: false
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+              - _type: FormSection
+                _name: OvrLifecycle
+                label: Lifecycle
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrLifecycleRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: DateField
+                        _name: OvrSubscribedDate
+                        value: SubscribedDate
+                        useCustomLabel: false
+                        dataType: DATE
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: DateField
+                        _name: OvrUnsubscribedDate
+                        value: UnsubscribedDate
+                        useCustomLabel: false
+                        dataType: DATE
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrUnsubscribeReason
+                        value: UnsubscribeReason
+                        useCustomLabel: false
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+          - _type: FormContainer
+            _name: OverviewCol3
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: OvrCustomer
+                label: Customer
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrCustomerRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: ReferenceField
+                        _name: OvrFDN_Customer
+                        value: FDN_Customer
+                        useCustomLabel: true
+                        label: Customer
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                        referencedEntity: RetailCustomer360.entities.Customer.Customer
+                        componentProperties:
+                          displayType: chip
+                          useAvatarInChip: '1'
+                          useSecondaryTextInChip: '1'
+              - _type: FormSection
+                _name: OvrSourceDataQuality
+                label: Source & Data Quality
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrSourceDataQualityRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: MenuField
+                        _name: OvrSourceSystem
+                        value: SourceSystem
+                        useCustomLabel: false
+                        dataType: STRING
+                        componentProperties:
+                          textAlign: left
+                          useAvatarInMenu: '1'
+                          useAvatarInMenuValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrSubscriptionId
+                        value: SubscriptionId
+                        useCustomLabel: false
+                        dataType: LONG_INTEGER
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrEnrichmentCompletenessScore
+                        value: EnrichmentCompletenessScore
+                        useCustomLabel: true
+                        label: Completeness Score
+                        dataType: DECIMAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrEnrichmentCompletenessBand
+                        value: EnrichmentCompletenessBand
+                        useCustomLabel: true
+                        label: Completeness Band
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: DateField
+                        _name: OvrEnrichmentUpdatedOn
+                        value: EnrichmentUpdatedOn
+                        useCustomLabel: false
+                        dataType: DATE
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'

@@ -1,0 +1,97 @@
+_package: RestaurantMaster.entities.RestaurantStatusHistory.forms
+_type: Form
+_name: RestaurantStatusHistoryForm
+entity: RestaurantMaster.entities.RestaurantStatusHistory.RestaurantStatusHistory
+default: true
+formTabs:
+- _type: FormTab
+  _name: RestaurantStatusHistory
+  label: Status history
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  displayFormTabAs: ICON_LABEL
+  iconUrl: images://mdi/timeline-clock-outline.svg
+  labelWidth: '150'
+  content:
+  - _type: FormContainer
+    _name: Main
+    layoutDirection: COLUMN
+    content:
+    - _type: FormSection
+      _name: Sec1
+      label: Status
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S1Row1
+        layoutDirection: ROW
+        content:
+        - _type: IdField
+          _name: RestaurantStatusHistoryID
+          value: RestaurantStatusHistoryID
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_Restaurant
+          value: FDN_Restaurant
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.Restaurant.Restaurant
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 66
+      - _type: FormContainer
+        _name: S1Row2
+        layoutDirection: ROW
+        content:
+        - _type: ReferenceField
+          _name: FDN_LifecycleStatus
+          value: FDN_LifecycleStatus
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.LifecycleStatus.LifecycleStatus
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_LifecycleStatusReason
+          value: FDN_LifecycleStatusReason
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.LifecycleStatusReason.LifecycleStatusReason
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+        - _type: DateField
+          _name: StartDate
+          value: StartDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S1Row3
+        layoutDirection: ROW
+        content:
+        - _type: TextField
+          _name: StatusComment
+          value: StatusComment
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33

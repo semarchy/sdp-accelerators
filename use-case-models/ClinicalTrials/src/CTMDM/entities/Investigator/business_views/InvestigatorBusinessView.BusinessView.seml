@@ -1,0 +1,188 @@
+_package: CTMDM.entities.Investigator.business_views
+_type: BusinessView
+_name: InvestigatorBusinessView
+
+entity: CTMDM.entities.Investigator.Investigator
+rootLabel: Investigator
+rootPluralLabel: Investigators
+rootIconUrl: images://mdi/account-tie.svg
+displayRootNodeAs: ICON_LABEL
+label: Investigators
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Investigator
+  entity: CTMDM.entities.Investigator.Investigator
+  actionSet: CTMDM.entities.Investigator.action_sets.InvestigatorActionSet
+  collection: CTMDM.entities.Investigator.collection_views.InvestigatorCollectionView
+  form: CTMDM.entities.Investigator.forms.InvestigatorForm
+  displayCard: CTMDM.entities.Investigator.display_cards.InvestigatorDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _name: ToMedicalLicense
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/card-account-details-star.svg
+      useCustomLabel: false
+
+      transitionPath: medicalLicense
+      visibleInFormTabCondition: any medicalLicense has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToMedicalLicense
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.MedicalLicense.collection_views.MedicalLicenseCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.MedicalLicense.MedicalLicense
+        form: CTMDM.entities.MedicalLicense.forms.MedicalLicenseForm
+        displayCard: CTMDM.entities.MedicalLicense.display_cards.MedicalLicenseDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: ToGcpCertification
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/certificate-outline.svg
+      useCustomLabel: false
+
+      transitionPath: gcpCertification
+      visibleInFormTabCondition: any gcpCertification has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToGcpCertification
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.GcpCertification.collection_views.GcpCertificationCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.GcpCertification.GcpCertification
+        form: CTMDM.entities.GcpCertification.forms.GcpCertificationForm
+        displayCard: CTMDM.entities.GcpCertification.display_cards.GcpCertificationDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: ToStudyInvestigator
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/account-group-outline.svg
+      useCustomLabel: false
+
+      transitionPath: studyInvestigator
+      visibleInFormTabCondition: any studyInvestigator has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToStudyInvestigator
+        _type: BusinessViewEntity
+
+        collection: CTMDM.entities.StudyInvestigator.collection_views.StudyInvestigatorCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.StudyInvestigator.StudyInvestigator
+        form: CTMDM.entities.StudyInvestigator.forms.StudyInvestigatorForm
+        displayCard: CTMDM.entities.StudyInvestigator.display_cards.StudyInvestigatorDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: MasterRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.Investigator.collection_views.InvestigatorCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.Investigator.Investigator
+        form: CTMDM.entities.Investigator.forms.InvestigatorForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.Investigator.action_sets.InvestigatorActionSet
+        displayCard: CTMDM.entities.Investigator.display_cards.InvestigatorDisplayCard
+
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: HistoryRecordsEntity
+        _type: BusinessViewEntity
+        collection: CTMDM.entities.Investigator.collection_views.InvestigatorCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CTMDM.entities.Investigator.Investigator
+        form: CTMDM.entities.Investigator.forms.InvestigatorForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: CTMDM.entities.Investigator.action_sets.InvestigatorActionSet
+        displayCard: CTMDM.entities.Investigator.display_cards.InvestigatorDisplayCard

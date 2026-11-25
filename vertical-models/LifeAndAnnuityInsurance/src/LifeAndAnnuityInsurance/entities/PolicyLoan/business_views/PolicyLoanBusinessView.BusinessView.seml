@@ -1,0 +1,89 @@
+_package: LifeAndAnnuityInsurance.entities.PolicyLoan.business_views
+_type: BusinessView
+_name: PolicyLoanBusinessView
+label: "Policy Loan"
+entity: LifeAndAnnuityInsurance.entities.PolicyLoan.PolicyLoan
+rootLabel: "Policy Loans"
+rootPluralLabel: "Policy Loans"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PolicyLoan
+  displayCard: LifeAndAnnuityInsurance.entities.PolicyLoan.display_cards.PolicyLoanDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.PolicyLoan.PolicyLoan
+  actionSet: LifeAndAnnuityInsurance.entities.PolicyLoan.action_sets.PolicyLoanActionSet
+  collection: LifeAndAnnuityInsurance.entities.PolicyLoan.collection_views.PolicyLoanCollectionView
+  form: LifeAndAnnuityInsurance.entities.PolicyLoan.forms.PolicyLoanForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Records
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: PolicyLoanMasterRecords
+        _type: BusinessViewEntity
+        displayCard: LifeAndAnnuityInsurance.entities.PolicyLoan.display_cards.PolicyLoanDisplayCard
+        collection: LifeAndAnnuityInsurance.entities.PolicyLoan.collection_views.PolicyLoanCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: LifeAndAnnuityInsurance.entities.PolicyLoan.PolicyLoan
+        form: LifeAndAnnuityInsurance.entities.PolicyLoan.forms.PolicyLoanForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: LifeAndAnnuityInsurance.entities.PolicyLoan.action_sets.PolicyLoanActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: "Transition from Policy Loan to related golden history records."
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: LifeAndAnnuityInsurance.entities.PolicyLoan.business_views.PolicyLoanBusinessView.PolicyLoan
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/cash-multiple.svg

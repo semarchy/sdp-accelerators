@@ -1,0 +1,9 @@
+﻿_package: RetailCustomer360.entities.SalesOrder.validations
+_name: CancelledOrReturnedMustNotBePaid
+_type: SemQLValidation
+entity: RetailCustomer360.entities.SalesOrder.SalesOrder
+label: Cancelled Or Returned Must Not Be Paid
+validationScope: PRE_CONSO
+description: "Ensures cancelled or returned orders are not marked as paid."
+condition: OrderStatus NOT IN ('Cancelled', 'Returned') OR PaymentStatus <> 'Paid'
+

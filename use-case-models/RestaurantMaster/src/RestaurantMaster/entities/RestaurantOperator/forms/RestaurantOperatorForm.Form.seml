@@ -1,0 +1,104 @@
+_package: RestaurantMaster.entities.RestaurantOperator.forms
+_type: Form
+_name: RestaurantOperatorForm
+entity: RestaurantMaster.entities.RestaurantOperator.RestaurantOperator
+default: true
+formTabs:
+- _type: FormTab
+  _name: RestaurantOperator
+  label: Operator
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  displayFormTabAs: ICON_LABEL
+  iconUrl: images://mdi/account-tie.svg
+  labelWidth: '150'
+  content:
+  - _type: FormContainer
+    _name: Main
+    layoutDirection: COLUMN
+    content:
+    - _type: FormSection
+      _name: Sec1
+      label: Operator
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S1Row1
+        layoutDirection: ROW
+        content:
+        - _type: IdField
+          _name: RestaurantOperatorID
+          value: RestaurantOperatorID
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_Restaurant
+          value: FDN_Restaurant
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.Restaurant.Restaurant
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 66
+      - _type: FormContainer
+        _name: S1Row2
+        layoutDirection: ROW
+        content:
+        - _type: ReferenceField
+          _name: FDN_LegalEntity
+          value: FDN_LegalEntity
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.LegalEntity.LegalEntity
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 66
+        - _type: TextField
+          _name: OwnershipType
+          value: OwnershipType
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S1Row3
+        layoutDirection: ROW
+        content:
+        - _type: DateField
+          _name: EffectiveFrom
+          value: EffectiveFrom
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+    - _type: FormSection
+      _name: Sec2
+      label: Agreement
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S2Row1
+        layoutDirection: ROW
+        content:
+        - _type: TextField
+          _name: AgreementNumber
+          value: AgreementNumber
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: DateField
+          _name: AgreementExpirationDate
+          value: AgreementExpirationDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33

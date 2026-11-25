@@ -1,0 +1,85 @@
+# Purchasing Group entity for the SAP Business Partner 360 accelerator.
+_name: PurchasingGroup
+_package: sapbp360.entities.PurchasingGroup
+_type: Entity
+primaryKey: sapbp360.entities.PurchasingGroup.PurchasingGroup.PurchasingGroupID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: PurchasingGroupCode
+label: Purchasing Group
+documentation: Purchasing Group reference data used by the SAP Business Partner 360 model.
+description: Purchasing Group reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/PurchasingGroup.svg
+pluralLabel: Purchasing Groups
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PURCH_GROUP
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PurchasingGroupID
+    physicalName: PURCH_GROUP_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Purchasing Group ID
+    documentation: Unique identifier for the purchasing group.
+    description: Unique identifier for the purchasing group.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Purchasing Group ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PurchasingGroupCode
+    physicalName: PURCH_GROUP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Purchasing Group Code
+    documentation: Code for the purchasing group.
+    description: Code for the purchasing group.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Purchasing Group Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PurchasingGroupName
+    physicalName: PURCH_GROUP_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Purchasing Group Name
+    documentation: Name of the purchasing group.
+    description: Name of the purchasing group.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Purchasing Group Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the purchasing group.
+    description: Description for the purchasing group.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the purchasing group is active.
+    description: Indicates whether the purchasing group is active.
+    mandatory: false
+    length: 1
+    searchable: true

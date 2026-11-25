@@ -1,0 +1,30 @@
+_package: Merchant.entities.LegalEntity.display_cards
+_type: DisplayCard
+_name: LegalEntityDisplayCard
+entity: Merchant.entities.LegalEntity.LegalEntity
+default: true
+
+primaryTextExpression: LegalName
+
+# Secondary: registration number and legal entity type (joined when both exist)
+secondaryTextExpression: "CASE WHEN RegistrationNumber IS NOT NULL AND LegalEntityType IS NOT NULL THEN RegistrationNumber || ' • ' || LegalEntityType WHEN RegistrationNumber IS NOT NULL THEN RegistrationNumber WHEN LegalEntityType IS NOT NULL THEN LegalEntityType ELSE '' END"
+
+# Supporting: alternate name, registration authority or ID fallback
+supportingTextExpression: "CASE WHEN AlternateLegalName IS NOT NULL THEN AlternateLegalName WHEN RegistrationAuthority IS NOT NULL THEN RegistrationAuthority ELSE 'ID: ' || LegalEntityID END"
+
+# Avatar: organization icon
+avatarImageValue: images://mdi/domain.svg
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT
+
+# Primary image and fallback
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageValue: images://mdi/office-building.svg
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FILL
+primaryImageFallbackValue: images://mdi/account-balance.svg
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL

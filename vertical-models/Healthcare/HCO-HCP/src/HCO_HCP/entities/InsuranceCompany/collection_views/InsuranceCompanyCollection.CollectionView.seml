@@ -1,0 +1,119 @@
+_package: HCO_HCP.entities.InsuranceCompany.collection_views
+_name: InsuranceCompanyCollection
+_type: CollectionView
+entity: HCO_HCP.entities.InsuranceCompany.InsuranceCompany
+default: true
+displayCard: HCO_HCP.entities.InsuranceCompany.display_cards.InsuranceCompanyDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Insurance Company
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: Code
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Code
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Name
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Name
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceURL
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: URL
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: TypeOfPayments
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: TypeOfPayments
+    visibleByDefault: true
+  - _type: HyperlinkColumn
+    _name: URL
+    columnAlign: LEFT
+    dataType: STRING
+    label: Website
+    useCustomLabel: true
+    value: "'http://' || NormalizedWebsite"
+    visibleByDefault: true
+    componentProperties:
+      linkDisplayText: NormalizedWebsite
+      linkDisplayTextValueInterpreter: SEMQL
+      linkTarget: new-window
+      linkTargetValueInterpreter: LITERAL
+      linkSourceType: url
+      linkSourceTypeValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Street
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.Street
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: City
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.City
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: State
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.State
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Zip
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InputAddress.Zip
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: CreationDate
+    columnAlign: LEFT
+    dataType: TIMESTAMP
+    useCustomLabel: false
+    value: CreationDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: UpdateDate
+    columnAlign: LEFT
+    dataType: TIMESTAMP
+    useCustomLabel: false
+    value: UpdateDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Creator
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Creator
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Updator
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Updator
+    visibleByDefault: true

@@ -1,0 +1,45 @@
+﻿_package: RetailCustomer360.entities.LoyaltyProgram.enrichers
+_name: LoyaltyProgramDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.LoyaltyProgram.LoyaltyProgram
+label: LoyaltyProgram Data Quality Enricher
+description: "Computes standard completeness enrichment fields for LoyaltyProgram."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN LoyaltyProgramId IS NULL AND ProgramCode IS NULL AND ProgramName IS NULL THEN 0
+        ELSE (
+          CASE WHEN LoyaltyProgramId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN ProgramCode IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN ProgramName IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN LoyaltyProgramId IS NULL AND ProgramCode IS NULL AND ProgramName IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN LoyaltyProgramId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN ProgramCode IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN ProgramName IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()
+  - attributeName: ProgramWindowStatus
+    expression: CASE
+        WHEN StartDate IS NOT NULL AND StartDate > CURRENT_DATE() THEN 'Scheduled'
+        WHEN EndDate IS NOT NULL AND EndDate < CURRENT_DATE() THEN 'Expired'
+        WHEN StartDate IS NOT NULL AND StartDate <= CURRENT_DATE() THEN 'Ongoing'
+        ELSE 'Open'
+      END
+  - attributeName: ProgramHealthStatus
+    expression: CASE
+        WHEN Status IS NULL THEN 'Unknown'
+        WHEN Status IN ('Inactive', 'Retired') THEN 'Inactive'
+        WHEN EndDate IS NOT NULL AND EndDate < CURRENT_DATE() THEN 'Expired'
+        WHEN StartDate IS NOT NULL AND StartDate > CURRENT_DATE() THEN 'Scheduled'
+        ELSE 'Healthy'
+      END

@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: PremiumTransactionHasPolicy
+description: "Indicates the Policy associated with a Premium Transaction."
+_type: Reference
+label: "Premium Transaction Has Policy"
+
+fromEntity: LifeAndAnnuityInsurance.entities.PremiumTransaction.PremiumTransaction
+fromRoleLabel: "Premium Transaction"
+fromRoleName: PremiumTransaction
+fromRolePluralLabel: "Premium Transactions"
+physicalName: PREM_TXN_HAS_POL
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+toRoleLabel: "Policy"
+toRoleName: Policy
+toRolePhysicalName: POL
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Policy
+  label: "Policy ID"
+  description: "The identifier of the Policy associated with the Premium Transaction."
+  physicalName: POL_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Policy.Policy

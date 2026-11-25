@@ -1,0 +1,98 @@
+_name: Attribute
+_package: Manufacturing.entities.ItemAttribute.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.ItemAttribute.ItemAttribute
+rootLabel: Attribute
+rootPluralLabel: Attributes
+useHierarchyOnOpen: false
+label: Attributes
+rootBusinessViewEntity:
+  _name: AttributeEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.ItemAttribute.collection_views.AttributeCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.ItemAttribute.ItemAttribute
+  form: Manufacturing.entities.ItemAttribute.forms.AttributeForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.ItemAttribute.action_sets.AttributeActionSet
+  businessEntityBuiltInFilters:
+    - _name: MandatoryAttributes
+      _type: BusinessEntityBuiltInFilter
+      label: Mandatory Attributes
+      semQlCondition: Mandatory = 'true'
+      visible: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: AttributeValues
+      _type: BusinessViewTransition
+      transitionPath: AttributeValues
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ItemAttributeValue
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ItemAttributeValue.collection_views.ItemAttributeValueCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ItemAttributeValue.ItemAttributeValue
+        form: Manufacturing.entities.ItemAttributeValue.forms.ItemAttributeValueForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ItemAttributeValue.forms.ItemAttributeValueForm.ItemAttributeValue.FDN_ItemAttribute
+            navigationMode: MODAL_FORM
+        transitions: []

@@ -1,0 +1,29 @@
+_package: CTMDM.entities.ClinicalSite.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DefaultRule
+entity: CTMDM.entities.ClinicalSite.ClinicalSite
+label: Default Rule
+description: "Selects surviving Clinical Site values using the configured preferred publisher ranking."
+documentation: "Selects surviving Clinical Site values using the configured preferred publisher ranking."
+defaultRule: true
+consolidationStrategy: PREFERRED_PUBLISHER
+consolidationSkipNulls: false
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+
+attributes:
+  - attributeName: SiteName
+  - attributeName: AddressLine1
+  - attributeName: City
+  - attributeName: SiteStatus
+  - attributeName: ActivationDate
+  - attributeName: EnrollmentCapacity
+  
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: CTMDM.publishers.CTMS
+  - _type: ConsoPublisherRanking
+    publisher: CTMDM.publishers.RegulatorySystem
+  - _type: ConsoPublisherRanking
+    publisher: CTMDM.publishers.CROSource
+  - _type: ConsoPublisherRanking
+    publisher: CTMDM.publishers.ManualEntry

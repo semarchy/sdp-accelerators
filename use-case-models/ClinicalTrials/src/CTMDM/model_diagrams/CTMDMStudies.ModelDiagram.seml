@@ -1,0 +1,99 @@
+_package: CTMDM.model_diagrams
+_name: CTMDMStudies
+_type: ModelDiagram
+attributeNameFormat: NAME
+description: Visual map of the Clinical Trial MDM data model and its relationships.
+entityNameFormat: LABEL
+label: Study Domain
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    entity: CTMDM.entities.Study.Study
+    _name: Study
+    borderColor: "#4DA39D"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 0
+      y: 0
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.Protocol.Protocol
+    _name: Protocol
+    borderColor: "#1E6F8B"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 338
+      y: 530
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+    _name: ProtocolAmendment
+    borderColor: "#7AC957"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 784
+      y: 530
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.StudySite.StudySite
+    _name: StudySite
+    borderColor: "#F5B041"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 626
+      y: -294
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.StudyCountry.StudyCountry
+    _name: StudyCountry
+    borderColor: "#A7C957"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 852
+      y: 52
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.Country.Country
+    _name: Country
+    borderColor: "#0F3D3E"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1236
+      y: 548
+    width: -1
+referenceLinks:
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMStudies.Protocol
+    reference: CTMDM.references.ProtocolHasStudy
+    toEntityShape: CTMDM.model_diagrams.CTMDMStudies.Study
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMStudies.ProtocolAmendment
+    reference: CTMDM.references.ProtocolAmendmentHasProtocol
+    toEntityShape: CTMDM.model_diagrams.CTMDMStudies.Protocol
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMStudies.StudySite
+    reference: CTMDM.references.StudySiteHasStudy
+    toEntityShape: CTMDM.model_diagrams.CTMDMStudies.Study
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMStudies.StudyCountry
+    reference: CTMDM.references.StudyCountryHasStudy
+    toEntityShape: CTMDM.model_diagrams.CTMDMStudies.Study
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMStudies.StudyCountry
+    reference: CTMDM.references.StudyCountryHasCountry
+    toEntityShape: CTMDM.model_diagrams.CTMDMStudies.Country
+    bendPoints: []
+inheritLinks: []

@@ -1,0 +1,89 @@
+_package: RetailCustomer360.entities.Brand.business_views
+_type: BusinessView
+_name: BrandBusinessView
+label: Brands
+description: "Browse and steward Brands."
+entity: RetailCustomer360.entities.Brand.Brand
+rootLabel: Brands
+rootPluralLabel: Brands
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Brand
+  displayCard: RetailCustomer360.entities.Brand.display_cards.BrandDisplayCard
+  entity: RetailCustomer360.entities.Brand.Brand
+  actionSet: RetailCustomer360.entities.Brand.action_sets.BrandActionSet
+  collection: RetailCustomer360.entities.Brand.collection_views.BrandCollectionView
+  form: RetailCustomer360.entities.Brand.forms.BrandForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AssociatedProduct
+      transitionPath: BelongsToBrandFromProduct
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/package-variant.svg?color=%230D1B2A&width=64
+      label: Product
+      pluralLabel: Products
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToBrandFromProduct has (1 = 1)
+      businessViewEntity:
+        _name: ProductRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Product.collection_views.ProductCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Product.Product
+        form: RetailCustomer360.entities.Product.forms.ProductForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.Product.action_sets.ProductActionSet
+        displayCard: RetailCustomer360.entities.Product.display_cards.ProductDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+enableHierarchyView: false
+useHierarchyOnOpen: false

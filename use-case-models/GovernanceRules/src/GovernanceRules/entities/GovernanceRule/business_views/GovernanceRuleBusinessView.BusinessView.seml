@@ -1,0 +1,105 @@
+# GovernanceRuleBusinessView: business view on GovernanceRule of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceRule.business_views
+_type: BusinessView
+_name: GovernanceRuleBusinessView
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+rootLabel: All rules
+rootPluralLabel: All rules
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: GovernanceRule
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  actionSet: GovernanceRules.entities.GovernanceRule.action_sets.GovernanceRuleActionSet
+  collection: GovernanceRules.entities.GovernanceRule.collection_views.GovernanceRuleCollectionView
+  form: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm
+  displayCard: GovernanceRules.entities.GovernanceRule.display_cards.GovernanceRuleDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+  - _name: CustomFormConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: CUSTOM_FORM
+    customForm: GovernanceRules.entities.GovernanceRule.search_forms.GovernanceRuleSearchForm
+  - _name: TextConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: TEXT
+  - _name: FormConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: BY_FORM
+  - _name: AdvancedConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: ADVANCED
+  - _name: SemqlConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: SEMQL
+  overrideDefaultSort: true
+  sortExpression: Code asc
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: false
+  transitions:
+  - _type: BusinessViewTransition
+    _name: ScopesTab
+    label: Scope
+    pluralLabel: Scope
+    useCustomLabel: true
+    transitionPath: Scopes
+    transitionType: FULLY_QUALIFIED
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: LABEL
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: GovernanceRuleScopes
+      entity: GovernanceRules.entities.RuleScope.RuleScope
+      actionSet: GovernanceRules.entities.RuleScope.action_sets.RuleScopeActionSet
+      collection: GovernanceRules.entities.RuleScope.collection_views.RuleScopeByRuleCollectionView
+      form: GovernanceRules.entities.RuleScope.forms.RuleScopeForm
+      displayCard: GovernanceRules.entities.RuleScope.display_cards.RuleScopeDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      overrideDefaultSort: true
+      sortExpression: ID asc
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+    iconUrl: images://mdi/target.svg
+  - _type: BusinessViewTransition
+    _name: CitationsTab
+    label: Citations
+    pluralLabel: Citations
+    useCustomLabel: true
+    transitionPath: Citations
+    transitionType: FULLY_QUALIFIED
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: LABEL
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: GovernanceRuleCitations
+      entity: GovernanceRules.entities.RuleCitation.RuleCitation
+      actionSet: GovernanceRules.entities.RuleCitation.action_sets.RuleCitationActionSet
+      collection: GovernanceRules.entities.RuleCitation.collection_views.RuleCitationByRuleCollectionView
+      form: GovernanceRules.entities.RuleCitation.forms.RuleCitationForm
+      displayCard: GovernanceRules.entities.RuleCitation.display_cards.RuleCitationDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      overrideDefaultSort: true
+      sortExpression: Clause asc
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+    iconUrl: images://mdi/book-open-page-variant-outline.svg
+enableHierarchyView: false
+useHierarchyOnOpen: false
+label: All rules

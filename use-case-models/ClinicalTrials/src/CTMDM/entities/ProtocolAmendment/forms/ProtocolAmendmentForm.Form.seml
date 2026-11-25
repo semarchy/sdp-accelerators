@@ -1,0 +1,210 @@
+_package: CTMDM.entities.ProtocolAmendment.forms
+_type: Form
+_name: ProtocolAmendmentForm
+description: "Defines the form used to view and maintain Protocol Amendment records in Clinical Trial MDM workflows."
+documentation: "Defines the form used to view and maintain Protocol Amendment records in Clinical Trial MDM workflows."
+
+entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: General
+    label: Protocol Amendment
+    documentation: This form provides a comprehensive view of Protocol Amendment details, allowing users to browse and manage records effectively
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    iconUrl: images://mdi/file-document-refresh-outline.svg
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: Container1
+        layoutDirection: ROW
+
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: GeneralInformation
+                label: General Information
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: IdField
+                    _name: AmendmentID
+                    value: AmendmentID
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: AmendmentNumber
+                    value: AmendmentNumber
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: AmendmentType
+                    value: AmendmentType
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: ChangeReason
+                    value: ChangeReason
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: ImpactAssessment
+                    value: ImpactAssessment
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: OperationalDetails
+                label: Operational Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: DateField
+                    _name: EffectiveDate
+                    value: EffectiveDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: ApprovalDate
+                    value: ApprovalDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: DateField
+                    _name: SubmissionDate
+                    value: SubmissionDate
+                    useCustomLabel: false
+                    dataType: DATE
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: Status
+                    value: Status
+                    useCustomLabel: false
+                    dataType: STRING
+
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+          - _type: FormContainer
+            _name: Container4
+            layoutDirection: COLUMN
+
+            content:
+              - _type: FormSection
+                _name: RelationshipDetails
+                label: Relationship Details
+                layoutDirection: COLUMN
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_protocol
+                    value: FDN_protocol
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CTMDM.entities.Protocol.Protocol
+
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_regulatoryAuthority
+                    value: FDN_regulatoryAuthority
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: CTMDM.entities.RegulatoryAuthority.RegulatoryAuthority
+
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '350'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption

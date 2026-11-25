@@ -1,0 +1,122 @@
+_package: RetailCustomer360.entities.OrderDeliveryMethod
+_type: Entity
+_name: OrderDeliveryMethod
+label: Delivery Method
+pluralLabel: Delivery Methods
+entityType: BASIC
+physicalTableName: DELIVERY_METHOD
+iconUrl: https://api.iconify.design/mdi/truck-delivery.svg?color=%230D1B2A&width=64
+
+description: "Way in which an order is delivered to or collected by the customer."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: DeliveryMethodId
+    label: Delivery Method Id
+    physicalName: DELIVERY_METHOD_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the delivery method."
+
+  - _type: EntityAttribute
+    _name: DeliveryMethodCode
+    label: Delivery Method Code
+    physicalName: DELIVERY_METHOD_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the delivery method."
+
+  - _type: EntityAttribute
+    _name: DeliveryMethodName
+    label: Delivery Method Name
+    physicalName: DELIVERY_METHOD_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the delivery method."
+
+  - _type: EntityAttribute
+    _name: DeliveryMethodType
+    label: Delivery Method Type
+    physicalName: DELIVERY_METHOD_TYPE
+    dataType: RetailCustomer360.list_of_values.DeliveryMethodType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Category of delivery the method represents."
+
+  - _type: EntityAttribute
+    _name: Carrier
+    label: Carrier
+    physicalName: CARRIER
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Logistics provider that performs the delivery."
+
+  - _type: EntityAttribute
+    _name: EstimatedDays
+    label: Estimated Days
+    physicalName: ESTIMATED_DAYS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Typical number of days from dispatch to delivery."
+
+  - _type: EntityAttribute
+    _name: BaseCost
+    label: Base Cost
+    physicalName: BASE_COST
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Standard charge applied for this delivery method."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the method is currently offered."
+
+  - _type: EntityAttribute
+    _name: RequiresSignature
+    label: Requires Signature
+    physicalName: REQUIRES_SIGNATURE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the customer must sign on receipt."
+
+  - _type: EntityAttribute
+    _name: IsTrackable
+    label: Is Trackable
+    physicalName: IS_TRACKABLE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the shipment can be tracked end to end."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Explanation of how the delivery method works."
+
+primaryKey: RetailCustomer360.entities.OrderDeliveryMethod.OrderDeliveryMethod.DeliveryMethodId
+
+sourceIdGeneration:
+  mode: MANUAL

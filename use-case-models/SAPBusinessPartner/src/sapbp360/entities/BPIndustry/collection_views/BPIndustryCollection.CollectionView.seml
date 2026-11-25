@@ -1,0 +1,67 @@
+_package: sapbp360.entities.BPIndustry.collection_views
+_name: BPIndustryCollection
+_type: CollectionView
+entity: sapbp360.entities.BPIndustry.BPIndustry
+default: true
+displayCard: sapbp360.entities.BPIndustry.display_cards.BPIndustryDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: BP Industry
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 260
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: true
+listShowDivider: false
+gridAllowed: true
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 2
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: IndustryID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IndustryID
+    visibleByDefault: true
+    defaultWidth: 220
+  - _type: TextColumn
+    _name: IsStandardIndustry
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsStandardIndustry
+    visibleByDefault: true
+    defaultWidth: 220
+  - _type: ReferenceColumn
+    _name: FDN_Industry
+    columnAlign: LEFT
+    dataType: STRING
+    label: Industry Name
+    useCustomLabel: true
+    value: FDN_Industry
+    visibleByDefault: true
+    defaultWidth: 220
+    displayCard: sapbp360.entities.Industry.display_cards.IndustryDisplayCard
+    referencedEntity: sapbp360.entities.Industry.Industry
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+  - _type: ReferenceColumn
+    _name: FDN_IndustrySector
+    columnAlign: LEFT
+    dataType: STRING
+    label: Industry Sector Name
+    useCustomLabel: true
+    value: FDN_IndustrySector
+    visibleByDefault: true
+    defaultWidth: 220
+    displayCard: sapbp360.entities.IndustrySector.display_cards.IndustrySectorDisplayCard
+    referencedEntity: sapbp360.entities.IndustrySector.IndustrySector
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"

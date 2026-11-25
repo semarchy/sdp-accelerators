@@ -1,0 +1,70 @@
+_name: ResponsibleTypeActionSet
+_package: sapbp360.entities.ResponsibleType.action_sets
+_type: ActionSet
+entity: sapbp360.entities.ResponsibleType.ResponsibleType
+label: Responsible Type Action Set
+description: Action set for managing Responsible Types in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorResponsibleTypes
+    label: Create
+    description: Create a new Responsible Type record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.ResponsibleType.steppers.AuthorResponsibleTypes
+  - _name: EditAuthorResponsibleTypes
+    label: Edit
+    description: Edit Responsible Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.ResponsibleType.steppers.AuthorResponsibleTypes
+  - _name: MassUpdateAuthorResponsibleTypes
+    label: Mass Update
+    description: Mass update Responsible Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.ResponsibleType.steppers.AuthorResponsibleTypes
+  - _name: Delete
+    label: Delete
+    description: Delete selected Responsible Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorResponsibleTypes
+    label: Import
+    description: Import Responsible Type records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.ResponsibleType.steppers.ResponsibleTypeImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

@@ -1,0 +1,121 @@
+_name: AuthorLERelationships
+_package: PrivateEquity.entities.LERelationship.steppers
+_type: Stepper
+entity: PrivateEquity.entities.LERelationship.LERelationship
+rootStep:
+  _name: LERelationships
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.LERelationship.collection_views.LERelationshipCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: LE Relationships
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  displayCard: PrivateEquity.entities.LERelationship.display_cards.LERelationshipDisplayCard
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.FromLegalEntity.FromLE
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.RelationshipType.Relationship
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.RelationshipType.Relationship
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.ToRelationship.ToLE
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.FromLegalEntity.FromLE
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.ToRelationship.ToLE
+  stepTriggers: []
+  childSteps:
+    - _name: LERelationship
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: LE Relationship
+      formTab: PrivateEquity.entities.LERelationship.forms.LERelationshipForm.LERelationship
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.FromLegalEntity.FromLE
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.RelationshipType.Relationship
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.ToRelationship.ToLE
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.RelationshipType.Relationship
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.ToRelationship.ToLE
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.FromLegalEntity.FromLE
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.ToRelationship.ToLE
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.ToRelationship.ToLE
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.RelationshipType.Relationship
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.FromLegalEntity.FromLE
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.RelationshipType.Relationship
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.FromLegalEntity.FromLE
+      stepTriggers: []
+label: Author LE Relationships
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.FromLegalEntity.FromLE
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.RelationshipType.Relationship
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.ToRelationship.ToLE
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.RelationshipType.Relationship
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.ToRelationship.ToLE
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.FromLegalEntity.FromLE
+triggers: []

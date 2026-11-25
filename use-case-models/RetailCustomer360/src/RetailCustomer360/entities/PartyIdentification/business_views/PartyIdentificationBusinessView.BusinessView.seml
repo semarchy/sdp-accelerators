@@ -1,0 +1,146 @@
+﻿_package: RetailCustomer360.entities.PartyIdentification.business_views
+_type: BusinessView
+_name: PartyIdentificationBusinessView
+label: Party Identifications
+entity: RetailCustomer360.entities.PartyIdentification.PartyIdentification
+
+rootLabel: Party Identifications
+rootPluralLabel: Party Identifications
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PartyIdentification
+  displayCard: RetailCustomer360.entities.PartyIdentification.display_cards.PartyIdentification
+  entity: RetailCustomer360.entities.PartyIdentification.PartyIdentification
+  actionSet: RetailCustomer360.entities.PartyIdentification.action_sets.PartyIdentificationActionSet
+  collection: RetailCustomer360.entities.PartyIdentification.collection_views.PartyIdentificationCollectionView
+  form: RetailCustomer360.entities.PartyIdentification.forms.PartyIdentificationForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: PartyIdentificationQuickFilterConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: RetailCustomer360.entities.PartyIdentification.search_forms.PartyIdentificationQuickFilters
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: MasterRecords
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/file-tree-outline.svg?color=%230D1B2A&width=64
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: PartyIdentificationMaster
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.PartyIdentification.collection_views.PartyIdentificationCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.PartyIdentification.PartyIdentification
+        form: RetailCustomer360.entities.PartyIdentification.forms.PartyIdentificationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: PartyIdentificationQuickFilterConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: CUSTOM_FORM
+            customForm: RetailCustomer360.entities.PartyIdentification.search_forms.PartyIdentificationQuickFilters
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: RetailCustomer360.entities.PartyIdentification.display_cards.PartyIdentification
+    - _type: BusinessViewTransition
+      _name: History
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/history.svg?color=%230D1B2A&width=64
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: PartyIdentificationGoldenHistory
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.PartyIdentification.collection_views.PartyIdentificationCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.PartyIdentification.PartyIdentification
+        form: RetailCustomer360.entities.PartyIdentification.forms.PartyIdentificationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: RetailCustomer360.entities.PartyIdentification.display_cards.PartyIdentification
+
+enableHierarchyView: false
+useHierarchyOnOpen: false
+

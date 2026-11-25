@@ -1,0 +1,199 @@
+﻿_package: RetailCustomer360.entities.ContactPointPhone
+_type: Entity
+_name: ContactPointPhone
+label: Contact Point Phone
+pluralLabel: Contact Point Phones
+entityType: FUZZY_MATCHED
+physicalTableName: CONTACT_POINT_PHONE
+iconUrl: https://api.iconify.design/mdi/phone.svg?color=%230D1B2A&width=64
+description: "Stores customer phone contact points with primary, mobile, and verification indicators."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: PhoneId
+    label: Phone Id
+    physicalName: PHONE_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier for the phone contact point record."
+
+  - _type: EntityAttribute
+    _name: PhoneNumber
+    label: Phone Number
+    physicalName: PHONE_NUMBER
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Full phone number."
+
+  - _type: EntityAttribute
+    _name: CountryCode
+    label: Country Code
+    physicalName: COUNTRY_CODE
+    dataType: String
+    length: 10
+    searchable: true
+    description: "International dialing code."
+
+  - _type: EntityAttribute
+    _name: NationalNumber
+    label: National Number
+    physicalName: NATIONAL_NUMBER
+    dataType: String
+    length: 30
+    searchable: true
+    description: "Local/national number."
+
+  - _type: EntityAttribute
+    _name: ExtensionNumber
+    label: Extension Number
+    physicalName: EXTENSION_NUMBER
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Extension, if applicable."
+
+  - _type: EntityAttribute
+    _name: PhoneType
+    label: Phone Type
+    physicalName: PHONE_TYPE
+    dataType: RetailCustomer360.list_of_values.PhoneType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Phone type classification (Mobile, Home, Work, Landline, Other)."
+
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates primary phone."
+
+  - _type: EntityAttribute
+    _name: IsVerified
+    label: Is Verified
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates verified phone."
+
+  - _type: EntityAttribute
+    _name: VerificationDate
+    label: Verification Date
+    physicalName: VERIFICATION_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date/time phone was verified."
+
+  - _type: EntityAttribute
+    _name: ConsentStatus
+    label: Consent Status
+    physicalName: CONSENT_STATUS
+    dataType: RetailCustomer360.list_of_values.ConsentStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Consent status (Opted In, Opted Out, Pending, Unknown)."
+
+  - _type: EntityAttribute
+    _name: DoNotCallFlag
+    label: Do Not Call Flag
+    physicalName: DO_NOT_CALL_FLAG
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates do-not-call preference."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system."
+
+  - _type: EntityAttribute
+    _name: SourcePhoneKey
+    label: Source Phone Key
+    physicalName: SOURCE_PHONE_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source phone identifier."
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: RetailCustomer360.entities.ContactPointPhone.ContactPointPhone.PhoneId
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: ContactPointPhoneSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: PhoneExact
+      label: Phone exact match
+      matchScore: 100
+      condition: Record1.PhoneNumber IS NOT NULL AND Record2.PhoneNumber IS NOT NULL AND Record1.PhoneNumber = Record2.PhoneNumber
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameCustomerSimilarPhone
+      label: Same customer with similar phone number
+      matchScore: 70
+      condition: Record1.FID_Customer IS NOT NULL AND Record2.FID_Customer IS NOT NULL AND Record1.FID_Customer = Record2.FID_Customer AND SEM_EDIT_DISTANCE_SIMILARITY(Record1.PhoneNumber, Record2.PhoneNumber) >= 86
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 50
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 98
+  mergeThresholdMergingConfirmedWithUnconfirmed: 99
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 99
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+

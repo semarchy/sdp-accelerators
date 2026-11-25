@@ -1,0 +1,263 @@
+# This is the AuthorLeads Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing leads within the Salesforce context.
+_name: AuthorLeads
+_package: sales360.entities.Leads.steppers
+_type: Stepper
+entity: sales360.entities.Leads.Leads
+rootStep:
+  _name: Leads
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Leads.collection_views.LeadsCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Leads
+  description: Leads collection step
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.ConvertedAccount.ConvertedAccount
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.LeadsStatus.Status
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.LeadsIndustry.Industry
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: sales360.entities.Leads.Leads.Rating
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.entities.Leads.Leads.LastName
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.LeadsSource.LeadSource
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.LeadsCleanStatus.CleanStatus
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.ConvertedContact.ConvertedContact
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.ConvertedOpportunity.ConvertedOpportunity
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sales360.entities.Leads.Leads.SemlQLMatcherLeads
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sales360.references.LeadsSalutation.Salutation
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: sales360.entities.Leads.Leads.Company
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for Leads
+      formTab: sales360.entities.Leads.forms.LeadsDataEntryForm.Main
+      formStepEnrichers:
+        - enricher: sales360.entities.Leads.enrichers.NormalizedCompany
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Leads.enrichers.NormalizedName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Leads.enrichers.StandardizedPhone
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Leads.enrichers.EnrichedEmail
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Leads.enrichers.PhoneticCompanyName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+        - enricher: sales360.entities.Leads.enrichers.GeoCodedAddress
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Leads.forms.LeadsDataEntryForm.Main.ConversionDetails.Container7.Container9.FDN_ConvertedAccount
+          referencePickerCollectionView: sales360.entities.Account.collection_views.AccountCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Leads.forms.LeadsDataEntryForm.Main.Company.Container4.Container6.FDN_LeadSource
+          referencePickerCollectionView: sales360.entities.LeadSource.collection_views.LeadSourceCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Leads.forms.LeadsDataEntryForm.Main.Company.Container4.Container5.FDN_CleanStatus
+          referencePickerCollectionView: sales360.entities.CleanStatus.collection_views.CleanStatusCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Leads.forms.LeadsDataEntryForm.Main.ConversionDetails.Container7.Container8.FDN_ConvertedContact
+          referencePickerCollectionView: sales360.entities.Contact.collection_views.ContactCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Leads.forms.LeadsDataEntryForm.Main.FDN_Status
+          referencePickerCollectionView: sales360.entities.LeadStatus.collection_views.LeadStatusCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Leads.forms.LeadsDataEntryForm.Main.ConversionDetails.Container7.Container9.FDN_ConvertedOpportunity
+          referencePickerCollectionView: sales360.entities.Opportunity.collection_views.OpportunityCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sales360.entities.Leads.forms.LeadsDataEntryForm.Main.Company.Container4.Container5.FDN_Industry
+          referencePickerCollectionView: sales360.entities.Industry.collection_views.IndustryCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: sales360.entities.Leads.Leads.Company
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.ConvertedOpportunity.ConvertedOpportunity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.LeadsSalutation.Salutation
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.LeadsStatus.Status
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.LeadsCleanStatus.CleanStatus
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: sales360.entities.Leads.Leads.Rating
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.ConvertedContact.ConvertedContact
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.LeadsSource.LeadSource
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: sales360.entities.Leads.Leads.LastName
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.LeadsIndustry.Industry
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: sales360.references.ConvertedAccount.ConvertedAccount
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.LeadsCleanStatus.CleanStatus
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.LeadsStatus.Status
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.LeadsIndustry.Industry
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.LeadsSalutation.Salutation
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.entities.Leads.Leads.LastName
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: sales360.entities.Leads.Leads.SemlQLMatcherLeads
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ConvertedAccount.ConvertedAccount
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ConvertedOpportunity.ConvertedOpportunity
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.LeadsSource.LeadSource
+        - onStepExit: SKIP
+          validationType: LOV
+          attribute: sales360.entities.Leads.Leads.Rating
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sales360.references.ConvertedContact.ConvertedContact
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: sales360.entities.Leads.Leads.Company
+      stepTriggers: []
+label: Author Leads
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.entities.Leads.Leads.LastName
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.LeadsStatus.Status
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.LeadsSalutation.Salutation
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ConvertedAccount.ConvertedAccount
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.LeadsCleanStatus.CleanStatus
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: sales360.entities.Leads.Leads.Company
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.LeadsSource.LeadSource
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ConvertedContact.ConvertedContact
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sales360.references.ConvertedOpportunity.ConvertedOpportunity
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: sales360.entities.Leads.Leads.Rating
+  - onStepperFinish: BLOCK
+    validationType: FOREIGN
+    attribute: sales360.references.LeadsIndustry.Industry
+  - onStepperFinish: WARN
+    validationType: DETECT_DUPS
+triggers: []

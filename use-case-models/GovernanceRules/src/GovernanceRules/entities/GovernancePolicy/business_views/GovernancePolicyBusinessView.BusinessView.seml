@@ -1,0 +1,73 @@
+# GovernancePolicyBusinessView: business view on GovernancePolicy of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernancePolicy.business_views
+_type: BusinessView
+_name: GovernancePolicyBusinessView
+entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+rootLabel: Policies
+rootPluralLabel: Policies
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: GovernancePolicy
+  entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+  actionSet: GovernanceRules.entities.GovernancePolicy.action_sets.GovernancePolicyActionSet
+  collection: GovernanceRules.entities.GovernancePolicy.collection_views.GovernancePolicyCollectionView
+  form: GovernanceRules.entities.GovernancePolicy.forms.GovernancePolicyForm
+  displayCard: GovernanceRules.entities.GovernancePolicy.display_cards.GovernancePolicyDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: CustomFormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: GovernanceRules.entities.GovernancePolicy.search_forms.GovernancePolicySearchForm
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: true
+  sortExpression: Name asc
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: false
+  transitions:
+    - _type: BusinessViewTransition
+      _name: RulesTab
+      label: Rules
+      pluralLabel: Rules
+      useCustomLabel: true
+      transitionPath: Rules
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: LABEL
+      displayTransitionNodeAs: LABEL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: GovernancePolicyRules
+        entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+        actionSet: GovernanceRules.entities.GovernanceRule.action_sets.GovernanceRuleActionSet
+        collection: GovernanceRules.entities.GovernanceRule.collection_views.GovernanceRuleByPolicyCollectionView
+        form: GovernanceRules.entities.GovernanceRule.forms.GovernanceRuleForm
+        displayCard: GovernanceRules.entities.GovernanceRule.display_cards.GovernanceRuleDisplayCard
+        outlineVisible: false
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        overrideDefaultSort: true
+        sortExpression: EffectiveDate desc
+        listAllowed: true
+        tableAllowed: true
+        gridAllowed: false
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+enableHierarchyView: false
+useHierarchyOnOpen: false

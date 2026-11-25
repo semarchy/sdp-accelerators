@@ -1,0 +1,85 @@
+# Business Partner Grouping entity for the SAP Business Partner 360 accelerator.
+_name: BusinessPartnerGrouping
+_package: sapbp360.entities.BusinessPartnerGrouping
+_type: Entity
+primaryKey: sapbp360.entities.BusinessPartnerGrouping.BusinessPartnerGrouping.BusinessPartnerGroupingID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: BusinessPartnerGroupingCode
+label: Business Partner Grouping
+documentation: Business Partner Grouping reference data used by the SAP Business Partner 360 model.
+description: Business Partner Grouping reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/BusinessPartnerGrouping.svg
+pluralLabel: Business Partner Groupings
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BUS_PTNR_GRP
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: BusinessPartnerGroupingID
+    physicalName: BUS_PTNR_GRP_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Business Partner Grouping ID
+    documentation: Unique identifier for the business partner grouping.
+    description: Unique identifier for the business partner grouping.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Business Partner Grouping ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: BusinessPartnerGroupingCode
+    physicalName: BUS_PTNR_GRP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Business Partner Grouping Code
+    documentation: Code for the business partner grouping.
+    description: Code for the business partner grouping.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Business Partner Grouping Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: BusinessPartnerGroupingName
+    physicalName: BUS_PTNR_GRP_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Business Partner Grouping Name
+    documentation: Name of the business partner grouping.
+    description: Name of the business partner grouping.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Business Partner Grouping Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the business partner grouping.
+    description: Description for the business partner grouping.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the business partner grouping is active.
+    description: Indicates whether the business partner grouping is active.
+    mandatory: false
+    length: 1
+    searchable: true

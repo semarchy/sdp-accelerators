@@ -1,0 +1,25 @@
+﻿_package: RetailCustomer360.entities.Customer.enrichers
+_name: CustomerBusinessProfileEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Customer.Customer
+label: Customer Business Profile Enricher
+description: "Computes business-facing profile attributes for type and value band."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: CustomerType
+    expression: CASE
+        WHEN CustomerId IS NOT NULL OR CustomerId IS NULL THEN 'Customer'
+      END
+  - attributeName: CustomerValueBand
+    expression: CASE
+        WHEN CustomerSegment = 'VIP' THEN 'High'
+        WHEN CustomerSegment = 'Premium' THEN 'High'
+        WHEN AnnualIncome >= 150000 THEN 'High'
+        WHEN CustomerSegment = 'Loyal' THEN 'Medium'
+        WHEN CustomerSegment = 'Regular' THEN 'Medium'
+        WHEN AnnualIncome >= 50000 THEN 'Medium'
+        WHEN TenureYears >= 5 THEN 'Medium'
+        ELSE 'Low'
+      END
+

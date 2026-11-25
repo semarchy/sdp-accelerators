@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: ClinicalSiteBelongsToOrganization
+_type: Reference
+label: Clinical Site Belongs To Organization
+description: "Links clinical sites to the owning healthcare organization."
+documentation: "Links clinical sites to the owning healthcare organization."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.ClinicalSite.ClinicalSite
+fromRoleLabel: Clinical Site
+fromRoleName: clinicalSite
+fromRolePluralLabel: Clinical Sites
+physicalName: CLINICAL_SITE_BELONGS_TO
+fromNavigable: true
+
+toEntity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+toRoleLabel: Healthcare Organization
+toRoleName: healthcareOrganization
+toRolePhysicalName: HC_ORG
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: healthcareOrganization
+  label: Healthcare Organization
+  physicalName: HC_ORG
+  searchable: true
+  entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization

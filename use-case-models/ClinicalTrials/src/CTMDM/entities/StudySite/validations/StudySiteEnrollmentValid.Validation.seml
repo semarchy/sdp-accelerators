@@ -1,0 +1,9 @@
+_package: CTMDM.entities.StudySite.validations
+_name: StudySiteEnrollmentValid
+_type: SemQLValidation
+entity: CTMDM.entities.StudySite.StudySite
+label: Subjects enrolled must not exceed target when both are provided
+validationScope: PRE_CONSO
+description: "Subjects enrolled must not exceed target when both are provided before consolidation."
+
+condition: SubjectsEnrolled IS NULL OR EnrollmentTarget IS NULL OR SubjectsEnrolled <= EnrollmentTarget

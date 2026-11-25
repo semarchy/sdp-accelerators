@@ -1,0 +1,1135 @@
+_package: CTMDM.applications
+_type: Application
+_name: CTMDMApplication
+label: Clinical Trials Master
+visibility: VISIBLE
+applicationTitle: Clinical Trials Master
+
+avatarImageUrl: images://ctmdm/ctmdm-new-avatar.png
+logoUrl: images://ctmdm/ctmdm-dna-banner-updated.png
+coverImageUrl: images://ctmdm/ctmdm-dna-square-new.png
+favIcon: images://ctmdm/ctmdm-new-avatar.png
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+titleBarDefaultColor: md:green 600
+
+defaultAction: CTMDM.applications.CTMDMApplication.Root.GlobalSearch
+
+documentationConfig:
+  documentation: ""
+  documentationConfigDiagrams:
+    - _name: MainModel
+      _type: DocumentationConfigDiagram
+      modelDiagram: CTMDM.model_diagrams.CTMDM
+      label: Main Model
+    - _name: InvestigatorDomain
+      _type: DocumentationConfigDiagram
+      modelDiagram: CTMDM.model_diagrams.CTMDMInvestigators
+      label: Investigator Domain
+    - _name: SiteDomain
+      _type: DocumentationConfigDiagram
+      modelDiagram: CTMDM.model_diagrams.CTMDMSites
+      label: Site Domain
+    - _name: StudyDomain
+      _type: DocumentationConfigDiagram
+      modelDiagram: CTMDM.model_diagrams.CTMDMStudies
+      label: Study Domain
+
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: false
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: SearchInvestigators
+      label: Investigators
+      viewType: GD
+      businessView: CTMDM.entities.Investigator.business_views.InvestigatorBusinessView
+      searchTypeConfig: CTMDM.entities.Investigator.business_views.InvestigatorBusinessView.Investigator.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: SearchClinicalSites
+      label: Clinical Sites
+      viewType: GD
+      businessView: CTMDM.entities.ClinicalSite.business_views.ClinicalSiteBusinessView
+      searchTypeConfig: CTMDM.entities.ClinicalSite.business_views.ClinicalSiteBusinessView.ClinicalSite.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: SearchStudies
+      label: Studies
+      viewType: GD
+      businessView: CTMDM.entities.Study.business_views.StudyBusinessView
+      searchTypeConfig: CTMDM.entities.Study.business_views.StudyBusinessView.Study.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: SearchProtocols
+      label: Protocols
+      viewType: GD
+      businessView: CTMDM.entities.Protocol.business_views.ProtocolBusinessView
+      searchTypeConfig: CTMDM.entities.Protocol.business_views.ProtocolBusinessView.Protocol.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: SearchCROsVendors
+      label: CROs / Vendors
+      viewType: GD
+      businessView: CTMDM.entities.Vendor.business_views.VendorBusinessView
+      searchTypeConfig: CTMDM.entities.Vendor.business_views.VendorBusinessView.Vendor.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: SearchHealthcareOrganizations
+      label: Healthcare Organizations
+      viewType: GD
+      businessView: CTMDM.entities.HealthcareOrganization.business_views.HealthcareOrganizationBusinessView
+      searchTypeConfig: CTMDM.entities.HealthcareOrganization.business_views.HealthcareOrganizationBusinessView.HealthcareOrganization.TextConfig
+      maxResults: 5
+
+navDrawer:
+  - _type: NavigationGroup
+    _name: RootFolder
+    label : Root Folder
+    dividerVisible: false
+    labelVisible: false
+    
+    actions:
+      - appAction: CTMDM.applications.CTMDMApplication.Root.MyTasks
+      - appAction: CTMDM.applications.CTMDMApplication.Root.GlobalSearch
+
+  - _type: FolderNavGroup
+    _name: Investigators
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.Investigators
+
+  - _type: FolderNavGroup
+    _name: InvestigatorsWF
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.WorkflowInv
+
+  - _type: FolderNavGroup
+    _name: Sites
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.Sites
+
+  - _type: FolderNavGroup
+    _name: Studies
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.Studies
+
+  - _type: FolderNavGroup
+    _name: ProtocolWF
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.WorkflowProt
+
+  - _type: FolderNavGroup
+    _name: Vendors
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.Vendor
+
+  - _type: FolderNavGroup
+    _name: Reference
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.ReferenceData
+
+  - _type: FolderNavGroup
+    _name: Suggestions
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.Suggestions
+
+  - _type: FolderNavGroup
+    _name: ConfirmMatches
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.ConfirmMatch
+
+  - _type: FolderNavGroup
+    _name: SourceErrors
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.SourceErrors
+
+  - _type: FolderNavGroup
+    _name: Admin
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: CTMDM.applications.CTMDMApplication.Root.Admin
+
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://ctmdm/ctmdm-new-cover.png
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  
+  appActions:
+    - _type: MyTasksAction
+      _name: MyTasks
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: true
+
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+
+    - _type: FolderAction
+      _name: Investigators
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: " "
+      labelColor: md:teal
+      image: images://ctmdm/ctmdm-folder-investigators.png
+      iconColor: md:teal
+      appActions:
+        - _type: FolderAction
+          _name: ClinicalInvestigators
+          description: Browse Investigator related data
+          icon: images://mdi/account-tie.svg
+          iconColor: md:blue 700
+          label: Clinical Investigators
+          labelColor: md:blue 700
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseInvestigator
+              businessView: CTMDM.entities.Investigator.business_views.InvestigatorBusinessView
+              label: Investigators
+              labelColor: md:teal
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Investigators records
+              image: images://ctmdm/ctmdm-investigator.png
+              iconColor: md:teal
+              nbRecordsBadgeBackgroundColor: md:green 600
+              
+            - _type: BrowseBusinessViewAction
+              _name: BrowseMedicalLicense
+              businessView: CTMDM.entities.MedicalLicense.business_views.MedicalLicenseBusinessView
+              label: Medical Licenses
+              labelColor: md:teal
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Medical Licenses records
+              image: images://ctmdm/ctmdm-medical-license.png
+              iconColor: md:teal
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseGcpCertification
+              businessView: CTMDM.entities.GcpCertification.business_views.GcpCertificationBusinessView
+              label: GCP Certifications
+              labelColor: md:teal
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse GCP Certifications records
+              image: images://ctmdm/ctmdm-gcp-certification.png
+              iconColor: md:teal
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseStudyInvestigator
+              businessView: CTMDM.entities.StudyInvestigator.business_views.StudyInvestigatorBusinessView
+              label: Study Investigators
+              labelColor: md:teal
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Study Investigators records
+              image: images://ctmdm/ctmdm-study-investigator.png
+              iconColor: md:teal
+
+              nbRecordsBadgeBackgroundColor: md:green 600
+    - _type: FolderAction
+      _name: Sites
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:blue
+      image: images://ctmdm/ctmdm-folder-sites.png
+      iconColor: md:blue
+      appActions:
+        - _type: FolderAction
+          _name: SitesAndCapabilities
+          description: Browse Investigator related data
+          icon: images://mdi/hospital-building.svg
+          iconColor: md:blue 700
+          label: Sites And Capabilities
+          labelColor: md:blue 700
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseHealthcareOrganization
+              businessView: CTMDM.entities.HealthcareOrganization.business_views.HealthcareOrganizationBusinessView
+              label: Healthcare Organizations
+              labelColor: md:blue
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 600
+
+              description: Browse Healthcare Organizations records
+              image: images://ctmdm/ctmdm-healthcare-organization.png
+              iconColor: md:blue
+            - _type: BrowseBusinessViewAction
+              _name: BrowseClinicalSite
+              businessView: CTMDM.entities.ClinicalSite.business_views.ClinicalSiteBusinessView
+              label: Clinical Sites
+              labelColor: md:blue
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Clinical Sites records
+              image: images://ctmdm/ctmdm-clinical-site.png
+              iconColor: md:blue
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSiteCapability
+              businessView: CTMDM.entities.SiteCapability.business_views.SiteCapabilityBusinessView
+              label: Site Capabilities
+              labelColor: md:blue
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Site Capabilities records
+              image: images://ctmdm/ctmdm-site-capability.png
+              iconColor: md:blue
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSiteCapabilityAssignment
+              businessView: CTMDM.entities.SiteCapabilityAssignment.business_views.SiteCapabilityAssignmentBusinessView
+              label: Site Capability Assignments
+              labelColor: md:blue
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Site Capability Assignments records
+              image: images://ctmdm/ctmdm-site-capability-assignment.png
+              iconColor: md:blue
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseEthicsCommittee
+              businessView: CTMDM.entities.EthicsCommittee.business_views.EthicsCommitteeBusinessView
+              label: Ethics Committees / IRBs
+              labelColor: md:blue
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Ethics Committees / IRBs records
+              image: images://ctmdm/ctmdm-ethics-committee.png
+              iconColor: md:blue
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseSiteEthicsCommittee
+              businessView: CTMDM.entities.SiteEthicsCommittee.business_views.SiteEthicsCommitteeBusinessView
+              label: Site Ethics Committees
+              labelColor: md:blue
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Site Ethics Committees records
+              image: images://ctmdm/ctmdm-site-ethics-committee.png
+              iconColor: md:blue
+
+              nbRecordsBadgeBackgroundColor: md:green 600
+    - _type: FolderAction
+      _name: Studies
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:green
+      image: images://ctmdm/ctmdm-folder-studies.png
+      iconColor: md:green
+      appActions:
+        - _type: FolderAction
+          _name: StudiesAndProtocols
+          description: Browse Investigator related data
+          icon: images://mdi/flask-outline.svg
+          iconColor: md:blue 700
+          label: Studies And Protocols
+          labelColor: md:blue 700
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseStudy
+              businessView: CTMDM.entities.Study.business_views.StudyBusinessView
+              label: Studies
+              labelColor: md:green
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Studies records
+              image: images://ctmdm/ctmdm-study.png
+              iconColor: md:green
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProtocol
+              businessView: CTMDM.entities.Protocol.business_views.ProtocolBusinessView
+              label: Protocols
+              labelColor: md:green
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Protocols records
+              image: images://ctmdm/ctmdm-protocol.png
+              iconColor: md:green
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProtocolAmendment
+              businessView: CTMDM.entities.ProtocolAmendment.business_views.ProtocolAmendmentBusinessView
+              label: Protocol Amendments
+              labelColor: md:green
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Protocol Amendments records
+              image: images://ctmdm/ctmdm-protocol-amendment.png
+              iconColor: md:green
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseStudySite
+              businessView: CTMDM.entities.StudySite.business_views.StudySiteBusinessView
+              label: Study Sites
+              labelColor: md:green
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Study Sites records
+              image: images://ctmdm/ctmdm-study-site.png
+              iconColor: md:green
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseStudyCountry
+              businessView: CTMDM.entities.StudyCountry.business_views.StudyCountryBusinessView
+              label: Study Countries
+              labelColor: md:green
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Study Countries records
+              image: images://ctmdm/ctmdm-study-country.png
+              iconColor: md:green
+
+              nbRecordsBadgeBackgroundColor: md:green 600
+    - _type: FolderAction
+      _name: Vendor
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:orange
+      image: images://ctmdm/ctmdm-folder-vendors.png
+      iconColor: md:orange
+      appActions:
+        - _type: FolderAction
+          _name: Vendors
+          description: Browse Investigator related data
+          icon: images://mdi/handshake-outline.svg
+          iconColor: md:blue 700
+          label: Vendors
+          labelColor: md:blue 700
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseVendor
+              businessView: CTMDM.entities.Vendor.business_views.VendorBusinessView
+              label: CROs / Vendors
+              labelColor: md:orange
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse CROs / Vendors records
+              image: images://ctmdm/ctmdm-vendor.png
+              iconColor: md:orange
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: BrowseStudyVendor
+              businessView: CTMDM.entities.StudyVendor.business_views.StudyVendorBusinessView
+              label: Study Vendors
+              labelColor: md:orange
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              description: Browse Study Vendors records
+              image: images://ctmdm/ctmdm-study-vendor.png
+              iconColor: md:orange    
+    
+              nbRecordsBadgeBackgroundColor: md:green 600
+    - _type: FolderAction
+      _name: WorkflowInv
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:red
+      image: images://ctmdm/ctmdm-folder-stewardship.png
+      iconColor: md:red
+      appActions:
+
+        - _type: StartWorkflowAction
+          _name: InvestigaotWf
+          startEvent: CTMDM.workflows.OnboardInvestigator.StartFromScratch
+          label: Onboard Investigators
+          description: Start workflow to onboard new Investigator
+          icon: images://mdi/person-plus.svg
+          iconColor: md:blue 700
+          labelColor: md:blue 700
+
+    - _type: FolderAction
+      _name: WorkflowProt
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:red
+      image: images://ctmdm/ctmdm-folder-stewardship.png
+      iconColor: md:red
+      appActions:
+
+        - _type: StartWorkflowAction
+          _name: ProtocolWf
+          startEvent: CTMDM.workflows.ProtocolAmendmentGovernance.StartFromScratch
+          label: Protocol Amendement
+          description: Start workflow for Protocol amendement
+          icon: images://mdi/page-next.svg
+          iconColor: md:blue 700
+          labelColor: md:blue 700
+    
+    - _type: FolderAction
+      _name: ReferenceData
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:red
+      image: images://ctmdm/ctmdm-folder-stewardship.png
+      iconColor: md:red
+      appActions:
+        - _type: FolderAction
+          _name: RefData
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Reference Data
+          labelColor: md:blue 700
+          image: images://ctmdm/ctmdm-folder-ref-data.png
+          iconColor: md:blue 700
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: Country
+              businessView: CTMDM.entities.Country.business_views.CountryBusinessView
+              label: Countries
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              image: images://ctmdm/ctmdm-country.png
+              iconColor: md:blue
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: TherapeuticArea
+              businessView: CTMDM.entities.TherapeuticArea.business_views.TherapeuticAreaBusinessView
+              label: Therapeutic Areas
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              image: images://ctmdm/ctmdm-therapeutic-area.png
+              iconColor: md:blue
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: StudyPhase
+              businessView: CTMDM.entities.StudyPhase.business_views.StudyPhaseBusinessView
+              label: Study Phases
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              image: images://ctmdm/ctmdm-study-phase.png
+              iconColor: md:blue
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: RegulatoryAuthority
+              businessView: CTMDM.entities.RegulatoryAuthority.business_views.RegulatoryAuthorityBusinessView
+              label: Regulatory Authorities
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              image: images://ctmdm/ctmdm-regulatory-authority.png
+              iconColor: md:blue
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: SiteCapability
+              businessView: CTMDM.entities.SiteCapability.business_views.SiteCapabilityBusinessView
+              label: Site Capabilities
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              image: images://ctmdm/ctmdm-site-capability.png
+              iconColor: md:blue
+    
+              nbRecordsBadgeBackgroundColor: md:green 600
+    - _type: FolderAction
+      _name: Suggestions
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:red
+      image: images://ctmdm/ctmdm-folder-stewardship.png
+      iconColor: md:red
+      appActions:
+        - _type: FolderAction
+          _name: MatchSuggestions
+          description: Browse Investigator related data
+          icon: images://mdi/account-supervisor-circle.svg
+          iconColor: md:blue 700
+          label: Match Suggestions
+          labelColor: md:blue 700
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: InvestigatorReviewSuggestions
+              businessView: CTMDM.entities.Investigator.business_views.InvestigatorReviewSuggestions
+              label: Investigator Duplicate Suggestions
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-investigator-match-suggestions.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: HealthcareOrganizationReviewSuggestions
+              businessView: CTMDM.entities.HealthcareOrganization.business_views.HealthcareOrganizationReviewSuggestions
+              label: Healthcare Organization Duplicate Suggestions
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-healthcare-organization-match-suggestions.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: ClinicalSiteReviewSuggestions
+              businessView: CTMDM.entities.ClinicalSite.business_views.ClinicalSiteReviewSuggestions
+              label: Clinical Site Duplicate Suggestions
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-clinical-site-match-suggestions.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: VendorReviewSuggestions
+              businessView: CTMDM.entities.Vendor.business_views.VendorReviewSuggestions
+              label: CRO / Vendor Duplicate Suggestions
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-vendor-match-suggestions.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: EthicsCommitteeReviewSuggestions
+              businessView: CTMDM.entities.EthicsCommittee.business_views.EthicsCommitteeReviewSuggestions
+              label: Ethics Committee / IRB Duplicate Suggestions
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-ethics-committee-match-suggestions.png
+              iconColor: md:red
+    
+              nbRecordsBadgeBackgroundColor: md:green 600
+    - _type: FolderAction
+      _name: ConfirmMatch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:red
+      image: images://ctmdm/ctmdm-folder-stewardship.png
+      iconColor: md:red
+      appActions:
+        - _type: FolderAction
+          _name: ConfirmMatches
+          description: Browse Investigator related data
+          icon: images://mdi/account-check.svg
+          iconColor: md:blue 700
+          label: Confirm Matches
+          labelColor: md:blue 700
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: InvestigatorConfirmMatches
+              businessView: CTMDM.entities.Investigator.business_views.InvestigatorConfirmMatches
+              label: Investigator Confirm Matches
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-investigator-confirm-matches.png
+              iconColor: md:red
+    
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: HealthcareOrganizationConfirmMatches
+              businessView: CTMDM.entities.HealthcareOrganization.business_views.HealthcareOrganizationConfirmMatches
+              label: Healthcare Organization Confirm Matches
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-healthcare-organization-confirm-matches.png
+              iconColor: md:red
+    
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: ClinicalSiteConfirmMatches
+              businessView: CTMDM.entities.ClinicalSite.business_views.ClinicalSiteConfirmMatches
+              label: Clinical Site Confirm Matches
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-clinical-site-confirm-matches.png
+              iconColor: md:red
+    
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: VendorConfirmMatches
+              businessView: CTMDM.entities.Vendor.business_views.VendorConfirmMatches
+              label: CRO / Vendor Confirm Matches
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-vendor-confirm-matches.png
+              iconColor: md:red
+    
+              nbRecordsBadgeBackgroundColor: md:green 600
+            - _type: BrowseBusinessViewAction
+              _name: EthicsCommitteeConfirmMatches
+              businessView: CTMDM.entities.EthicsCommittee.business_views.EthicsCommitteeConfirmMatches
+              label: Ethics Committee / IRB Confirm Matches
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: GD
+              image: images://ctmdm/ctmdm-ethics-committee-confirm-matches.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:green 600
+    - _type: FolderAction
+      _name: SourceErrors
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      labelColor: md:red
+      image: images://ctmdm/ctmdm-folder-stewardship.png
+      iconColor: md:red
+      appActions:
+        - _type: FolderAction
+          _name: Errors
+          description: Browse Investigator related data
+          icon: images://mdi/alert-octagon.svg
+          iconColor: md:blue 700
+          label: Source Errors
+          labelColor: md:blue 700
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: InvestigatorErrors
+              businessView: CTMDM.entities.Investigator.business_views.InvestigatorBusinessView
+              label: Investigator Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-investigator-errors.png
+              iconColor: md:red
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: MedicalLicenseErrors
+              businessView: CTMDM.entities.MedicalLicense.business_views.MedicalLicenseBusinessView
+              label: Medical License Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-medical-license-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: GcpCertificationErrors
+              businessView: CTMDM.entities.GcpCertification.business_views.GcpCertificationBusinessView
+              label: GCP Certification Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-gcp-certification-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: HealthcareOrganizationErrors
+              businessView: CTMDM.entities.HealthcareOrganization.business_views.HealthcareOrganizationBusinessView
+              label: Healthcare Organization Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-healthcare-organization-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: ClinicalSiteErrors
+              businessView: CTMDM.entities.ClinicalSite.business_views.ClinicalSiteBusinessView
+              label: Clinical Site Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-clinical-site-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: StudyErrors
+              businessView: CTMDM.entities.Study.business_views.StudyBusinessView
+              label: Study Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-study-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: ProtocolErrors
+              businessView: CTMDM.entities.Protocol.business_views.ProtocolBusinessView
+              label: Protocol Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-protocol-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: ProtocolAmendmentErrors
+              businessView: CTMDM.entities.ProtocolAmendment.business_views.ProtocolAmendmentBusinessView
+              label: Protocol Amendment Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-protocol-amendment-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: StudySiteErrors
+              businessView: CTMDM.entities.StudySite.business_views.StudySiteBusinessView
+              label: Study Site Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-study-site-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: StudyCountryErrors
+              businessView: CTMDM.entities.StudyCountry.business_views.StudyCountryBusinessView
+              label: Study Country Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-study-country-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: StudyInvestigatorErrors
+              businessView: CTMDM.entities.StudyInvestigator.business_views.StudyInvestigatorBusinessView
+              label: Study Investigator Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-study-investigator-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: VendorErrors
+              businessView: CTMDM.entities.Vendor.business_views.VendorBusinessView
+              label: CRO / Vendor Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-vendor-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: StudyVendorErrors
+              businessView: CTMDM.entities.StudyVendor.business_views.StudyVendorBusinessView
+              label: Study Vendor Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-study-vendor-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: EthicsCommitteeErrors
+              businessView: CTMDM.entities.EthicsCommittee.business_views.EthicsCommitteeBusinessView
+              label: Ethics Committee / IRB Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-ethics-committee-errors.png
+              iconColor: md:red
+
+              nbRecordsBadgeBackgroundColor: md:red 600
+            - _type: BrowseBusinessViewAction
+              _name: SiteEthicsCommitteeErrors
+              businessView: CTMDM.entities.SiteEthicsCommittee.business_views.SiteEthicsCommitteeBusinessView
+              label: Site Ethics Committee Source Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              image: images://ctmdm/ctmdm-site-ethics-committee-errors.png
+              iconColor: md:red
+
+    
+              nbRecordsBadgeBackgroundColor: md:red 600
+    - _type: FolderAction
+      _name: Admin
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: "  "
+      appActions:
+
+      - _type: FolderAction
+        _name: Administration
+        icon: images://mdi/database-import.svg
+        image: images://ctmdm/ctmdm-folder-admin.png
+        iconColor: md:black
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        label: Administration
+        appActions:
+      
+        - _type: FolderAction
+          _name: ImportData
+          icon: images://mdi/database-import.svg
+          image: images://ctmdm/ctmdm-folder-import-data.png
+          iconColor: md:black
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Import Data
+          requiredRole: SemAdmin
+  
+          appActions:
+            - _type: ImportDataAppAction
+              _name: ImportCountry
+              label: 01-Import Country
+              image: images://ctmdm/ctmdm-country-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.Country.action_sets.CountryActionSet.ImportAuthorCountries
+            - _type: ImportDataAppAction
+              _name: ImportStudyPhase
+              label: 02-Import Study Phase
+              image: images://ctmdm/ctmdm-study-phase-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.StudyPhase.action_sets.StudyPhaseActionSet.ImportAuthorStudyPhases
+            - _type: ImportDataAppAction
+              _name: ImportTherapeuticArea
+              label: 03-Import Therapeutic Area
+              image: images://ctmdm/ctmdm-therapeutic-area-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.TherapeuticArea.action_sets.TherapeuticAreaActionSet.ImportAuthorTherapeuticAreas
+            - _type: ImportDataAppAction
+              _name: ImportRegulatoryAuthority
+              label: 04-Import Regulatory Authority
+              image: images://ctmdm/ctmdm-regulatory-authority-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.RegulatoryAuthority.action_sets.RegulatoryAuthorityActionSet.ImportAuthorRegulatoryAuthorities
+            - _type: ImportDataAppAction
+              _name: ImportSiteCapability
+              label: 05-Import Site Capability
+              image: images://ctmdm/ctmdm-site-capability-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.SiteCapability.action_sets.SiteCapabilityActionSet.ImportAuthorSiteCapabilities
+            - _type: ImportDataAppAction
+              _name: ImportHealthcareOrganization
+              label: 06-Import Healthcare Organization
+              image: images://ctmdm/ctmdm-healthcare-organization-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.HealthcareOrganization.action_sets.HealthcareOrganizationActionSet.ImportAuthorHealthcareOrganizations
+            - _type: ImportDataAppAction
+              _name: ImportClinicalSite
+              label: 07-Import Clinical Site
+              image: images://ctmdm/ctmdm-clinical-site-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.ClinicalSite.action_sets.ClinicalSiteActionSet.ImportAuthorClinicalSites
+            - _type: ImportDataAppAction
+              _name: ImportEthicsCommittee
+              label: 08-Import Ethics Committee / IRB
+              image: images://ctmdm/ctmdm-ethics-committee-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.EthicsCommittee.action_sets.EthicsCommitteeActionSet.ImportAuthorEthicsCommitteesIRBs
+            - _type: ImportDataAppAction
+              _name: ImportVendor
+              label: 09-Import CRO / Vendor
+              image: images://ctmdm/ctmdm-vendor-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.Vendor.action_sets.VendorActionSet.ImportAuthorCROsVendors
+            - _type: ImportDataAppAction
+              _name: ImportInvestigator
+              label: 10-Import Investigator
+              image: images://ctmdm/ctmdm-investigator-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.Investigator.action_sets.InvestigatorActionSet.ImportAuthorInvestigators
+            - _type: ImportDataAppAction
+              _name: ImportStudy
+              label: 11-Import Study
+              image: images://ctmdm/ctmdm-study-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.Study.action_sets.StudyActionSet.ImportAuthorStudies
+            - _type: ImportDataAppAction
+              _name: ImportProtocol
+              label: 12-Import Protocol
+              image: images://ctmdm/ctmdm-protocol-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.Protocol.action_sets.ProtocolActionSet.ImportAuthorProtocols
+            - _type: ImportDataAppAction
+              _name: ImportProtocolAmendment
+              label: 13-Import Protocol Amendment
+              image: images://ctmdm/ctmdm-protocol-amendment-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.ProtocolAmendment.action_sets.ProtocolAmendmentActionSet.ImportAuthorProtocolAmendments
+            - _type: ImportDataAppAction
+              _name: ImportMedicalLicense
+              label: 14-Import Medical License
+              image: images://ctmdm/ctmdm-medical-license-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.MedicalLicense.action_sets.MedicalLicenseActionSet.ImportAuthorMedicalLicenses
+            - _type: ImportDataAppAction
+              _name: ImportGcpCertification
+              label: 15-Import GCP Certification
+              image: images://ctmdm/ctmdm-gcp-certification-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.GcpCertification.action_sets.GcpCertificationActionSet.ImportAuthorGCPCertifications
+            - _type: ImportDataAppAction
+              _name: ImportStudyCountry
+              label: 16-Import Study Country
+              image: images://ctmdm/ctmdm-study-country-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.StudyCountry.action_sets.StudyCountryActionSet.ImportAuthorStudyCountries
+            - _type: ImportDataAppAction
+              _name: ImportStudySite
+              label: 17-Import Study Site
+              image: images://ctmdm/ctmdm-study-site-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.StudySite.action_sets.StudySiteActionSet.ImportAuthorStudySites
+            - _type: ImportDataAppAction
+              _name: ImportStudyInvestigator
+              label: 18-Import Study Investigator
+              image: images://ctmdm/ctmdm-study-investigator-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.StudyInvestigator.action_sets.StudyInvestigatorActionSet.ImportAuthorStudyInvestigators
+            - _type: ImportDataAppAction
+              _name: ImportStudyVendor
+              label: 19-Import Study Vendor
+              image: images://ctmdm/ctmdm-study-vendor-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.StudyVendor.action_sets.StudyVendorActionSet.ImportAuthorStudyVendors
+            - _type: ImportDataAppAction
+              _name: ImportSiteEthicsCommittee
+              label: 20-Import Site Ethics Committee
+              image: images://ctmdm/ctmdm-site-ethics-committee-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.SiteEthicsCommittee.action_sets.SiteEthicsCommitteeActionSet.ImportAuthorSiteEthicsCommittees
+            - _type: ImportDataAppAction
+              _name: ImportSiteCapabilityAssignment
+              label: 21-Import Site Capability Assignment
+              image: images://ctmdm/ctmdm-site-capability-assignment-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: CTMDM.entities.SiteCapabilityAssignment.action_sets.SiteCapabilityAssignmentActionSet.ImportAuthorSiteCapabilityAssignments
+  
+        - _type: BrowseEntitiesFolderAction
+          _name: Entities 
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          lineageEnabled: true
+          label: Browse All Data
+          image: images://ctmdm/ctmdm-browse-entities.png
+          requiredRole: semarchyAdmin
+  
+        - _type: OpenDocumentationAction
+          _name: OpenModelDoc
+          iconColor: md:black
+          image: images://ctmdm/ctmdm-data-model.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Model Documentation

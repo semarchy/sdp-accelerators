@@ -1,0 +1,44 @@
+﻿_package: RetailCustomer360.entities.Lead.business_views
+_type: BusinessView
+_name: LeadReviewSuggestedMatches
+label: Leads - Suggested Matches
+entity: RetailCustomer360.entities.Lead.Lead
+
+rootLabel: Lead
+rootPluralLabel: Leads
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: https://api.iconify.design/mdi/account-star.svg?color=%230D1B2A&width=64
+
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Lead
+  entity: RetailCustomer360.entities.Lead.Lead
+  actionSet: RetailCustomer360.entities.Lead.action_sets.LeadReviewSuggestedMatchesActionSet
+  collection: RetailCustomer360.entities.Lead.collection_views.LeadCollectionView
+  form: RetailCustomer360.entities.Lead.forms.LeadForm
+  displayCard: RetailCustomer360.entities.Lead.display_cards.LeadDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

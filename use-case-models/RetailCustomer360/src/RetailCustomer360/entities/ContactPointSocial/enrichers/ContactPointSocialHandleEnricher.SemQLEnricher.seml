@@ -1,0 +1,17 @@
+_package: RetailCustomer360.entities.ContactPointSocial.enrichers
+_name: ContactPointSocialHandleEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.ContactPointSocial.ContactPointSocial
+label: ContactPointSocial Handle Enricher
+description: "Normalizes the social handle for matching and search."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: HandleNormalized
+    expression: LOWER(
+        CASE
+          WHEN SocialHandle IS NULL THEN NULL
+          WHEN SUBSTR(BTRIM(SocialHandle), 1, 1) = '@' THEN SUBSTR(BTRIM(SocialHandle), 2)
+          ELSE BTRIM(SocialHandle)
+        END
+      )

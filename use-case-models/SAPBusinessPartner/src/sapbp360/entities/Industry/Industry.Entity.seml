@@ -1,0 +1,85 @@
+# Industry entity for the SAP Business Partner 360 accelerator.
+_name: Industry
+_package: sapbp360.entities.Industry
+_type: Entity
+primaryKey: sapbp360.entities.Industry.Industry.IndustryID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: IndustryCode
+label: Industry
+documentation: Industry reference data used by the SAP Business Partner 360 model.
+description: Industry reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/Industry.svg
+pluralLabel: Industries
+historizeGolden: true
+historizeMaster: false
+physicalTableName: INDUSTRY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: IndustryID
+    physicalName: INDUSTRY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry ID
+    documentation: Unique identifier for the industry.
+    description: Unique identifier for the industry.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Industry ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: IndustryCode
+    physicalName: INDUSTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry Code
+    documentation: Code for the industry.
+    description: Code for the industry.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Industry Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: IndustryName
+    physicalName: INDUSTRY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Industry Name
+    documentation: Name of the industry.
+    description: Name of the industry.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Industry Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the industry.
+    description: Description for the industry.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the industry is active.
+    description: Indicates whether the industry is active.
+    mandatory: false
+    length: 1
+    searchable: true

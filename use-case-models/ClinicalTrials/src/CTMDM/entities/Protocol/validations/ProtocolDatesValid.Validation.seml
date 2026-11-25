@@ -1,0 +1,9 @@
+_package: CTMDM.entities.Protocol.validations
+_name: ProtocolDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.Protocol.Protocol
+label: Protocol approval date must not be after effective date
+validationScope: PRE_CONSO
+description: "Protocol approval date must not be after effective date before consolidation."
+
+condition: ApprovalDate IS NULL OR EffectiveDate IS NULL OR ApprovalDate <= EffectiveDate

@@ -1,0 +1,125 @@
+_package: CTMDM.model_diagrams
+_name: CTMDMSites
+_type: ModelDiagram
+attributeNameFormat: NAME
+description: Visual map of the Clinical Trial MDM data model and its relationships.
+entityNameFormat: LABEL
+label: Site Domain
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+    _name: HealthcareOrganization
+    borderColor: "#4DA39D"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 616
+      y: -39
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.ClinicalSite.ClinicalSite
+    _name: ClinicalSite
+    borderColor: "#1E6F8B"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 508
+      y: 638
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.SiteCapability.SiteCapability
+    _name: SiteCapability
+    borderColor: "#7AC957"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 174
+      y: 111
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.SiteCapabilityAssignment.SiteCapabilityAssignment
+    _name: SiteCapabilityAssignment
+    borderColor: "#F5B041"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 160
+      y: 690
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.Country.Country
+    _name: Country
+    borderColor: "#A7C957"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1440
+      y: 0
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+    _name: EthicsCommittee
+    borderColor: "#0F3D3E"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1540.5
+      y: 678
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.SiteEthicsCommittee.SiteEthicsCommittee
+    _name: SiteEthicsCommittee
+    borderColor: "#5E7CE2"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1024
+      y: 939
+    width: -1
+referenceLinks:
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.HealthcareOrganization
+    reference: CTMDM.references.HealthcareOrganizationHasCountry
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.Country
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.ClinicalSite
+    reference: CTMDM.references.ClinicalSiteBelongsToOrganization
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.HealthcareOrganization
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.ClinicalSite
+    reference: CTMDM.references.ClinicalSiteHasCountry
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.Country
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.SiteCapabilityAssignment
+    reference: CTMDM.references.SiteCapabilityAssignmentHasSite
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.ClinicalSite
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.SiteCapabilityAssignment
+    reference: CTMDM.references.SiteCapabilityAssignmentHasCapability
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.SiteCapability
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.EthicsCommittee
+    reference: CTMDM.references.EthicsCommitteeHasCountry
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.Country
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.EthicsCommittee
+    reference: CTMDM.references.EthicsCommitteeHasOrganization
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.HealthcareOrganization
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.SiteEthicsCommittee
+    reference: CTMDM.references.SiteEthicsCommitteeHasSite
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.ClinicalSite
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMSites.SiteEthicsCommittee
+    reference: CTMDM.references.SiteEthicsCommitteeHasCommittee
+    toEntityShape: CTMDM.model_diagrams.CTMDMSites.EthicsCommittee
+    bendPoints: []
+inheritLinks: []

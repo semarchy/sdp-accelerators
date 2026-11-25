@@ -1,0 +1,427 @@
+# BP Address entity for the SAP Business Partner 360 accelerator.
+_name: BPAddress
+_package: sapbp360.entities.BPAddress
+_type: Entity
+primaryKey: sapbp360.entities.BPAddress.BPAddress.AddressGoldenID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: UUID
+label: BP Address
+documentation: Postal address golden record for a business partner with geocoding enrichment.
+description: Postal address golden record for a business partner with geocoding enrichment.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://sapbusinesspartner/BPAddress.svg
+pluralLabel: BP Addresses
+historizeGolden: true
+historizeMaster: true
+physicalTableName: BP_ADDRESS
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AddressGoldenID
+    physicalName: ADDR_GOLDEN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    label: Address Golden ID
+    documentation: System generated golden identifier for the address record.
+    description: System generated golden identifier for the address record.
+    mandatory: true
+    mandatoryValidationLabel: Address Golden ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    precision: 38
+    searchable: true
+  - _type: EntityAttribute
+    _name: AddressID
+    physicalName: ADDR_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Address ID
+    documentation: SAP internal address number.
+    description: SAP internal address number.
+    mandatory: false
+    length: 10
+    searchable: true
+  - _type: EntityAttribute
+    _name: CareOfName
+    physicalName: CARE_OF_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Care of Name
+    documentation: Care-of name.
+    description: Care-of name.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: StreetName
+    physicalName: STREET_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Street Name
+    documentation: Street name.
+    description: Street name.
+    mandatory: false
+    length: 60
+    searchable: true
+  - _type: EntityAttribute
+    _name: HouseNumber
+    physicalName: HOUSE_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: House Number
+    documentation: House number.
+    description: House number.
+    mandatory: false
+    length: 10
+    searchable: true
+  - _type: EntityAttribute
+    _name: StreetPrefixName
+    physicalName: STREET_PREFIX_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Street Prefix Name
+    documentation: Street prefix.
+    description: Street prefix.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: StreetSuffixName
+    physicalName: STREET_SUFFIX_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Street Suffix Name
+    documentation: Street suffix.
+    description: Street suffix.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: District
+    physicalName: DISTRICT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: District
+    documentation: District.
+    description: District.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: CityName
+    physicalName: CITY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: City Name
+    documentation: City name.
+    description: City name.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: County
+    physicalName: COUNTY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: County
+    documentation: County.
+    description: County.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: PostalCode
+    physicalName: POSTAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Postal Code
+    documentation: Postal code.
+    description: Postal code.
+    mandatory: false
+    length: 10
+    searchable: true
+  - _type: EntityAttribute
+    _name: POBox
+    physicalName: PO_BOX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: PO Box
+    documentation: PO box.
+    description: PO box.
+    mandatory: false
+    length: 10
+    searchable: true
+  - _type: EntityAttribute
+    _name: POBoxPostalCode
+    physicalName: PO_BOX_POSTAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: PO Box Postal Code
+    documentation: PO box postal code.
+    description: PO box postal code.
+    mandatory: false
+    length: 10
+    searchable: true
+  - _type: EntityAttribute
+    _name: ValidityStartDate
+    physicalName: VAL_START_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: Validity Start Date
+    documentation: Address validity start date.
+    description: Address validity start date.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: InpAddressLine
+    physicalName: INP_ADDR_LINE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input Address Line
+    documentation: Street address line used as input for geocoding.
+    description: Street address line used as input for geocoding.
+    mandatory: false
+    length: 255
+    searchable: true
+  - _type: EntityAttribute
+    _name: InpCity
+    physicalName: INP_CITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input City
+    documentation: City used as input for geocoding.
+    description: City used as input for geocoding.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: InpState
+    physicalName: INP_STATE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input State
+    documentation: State or region used as input for geocoding.
+    description: State or region used as input for geocoding.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: InpPostalCode
+    physicalName: INP_POSTAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input Postal Code
+    documentation: Postal code used as input for geocoding.
+    description: Postal code used as input for geocoding.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: InpCountry
+    physicalName: INP_COUNTRY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Input Country
+    documentation: Country used as input for geocoding.
+    description: Country used as input for geocoding.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoStreetNumber
+    physicalName: GEO_STREET_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Street Number
+    documentation: Street number returned by the Google Maps geocoding enricher.
+    description: Street number returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoStreetName
+    physicalName: GEO_STREET_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Street Name
+    documentation: Street or route returned by the Google Maps geocoding enricher.
+    description: Street or route returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 255
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoLocality
+    physicalName: GEO_LOCALITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Locality
+    documentation: Locality or city returned by the Google Maps geocoding enricher.
+    description: Locality or city returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoState
+    physicalName: GEO_STATE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded State
+    documentation: Administrative area returned by the Google Maps geocoding enricher.
+    description: Administrative area returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoPostalCode
+    physicalName: GEO_POSTAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Postal Code
+    documentation: Postal code returned by the Google Maps geocoding enricher.
+    description: Postal code returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoCountry
+    physicalName: GEO_COUNTRY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Country
+    documentation: Country long name returned by the Google Maps geocoding enricher.
+    description: Country long name returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoCountryShort
+    physicalName: GEO_COUNTRY_SHORT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Country Short
+    documentation: Country short code returned by the Google Maps geocoding enricher.
+    description: Country short code returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 16
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoLatitude
+    physicalName: GEO_LATITUDE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Latitude
+    documentation: Latitude returned by the Google Maps geocoding enricher.
+    description: Latitude returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoLongitude
+    physicalName: GEO_LONGITUDE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Longitude
+    documentation: Longitude returned by the Google Maps geocoding enricher.
+    description: Longitude returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoStatus
+    physicalName: GEO_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Status
+    documentation: Geocoding status returned by the Google Maps geocoding enricher.
+    description: Geocoding status returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: GeoQuality
+    physicalName: GEO_QUALITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Geocoded Quality
+    documentation: Geocoding quality returned by the Google Maps geocoding enricher.
+    description: Geocoding quality returned by the Google Maps geocoding enricher.
+    mandatory: false
+    length: 128
+    searchable: true
+  - _type: EntityAttribute
+    _name: NormalizedCity
+    physicalName: NORM_CITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized City
+    documentation: Standardized city name in upper case used for search and matching.
+    description: Standardized city name in upper case used for search and matching.
+    mandatory: false
+    length: 40
+    searchable: true
+matcher:
+  _name: SemQLMatcherBPADDRESS
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 94
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: BP Address matching rules for golden record consolidation.
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameFullAddress
+      condition: Record1.StreetName is not null and COALESCE(Record1.StreetName,'')=COALESCE(Record2.StreetName,'') and COALESCE(Record1.HouseNumber,'')=COALESCE(Record2.HouseNumber,'') and COALESCE(Record1.CityName,'')=COALESCE(Record2.CityName,'') and COALESCE(Record1.PostalCode,'')=COALESCE(Record2.PostalCode,'')
+      label: Same Full Address
+      documentation: Same Full Address matching rule.
+      description: Same Full Address matching rule.
+      matchScore: 90
+      color: md:teal 800
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameCityAndPostal
+      condition: COALESCE(Record1.CityName,'')=COALESCE(Record2.CityName,'') and COALESCE(Record1.PostalCode,'')=COALESCE(Record2.PostalCode,'')
+      label: Same City And Postal Code
+      documentation: Same City And Postal Code matching rule.
+      description: Same City And Postal Code matching rule.
+      matchScore: 82
+      color: md:amber 700
+      usingMatchOn: false

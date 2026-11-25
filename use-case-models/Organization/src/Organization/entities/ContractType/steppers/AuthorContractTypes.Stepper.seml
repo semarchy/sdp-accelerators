@@ -1,0 +1,35 @@
+# This file defines the stepper for managing contract types in the Organization domain.
+# It includes a root step for listing contract types and a child step for editing individual contract types.
+_package: Organization.entities.ContractType.steppers
+_type: Stepper
+_name: AuthorContractTypes
+entity: Organization.entities.ContractType.ContractType
+label: Contract Types
+rootStep:
+  _type: CollectionStep
+  _name: ContractTypes
+  label: Contract Types
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Organization.entities.ContractType.collection_views.ContractTypeCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: ContractType
+      label: Contract Type
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Organization.entities.ContractType.forms.ContractTypeForm.ContractType

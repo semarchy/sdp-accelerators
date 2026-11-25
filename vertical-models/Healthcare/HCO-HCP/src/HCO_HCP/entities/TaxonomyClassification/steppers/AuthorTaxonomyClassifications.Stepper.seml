@@ -1,0 +1,68 @@
+_name: AuthorTaxonomyClassifications
+_package: HCO_HCP.entities.TaxonomyClassification.steppers
+_type: Stepper
+entity: HCO_HCP.entities.TaxonomyClassification.TaxonomyClassification
+rootStep:
+  _name: TaxonomyClassifications
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.TaxonomyClassification.collection_views.TaxonomyClassificationCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Taxonomy Classifications
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.TaxonomyClassificationsTaxonomyGrouping.Grouping
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: HCO_HCP.entities.TaxonomyClassification.TaxonomyClassification.ClassificationCode
+  stepTriggers: []
+  childSteps:
+    - _name: TaxonomyClassification
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Taxonomy Classification
+      formTab: HCO_HCP.entities.TaxonomyClassification.forms.TaxonomyClassificationForm.TaxonomyClassification
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.TaxonomyClassificationsTaxonomyGrouping.Grouping
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: HCO_HCP.entities.TaxonomyClassification.TaxonomyClassification.ClassificationCode
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.TaxonomyClassificationsTaxonomyGrouping.Grouping
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: HCO_HCP.entities.TaxonomyClassification.TaxonomyClassification.ClassificationCode
+      stepTriggers: []
+label: Author Taxonomy Classifications
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: HCO_HCP.entities.TaxonomyClassification.TaxonomyClassification.ClassificationCode
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.TaxonomyClassificationsTaxonomyGrouping.Grouping
+triggers: []

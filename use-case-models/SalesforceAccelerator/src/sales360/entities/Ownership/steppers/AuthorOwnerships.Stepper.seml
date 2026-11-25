@@ -1,0 +1,47 @@
+# This is the AuthorOwnerships Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing ownerships within the Salesforce context.
+_name: AuthorOwnerships
+_package: sales360.entities.Ownership.steppers
+_type: Stepper
+entity: sales360.entities.Ownership.Ownership
+description: Stepper for managing Ownerships in Salesforce Accelerator
+rootStep:
+  _name: Ownerships
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.Ownership.collection_views.OwnershipCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Ownerships
+  description: Manage Ownership records
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form step for Ownership
+      formTab: sales360.entities.Ownership.forms.OwnershipForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Ownerships
+stepperFinishValidations: []
+triggers: []

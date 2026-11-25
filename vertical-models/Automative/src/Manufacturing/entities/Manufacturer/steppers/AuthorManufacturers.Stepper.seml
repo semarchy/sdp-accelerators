@@ -1,0 +1,63 @@
+_name: AuthorManufacturers
+_package: Manufacturing.entities.Manufacturer.steppers
+_type: Stepper
+entity: Manufacturing.entities.Manufacturer.Manufacturer
+rootStep:
+  _name: Manufacturers
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.Manufacturer.collection_views.ManufacturerCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Manufacturers
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.Manufacturer.Manufacturer.Name
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: Manufacturing.entities.Manufacturer.Manufacturer.SemlQLMatcherManufacturer
+  stepTriggers: []
+  childSteps:
+    - _name: Manufacturer
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: true
+      formFieldsMode: AUTO
+      label: Manufacturer
+      formTab: Manufacturing.entities.Manufacturer.forms.ManufacturerForm.Manufacturer
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.Manufacturer.Manufacturer.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.Manufacturer.Manufacturer.SemlQLMatcherManufacturer
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.Manufacturer.Manufacturer.Name
+      stepTriggers: []
+label: Author Manufacturers
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.Manufacturer.Manufacturer.Name
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

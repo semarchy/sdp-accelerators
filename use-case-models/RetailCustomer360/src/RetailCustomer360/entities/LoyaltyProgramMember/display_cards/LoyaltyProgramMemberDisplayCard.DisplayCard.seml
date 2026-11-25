@@ -1,0 +1,21 @@
+﻿_name: LoyaltyProgramMemberDisplayCard
+_package: RetailCustomer360.entities.LoyaltyProgramMember.display_cards
+_type: DisplayCard
+entity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+default: true
+primaryTextExpression: "CASE WHEN FDN_Customer IS NOT NULL THEN FDN_Customer ELSE LoyaltyMemberNumber END"
+secondaryTextExpression: "CASE WHEN LoyaltyMemberNumber IS NOT NULL THEN LoyaltyMemberNumber ELSE '' END || CASE WHEN MembershipStatus IS NOT NULL THEN ' • ' || MembershipStatus ELSE '' END || CASE WHEN Tier IS NOT NULL THEN ' • ' || Tier ELSE '' END || CASE WHEN FDN_LoyaltyProgram IS NOT NULL THEN ' • ' || FDN_LoyaltyProgram ELSE '' END"
+primaryImageValueInterpreter: SEMQL
+primaryImageValue: "CASE WHEN MemberHealthStatus = 'Healthy' THEN 'https://api.iconify.design/mdi/shield-check.svg?color=%23059669&width=512' WHEN MemberHealthStatus IN ('Inactive', 'Expired Points') THEN 'https://api.iconify.design/mdi/shield-off.svg?color=%23DC2626&width=512' WHEN MemberHealthStatus = 'At Risk' THEN 'https://api.iconify.design/mdi/shield-alert.svg?color=%23D97706&width=512' ELSE 'https://api.iconify.design/mdi/shield-account.svg?color=%232563EB&width=512' END"
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackValue: https://api.iconify.design/mdi/shield-account.svg?color=%232563EB&width=512
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: SEMQL
+avatarImageValue: "CASE WHEN MemberHealthStatus = 'Healthy' THEN 'https://api.iconify.design/mdi/shield-check.svg?color=%23059669&width=512' WHEN MemberHealthStatus IN ('Inactive', 'Expired Points') THEN 'https://api.iconify.design/mdi/shield-off.svg?color=%23DC2626&width=512' WHEN MemberHealthStatus = 'At Risk' THEN 'https://api.iconify.design/mdi/shield-alert.svg?color=%23D97706&width=512' ELSE 'https://api.iconify.design/mdi/shield-account.svg?color=%232563EB&width=512' END"
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT
+

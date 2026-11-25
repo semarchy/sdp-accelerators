@@ -1,0 +1,67 @@
+_name: LongTextID
+_package: sapbp360.entities.LongTextID.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.LongTextID.LongTextID
+rootLabel: Long Text ID
+rootPluralLabel: Long Text IDs
+useHierarchyOnOpen: false
+label: Long Text ID
+description: Business view for Long Text ID.
+rootBusinessViewEntity:
+  _name: LongTextID
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.LongTextID.collection_views.LongTextIDCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.LongTextID.LongTextID
+  form: sapbp360.entities.LongTextID.forms.LongTextIDBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.LongTextID.action_sets.LongTextIDActionSet
+  displayCard: sapbp360.entities.LongTextID.display_cards.LongTextIDDisplayCard
+  sortExpression: LongTextIDName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.LongTextID.business_views.LongTextID.LongTextID
+rootIconUrl: images://mdi/book-open-page-variant-outline.svg

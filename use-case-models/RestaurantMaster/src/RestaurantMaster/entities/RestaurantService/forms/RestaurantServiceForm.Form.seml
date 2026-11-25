@@ -1,0 +1,103 @@
+_package: RestaurantMaster.entities.RestaurantService.forms
+_type: Form
+_name: RestaurantServiceForm
+entity: RestaurantMaster.entities.RestaurantService.RestaurantService
+default: true
+formTabs:
+- _type: FormTab
+  _name: RestaurantService
+  label: Service
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  displayFormTabAs: ICON_LABEL
+  iconUrl: images://mdi/room-service-outline.svg
+  labelWidth: '150'
+  content:
+  - _type: FormContainer
+    _name: Main
+    layoutDirection: COLUMN
+    content:
+    - _type: FormSection
+      _name: Sec1
+      label: Service
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S1Row1
+        layoutDirection: ROW
+        content:
+        - _type: IdField
+          _name: RestaurantServiceID
+          value: RestaurantServiceID
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_Restaurant
+          value: FDN_Restaurant
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.Restaurant.Restaurant
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 66
+      - _type: FormContainer
+        _name: S1Row2
+        layoutDirection: ROW
+        content:
+        - _type: ReferenceField
+          _name: FDN_ServiceType
+          value: FDN_ServiceType
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.ServiceType.ServiceType
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_DeliveryPartner
+          value: FDN_DeliveryPartner
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.SourceSystem.SourceSystem
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+        - _type: TextField
+          _name: Available
+          value: Available
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S1Row3
+        layoutDirection: ROW
+        content:
+        - _type: DateField
+          _name: EffectiveFrom
+          value: EffectiveFrom
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+        - _type: DateField
+          _name: EffectiveTo
+          value: EffectiveTo
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33

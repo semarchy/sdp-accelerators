@@ -1,0 +1,87 @@
+_package: Manufacturing.entities.SupplierAddress.collection_views
+_name: SupplierAddressCollection_AdddressOnly
+_type: CollectionView
+entity: Manufacturing.entities.SupplierAddress.SupplierAddress
+default: false
+displayCard: Manufacturing.entities.SupplierAddress.display_cards.SupplierAddressJoinDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Supplier Address
+tableShowDisplayCard: true
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_Address
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Address
+    visibleByDefault: true
+    referencedEntity: Manufacturing.entities.Address.Address
+    componentProperties:
+      textColor: |-
+        case when FID_AddressType ='Headquarters Address' then 'md:blue 700'
+        when FID_AddressType ='Billing Address' then 'md:green 800'
+        when FID_AddressType ='Shipping Address' then 'md:purple A200'
+        end
+      textColorValueInterpreter: SEMQL
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_AddressType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_AddressType
+    visibleByDefault: true
+    displayCard: Manufacturing.entities.AddressType.display_cards.AddressTypeDisplayCard
+    referencedEntity: Manufacturing.entities.AddressType.AddressType
+    componentProperties:
+      textColor: |-
+        case when FID_AddressType ='Headquarters Address' then 'md:blue 700'
+        when FID_AddressType ='Billing Address' then 'md:green 800'
+        when FID_AddressType ='Shipping Address' then 'md:purple A200'
+        end
+      textColorValueInterpreter: SEMQL
+      displayType: hyperlink
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+      hideIfReferenceToParent: "1"
+      hideIfReferenceToParentValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: StartDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: StartDate
+    visibleByDefault: true
+    componentProperties:
+      textColor: |-
+        case when FID_AddressType ='Headquarters Address' then 'md:blue 700'
+        when FID_AddressType ='Billing Address' then 'md:green 800'
+        when FID_AddressType ='Shipping Address' then 'md:purple A200'
+        end
+      textColorValueInterpreter: SEMQL
+  - _type: TextColumn
+    _name: EndDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: EndDate
+    visibleByDefault: true
+    componentProperties:
+      textColor: |-
+        case when FID_AddressType ='Headquarters Address' then 'md:blue 700'
+        when FID_AddressType ='Billing Address' then 'md:green 800'
+        when FID_AddressType ='Shipping Address' then 'md:purple A200'
+        end
+      textColorValueInterpreter: SEMQL

@@ -1,0 +1,141 @@
+_package: RetailCustomer360.entities.LoyaltyTier
+_type: Entity
+_name: LoyaltyTier
+label: Loyalty Tier
+pluralLabel: Loyalty Tiers
+entityType: BASIC
+physicalTableName: LOYALTY_TIER
+iconUrl: https://api.iconify.design/mdi/medal.svg?color=%230D1B2A&width=64
+
+description: "Benefit level within a loyalty program that members qualify for and can be promoted through."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: LoyaltyTierId
+    label: Loyalty Tier Id
+    physicalName: LOYALTY_TIER_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the loyalty tier."
+
+  - _type: EntityAttribute
+    _name: TierCode
+    label: Tier Code
+    physicalName: TIER_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the tier."
+
+  - _type: EntityAttribute
+    _name: TierName
+    label: Tier Name
+    physicalName: TIER_NAME
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Business name of the tier."
+
+  - _type: EntityAttribute
+    _name: TierLevel
+    label: Tier Level
+    physicalName: TIER_LEVEL
+    dataType: RetailCustomer360.list_of_values.LoyaltyTierLevel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Standard level the tier corresponds to."
+
+  - _type: EntityAttribute
+    _name: TierOrder
+    label: Tier Order
+    physicalName: TIER_ORDER
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Rank of the tier within the program, lowest first."
+
+  - _type: EntityAttribute
+    _name: QualifyingPoints
+    label: Qualifying Points
+    physicalName: QUALIFYING_POINTS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Points needed to reach the tier."
+
+  - _type: EntityAttribute
+    _name: QualifyingSpend
+    label: Qualifying Spend
+    physicalName: QUALIFYING_SPEND
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Spend needed to reach the tier."
+
+  - _type: EntityAttribute
+    _name: RetentionPoints
+    label: Retention Points
+    physicalName: RETENTION_POINTS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Points needed to stay in the tier for another period."
+
+  - _type: EntityAttribute
+    _name: PointMultiplier
+    label: Point Multiplier
+    physicalName: POINT_MULTIPLIER
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Rate at which members in this tier earn points."
+
+  - _type: EntityAttribute
+    _name: ValidityMonths
+    label: Validity Months
+    physicalName: VALIDITY_MONTHS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of months tier status lasts once earned."
+
+  - _type: EntityAttribute
+    _name: BenefitSummary
+    label: Benefit Summary
+    physicalName: BENEFIT_SUMMARY
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Short summary of the benefits the tier grants."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the tier is currently offered."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Positioning of the tier within the program."
+
+primaryKey: RetailCustomer360.entities.LoyaltyTier.LoyaltyTier.LoyaltyTierId
+
+sourceIdGeneration:
+  mode: MANUAL

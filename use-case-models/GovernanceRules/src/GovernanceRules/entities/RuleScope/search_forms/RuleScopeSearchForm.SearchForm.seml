@@ -1,0 +1,53 @@
+# RuleScopeSearchForm: search form on RuleScope of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleScope.search_forms
+_type: SearchForm
+_name: RuleScopeSearchForm
+entity: GovernanceRules.entities.RuleScope.RuleScope
+label: Find rule scopes
+searchTip: Every criterion is optional.
+semQlCondition: (:ATTRIBUTETYPE_ID IS NULL OR FID_AttributeType = :ATTRIBUTETYPE_ID) AND (:DATACLASSIFICATION_ID IS NULL OR FID_DataClassification = :DATACLASSIFICATION_ID) AND (:DATADOMAIN_ID IS NULL OR FID_DataDomain = :DATADOMAIN_ID) AND (:RULE_ID IS NULL OR FID_Rule = :RULE_ID)
+searchParameters:
+  - _type: SearchParameter
+    _name: AttributeType
+    label: Attribute type
+    bindVariableName: ATTRIBUTETYPE_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name
+  - _type: SearchParameter
+    _name: DataClassification
+    label: Classification
+    bindVariableName: DATACLASSIFICATION_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.DataClassification.DataClassification
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name
+  - _type: SearchParameter
+    _name: DataDomain
+    label: Domain
+    bindVariableName: DATADOMAIN_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.DataDomain.DataDomain
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name
+  - _type: SearchParameter
+    _name: Rule
+    label: Rule
+    bindVariableName: RULE_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+    boundSelectExpression: Code
+    primaryTextExpression: Title
+    sortExpression: Title

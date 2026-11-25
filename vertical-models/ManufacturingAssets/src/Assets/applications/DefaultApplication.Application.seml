@@ -1,0 +1,604 @@
+_package: Assets.applications
+_type: Application
+_name: DefaultApplication
+label: Asset Management
+visibility: VISIBLE
+applicationTitle: Asset Management
+avatarImageUrl: images://manuf-asset-management/manufacturing.png
+logoUrl: images://default/manuf-asset-management/manufacturing.png
+coverImageUrl: images://manuf-asset-management/Cover-1.jpeg
+favIcon: images://manuf-asset-management/manufacturing.png
+sortStrategy: POSITION
+historyBrowsingEnabled: false 
+historyBrowsingRequiredRole: ""
+defaultAction: Assets.applications.DefaultApplication.Root.GeneralActions.GlobalSearch
+documentationConfig:
+  documentation: This application is used to manage assets, locations, machines, IoT devices, and related reference data.
+  documentationConfigDiagrams:
+    - _type: DocumentationConfigDiagram
+      _name: Main
+      modelDiagram: Assets.model_diagrams.Assets
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: Factories
+      viewType: GD
+      businessView: Assets.entities.Factory.business_views.FactoryBusinessView
+      searchTypeConfig: Assets.entities.Factory.business_views.FactoryBusinessView.Factory.TextConfig
+      maxResults: 10
+      label: Factories
+    - _type: GlobalSearchBoView
+      _name: ProductionLines
+      viewType: GD
+      businessView: Assets.entities.ProductionLine.business_views.ProductionLineBusinessView
+      searchTypeConfig: Assets.entities.ProductionLine.business_views.ProductionLineBusinessView.ProductionLine.TextConfig
+      maxResults: 10
+      label: Production Lines
+    - _type: GlobalSearchBoView
+      _name: Machines
+      businessView: Assets.entities.Machine.business_views.MachineBusinessView
+      searchTypeConfig: Assets.entities.Machine.business_views.MachineBusinessView.Machine.TextConfig
+      viewType: GD
+      label: Machines
+      maxResults: 10      
+    - _type: GlobalSearchBoView
+      _name: Products
+      businessView: Assets.entities.Product.business_views.ProductBusinessView
+      searchTypeConfig: Assets.entities.Product.business_views.ProductBusinessView.Product.TextConfig
+      viewType: GD
+      label: Products
+      maxResults: 10
+    - _type: GlobalSearchBoView
+      _name: SpareParts
+      viewType: GD
+      businessView: Assets.entities.SparePart.business_views.SparePartBusinessView
+      searchTypeConfig: Assets.entities.SparePart.business_views.SparePartBusinessView.SparePart.TextConfig
+      label: Spare Parts
+
+navDrawer:
+  - _type: FolderNavGroup
+    _name: GeneralActions
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: Assets.applications.DefaultApplication.Root.GeneralActions
+  - _type: FolderNavGroup
+    _name: Production
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: Assets.applications.DefaultApplication.Root.Production
+  - _type: FolderNavGroup
+    _name: Maintenance
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: Assets.applications.DefaultApplication.Root.Maintenance
+  - _type: FolderNavGroup
+    _name: DocumentationFolder
+    dividerVisible: true
+    labelVisible: false
+    linkedFolder: Assets.applications.DefaultApplication.Root.Administration
+
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+    - _type: FolderAction
+      _name: GeneralActions
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Quick links
+      appActions:
+        - _type: GlobalSearchAction
+          _name: GlobalSearch
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          description: Search across all entities
+          iconColor: md:green
+        - _type: MyTasksAction
+          _name: MyTasks
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          badgeVisible: true
+          description: View my tasks
+          image: images://mdi/inbox-multiple.svg
+          iconColor: md:green
+    - _type: FolderAction
+      _name: Production
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Production & assets
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseFactory
+          businessView: Assets.entities.Factory.business_views.FactoryBusinessView
+          label: Factories
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Factory records
+          image: images://mdi/factory.svg
+          iconColor: md:blue
+        - _type: BrowseBusinessViewAction
+          _name: BrowseProductionLines
+          businessView: Assets.entities.ProductionLine.business_views.ProductionLineBusinessView
+          label: Production Lines
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Production Line records
+          image: images://mdi/robot-industrial.svg
+          iconColor: md:blue
+        - _type: BrowseBusinessViewAction
+          _name: BrowseMachines
+          businessView: Assets.entities.Machine.business_views.MachineBusinessView
+          label: Machines
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Machine records
+          image: images://mdi/cogs.svg
+          iconColor: md:blue
+        - _type: FolderAction
+          _name: Others
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Others
+          description: Access other asset related entities
+          image: images://mdi/folder.svg
+          iconColor: md:blue
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseDigitalTwins
+              businessView: Assets.entities.DigitalTwin.business_views.DigitalTwinBusinessView
+              label: Digital Twins
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              description: Browse Digital Twin records
+              image: images://mdi/swap-horizontal-circle.svg
+              iconColor: md:blue
+            - _type: BrowseBusinessViewAction
+              _name: BrowseIoTDevices
+              businessView: Assets.entities.IoTDevice.business_views.IoTDeviceBusinessView
+              label: IoT Devices
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              description: Browse IoT Device records
+              image: images://mdi/ip-network.svg
+              iconColor: md:blue
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProducts
+              businessView: Assets.entities.Product.business_views.ProductBusinessView
+              label: Products
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              description: Browse Product records
+              iconColor: md:blue
+              image: images://mdi/package-variant-closed.svg
+    - _type: FolderAction
+      _name: Maintenance
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Maintenance & Parts
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseMaintenanceSchedule
+          businessView: Assets.entities.MaintenanceSchedule.business_views.MaintenanceScheduleBusinessView
+          label: Maintenance Schedules
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Maintenance Schedule records
+          image: images://mdi/clipboard-clock-outline.svg
+          iconColor: md:orange
+        - _type: BrowseBusinessViewAction
+          _name: BrowseSpareParts
+          businessView: Assets.entities.SparePart.business_views.SparePartBusinessView
+          label: Spare Parts
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Spare Part records
+          image: images://mdi/toy-brick-search-outline.svg
+          iconColor: md:orange
+        - _type: BrowseBusinessViewAction
+          _name: BrowseSuppliers
+          businessView: Assets.entities.Supplier.business_views.SupplierBusinessView
+          label: Suppliers
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Supplier records
+          image: images://mdi/book-account-outline.svg
+          iconColor: md:orange
+
+    - _type: FolderAction
+      _name: Administration
+      
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Administrative tasks
+      label: Administration
+      image: images://mdi/bookshelf.svg
+      appActions:
+        - _type: FolderAction
+          _name: AdministrationFolder
+          label: Admin & Documentation
+          image: images://mdi/bookshelf.svg
+          icon: images://mdi/bookshelf.svg
+          iconColor: md:grey
+          labelColor: md:grey
+          appActions:
+            - _type: OpenDocumentationAction
+              _name: OpenModelDoc
+              iconColor: md:grey
+              label: Model Documentation
+            - _type: BrowseEntitiesFolderAction
+              _name: Entities
+              lineageEnabled: true
+            - _type: FolderAction
+              _name: ImportData
+              icon: images://mdi/database-import.svg
+              image: images://default/folder-item-import.png
+              iconColor: md:grey
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              label: Import Data
+              requiredRole: SemAdmin
+              appActions:
+                - _type: ImportDataAppAction
+                  _name: ImportCountry
+                  label: Import Country
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.Country.action_sets.CountryActionSet.ImportAuthorCountries
+
+                - _type: ImportDataAppAction
+                  _name: ImportFactoryType
+                  label: Import Factory Type
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.FactoryType.action_sets.FactoryTypeActionSet.ImportAuthorFactoryTypes
+                - _type: ImportDataAppAction
+                  _name: ImportCriticalityLevel
+                  label: Import Criticality Level
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.CriticalityLevel.action_sets.CriticalityLevelActionSet.ImportAuthorCriticalityLevels
+                - _type: ImportDataAppAction
+                  _name: ImportMachineStatus
+                  label: Import Machine Status
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.MachineStatus.action_sets.MachineStatusActionSet.ImportAuthorMachineStatuses
+                - _type: ImportDataAppAction
+                  _name: ImportProductionLineStatus
+                  label: Import Production Line Status
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.ProductionLineStatus.action_sets.ProductionLineStatusActionSet.ImportAuthorProductionLineStatuses
+                - _type: ImportDataAppAction
+                  _name: ImportLineType
+                  label: Import Line Type
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.LineType.action_sets.LineTypeActionSet.ImportAuthorLineTypes
+                - _type: ImportDataAppAction
+                  _name: ImportDigitalTwinStatus
+                  label: Import Digital Twin Status
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.DigitalTwinStatus.action_sets.DigitalTwinStatusActionSet.ImportAuthorDigitalTwinStatuses
+                - _type: ImportDataAppAction
+                  _name: ImportIoTDeviceType
+                  label: Import IoT Device Type
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.IoTDeviceType.action_sets.IoTDeviceTypeActionSet.ImportAuthorIoTDeviceTypes
+                - _type: ImportDataAppAction
+                  _name: ImportIoTDeviceStatus
+                  label: Import IoT Device Status
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.IoTDeviceStatus.action_sets.IoTDeviceStatusActionSet.ImportAuthorIoTDeviceStatuses
+                - _type: ImportDataAppAction
+                  _name: ImportProductCategory
+                  label: Import Product Category
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.ProductCategory.action_sets.ProductCategoryActionSet.ImportAuthorProductCategories
+                - _type: ImportDataAppAction
+                  _name: ImportUnitOfMeasure
+                  label: Import Unit Of Measure
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.UnitOfMeasure.action_sets.UnitOfMeasureActionSet.ImportAuthorUnitOfMeasures
+                - _type: ImportDataAppAction
+                  _name: ImportSupplierType
+                  label: Import Supplier Type
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.SupplierType.action_sets.SupplierTypeActionSet.ImportAuthorSupplierTypes
+                - _type: ImportDataAppAction
+                  _name: ImportApprovedStatus
+                  label: Import Approved Status
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.ApprovedStatus.action_sets.ApprovedStatusActionSet.ImportAuthorApprovedStatuses
+                - _type: ImportDataAppAction
+                  _name: ImportOperationalStatus
+                  label: Import Operational Status
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.OperationalStatus.action_sets.OperationalStatusActionSet.ImportAuthorOperationalStatuses
+                - _type: ImportDataAppAction
+                  _name: ImportFactory
+                  label: Import Factory
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.Factory.action_sets.FactoryActionSet.ImportAuthorFactories
+                - _type: ImportDataAppAction
+                  _name: ImportProductionLine
+                  label: Import Production Line
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.ProductionLine.action_sets.ProductionLineActionSet.ImportAuthorProductionLines
+                - _type: ImportDataAppAction
+                  _name: ImportMachine
+                  label: Import Machine
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.Machine.action_sets.MachineActionSet.ImportAuthorMachines
+                - _type: ImportDataAppAction
+                  _name: ImportSupplier
+                  label: Import Supplier
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.Supplier.action_sets.SupplierActionSet.ImportAuthorSuppliers
+                - _type: ImportDataAppAction
+                  _name: ImportSparePart
+                  label: Import Spare Part
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.SparePart.action_sets.SparePartActionSet.ImportAuthorSpareParts
+                - _type: ImportDataAppAction
+                  _name: ImportMaintenanceType
+                  label: Import Maintenance Type
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.MaintenanceType.action_sets.MaintenanceTypeActionSet.ImportAuthorMaintenanceTypes
+                - _type: ImportDataAppAction
+                  _name: ImportMaintenanceSchedule
+                  label: Import Maintenance Schedule
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.MaintenanceSchedule.action_sets.MaintenanceScheduleActionSet.ImportAuthorMaintenanceSchedules
+                - _type: ImportDataAppAction
+                  _name: ImportMaintenanceScheduleSparePart
+                  label: Import Maintenance Schedule Spare Part
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.MaintenanceScheduleSparePart.action_sets.MaintenanceScheduleSparePartActionSet.ImportAuthorMaintenanceScheduleSpareParts
+                - _type: ImportDataAppAction
+                  _name: ImportDigitalTwin
+                  label: Import Digital Twin
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.DigitalTwin.action_sets.DigitalTwinActionSet.ImportAuthorDigitalTwins
+                - _type: ImportDataAppAction
+                  _name: ImportIoTDevice
+                  label: Import IoT Device
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.IoTDevice.action_sets.IoTDeviceActionSet.ImportAuthorIoTDevices
+                - _type: ImportDataAppAction
+                  _name: ImportProduct
+                  label: Import Product
+                  image: images://default/folder-item-import.png
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  importAction: Assets.entities.Product.action_sets.ProductActionSet.ImportAuthorProducts
+            - _type: FolderAction
+              _name: Errors
+              label: Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              image: images://default/folder-item-SDWE.png
+              iconColor: md:grey
+              appActions:
+                - _type: BrowseBusinessViewAction
+                  _name: FactoryErrors
+                  businessView: Assets.entities.Factory.business_views.FactoryBusinessView
+                  nbRecordsBadgeVisible: true
+                  useSearchOnOpen: false
+                  viewType: SAWE
+                  nbRecordsBadgeBackgroundColor: md:red
+                - _type: BrowseBusinessViewAction
+                  _name: ProductionLineErrors
+                  businessView: Assets.entities.ProductionLine.business_views.ProductionLineBusinessView
+                  nbRecordsBadgeVisible: true
+                  useSearchOnOpen: false
+                  viewType: SAWE
+                  nbRecordsBadgeBackgroundColor: md:red
+                - _type: BrowseBusinessViewAction
+                  _name: MachineErrors
+                  businessView: Assets.entities.Machine.business_views.MachineBusinessView
+                  nbRecordsBadgeVisible: true
+                  useSearchOnOpen: false
+                  viewType: SAWE
+                  nbRecordsBadgeBackgroundColor: md:red
+            - _type: FolderAction
+              _name: RefData
+              label: Reference Data
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              image: images://default/folder-item-browse.png
+              iconColor: md:grey
+              appActions:
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseApprovedStatus
+                  businessView: Assets.entities.ApprovedStatus.business_views.ApprovedStatusBusinessView
+                  label: Approved Status
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Approved Status records
+                  image: images://mdi/approval.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseCountries
+                  businessView: Assets.entities.Country.business_views.CountryBusinessView
+                  label: Countries
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Country records
+                  image: images://mdi/map.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseCriticalityLevel
+                  businessView: Assets.entities.CriticalityLevel.business_views.CriticalityLevelBusinessView
+                  label: Criticality Levels
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Criticality Level records
+                  image: images://mdi/numeric-1-circle-outline.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseDigitalTwinStatus
+                  businessView: Assets.entities.DigitalTwinStatus.business_views.DigitalTwinStatusBusinessView
+                  label: Digital Twin Status
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Digital Twin Status records
+                  image: images://mdi/content-duplicate.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseFactoryTypes
+                  businessView: Assets.entities.FactoryType.business_views.FactoryTypeBusinessView
+                  label: Factory Types
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Factory Type records
+                  image: images://mdi/format-list-bulleted-type.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseIOTDeviceStatus
+                  businessView: Assets.entities.IoTDeviceStatus.business_views.IoTDeviceStatusBusinessView
+                  label: IOT Device Status
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse IOT Device Status records
+                  image: images://mdi/state-machine.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseIOTDeviceTypes
+                  businessView: Assets.entities.IoTDeviceType.business_views.IoTDeviceTypeBusinessView
+                  label: IOT Device Types
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse IOT Device Types records
+                  image: images://mdi/devices.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseLineTypes
+                  businessView: Assets.entities.LineType.business_views.LineTypeBusinessView
+                  label: Line Types
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Line Types records
+                  image: images://mdi/cog.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseMachineStatus
+                  businessView: Assets.entities.MachineStatus.business_views.MachineStatusBusinessView
+                  label: Machine Status
+                  description: Browse Machine Status records
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  image: images://mdi/state-machine.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseMaintenanceType
+                  businessView: Assets.entities.MaintenanceType.business_views.MaintenanceTypeBusinessView
+                  label: Maintenance Type
+                  description: Browse Maintenance Type records
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  image: images://mdi/wrench-outline.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseOperationalStatus
+                  businessView: Assets.entities.OperationalStatus.business_views.OperationalStatusBusinessView
+                  label: Operational Status
+                  description: Browse Operational Status records
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  image: images://mdi/list-status.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseProductCategories
+                  businessView: Assets.entities.ProductCategory.business_views.ProductCategoryBusinessView
+                  label: Product Categories
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Product Category records
+                  image: images://mdi/folder.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseProductionLineStatus
+                  businessView: Assets.entities.ProductionLineStatus.business_views.ProductionLineStatusBusinessView
+                  label: Production Line Status
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Production Line Status records
+                  image: images://mdi/information.svg
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseSupplierType
+                  businessView: Assets.entities.SupplierType.business_views.SupplierTypeBusinessView
+                  label: Supplier Type
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Supplier Type records
+                  image: images://mdi/handshake-outline.svg
+                        
+                - _type: BrowseBusinessViewAction
+                  _name: BrowseUnitOfMeasure
+                  businessView: Assets.entities.UnitOfMeasure.business_views.UnitOfMeasureBusinessView
+                  label: Units of Measure
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  nbRecordsBadgeVisible: false
+                  description: Browse Unit of Measure records
+                  image: images://mdi/scale.svg

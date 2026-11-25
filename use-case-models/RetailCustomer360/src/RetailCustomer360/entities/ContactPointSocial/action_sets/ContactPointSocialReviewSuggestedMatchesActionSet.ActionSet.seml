@@ -1,0 +1,40 @@
+﻿_package: RetailCustomer360.entities.ContactPointSocial.action_sets
+_type: ActionSet
+_name: ContactPointSocialReviewSuggestedMatchesActionSet
+entity: RetailCustomer360.entities.ContactPointSocial.ContactPointSocial
+label: Social Profile Review Suggested Matches Action Set
+defaultActionSet: false
+
+actions:
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicates
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    dupsManager: RetailCustomer360.entities.ContactPointSocial.dups_managers.ManageContactPointSocialDups
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicates
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: RetailCustomer360.entities.ContactPointSocial.dups_managers.ManageContactPointSocialDups
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewDuplicatesSuggestions
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: RetailCustomer360.entities.ContactPointSocial.dups_managers.ManageContactPointSocialDups
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false

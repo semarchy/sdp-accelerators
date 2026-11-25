@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.IndividualStatus.business_views
+_type: BusinessView
+_name: IndividualStatusBusinessView
+label: "Individual Status"
+entity: LifeAndAnnuityInsurance.entities.IndividualStatus.IndividualStatus
+rootLabel: "Individual Statuses"
+rootPluralLabel: "Individual Statuses"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: IndividualStatus
+  displayCard: LifeAndAnnuityInsurance.entities.IndividualStatus.display_cards.IndividualStatusDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.IndividualStatus.IndividualStatus
+  actionSet: LifeAndAnnuityInsurance.entities.IndividualStatus.action_sets.IndividualStatusActionSet
+  collection: LifeAndAnnuityInsurance.entities.IndividualStatus.collection_views.IndividualStatusCollectionView
+  form: LifeAndAnnuityInsurance.entities.IndividualStatus.forms.IndividualStatusForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Individual
+      label: "Individual"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Individuals"
+      iconUrl: images://mdi/account-outline.svg
+      transitionPath: Individual
+      useCustomLabel: true
+      description: "Transition from Individual Status to related Individuals."
+      visibleInFormTabCondition: any Individual has (1=1)
+      enableHierarchy: any Individual has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Individual
+        displayCard: LifeAndAnnuityInsurance.entities.Individual.display_cards.IndividualDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Individual.Individual
+        actionSet: LifeAndAnnuityInsurance.entities.Individual.action_sets.IndividualActionSet
+        collection: LifeAndAnnuityInsurance.entities.Individual.collection_views.IndividualCollectionView
+        form: LifeAndAnnuityInsurance.entities.Individual.forms.IndividualForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/account-badge-outline.svg

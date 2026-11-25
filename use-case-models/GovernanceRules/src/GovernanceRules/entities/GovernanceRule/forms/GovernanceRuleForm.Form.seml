@@ -1,0 +1,251 @@
+# GovernanceRuleForm: Form on GovernanceRule of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceRule.forms
+_type: Form
+_name: GovernanceRuleForm
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+default: true
+formTabs:
+- _type: FormTab
+  _name: Definition
+  label: Definition
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  displayFormTabAs: ICON_LABEL
+  iconUrl: images://mdi/gavel.svg
+  content:
+  - _type: FormContainer
+    _name: DefinitionColumns
+    layoutDirection: ROW
+    content:
+    - _type: FormContainer
+      _name: DefinitionLeft
+      layoutDirection: COLUMN
+      relativeWidth: 50
+      content:
+      - _type: FormSection
+        _name: Rule
+        label: Rule
+        layoutDirection: COLUMN
+        content:
+        - _type: IdField
+          _name: Code
+          value: Code
+          useCustomLabel: false
+          dataType: STRING
+          helperText: 'Natural key of the rule; its prefix follows the category: DQ-, PRIV-, SEC-, RET-, REF-, MDM-, META-, AI-, STW-, MOD-, entered
+            by the author and never changed (for example PRIV-003).'
+          helperTextValueInterpreter: LITERAL
+          labelProperties: &id001
+            position: top
+            positionValueInterpreter: LITERAL
+            alignment: left
+            alignmentValueInterpreter: LITERAL
+        - _type: TextField
+          _name: Title
+          value: Title
+          useCustomLabel: false
+          dataType: STRING
+          helperText: Short title of the rule.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: TextField
+          _name: Statement
+          value: Statement
+          useCustomLabel: false
+          dataType: STRING
+          componentProperties:
+            isMultiline: '1'
+            isMultilineValueInterpreter: LITERAL
+            multilineMinLines: '3'
+            multilineMinLinesValueInterpreter: LITERAL
+          helperText: Normative text of the rule, an imperative sentence in RFC 2119 style (MUST, SHOULD, MAY).
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: TextField
+          _name: Rationale
+          value: Rationale
+          useCustomLabel: false
+          dataType: STRING
+          componentProperties:
+            isMultiline: '1'
+            isMultilineValueInterpreter: LITERAL
+            multilineMinLines: '3'
+            multilineMinLinesValueInterpreter: LITERAL
+          helperText: 'Why the rule exists: the risk it addresses or the regulation it serves.'
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+    - _type: FormContainer
+      _name: DefinitionRight
+      layoutDirection: COLUMN
+      relativeWidth: 50
+      content:
+      - _type: FormSection
+        _name: Classification
+        label: Classification
+        layoutDirection: COLUMN
+        content:
+        - _type: MenuField
+          _name: RequirementLevel
+          value: RequirementLevel
+          useCustomLabel: false
+          dataType: STRING
+          helperText: Strength of the rule, code MUST (Must), SHOULD (Should) or MAY (May), as in RFC 2119.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: MenuField
+          _name: Category
+          value: Category
+          useCustomLabel: false
+          dataType: STRING
+          helperText: Category of the rule, code DATA_QUALITY, PRIVACY, SECURITY_ACCESS, RETENTION, REFERENCE_DATA, IDENTITY_MATCHING, METADATA_DOCUMENTATION,
+            AI_USAGE, STEWARDSHIP or MODELING_CONVENTIONS.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: ReferenceField
+          _name: FDN_Policy
+          value: FDN_Policy
+          useCustomLabel: true
+          label: Policy
+          dataType: STRING
+          referencedEntity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+          displayCard: GovernanceRules.entities.GovernancePolicy.display_cards.GovernancePolicyDisplayCard
+          helperText: The policy the rule belongs to.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: ReferenceField
+          _name: FDN_OwnerBody
+          value: FDN_OwnerBody
+          useCustomLabel: true
+          label: Owner
+          dataType: STRING
+          referencedEntity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+          displayCard: GovernanceRules.entities.GovernanceBody.display_cards.GovernanceBodyDisplayCard
+          helperText: The governance body that owns the rule.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+      - _type: FormSection
+        _name: Lifecycle
+        label: Lifecycle
+        layoutDirection: COLUMN
+        content:
+        - _type: MenuField
+          _name: LifecycleStatus
+          value: LifecycleStatus
+          useCustomLabel: false
+          dataType: STRING
+          authoringMode: force-read-only
+          authoringModeValueInterpreter: LITERAL
+          helperText: Lifecycle status, code DRAFT (Draft), IN_REVIEW (In review), APPROVED (Approved), RETIREMENT_REQUESTED (Retirement requested)
+            or RETIRED (Retired). Changed by the Rule review workflow.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: CheckboxField
+          _name: InForce
+          value: InForce
+          useCustomLabel: false
+          dataType: BOOLEAN
+          authoringMode: force-browsing
+          authoringModeValueInterpreter: LITERAL
+          helperText: 'Computed: true when the status is APPROVED, the effective date is reached and the retirement date, if any, is not reached.
+            Computed when the rule is certified.'
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: DateField
+          _name: EffectiveDate
+          value: EffectiveDate
+          useCustomLabel: false
+          dataType: DATE
+          helperText: Date from which the rule applies.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: DateField
+          _name: RetirementDate
+          value: RetirementDate
+          useCustomLabel: false
+          dataType: DATE
+          helperText: Date from which the rule no longer applies; empty while the rule is not retired.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: TextField
+          _name: RetirementReason
+          value: RetirementReason
+          useCustomLabel: false
+          dataType: STRING
+          componentProperties:
+            isMultiline: '1'
+            isMultilineValueInterpreter: LITERAL
+            multilineMinLines: '3'
+            multilineMinLinesValueInterpreter: LITERAL
+          helperText: Why the rule is retired, entered when the retirement is requested.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: DateField
+          _name: ApprovedOn
+          value: ApprovedOn
+          useCustomLabel: false
+          dataType: DATE
+          authoringMode: force-browsing
+          authoringModeValueInterpreter: LITERAL
+          helperText: Date of the last approval by the governance owner.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+        - _type: TextField
+          _name: ApprovedBy
+          value: ApprovedBy
+          useCustomLabel: false
+          dataType: STRING
+          authoringMode: force-browsing
+          authoringModeValueInterpreter: LITERAL
+          helperText: User who gave the last approval.
+          helperTextValueInterpreter: LITERAL
+          labelProperties: *id001
+- _type: FormTab
+  _name: Implementation
+  label: Implementation
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  displayFormTabAs: ICON_LABEL
+  iconUrl: images://mdi/wrench-outline.svg
+  content:
+  - _type: FormSection
+    _name: HowToImplement
+    label: How to implement
+    layoutDirection: COLUMN
+    content:
+    - _type: MenuField
+      _name: ImplementationPattern
+      value: ImplementationPattern
+      useCustomLabel: false
+      dataType: STRING
+      helperText: How a designer implements the rule in a data product, code VALIDATION, ENRICHER, PRIVILEGE_ROW_FILTER, MATCHING_SURVIVORSHIP,
+        WORKFLOW, RETENTION_POLICY, DESCRIPTION_AI_INSTRUCTION, NAMING_CONVENTION or REFERENCE_ENTITY.
+      helperTextValueInterpreter: LITERAL
+      labelProperties: *id001
+    - _type: TextField
+      _name: ImplementationGuidance
+      value: ImplementationGuidance
+      useCustomLabel: false
+      dataType: STRING
+      componentProperties:
+        isMultiline: '1'
+        isMultilineValueInterpreter: LITERAL
+        multilineMinLines: '3'
+        multilineMinLinesValueInterpreter: LITERAL
+      helperText: 'Concrete guidance for the designer: what to build in the data product to comply with the rule.'
+      helperTextValueInterpreter: LITERAL
+      labelProperties: *id001
+    - _type: TextField
+      _name: Example
+      value: Example
+      useCustomLabel: false
+      dataType: STRING
+      componentProperties:
+        isMultiline: '1'
+        isMultilineValueInterpreter: LITERAL
+        multilineMinLines: '3'
+        multilineMinLinesValueInterpreter: LITERAL
+      helperText: An example of a compliant implementation or value.
+      helperTextValueInterpreter: LITERAL
+      labelProperties: *id001

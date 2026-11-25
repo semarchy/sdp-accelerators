@@ -1,0 +1,23 @@
+_type: StandardSurvivorshipRule
+entity: sapbp360.entities.BusinessPartner.BusinessPartner
+_package: sapbp360.entities.BusinessPartner.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+consolidationOrderByExpression: CreationDate ASC
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Default Rule
+description: Default survivorship rule for Business Partner using SAP-first publisher rankings.
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: sapbp360.publishers.SAP_S4HANA
+  - _type: ConsoPublisherRanking
+    publisher: sapbp360.publishers.SAP_ECC
+  - _type: ConsoPublisherRanking
+    publisher: sapbp360.publishers.CRM
+  - _type: ConsoPublisherRanking
+    publisher: sapbp360.publishers.DataEntry
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+attributes: []

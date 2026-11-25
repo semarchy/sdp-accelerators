@@ -1,0 +1,205 @@
+_name: AuthorAccounts
+_package: PrivateEquity.entities.Account.steppers
+_type: Stepper
+entity: PrivateEquity.entities.Account.Account
+rootStep:
+  _name: Accounts
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.Account.collection_views.AccountCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Accounts
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: PrivateEquity.entities.Account.validations.RoutingNumber
+    - onStepExit: WARN
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.AccountsBank.Bank
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.AccountsAccountType.AccountType
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.AccountsLegalEntity.LegalEntity
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.AccountsFund.Fund
+    - onStepExit: WARN
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.AccountsAccountType.AccountType
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: PrivateEquity.entities.Account.validations.AccountNumber
+    - onStepExit: WARN
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Account.Account.ChainID
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.AccountsBank.Bank
+    - onStepExit: WARN
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.AccountsPortfolio.Portfolio
+  stepTriggers: []
+  childSteps:
+    - _name: Account
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Account
+      formTab: PrivateEquity.entities.Account.forms.AccountEditingForm.Account
+      formStepEnrichers:
+        - enricher: PrivateEquity.entities.Account.enrichers.AccountName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: PrivateEquity.entities.Account.enrichers.AccountKey
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.Account.forms.AccountEditingForm.Account.Container.Container2.FDN_Fund
+          referencePickerCollectionView: PrivateEquity.entities.Fund.collection_views.FundCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.Account.forms.AccountEditingForm.Account.Container.Container2.FDN_LegalEntity
+          referencePickerCollectionView: PrivateEquity.entities.LegalEntity.collection_views.LegalEntityCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.Account.forms.AccountEditingForm.Account.Container.Container2.FDN_AccountType
+          referencePickerCollectionView: PrivateEquity.entities.AccountType.collection_views.AccountTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.Account.forms.AccountEditingForm.Account.Container.Container2.FDN_Bank
+          referencePickerCollectionView: PrivateEquity.entities.Bank.collection_views.BankCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: PrivateEquity.entities.Account.forms.AccountEditingForm.Account.Container.Container2.FDN_Portfolio
+          referencePickerCollectionView: PrivateEquity.entities.Portfolio.collection_views.PortfolioCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsFund.Fund
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: PrivateEquity.entities.Account.validations.AccountNumber
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.AccountsBank.Bank
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsLegalEntity.LegalEntity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Account.Account.ChainID
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsAccountType.AccountType
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.AccountsAccountType.AccountType
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsPortfolio.Portfolio
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: PrivateEquity.entities.Account.validations.RoutingNumber
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsBank.Bank
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsBank.Bank
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsAccountType.AccountType
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.AccountsBank.Bank
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsLegalEntity.LegalEntity
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsFund.Fund
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.AccountsAccountType.AccountType
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Account.Account.ChainID
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.AccountsPortfolio.Portfolio
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: PrivateEquity.entities.Account.validations.RoutingNumber
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: PrivateEquity.entities.Account.validations.AccountNumber
+      stepTriggers: []
+label: Author Accounts
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.AccountsPortfolio.Portfolio
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.AccountsAccountType.AccountType
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.AccountsBank.Bank
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: PrivateEquity.entities.Account.validations.AccountNumber
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Account.Account.ChainID
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.AccountsBank.Bank
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.AccountsAccountType.AccountType
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: PrivateEquity.entities.Account.validations.RoutingNumber
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.AccountsFund.Fund
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.AccountsLegalEntity.LegalEntity
+triggers: []

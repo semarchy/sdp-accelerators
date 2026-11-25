@@ -1,0 +1,135 @@
+_package: Assets.entities.MaintenanceSchedule.steppers
+_type: Stepper
+_name: AuthorMaintenanceSchedules
+entity: Assets.entities.MaintenanceSchedule.MaintenanceSchedule
+label: Maintenance Schedules
+rootStep:
+  _type: CollectionStep
+  _name: MaintenanceSchedules
+  label: Maintenance Schedules
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Assets.entities.MaintenanceSchedule.collection_views.MaintenanceScheduleCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: MaintenanceSchedule
+      label: Maintenance Schedule
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Assets.entities.MaintenanceSchedule.forms.MaintenanceScheduleForm.MaintenanceSchedule
+      formStepEnrichers:
+        - enricher: Assets.entities.MaintenanceSchedule.enrichers.MaintenanceScheduleNormalization
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: MANDATORY
+          attribute: Assets.entities.MaintenanceSchedule.MaintenanceSchedule.ScheduledDate
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: FOREIGN
+          attribute: Assets.references.MaintenanceScheduleMachine.Machine2
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: FOREIGN
+          attribute: Assets.references.MaintenanceScheduleMaintenanceType.MaintenanceType
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: Assets.entities.MaintenanceSchedule.validations.MaintenanceCostNonNegative
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: Assets.entities.MaintenanceSchedule.validations.PerformedDateAfterScheduled
+      stepTransitionValidations:
+        - onStepExit: BLOCK
+          validationType: MANDATORY
+          attribute: Assets.entities.MaintenanceSchedule.MaintenanceSchedule.ScheduledDate
+        - onStepExit: BLOCK
+          validationType: FOREIGN
+          attribute: Assets.references.MaintenanceScheduleMachine.Machine2
+        - onStepExit: BLOCK
+          validationType: FOREIGN
+          attribute: Assets.references.MaintenanceScheduleMaintenanceType.MaintenanceType
+        - onStepExit: BLOCK
+          validationType: CHECK
+          validator: Assets.entities.MaintenanceSchedule.validations.MaintenanceCostNonNegative
+        - onStepExit: BLOCK
+          validationType: CHECK
+          validator: Assets.entities.MaintenanceSchedule.validations.PerformedDateAfterScheduled
+    - _type: CollectionStep
+      _name: SpareParts
+      label: Spare Parts
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      collectionView: Assets.entities.MaintenanceScheduleSparePart.collection_views.MaintenanceScheduleSparePartCollectionView
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enableChildCopyOnParentCreate: true
+      enableChildCopyOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildExport: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      manyToManyCustomSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: true
+      manyToManyDisplayListAllowed: true
+      manyToManyDisplayTableAllowed: true
+      manyToManyUserDefinedSortEnabled: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      oneToManyReference: Assets.references.MaintenanceScheduleMaintenanceScheduleSparePart
+
+      childSteps:
+        - _type: FormStep
+          _name: SparePart
+          label: Spare Part
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          formFieldsMode: AUTO
+          enableMasterValuePicking: false
+          formTab: Assets.entities.MaintenanceScheduleSparePart.forms.MaintenanceScheduleSparePartForm.MaintenanceScheduleSparePart
+          formStepValidations:
+            - executedOnDataChange: true
+              executedOnFormOpen: true
+              validationType: CHECK
+              validator: Assets.entities.MaintenanceScheduleSparePart.validations.QuantityUsedNonNegative
+          stepTransitionValidations:
+            - onStepExit: BLOCK
+              validationType: CHECK
+              validator: Assets.entities.MaintenanceScheduleSparePart.validations.QuantityUsedNonNegative

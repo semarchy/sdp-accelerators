@@ -1,0 +1,78 @@
+_package: CTMDM.entities.StudyInvestigator
+_type: Entity
+_name: StudyInvestigator
+label: Study Investigator
+pluralLabel: Study Investigators
+entityType: ID_MATCHED
+physicalTableName: STUDY_INV
+iconUrl: images://mdi/account-group-outline.svg
+description: "Associates investigators with studies and captures trial-specific role assignments."
+documentation: "Associates investigators with studies and captures trial-specific role assignments."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: StudyInvestigatorID
+    label: Study Investigator ID
+    description: Business identifier for the study-investigator association.
+    documentation: Business identifier for the study-investigator association.
+    physicalName: STUDY_INV_ID
+    dataType: String
+    length: 60
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: InvestigatorRole
+    label: Investigator Role
+    description: Study-specific investigator role.
+    documentation: Study-specific investigator role.
+    physicalName: INV_ROLE
+    dataType: String
+    length: 80
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RoleStartDate
+    label: Role Start Date
+    description: Date the investigator began the role.
+    documentation: Date the investigator began the role.
+    physicalName: ROLE_START_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RoleEndDate
+    label: Role End Date
+    description: Date the investigator ended the role.
+    documentation: Date the investigator ended the role.
+    physicalName: ROLE_END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: DelegationStatus
+    label: Delegation Status
+    description: Status of delegation and authorization.
+    documentation: Status of delegation and authorization.
+    physicalName: DELEGATION_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: QualificationStatus
+    label: Qualification Status
+    description: Study-specific qualification status.
+    documentation: Study-specific qualification status.
+    physicalName: QUAL_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CTMDM.entities.StudyInvestigator.StudyInvestigator.StudyInvestigatorID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: CoverageHasRiskClass
+description: "Indicates the Risk Class associated with a Coverage."
+_type: Reference
+label: "Coverage Has Risk Class"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Coverage.Coverage
+fromRoleLabel: "Coverage"
+fromRoleName: Coverage
+fromRolePluralLabel: "Coverages"
+physicalName: COV_HAS_RISK_CLASS
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.RiskClass.RiskClass
+toRoleLabel: "Risk Class"
+toRoleName: RiskClass
+toRolePhysicalName: RISK_CLASS
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: RiskClass
+  label: "Risk Class ID"
+  description: "The identifier of the Risk Class associated with the Coverage."
+  physicalName: RISK_CLASS_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.RiskClass.RiskClass

@@ -1,0 +1,37 @@
+# Description: Entity definition for `SubIndustry` (detailed industry categories).
+# Contains sub-industry values used to further classify industries and legal entities.
+# Role: Provides fine-grained industry classification for reporting and validation.
+ # Description: Entity definition for `SubIndustry` (detailed industry classification).
+ # Contains: Attributes linking sub-industries to parent Industry entries.
+ # Role: Reference data entity supporting finer-grained industry classification.
+_package: Merchant.entities.SubIndustry
+_type: Entity
+_name: SubIndustry
+label: Sub Industry
+pluralLabel: Sub Industry
+entityType: BASIC
+physicalTableName: SUB_INDUSTRY
+
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SubIndustryName
+    label: Sub Industry Name
+    physicalName: SUB_INDUSTRY_NAME
+    dataType: String
+    length: 128
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+    description: "Name of the sub-industry (more specific classification under Industry)"
+
+sourceIdGeneration:
+  mode: MANUAL
+  
+primaryKey: Merchant.entities.SubIndustry.SubIndustry.SubIndustryName

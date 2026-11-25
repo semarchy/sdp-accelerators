@@ -1,0 +1,146 @@
+_package: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.collection_views
+_type: CollectionView
+_name: ClaimBenefitPaymentCollectionView
+entity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+default: true
+displayCard: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.display_cards.ClaimBenefitPaymentDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: "Claim Benefit Payment"
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: ClaimBenefitPaymentID
+    value: ClaimBenefitPaymentID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PaymentNumber
+    value: PaymentNumber
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PaymentDate
+    value: PaymentDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PaymentAmount
+    value: PaymentAmount
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: '$ ##,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: TaxableAmount
+    value: TaxableAmount
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: '$ ##,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: WithholdingAmount
+    value: WithholdingAmount
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: '$ ##,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: PaymentMethod
+    value: PaymentMethod
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FID_Claim
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Claim"
+    referencedEntity: LifeAndAnnuityInsurance.entities.Claim.Claim
+    useCustomLabel: true
+    value: FDN_Claim
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FID_PayeeParty
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Payee Party"
+    referencedEntity: LifeAndAnnuityInsurance.entities.Party.Party
+    useCustomLabel: true
+    value: FDN_PayeeParty
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FID_BenefitType
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Benefit Type"
+    referencedEntity: LifeAndAnnuityInsurance.entities.BenefitType.BenefitType
+    useCustomLabel: true
+    value: FDN_BenefitType
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FID_PaymentStatus
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Payment Status"
+    referencedEntity: LifeAndAnnuityInsurance.entities.PaymentStatus.PaymentStatus
+    useCustomLabel: true
+    value: FDN_PaymentStatus
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL

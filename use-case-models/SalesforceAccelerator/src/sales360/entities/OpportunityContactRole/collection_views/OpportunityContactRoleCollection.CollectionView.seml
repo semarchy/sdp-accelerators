@@ -1,0 +1,67 @@
+# This is the OpportunityContactRoleCollection collection view used in the Salesforce Accelerator application.
+# It defines how opportunity contact roles are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.OpportunityContactRole.collection_views
+_name: OpportunityContactRoleCollection
+_type: CollectionView
+entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+default: false
+displayCard: sales360.entities.OpportunityContactRole.display_cards.OpportunityContactRoleDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Contact Role
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 200
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: Contact_Title
+    columnAlign: LEFT
+    dataType: STRING
+    label: Title
+    useCustomLabel: true
+    value: Contact.Title
+    visibleByDefault: true
+    defaultWidth: 250
+  - _type: TextColumn
+    _name: Contact_Department
+    columnAlign: LEFT
+    dataType: STRING
+    label: Department
+    useCustomLabel: true
+    value: Contact.Department
+    visibleByDefault: true
+    defaultWidth: 250
+  - _type: ReferenceColumn
+    _name: Contact_FDN_Account
+    columnAlign: LEFT
+    dataType: STRING
+    label: Direct Contact Of
+    useCustomLabel: true
+    value: Contact.FDN_Account
+    visibleByDefault: true
+    defaultWidth: 300
+    displayCard: sales360.entities.Account.display_cards.AccountNameAddress
+    referencedEntity: sales360.entities.Account.Account
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: CheckboxColumn
+    _name: IsPrimary
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsPrimary
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL

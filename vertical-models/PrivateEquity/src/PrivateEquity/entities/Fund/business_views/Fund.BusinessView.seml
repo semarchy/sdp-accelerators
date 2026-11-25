@@ -1,0 +1,208 @@
+_name: Fund
+_package: PrivateEquity.entities.Fund.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: PrivateEquity.entities.Fund.Fund
+rootLabel: Fund
+rootPluralLabel: Funds
+useHierarchyOnOpen: true
+label: Funds
+rootBusinessViewEntity:
+  _name: FundEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.Fund.collection_views.FundCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.Fund.Fund
+  form: PrivateEquity.entities.Fund.forms.FundForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  sortExpression: Name ASC
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.Fund.action_sets.FundActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: FundLE
+      _type: BusinessViewTransition
+      transitionPath: FundLE
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: any FundLE has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/office-building.svg
+      label: Legal Entity
+      pluralLabel: Legal Entities
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: FundLE
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.FundLE.collection_views.FundLECollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.FundLE.FundLE
+        form: PrivateEquity.entities.FundLE.forms.FundLEForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.FundLE.forms.FundLEForm.FundLE.Container3.Container.FDN_Fund
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.FundLE.forms.FundLEForm.FundLE.Container3.Container.FDN_LegalEntity
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Portfolioes
+      _type: BusinessViewTransition
+      transitionPath: Portfolioes
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: any Portfolioes has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/folder-open.svg
+      label: Portfolio
+      pluralLabel: Portfolioes
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Portfolio
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.Portfolio.collection_views.PortfolioCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.Portfolio.Portfolio
+        form: PrivateEquity.entities.Portfolio.forms.PortfolioForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        sortExpression: Name ASC
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.Portfolio.forms.PortfolioForm.Portfolio.FDN_Fund
+            navigationMode: MODAL_FORM
+        transitions:
+          - _name: PortfolioLegalEntities
+            _type: BusinessViewTransition
+            transitionPath: PortfolioLegalEntities
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: true
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: any PortfolioLegalEntities has (1=1)
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: false
+            iconUrl: images://mdi/office-building.svg
+            label: Legal Entity
+            pluralLabel: Legal Entities
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _name: PortfolioLegalEntity
+              _type: BusinessViewEntity
+              collection: PrivateEquity.entities.PortfolioLegalEntity.collection_views.PortfolioLegalEntityCollection
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+              form: PrivateEquity.entities.PortfolioLegalEntity.forms.PortfolioLegalEntityForm
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: true
+              sortExpression: FDN_LegalEntity ASC
+              tableAllowed: true
+              businessEntityBuiltInFilters: []
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                  enabled: true
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                  enabled: true
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                  enabled: true
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+                  enabled: true
+              embeddedCollectionNavigations: []
+              referenceAttributeNavigationConfigs:
+                - formField: PrivateEquity.entities.PortfolioLegalEntity.forms.PortfolioLegalEntityForm.PortfolioLegalEntity.Container.Container2.FDN_Portfolio
+                  navigationMode: MODAL_FORM
+                - formField: PrivateEquity.entities.PortfolioLegalEntity.forms.PortfolioLegalEntityForm.PortfolioLegalEntity.Container.Container2.FDN_LegalEntity
+                  # navigationMode: MODAL_FORM
+                  businessView: PrivateEquity.entities.LegalEntity.business_views.LegalEntity
+                  form: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm
+                  navigationMode: BUSINESS_OBJECT_VIEW
+              transitions: []

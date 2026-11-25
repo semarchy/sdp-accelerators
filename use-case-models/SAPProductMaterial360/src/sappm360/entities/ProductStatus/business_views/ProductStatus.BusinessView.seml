@@ -1,0 +1,67 @@
+_name: ProductStatus
+_package: sappm360.entities.ProductStatus.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.ProductStatus.ProductStatus
+rootLabel: Product Status
+rootPluralLabel: Product Statuses
+useHierarchyOnOpen: false
+label: Product Status
+description: Business view for Product Status.
+rootBusinessViewEntity:
+  _name: ProductStatus
+  _type: BusinessViewEntity
+  collection: sappm360.entities.ProductStatus.collection_views.ProductStatusCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.ProductStatus.ProductStatus
+  form: sappm360.entities.ProductStatus.forms.ProductStatusBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.ProductStatus.action_sets.ProductStatusActionSet
+  displayCard: sappm360.entities.ProductStatus.display_cards.ProductStatusDisplayCard
+  sortExpression: ProductStatusCode
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.ProductStatus.business_views.ProductStatus.ProductStatus
+rootIconUrl: images://mdi/book-open-page-variant-outline.svg

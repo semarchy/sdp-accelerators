@@ -1,0 +1,70 @@
+_name: SupplierPurchasingOrgReviewSuggestion
+_package: sapbp360.entities.SupplierPurchasingOrg.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.SupplierPurchasingOrg.SupplierPurchasingOrg
+rootLabel: Supplier Purchasing Org Review Suggestion
+rootPluralLabel: Supplier Purchasing Org Review Suggestions
+useHierarchyOnOpen: false
+label: Supplier Purchasing Org Review Suggestion
+description: Business view for reviewing duplicate Supplier Purchasing Orgs.
+rootBusinessViewEntity:
+  _name: SupplierPurchasingOrg
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.SupplierPurchasingOrg.collection_views.SupplierPurchasingOrgCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.SupplierPurchasingOrg.SupplierPurchasingOrg
+  form: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.SupplierPurchasingOrg.action_sets.SupplierPurchasingOrgReviewSuggestionsActionSet
+  displayCard: sapbp360.entities.SupplierPurchasingOrg.display_cards.SupplierPurchasingOrgDisplayCard
+  sortExpression: NormalizedRespName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol3.FDN_PurchasingOrganization
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol1.FDN_Currency
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol2.FDN_PurchPaymentTerms
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol3.FDN_IncotermsClassification
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.PlanningAndClassification.PlanningAndClassificationRow.PlanningAndClassificationCol1.FDN_SupplierPurchasingGroup
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.PlanningAndClassification.PlanningAndClassificationRow.PlanningAndClassificationCol2.FDN_SupplierABCClassification
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.PlanningAndClassification.PlanningAndClassificationRow.PlanningAndClassificationCol3.FDN_PlanningCycle
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol1.FDN_PricingDateControl
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol3.FDN_ShippingCondition
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol2.FDN_Supplier
+      navigationMode: MODAL_FORM
+  transitions: []
+rootIconUrl: images://mdi/cart-outline.svg
+rootFilter: HasSuggestedMerge = '1'

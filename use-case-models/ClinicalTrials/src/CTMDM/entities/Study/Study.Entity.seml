@@ -1,0 +1,150 @@
+_package: CTMDM.entities.Study
+_type: Entity
+_name: Study
+label: Study
+pluralLabel: Studies
+entityType: ID_MATCHED
+physicalTableName: STUDY
+iconUrl: images://mdi/flask-outline.svg
+description: "Master record for sponsored clinical studies and their operational metadata."
+documentation: "Master record for sponsored clinical studies and their operational metadata."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: StudyID
+    label: Study ID
+    description: Business identifier for the study.
+    documentation: Business identifier for the study.
+    physicalName: STUDY_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: StudyNumber
+    label: Study Number
+    description: Sponsor or enterprise study number.
+    documentation: Sponsor or enterprise study number.
+    physicalName: STUDY_NUMBER
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedStudyNumber
+    label: Normalized Study Number
+    description: Trimmed and uppercased study number.
+    documentation: Trimmed and uppercased study number.
+    physicalName: NORM_STUDY_NUMBER
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: StudyTitle
+    label: Study Title
+    description: Official study title.
+    documentation: Official study title.
+    physicalName: STUDY_TITLE
+    dataType: String
+    length: 500
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: StudyAcronym
+    label: Study Acronym
+    description: Short study acronym where applicable.
+    documentation: Short study acronym where applicable.
+    physicalName: STUDY_ACRONYM
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    description: Current study lifecycle status.
+    documentation: Current study lifecycle status.
+    physicalName: STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Sponsor
+    label: Sponsor
+    description: Study sponsor name.
+    documentation: Study sponsor name.
+    physicalName: SPONSOR
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PlannedStartDate
+    label: Planned Start Date
+    description: Planned start date for the study.
+    documentation: Planned start date for the study.
+    physicalName: PLANNED_START_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ActualStartDate
+    label: Actual Start Date
+    description: Actual study start date.
+    documentation: Actual study start date.
+    physicalName: ACTUAL_START_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: PlannedEndDate
+    label: Planned End Date
+    description: Planned study end date.
+    documentation: Planned study end date.
+    physicalName: PLANNED_END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ActualEndDate
+    label: Actual End Date
+    description: Actual study end date.
+    documentation: Actual study end date.
+    physicalName: ACTUAL_END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: TargetEnrollment
+    label: Target Enrollment
+    description: Planned subject enrollment target.
+    documentation: Planned subject enrollment target.
+    physicalName: TARGET_ENRL
+    dataType: Integer
+    precision: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: StudyDesign
+    label: Study Design
+    description: Brief description of the study design.
+    documentation: Brief description of the study design.
+    physicalName: STUDY_DESIGN
+    dataType: String
+    length: 255
+    mandatory: false
+
+primaryKey: CTMDM.entities.Study.Study.StudyID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

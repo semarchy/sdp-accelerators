@@ -1,0 +1,13 @@
+_package: CorpFin.entities.MappingRule.enrichers
+_name: NormalizeMappingRule
+_type: SemQLEnricher
+entity: CorpFin.entities.MappingRule.MappingRule
+label: Normalize Mapping Rule
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes mapping rule name and rule type values for consistent rule classification and comparison."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedRuleName
+    expression: "RTRIM(LTRIM(UPPER(RuleName)))"
+  - attributeName: NormalizedRuleType
+    expression: "RTRIM(LTRIM(UPPER(RuleType)))"

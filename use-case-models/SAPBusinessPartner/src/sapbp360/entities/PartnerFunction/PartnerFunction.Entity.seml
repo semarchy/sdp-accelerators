@@ -1,0 +1,85 @@
+# Partner Function entity for the SAP Business Partner 360 accelerator.
+_name: PartnerFunction
+_package: sapbp360.entities.PartnerFunction
+_type: Entity
+primaryKey: sapbp360.entities.PartnerFunction.PartnerFunction.PartnerFunctionID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: PartnerFunctionCode
+label: Partner Function
+documentation: Partner Function reference data used by the SAP Business Partner 360 model.
+description: Partner Function reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/PartnerFunction.svg
+pluralLabel: Partner Functions
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PTNR_FUNC
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PartnerFunctionID
+    physicalName: PTNR_FUNC_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Partner Function ID
+    documentation: Unique identifier for the partner function.
+    description: Unique identifier for the partner function.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Partner Function ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PartnerFunctionCode
+    physicalName: PTNR_FUNC_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Partner Function Code
+    documentation: Code for the partner function.
+    description: Code for the partner function.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Partner Function Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PartnerFunctionName
+    physicalName: PTNR_FUNC_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Partner Function Name
+    documentation: Name of the partner function.
+    description: Name of the partner function.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Partner Function Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the partner function.
+    description: Description for the partner function.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the partner function is active.
+    description: Indicates whether the partner function is active.
+    mandatory: false
+    length: 1
+    searchable: true

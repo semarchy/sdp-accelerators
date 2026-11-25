@@ -1,0 +1,70 @@
+_name: SupplierCorporateGroupActionSet
+_package: sapbp360.entities.SupplierCorporateGroup.action_sets
+_type: ActionSet
+entity: sapbp360.entities.SupplierCorporateGroup.SupplierCorporateGroup
+label: Supplier Corporate Group Action Set
+description: Action set for managing Supplier Corporate Groups in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorSupplierCorporateGroups
+    label: Create
+    description: Create a new Supplier Corporate Group record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.SupplierCorporateGroup.steppers.AuthorSupplierCorporateGroups
+  - _name: EditAuthorSupplierCorporateGroups
+    label: Edit
+    description: Edit Supplier Corporate Group records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.SupplierCorporateGroup.steppers.AuthorSupplierCorporateGroups
+  - _name: MassUpdateAuthorSupplierCorporateGroups
+    label: Mass Update
+    description: Mass update Supplier Corporate Group records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.SupplierCorporateGroup.steppers.AuthorSupplierCorporateGroups
+  - _name: Delete
+    label: Delete
+    description: Delete selected Supplier Corporate Group records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorSupplierCorporateGroups
+    label: Import
+    description: Import Supplier Corporate Group records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.SupplierCorporateGroup.steppers.SupplierCorporateGroupImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

@@ -1,0 +1,13 @@
+# ComputeInForce: SemQL enricher on GovernanceRule of the GovernanceRules accelerator. Sets InForce to true when the rule is APPROVED, its effective date is reached and its retirement date, if any, is not reached; false otherwise.
+_package: GovernanceRules.entities.GovernanceRule.enrichers
+_type: SemQLEnricher
+_name: ComputeInForce
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Compute In force
+description: Sets InForce to true when the rule is APPROVED, its effective date is reached and its retirement date, if any,
+  is not reached; false otherwise. Computed at certification.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+- attributeName: InForce
+  expression: SEM_CAST_BOOLEAN(CASE WHEN LifecycleStatus = 'APPROVED' AND EffectiveDate <= CURRENT_DATE() AND (RetirementDate
+    IS NULL OR RetirementDate > CURRENT_DATE()) THEN 'true' ELSE 'false' END)

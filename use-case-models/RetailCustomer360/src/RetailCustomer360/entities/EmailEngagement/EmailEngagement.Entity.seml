@@ -1,0 +1,159 @@
+﻿_package: RetailCustomer360.entities.EmailEngagement
+_type: Entity
+_name: EmailEngagement
+label: Email Engagement
+pluralLabel: Email Engagements
+entityType: BASIC
+physicalTableName: EMAIL_ENGAGEMENT
+iconUrl: https://api.iconify.design/mdi/email.svg?color=%230D1B2A&width=64
+
+description: "Engagement with marketing or transactional emails."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: EmailEventId
+    label: Email Event Id
+    physicalName: EMAIL_EVENT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: EmailMessageId
+    label: Email Message Id
+    physicalName: EMAIL_MESSAGE_ID
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Email platform message identifier"
+
+  - _type: EntityAttribute
+    _name: EmailAddress
+    label: Email Address
+    physicalName: EMAIL_ADDRESS
+    dataType: String
+    length: 320
+    searchable: true
+    description: "Email address engaged"
+
+  - _type: EntityAttribute
+    _name: EventType
+    label: Event Type
+    physicalName: EVENT_TYPE
+    dataType: RetailCustomer360.list_of_values.EmailEventType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Sent, Delivered, Opened, Clicked, Bounced, Unsubscribed"
+
+  - _type: EntityAttribute
+    _name: EventTimestamp
+    label: Event Timestamp
+    physicalName: EVENT_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Event date/time"
+
+  - _type: EntityAttribute
+    _name: SubjectLine
+    label: Subject Line
+    physicalName: SUBJECT_LINE
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Email subject"
+
+  - _type: EntityAttribute
+    _name: LinkUrl
+    label: Link URL
+    physicalName: LINK_URL
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "Clicked URL, if applicable"
+
+  - _type: EntityAttribute
+    _name: DeviceType
+    label: Device Type
+    physicalName: DEVICE_TYPE
+    dataType: RetailCustomer360.list_of_values.DeviceType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Desktop, Mobile, Tablet"
+
+  - _type: EntityAttribute
+    _name: EmailClient
+    label: Email Client
+    physicalName: EMAIL_CLIENT
+    dataType: RetailCustomer360.list_of_values.EmailClient
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Gmail, Outlook, Apple Mail, Yahoo, Other"
+
+  - _type: EntityAttribute
+    _name: BounceType
+    label: Bounce Type
+    physicalName: BOUNCE_TYPE
+    dataType: RetailCustomer360.list_of_values.BounceType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Hard Bounce, Soft Bounce, Technical Bounce"
+
+  - _type: EntityAttribute
+    _name: BounceReason
+    label: Bounce Reason
+    physicalName: BOUNCE_REASON
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Bounce reason"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.EmailEngagement.EmailEngagement.EmailEventId
+

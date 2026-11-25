@@ -1,0 +1,95 @@
+# Description: Form definition for `PartyAddress` used to create/edit address records.
+# Contains form layout, fields and validation references for address attributes.
+# Role: Drives the UI form for editing party addresses in the application.
+ # Description: Form layout for the `PartyAddress` entity (create/edit UI).
+ # Contains: Address fields and tabs used when creating or editing addresses.
+ # Role: Provides the user interface for maintaining PartyAddress master data.
+_package: Merchant.entities.PartyAddress.forms
+_type: Form
+_name: PartyAddressForm
+entity: Merchant.entities.PartyAddress.PartyAddress
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: PartyAddress
+    label: Party Address
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+
+    content:
+      - _type: ReferenceField
+        _name: FDN_Party
+        value: FDN_Party
+        useCustomLabel: false
+        dataType: STRING
+        referencedEntity: Merchant.entities.Merchant.Merchant
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        authoringMode: auto
+        componentProperties:
+          displayType: chip
+          textAlign: left
+          useAvatarInChip: '1'
+          useSecondaryTextInChip: '1'
+          textTypography: body-1
+        labelProperties:
+          alignment: right
+          position: left
+          typography: caption
+          isVisible: '1'
+
+      - _type: MenuField
+        _name: AddressType
+        value: AddressType
+        useCustomLabel: false
+        dataType: STRING
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        authoringMode: auto
+        componentProperties:
+          textAlign: left
+          
+      - _type: TextField
+        _name: Street
+        value: Street
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: City
+        value: City
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: State
+        value: State
+        useCustomLabel: false
+        dataType: STRING
+      - _type: TextField
+        _name: PostalCode
+        value: PostalCode
+        useCustomLabel: false
+        dataType: STRING
+      - _type: ReferenceField
+        _name: FDN_Country
+        value: FDN_Country
+        referencedEntity: Merchant.entities.Country.Country
+        useCustomLabel: false
+        dataType: STRING
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        authoringMode: auto
+        componentProperties:
+          displayType: chip
+          textAlign: left
+          useAvatarInChip: '1'
+          useSecondaryTextInChip: '1'
+          textTypography: body-1
+        labelProperties:
+          alignment: right
+          position: left
+          typography: caption
+          isVisible: '1'
+       

@@ -1,0 +1,23 @@
+_type: StandardSurvivorshipRule
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+_package: PrivateEquity.entities.LegalEntity.survivorship_rules
+defaultRule: false
+_name: ChainID
+consolidationSkipNulls: true
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Chain ID
+description: "Selects the surviving Chain ID from preferred publishers, prioritizing Salesforce, Investran, EntityHub, and GENEVA."
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.Salesforce
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.Investran
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.EntityHub
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.GENEVA
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: ChainID

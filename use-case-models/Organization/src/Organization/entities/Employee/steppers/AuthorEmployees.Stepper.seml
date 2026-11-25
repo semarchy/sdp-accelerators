@@ -1,0 +1,48 @@
+# This file defines the AuthorEmployees Stepper in the Organization domain.
+# It is designed to provide a user interface for managing Employee entities within the context of Job Roles.
+# The stepper allows users to navigate through different steps related to Employee management,
+# including viewing and editing Employee details, and managing associated Cost Centers.
+_package: Organization.entities.Employee.steppers
+_type: Stepper
+_name: AuthorEmployees
+label: Author Employees
+iconUrl: images://hr-img-lib/package-variant.svg
+entity: Organization.entities.Employee.Employee
+rootStep:
+  _type: CollectionStep
+  _name: Employee
+  label: Employees
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Organization.entities.Employee.collection_views.EmployeeBrowseGoldenCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: EmployeeDetails
+      label: Employee Details
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Organization.entities.Employee.forms.EmployeeForm.Employee
+    - _type: FormStep
+      _name: ContactInfo
+      label: Contact Info
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Organization.entities.Employee.forms.EmployeeForm.ContactInfo
+

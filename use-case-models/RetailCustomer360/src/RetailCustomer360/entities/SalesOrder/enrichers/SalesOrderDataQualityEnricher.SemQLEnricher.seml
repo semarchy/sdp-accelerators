@@ -1,0 +1,55 @@
+﻿_package: RetailCustomer360.entities.SalesOrder.enrichers
+_name: SalesOrderDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.SalesOrder.SalesOrder
+label: SalesOrder Data Quality Enricher
+description: "Computes standard completeness enrichment fields for SalesOrder."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN OrderId IS NULL AND OrderNumber IS NULL AND OrderDate IS NULL THEN 0
+        ELSE (
+          CASE WHEN OrderId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN OrderNumber IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN OrderDate IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN OrderId IS NULL AND OrderNumber IS NULL AND OrderDate IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN OrderId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN OrderNumber IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN OrderDate IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()
+  - attributeName: NetAmount
+    expression: CASE
+        WHEN SubtotalAmount IS NOT NULL AND DiscountAmount IS NOT NULL THEN SubtotalAmount - DiscountAmount
+        ELSE NULL
+      END
+  - attributeName: DiscountRatePercent
+    expression: CASE
+        WHEN SubtotalAmount IS NOT NULL AND SubtotalAmount <> 0 AND DiscountAmount IS NOT NULL THEN (DiscountAmount / SubtotalAmount) * 100
+        ELSE NULL
+      END
+  - attributeName: OrderLifecycleStatus
+    expression: CASE
+        WHEN OrderStatus IN ('Cancelled', 'Returned') THEN 'Closed'
+        WHEN OrderStatus IN ('Fulfilled', 'Confirmed') AND PaymentStatus IN ('Paid', 'Refunded', 'Partially Refunded') THEN 'Settled'
+        WHEN OrderStatus IN ('Submitted', 'Confirmed', 'Fulfilled') AND PaymentStatus = 'Pending' THEN 'In Progress'
+        WHEN OrderStatus = 'Draft' THEN 'Draft'
+        ELSE 'Review'
+      END
+  - attributeName: FinancialHealthStatus
+    expression: CASE
+        WHEN SubtotalAmount IS NULL OR TotalAmount IS NULL THEN 'Incomplete'
+        WHEN SubtotalAmount < 0 OR DiscountAmount < 0 OR TaxAmount < 0 OR ShippingAmount < 0 OR TotalAmount < 0 THEN 'Invalid'
+        WHEN DiscountAmount IS NOT NULL AND SubtotalAmount IS NOT NULL AND DiscountAmount > SubtotalAmount THEN 'Invalid Discount'
+        ELSE 'Healthy'
+      END

@@ -1,0 +1,70 @@
+_name: CompanyCodeActionSet
+_package: sapbp360.entities.CompanyCode.action_sets
+_type: ActionSet
+entity: sapbp360.entities.CompanyCode.CompanyCode
+label: Company Code Action Set
+description: Action set for managing Company Codes in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorCompanyCodes
+    label: Create
+    description: Create a new Company Code record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.CompanyCode.steppers.AuthorCompanyCodes
+  - _name: EditAuthorCompanyCodes
+    label: Edit
+    description: Edit Company Code records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.CompanyCode.steppers.AuthorCompanyCodes
+  - _name: MassUpdateAuthorCompanyCodes
+    label: Mass Update
+    description: Mass update Company Code records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.CompanyCode.steppers.AuthorCompanyCodes
+  - _name: Delete
+    label: Delete
+    description: Delete selected Company Code records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorCompanyCodes
+    label: Import
+    description: Import Company Code records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.CompanyCode.steppers.CompanyCodeImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

@@ -1,0 +1,22 @@
+_name: WorkShiftDisplayCard
+_package: Manufacturing.entities.ManufacturingPlantWorkShift.display_cards
+_type: DisplayCard
+entity: Manufacturing.entities.ManufacturingPlantWorkShift.ManufacturingPlantWorkShift
+default: true
+primaryTextExpression: ManufacturingPlant.FDN_Manufacturer || ' - ' || FDN_ManufacturingPlant
+secondaryTextExpression: |-
+  case when Is24_7 = 'true' then '24*7'
+  else StartTime || '- ' || EndTime 
+  end
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: case when Is24_7 = 'true' then 'images://mdi/hours-24.svg'
+  else 'images://mdi/briefcase-clock.svg'  end
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

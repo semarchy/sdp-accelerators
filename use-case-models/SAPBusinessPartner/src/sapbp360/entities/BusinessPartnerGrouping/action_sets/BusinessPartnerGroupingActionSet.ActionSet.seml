@@ -1,0 +1,70 @@
+_name: BusinessPartnerGroupingActionSet
+_package: sapbp360.entities.BusinessPartnerGrouping.action_sets
+_type: ActionSet
+entity: sapbp360.entities.BusinessPartnerGrouping.BusinessPartnerGrouping
+label: Business Partner Grouping Action Set
+description: Action set for managing Business Partner Groupings in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorBusinessPartnerGroupings
+    label: Create
+    description: Create a new Business Partner Grouping record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.BusinessPartnerGrouping.steppers.AuthorBusinessPartnerGroupings
+  - _name: EditAuthorBusinessPartnerGroupings
+    label: Edit
+    description: Edit Business Partner Grouping records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.BusinessPartnerGrouping.steppers.AuthorBusinessPartnerGroupings
+  - _name: MassUpdateAuthorBusinessPartnerGroupings
+    label: Mass Update
+    description: Mass update Business Partner Grouping records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.BusinessPartnerGrouping.steppers.AuthorBusinessPartnerGroupings
+  - _name: Delete
+    label: Delete
+    description: Delete selected Business Partner Grouping records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorBusinessPartnerGroupings
+    label: Import
+    description: Import Business Partner Grouping records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.BusinessPartnerGrouping.steppers.BusinessPartnerGroupingImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

@@ -1,0 +1,49 @@
+_name: ItemUnavailability
+_package: Manufacturing.entities.ItemUnavailability.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.ItemUnavailability.ItemUnavailability
+rootLabel: Item Unavailability
+rootPluralLabel: Item Unavailabilities
+useHierarchyOnOpen: false
+label: Item Unavailabilities
+rootBusinessViewEntity:
+  _name: ItemUnavailabilityEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.ItemUnavailability.collection_views.ItemUnavailabilityCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.ItemUnavailability.ItemUnavailability
+  form: Manufacturing.entities.ItemUnavailability.forms.ItemUnavailabilityForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.ItemUnavailability.action_sets.ItemUnavailabilityActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.ItemUnavailability.forms.ItemUnavailabilityForm.ItemUnavailability.FDN_Item
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ItemUnavailability.forms.ItemUnavailabilityForm.ItemUnavailability.FDN_SubstituteItem
+      navigationMode: MODAL_FORM
+  transitions: []

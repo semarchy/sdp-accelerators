@@ -1,0 +1,19 @@
+# ApproveRule: SemQL enricher on GovernanceRule of the GovernanceRules accelerator. Stepper only (Rule review workflow, owner task): records the approval.
+_package: GovernanceRules.entities.GovernanceRule.enrichers
+_type: SemQLEnricher
+_name: ApproveRule
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Approve rule
+description: 'Stepper only (Rule review workflow, approval task of the governance owner): prepares the approval when the form opens. A retirement
+  request becomes RETIRED, any other request APPROVED; sets Approved on and Approved by, and the effective date to today when empty. The values
+  are only kept when the owner chooses Approve: the Reject transition reverts the data of the approval task.'
+enricherExecutionScope: NONE
+semQlEnricherExpressions:
+- attributeName: LifecycleStatus
+  expression: CASE WHEN LifecycleStatus IN ('RETIREMENT_REQUESTED', 'RETIRED') THEN 'RETIRED' ELSE 'APPROVED' END
+- attributeName: ApprovedOn
+  expression: CURRENT_DATE()
+- attributeName: ApprovedBy
+  expression: :V_USERNAME
+- attributeName: EffectiveDate
+  expression: COALESCE(EffectiveDate, CURRENT_DATE())

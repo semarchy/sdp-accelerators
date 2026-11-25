@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: sapbp360.entities.BPAddress.enrichers
+_name: NormalizedCity
+entity: sapbp360.entities.BPAddress.BPAddress
+label: Normalized city name for search and matching.
+description: Normalized city name for search and matching.
+enricherExecutionScope: PRE_CONSO
+condition: CityName is not null
+semQlEnricherExpressions:
+  - attributeName: NormalizedCity
+    expression: LTRIM(RTRIM(UPPER(CityName)))

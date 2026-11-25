@@ -1,0 +1,33 @@
+_package: Merchant.entities.Merchant.display_cards
+# Description: Display card for `Merchant` used across lists and business views.
+# Contains primary/secondary text and image settings for merchant presentation.
+# Role: Provides a compact merchant summary for use in collections, search and UI panels.
+_type: DisplayCard
+_name: MerchantDisplayCard
+entity: Merchant.entities.Merchant.Merchant
+default: true
+
+primaryTextExpression: EnrichedMerchantName
+
+# Secondary: show merchant type and status (joined with a dot when both available)
+secondaryTextExpression: "CASE WHEN MerchantType IS NOT NULL AND Status IS NOT NULL THEN MerchantType || ' • ' || Status WHEN MerchantType IS NOT NULL THEN MerchantType WHEN Status IS NOT NULL THEN Status ELSE '' END"
+
+# Supporting: show business key and internal id for quick reference
+supportingTextExpression: "MerchantCode"
+
+# Avatar: merchant storefront icon as default
+avatarImageValue: images://mdi/storefront.svg
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT
+
+# Primary image: prefer merchant image when available, otherwise use storefront variant
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageValue: images://mdi/storefront-variant.svg
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FILL
+primaryImageFallbackValue: images://mdi/domain.svg
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL

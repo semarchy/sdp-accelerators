@@ -1,0 +1,95 @@
+﻿_package: RetailCustomer360.entities.LoyaltyProgramMember.business_views
+_type: BusinessView
+_name: LoyaltyProgramMemberBusinessView
+label: Loyalty Program Members
+entity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+
+rootLabel: Loyalty Program Members
+rootPluralLabel: Loyalty Program Members
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: LoyaltyProgramMember
+  displayCard: RetailCustomer360.entities.LoyaltyProgramMember.display_cards.LoyaltyProgramMemberDisplayCard
+  entity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+  actionSet: RetailCustomer360.entities.LoyaltyProgramMember.action_sets.LoyaltyProgramMemberActionSet
+  collection: RetailCustomer360.entities.LoyaltyProgramMember.collection_views.LoyaltyProgramMemberCollectionView
+  form: RetailCustomer360.entities.LoyaltyProgramMember.forms.LoyaltyProgramMemberForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: LoyaltyProgramMemberQuickFilterConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: RetailCustomer360.entities.LoyaltyProgramMember.search_forms.LoyaltyProgramMemberQuickFilters
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AssociatedLoyaltyLedger
+      transitionPath: BelongsToLoyaltyProgramMemberFromLoyaltyLedger
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/book-open-variant.svg?color=%230D1B2A&width=64
+      label: Ledger Entry
+      pluralLabel: Ledger Entries
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToLoyaltyProgramMemberFromLoyaltyLedger has (1 = 1)
+      businessViewEntity:
+        _name: LoyaltyLedgerRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.LoyaltyLedger.collection_views.LoyaltyLedgerCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.LoyaltyLedger.LoyaltyLedger
+        form: RetailCustomer360.entities.LoyaltyLedger.forms.LoyaltyLedgerForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.LoyaltyLedger.action_sets.LoyaltyLedgerActionSet
+        displayCard: RetailCustomer360.entities.LoyaltyLedger.display_cards.LoyaltyLedgerDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+enableHierarchyView: false
+useHierarchyOnOpen: false

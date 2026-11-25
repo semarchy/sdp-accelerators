@@ -1,0 +1,70 @@
+_name: TransportZoneActionSet
+_package: sapbp360.entities.TransportZone.action_sets
+_type: ActionSet
+entity: sapbp360.entities.TransportZone.TransportZone
+label: Transport Zone Action Set
+description: Action set for managing Transport Zones in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorTransportZones
+    label: Create
+    description: Create a new Transport Zone record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.TransportZone.steppers.AuthorTransportZones
+  - _name: EditAuthorTransportZones
+    label: Edit
+    description: Edit Transport Zone records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.TransportZone.steppers.AuthorTransportZones
+  - _name: MassUpdateAuthorTransportZones
+    label: Mass Update
+    description: Mass update Transport Zone records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.TransportZone.steppers.AuthorTransportZones
+  - _name: Delete
+    label: Delete
+    description: Delete selected Transport Zone records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorTransportZones
+    label: Import
+    description: Import Transport Zone records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.TransportZone.steppers.TransportZoneImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

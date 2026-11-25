@@ -1,0 +1,32 @@
+_package: RetailCustomer360.complex_types
+_type: ComplexType
+_name: MonetaryAmount
+label: Monetary amount
+description: "Reusable amount and currency-code pair used by loyalty, promotion and opportunity values."
+attributes:
+  - _type: EntityAttribute
+    _name: Amount
+    label: Amount
+    physicalName: AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Numeric value of the amount."
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: Currency code (ISO)
+    physicalName: CURRENCYCODE
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+    description: "ISO currency code the amount is expressed in."
+displayName:
+  _type: ComplexTypeDisplayName
+  _name: DisplayName
+  separator: ' '
+  displayNameAttributes:
+    - attribute: RetailCustomer360.complex_types.MonetaryAmount.Amount
+    - attribute: RetailCustomer360.complex_types.MonetaryAmount.CurrencyCode

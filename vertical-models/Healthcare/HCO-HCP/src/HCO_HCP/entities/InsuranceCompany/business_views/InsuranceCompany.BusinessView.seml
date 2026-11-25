@@ -1,0 +1,99 @@
+_name: InsuranceCompany
+_package: HCO_HCP.entities.InsuranceCompany.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: HCO_HCP.entities.InsuranceCompany.InsuranceCompany
+rootLabel: Insurance Company
+rootPluralLabel: Insurance Companies
+useHierarchyOnOpen: false
+label: Insurance Companies
+rootBusinessViewEntity:
+  _name: InsuranceCompanyEO
+  _type: BusinessViewEntity
+  collection: HCO_HCP.entities.InsuranceCompany.collection_views.InsuranceCompanyCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: HCO_HCP.entities.InsuranceCompany.InsuranceCompany
+  displayCard: HCO_HCP.entities.InsuranceCompany.display_cards.InsuranceCompanyDisplayCard
+  form: HCO_HCP.entities.InsuranceCompany.forms.InsuranceCompanyForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: HCO_HCP.entities.InsuranceCompany.action_sets.InsuranceCompanyActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: MemberInsuranceCompanies
+      _type: BusinessViewTransition
+      transitionPath: MemberInsuranceCompanies
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Coverage
+        _type: BusinessViewEntity
+        collection: HCO_HCP.entities.Coverage.collection_views.CoverageCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: HCO_HCP.entities.Coverage.Coverage
+        displayCard: HCO_HCP.entities.Coverage.display_cards.CoverageDisplayCard
+        form: HCO_HCP.entities.Coverage.forms.CoverageInfo
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo.FDN_Member
+            navigationMode: MODAL_FORM
+          - formField: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo.FDN_Subscriber
+            navigationMode: MODAL_FORM
+          - formField: HCO_HCP.entities.Coverage.forms.CoverageInfo.CoverageInfo.FDN_InsuranceCompany
+            navigationMode: MODAL_FORM
+        transitions: []

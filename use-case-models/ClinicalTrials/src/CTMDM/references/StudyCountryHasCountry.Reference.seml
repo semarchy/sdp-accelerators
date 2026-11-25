@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: StudyCountryHasCountry
+_type: Reference
+label: Study Country Has Country
+description: "Links study-country records to country reference data."
+documentation: "Links study-country records to country reference data."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.StudyCountry.StudyCountry
+fromRoleLabel: Study Country
+fromRoleName: studyCountry
+fromRolePluralLabel: Study Countries
+physicalName: STUDY_CTRY_HAS_CTRY
+fromNavigable: true
+
+toEntity: CTMDM.entities.Country.Country
+toRoleLabel: Country
+toRoleName: country
+toRolePhysicalName: CTRY
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: country
+  label: Country Code
+  physicalName: CTRY
+  searchable: true
+  entity: CTMDM.entities.Country.Country

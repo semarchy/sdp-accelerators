@@ -1,0 +1,13 @@
+﻿_package: RetailCustomer360.entities.LoyaltyProgram.validations
+_type: SemQLValidation
+_name: EconomicsMustBeNonNegative
+entity: RetailCustomer360.entities.LoyaltyProgram.LoyaltyProgram
+label: Economics Must Be Non Negative
+description: "Ensures economic values are non-negative when provided."
+validationScope: PRE_CONSO
+condition: (EnrollmentFee IS NULL OR EnrollmentFee >= 0)
+  AND (PointAccrualRate IS NULL OR PointAccrualRate >= 0)
+  AND (PointRedemptionRate IS NULL OR PointRedemptionRate >= 0)
+  AND (MinimumRedeemPoints IS NULL OR MinimumRedeemPoints >= 0)
+  AND (PointsExpiryMonths IS NULL OR PointsExpiryMonths >= 0)
+

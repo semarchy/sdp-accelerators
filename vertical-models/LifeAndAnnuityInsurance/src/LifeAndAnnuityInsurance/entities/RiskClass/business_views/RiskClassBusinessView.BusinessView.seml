@@ -1,0 +1,104 @@
+_package: LifeAndAnnuityInsurance.entities.RiskClass.business_views
+_type: BusinessView
+_name: RiskClassBusinessView
+label: "Risk Class"
+entity: LifeAndAnnuityInsurance.entities.RiskClass.RiskClass
+rootLabel: "Risk Classes"
+rootPluralLabel: "Risk Classes"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: RiskClass
+  displayCard: LifeAndAnnuityInsurance.entities.RiskClass.display_cards.RiskClassDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.RiskClass.RiskClass
+  actionSet: LifeAndAnnuityInsurance.entities.RiskClass.action_sets.RiskClassActionSet
+  collection: LifeAndAnnuityInsurance.entities.RiskClass.collection_views.RiskClassCollectionView
+  form: LifeAndAnnuityInsurance.entities.RiskClass.forms.RiskClassForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Coverage
+      label: "Coverage"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Coverages"
+      iconUrl: images://mdi/shield-outline.svg
+      transitionPath: Coverage
+      useCustomLabel: true
+      description: "Transition from Risk Class to related Coverages."
+      visibleInFormTabCondition: any Coverage has (1=1)
+      enableHierarchy: any Coverage has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Coverage
+        displayCard: LifeAndAnnuityInsurance.entities.Coverage.display_cards.CoverageDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Coverage.Coverage
+        actionSet: LifeAndAnnuityInsurance.entities.Coverage.action_sets.CoverageActionSet
+        collection: LifeAndAnnuityInsurance.entities.Coverage.collection_views.CoverageCollectionView
+        form: LifeAndAnnuityInsurance.entities.Coverage.forms.CoverageForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _type: BusinessViewTransition
+      _name: UnderwritingCase
+      label: "Underwriting Case"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Underwriting Cases"
+      iconUrl: images://mdi/stethoscope.svg
+      transitionPath: UnderwritingCase
+      useCustomLabel: true
+      description: "Transition from Risk Class to related Underwriting Cases."
+      visibleInFormTabCondition: any UnderwritingCase has (1=1)
+      enableHierarchy: any UnderwritingCase has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: UnderwritingCase
+        displayCard: LifeAndAnnuityInsurance.entities.UnderwritingCase.display_cards.UnderwritingCaseDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.UnderwritingCase.UnderwritingCase
+        actionSet: LifeAndAnnuityInsurance.entities.UnderwritingCase.action_sets.UnderwritingCaseActionSet
+        collection: LifeAndAnnuityInsurance.entities.UnderwritingCase.collection_views.UnderwritingCaseCollectionView
+        form: LifeAndAnnuityInsurance.entities.UnderwritingCase.forms.UnderwritingCaseForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/speedometer.svg

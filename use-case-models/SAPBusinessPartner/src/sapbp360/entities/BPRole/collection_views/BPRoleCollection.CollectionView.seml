@@ -1,0 +1,61 @@
+_package: sapbp360.entities.BPRole.collection_views
+_name: BPRoleCollection
+_type: CollectionView
+entity: sapbp360.entities.BPRole.BPRole
+default: true
+displayCard: sapbp360.entities.BPRole.display_cards.BPRoleDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: BP Role
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 260
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: true
+listShowDivider: false
+gridAllowed: true
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 2
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: RoleID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RoleID
+    visibleByDefault: true
+    defaultWidth: 220
+  - _type: TextColumn
+    _name: ValidFrom
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: ValidFrom
+    visibleByDefault: true
+    defaultWidth: 220
+  - _type: TextColumn
+    _name: ValidTo
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: ValidTo
+    visibleByDefault: true
+    defaultWidth: 220
+  - _type: ReferenceColumn
+    _name: FDN_BusinessPartnerRole
+    columnAlign: LEFT
+    dataType: STRING
+    label: Business Partner Role Name
+    useCustomLabel: true
+    value: FDN_BusinessPartnerRole
+    visibleByDefault: true
+    defaultWidth: 220
+    displayCard: sapbp360.entities.BusinessPartnerRole.display_cards.BusinessPartnerRoleDisplayCard
+    referencedEntity: sapbp360.entities.BusinessPartnerRole.BusinessPartnerRole
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL

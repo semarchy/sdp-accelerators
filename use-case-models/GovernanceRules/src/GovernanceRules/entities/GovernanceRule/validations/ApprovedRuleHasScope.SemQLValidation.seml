@@ -1,0 +1,10 @@
+# ApprovedRuleHasScope: SemQL validation on GovernanceRule of the GovernanceRules accelerator. An approved rule has at least one scope row.
+_package: GovernanceRules.entities.GovernanceRule.validations
+_type: SemQLValidation
+_name: ApprovedRuleHasScope
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Approved rule has a scope
+description: An approved rule has at least one scope row. A rule with no scope row is never returned by ApplicableRules, so it would be invisible to design agents.
+validationScope: PRE_CONSO
+validationLabel: An approved rule needs at least one scope (data domain, classification or attribute type; leave all three empty to apply everywhere).
+condition: LifecycleStatus <> 'APPROVED' OR any Scopes have (1 = 1)

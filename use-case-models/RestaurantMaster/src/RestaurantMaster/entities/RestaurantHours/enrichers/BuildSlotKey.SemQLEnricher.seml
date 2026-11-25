@@ -1,0 +1,10 @@
+_package: RestaurantMaster.entities.RestaurantHours.enrichers
+_name: BuildSlotKey
+_type: SemQLEnricher
+entity: RestaurantMaster.entities.RestaurantHours.RestaurantHours
+label: Build the hours slot key
+description: Builds the key that keeps one row per channel, day or date and start date.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+- attributeName: HoursSlotKey
+  expression: FID_Restaurant || '|' || ServiceChannel || '|' || HoursType || '|' || COALESCE(DayOfWeek, TO_CHAR(SpecialDate, 'YYYY-MM-DD'), '-') || '|' || TO_CHAR(EffectiveFrom, 'YYYY-MM-DD')

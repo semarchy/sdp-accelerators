@@ -1,0 +1,46 @@
+﻿_package: RetailCustomer360.entities.WebEngagement.business_views
+_type: BusinessView
+_name: WebEngagementBusinessView
+label: Web Engagements
+entity: RetailCustomer360.entities.WebEngagement.WebEngagement
+
+rootLabel: Web Engagements
+rootPluralLabel: Web Engagements
+displayRootNodeAs: ICON_LABEL
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: WebEngagement
+  displayCard: RetailCustomer360.entities.WebEngagement.display_cards.WebEngagementDisplayCard
+  entity: RetailCustomer360.entities.WebEngagement.WebEngagement
+  actionSet: RetailCustomer360.entities.WebEngagement.action_sets.WebEngagementActionSet
+  collection: RetailCustomer360.entities.WebEngagement.collection_views.WebEngagementCollectionView
+  form: RetailCustomer360.entities.WebEngagement.forms.WebEngagementForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: WebEngagementQuickFilterConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: RetailCustomer360.entities.WebEngagement.search_forms.WebEngagementQuickFilters
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+

@@ -1,0 +1,1027 @@
+_package: sappm360.applications
+_name: ProductMaterial360Hub
+_type: Application
+applicationTitle: SAP Product / Material 360
+avatarImageUrl: images://sap-product-material-360/avatar-sap-premium.png
+coverImageUrl: images://sap-product-material-360/cover-sap-premium.png
+favIcon: images://sap-product-material-360/avatar-sap-premium.png
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ""
+logoUrl: images://sap-product-material-360/logo-sap-premium.png
+visibility: VISIBLE
+description: Trusted product and material data hub for SAP landscape consolidation.
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: CoreProductMaterial
+      _type: DocumentationConfigDiagram
+      modelDiagram: sappm360.model_diagrams.CoreProductMaterial
+      label: Core Product Material
+    - _name: GovernanceReference
+      _type: DocumentationConfigDiagram
+      modelDiagram: sappm360.model_diagrams.GovernanceReference
+      label: Governance Reference
+label: SAP Product / Material 360
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: Products
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sappm360.entities.Product.business_views.Product
+      label: Products
+      maxResults: 5
+      searchTypeConfig: sappm360.entities.Product.business_views.Product.Product.TextConfig
+    - _name: Materials
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sappm360.entities.Material.business_views.Material
+      label: Materials
+      maxResults: 5
+      searchTypeConfig: sappm360.entities.Material.business_views.Material.Material.TextConfig
+    - _name: ProductHierarchies
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sappm360.entities.ProductHierarchy.business_views.ProductHierarchy
+      label: Product Hierarchies
+      maxResults: 5
+      searchTypeConfig: sappm360.entities.ProductHierarchy.business_views.ProductHierarchy.ProductHierarchy.TextConfig
+    - _name: Suppliers
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sappm360.entities.Supplier.business_views.Supplier
+      label: Suppliers
+      maxResults: 5
+      searchTypeConfig: sappm360.entities.Supplier.business_views.Supplier.Supplier.TextConfig
+    - _name: Plants
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: sappm360.entities.Plant.business_views.Plant
+      label: Plants
+      maxResults: 5
+      searchTypeConfig: sappm360.entities.Plant.business_views.Plant.Plant.TextConfig
+defaultAction: sappm360.applications.ProductMaterial360Hub.Root.GlobalSearch
+navDrawer:
+  - _name: RootFolder
+    _type: NavigationGroup
+    dividerVisible: false
+    label: Root Folder
+    labelVisible: false
+    actions:
+      - appAction: sappm360.applications.ProductMaterial360Hub.Root.MyTasks
+      - appAction: sappm360.applications.ProductMaterial360Hub.Root.GlobalSearch
+  - _name: ProductGovernance
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sappm360.applications.ProductMaterial360Hub.Root.ProductGovernance
+  - _name: MaterialManagement
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sappm360.applications.ProductMaterial360Hub.Root.MaterialManagement
+  - _name: SupplyChainOperations
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sappm360.applications.ProductMaterial360Hub.Root.SupplyChainOperations
+  - _name: ComplianceAndQuality
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sappm360.applications.ProductMaterial360Hub.Root.ComplianceAndQuality
+  - _name: IntegrationEcosystem
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sappm360.applications.ProductMaterial360Hub.Root.IntegrationEcosystem
+  - _name: Administration
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: sappm360.applications.ProductMaterial360Hub.Root.Administration
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+    - _type: MyTasksAction
+      _name: MyTasks
+      label: "Inbox"
+      iconColor: "#08243d"
+      labelColor: "#08243d"
+      image: images://sap-product-material-360/action-inbox.png
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: false
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      description: "Search products, materials, hierarchies, suppliers, and plants."
+      label: "Global Search"
+      iconColor: "#08243d"
+      labelColor: "#08243d"
+      image: images://sap-product-material-360/action-global-search.png
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+    - _type: FolderAction
+      _name: ProductGovernance
+      icon: images://mdi/package-variant-closed.svg
+      description: "Manage products, hierarchies, brand taxonomy, classifications, and product reference data."
+      label: "Product Governance"
+      iconColor: "#006f68"
+      labelColor: "#006f68"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseProduct
+          description: "Browse governed Product golden records."
+          label: "Products"
+          iconColor: "#006f68"
+          labelColor: "#006f68"
+          image: images://sap-product-material-360/action-product.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.Product.business_views.Product
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          _name: BrowseProductHierarchy
+          description: "Browse product taxonomy and hierarchy nodes."
+          label: "Product Hierarchies"
+          iconColor: "#006f68"
+          labelColor: "#006f68"
+          image: images://sap-product-material-360/action-product-hierarchy.png
+          icon: images://mdi/family-tree.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.ProductHierarchy.business_views.ProductHierarchy
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          _name: BrowseBrand
+          description: "Browse brand reference records."
+          label: "Brands"
+          iconColor: "#006f68"
+          labelColor: "#006f68"
+          image: images://sap-product-material-360/action-brand.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.Brand.business_views.Brand
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: FolderAction
+          _name: ProductDetails
+          icon: images://mdi/package-variant.svg
+          description: "Browse product attributes, variants, classifications, and relationships."
+          label: "Product Details"
+          iconColor: "#006f68"
+          labelColor: "#006f68"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductClassification
+              description: "Browse Product Classifications records."
+              label: "Product Classifications"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-product-classification.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ProductClassification.business_views.ProductClassification
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductSpecification
+              description: "Browse Product Specifications records."
+              label: "Product Specifications"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-product-specification.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ProductSpecification.business_views.ProductSpecification
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductVariant
+              description: "Browse Product Variants records."
+              label: "Product Variants"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-product-variant.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ProductVariant.business_views.ProductVariant
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductRelationship
+              description: "Browse Product Relationships records."
+              label: "Product Relationships"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-product-relationship.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ProductRelationship.business_views.ProductRelationship
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+        - _type: FolderAction
+          _name: ProductConfigurations
+          icon: images://mdi/cog-outline.svg
+          description: "Browse reference data for product governance."
+          label: "Product Configurations"
+          iconColor: "#006f68"
+          labelColor: "#006f68"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductType
+              description: "Browse Product Types records."
+              label: "Product Types"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-product-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ProductType.business_views.ProductType
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductStatus
+              description: "Browse Product Statuses records."
+              label: "Product Statuses"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-product-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ProductStatus.business_views.ProductStatus
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseLifecycleStatus
+              description: "Browse Lifecycle Statuses records."
+              label: "Lifecycle Statuses"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-lifecycle-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.LifecycleStatus.business_views.LifecycleStatus
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseClassificationScheme
+              description: "Browse Classification Schemes records."
+              label: "Classification Schemes"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-classification-scheme.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ClassificationScheme.business_views.ClassificationScheme
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseRelationshipType
+              description: "Browse Relationship Types records."
+              label: "Relationship Types"
+              iconColor: "#006f68"
+              labelColor: "#006f68"
+              image: images://sap-product-material-360/action-relationship-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.RelationshipType.business_views.RelationshipType
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+    - _type: FolderAction
+      _name: MaterialManagement
+      icon: images://mdi/cube-outline.svg
+      description: "Manage materials and SAP material control reference data."
+      label: "Material Management"
+      iconColor: "#0a4f8a"
+      labelColor: "#0a4f8a"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseMaterial
+          description: "Browse SAP Material golden records."
+          label: "Materials"
+          iconColor: "#0a4f8a"
+          labelColor: "#0a4f8a"
+          image: images://sap-product-material-360/action-material.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.Material.business_views.Material
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          _name: BrowseUnitOfMeasure
+          description: "Browse Units of Measure records."
+          label: "Units of Measure"
+          iconColor: "#0a4f8a"
+          labelColor: "#0a4f8a"
+          image: images://sap-product-material-360/action-unit-of-measure.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.UnitOfMeasure.business_views.UnitOfMeasure
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: FolderAction
+          _name: MaterialConfigurations
+          icon: images://mdi/cog-outline.svg
+          description: "Browse SAP material reference data."
+          label: "Material Configurations"
+          iconColor: "#0a4f8a"
+          labelColor: "#0a4f8a"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseMaterialType
+              description: "Browse Material Types records."
+              label: "Material Types"
+              iconColor: "#0a4f8a"
+              labelColor: "#0a4f8a"
+              image: images://sap-product-material-360/action-material-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.MaterialType.business_views.MaterialType
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseIndustrySector
+              description: "Browse Industry Sectors records."
+              label: "Industry Sectors"
+              iconColor: "#0a4f8a"
+              labelColor: "#0a4f8a"
+              image: images://sap-product-material-360/action-industry-sector.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.IndustrySector.business_views.IndustrySector
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseMaterialGroup
+              description: "Browse Material Groups records."
+              label: "Material Groups"
+              iconColor: "#0a4f8a"
+              labelColor: "#0a4f8a"
+              image: images://sap-product-material-360/action-material-group.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.MaterialGroup.business_views.MaterialGroup
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProcurementType
+              description: "Browse Procurement Types records."
+              label: "Procurement Types"
+              iconColor: "#0a4f8a"
+              labelColor: "#0a4f8a"
+              image: images://sap-product-material-360/action-procurement-type.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ProcurementType.business_views.ProcurementType
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseValuationClass
+              description: "Browse Valuation Classes records."
+              label: "Valuation Classes"
+              iconColor: "#0a4f8a"
+              labelColor: "#0a4f8a"
+              image: images://sap-product-material-360/action-valuation-class.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ValuationClass.business_views.ValuationClass
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+    - _type: FolderAction
+      _name: SupplyChainOperations
+      icon: images://mdi/truck-outline.svg
+      description: "Manage suppliers, plants, storage locations, and plant-product assignments."
+      label: "Supply Chain Operations"
+      iconColor: "#2f6f53"
+      labelColor: "#2f6f53"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseSupplier
+          description: "Browse Suppliers records."
+          label: "Suppliers"
+          iconColor: "#2f6f53"
+          labelColor: "#2f6f53"
+          image: images://sap-product-material-360/action-supplier.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.Supplier.business_views.Supplier
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          _name: BrowseSupplierProduct
+          description: "Browse Supplier Products records."
+          label: "Supplier Products"
+          iconColor: "#2f6f53"
+          labelColor: "#2f6f53"
+          image: images://sap-product-material-360/action-supplier-product.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.SupplierProduct.business_views.SupplierProduct
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: FolderAction
+          _name: PlantNetwork
+          icon: images://mdi/factory.svg
+          description: "Browse plant, storage, and plant-product assignments."
+          label: "Plant Network"
+          iconColor: "#2f6f53"
+          labelColor: "#2f6f53"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePlant
+              description: "Browse Plants records."
+              label: "Plants"
+              iconColor: "#2f6f53"
+              labelColor: "#2f6f53"
+              image: images://sap-product-material-360/action-plant.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.Plant.business_views.Plant
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseStorageLocation
+              description: "Browse Storage Locations records."
+              label: "Storage Locations"
+              iconColor: "#2f6f53"
+              labelColor: "#2f6f53"
+              image: images://sap-product-material-360/action-storage-location.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.StorageLocation.business_views.StorageLocation
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowsePlantProduct
+              description: "Browse Plant Products records."
+              label: "Plant Products"
+              iconColor: "#2f6f53"
+              labelColor: "#2f6f53"
+              image: images://sap-product-material-360/action-plant-product.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.PlantProduct.business_views.PlantProduct
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    - _type: FolderAction
+      _name: ComplianceAndQuality
+      icon: images://mdi/shield-check-outline.svg
+      description: "Manage regulatory attributes, compliance reference data, worklists, and source error monitoring."
+      label: "Compliance & Quality"
+      iconColor: "#0f6b7a"
+      labelColor: "#0f6b7a"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseRegulatoryAttribute
+          description: "Browse Regulatory Attributes records."
+          label: "Regulatory Attributes"
+          iconColor: "#0f6b7a"
+          labelColor: "#0f6b7a"
+          image: images://sap-product-material-360/action-regulatory-attribute.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.RegulatoryAttribute.business_views.RegulatoryAttribute
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: FolderAction
+          _name: ComplianceConfigurations
+          icon: images://mdi/cog-outline.svg
+          description: "Browse compliance and geographic reference data."
+          label: "Compliance Configurations"
+          iconColor: "#0f6b7a"
+          labelColor: "#0f6b7a"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseComplianceStatus
+              description: "Browse Compliance Statuses records."
+              label: "Compliance Statuses"
+              iconColor: "#0f6b7a"
+              labelColor: "#0f6b7a"
+              image: images://sap-product-material-360/action-compliance-status.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ComplianceStatus.business_views.ComplianceStatus
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseCountry
+              description: "Browse Countries records."
+              label: "Countries"
+              iconColor: "#0f6b7a"
+              labelColor: "#0f6b7a"
+              image: images://sap-product-material-360/action-country.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.Country.business_views.Country
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: GD
+        - _type: FolderAction
+          _name: StewardshipWorklists
+          icon: images://mdi/clipboard-check-outline.svg
+          description: "Open data steward review queues."
+          label: "Stewardship Worklists"
+          iconColor: "#0f6b7a"
+          labelColor: "#0f6b7a"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductReviewSuggestions
+              description: "Review Product match and survivorship suggestions."
+              label: "Product Match Suggestions"
+              iconColor: "#0f6b7a"
+              labelColor: "#0f6b7a"
+              image: images://sap-product-material-360/action-quality.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.Product.business_views.ProductReviewSuggestion
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _type: BrowseBusinessViewAction
+              _name: BrowseMaterialReviewSuggestions
+              description: "Review Material match and survivorship suggestions."
+              label: "Material Match Suggestions"
+              iconColor: "#0f6b7a"
+              labelColor: "#0f6b7a"
+              image: images://sap-product-material-360/action-quality.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.Material.business_views.MaterialReviewSuggestion
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+        - _type: FolderAction
+          _name: SourceErrorMonitoring
+          icon: images://mdi/alert-circle-outline.svg
+          description: "Monitor source-data load and validation errors."
+          label: "Source Error Monitoring"
+          iconColor: "#0f6b7a"
+          labelColor: "#0f6b7a"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductErrors
+              description: "Browse Source Errors in Products records."
+              label: "Source Errors in Products"
+              iconColor: "#0f6b7a"
+              labelColor: "#0f6b7a"
+              image: images://sap-product-material-360/action-quality.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.Product.business_views.Product
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _type: BrowseBusinessViewAction
+              _name: BrowseMaterialErrors
+              description: "Browse Source Errors in Materials records."
+              label: "Source Errors in Materials"
+              iconColor: "#0f6b7a"
+              labelColor: "#0f6b7a"
+              image: images://sap-product-material-360/action-quality.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.Material.business_views.Material
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: SDWE
+    - _type: FolderAction
+      _name: IntegrationEcosystem
+      icon: images://mdi/vector-link.svg
+      description: "Manage source systems, cross references, and integration exception monitoring."
+      label: "Integration Ecosystem"
+      iconColor: "#174a8b"
+      labelColor: "#174a8b"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseSourceSystem
+          description: "Browse Source Systems records."
+          label: "Source Systems"
+          iconColor: "#174a8b"
+          labelColor: "#174a8b"
+          image: images://sap-product-material-360/action-source-system.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.SourceSystem.business_views.SourceSystem
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: BrowseBusinessViewAction
+          _name: BrowseProductCrossReference
+          description: "Browse Product Cross References records."
+          label: "Product Cross References"
+          iconColor: "#174a8b"
+          labelColor: "#174a8b"
+          image: images://sap-product-material-360/action-product-cross-reference.png
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          businessView: sappm360.entities.ProductCrossReference.business_views.ProductCrossReference
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _type: FolderAction
+          _name: IntegrationMonitoring
+          icon: images://mdi/database-alert-outline.svg
+          description: "Monitor cross-system identifier and load issues."
+          label: "Integration Monitoring"
+          iconColor: "#174a8b"
+          labelColor: "#174a8b"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          appActions:
+            - _type: BrowseBusinessViewAction
+              _name: BrowseProductCrossReferenceErrors
+              description: "Browse Source Errors in Product Cross References records."
+              label: "Source Errors in Product Cross References"
+              iconColor: "#174a8b"
+              labelColor: "#174a8b"
+              image: images://sap-product-material-360/action-quality.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              businessView: sappm360.entities.ProductCrossReference.business_views.ProductCrossReference
+              nbRecordsBadgeVisible: true
+              nbRecordsBadgeBackgroundColor: md:green 500
+              useSearchOnOpen: false
+              viewType: SAWE
+    - _type: FolderAction
+      _name: Administration
+      icon: images://mdi/cog-outline.svg
+      description: "Import data, browse all entities, and open model documentation."
+      label: "Administration"
+      iconColor: "#455a64"
+      labelColor: "#455a64"
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      appActions:
+        - _type: FolderAction
+          _name: ImportData
+          icon: images://mdi/database-import.svg
+          description: "Load authoring data for all SAP Product / Material 360 entities."
+          label: "Import Data"
+          iconColor: "#455a64"
+          labelColor: "#455a64"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          requiredRole: semarchyAdmin
+          appActions:
+            - _type: ImportDataAppAction
+              _name: ImportBrand
+              label: "01-Import Brand"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.Brand.action_sets.BrandActionSet.ImportAuthorBrands
+            - _type: ImportDataAppAction
+              _name: ImportClassificationScheme
+              label: "02-Import Classification Scheme"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ClassificationScheme.action_sets.ClassificationSchemeActionSet.ImportAuthorClassificationSchemes
+            - _type: ImportDataAppAction
+              _name: ImportComplianceStatus
+              label: "03-Import Compliance Status"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ComplianceStatus.action_sets.ComplianceStatusActionSet.ImportAuthorComplianceStatuses
+            - _type: ImportDataAppAction
+              _name: ImportCountry
+              label: "04-Import Country"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.Country.action_sets.CountryActionSet.ImportAuthorCountries
+            - _type: ImportDataAppAction
+              _name: ImportIndustrySector
+              label: "05-Import Industry Sector"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.IndustrySector.action_sets.IndustrySectorActionSet.ImportAuthorIndustrySectors
+            - _type: ImportDataAppAction
+              _name: ImportLifecycleStatus
+              label: "06-Import Lifecycle Status"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.LifecycleStatus.action_sets.LifecycleStatusActionSet.ImportAuthorLifecycleStatuses
+            - _type: ImportDataAppAction
+              _name: ImportMaterialType
+              label: "07-Import Material Type"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.MaterialType.action_sets.MaterialTypeActionSet.ImportAuthorMaterialTypes
+            - _type: ImportDataAppAction
+              _name: ImportMaterialGroup
+              label: "08-Import Material Group"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.MaterialGroup.action_sets.MaterialGroupActionSet.ImportAuthorMaterialGroups
+            - _type: ImportDataAppAction
+              _name: ImportProcurementType
+              label: "09-Import Procurement Type"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProcurementType.action_sets.ProcurementTypeActionSet.ImportAuthorProcurementTypes
+            - _type: ImportDataAppAction
+              _name: ImportValuationClass
+              label: "10-Import Valuation Class"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ValuationClass.action_sets.ValuationClassActionSet.ImportAuthorValuationClasses
+            - _type: ImportDataAppAction
+              _name: ImportProductStatus
+              label: "11-Import Product Status"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProductStatus.action_sets.ProductStatusActionSet.ImportAuthorProductStatuses
+            - _type: ImportDataAppAction
+              _name: ImportProductType
+              label: "12-Import Product Type"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProductType.action_sets.ProductTypeActionSet.ImportAuthorProductTypes
+            - _type: ImportDataAppAction
+              _name: ImportRelationshipType
+              label: "13-Import Relationship Type"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.RelationshipType.action_sets.RelationshipTypeActionSet.ImportAuthorRelationshipTypes
+            - _type: ImportDataAppAction
+              _name: ImportUnitOfMeasure
+              label: "14-Import Unit Of Measure"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.UnitOfMeasure.action_sets.UnitOfMeasureActionSet.ImportAuthorUnitsOfMeasure
+            - _type: ImportDataAppAction
+              _name: ImportSourceSystem
+              label: "15-Import Source System"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.SourceSystem.action_sets.SourceSystemActionSet.ImportAuthorSourceSystems
+            - _type: ImportDataAppAction
+              _name: ImportPlant
+              label: "16-Import Plant"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.Plant.action_sets.PlantActionSet.ImportAuthorPlants
+            - _type: ImportDataAppAction
+              _name: ImportStorageLocation
+              label: "17-Import Storage Location"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.StorageLocation.action_sets.StorageLocationActionSet.ImportAuthorStorageLocations
+            - _type: ImportDataAppAction
+              _name: ImportSupplier
+              label: "18-Import Supplier"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.Supplier.action_sets.SupplierActionSet.ImportAuthorSuppliers
+            - _type: ImportDataAppAction
+              _name: ImportProductHierarchy
+              label: "19-Import Product Hierarchy"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProductHierarchy.action_sets.ProductHierarchyActionSet.ImportAuthorProductHierarchies
+            - _type: ImportDataAppAction
+              _name: ImportProduct
+              label: "20-Import Product"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.Product.action_sets.ProductActionSet.ImportAuthorProducts
+            - _type: ImportDataAppAction
+              _name: ImportMaterial
+              label: "21-Import Material"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.Material.action_sets.MaterialActionSet.ImportAuthorMaterials
+            - _type: ImportDataAppAction
+              _name: ImportProductClassification
+              label: "22-Import Product Classification"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProductClassification.action_sets.ProductClassificationActionSet.ImportAuthorProductClassifications
+            - _type: ImportDataAppAction
+              _name: ImportProductSpecification
+              label: "23-Import Product Specification"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProductSpecification.action_sets.ProductSpecificationActionSet.ImportAuthorProductSpecifications
+            - _type: ImportDataAppAction
+              _name: ImportProductVariant
+              label: "24-Import Product Variant"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProductVariant.action_sets.ProductVariantActionSet.ImportAuthorProductVariants
+            - _type: ImportDataAppAction
+              _name: ImportRegulatoryAttribute
+              label: "25-Import Regulatory Attribute"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.RegulatoryAttribute.action_sets.RegulatoryAttributeActionSet.ImportAuthorRegulatoryAttributes
+            - _type: ImportDataAppAction
+              _name: ImportProductRelationship
+              label: "26-Import Product Relationship"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProductRelationship.action_sets.ProductRelationshipActionSet.ImportAuthorProductRelationships
+            - _type: ImportDataAppAction
+              _name: ImportProductCrossReference
+              label: "27-Import Product Cross Reference"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.ProductCrossReference.action_sets.ProductCrossReferenceActionSet.ImportAuthorProductCrossReferences
+            - _type: ImportDataAppAction
+              _name: ImportSupplierProduct
+              label: "28-Import Supplier Product"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.SupplierProduct.action_sets.SupplierProductActionSet.ImportAuthorSupplierProducts
+            - _type: ImportDataAppAction
+              _name: ImportPlantProduct
+              label: "29-Import Plant Product"
+              iconColor: "#455a64"
+              labelColor: "#455a64"
+              image: images://sap-product-material-360/action-import.png
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              importAction: sappm360.entities.PlantProduct.action_sets.PlantProductActionSet.ImportAuthorPlantProducts
+        - _type: OpenDocumentationAction
+          _name: ModelDocumentation
+          description: "View Product Material 360 model diagrams."
+          label: "Model Documentation"
+          iconColor: "#455a64"
+          labelColor: "#455a64"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+        - _type: UrlAction
+          _name: SemarchyDocumentation
+          description: "Access Semarchy platform documentation."
+          label: "Semarchy Documentation"
+          iconColor: "#455a64"
+          labelColor: "#455a64"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          url: "https://docs.semarchy.com/sdp/platform"
+          target: NEW_BROWSER_TAB
+        - _type: BrowseEntitiesFolderAction
+          _name: BrowseAllData
+          description: "Administrative access to model entities."
+          label: "Browse All Data"
+          iconColor: "#455a64"
+          labelColor: "#455a64"
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          requiredRole: semarchyAdmin
+          lineageEnabled: true

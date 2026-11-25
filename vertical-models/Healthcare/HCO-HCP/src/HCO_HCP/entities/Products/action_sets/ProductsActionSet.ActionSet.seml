@@ -1,0 +1,105 @@
+_name: ProductsActionSet
+_package: HCO_HCP.entities.Products.action_sets
+_type: ActionSet
+entity: HCO_HCP.entities.Products.Products
+label: Products Action Set
+defaultActionSet: true
+actions:
+  - _name: StartWorkflow
+    _type: StartWorkflowEntityAction
+    label: Start Workflow Create Produt
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: HCO_HCP.workflows.CreateProduct.Start
+  - _name: CreateAuthorProducts
+    label: Direct Create Golden
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.Products.steppers.AuthorProducts
+  - _name: EditAuthorProductses
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: HCO_HCP.entities.Products.steppers.AuthorProducts
+  - _name: MassUpdateAuthorProductses
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: HCO_HCP.entities.Products.steppers.AuthorProducts
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorProducts
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.Products.steppers.AuthorProducts
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnProducts
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: HCO_HCP.entities.Products.dups_managers.ManageDuplicatesOnProducts
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnProducts
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: HCO_HCP.entities.Products.dups_managers.ManageDuplicatesOnProducts
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnProducts
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: HCO_HCP.entities.Products.dups_managers.ManageDuplicatesOnProducts
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: HCO_HCP.entities.Products.display_cards.ProductsDisplayCard
+    formTab: HCO_HCP.entities.Products.forms.ProductsForm.Products

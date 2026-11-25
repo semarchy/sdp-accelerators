@@ -1,0 +1,85 @@
+# Planning Cycle entity for the SAP Business Partner 360 accelerator.
+_name: PlanningCycle
+_package: sapbp360.entities.PlanningCycle
+_type: Entity
+primaryKey: sapbp360.entities.PlanningCycle.PlanningCycle.PlanningCycleID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: PlanningCycleCode
+label: Planning Cycle
+documentation: Planning Cycle reference data used by the SAP Business Partner 360 model.
+description: Planning Cycle reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/PlanningCycle.svg
+pluralLabel: Planning Cycles
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PLAN_CYCLE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PlanningCycleID
+    physicalName: PLAN_CYCLE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Planning Cycle ID
+    documentation: Unique identifier for the planning cycle.
+    description: Unique identifier for the planning cycle.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Planning Cycle ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PlanningCycleCode
+    physicalName: PLAN_CYCLE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Planning Cycle Code
+    documentation: Code for the planning cycle.
+    description: Code for the planning cycle.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Planning Cycle Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PlanningCycleName
+    physicalName: PLAN_CYCLE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Planning Cycle Name
+    documentation: Name of the planning cycle.
+    description: Name of the planning cycle.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Planning Cycle Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the planning cycle.
+    description: Description for the planning cycle.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the planning cycle is active.
+    description: Indicates whether the planning cycle is active.
+    mandatory: false
+    length: 1
+    searchable: true

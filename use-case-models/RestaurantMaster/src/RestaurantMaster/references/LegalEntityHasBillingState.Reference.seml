@@ -1,0 +1,25 @@
+_package: RestaurantMaster.references
+_type: Reference
+label: Legal entity - Billing state
+_name: LegalEntityHasBillingState
+description: State or province of the billing address.
+documentation: State or province of the billing address.
+deletePropagation: RESTRICT
+fromEntity: RestaurantMaster.entities.LegalEntity.LegalEntity
+fromRoleName: BilledLegalEntities
+fromRoleLabel: Billed legal entities
+fromRolePluralLabel: Billed legal entities
+physicalName: LEGALENT_BILLING_STATE
+toEntity: RestaurantMaster.entities.StateProvince.StateProvince
+toRoleName: BillingState
+toRolePhysicalName: BILLING_STATE
+toRoleLabel: Billing state
+validationScope: PRE_CONSO
+oneToMany: false
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: BillingState
+  entity: RestaurantMaster.entities.StateProvince.StateProvince
+  label: Billing state
+  physicalName: BILLING_STATE
+  searchable: true

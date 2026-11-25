@@ -1,0 +1,94 @@
+_package: CTMDM.entities.Country
+_type: Entity
+_name: Country
+label: Country
+pluralLabel: Countries
+entityType: BASIC
+physicalTableName: CTRY
+iconUrl: images://mdi/earth.svg
+description: "Reference data for countries used across sites, studies, investigators, and regulatory activities."
+documentation: "Reference data for countries used across sites, studies, investigators, and regulatory activities."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CountryID
+    label: Country ID
+    description: Business identifier for country reference data.
+    documentation: Business identifier for country reference data.
+    physicalName: CTRY_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CountryCode
+    label: Country Code
+    description: ISO Alpha-3 country code.
+    documentation: ISO Alpha-3 country code.
+    physicalName: CTRY_CODE
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedCountryCode
+    label: Normalized Country Code
+    description: Trimmed and uppercased country code.
+    documentation: Trimmed and uppercased country code.
+    physicalName: NORM_CTRY_CODE
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CountryName
+    label: Country Name
+    description: Official country name.
+    documentation: Official country name.
+    physicalName: CTRY_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedCountryName
+    label: Normalized Country Name
+    description: Trimmed and uppercased country name.
+    documentation: Trimmed and uppercased country name.
+    physicalName: NORM_CTRY_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Region
+    label: Region
+    description: Geographic or operating region.
+    documentation: Geographic or operating region.
+    physicalName: REGION
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RegulatoryRegion
+    label: Regulatory Region
+    description: Regulatory operating region used for reporting.
+    documentation: Regulatory operating region used for reporting.
+    physicalName: REG_REGION
+    dataType: String
+    length: 100
+    mandatory: false
+
+primaryKey: CTMDM.entities.Country.Country.CountryID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

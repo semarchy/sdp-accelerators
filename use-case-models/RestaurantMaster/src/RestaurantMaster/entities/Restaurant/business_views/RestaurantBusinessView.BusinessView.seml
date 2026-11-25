@@ -1,0 +1,442 @@
+_package: RestaurantMaster.entities.Restaurant.business_views
+_type: BusinessView
+_name: RestaurantBusinessView
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+rootLabel: Restaurants
+rootPluralLabel: Restaurants
+displayRootNodeAs: ICON_LABEL
+label: Restaurant
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Restaurant
+  entity: RestaurantMaster.entities.Restaurant.Restaurant
+  actionSet: RestaurantMaster.entities.Restaurant.action_sets.RestaurantActionSet
+  collection: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+  form: RestaurantMaster.entities.Restaurant.forms.RestaurantForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  displayCard: RestaurantMaster.entities.Restaurant.display_cards.RestaurantDisplayCard
+  businessEntitySearchConfigs:
+  - _name: TextConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: TEXT
+  - _name: FormConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: BY_FORM
+  - _name: AdvancedConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: ADVANCED
+  - _name: SemqlConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  businessEntityBuiltInFilters:
+  - _type: BusinessEntityBuiltInFilter
+    _name: FilterOpen
+    label: Open
+    semQlCondition: FID_LifecycleStatus = 'OPEN'
+    visible: true
+  - _type: BusinessEntityBuiltInFilter
+    _name: FilterTempClosed
+    label: Temporarily closed
+    semQlCondition: FID_LifecycleStatus = 'TEMP_CLOSED'
+    visible: true
+  - _type: BusinessEntityBuiltInFilter
+    _name: FilterPipeline
+    label: Pipeline
+    semQlCondition: FID_LifecycleStatus IN ('PIPELINE', 'APPROVED', 'UNDER_CONSTRUCTION')
+    visible: true
+  - _type: BusinessEntityBuiltInFilter
+    _name: FilterClosed
+    label: Closed
+    semQlCondition: FID_LifecycleStatus IN ('PERM_CLOSED', 'RELOCATED', 'CANCELLED')
+    visible: true
+  - _type: BusinessEntityBuiltInFilter
+    _name: AwaitingOnboarding
+    label: Awaiting onboarding
+    semQlCondition: FID_Brand IS NULL
+    visible: true
+  - _type: BusinessEntityBuiltInFilter
+    _name: ListingIncomplete
+    label: Listed but incomplete
+    semQlCondition: PublicChannelStatus IN ('LISTED_OPEN', 'LISTED_TEMP_CLOSED') AND (RestaurantName IS NULL OR AddressLine1 IS NULL OR City IS NULL OR PostalCode IS NULL OR Latitude IS NULL OR MainPhone IS NULL)
+    visible: true
+  - _type: BusinessEntityBuiltInFilter
+    _name: AddressInconsistent
+    label: Address to check
+    semQlCondition: (FID_StateProvince IS NOT NULL AND FID_Country IS NOT NULL AND StateProvince.FID_Country <> FID_Country) OR (Latitude IS NOT NULL AND (Latitude < 18 OR Latitude > 72)) OR (Longitude IS NOT NULL AND (Longitude < -170 OR Longitude > -52))
+    visible: true
+  - _type: BusinessEntityBuiltInFilter
+    _name: UnknownToSystems
+    label: Open but unknown to ERP or POS
+    semQlCondition: FID_LifecycleStatus = 'OPEN' AND (COALESCE(InERP, 'N') = 'N' OR COALESCE(InPOS, 'N') = 'N')
+    visible: true
+  - _type: BusinessEntityBuiltInFilter
+    _name: MissingOperatorOrStatus
+    label: Missing operator or status history
+    semQlCondition: FID_LifecycleStatus IS NOT NULL AND FID_LifecycleStatus NOT IN ('PIPELINE', 'CANCELLED') AND (NOT (any Operators have (EffectiveFrom <= CURRENT_DATE())) OR NOT (any StatusHistory have (StartDate <= CURRENT_DATE())))
+    visible: true
+  transitions:
+  - _type: BusinessViewTransition
+    _name: HoursTab
+    label: Opening hours
+    useCustomLabel: true
+    transitionPath: Hours
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: HoursTabEnt
+      entity: RestaurantMaster.entities.RestaurantHours.RestaurantHours
+      actionSet: RestaurantMaster.entities.RestaurantHours.action_sets.RestaurantHoursActionSet
+      collection: RestaurantMaster.entities.RestaurantHours.collection_views.RestaurantHoursCollectionView
+      form: RestaurantMaster.entities.RestaurantHours.forms.RestaurantHoursForm
+      displayCard: RestaurantMaster.entities.RestaurantHours.display_cards.RestaurantHoursDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Opening hours
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/clock-outline.svg
+    visibleInFormTabCondition: any Hours has (1=1)
+  - _type: BusinessViewTransition
+    _name: ServicesTab
+    label: Services
+    useCustomLabel: true
+    transitionPath: Services
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: ServicesTabEnt
+      entity: RestaurantMaster.entities.RestaurantService.RestaurantService
+      actionSet: RestaurantMaster.entities.RestaurantService.action_sets.RestaurantServiceActionSet
+      collection: RestaurantMaster.entities.RestaurantService.collection_views.RestaurantServiceCollectionView
+      form: RestaurantMaster.entities.RestaurantService.forms.RestaurantServiceForm
+      displayCard: RestaurantMaster.entities.RestaurantService.display_cards.RestaurantServiceDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Services
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/room-service-outline.svg
+    visibleInFormTabCondition: any Services has (1=1)
+  - _type: BusinessViewTransition
+    _name: ContactPointsTab
+    label: Contact points
+    useCustomLabel: true
+    transitionPath: ContactPoints
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: ContactPointsTabEnt
+      entity: RestaurantMaster.entities.RestaurantContactPoint.RestaurantContactPoint
+      actionSet: RestaurantMaster.entities.RestaurantContactPoint.action_sets.RestaurantContactPointActionSet
+      collection: RestaurantMaster.entities.RestaurantContactPoint.collection_views.RestaurantContactPointCollectionView
+      form: RestaurantMaster.entities.RestaurantContactPoint.forms.RestaurantContactPointForm
+      displayCard: RestaurantMaster.entities.RestaurantContactPoint.display_cards.RestaurantContactPointDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Contact points
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/card-account-phone.svg
+    visibleInFormTabCondition: any ContactPoints has (1=1)
+  - _type: BusinessViewTransition
+    _name: LocalizedNamesTab
+    label: Localized names
+    useCustomLabel: true
+    transitionPath: LocalizedNames
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: LocalizedNamesTabEnt
+      entity: RestaurantMaster.entities.RestaurantLocalizedName.RestaurantLocalizedName
+      actionSet: RestaurantMaster.entities.RestaurantLocalizedName.action_sets.RestaurantLocalizedNameActionSet
+      collection: RestaurantMaster.entities.RestaurantLocalizedName.collection_views.RestaurantLocalizedNameCollectionView
+      form: RestaurantMaster.entities.RestaurantLocalizedName.forms.RestaurantLocalizedNameForm
+      displayCard: RestaurantMaster.entities.RestaurantLocalizedName.display_cards.RestaurantLocalizedNameDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Localized names
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/translate.svg
+    visibleInFormTabCondition: any LocalizedNames has (1=1)
+  - _type: BusinessViewTransition
+    _name: StatusHistoryTab
+    label: Status history
+    useCustomLabel: true
+    transitionPath: StatusHistory
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: StatusHistoryTabEnt
+      entity: RestaurantMaster.entities.RestaurantStatusHistory.RestaurantStatusHistory
+      actionSet: RestaurantMaster.entities.RestaurantStatusHistory.action_sets.RestaurantStatusHistoryActionSet
+      collection: RestaurantMaster.entities.RestaurantStatusHistory.collection_views.RestaurantStatusHistoryCollectionView
+      form: RestaurantMaster.entities.RestaurantStatusHistory.forms.RestaurantStatusHistoryForm
+      displayCard: RestaurantMaster.entities.RestaurantStatusHistory.display_cards.RestaurantStatusHistoryDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Status history
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/timeline-clock-outline.svg
+    visibleInFormTabCondition: any StatusHistory has (1=1)
+  - _type: BusinessViewTransition
+    _name: OperatorsTab
+    label: Operators
+    useCustomLabel: true
+    transitionPath: Operators
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: OperatorsTabEnt
+      entity: RestaurantMaster.entities.RestaurantOperator.RestaurantOperator
+      actionSet: RestaurantMaster.entities.RestaurantOperator.action_sets.RestaurantOperatorActionSet
+      collection: RestaurantMaster.entities.RestaurantOperator.collection_views.RestaurantOperatorCollectionView
+      form: RestaurantMaster.entities.RestaurantOperator.forms.RestaurantOperatorForm
+      displayCard: RestaurantMaster.entities.RestaurantOperator.display_cards.RestaurantOperatorDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Operators
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/account-tie.svg
+    visibleInFormTabCondition: any Operators has (1=1)
+  - _type: BusinessViewTransition
+    _name: OrgAssignmentsTab
+    label: Organization assignments
+    useCustomLabel: true
+    transitionPath: OrgAssignments
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: OrgAssignmentsTabEnt
+      entity: RestaurantMaster.entities.RestaurantOrgAssignment.RestaurantOrgAssignment
+      actionSet: RestaurantMaster.entities.RestaurantOrgAssignment.action_sets.RestaurantOrgAssignmentActionSet
+      collection: RestaurantMaster.entities.RestaurantOrgAssignment.collection_views.RestaurantOrgAssignmentCollectionView
+      form: RestaurantMaster.entities.RestaurantOrgAssignment.forms.RestaurantOrgAssignmentForm
+      displayCard: RestaurantMaster.entities.RestaurantOrgAssignment.display_cards.RestaurantOrgAssignmentDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Organization assignments
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/file-tree-outline.svg
+    visibleInFormTabCondition: any OrgAssignments has (1=1)
+  - _type: BusinessViewTransition
+    _name: IdentifiersTab
+    label: System identifiers
+    useCustomLabel: true
+    transitionPath: Identifiers
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: IdentifiersTabEnt
+      entity: RestaurantMaster.entities.RestaurantIdentifier.RestaurantIdentifier
+      actionSet: RestaurantMaster.entities.RestaurantIdentifier.action_sets.RestaurantIdentifierActionSet
+      collection: RestaurantMaster.entities.RestaurantIdentifier.collection_views.RestaurantIdentifierCollectionView
+      form: RestaurantMaster.entities.RestaurantIdentifier.forms.RestaurantIdentifierForm
+      displayCard: RestaurantMaster.entities.RestaurantIdentifier.display_cards.RestaurantIdentifierDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: System identifiers
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/identifier.svg
+    visibleInFormTabCondition: any Identifiers has (1=1)
+  - _type: BusinessViewTransition
+    _name: MasterRecords
+    transitionType: FULLY_QUALIFIED
+    transitionPath: MasterRecords
+    useCustomLabel: true
+    label: Contributing sources
+    pluralLabel: Contributing sources
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/puzzle.svg
+    filter: '1 = 1'
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: RestaurantMaster
+      entity: RestaurantMaster.entities.Restaurant.Restaurant
+      collection: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+      form: RestaurantMaster.entities.Restaurant.forms.RestaurantForm
+      displayCard: RestaurantMaster.entities.Restaurant.display_cards.RestaurantDisplayCard
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      outlineVisible: false
+      overrideDefaultSort: false
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      transitions:
+      - _type: BusinessViewTransition
+        _name: SourceRecords
+        transitionType: FULLY_QUALIFIED
+        transitionPath: SourceRecords
+        useCustomLabel: true
+        label: Source data
+        pluralLabel: Source data
+        displayFormTabAs: ICON_LABEL
+        displayTransitionNodeAs: ICON_LABEL
+        iconUrl: images://mdi/database-arrow-right.svg
+        filter: '1 = 1'
+        businessViewEntity:
+          _type: BusinessViewEntity
+          _name: RestaurantSource
+          entity: RestaurantMaster.entities.Restaurant.Restaurant
+          collection: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+          form: RestaurantMaster.entities.Restaurant.forms.RestaurantForm
+          displayCard: RestaurantMaster.entities.Restaurant.display_cards.RestaurantDisplayCard
+          displayRecordCount: ALWAYS
+          enableUserDefinedSort: true
+          outlineVisible: false
+          overrideDefaultSort: false
+          listAllowed: true
+          tableAllowed: true
+          gridAllowed: false
+          businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+      - _type: BusinessViewTransition
+        _name: MasterHistory
+        transitionType: FULLY_QUALIFIED
+        transitionPath: MasterHistoryRecords
+        useCustomLabel: true
+        label: Source history
+        pluralLabel: Source history
+        displayFormTabAs: ICON_LABEL
+        displayTransitionNodeAs: ICON_LABEL
+        iconUrl: images://mdi/history.svg
+        filter: '1 = 1'
+        businessViewEntity:
+          _type: BusinessViewEntity
+          _name: RestaurantMasterHist
+          entity: RestaurantMaster.entities.Restaurant.Restaurant
+          collection: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+          form: RestaurantMaster.entities.Restaurant.forms.RestaurantForm
+          displayCard: RestaurantMaster.entities.Restaurant.display_cards.RestaurantDisplayCard
+          displayRecordCount: ALWAYS
+          enableUserDefinedSort: true
+          outlineVisible: false
+          overrideDefaultSort: false
+          listAllowed: true
+          tableAllowed: true
+          gridAllowed: false
+          businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+  - _type: BusinessViewTransition
+    _name: GoldenHistory
+    transitionType: FULLY_QUALIFIED
+    transitionPath: GoldenHistoryRecords
+    useCustomLabel: true
+    label: Change history
+    pluralLabel: Change history
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/history.svg
+    filter: '1 = 1'
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: RestaurantGoldenHist
+      entity: RestaurantMaster.entities.Restaurant.Restaurant
+      collection: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+      form: RestaurantMaster.entities.Restaurant.forms.RestaurantForm
+      displayCard: RestaurantMaster.entities.Restaurant.display_cards.RestaurantDisplayCard
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      outlineVisible: false
+      overrideDefaultSort: false
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+enableHierarchyView: false
+useHierarchyOnOpen: false

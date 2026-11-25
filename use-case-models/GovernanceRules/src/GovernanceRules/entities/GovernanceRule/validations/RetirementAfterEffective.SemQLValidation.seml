@@ -1,0 +1,10 @@
+# RetirementAfterEffective: SemQL validation on GovernanceRule of the GovernanceRules accelerator. The retirement date of a rule, when set, is after its effective date.
+_package: GovernanceRules.entities.GovernanceRule.validations
+_type: SemQLValidation
+_name: RetirementAfterEffective
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Retirement date after effective date
+description: The retirement date of a rule, when set, is after its effective date.
+validationScope: PRE_CONSO
+validationLabel: The retirement date must be after the effective date.
+condition: RetirementDate IS NULL OR EffectiveDate IS NULL OR RetirementDate > EffectiveDate

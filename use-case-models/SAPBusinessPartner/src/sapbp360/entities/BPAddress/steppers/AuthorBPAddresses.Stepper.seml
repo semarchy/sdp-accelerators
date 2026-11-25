@@ -1,0 +1,146 @@
+_name: AuthorBPAddresses
+_package: sapbp360.entities.BPAddress.steppers
+_type: Stepper
+entity: sapbp360.entities.BPAddress.BPAddress
+description: Stepper for authoring BP Addresses.
+rootStep:
+  _name: BPAddresses
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPAddress.collection_views.BPAddressCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Addresses
+  description: Manage BP Address data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddress_Region.Region
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddress_Country.Country
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddress_AddressLanguage.AddressLanguage
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddress_TaxJurisdiction.TaxJurisdiction
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddress_TransportZone.TransportZone
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPAddress_BusinessPartner.BusinessPartner
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sapbp360.entities.BPAddress.BPAddress.SemQLMatcherBPADDRESS
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Address.
+      formTab: sapbp360.entities.BPAddress.forms.BPAddressDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddress.forms.BPAddressDataEntryForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol2.FDN_Region
+          referencePickerCollectionView: sapbp360.entities.Region.collection_views.RegionCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddress.forms.BPAddressDataEntryForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol1.FDN_Country
+          referencePickerCollectionView: sapbp360.entities.Country.collection_views.CountryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddress.forms.BPAddressDataEntryForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol2.FDN_AddressLanguage
+          referencePickerCollectionView: sapbp360.entities.Language.collection_views.LanguageCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddress.forms.BPAddressDataEntryForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol3.FDN_TaxJurisdiction
+          referencePickerCollectionView: sapbp360.entities.TaxJurisdiction.collection_views.TaxJurisdictionCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddress.forms.BPAddressDataEntryForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol1.FDN_TransportZone
+          referencePickerCollectionView: sapbp360.entities.TransportZone.collection_views.TransportZoneCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPAddress.forms.BPAddressDataEntryForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_BusinessPartner
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddress_Region.Region
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddress_Country.Country
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddress_AddressLanguage.AddressLanguage
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddress_TaxJurisdiction.TaxJurisdiction
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddress_TransportZone.TransportZone
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPAddress_BusinessPartner.BusinessPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Addresses
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddress_Region.Region
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddress_Country.Country
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddress_AddressLanguage.AddressLanguage
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddress_TaxJurisdiction.TaxJurisdiction
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddress_TransportZone.TransportZone
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPAddress_BusinessPartner.BusinessPartner
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

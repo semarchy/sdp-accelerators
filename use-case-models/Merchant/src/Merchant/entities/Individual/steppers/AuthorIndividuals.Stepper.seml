@@ -1,0 +1,37 @@
+ # Description: Stepper for Individual create/edit workflows.
+ # Contains: Wizard steps and panels for maintaining Individual records.
+ # Role: Drives multi-step actions for Individual master data.
+_package: Merchant.entities.Individual.steppers
+_type: Stepper
+_name: AuthorIndividuals
+entity: Merchant.entities.Individual.Individual
+label: Individuals
+rootStep:
+  _type: CollectionStep
+  _name: Individuals
+  label: Individuals
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.Individual.collection_views.IndividualCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Individual
+      label: Individual
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.Individual.forms.IndividualForm.Overview
+      

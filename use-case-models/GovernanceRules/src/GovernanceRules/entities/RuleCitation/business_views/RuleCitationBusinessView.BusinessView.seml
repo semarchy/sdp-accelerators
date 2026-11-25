@@ -1,0 +1,43 @@
+# RuleCitationBusinessView: business view on RuleCitation of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleCitation.business_views
+_type: BusinessView
+_name: RuleCitationBusinessView
+entity: GovernanceRules.entities.RuleCitation.RuleCitation
+rootLabel: Citations
+rootPluralLabel: Citations
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: RuleCitation
+  entity: GovernanceRules.entities.RuleCitation.RuleCitation
+  actionSet: GovernanceRules.entities.RuleCitation.action_sets.RuleCitationActionSet
+  collection: GovernanceRules.entities.RuleCitation.collection_views.RuleCitationCollectionView
+  form: GovernanceRules.entities.RuleCitation.forms.RuleCitationForm
+  displayCard: GovernanceRules.entities.RuleCitation.display_cards.RuleCitationDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: CustomFormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: GovernanceRules.entities.RuleCitation.search_forms.RuleCitationSearchForm
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: true
+  sortExpression: Clause asc
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: false
+enableHierarchyView: false
+useHierarchyOnOpen: false

@@ -1,0 +1,63 @@
+_name: ICD10CMActionSet
+_package: HCO_HCP.entities.ICD10CM.action_sets
+_type: ActionSet
+entity: HCO_HCP.entities.ICD10CM.ICD10CM
+label: ICD10CM Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorICD10CMs
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.ICD10CM.steppers.AuthorICD10CMs
+  - _name: EditAuthorICD10CMs
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: HCO_HCP.entities.ICD10CM.steppers.AuthorICD10CMs
+  - _name: MassUpdateAuthorICD10CMs
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: HCO_HCP.entities.ICD10CM.steppers.AuthorICD10CMs
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorICD10CMs
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.ICD10CM.steppers.AuthorICD10CMs
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

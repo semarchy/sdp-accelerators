@@ -1,0 +1,11 @@
+_package: CorpFin.entities.Customer.enrichers
+_name: NormalizeCustomer
+_type: SemQLEnricher
+entity: CorpFin.entities.Customer.Customer
+label: Normalize Customer Payment Terms
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes customer payment terms by trimming whitespace and converting values to uppercase for standardization."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedPaymentTerms
+    expression: "RTRIM(LTRIM(UPPER(PaymentTerms)))"

@@ -1,0 +1,89 @@
+_package: RestaurantMaster.entities.OrganizationUnit.business_views
+_type: BusinessView
+_name: OrganizationUnitBusinessView
+entity: RestaurantMaster.entities.OrganizationUnit.OrganizationUnit
+rootLabel: Organization units
+rootPluralLabel: Organization units
+displayRootNodeAs: ICON_LABEL
+label: Organization unit
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: OrganizationUnit
+  entity: RestaurantMaster.entities.OrganizationUnit.OrganizationUnit
+  actionSet: RestaurantMaster.entities.OrganizationUnit.action_sets.OrganizationUnitActionSet
+  collection: RestaurantMaster.entities.OrganizationUnit.collection_views.OrganizationUnitCollectionView
+  form: RestaurantMaster.entities.OrganizationUnit.forms.OrganizationUnitForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  displayCard: RestaurantMaster.entities.OrganizationUnit.display_cards.OrganizationUnitDisplayCard
+  businessEntitySearchConfigs:
+  - _name: TextConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: TEXT
+  - _name: FormConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: BY_FORM
+  - _name: AdvancedConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: ADVANCED
+  - _name: SemqlConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+  - _type: BusinessViewTransition
+    _name: AssignedRestaurantsTab
+    label: Assigned restaurants
+    useCustomLabel: true
+    transitionPath: RestaurantAssignments
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: AssignedRestaurantsTabEnt
+      entity: RestaurantMaster.entities.RestaurantOrgAssignment.RestaurantOrgAssignment
+      actionSet: RestaurantMaster.entities.RestaurantOrgAssignment.action_sets.RestaurantOrgAssignmentActionSet
+      collection: RestaurantMaster.entities.RestaurantOrgAssignment.collection_views.RestaurantOrgAssignmentCollectionView
+      form: RestaurantMaster.entities.RestaurantOrgAssignment.forms.RestaurantOrgAssignmentForm
+      displayCard: RestaurantMaster.entities.RestaurantOrgAssignment.display_cards.RestaurantOrgAssignmentDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Assigned restaurants
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/file-tree-outline.svg
+    visibleInFormTabCondition: any RestaurantAssignments has (1=1)
+  - _type: BusinessViewTransition
+    _name: ChildUnitsTree
+    label: Child units
+    pluralLabel: Child units
+    useCustomLabel: true
+    iconUrl: images://mdi/sitemap.svg
+    transitionPath: ChildUnits
+    transitionType: FULLY_QUALIFIED
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    visibleInFormTabCondition: any ChildUnits has (1=1)
+    enableHierarchy: any ChildUnits has (1=1)
+    enableHierarchyInterpreter: SEMQL
+    expandHierarchyByDefault: true
+    transitionVisible: '0'
+    transitionVisibleInterpreter: LITERAL
+    businessViewEntity:
+      _type: BusinessViewEntityReference
+      ref: RestaurantMaster.entities.OrganizationUnit.business_views.OrganizationUnitBusinessView.OrganizationUnit
+rootFilter: ParentUnit.UnitCode IS NULL
+enableHierarchyView: true
+useHierarchyOnOpen: true

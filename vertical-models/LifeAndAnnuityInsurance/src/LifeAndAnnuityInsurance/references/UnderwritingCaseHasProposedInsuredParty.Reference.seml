@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: UnderwritingCaseHasProposedInsuredParty
+description: "Indicates the Proposed Insured Party associated with a Underwriting Case."
+_type: Reference
+label: "Underwriting Case Has Proposed Insured Party"
+
+fromEntity: LifeAndAnnuityInsurance.entities.UnderwritingCase.UnderwritingCase
+fromRoleLabel: "Underwriting Case as Proposed Insured"
+fromRoleName: UnderwritingCasesAsProposedInsured
+fromRolePluralLabel: "Underwriting Cases as Proposed Insured"
+physicalName: UWCASEHASPROPOSEDINS_2RV5
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Party.Party
+toRoleLabel: "Proposed Insured Party"
+toRoleName: ProposedInsuredParty
+toRolePhysicalName: PROPOSED_INSURED_PARTY
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: ProposedInsuredParty
+  label: "Proposed Insured Party ID"
+  description: "The identifier of the Proposed Insured Party associated with the Underwriting Case."
+  physicalName: PROPOSED_INSURED_PARTY_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Party.Party

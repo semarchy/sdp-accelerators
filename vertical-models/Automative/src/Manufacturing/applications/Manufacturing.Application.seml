@@ -1,0 +1,771 @@
+_package: Manufacturing.applications
+_name: Manufacturing
+_type: Application
+applicationTitle: Manufacturing Demo
+avatarImageUrl: images://manufacturing/manufacturing-production-icon-green.svg
+coverImageUrl: images://manufacturing/Manufacturing.png
+favIcon: images://default/favicon.png
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ""
+logoUrl: images://default/logo.png
+visibility: VISIBLE
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: Automotive
+      _type: DocumentationConfigDiagram
+      modelDiagram: Manufacturing.model_diagrams.Automotive
+      label: Automotive
+    - _name: Address
+      _type: DocumentationConfigDiagram
+      modelDiagram: Manufacturing.model_diagrams.Address
+      label: Address
+    - _name: Manufacturing
+      _type: DocumentationConfigDiagram
+      modelDiagram: Manufacturing.model_diagrams.Manufacturing
+      label: Manufacturing
+    - _name: AutommotiveReferenceData
+      _type: DocumentationConfigDiagram
+      modelDiagram: Manufacturing.model_diagrams.AutommotiveReferenceData
+      label: Autommotive Reference Data
+    - _name: Customer
+      _type: DocumentationConfigDiagram
+      modelDiagram: Manufacturing.model_diagrams.Customer
+      label: Customer
+label: Manufacturing
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: ItemView
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: Manufacturing.entities.Item.business_views.Item
+      label: Item
+      maxResults: 5
+      searchTypeConfig: Manufacturing.entities.Item.business_views.Item.ItemEO.TextConfig
+    - _name: ProductTrim
+      _type: GlobalSearchBoView
+      viewType: GD
+      businessView: Manufacturing.entities.ProductTrim.business_views.ProductTrim
+      label: Trim
+      maxResults: 5
+      searchTypeConfig: Manufacturing.entities.ProductTrim.business_views.ProductTrim.ProductTrimEO.TextConfig
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: Roo
+      label: Root
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: GlobalSearch
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: GlobalSearchAction
+        - _name: MyTasks
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: MyTasksAction
+          badgeVisible: true
+        - _name: Entities
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseEntitiesFolderAction
+          lineageEnabled: true
+        - _name: Dashboard
+          icon: images://mdi/chart-bar-stacked.svg
+          image: images://mdi/chart-bar-stacked.svg
+          label: Dashboards
+          imageAlign: MIDDLE_CENTER
+          imageMode: CONTAIN
+          _type: FolderAction
+          appActions:
+            - _name: Profiling
+              description: Source Data Profiling
+              icon: images://default/discovery-app-avatar.png
+              image: images://default/discovery-app-avatar.png
+              label: Discovery (Data Profiling)
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: OpenDashboardAction
+              dashboard: DatasourceProfileDashboard
+              dashboardApplication: Manufacturing_Stg_Profiling
+              parameters: []
+            - _name: Dashboards
+              description: Business Dashbaord for Supplier Data
+              image: images://mdi/office-building-outline.svg
+              label: Supplier Dashbaord
+              imageAlign: MIDDLE_CENTER
+              imageMode: CONTAIN
+              _type: OpenDashboardAction
+              dashboard: SupplierDashboard
+              dashboardApplication: ManufacturingIndustryModel
+              parameters: []
+            - _name: ProductCompliance
+              description: Is Product Inline with various compliancess
+              icon: images://mdi/car-back.svg
+              image: images://mdi/car-back.svg
+              label: Product/ Vehicle Compliance
+              imageAlign: MIDDLE_CENTER
+              imageMode: CONTAIN
+              _type: OpenDashboardAction
+              dashboard: ProductCompliance
+              dashboardApplication: ManufacturingIndustryModel
+              parameters: []
+    - _name: Item
+      label: Item
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseItem
+          label: Items
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.Item.business_views.Item
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseProductItemImage
+          label: Item Images
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ItemImage.business_views.ItemImage
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: ItemReferenceData
+          label: Reference Data
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: BrowseItemFamily
+              label: Item Families
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemFamily.business_views.ItemFamily
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItemSubFamily
+              label: Item Sub Families
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemSubFamily.business_views.ItemSubFamily
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItemSpecificAttribute
+              label: Item Specific Attributes
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemSpecificAttribute.business_views.ItemSpecificAttribute
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItem_ItemImageJoin
+              label: Item Image Joins
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.Item_ItemImageJoin.business_views.Item_ItemImageJoin
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: Attribute
+              label: Item Attributes
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemAttribute.business_views.Attribute
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItemAttributeValue
+              label: Item Attribute Values
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemAttributeValue.business_views.ItemAttributeValue
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItemCondition
+              label: Item Conditions
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemCondition.business_views.ItemCondition
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItemProductTrim
+              label: Item Product Trims
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemProductTrim.business_views.ItemProductTrim
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItemAttributeSubFamily
+              label: Item Attribute Sub Families
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemAttributeSubFamily.business_views.ItemAttributeSubFamily
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItemBillOfMaterial
+              label: Item Bill Of Materials
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemBillOfMaterial.business_views.ItemBillOfMaterial
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseItemType
+              label: Item Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ItemType.business_views.ItemType
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    - _name: Supplier
+      label: Supplier
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseSupplier
+          label: Suppliers
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.Supplier.business_views.Supplier
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseSupplierAddress
+          label: Supplier Addresses
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.SupplierAddress.business_views.SupplierAddress
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: ManageSupplier
+          icon: images://mdi/archive-edit-outline.svg
+          image: images://mdi/archive-edit-outline.svg
+          label: Manage Supplier
+          imageAlign: MIDDLE_CENTER
+          imageMode: CONTAIN
+          _type: FolderAction
+          appActions:
+            - _name: ReviewDuplicateSupplier
+              image: images://mdi/pencil-box-multiple.svg
+              label: Suggested Matches
+              imageAlign: MIDDLE_CENTER
+              imageMode: CONTAIN
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.Supplier.business_views.Supplier
+              nbRecordsBadgeVisible: true
+              appliedFilter: Manufacturing.entities.Supplier.business_views.Supplier.SupplierEO.HasSuggstedMatch
+              businessViewIconOverride: images://mdi/pencil-box-multiple.svg
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: SupplierWithError
+              icon: images://manufacturing/domain-red.svg
+              image: images://manufacturing/domain-red.svg
+              label: Review Errors
+              imageAlign: MIDDLE_CENTER
+              imageMode: CONTAIN
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.Supplier.business_views.Supplier
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+            - _name: BrowseSupplierManufacturerPlant
+              label: Supplier Manufacturer Plants
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.SupplierManufacturerPlant.business_views.SupplierManufacturerPlant
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    - _name: Manufacturer
+      label: Manufacturer
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseManufacturer
+          label: Manufacturers
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.Manufacturer.business_views.Manufacturer
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseManufacturingPlant
+          label: Manufacturing Plants
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ManufacturingPlant.business_views.ManufacturingPlant
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: AdditionalData_MFG
+          label: Additional Data
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: ManufacturingReferenceData
+              label: Reference Data
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: FolderAction
+              appActions:
+                - _name: BrowseManufacturingPlantType
+                  label: Manufacturing Plant Types
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ManufacturingPlantType.business_views.ManufacturingPlantType
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: PaymentTerm
+                  label: Payment Term
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.PaymentTerm.business_views.PaymentTerm
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+            - _name: BrowseManufacturingPlantWorkShift
+              label: Manufacturing Plant Work Shifts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ManufacturingPlantWorkShift.business_views.ManufacturingPlantWorkShift
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseManufacturingPlantAddress
+              label: Manufacturing Plant Addresses
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ManufacturingPlantAddress.business_views.ManufacturingPlantAddress
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseManufacturerAddress
+              label: Manufacturer Addresses
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ManufacturerAddress.business_views.ManufacturerAddress
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    - _name: Location
+      label: Location
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseAddress
+          label: Addresses
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.Address.business_views.Address
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: AddressReferenceData
+          label: Reference Data
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: Country
+              label: Country
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.AddressCountry.business_views.Country
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseAddressState
+              label: States
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.AddressState.business_views.AddressState
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseAddressType
+              label: Address Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.AddressType.business_views.AddressType
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    - _name: Customer_Retail
+      label: Customer (Retail)
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseCustomer
+          label: Customers
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.Customer.business_views.Customer
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseCustomerVehicle
+          label: Customer Vehicles
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.CustomerVehicle.business_views.CustomerVehicle
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: AdditionalData_Customer
+          label: Additional Data
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: FolderAction
+          appActions:
+            - _name: BrowseCustomerServiceAppointment
+              label: Customer Service Appointments
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.CustomerServiceAppointment.business_views.CustomerServiceAppointment
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseNickname
+              label: Nicknames
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.Nickname.business_views.Nickname
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+    - _name: ProductData
+      label: Product Data
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: Make
+          label: Make
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ProductMake.business_views.ProductMake
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseProductModel
+          icon: images://manufacturing/Model icon.png
+          image: images://manufacturing/Model icon.png
+          label: Models
+          imageAlign: MIDDLE_CENTER
+          imageMode: CONTAIN
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ProductModel.business_views.ProductModel
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseProductTrim
+          image: images://manufacturing/Trim icon.png
+          label: Trim
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ProductTrim.business_views.ProductTrim
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseProductVehicle
+          label: Vehicles
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ProductVehicle.business_views.ProductVehicle
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: AdditionalData
+          image: images://mdi/comment-plus-outline.svg
+          label: Additional Data
+          imageAlign: MIDDLE_CENTER
+          imageMode: CONTAIN
+          _type: FolderAction
+          appActions:
+            - _name: BrowseProductModelYear
+              label: Model Years
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ProductModelYear.business_views.ProductModelYear
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: BrowseProductMake
+              label: Makes
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: BrowseBusinessViewAction
+              businessView: Manufacturing.entities.ProductMake.business_views.ProductMake
+              nbRecordsBadgeVisible: false
+              useSearchOnOpen: false
+              viewType: GD
+            - _name: ReferenceData
+              label: Reference Data
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              _type: FolderAction
+              appActions:
+                - _name: BrowseProductBodySize
+                  label: Body Sizes
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductBodySize.business_views.ProductBodySize
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductService
+                  label: Services
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductService.business_views.ProductService
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductBodyStyle
+                  label: Body Styles
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductBodyStyle.business_views.ProductBodyStyle
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductCylinders
+                  label: Cylinders
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductCylinders.business_views.ProductCylinders
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductTransmission
+                  label: Transmission
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductTransmission.business_views.ProductTransmission
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductEngineAspiration
+                  label: Engine Aspirations
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductEngineAspiration.business_views.ProductEngineAspiration
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductDriveTrain
+                  label: Drive Trains
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductDriveTrain.business_views.ProductDriveTrain
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductServiceType
+                  label: Product Service Types
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductServiceType.business_views.ProductServiceType
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductOptionCategory
+                  label: Product Option Categories
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductOptionCategory.business_views.ProductOptionCategory
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductTrimOptionOrFeature
+                  label: Trim Option Or Features
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductTrimOptionOrFeature.business_views.ProductTrimOptionOrFeature
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductOptionOrFeature
+                  label: Option Or Features
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductOptionOrFeature.business_views.ProductOptionOrFeature
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductOptionOrFeatureValue
+                  label: Product Option Or Feature Values
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductOptionOrFeatureValue.business_views.ProductOptionOrFeatureValue
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+                - _name: BrowseProductVehicleOptionOrFeature
+                  label: Vehicle Option Or Features
+                  imageAlign: MIDDLE_CENTER
+                  imageMode: FIT
+                  _type: BrowseBusinessViewAction
+                  businessView: Manufacturing.entities.ProductVehicleOptionOrFeature.business_views.ProductVehicleOptionOrFeature
+                  nbRecordsBadgeVisible: false
+                  useSearchOnOpen: false
+                  viewType: GD
+    - _name: Dealer
+      label: Dealer
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseProductDealer
+          label: Dealers
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ProductDealer.business_views.ProductDealer
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseProductDealerMake
+          label: Product Dealer Makes
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ProductDealerMake.business_views.ProductDealerMake
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+        - _name: BrowseProductDealerService
+          label: Dealer Services
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: Manufacturing.entities.ProductDealerService.business_views.ProductDealerService
+          nbRecordsBadgeVisible: false
+          useSearchOnOpen: false
+          viewType: GD
+    # - _name: Documentation
+    #   icon: images://mdi/book-open-blank-variant.svg
+    #   image: images://mdi/book-open-blank-variant.svg
+    #   label: Documentation
+    #   imageAlign: MIDDLE_CENTER
+    #   imageMode: FIT
+    #   _type: FolderAction
+    #   appActions:
+    #     - _name: DemoGuide
+    #       icon: images://mdi/book-open-blank-variant.svg
+    #       image: images://mdi/book-open-blank-variant.svg
+    #       label: Demo Guide
+    #       imageAlign: MIDDLE_CENTER
+    #       imageMode: FIT
+    #       _type: UrlAction
+    #       url: https://industrydemo.s3.amazonaws.com/manufacturing/Manufacturing+Industry+Use+Case.pdf
+    #       target: EDITOR_EMBEDDING_WITHOUT_TITLE
+defaultAction: Manufacturing.applications.Manufacturing.Root.Roo.GlobalSearch
+navDrawer:
+  - _name: RootFolder
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: Manufacturing.applications.Manufacturing.Root.Roo
+  - _name: Supplier
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: Manufacturing.applications.Manufacturing.Root.Supplier
+  - _name: Item
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: Manufacturing.applications.Manufacturing.Root.Item
+  - _name: Manufacturer
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: Manufacturing.applications.Manufacturing.Root.Manufacturer
+  - _name: ProductData
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: Manufacturing.applications.Manufacturing.Root.ProductData
+  - _name: Location
+    _type: FolderNavGroup
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: Manufacturing.applications.Manufacturing.Root.Location
+  # - _name: Documentation
+  #   _type: FolderNavGroup
+  #   dividerVisible: true
+  #   labelVisible: true
+  #   linkedFolder: Manufacturing.applications.Manufacturing.Root.Documentation

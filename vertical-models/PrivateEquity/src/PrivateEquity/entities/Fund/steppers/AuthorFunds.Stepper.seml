@@ -1,0 +1,94 @@
+_name: AuthorFunds
+_package: PrivateEquity.entities.Fund.steppers
+_type: Stepper
+entity: PrivateEquity.entities.Fund.Fund
+rootStep:
+  _name: Funds
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.Fund.collection_views.FundCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Funds
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.FundsPortfolio.Portfolio
+    - onStepExit: SKIP
+      validationType: UNIQUE
+      uniqueKey: PrivateEquity.entities.Fund.unique_keys.ChainID
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Fund.Fund.ChainID
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.Fund.Fund.Name
+  stepTriggers: []
+  childSteps:
+    - _name: Fund
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Fund
+      formTab: PrivateEquity.entities.Fund.forms.FundForm.Fund
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Fund.Fund.ChainID
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.Fund.Fund.Name
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.FundsPortfolio.Portfolio
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: UNIQUE
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          uniqueKey: PrivateEquity.entities.Fund.unique_keys.ChainID
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Fund.Fund.Name
+        - onStepExit: SKIP
+          validationType: UNIQUE
+          uniqueKey: PrivateEquity.entities.Fund.unique_keys.ChainID
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.Fund.Fund.ChainID
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.FundsPortfolio.Portfolio
+      stepTriggers: []
+label: Author Funds
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Fund.Fund.Name
+  - onStepperFinish: WARN
+    validationType: UNIQUE
+    uniqueKey: PrivateEquity.entities.Fund.unique_keys.ChainID
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.FundsPortfolio.Portfolio
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.Fund.Fund.ChainID
+triggers: []

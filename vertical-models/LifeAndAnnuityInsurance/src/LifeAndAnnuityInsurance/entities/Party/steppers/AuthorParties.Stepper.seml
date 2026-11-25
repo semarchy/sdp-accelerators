@@ -1,0 +1,38 @@
+_package: LifeAndAnnuityInsurance.entities.Party.steppers
+_type: Stepper
+_name: AuthorParties
+entity: LifeAndAnnuityInsurance.entities.Party.Party
+label: "Parties"
+rootStep:
+  _type: CollectionStep
+  _name: Parties
+  label: "Parties"
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: LifeAndAnnuityInsurance.entities.Party.collection_views.PartyImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Party
+      label: "Party"
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: LifeAndAnnuityInsurance.entities.Party.forms.PartyForm.Party
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.Party.validations.PartyDateRangeCheck

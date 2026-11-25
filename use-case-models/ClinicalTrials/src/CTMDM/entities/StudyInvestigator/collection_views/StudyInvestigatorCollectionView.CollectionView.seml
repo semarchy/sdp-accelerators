@@ -1,0 +1,102 @@
+_package: CTMDM.entities.StudyInvestigator.collection_views
+_type: CollectionView
+_name: StudyInvestigatorCollectionView
+
+entity: CTMDM.entities.StudyInvestigator.StudyInvestigator
+default: true
+displayCard: CTMDM.entities.StudyInvestigator.display_cards.StudyInvestigatorDisplayCard
+tableDisplayCardColumnWidth: 300
+
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+
+tableAllowed: true
+tableDisplayCardColumnLabel: Study Investigator
+tableRowLines: 2
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_study
+    value: FDN_study
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.Study.Study
+
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_investigator
+    value: FDN_investigator
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.Investigator.Investigator
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: InvestigatorRole
+    value: InvestigatorRole
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: DateColumn
+    _name: RoleStartDate
+    value: RoleStartDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: DateColumn
+    _name: RoleEndDate
+    value: RoleEndDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: DelegationStatus
+    value: DelegationStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: QualificationStatus
+    value: QualificationStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200

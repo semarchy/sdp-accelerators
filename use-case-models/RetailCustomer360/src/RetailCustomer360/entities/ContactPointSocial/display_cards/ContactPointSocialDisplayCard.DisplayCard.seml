@@ -1,0 +1,20 @@
+_package: RetailCustomer360.entities.ContactPointSocial.display_cards
+_type: DisplayCard
+_name: ContactPointSocialDisplayCard
+entity: RetailCustomer360.entities.ContactPointSocial.ContactPointSocial
+default: true
+primaryTextExpression: "CASE WHEN SocialHandle IS NOT NULL AND BTRIM(SocialHandle) <> '' THEN CASE WHEN UPPER(SocialNetwork) IN ('TWITTER','X','INSTAGRAM','TIKTOK') AND SUBSTR(BTRIM(SocialHandle),1,1) <> '@' THEN '@' || BTRIM(SocialHandle) ELSE BTRIM(SocialHandle) END ELSE 'Unknown Handle' END"
+secondaryTextExpression: "COALESCE(SocialNetwork, 'Unknown Network') || CASE WHEN IsVerified = '1' THEN ' ✓' ELSE '' END || CASE WHEN IsPrimary = '1' THEN ' • Primary' ELSE '' END || CASE WHEN FollowerCount IS NOT NULL THEN ' • ' || FollowerCount || ' followers' ELSE '' END || CASE WHEN EngagementScore IS NOT NULL THEN ' • Eng ' || ROUND(EngagementScore, 1) ELSE '' END"
+primaryImageValueInterpreter: SEMQL
+primaryImageValue: "CASE UPPER(COALESCE(SocialNetwork,'')) WHEN 'LINKEDIN' THEN 'https://api.iconify.design/mdi/linkedin.svg?color=%230A66C2&width=128' WHEN 'TWITTER' THEN 'https://api.iconify.design/mdi/twitter.svg?color=%231DA1F2&width=128' WHEN 'X' THEN 'https://api.iconify.design/mdi/twitter.svg?color=%23000000&width=128' WHEN 'FACEBOOK' THEN 'https://api.iconify.design/mdi/facebook.svg?color=%231877F2&width=128' WHEN 'INSTAGRAM' THEN 'https://api.iconify.design/mdi/instagram.svg?color=%23E1306C&width=128' WHEN 'YOUTUBE' THEN 'https://api.iconify.design/mdi/youtube.svg?color=%23FF0000&width=128' WHEN 'TIKTOK' THEN 'https://api.iconify.design/mdi/music-note.svg?color=%23000000&width=128' WHEN 'PINTEREST' THEN 'https://api.iconify.design/mdi/pinterest.svg?color=%23E60023&width=128' ELSE 'https://api.iconify.design/mdi/share-variant.svg?color=%230D1B2A&width=128' END"
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackValue: https://api.iconify.design/mdi/share-variant.svg?color=%230D1B2A&width=128
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: SEMQL
+avatarImageValue: "CASE UPPER(COALESCE(SocialNetwork,'')) WHEN 'LINKEDIN' THEN 'https://api.iconify.design/mdi/linkedin.svg?color=%230A66C2&width=128' WHEN 'TWITTER' THEN 'https://api.iconify.design/mdi/twitter.svg?color=%231DA1F2&width=128' WHEN 'X' THEN 'https://api.iconify.design/mdi/twitter.svg?color=%23000000&width=128' WHEN 'FACEBOOK' THEN 'https://api.iconify.design/mdi/facebook.svg?color=%231877F2&width=128' WHEN 'INSTAGRAM' THEN 'https://api.iconify.design/mdi/instagram.svg?color=%23E1306C&width=128' WHEN 'YOUTUBE' THEN 'https://api.iconify.design/mdi/youtube.svg?color=%23FF0000&width=128' WHEN 'TIKTOK' THEN 'https://api.iconify.design/mdi/music-note.svg?color=%23000000&width=128' WHEN 'PINTEREST' THEN 'https://api.iconify.design/mdi/pinterest.svg?color=%23E60023&width=128' ELSE 'https://api.iconify.design/mdi/share-variant.svg?color=%230D1B2A&width=128' END"
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

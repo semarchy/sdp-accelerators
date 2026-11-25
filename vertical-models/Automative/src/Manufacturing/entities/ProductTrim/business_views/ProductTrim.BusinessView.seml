@@ -1,0 +1,220 @@
+_name: ProductTrim
+_package: Manufacturing.entities.ProductTrim.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.ProductTrim.ProductTrim
+rootLabel: Trim
+rootPluralLabel: Trim
+useHierarchyOnOpen: false
+label: Trim
+rootBusinessViewEntity:
+  _name: ProductTrimEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.ProductTrim.collection_views.ProductTrimCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.ProductTrim.ProductTrim
+  form: Manufacturing.entities.ProductTrim.forms.ProductTrimForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.ProductTrim.action_sets.ProductTrimActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.ProductTrim.forms.ProductTrimForm.ProductTrim.FDN_Transition
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductTrim.forms.ProductTrimForm.ProductTrim.FDN_BodySize
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductTrim.forms.ProductTrimForm.ProductTrim.FDN_BodyStyle
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductTrim.forms.ProductTrimForm.ProductTrim.FDN_DriveTrain
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductTrim.forms.ProductTrimForm.ProductTrim.FDN_EngineAspiration
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductTrim.forms.ProductTrimForm.ProductTrim.FDN_Model
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.ProductTrim.forms.ProductTrimForm.ProductTrim.FDN_Cylinders
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: OptionOrFeature
+      _type: BusinessViewTransition
+      transitionPath: TrimOptionOrFeatures.OptionOrFeature
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://manufacturing/Feature icon.png
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ProductOptionOrFeature
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ProductOptionOrFeature.collection_views.ProductOptionOrFeatureCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ProductOptionOrFeature.ProductOptionOrFeature
+        form: Manufacturing.entities.ProductOptionOrFeature.forms.ProductOptionOrFeatureForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ProductOptionOrFeature.forms.ProductOptionOrFeatureForm.ProductOptionOrFeature.FDN_ProductOrOptionGroup
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductOptionOrFeature.forms.ProductOptionOrFeatureForm.ProductOptionOrFeature.FDN_ProductOptionCategory
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Vehicles
+      _type: BusinessViewTransition
+      transitionPath: Vehicles
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/car-hatchback.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ProductVehicle
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ProductVehicle.collection_views.ProductVehicleCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ProductVehicle.ProductVehicle
+        form: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_SellingDealership
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Trim
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Make
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_ModelYear
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ProductVehicle.forms.ProductVehicleForm.ProductVehicle.FDN_Model
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: ItemProductTrims
+      _type: BusinessViewTransition
+      transitionPath: ItemProductTrims
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/bolt.svg
+      label: Item
+      pluralLabel: Items
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ItemProductTrim
+        _type: BusinessViewEntity
+        collection: Manufacturing.entities.ItemProductTrim.collection_views.ItemProductTrimCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: Manufacturing.entities.ItemProductTrim.ItemProductTrim
+        form: Manufacturing.entities.ItemProductTrim.forms.ItemProductTrimForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: Manufacturing.entities.ItemProductTrim.forms.ItemProductTrimForm.ItemProductTrim.FDN_ProductTrim
+            navigationMode: MODAL_FORM
+          - formField: Manufacturing.entities.ItemProductTrim.forms.ItemProductTrimForm.ItemProductTrim.FDN_Item
+            navigationMode: MODAL_FORM
+        transitions: []

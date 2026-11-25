@@ -1,0 +1,32 @@
+# This file defines the action set for managing review suggestions on Employee entities in the Organization domain.
+# It includes actions for reviewing suggestions and merging or splitting duplicates.
+# This action set is designed to help data stewards manage and resolve review suggestions effectively.
+_package: Organization.entities.Employee.action_sets
+_type: ActionSet
+entity: Organization.entities.Employee.Employee
+_name: EmployeeReviewSuggestionsActionSet
+label: Employee Review Suggestions Action Set
+description: ''
+defaultActionSet: false
+actions:
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Review Suggestions
+    description: ''
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    itemsLimit: 1000
+    mandateResolveAllSuggestions: false
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnEmployee
+    useCustomLabel: true
+    label: Merge Or Split Duplicates
+    description: ''
+    dupsManager: Organization.entities.Employee.dups_managers.ReviewSuggestionsOnEmployee
+    enableEdit: true
+    itemsLimit: 1000
+    waitDialogEnabled: false
+

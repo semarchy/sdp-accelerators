@@ -1,0 +1,216 @@
+_package: RetailCustomer360.entities.OpportunityProduct.forms
+_type: Form
+_name: OpportunityProductForm
+entity: RetailCustomer360.entities.OpportunityProduct.OpportunityProduct
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: Overview
+    label: Overview
+    iconUrl: https://api.iconify.design/mdi/view-dashboard-outline.svg?color=%230D1B2A&width=64
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: OverviewRow
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: OverviewCol1
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: OvrLine
+                label: Line
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrLineRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: ReferenceField
+                        _name: OvrFDN_Opportunity
+                        value: FDN_Opportunity
+                        useCustomLabel: true
+                        label: Opportunity
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                        referencedEntity: RetailCustomer360.entities.Opportunity.Opportunity
+                        componentProperties:
+                          displayType: chip
+                          useAvatarInChip: '1'
+                          useSecondaryTextInChip: '1'
+                      - _type: ReferenceField
+                        _name: OvrFDN_Product
+                        value: FDN_Product
+                        useCustomLabel: true
+                        label: Product
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                        referencedEntity: RetailCustomer360.entities.Product.Product
+                        componentProperties:
+                          displayType: chip
+                          useAvatarInChip: '1'
+                          useSecondaryTextInChip: '1'
+                      - _type: TextField
+                        _name: OvrLineNumber
+                        value: LineNumber
+                        useCustomLabel: false
+                        dataType: LONG_INTEGER
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: CheckboxField
+                        _name: OvrIsPrimaryLine
+                        value: IsPrimaryLine
+                        useCustomLabel: false
+                        dataType: BOOLEAN
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrNotes
+                        value: Notes
+                        useCustomLabel: false
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+          - _type: FormContainer
+            _name: OverviewCol2
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: OvrPricing
+                label: Pricing
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrPricingRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: TextField
+                        _name: OvrQuantity
+                        value: Quantity
+                        useCustomLabel: false
+                        dataType: DECIMAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrUnitPrice
+                        value: UnitPrice
+                        useCustomLabel: false
+                        dataType: DECIMAL
+                        componentProperties:
+                          textAlign: left
+                          displayFormat: '$ #,###,###.##'
+                          displayFormatValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrDiscountAmount
+                        value: DiscountAmount
+                        useCustomLabel: false
+                        dataType: DECIMAL
+                        componentProperties:
+                          textAlign: left
+                          displayFormat: '$ #,###,###.##'
+                          displayFormatValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrTotalPrice
+                        value: TotalPrice
+                        useCustomLabel: false
+                        dataType: DECIMAL
+                        componentProperties:
+                          textAlign: left
+                          displayFormat: '$ #,###,###.##'
+                          displayFormatValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+              - _type: FormSection
+                _name: OvrFulfilment
+                label: Fulfilment
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrFulfilmentRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: DateField
+                        _name: OvrExpectedDeliveryDate
+                        value: ExpectedDeliveryDate
+                        useCustomLabel: false
+                        dataType: DATE
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+              - _type: FormSection
+                _name: OvrSource
+                label: Source
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrSourceRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: MenuField
+                        _name: OvrSourceSystem
+                        value: SourceSystem
+                        useCustomLabel: false
+                        dataType: STRING
+                        componentProperties:
+                          textAlign: left
+                          useAvatarInMenu: '1'
+                          useAvatarInMenuValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrOpportunityProductId
+                        value: OpportunityProductId
+                        useCustomLabel: false
+                        dataType: LONG_INTEGER
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'

@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: HealthcareOrganizationHasCountry
+_type: Reference
+label: Healthcare Organization Has Country
+description: "Links healthcare organizations to their operating country."
+documentation: "Links healthcare organizations to their operating country."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+fromRoleLabel: Healthcare Organization
+fromRoleName: healthcareOrganization
+fromRolePluralLabel: Healthcare Organizations
+physicalName: HC_ORG_HAS_CTRY
+fromNavigable: true
+
+toEntity: CTMDM.entities.Country.Country
+toRoleLabel: Country
+toRoleName: country
+toRolePhysicalName: CTRY
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: country
+  label: Country Code
+  physicalName: CTRY
+  searchable: true
+  entity: CTMDM.entities.Country.Country

@@ -1,0 +1,31 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: InsurableAssetHasHomeAsset
+description: "Links an insurable asset to its home-specific asset record."
+_type: Reference
+label: "Home Asset"
+
+fromEntity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+fromRoleLabel: "Insurable Asset"
+fromRoleName: InsurableAsset
+fromRolePluralLabel: "Insurable Assets"
+physicalName: INS_ASSET_HAS_HOME
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.HomeAsset.HomeAsset
+toRoleLabel: "Home Asset"
+toRoleName: HomeAsset
+documentation: "Links an insurable asset to its home-specific asset record."
+toRolePhysicalName: HOME_ASSET_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: HomeAsset
+  label: "Home Asset"
+  description: "Links an insurable asset to its home-specific asset record."
+  physicalName: HOME_ASSET_ID
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.HomeAsset.HomeAsset

@@ -1,0 +1,46 @@
+_name: ItemsDisplayCard
+_package: Manufacturing.entities.Item.display_cards
+_type: DisplayCard
+entity: Manufacturing.entities.Item.Item
+default: true
+primaryTextExpression: >-
+  case when ((FID_ItemCondition ='Replaced' OR FID_ItemCondition = 'Recall') AND
+  (ANY BillOfMaterials have (RelationshipType = 'ReplacedBy'))) 
+  	then UPPER(FID_ItemCondition) || '-'
+  else '' 
+
+  end 
+
+  ||  Name || '-(' ||SKU || ')'
+secondaryTextExpression: FDN_ItemType
+primaryImageValue: |-
+  LOOKUP
+  	FIRST ItemImage.URL
+  	FROM ItemImageJoins
+  	where ItemImage.Label not like '%Assembly%'
+  END
+primaryImageValueInterpreter: SEMQL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValue: images://sfix/No-Image-Available.png
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: >-
+  case 
+
+  when 
+  	ANY BillOfMaterials have (RelationshipType = 'ReplacedBy') then 'images://manufacturing/manufacturing-production-icon-red.svg'
+  when 
+  	(LOOKUP 	
+  	FIRST ItemImage.URL
+   	FROM ItemImageJoins
+   	where ItemImage.Label not like '%Assembly%' 
+   END) is not null then (LOOKUP 	FIRST ItemImage.URL 	FROM ItemImageJoins 	where ItemImage.Label not like '%Assembly%'  END)
+   else 
+   	(LOOKUP 	FIRST ItemImage.URL 	FROM ItemImageJoins END)
+   end
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

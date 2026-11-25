@@ -1,0 +1,125 @@
+_name: ProductActionSet
+_package: sappm360.entities.Product.action_sets
+_type: ActionSet
+entity: sappm360.entities.Product.Product
+label: Product Golden Record Action Set
+description: Action set for managing products in SAP Product / Material 360.
+defaultActionSet: true
+actions:
+  - _name: StartNewProductIntroductionWorkflow
+    _type: StartWorkflowEntityAction
+    label: Start Product Introduction
+    description: Start a governed workflow for introducing a product or material.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: sappm360.workflows.NewProductIntroduction.StartFromScratch
+  - _name: StartSelectedProductIntroductionWorkflow
+    _type: StartWorkflowEntityAction
+    label: Review Selected Product Introduction
+    description: Start a governed workflow for reviewing a selected product.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: sappm360.workflows.NewProductIntroduction.StartFromExistingProduct
+  - _name: CreateAuthorProducts
+    label: Create
+    description: Create a new Product Golden Record record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sappm360.entities.Product.steppers.AuthorProducts
+  - _name: EditAuthorProducts
+    label: Edit
+    description: Edit Product Golden Record records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sappm360.entities.Product.steppers.AuthorProducts
+  - _name: MassUpdateAuthorProducts
+    label: Mass Update
+    description: Mass update Product Golden Record records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sappm360.entities.Product.steppers.AuthorProducts
+  - _name: Delete
+    label: Delete
+    description: Delete selected Product Golden Record records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorProducts
+    label: Import
+    description: Import Product Golden Record records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sappm360.publishers.DataEntry
+    stepper: sappm360.entities.Product.steppers.ProductImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicate products.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnProduct
+    label: Review And Confirm Duplicates
+    description: Review and confirm duplicate Product Golden Record records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: sappm360.entities.Product.dups_managers.ManageDuplicatesOnProduct
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnProduct
+    label: Merge Or Split Duplicates
+    description: Merge or split duplicate Product Golden Record records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: sappm360.entities.Product.dups_managers.ManageDuplicatesOnProduct
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnProduct
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions for Product Golden Record records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sappm360.entities.Product.dups_managers.ManageDuplicatesOnProduct
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    description: Explain Product Golden Record record details.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: sappm360.entities.Product.display_cards.ProductDisplayCard
+    formTab: sappm360.entities.Product.forms.ProductBrowsingForm.Main

@@ -1,0 +1,85 @@
+# Language entity for the SAP Business Partner 360 accelerator.
+_name: Language
+_package: sapbp360.entities.Language
+_type: Entity
+primaryKey: sapbp360.entities.Language.Language.LanguageID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: LanguageCode
+label: Language
+documentation: Language reference data used by the SAP Business Partner 360 model.
+description: Language reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/Language.svg
+pluralLabel: Languages
+historizeGolden: true
+historizeMaster: false
+physicalTableName: LANG
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: LanguageID
+    physicalName: LANG_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Language ID
+    documentation: Unique identifier for the language.
+    description: Unique identifier for the language.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Language ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: LanguageCode
+    physicalName: LANG_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Language Code
+    documentation: Code for the language.
+    description: Code for the language.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Language Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: LanguageName
+    physicalName: LANG_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Language Name
+    documentation: Name of the language.
+    description: Name of the language.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Language Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the language.
+    description: Description for the language.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the language is active.
+    description: Indicates whether the language is active.
+    mandatory: false
+    length: 1
+    searchable: true

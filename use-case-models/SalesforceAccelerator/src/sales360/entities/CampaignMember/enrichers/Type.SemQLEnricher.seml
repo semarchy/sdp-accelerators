@@ -1,0 +1,14 @@
+# It is an enricher for the CampaignMember entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that sets the Type attribute to 'Lead' if FDN_Leads is not null, 'Contact' if FDN_Contact is not null, otherwise NULL.
+# This enricher scope is NONE and can be updated as per use case.
+_type: SemQLEnricher
+_package: sales360.entities.CampaignMember.enrichers
+_name: Type
+entity: sales360.entities.CampaignMember.CampaignMember
+label: Type
+description: Enricher that sets Type to 'Lead' or 'Contact' based on FDN_Leads and FDN_Contact
+enricherExecutionScope: NONE
+semQlEnricherExpressions:
+  - attributeName: Type
+    expression: CASE WHEN FDN_Leads IS NOT NULL THEN 'Lead' ELSE CASE WHEN
+      FDN_Contact  IS NOT NULL THEN 'Contact' ELSE NULL END END

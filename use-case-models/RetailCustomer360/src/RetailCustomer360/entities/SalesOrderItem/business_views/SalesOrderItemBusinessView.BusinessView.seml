@@ -1,0 +1,46 @@
+﻿_package: RetailCustomer360.entities.SalesOrderItem.business_views
+_type: BusinessView
+_name: SalesOrderItemBusinessView
+label: Sales Order Items
+entity: RetailCustomer360.entities.SalesOrderItem.SalesOrderItem
+
+rootLabel: Sales Order Items
+rootPluralLabel: Sales Order Items
+displayRootNodeAs: ICON_LABEL
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: SalesOrderItem
+  displayCard: RetailCustomer360.entities.SalesOrderItem.display_cards.SalesOrderItemDisplayCard
+  entity: RetailCustomer360.entities.SalesOrderItem.SalesOrderItem
+  actionSet: RetailCustomer360.entities.SalesOrderItem.action_sets.SalesOrderItemActionSet
+  collection: RetailCustomer360.entities.SalesOrderItem.collection_views.SalesOrderItemCollectionView
+  form: RetailCustomer360.entities.SalesOrderItem.forms.SalesOrderItemForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: SalesOrderItemQuickFilterConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: RetailCustomer360.entities.SalesOrderItem.search_forms.SalesOrderItemQuickFilters
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+enableHierarchyView: false
+

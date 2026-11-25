@@ -1,0 +1,9 @@
+_package: RestaurantMaster.entities.RestaurantHours.validations
+_name: HoursComplete
+_type: SemQLValidation
+entity: RestaurantMaster.entities.RestaurantHours.RestaurantHours
+label: Hours complete and consistent
+description: Regular hours need a day, special hours a date; open and close times are HH:MM (close after open unless it closes the next day) unless the channel is closed or open 24 hours; dates in order.
+validationScope: PRE_CONSO
+validationLabel: Regular hours need a day, special hours a date; open and close times are HH:MM (close after open unless it closes the next day) unless the channel is closed or open 24 hours; dates in order.
+condition: (HoursType <> 'REGULAR' OR DayOfWeek IS NOT NULL) AND (HoursType <> 'SPECIAL' OR SpecialDate IS NOT NULL) AND (COALESCE(Closed, 'N') = 'Y' OR COALESCE(Open24Hours, 'N') = 'Y' OR (REGEXP_REPLACE(COALESCE(OpenTime, ''), '^([01][0-9]|2[0-3]):[0-5][0-9]$', 'X') = 'X' AND REGEXP_REPLACE(COALESCE(CloseTime, ''), '^([01][0-9]|2[0-3]):[0-5][0-9]$', 'X') = 'X' AND (CloseTime > OpenTime OR COALESCE(ClosesNextDay, 'N') = 'Y'))) AND (EffectiveTo IS NULL OR EffectiveTo >= EffectiveFrom)

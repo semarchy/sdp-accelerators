@@ -1,0 +1,134 @@
+_name: AuthorBPContacts
+_package: sapbp360.entities.BPContact.steppers
+_type: Stepper
+entity: sapbp360.entities.BPContact.BPContact
+description: Stepper for authoring BP Contacts.
+rootStep:
+  _name: BPContacts
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPContact.collection_views.BPContactCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Contacts
+  description: Manage BP Contact data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPContact_BusinessPartnerCompany.BusinessPartnerCompany
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPContact_BusinessPartnerPerson.BusinessPartnerPerson
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPContact_ContactPersonFunction.ContactPersonFunction
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPContact_ContactPersonDepartment.ContactPersonDepartment
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPContact_ContactRelationshipType.ContactRelationshipType
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sapbp360.entities.BPContact.BPContact.SemQLMatcherBPCONTACT
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Contact.
+      formTab: sapbp360.entities.BPContact.forms.BPContactDataEntryForm.Main
+      formStepEnrichers:
+        - enricher: sapbp360.entities.BPContact.enrichers.NormalizedContactName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPContact.forms.BPContactDataEntryForm.Main.Relationship.RelationshipRow.RelationshipCol1.FDN_BusinessPartnerCompany
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPContact.forms.BPContactDataEntryForm.Main.Relationship.RelationshipRow.RelationshipCol2.FDN_BusinessPartnerPerson
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPContact.forms.BPContactDataEntryForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol1.FDN_ContactPersonFunction
+          referencePickerCollectionView: sapbp360.entities.ContactPersonFunction.collection_views.ContactPersonFunctionCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPContact.forms.BPContactDataEntryForm.Main.FunctionAndValidity.FunctionAndValidityRow.FunctionAndValidityCol2.FDN_ContactPersonDepartment
+          referencePickerCollectionView: sapbp360.entities.ContactPersonDepartment.collection_views.ContactPersonDepartmentCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPContact.forms.BPContactDataEntryForm.Main.Relationship.RelationshipRow.RelationshipCol3.FDN_ContactRelationshipType
+          referencePickerCollectionView: sapbp360.entities.RelationshipCategory.collection_views.RelationshipCategoryCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPContact_BusinessPartnerCompany.BusinessPartnerCompany
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPContact_BusinessPartnerPerson.BusinessPartnerPerson
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPContact_ContactPersonFunction.ContactPersonFunction
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPContact_ContactPersonDepartment.ContactPersonDepartment
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPContact_ContactRelationshipType.ContactRelationshipType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Contacts
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPContact_BusinessPartnerCompany.BusinessPartnerCompany
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPContact_BusinessPartnerPerson.BusinessPartnerPerson
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPContact_ContactPersonFunction.ContactPersonFunction
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPContact_ContactPersonDepartment.ContactPersonDepartment
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPContact_ContactRelationshipType.ContactRelationshipType
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

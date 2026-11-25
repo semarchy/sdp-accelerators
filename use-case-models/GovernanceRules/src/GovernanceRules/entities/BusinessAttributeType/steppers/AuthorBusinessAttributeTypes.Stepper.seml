@@ -1,0 +1,44 @@
+# AuthorBusinessAttributeTypes: stepper on BusinessAttributeType of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.BusinessAttributeType.steppers
+_type: Stepper
+_name: AuthorBusinessAttributeTypes
+description: 'Creates and edits attribute types (Create, Edit, Mass update and Import actions), with the default classification and the reference standard picked by name. Used by the governance steward, without workflow.'
+entity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+label: Enter attribute types
+rootStep:
+  _type: CollectionStep
+  _name: BusinessAttributeTypes
+  label: Attribute types
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.BusinessAttributeType.collection_views.BusinessAttributeTypeCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: BusinessAttributeType
+      label: Attribute type
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.BusinessAttributeType.forms.BusinessAttributeTypeForm.BusinessAttributeType
+      referenceFormFieldConfigs:
+        - fdnFormField: GovernanceRules.entities.BusinessAttributeType.forms.BusinessAttributeTypeForm.BusinessAttributeType.Columns.RightColumn.Links.FDN_DefaultClassification
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Name
+        - fdnFormField: GovernanceRules.entities.BusinessAttributeType.forms.BusinessAttributeTypeForm.BusinessAttributeType.Columns.RightColumn.Links.FDN_ReferenceStandard
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Name

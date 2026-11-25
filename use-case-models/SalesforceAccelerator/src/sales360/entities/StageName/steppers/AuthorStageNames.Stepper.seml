@@ -1,0 +1,46 @@
+# This is the AuthorStageNames Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing stage names within the Salesforce context.
+_name: AuthorStageNames
+_package: sales360.entities.StageName.steppers
+_type: Stepper
+entity: sales360.entities.StageName.StageName
+rootStep:
+  _name: StageNames
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.StageName.collection_views.StageNameCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Stage Names
+  description: Collection of Stage Names
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Stage Name
+      formTab: sales360.entities.StageName.forms.StageNameForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author Stage Names
+stepperFinishValidations: []
+triggers: []

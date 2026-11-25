@@ -1,0 +1,64 @@
+# RuleCitationForm: Form on RuleCitation of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleCitation.forms
+_type: Form
+_name: RuleCitationForm
+entity: GovernanceRules.entities.RuleCitation.RuleCitation
+default: true
+formTabs:
+  - _type: FormTab
+    _name: RuleCitation
+    label: Citation
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: Identity
+        label: Identification
+        layoutDirection: COLUMN
+        content:
+          - _type: TextField
+            _name: Clause
+            value: Clause
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Article or clause cited, for example Art. 5(1)(e).
+            helperTextValueInterpreter: LITERAL
+          - _type: TextField
+            _name: Note
+            value: Note
+            useCustomLabel: false
+            dataType: STRING
+            helperText: How the cited text supports the rule.
+            helperTextValueInterpreter: LITERAL
+          - _type: IdField
+            _name: ID
+            value: ID
+            useCustomLabel: false
+            dataType: LONG_INTEGER
+      - _type: FormSection
+        _name: Links
+        label: Relationships
+        layoutDirection: COLUMN
+        content:
+          - _type: ReferenceField
+            _name: FDN_Regulation
+            value: FDN_Regulation
+            useCustomLabel: true
+            label: Regulation
+            dataType: STRING
+            referencedEntity: GovernanceRules.entities.Regulation.Regulation
+            displayCard: GovernanceRules.entities.Regulation.display_cards.RegulationDisplayCard
+            helperText: The regulation or standard cited.
+            helperTextValueInterpreter: LITERAL
+          - _type: ReferenceField
+            _name: FDN_Rule
+            value: FDN_Rule
+            useCustomLabel: true
+            label: Rule
+            dataType: STRING
+            referencedEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+            displayCard: GovernanceRules.entities.GovernanceRule.display_cards.GovernanceRuleDisplayCard
+            helperText: The rule that cites the regulation. Citations belong to their rule and are deleted with it.
+            helperTextValueInterpreter: LITERAL

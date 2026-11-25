@@ -1,0 +1,39 @@
+_package: PropertyAndCasualtyInsurance.entities.LineOfBusiness.steppers
+_type: Stepper
+_name: AuthorLineOfBusinesses
+entity: PropertyAndCasualtyInsurance.entities.LineOfBusiness.LineOfBusiness
+label: Line Of Businesses
+rootStep:
+  _type: CollectionStep
+  _name: LineOfBusinesses
+  label: Line Of Businesses
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false  
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.LineOfBusiness.collection_views.LineOfBusinessImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: LineOfBusiness
+      label: Line Of Business
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.LineOfBusiness.forms.LineOfBusinessDEForm.LineOfBusiness
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.LineOfBusiness.validations.DateRangeCheck
+      

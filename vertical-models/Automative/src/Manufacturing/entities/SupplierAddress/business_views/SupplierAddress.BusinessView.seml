@@ -1,0 +1,51 @@
+_name: SupplierAddress
+_package: Manufacturing.entities.SupplierAddress.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.SupplierAddress.SupplierAddress
+rootLabel: Supplier Address
+rootPluralLabel: Supplier Addresses
+useHierarchyOnOpen: false
+label: Supplier Addresses
+rootBusinessViewEntity:
+  _name: SupplierAddressEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.SupplierAddress.collection_views.SupplierAddressCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.SupplierAddress.SupplierAddress
+  form: Manufacturing.entities.SupplierAddress.forms.SupplierAddressForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.SupplierAddress.action_sets.SupplierAddressActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: Manufacturing.entities.SupplierAddress.forms.SupplierAddressForm.SupplierAddress.FDN_Supplier
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.SupplierAddress.forms.SupplierAddressForm.SupplierAddress.FDN_AddressType
+      navigationMode: MODAL_FORM
+    - formField: Manufacturing.entities.SupplierAddress.forms.SupplierAddressForm.SupplierAddress.FDN_Address
+      navigationMode: MODAL_FORM
+  transitions: []

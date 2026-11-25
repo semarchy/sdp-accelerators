@@ -1,0 +1,85 @@
+# Address Usage entity for the SAP Business Partner 360 accelerator.
+_name: AddressUsage
+_package: sapbp360.entities.AddressUsage
+_type: Entity
+primaryKey: sapbp360.entities.AddressUsage.AddressUsage.AddressUsageID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: AddressUsageCode
+label: Address Usage
+documentation: Address Usage reference data used by the SAP Business Partner 360 model.
+description: Address Usage reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/AddressUsage.svg
+pluralLabel: Address Usages
+historizeGolden: true
+historizeMaster: false
+physicalTableName: ADDR_USAGE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AddressUsageID
+    physicalName: ADDR_USAGE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Address Usage ID
+    documentation: Unique identifier for the address usage.
+    description: Unique identifier for the address usage.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Address Usage ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: AddressUsageCode
+    physicalName: ADDR_USAGE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Address Usage Code
+    documentation: Code for the address usage.
+    description: Code for the address usage.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Address Usage Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: AddressUsageName
+    physicalName: ADDR_USAGE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Address Usage Name
+    documentation: Name of the address usage.
+    description: Name of the address usage.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Address Usage Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the address usage.
+    description: Description for the address usage.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the address usage is active.
+    description: Indicates whether the address usage is active.
+    mandatory: false
+    length: 1
+    searchable: true

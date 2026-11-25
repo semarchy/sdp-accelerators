@@ -1,0 +1,352 @@
+﻿_package: RetailCustomer360.entities.Account
+_type: Entity
+_name: Account
+label: Account
+pluralLabel: Accounts
+entityType: FUZZY_MATCHED
+physicalTableName: ACCOUNT
+iconUrl: https://api.iconify.design/mdi/store.svg?color=%230D1B2A&width=64
+
+description: "Represents a business account, organization, corporate customer, or retail partner account."
+documentation: ""
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AccountId
+    label: Account Id
+    physicalName: ACCOUNT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: AccountNumber
+    label: Account Number
+    physicalName: ACCOUNT_NUMBER
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Business account number"
+
+  - _type: EntityAttribute
+    _name: AccountName
+    label: Account Name
+    physicalName: ACCOUNT_NAME
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Account name"
+
+  - _type: EntityAttribute
+    _name: AccountType
+    label: Account Type
+    physicalName: ACCOUNT_TYPE
+    dataType: RetailCustomer360.list_of_values.AccountType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Corporate, Retailer, Distributor, Supplier, Partner"
+
+  - _type: EntityAttribute
+    _name: Industry
+    label: Industry
+    physicalName: INDUSTRY
+    dataType: RetailCustomer360.list_of_values.Industry
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Industry classification"
+
+  - _type: EntityAttribute
+    _name: AccountStatus
+    label: Account Status
+    physicalName: ACCOUNT_STATUS
+    dataType: RetailCustomer360.list_of_values.AccountStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Active, Inactive, Prospect, Closed"
+
+  - _type: EntityAttribute
+    _name: Revenue
+    label: Revenue
+    physicalName: REVENUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Annual or reported revenue"
+
+  - _type: EntityAttribute
+    _name: EmployeeCount
+    label: Employee Count
+    physicalName: EMPLOYEE_COUNT
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Number of employees"
+
+  - _type: EntityAttribute
+    _name: Location
+    label: Location
+    physicalName: LOCATION
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Primary account location"
+
+  - _type: EntityAttribute
+    _name: WebsiteUrl
+    label: Website Url
+    physicalName: WEBSITE_URL
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Company website"
+
+  - _type: EntityAttribute
+    _name: TaxRegistrationNumber
+    label: Tax Registration Number
+    physicalName: TAX_REG_NUMBER
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Tax or business registration number"
+
+  - _type: EntityAttribute
+    _name: LegalEntityName
+    label: Legal Entity Name
+    physicalName: LEGAL_ENTITY_NAME
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Registered legal entity name"
+
+  - _type: EntityAttribute
+    _name: ExternalAccountId
+    label: External Account Id
+    physicalName: EXTERNAL_ACCOUNT_ID
+    dataType: String
+    length: 150
+    searchable: true
+    description: "External account identifier from partner or ERP systems"
+
+  - _type: EntityAttribute
+    _name: DUNSNumber
+    label: DUNS Number
+    physicalName: DUNS_NUMBER
+    dataType: String
+    length: 20
+    searchable: true
+    description: "Global Dun & Bradstreet identifier"
+
+  - _type: EntityAttribute
+    _name: RegistrationCountryCode
+    label: Registration Country Code
+    physicalName: REG_COUNTRY_CODE
+    dataType: RetailCustomer360.list_of_values.Country
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Country where the legal entity is registered"
+
+  - _type: EntityAttribute
+    _name: AccountSinceDate
+    label: Account Since Date
+    physicalName: ACCOUNT_SINCE_DATE
+    dataType: Date
+    searchable: true
+    description: "Relationship start date"
+
+  - _type: EntityAttribute
+    _name: PreferredContactChannel
+    label: Preferred Contact Channel
+    physicalName: PREFERRED_CONTACT_CHANNEL
+    dataType: RetailCustomer360.list_of_values.PreferredChannel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Preferred communication channel"
+
+  - _type: EntityAttribute
+    _name: CreditLimit
+    label: Credit Limit
+    physicalName: CREDIT_LIMIT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Approved credit limit"
+
+  - _type: EntityAttribute
+    _name: PaymentTermDays
+    label: Payment Term (Days)
+    physicalName: PAYMENT_TERM_DAYS
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Standard payment term in days"
+
+  - _type: EntityAttribute
+    _name: RiskScore
+    label: Risk Score
+    physicalName: RISK_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Risk score from 0 to 100"
+
+  - _type: EntityAttribute
+    _name: IsStrategicAccount
+    label: Is Strategic Account
+    physicalName: IS_STRATEGIC_ACCOUNT
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates whether this account is strategically important"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: SourceAccountKey
+    label: Source Account Key
+    physicalName: SOURCE_ACCOUNT_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source account identifier"
+
+## Enrichment attributes
+  - _type: EntityAttribute
+    _name: AccountNameNormalized
+    label: Account Name (Normalized)
+    physicalName: ACCOUNT_NAME_NORM
+    dataType: String
+    length: 320
+    searchable: true
+    description: "Uppercase normalized account name used for search and matching"
+
+  - _type: EntityAttribute
+    _name: RevenueBand
+    label: Revenue Band
+    physicalName: REVENUE_BAND
+    dataType: String
+    length: 24
+    searchable: true
+    description: "Derived revenue bucket"
+
+  - _type: EntityAttribute
+    _name: AccountAgeYears
+    label: Account Age (Years)
+    physicalName: ACCOUNT_AGE_YEARS
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Years since AccountSinceDate"
+
+  - _type: EntityAttribute
+    _name: AccountAgeSegment
+    label: Account Age Segment
+    physicalName: ACCOUNT_AGE_SEGMENT
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived age segment for account relationship"
+
+  - _type: EntityAttribute
+    _name: EmployeeSizeBand
+    label: Employee Size Band
+    physicalName: EMPLOYEE_SIZE_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived employee-size segment"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+    
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: RetailCustomer360.entities.Account.Account.AccountId
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: AccountSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: AccountNumberExact
+      label: Account number exact match
+      matchScore: 100
+      condition: Record1.AccountNumber IS NOT NULL AND Record2.AccountNumber IS NOT NULL AND UPPER(Record1.AccountNumber) = UPPER(Record2.AccountNumber)
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: TaxRegistrationExact
+      label: Tax registration exact match
+      matchScore: 98
+      condition: Record1.TaxRegistrationNumber IS NOT NULL AND Record2.TaxRegistrationNumber IS NOT NULL AND UPPER(Record1.TaxRegistrationNumber) = UPPER(Record2.TaxRegistrationNumber)
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: NameAndLocationExact
+      label: Account name and location exact match
+      matchScore: 92
+      condition: Record1.AccountName IS NOT NULL AND Record1.Location IS NOT NULL AND Record2.AccountName IS NOT NULL AND Record2.Location IS NOT NULL AND UPPER(Record1.AccountName) = UPPER(Record2.AccountName) AND UPPER(Record1.Location) = UPPER(Record2.Location)
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: AccountNameFuzzy
+      label: Account name fuzzy match with location confirmation
+      matchScore: 72
+      condition: Record1.AccountName IS NOT NULL AND Record2.AccountName IS NOT NULL AND Record1.Location IS NOT NULL AND Record2.Location IS NOT NULL AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.AccountName), UPPER(Record2.AccountName)) >= 85 AND UPPER(Record1.Location) = UPPER(Record2.Location)
+      usingMatchOn: false
+
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 75
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 98
+  mergeThresholdMergingConfirmedWithUnconfirmed: 99
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 99
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+

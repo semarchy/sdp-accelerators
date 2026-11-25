@@ -1,0 +1,44 @@
+﻿_package: RetailCustomer360.entities.ContactPointEmail.business_views
+_type: BusinessView
+_name: ContactPointEmailReviewSuggestedMatches
+label: Email Addresses - Suggested Matches
+entity: RetailCustomer360.entities.ContactPointEmail.ContactPointEmail
+
+rootLabel: Email Address
+rootPluralLabel: Email Addresses
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: https://api.iconify.design/mdi/email.svg?color=%230D1B2A&width=64
+
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ContactPointEmail
+  entity: RetailCustomer360.entities.ContactPointEmail.ContactPointEmail
+  actionSet: RetailCustomer360.entities.ContactPointEmail.action_sets.ContactPointEmailReviewSuggestedMatchesActionSet
+  collection: RetailCustomer360.entities.ContactPointEmail.collection_views.ContactPointEmailCollectionView
+  form: RetailCustomer360.entities.ContactPointEmail.forms.ContactPointEmailForm
+  displayCard: RetailCustomer360.entities.ContactPointEmail.display_cards.ContactPointEmail
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

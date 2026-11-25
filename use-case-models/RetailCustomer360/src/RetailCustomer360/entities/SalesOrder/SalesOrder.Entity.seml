@@ -1,0 +1,247 @@
+﻿_package: RetailCustomer360.entities.SalesOrder
+_type: Entity
+_name: SalesOrder
+label: Sales Order
+pluralLabel: Sales Orders
+entityType: BASIC
+physicalTableName: SALES_ORDER
+iconUrl: https://api.iconify.design/mdi/package-variant.svg?color=%230D1B2A&width=64
+
+description: "Sales order data for Customer 360."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: OrderId
+    label: Order Id
+    physicalName: ORDER_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: OrderNumber
+    label: Order Number
+    physicalName: ORDER_NUMBER
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Business order number"
+
+  - _type: EntityAttribute
+    _name: OrderDate
+    label: Order Date
+    physicalName: ORDER_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Order placement date/time"
+
+  - _type: EntityAttribute
+    _name: OrderStatus
+    label: Order Status
+    physicalName: ORDER_STATUS
+    dataType: RetailCustomer360.list_of_values.OrderStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Draft, Submitted, Confirmed, Fulfilled, Cancelled, Returned"
+
+  - _type: EntityAttribute
+    _name: OrderType
+    label: Order Type
+    physicalName: ORDER_TYPE
+    dataType: RetailCustomer360.list_of_values.OrderType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Purchase, Return, Exchange, Subscription"
+
+  - _type: EntityAttribute
+    _name: SalesChannel
+    label: Sales Channel
+    physicalName: SALES_CHANNEL
+    dataType: RetailCustomer360.list_of_values.SalesChannel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Store, Web, Mobile App, Marketplace, Call Center"
+
+  - _type: EntityAttribute
+    _name: FulfillmentMethod
+    label: Fulfillment Method
+    physicalName: FULFILLMENT_METHOD
+    dataType: RetailCustomer360.list_of_values.FulfillmentMethod
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Delivery, Pickup, Ship to Store, Digital"
+
+  - _type: EntityAttribute
+    _name: PaymentMethod
+    label: Payment Method
+    physicalName: PAYMENT_METHOD
+    dataType: RetailCustomer360.list_of_values.PaymentMethod
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Card, Cash, Wallet, UPI, BNPL, Gift Card"
+
+  - _type: EntityAttribute
+    _name: PaymentStatus
+    label: Payment Status
+    physicalName: PAYMENT_STATUS
+    dataType: RetailCustomer360.list_of_values.PaymentStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Pending, Paid, Failed, Refunded, Partially Refunded"
+
+  - _type: EntityAttribute
+    _name: SubtotalAmount
+    label: Subtotal Amount
+    physicalName: SUBTOTAL_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Order subtotal"
+
+  - _type: EntityAttribute
+    _name: DiscountAmount
+    label: Discount Amount
+    physicalName: DISCOUNT_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Total discount"
+
+  - _type: EntityAttribute
+    _name: TaxAmount
+    label: Tax Amount
+    physicalName: TAX_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Total tax"
+
+  - _type: EntityAttribute
+    _name: ShippingAmount
+    label: Shipping Amount
+    physicalName: SHIPPING_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Shipping charge"
+
+  - _type: EntityAttribute
+    _name: TotalAmount
+    label: Total Amount
+    physicalName: TOTAL_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Final order value"
+
+  - _type: EntityAttribute
+    _name: CouponCode
+    label: Coupon Code
+    physicalName: COUPON_CODE
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Applied coupon or promotion code"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: SourceOrderKey
+    label: Source Order Key
+    physicalName: SOURCE_ORDER_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source order identifier"
+
+  - _type: EntityAttribute
+    _name: NetAmount
+    label: Net Amount
+    physicalName: NET_AMOUNT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Derived net amount before tax and shipping"
+
+  - _type: EntityAttribute
+    _name: DiscountRatePercent
+    label: Discount Rate Percent
+    physicalName: DISCOUNT_RATE_PCT
+    dataType: Decimal
+    precision: 7
+    scale: 2
+    searchable: true
+    description: "Derived discount rate percent on subtotal"
+
+  - _type: EntityAttribute
+    _name: OrderLifecycleStatus
+    label: Order Lifecycle Status
+    physicalName: ORDER_LIFECYCLE_STATUS
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived lifecycle stage from order and payment status"
+
+  - _type: EntityAttribute
+    _name: FinancialHealthStatus
+    label: Financial Health Status
+    physicalName: ORDER_FIN_HEALTH
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived financial consistency status"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.SalesOrder.SalesOrder.OrderId
+

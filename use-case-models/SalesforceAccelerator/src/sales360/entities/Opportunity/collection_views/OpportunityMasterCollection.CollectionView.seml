@@ -1,0 +1,151 @@
+# This is the OpportunityMasterCollection collection view used in the Salesforce Accelerator application.
+# It defines how opportunities are displayed in various formats such as grid, list, and table.
+_package: sales360.entities.Opportunity.collection_views
+_name: OpportunityMasterCollection
+_type: CollectionView
+entity: sales360.entities.Opportunity.Opportunity
+default: false
+displayCard: sales360.entities.Opportunity.display_cards.OpportunityDisplayCard
+tableAllowed: true
+tableRowLines: 2
+tableDisplayCardColumnLabel: Opportunity
+tableShowDisplayCard: true
+tableDisplayCardColumnWidth: 300
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: PublisherID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PublisherID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Amount
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: Amount
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_Type
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_Type
+    visibleByDefault: true
+    defaultWidth: 300
+    displayCard: sales360.entities.OpportunityType.display_cards.OpportunityTypeDisplayCard
+    referencedEntity: sales360.entities.OpportunityType.OpportunityType
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_StageName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_StageName
+    visibleByDefault: true
+    defaultWidth: 200
+    displayCard: sales360.entities.StageName.display_cards.StageNameDisplayCard
+    referencedEntity: sales360.entities.StageName.StageName
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: ExpectedRevenue
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: ExpectedRevenue
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: IsWon
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsWon
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: CheckboxColumn
+    _name: IsClosed
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsClosed
+    visibleByDefault: true
+    componentProperties:
+      useSwitch: "1"
+      useSwitchValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: TotalOpportunityQuantity
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: TotalOpportunityQuantity
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: CloseDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: CloseDate
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_LeadSource
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FDN_LeadSource
+    visibleByDefault: true
+    defaultWidth: 150
+    displayCard: sales360.entities.LeadSource.display_cards.LeadSourceDisplayCard
+    referencedEntity: sales360.entities.LeadSource.LeadSource
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: NextStep
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NextStep
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FiscalQuarter
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: FiscalQuarter
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FiscalYear
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: FiscalYear
+    visibleByDefault: true

@@ -1,0 +1,191 @@
+_package: CTMDM.entities.Vendor
+_type: Entity
+_name: Vendor
+label: CRO / Vendor
+pluralLabel: CROs / Vendors
+entityType: FUZZY_MATCHED
+physicalTableName: VENDOR
+iconUrl: images://mdi/handshake-outline.svg
+description: "Golden record for CROs, central labs, imaging vendors, logistics providers, and trial partners."
+documentation: "Golden record for CROs, central labs, imaging vendors, logistics providers, and trial partners."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: VendorID
+    label: Vendor ID
+    description: Surrogate identifier for the vendor master.
+    documentation: Surrogate identifier for the vendor master.
+    physicalName: VENDOR_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: VendorName
+    label: Vendor Name
+    description: Legal or operating vendor name.
+    documentation: Legal or operating vendor name.
+    physicalName: VENDOR_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedVendorName
+    label: Normalized Vendor Name
+    description: Trimmed and uppercased vendor name.
+    documentation: Trimmed and uppercased vendor name.
+    physicalName: NORM_VENDOR_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhonetizedVendorName
+    label: Phonetized Vendor Name
+    description: Phonetic key derived from vendor name.
+    documentation: Phonetic key derived from vendor name.
+    physicalName: PHON_VENDOR_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: VendorType
+    label: Vendor Type
+    description: Vendor category such as CRO, central lab, imaging, or logistics.
+    documentation: Vendor category such as CRO, central lab, imaging, or logistics.
+    physicalName: VENDOR_TYPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: TaxID
+    label: Tax ID
+    description: Tax identifier for the vendor.
+    documentation: Tax identifier for the vendor.
+    physicalName: TAX_ID
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedTaxID
+    label: Normalized Tax ID
+    description: Trimmed and uppercased tax identifier.
+    documentation: Trimmed and uppercased tax identifier.
+    physicalName: NORM_TAX_ID
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AddressLine1
+    label: Address Line 1
+    description: Primary vendor address.
+    documentation: Primary vendor address.
+    physicalName: ADDRESS_LINE_1
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedAddressLine1
+    label: Normalized Address Line 1
+    description: Trimmed and uppercased vendor address.
+    documentation: Trimmed and uppercased vendor address.
+    physicalName: NORM_ADDRESS_LINE_1
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    description: Vendor lifecycle status.
+    documentation: Vendor lifecycle status.
+    physicalName: STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: QualificationStatus
+    label: Qualification Status
+    description: Vendor qualification status.
+    documentation: Vendor qualification status.
+    physicalName: QUAL_STATUS
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RiskTier
+    label: Risk Tier
+    description: Vendor risk tier used for oversight.
+    documentation: Vendor risk tier used for oversight.
+    physicalName: RISK_TIER
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CTMDM.entities.Vendor.Vendor.VendorID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: VendorMatcher
+  description: Strategies for matching CROs / Vendors
+
+  matchRules:
+    - _name: VendorStrongMatch
+      _type: SemQLMatchRule
+      label: Strong CRO / Vendor Match
+      documentation: "Matches records using normalized identity attributes and business identifiers."
+      color: md:purple 900
+      condition: Record1.NormalizedVendorName = Record2.NormalizedVendorName AND Record1.PhonetizedVendorName = Record2.PhonetizedVendorName AND Record1.NormalizedTaxID = Record2.NormalizedTaxID
+      matchScore: 95
+
+    - _name: VendorPhoneticMatch
+      _type: SemQLMatchRule
+      label: Phonetic CRO / Vendor Match
+      documentation: "Matches records using phonetic and normalized attributes for likely duplicates."
+      color: md:purple 700
+      condition: Record1.PhonetizedVendorName = Record2.PhonetizedVendorName AND Record1.NormalizedTaxID = Record2.NormalizedTaxID
+      matchScore: 88
+
+    - _name: VendorCandidateMatch
+      _type: SemQLMatchRule
+      label: Candidate CRO / Vendor Match
+      documentation: "Suggests candidate duplicates for steward review using a reduced attribute set."
+      color: md:purple 400
+      condition: Record1.NormalizedVendorName = Record2.NormalizedVendorName AND Record1.PhonetizedVendorName = Record2.PhonetizedVendorName
+      matchScore: 65
+      
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 87
+  autoConfirmSingletons: false

@@ -1,0 +1,295 @@
+_package: RetailCustomer360.entities.Lead
+_type: Entity
+_name: Lead
+label: Lead
+pluralLabel: Leads
+entityType: FUZZY_MATCHED
+physicalTableName: SALES_LEAD
+iconUrl: https://api.iconify.design/mdi/account-star.svg?color=%230D1B2A&width=64
+
+description: "A person or company that has shown interest in the brand and is not yet a converted customer."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: LeadId
+    label: Lead Id
+    physicalName: LEAD_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the lead."
+
+  - _type: EntityAttribute
+    _name: FirstName
+    label: First Name
+    physicalName: FIRST_NAME
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Given name of the lead."
+
+  - _type: EntityAttribute
+    _name: LastName
+    label: Last Name
+    physicalName: LAST_NAME
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Family name of the lead."
+
+  - _type: EntityAttribute
+    _name: CompanyName
+    label: Company Name
+    physicalName: COMPANY_NAME
+    dataType: String
+    length: 200
+    searchable: true
+    description: "Company the lead represents, when the lead is a business prospect."
+
+  - _type: EntityAttribute
+    _name: EmailAddress
+    label: Email Address
+    physicalName: EMAIL_ADDRESS
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Email address captured for the lead."
+
+  - _type: EntityAttribute
+    _name: PhoneNumber
+    label: Phone Number
+    physicalName: PHONE_NUMBER
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Phone number captured for the lead."
+
+  - _type: EntityAttribute
+    _name: JobTitle
+    label: Job Title
+    physicalName: JOB_TITLE
+    dataType: String
+    length: 120
+    searchable: true
+    description: "Professional title declared by the lead."
+
+  - _type: EntityAttribute
+    _name: LeadStatus
+    label: Lead Status
+    physicalName: LEAD_STATUS
+    dataType: RetailCustomer360.list_of_values.LeadStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Progress of the lead through qualification."
+
+  - _type: EntityAttribute
+    _name: LeadSource
+    label: Lead Source
+    physicalName: LEAD_SOURCE
+    dataType: RetailCustomer360.list_of_values.LeadSource
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Origin that generated the lead."
+
+  - _type: EntityAttribute
+    _name: LeadRating
+    label: Lead Rating
+    physicalName: LEAD_RATING
+    dataType: RetailCustomer360.list_of_values.LeadRating
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Qualitative interest level assigned to the lead."
+
+  - _type: EntityAttribute
+    _name: Industry
+    label: Industry
+    physicalName: INDUSTRY
+    dataType: RetailCustomer360.list_of_values.Industry
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Industry the lead operates in."
+
+  - _type: EntityAttribute
+    _name: EstimatedValue
+    label: Estimated Value
+    physicalName: ESTIMATED_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Estimated revenue opportunity represented by the lead."
+
+  - _type: EntityAttribute
+    _name: LeadScore
+    label: Lead Score
+    physicalName: LEAD_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Behavioural score used to prioritise follow-up."
+
+  - _type: EntityAttribute
+    _name: CapturedDate
+    label: Captured Date
+    physicalName: CAPTURED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the lead was first captured."
+
+  - _type: EntityAttribute
+    _name: ConvertedDate
+    label: Converted Date
+    physicalName: CONVERTED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the lead was converted into a customer."
+
+  - _type: EntityAttribute
+    _name: CampaignCode
+    label: Campaign Code
+    physicalName: CAMPAIGN_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Code of the campaign that generated the lead."
+
+  - _type: EntityAttribute
+    _name: ConsentGiven
+    label: Consent Given
+    physicalName: CONSENT_GIVEN
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the lead agreed to be contacted."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the lead record originates from."
+
+  - _type: EntityAttribute
+    _name: SourceLeadKey
+    label: Source Lead Key
+    physicalName: SOURCE_LEAD_KEY
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Natural key of the lead in the source system."
+
+  - _type: EntityAttribute
+    _name: FullName
+    label: Full Name
+    physicalName: FULL_NAME
+    dataType: String
+    length: 220
+    searchable: true
+    description: "Derived full name of the lead."
+
+  - _type: EntityAttribute
+    _name: FullNameNormalized
+    label: Full Name Normalized
+    physicalName: FULL_NAME_NORM
+    dataType: String
+    length: 220
+    searchable: true
+    description: "Uppercased and trimmed full name used for matching."
+
+  - _type: EntityAttribute
+    _name: LeadAgeDays
+    label: Lead Age Days
+    physicalName: LEAD_AGE_DAYS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Derived number of days since the lead was captured."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)."
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated."
+
+primaryKey: RetailCustomer360.entities.Lead.Lead.LeadId
+
+sourceIdGeneration:
+  mode: MANUAL
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: "Matching strategy for Lead records."
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: EmailExact
+      label: Email exact match
+      matchScore: 100
+      condition: Record1.EmailAddress IS NOT NULL AND Record2.EmailAddress IS NOT NULL AND LOWER(Record1.EmailAddress) = LOWER(Record2.EmailAddress)
+      usingMatchOn: false
+      binningExpressions:
+        - expression: EmailAddress
+    - _type: SemQLMatchRule
+      _name: NameAndCompany
+      label: Similar name and same company
+      matchScore: 90
+      condition: Record1.FullNameNormalized IS NOT NULL AND Record2.FullNameNormalized IS NOT NULL AND SEM_EDIT_DISTANCE_SIMILARITY(Record1.FullNameNormalized, Record2.FullNameNormalized) >= 90
+      usingMatchOn: false
+      binningExpressions:
+        - expression: CompanyName
+    - _type: SemQLMatchRule
+      _name: PhoneExact
+      label: Phone exact match
+      matchScore: 80
+      condition: Record1.PhoneNumber IS NOT NULL AND Record2.PhoneNumber IS NOT NULL AND Record1.PhoneNumber = Record2.PhoneNumber
+      usingMatchOn: false
+      binningExpressions:
+        - expression: PhoneNumber
+        
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 98
+  mergeThresholdMergingConfirmedWithUnconfirmed: 99
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 99
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false

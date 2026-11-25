@@ -1,0 +1,49 @@
+_package: RestaurantMaster.entities.StateProvince
+_type: Entity
+_name: StateProvince
+label: State or province
+pluralLabel: States and provinces
+entityType: BASIC
+physicalTableName: REF_STATE_PROVINCE
+iconUrl: images://mdi/map-outline.svg
+description: States and provinces of the countries where the group operates.
+documentation: States and provinces of the countries where the group operates.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: StateCode
+  label: State code
+  physicalName: STATECODE
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: ISO 3166-2 code (for example US-TX, CA-QC).
+  documentation: ISO 3166-2 code (for example US-TX, CA-QC).
+  length: 6
+- _type: EntityAttribute
+  _name: StateName
+  label: State name
+  physicalName: STATENAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Name of the state or province.
+  documentation: Name of the state or province.
+- _type: EntityAttribute
+  _name: DefaultTimeZone
+  label: Default time zone
+  physicalName: DEFAULTTIMEZONE
+  dataType: RestaurantMaster.list_of_values.TimeZone
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Time zone of most of the state; the default for restaurants located there.
+  documentation: Time zone of most of the state; the default for restaurants located there.
+primaryKey: RestaurantMaster.entities.StateProvince.StateProvince.StateCode
+sourceIdGeneration:
+  mode: MANUAL

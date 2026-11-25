@@ -1,0 +1,206 @@
+﻿_package: RetailCustomer360.entities.LoyaltyProgram
+_type: Entity
+_name: LoyaltyProgram
+label: Loyalty Program
+pluralLabel: Loyalty Programs
+entityType: BASIC
+physicalTableName: LOYALTY_PROGRAM
+iconUrl: https://api.iconify.design/mdi/star-circle.svg?color=%232563EB&width=64
+
+description: "Loyalty program definition and configuration."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: LoyaltyProgramId
+    label: Loyalty Program Id
+    physicalName: LOYALTY_PROGRAM_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: ProgramCode
+    label: Program Code
+    physicalName: PROGRAM_CODE
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Business program code"
+
+  - _type: EntityAttribute
+    _name: ProgramName
+    label: Program Name
+    physicalName: PROGRAM_NAME
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Loyalty program name"
+
+  - _type: EntityAttribute
+    _name: ProgramType
+    label: Program Type
+    physicalName: PROGRAM_TYPE
+    dataType: RetailCustomer360.list_of_values.ProgramType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Points, Tiered, Cashback, Subscription, Hybrid"
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    physicalName: STATUS
+    dataType: RetailCustomer360.list_of_values.ProgramStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Active, Inactive, Retired"
+
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    physicalName: START_DATE
+    dataType: Date
+    searchable: true
+    description: "Program start date"
+
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    physicalName: END_DATE
+    dataType: Date
+    searchable: true
+    description: "Program end date"
+
+  - _type: EntityAttribute
+    _name: PointsExpiryMonths
+    label: Points Expiry Months
+    physicalName: POINTS_EXPIRY_MONTHS
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Months before points expire"
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "Program description"
+
+  - _type: EntityAttribute
+    _name: ProgramOwner
+    label: Program Owner
+    physicalName: PROGRAM_OWNER
+    dataType: String
+    length: 128
+    searchable: true
+    description: "Business owner accountable for program performance"
+
+  - _type: EntityAttribute
+    _name: EnrollmentFee
+    label: Enrollment Fee
+    physicalName: ENROLLMENT_FEE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Optional one-time enrollment fee"
+
+  - _type: EntityAttribute
+    _name: PointAccrualRate
+    label: Point Accrual Rate
+    physicalName: POINT_ACCRUAL_RATE
+    dataType: Decimal
+    precision: 10
+    scale: 4
+    searchable: true
+    description: "Points earned per base currency unit"
+
+  - _type: EntityAttribute
+    _name: PointRedemptionRate
+    label: Point Redemption Rate
+    physicalName: POINT_REDEEM_RATE
+    dataType: Decimal
+    precision: 10
+    scale: 4
+    searchable: true
+    description: "Currency value per point redeemed"
+
+  - _type: EntityAttribute
+    _name: MinimumRedeemPoints
+    label: Minimum Redeem Points
+    physicalName: MIN_REDEEM_POINTS
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Minimum points required for redemption"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+## Program lifecycle enrichment attributes
+  - _type: EntityAttribute
+    _name: ProgramHealthStatus
+    label: Program Health Status
+    physicalName: PROGRAM_HEALTH_STATUS
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived lifecycle health status (Healthy, Scheduled, Expired, Inactive, Unknown)"
+
+  - _type: EntityAttribute
+    _name: ProgramWindowStatus
+    label: Program Window Status
+    physicalName: PROGRAM_WINDOW_STATUS
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived scheduling window status (Scheduled, Ongoing, Expired, Open)"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.LoyaltyProgram.LoyaltyProgram.LoyaltyProgramId
+

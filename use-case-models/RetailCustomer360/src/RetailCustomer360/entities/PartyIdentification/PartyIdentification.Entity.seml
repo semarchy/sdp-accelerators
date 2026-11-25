@@ -1,0 +1,215 @@
+﻿_package: RetailCustomer360.entities.PartyIdentification
+_type: Entity
+_name: PartyIdentification
+label: Party Identification
+pluralLabel: Party Identifications
+entityType: FUZZY_MATCHED
+physicalTableName: PARTY_IDENTIFICATION
+iconUrl: https://api.iconify.design/mdi/shield-check.svg?color=%232563EB&width=64
+description: "Stores party identification documents with verification and status tracking."
+documentation: ""
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: PartyIdentificationId
+    label: Party Identification Id
+    physicalName: PARTY_IDENTIFICATION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier for the party identification record."
+
+  - _type: EntityAttribute
+    _name: IdentificationType
+    label: Identification Type
+    physicalName: IDENTIFICATION_TYPE
+    dataType: RetailCustomer360.list_of_values.IdentificationType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Identification type classification (PAN, Passport, National ID, Driver License, Loyalty Number)."
+
+  - _type: EntityAttribute
+    _name: IdentificationNumber
+    label: Identification Number
+    physicalName: IDENTIFICATION_NUMBER
+    dataType: String
+    length: 150
+    searchable: false
+    description: "Identifier value."
+
+  - _type: EntityAttribute
+    _name: IssuingAuthority
+    label: Issuing Authority
+    physicalName: ISSUING_AUTHORITY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Authority that issued the identifier."
+
+  - _type: EntityAttribute
+    _name: IssueDate
+    label: Issue Date
+    physicalName: ISSUE_DATE
+    dataType: Date
+    searchable: true
+    description: "Issue date."
+
+  - _type: EntityAttribute
+    _name: ExpiryDate
+    label: Expiry Date
+    physicalName: EXPIRY_DATE
+    dataType: Date
+    searchable: true
+    description: "Expiry date."
+
+  - _type: EntityAttribute
+    _name: IdentificationStatus
+    label: Identification Status
+    physicalName: IDENTIFICATION_STATUS
+    dataType: RetailCustomer360.list_of_values.IdentificationStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Identification status (Active, Expired, Revoked, Suspended)."
+
+  - _type: EntityAttribute
+    _name: IsVerified
+    label: Is Verified
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates verified identifier."
+
+  - _type: EntityAttribute
+    _name: VerificationDate
+    label: Verification Date
+    physicalName: VERIFICATION_DATE
+    dataType: Date
+    searchable: true
+    description: "Date/time verified."
+
+  - _type: EntityAttribute
+    _name: MaskedIdentificationNumber
+    label: Masked Identification Number
+    physicalName: MASKED_ID_NUMBER
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Masked display version."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system."
+
+  - _type: EntityAttribute
+    _name: SourceIdentificationKey
+    label: Source Identification Key
+    physicalName: SOURCE_IDENTIFICATION_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source identifier key."
+
+  - _type: EntityAttribute
+    _name: IdentificationLifecycleStatus
+    label: Identification Lifecycle Status
+    physicalName: ID_LIFECYCLE_STATUS
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived lifecycle status for the identification document."
+
+  - _type: EntityAttribute
+    _name: VerificationFreshnessBand
+    label: Verification Freshness Band
+    physicalName: VERIFY_FRESHNESS_BAND
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived recency band for verification evidence."
+
+  - _type: EntityAttribute
+    _name: VerificationConfidenceStatus
+    label: Verification Confidence Status
+    physicalName: VERIFY_CONF_STATUS
+    dataType: String
+    length: 40
+    searchable: true
+    description: "Derived confidence status based on verification evidence."
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: RetailCustomer360.entities.PartyIdentification.PartyIdentification.PartyIdentificationId
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: PartyIdentificationSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: IdentificationExact
+      label: Identification exact match
+      matchScore: 100
+      condition: Record1.IdentificationType IS NOT NULL AND Record1.IdentificationNumber IS NOT NULL AND Record2.IdentificationType IS NOT NULL AND Record2.IdentificationNumber IS NOT NULL AND Record1.IdentificationType = Record2.IdentificationType AND UPPER(Record1.IdentificationNumber) = UPPER(Record2.IdentificationNumber)
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameCustomerSimilarIdentification
+      label: Same customer with similar identification number
+      matchScore: 75
+      condition: Record1.FID_Customer IS NOT NULL AND Record2.FID_Customer IS NOT NULL AND Record1.FID_Customer = Record2.FID_Customer AND Record1.IdentificationType IS NOT NULL AND Record2.IdentificationType IS NOT NULL AND Record1.IdentificationType = Record2.IdentificationType AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.IdentificationNumber), UPPER(Record2.IdentificationNumber)) >= 88
+      usingMatchOn: false
+
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 80
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 98
+  mergeThresholdMergingConfirmedWithUnconfirmed: 99
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 99
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+

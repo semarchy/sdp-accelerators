@@ -1,0 +1,50 @@
+_package: RestaurantMaster.entities.SourceSystem
+_type: Entity
+_name: SourceSystem
+label: Source system
+pluralLabel: Source systems
+entityType: BASIC
+physicalTableName: REF_SOURCE_SYSTEM
+iconUrl: images://mdi/server-network.svg
+description: 'Systems that know a restaurant: publishers, consumers and delivery partners.'
+documentation: 'Systems that know a restaurant: publishers, consumers and delivery partners.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: SourceSystemCode
+  label: System code
+  physicalName: SOURCESYSTEMCODE
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Code of the system.
+  documentation: Code of the system.
+  length: 64
+- _type: EntityAttribute
+  _name: SourceSystemName
+  label: System name
+  physicalName: SOURCESYSTEMNAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Name of the system.
+  documentation: Name of the system.
+- _type: EntityAttribute
+  _name: SystemRole
+  label: Role
+  physicalName: SYSTEMROLE
+  dataType: RestaurantMaster.list_of_values.SystemRole
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Role of the system towards the hub.
+  documentation: Role of the system towards the hub.
+primaryKey: RestaurantMaster.entities.SourceSystem.SourceSystem.SourceSystemCode
+sourceIdGeneration:
+  mode: MANUAL

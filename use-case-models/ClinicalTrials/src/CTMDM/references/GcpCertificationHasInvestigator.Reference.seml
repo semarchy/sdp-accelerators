@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: GcpCertificationHasInvestigator
+_type: Reference
+label: GCP Certification Has Investigator
+description: "Links GCP certifications to the owning investigator."
+documentation: "Links GCP certifications to the owning investigator."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.GcpCertification.GcpCertification
+fromRoleLabel: GCP Certification
+fromRoleName: gcpCertification
+fromRolePluralLabel: GCP Certifications
+physicalName: GCP_CERT_HAS_INV
+fromNavigable: true
+
+toEntity: CTMDM.entities.Investigator.Investigator
+toRoleLabel: Investigator
+toRoleName: investigator
+toRolePhysicalName: INV
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: investigator
+  label: Investigator
+  physicalName: INV
+  searchable: true
+  entity: CTMDM.entities.Investigator.Investigator

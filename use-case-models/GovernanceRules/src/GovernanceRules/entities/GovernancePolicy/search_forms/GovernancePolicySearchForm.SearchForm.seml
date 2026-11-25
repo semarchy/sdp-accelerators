@@ -1,0 +1,35 @@
+# GovernancePolicySearchForm: search form on GovernancePolicy of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernancePolicy.search_forms
+_type: SearchForm
+_name: GovernancePolicySearchForm
+entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+label: Find policies
+searchTip: Every criterion is optional.
+semQlCondition: (:SEARCH_TEXT IS NULL OR UPPER(Code) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Name) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Description) LIKE '%' || UPPER(:SEARCH_TEXT) || '%') AND (:LIFECYCLESTATUS IS NULL OR LifecycleStatus = :LIFECYCLESTATUS) AND (:OWNERBODY_ID IS NULL OR FID_OwnerBody = :OWNERBODY_ID)
+searchParameters:
+  - _type: SearchParameter
+    _name: SearchText
+    label: Search text
+    bindVariableName: SEARCH_TEXT
+    dataType: String
+    length: 200
+    displayType: TEXT_FIELD
+  - _type: SearchParameter
+    _name: LifecycleStatus
+    label: Status
+    bindVariableName: LIFECYCLESTATUS
+    dataType: GovernanceRules.list_of_values.LifecycleStatus
+    displayType: DROP_DOWN
+    lovDisplayMode: LABEL
+    lovSortMode: LABEL
+  - _type: SearchParameter
+    _name: OwnerBody
+    label: Owner
+    bindVariableName: OWNERBODY_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name

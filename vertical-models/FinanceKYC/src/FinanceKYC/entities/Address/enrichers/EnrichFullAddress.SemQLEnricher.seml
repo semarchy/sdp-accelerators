@@ -1,0 +1,11 @@
+﻿_package: FinanceKYC.entities.Address.enrichers
+_name: EnrichFullAddress
+_type: SemQLEnricher
+entity: FinanceKYC.entities.Address.Address
+label: Enrich Full Address
+description: 'Builds a full address value from street, city, state, postal code, and country for matching and display.'
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions: 
+  - attributeName: FullAddress
+    expression: SEM_CONCAT(' ', '', Street, City, State, PostalCode, Country)

@@ -1,0 +1,29 @@
+_name: BusinessPartnerReviewSuggestionsActionSet
+_package: sapbp360.entities.BusinessPartner.action_sets
+_type: ActionSet
+entity: sapbp360.entities.BusinessPartner.BusinessPartner
+label: Business Partner Review Suggestions Action Set
+description: Action set for reviewing Business Partner duplicate suggestions.
+defaultActionSet: false
+actions:
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicates.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnBusinessPartner
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sapbp360.entities.BusinessPartner.dups_managers.ManageDuplicatesOnBusinessPartner
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

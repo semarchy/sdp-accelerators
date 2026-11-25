@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: PolicyHasInsurancePlan
+description: "Indicates the Insurance Plan associated with a Policy."
+_type: Reference
+label: "Policy Has Insurance Plan"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+fromRoleLabel: "Policy"
+fromRoleName: Policy
+fromRolePluralLabel: "Policies"
+physicalName: POL_HAS_INS_PLAN
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan
+toRoleLabel: "Insurance Plan"
+toRoleName: InsurancePlan
+toRolePhysicalName: INS_PLAN
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: InsurancePlan
+  label: "Insurance Plan ID"
+  description: "The identifier of the Insurance Plan associated with the Policy."
+  physicalName: INS_PLAN_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan

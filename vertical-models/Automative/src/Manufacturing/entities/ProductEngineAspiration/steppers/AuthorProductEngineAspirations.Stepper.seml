@@ -1,0 +1,55 @@
+_name: AuthorProductEngineAspirations
+_package: Manufacturing.entities.ProductEngineAspiration.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductEngineAspiration.ProductEngineAspiration
+rootStep:
+  _name: ProductEngineAspirations
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductEngineAspiration.collection_views.ProductEngineAspirationCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Engine Aspirations
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.entities.ProductEngineAspiration.ProductEngineAspiration.EngineAspiration
+  stepTriggers: []
+  childSteps:
+    - _name: ProductEngineAspiration
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Engine Aspiration
+      formTab: Manufacturing.entities.ProductEngineAspiration.forms.ProductEngineAspirationForm.ProductEngineAspiration
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductEngineAspiration.ProductEngineAspiration.EngineAspiration
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.entities.ProductEngineAspiration.ProductEngineAspiration.EngineAspiration
+      stepTriggers: []
+label: Author Engine Aspirations
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.ProductEngineAspiration.ProductEngineAspiration.EngineAspiration
+triggers: []

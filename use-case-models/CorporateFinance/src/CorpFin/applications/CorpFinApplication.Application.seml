@@ -1,0 +1,1234 @@
+_package: CorpFin.applications
+_type: Application
+_name: CorpFinApplication
+label: Corporate Finance
+visibility: VISIBLE
+applicationTitle: Corporate Finance MDM
+
+avatarImageUrl: images://corpfin/CoA-MDM-icon.svg
+logoUrl: images://corpfin/CoA-MDM-icon.svg
+coverImageUrl: images://corpfin/CoA-MDM-icon.svg
+favIcon: images://corpfin/CoA-MDM-icon.svg
+sortStrategy: POSITION
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+
+defaultAction: CorpFin.applications.CorpFinApplication.Root.GlobalSearch
+
+documentationConfig:
+  documentation: ""
+  documentationConfigDiagrams:
+    - _name: DiagramCoA
+      _type: DocumentationConfigDiagram
+      modelDiagram: CorpFin.model_diagrams.CorpFinCoA
+      label: CoA Diagram
+    - _name: DiagramCounterparty
+      _type: DocumentationConfigDiagram
+      modelDiagram: CorpFin.model_diagrams.CorpFinCounterParty
+      label: Counterparty Diagram
+    - _name: DiagramOrgEntities
+      _type: DocumentationConfigDiagram
+      modelDiagram: CorpFin.model_diagrams.CorpFinOrgEntities
+      label: Organization Entities Diagram
+    - _name: DiagramRefData
+      _type: DocumentationConfigDiagram
+      modelDiagram: CorpFin.model_diagrams.CorpFinRefData
+      label: Reference Data Diagram
+    - _name: DiagramSuperModel
+      _type: DocumentationConfigDiagram
+      modelDiagram: CorpFin.model_diagrams.CorpFin
+      label: SuperModel Diagram
+
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: false
+  globalSearchBusinessViews:
+    - _type: GlobalSearchBoView
+      _name: Accounts
+      label: Accounts
+      viewType: GD
+      businessView: CorpFin.entities.Account.business_views.AccountBusinessView
+      searchTypeConfig: CorpFin.entities.Account.business_views.AccountBusinessView.Account.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: ChartOfAccounts
+      label: Chart of Accounts
+      viewType: GD
+      businessView: CorpFin.entities.ChartOfAccounts.business_views.ChartOfAccountsBusinessView
+      searchTypeConfig: CorpFin.entities.ChartOfAccounts.business_views.ChartOfAccountsBusinessView.ChartOfAccounts.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: Contacts
+      label: Contacts
+      viewType: GD
+      businessView: CorpFin.entities.ContactInformation.business_views.ContactInformationBusinessView
+      searchTypeConfig: CorpFin.entities.ContactInformation.business_views.ContactInformationBusinessView.ContactInformation.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: Coounterparties
+      label: Counterparties
+      viewType: GD
+      businessView: CorpFin.entities.Counterparty.business_views.CounterpartyBusinessView
+      searchTypeConfig: CorpFin.entities.Counterparty.business_views.CounterpartyBusinessView.Counterparty.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: Customers
+      label: Customers
+      viewType: GD
+      businessView: CorpFin.entities.Customer.business_views.CustomerBusinessView
+      searchTypeConfig: CorpFin.entities.Customer.business_views.CustomerBusinessView.Customer.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: OrgEntities
+      label: Org Entities
+      viewType: GD
+      businessView: CorpFin.entities.OrgUnit.business_views.OrgUnitBusinessView
+      searchTypeConfig: CorpFin.entities.OrgUnit.business_views.OrgUnitBusinessView.OrgUnit.TextConfig
+      maxResults: 5
+    - _type: GlobalSearchBoView
+      _name: Suppliers
+      label: Suppliers
+      viewType: GD
+      businessView: CorpFin.entities.Supplier.business_views.SupplierBusinessView
+      searchTypeConfig: CorpFin.entities.Supplier.business_views.SupplierBusinessView.Supplier.TextConfig
+      maxResults: 5
+
+navDrawer:
+  - _type: NavigationGroup
+    _name: RootFolder
+    label : Root Folder
+    dividerVisible: false
+    labelVisible: false
+    
+    actions:
+      - appAction: CorpFin.applications.CorpFinApplication.Root.MyTasks
+      - appAction: CorpFin.applications.CorpFinApplication.Root.GlobalSearch
+  
+  - _type: FolderNavGroup
+    _name: Organization
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: CorpFin.applications.CorpFinApplication.Root.Organization
+  
+  - _type: FolderNavGroup
+    _name: CoAs
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: CorpFin.applications.CorpFinApplication.Root.CoAs
+  
+  - _type: FolderNavGroup
+    _name: Counterparties
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: CorpFin.applications.CorpFinApplication.Root.Counterparties
+  
+  - _type: FolderNavGroup
+    _name: Stewardship
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: CorpFin.applications.CorpFinApplication.Root.Stewardship
+
+  - _type: FolderNavGroup
+    _name: Admin
+    dividerVisible: true
+    labelVisible: true
+    linkedFolder: CorpFin.applications.CorpFinApplication.Root.Admin
+
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root Folder
+  image: images://mdi/folder.svg
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  
+  appActions:
+    - _type: MyTasksAction
+      _name: MyTasks
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: true
+      iconColor: '#ff0000ff'
+
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+
+    - _type: FolderAction
+      _name: Organization
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Our Organizations
+      
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseOrgHierarchies
+          businessView: CorpFin.entities.OrgHierarchy.business_views.OrgHierarchyBusinessView
+          label: Browse Hierarchies
+          labelColor: md:blue
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse OrgHierarchy records
+          image: images://mdi/file-tree.svg
+          iconColor: md:blue
+          
+        - _type: FolderAction
+          _name: OrgStructures
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Org Structures
+          labelColor: md:blue
+          # description: Access Business Views
+          image: images://mdi/folder.svg
+          iconColor: md:blue
+          appActions:           
+            - _type: BrowseBusinessViewAction
+              _name: BrowseOrgHierarchy
+              businessView: CorpFin.entities.OrgHierarchy.business_views.OrgHierarchyBusinessView
+              label: Org Hierarchies
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Org Hierarchy records
+              image: images://mdi/file-tree.svg
+              iconColor: md:blue
+
+            - _type: BrowseBusinessViewAction
+              _name: BrowseOrgUnits
+              businessView: CorpFin.entities.OrgUnit.business_views.OrgUnitBusinessView
+              label: Org Units
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Org Unit records
+              image: images://mdi/domain.svg
+              iconColor: md:blue     
+              
+            - _type: BrowseBusinessViewAction
+              _name: BrowseOrgHierarchyNode
+              businessView: CorpFin.entities.OrgHierarchyNode.business_views.OrgHierarchyNodeBusinessView
+              label: Org Hierarchy Nodes
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Org Hierarchy Node records
+              image: images://mdi/link-variant.svg
+              iconColor: md:blue     
+              
+            - _type: BrowseBusinessViewAction
+              _name: BrowseOrgUnitCoAAssignment
+              businessView: CorpFin.entities.OrgUnitCoAAssignment.business_views.OrgUnitCoAAssignmentBusinessView
+              label: Org Unit CoA Assignments
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Org Unit CoA Assignment records
+              image: images://mdi/account-details.svg
+              iconColor: md:blue     
+              
+            - _type: BrowseBusinessViewAction
+              _name: BrowseOrgUnitMappingCoverage
+              businessView: CorpFin.entities.OrgUnitMappingCoverage.business_views.OrgUnitMappingCoverageBusinessView
+              label: Org Unit Mapping Coverages
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Org Unit Mapping Coverage records
+              image: images://mdi/clipboard-edit-outline.svg
+              iconColor: md:blue   
+            
+            - _type: BrowseBusinessViewAction
+              _name: BrowseOrgUnitTypes
+              businessView: CorpFin.entities.OrgUnitType.business_views.OrgUnitTypeBusinessView
+              label: Org Unit Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Org Unit Type records
+              image: images://mdi/move-resize-variant.svg
+              iconColor: md:blue        
+
+    - _type: FolderAction
+      _name: CoAs
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Charts of Accounts
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: BrowseChartsOfAccounts
+          businessView: CorpFin.entities.ChartOfAccounts.business_views.ChartOfAccountsBusinessView
+          label: Browse CoAs & Accounts
+          labelColor: md:orange
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse CoAs & Accounts
+          image: images://mdi/file-tree.svg
+          iconColor: md:orange
+          
+          
+        - _type: FolderAction
+          _name: AccountMappings
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Accounts & Mappings
+          labelColor: md:orange
+          # description: Access Business Views
+          image: images://mdi/folder.svg
+          iconColor: md:orange
+          appActions:           
+            - _type: BrowseBusinessViewAction
+              _name: ChartOfAccounts
+              businessView: CorpFin.entities.ChartOfAccounts.business_views.ChartOfAccountsBusinessView
+              label: Charts Of Accounts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Chart Of Accounts records
+              image: images://mdi/clipboard-list-outline.svg
+              iconColor: md:blue
+
+            - _type: BrowseBusinessViewAction
+              _name: Account
+              businessView: CorpFin.entities.Account.business_views.AccountBusinessView
+              label: Accounts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Account records
+              image: images://mdi/text-box-minus-outline.svg
+              iconColor: md:blue     
+              
+            - _type: BrowseBusinessViewAction
+              _name: MappingSet
+              businessView: CorpFin.entities.MappingSet.business_views.MappingSetBusinessView
+              label: MappingSets
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Mapping Set records
+              image: images://mdi/clipboard-text-multiple-outline.svg
+              iconColor: md:blue     
+
+            - _type: BrowseBusinessViewAction
+              _name: MappingType
+              businessView: CorpFin.entities.MappingType.business_views.MappingTypeBusinessView
+              label: Mapping Types
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Mapping Type records
+              image: images://mdi/arrow-decision.svg
+              iconColor: md:blue
+              
+            - _type: BrowseBusinessViewAction
+              _name: AccountMapping
+              businessView: CorpFin.entities.AccountMapping.business_views.AccountMappingBusinessView
+              label: Account Mappings
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Account Mapping records
+              image: images://mdi/arrow-right-bold.svg
+              iconColor: md:blue     
+              
+            - _type: BrowseBusinessViewAction
+              _name: MappingRule
+              businessView: CorpFin.entities.MappingRule.business_views.MappingRuleBusinessView
+              label: Mapping Rules
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Mapping Rule records
+              image: images://mdi/relation-one-or-many-to-one-or-many.svg
+              iconColor: md:blue    
+              
+            - _type: BrowseBusinessViewAction
+              _name: SplitAllocation
+              businessView: CorpFin.entities.SplitAllocation.business_views.SplitAllocationBusinessView
+              label: Split Allocations
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Split Allocation records
+              image: images://mdi/call-split.svg
+              iconColor: md:blue        
+
+
+    - _type: FolderAction
+      _name: Counterparties
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Counterparties
+      appActions:
+        - _type: BrowseBusinessViewAction
+          _name: CounterpartiesByGroup
+          businessView: CorpFin.entities.CounterpartyGroup.business_views.CounterpartyGroupBusinessView
+          label: Counterparties by Group
+          labelColor: md:green
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          nbRecordsBadgeVisible: false
+          description: Browse Counterparties by Group
+          # image: images://mdi/file-tree.svg
+          iconColor: md:green
+          
+        - _type: FolderAction
+          _name: CustomersSuppliers
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Customers & Suppliers
+          labelColor: md:green
+          # description: Access Business Views
+          image: images://mdi/folder.svg
+          iconColor: md:green
+          appActions:           
+            - _type: BrowseBusinessViewAction
+              _name: CounterpartyGroup
+              businessView: CorpFin.entities.CounterpartyGroup.business_views.CounterpartyGroupBusinessView
+              label: Counterparty Groups
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Counterparty Group records
+              image: images://mdi/hexagon-multiple.svg
+              iconColor: md:blue
+
+            - _type: BrowseBusinessViewAction
+              _name: Counterparty
+              businessView: CorpFin.entities.Counterparty.business_views.CounterpartyBusinessView
+              label: Counterparties
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Counterparty records
+              image: images://mdi/hexagon.svg
+              iconColor: md:blue     
+              
+            - _type: BrowseBusinessViewAction
+              _name: Supplier
+              businessView: CorpFin.entities.Supplier.business_views.SupplierBusinessView
+              label: Suppliers
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Supplier records
+              image: images://mdi/truck.svg
+              iconColor: md:blue     
+              
+            - _type: BrowseBusinessViewAction
+              _name: Customer
+              businessView: CorpFin.entities.Customer.business_views.CustomerBusinessView
+              label: Customers
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Customer records
+              image: images://mdi/cart-variant.svg
+              iconColor: md:blue     
+              
+            - _type: BrowseBusinessViewAction
+              _name: ContactInformation
+              businessView: CorpFin.entities.ContactInformation.business_views.ContactInformationBusinessView
+              label: Contact Information
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Contact Information records
+              image: images://mdi/badge-account-horizontal-outline.svg
+              iconColor: md:blue    
+              
+            - _type: BrowseBusinessViewAction
+              _name: Address
+              businessView: CorpFin.entities.Address.business_views.AddressBusinessView
+              label: Addresses
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Address records
+              image: images://mdi/map-marker.svg
+              iconColor: md:blue      
+              
+            - _type: BrowseBusinessViewAction
+              _name: CounterpartyAddress
+              businessView: CorpFin.entities.CounterpartyAddress.business_views.CounterpartyAddressBusinessView
+              label: Counterparty Addresses
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Counterparty Address records
+              image: images://mdi/map-marker-radius.svg
+              iconColor: md:blue      
+              
+            - _type: BrowseBusinessViewAction
+              _name: BankAccount
+              businessView: CorpFin.entities.BankAccount.business_views.BankAccountBusinessView
+              label: Bank Accounts
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Bank Account records
+              image: images://mdi/piggy-bank.svg
+              iconColor: md:blue      
+              
+            - _type: BrowseBusinessViewAction
+              _name: RiskComplianceProfile
+              businessView: CorpFin.entities.RiskComplianceProfile.business_views.RiskComplianceProfileBusinessView
+              label: Risk Compliance Profiles
+              imageAlign: MIDDLE_CENTER
+              imageMode: FIT
+              nbRecordsBadgeVisible: false
+              # description: Browse Risk Compliance Profile records
+              image: images://mdi/shield-account.svg
+              iconColor: md:blue      
+
+        - _type: OpenDashboardAction
+          _name: CounterpartyMetrics
+          label: Dashboard
+          dashboard: CounterpartyMetrics
+          dashboardApplication: CorpFinDashboard
+          iconColor: md:green
+          labelColor: md:green
+
+
+    - _type: FolderAction
+      _name: Stewardship
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Data Stewardship
+
+      appActions:
+        - _name: ConfirmMatchesCounterparty
+          _type: BrowseBusinessViewAction
+          label: "Counterparties: Confirm Matches"
+          businessView: CorpFin.entities.Counterparty.business_views.CounterpartyConfirmMatches
+          nbRecordsBadgeVisible: true
+          icon: images://mdi/map-marker-check-outline.svg
+          iconColor: md:grey
+          labelColor: md:grey
+          viewType: GD
+
+        - _name: SuggestedMatchesCounterparty
+          _type: BrowseBusinessViewAction
+          label: "Counterparties: Review Suggestions"
+          businessView: CorpFin.entities.Counterparty.business_views.CounterpartyReviewSuggestions
+          nbRecordsBadgeVisible: true
+          icon: images://mdi/map-marker-alert-outline.svg
+          iconColor: md:grey
+          labelColor: md:grey
+          viewType: GD    
+
+        - _name: Errors
+          _type: FolderAction
+          icon: images://mdi/alert-octagon.svg
+          iconColor: md:red
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          label: Error Management
+          labelColor: md:grey
+
+          appActions:
+            - _name: AccountErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Account Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.Account.business_views.AccountBusinessView
+
+            - _name: AccountMappingErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Account Mapping Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.AccountMapping.business_views.AccountMappingBusinessView
+
+            - _name: AddressErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Address Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.Address.business_views.AddressBusinessView
+
+            - _name: BankAccountErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Bank Account Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.BankAccount.business_views.BankAccountBusinessView
+
+            - _name: ChartOfAccountsErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Chart Of Accounts Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.ChartOfAccounts.business_views.ChartOfAccountsBusinessView
+
+            - _name: ContactInformationErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Contact Information Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.ContactInformation.business_views.ContactInformationBusinessView
+
+            - _name: CostTypeErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Cost Type Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.CostType.business_views.CostTypeBusinessView
+
+            - _name: CounterpartyAddressErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Counterparty Address Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.CounterpartyAddress.business_views.CounterpartyAddressBusinessView
+
+            - _name: CounterpartyErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              # image: images://mdi/hexagon.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Counterparty Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SDWE
+              businessView: CorpFin.entities.Counterparty.business_views.CounterpartyBusinessView
+
+            - _name: CounterpartyGroupErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Counterparty Group Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.CounterpartyGroup.business_views.CounterpartyGroupBusinessView
+
+            - _name: CountryErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Country Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.Country.business_views.CountryBusinessView
+
+            - _name: CurrencyErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Currency Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.Currency.business_views.CurrencyBusinessView
+
+            - _name: CustomerErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Customer Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.Customer.business_views.CustomerBusinessView
+
+            - _name: FiscalCalendarErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Fiscal Calendar Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.FiscalCalendar.business_views.FiscalCalendarBusinessView
+
+            - _name: FiscalPeriodErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Fiscal Period Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.FiscalPeriod.business_views.FiscalPeriodBusinessView
+
+            - _name: MappingRuleErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Mapping Rule Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.MappingRule.business_views.MappingRuleBusinessView
+
+            - _name: MappingSetErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Mapping Set Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.MappingSet.business_views.MappingSetBusinessView
+
+            - _name: MappingTypeErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Mapping Type Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.MappingType.business_views.MappingTypeBusinessView
+
+            - _name: OrgHierarchyErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Org Hierarchy Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.OrgHierarchy.business_views.OrgHierarchyBusinessView
+
+            - _name: OrgHierarchyNodeErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Org Hierarchy Node Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.OrgHierarchyNode.business_views.OrgHierarchyNodeBusinessView
+
+            - _name: OrgUnitCoAAssignmentErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Org Unit CoA Assignment Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.OrgUnitCoAAssignment.business_views.OrgUnitCoAAssignmentBusinessView
+
+            - _name: OrgUnitErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Org Unit Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.OrgUnit.business_views.OrgUnitBusinessView
+
+            - _name: OrgUnitMappingCoverageErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Org Unit Mapping Coverage Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.OrgUnitMappingCoverage.business_views.OrgUnitMappingCoverageBusinessView
+
+            - _name: OrgUnitTypeErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Org Unit Type Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.OrgUnitType.business_views.OrgUnitTypeBusinessView
+
+            - _name: RegionErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Region Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.Region.business_views.RegionBusinessView
+
+            - _name: RiskComplianceProfileErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Risk Compliance Profile Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.RiskComplianceProfile.business_views.RiskComplianceProfileBusinessView
+
+            - _name: SplitAllocationErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Split Allocation Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.SplitAllocation.business_views.SplitAllocationBusinessView
+
+            - _name: StatusCodeErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Status Code Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.StatusCode.business_views.StatusCodeBusinessView
+
+            - _name: SupplierErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              # image: images://mdi/human-dolly.svg
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Supplier Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.Supplier.business_views.SupplierBusinessView
+
+            - _name: TaxCodeErrors
+              _type: BrowseBusinessViewAction
+              icon: images://mdi/alert-outline.svg
+              iconColor: md:red
+              imageAlign: MIDDLE_CENTER
+              imageMode: FILL
+              label: Tax Code Errors
+              nbRecordsBadgeVisible: true
+              useSearchOnOpen: false
+              viewType: SAWE
+              businessView: CorpFin.entities.TaxCode.business_views.TaxCodeBusinessView
+
+    - _type: FolderAction
+      _name: Admin
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Administration
+
+      appActions:          
+      - _type: FolderAction
+        _name: ImportData
+        icon: images://mdi/database-import.svg
+        image: images://default/folder-item-import.png
+        iconColor: md:black
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        label: Import Data
+        requiredRole: SemAdmin
+
+        appActions:
+          - _type: ImportDataAppAction
+            _name: ImportStatusCode
+            label: 01-Import Status Code
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.StatusCode.action_sets.StatusCodeActionSet.ImportAuthorStatusCodes
+          - _type: ImportDataAppAction
+            _name: ImportOrgUnitType
+            label: 02-Import Org Unit Type
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.OrgUnitType.action_sets.OrgUnitTypeActionSet.ImportAuthorOrgUnitTypes
+          - _type: ImportDataAppAction
+            _name: ImportMappingType
+            label: 03-Import Mapping Type
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.MappingType.action_sets.MappingTypeActionSet.ImportAuthorMappingTypes
+          - _type: ImportDataAppAction
+            _name: ImportCurrency
+            label: 04-Import Currency
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.Currency.action_sets.CurrencyActionSet.ImportAuthorCurrencies
+          - _type: ImportDataAppAction
+            _name: ImportRegion
+            label: 05-Import Region
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.Region.action_sets.RegionActionSet.ImportAuthorRegions
+          - _type: ImportDataAppAction
+            _name: ImportCostType
+            label: 06-Import Cost Type
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.CostType.action_sets.CostTypeActionSet.ImportAuthorCostTypes
+          - _type: ImportDataAppAction
+            _name: ImportFiscalCalendar
+            label: 07-Import Fiscal Calendar
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.FiscalCalendar.action_sets.FiscalCalendarActionSet.ImportAuthorFiscalCalendars
+          - _type: ImportDataAppAction
+            _name: ImportCountry
+            label: 08-Import Country
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.Country.action_sets.CountryActionSet.ImportAuthorCountries
+          - _type: ImportDataAppAction
+            _name: ImportFiscalPeriod
+            label: 09-Import Fiscal Period
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.FiscalPeriod.action_sets.FiscalPeriodActionSet.ImportAuthorFiscalPeriods
+          - _type: ImportDataAppAction
+            _name: ImportTaxCode
+            label: 10-Import Tax Code
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.TaxCode.action_sets.TaxCodeActionSet.ImportAuthorTaxCodes
+          - _type: ImportDataAppAction
+            _name: ImportCounterpartyGroup
+            label: 11-Import Counterparty Group
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.CounterpartyGroup.action_sets.CounterpartyGroupActionSet.ImportAuthorCounterpartyGroups
+          - _type: ImportDataAppAction
+            _name: ImportCounterparty
+            label: 12-Import Counterparty
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.Counterparty.action_sets.CounterpartyActionSet.ImportAuthorCounterparties
+          - _type: ImportDataAppAction
+            _name: ImportAddress
+            label: 13-Import Address
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.Address.action_sets.AddressActionSet.ImportAuthorAddresses
+          - _type: ImportDataAppAction
+            _name: ImportCustomer
+            label: 14-Import Customer
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.Customer.action_sets.CustomerActionSet.ImportAuthorCustomers
+          - _type: ImportDataAppAction
+            _name: ImportSupplier
+            label: 15-Import Supplier
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.Supplier.action_sets.SupplierActionSet.ImportAuthorSuppliers
+          - _type: ImportDataAppAction
+            _name: ImportContactInformation
+            label: 16-Import Contact Information
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.ContactInformation.action_sets.ContactInformationActionSet.ImportAuthorContactInformations
+          - _type: ImportDataAppAction
+            _name: ImportCounterpartyAddress
+            label: 17-Import Counterparty Address
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.CounterpartyAddress.action_sets.CounterpartyAddressActionSet.ImportAuthorCounterpartyAddresses
+          - _type: ImportDataAppAction
+            _name: ImportBankAccount
+            label: 18-Import Bank Account
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.BankAccount.action_sets.BankAccountActionSet.ImportAuthorBankAccounts
+          - _type: ImportDataAppAction
+            _name: ImportRiskComplianceProfile
+            label: 19-Import Risk Compliance Profile
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.RiskComplianceProfile.action_sets.RiskComplianceProfileActionSet.ImportAuthorRiskComplianceProfiles
+          - _type: ImportDataAppAction
+            _name: ImportOrgUnit
+            label: 20-Import Org Unit
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.OrgUnit.action_sets.OrgUnitActionSet.ImportAuthorOrgUnits
+          - _type: ImportDataAppAction
+            _name: ImportOrgHierarchy
+            label: 21-Import Org Hierarchy
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.OrgHierarchy.action_sets.OrgHierarchyActionSet.ImportAuthorOrgHierarchies
+          - _type: ImportDataAppAction
+            _name: ImportOrgHierarchyNode
+            label: 22-Import Org Hierarchy Node
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.OrgHierarchyNode.action_sets.OrgHierarchyNodeActionSet.ImportAuthorOrgHierarchyNodes
+          - _type: ImportDataAppAction
+            _name: ImportChartOfAccounts
+            label: 23-Import Chart Of Accounts
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.ChartOfAccounts.action_sets.ChartOfAccountsActionSet.ImportAuthorChartOfAccountss
+          - _type: ImportDataAppAction
+            _name: ImportAccount
+            label: 24-Import Account
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.Account.action_sets.AccountActionSet.ImportAuthorAccounts
+          - _type: ImportDataAppAction
+            _name: ImportMappingSet
+            label: 25-Import Mapping Set
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.MappingSet.action_sets.MappingSetActionSet.ImportAuthorMappingSets
+          - _type: ImportDataAppAction
+            _name: ImportMappingRule
+            label: 26-Import Mapping Rule
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.MappingRule.action_sets.MappingRuleActionSet.ImportAuthorMappingRules
+          - _type: ImportDataAppAction
+            _name: ImportAccountMapping
+            label: 27-Import Account Mapping
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.AccountMapping.action_sets.AccountMappingActionSet.ImportAuthorAccountMappings
+          - _type: ImportDataAppAction
+            _name: ImportSplitAllocation
+            label: 28-Import Split Allocation
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.SplitAllocation.action_sets.SplitAllocationActionSet.ImportAuthorSplitAllocations
+          - _type: ImportDataAppAction
+            _name: ImportOrgUnitCoAAssignment
+            label: 29-Import Org Unit CoA Assignment
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.OrgUnitCoAAssignment.action_sets.OrgUnitCoAAssignmentActionSet.ImportAuthorOrgUnitCoAAssignments
+          - _type: ImportDataAppAction
+            _name: ImportOrgUnitMappingCoverage
+            label: 30-Import Org Unit Mapping Coverage
+            image: images://default/folder-item-import.png
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            importAction: CorpFin.entities.OrgUnitMappingCoverage.action_sets.OrgUnitMappingCoverageActionSet.ImportAuthorOrgUnitMappingCoverages
+
+      - _type: FolderAction
+        _name: RefData
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        label: Reference Data
+        labelColor: md:black
+        # description: Access Business Views
+        image: images://mdi/folder.svg
+        iconColor: md:black
+        appActions:           
+          - _type: BrowseBusinessViewAction
+            _name: FiscalCalendar
+            businessView: CorpFin.entities.FiscalCalendar.business_views.FiscalCalendarBusinessView
+            label: Fiscal Calendars
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            nbRecordsBadgeVisible: false
+            # description: Browse Fiscal Calendar records
+            image: images://mdi/calendar-range.svg
+            iconColor: md:blue
+
+          - _type: BrowseBusinessViewAction
+            _name: FiscalPeriod
+            businessView: CorpFin.entities.FiscalPeriod.business_views.FiscalPeriodBusinessView
+            label: Fiscal Periods
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            nbRecordsBadgeVisible: false
+            # description: Browse Fiscal Period records
+            image: images://mdi/calendar-month.svg
+            iconColor: md:blue     
+            
+          - _type: BrowseBusinessViewAction
+            _name: Countries
+            businessView: CorpFin.entities.Country.business_views.CountryBusinessView
+            label: Country
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            nbRecordsBadgeVisible: false
+            # description: Browse Country records
+            image: images://mdi/earth.svg
+            iconColor: md:blue     
+            
+          - _type: BrowseBusinessViewAction
+            _name: Currency
+            businessView: CorpFin.entities.Currency.business_views.CurrencyBusinessView
+            label: Currencies
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            nbRecordsBadgeVisible: false
+            # description: Browse Currency records
+            image: images://mdi/currency-usd.svg
+            iconColor: md:blue     
+            
+          - _type: BrowseBusinessViewAction
+            _name: TaxCode
+            businessView: CorpFin.entities.TaxCode.business_views.TaxCodeBusinessView
+            label: Tax Codes
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            nbRecordsBadgeVisible: false
+            # description: Browse Tax Code records
+            image: images://mdi/cash-register.svg
+            iconColor: md:blue      
+            
+          - _type: BrowseBusinessViewAction
+            _name: CostType
+            businessView: CorpFin.entities.CostType.business_views.CostTypeBusinessView
+            label: Cost Types
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            nbRecordsBadgeVisible: false
+            # description: Browse Cost Type records
+            image: images://mdi/cash-multiple.svg
+            iconColor: md:blue      
+            
+          - _type: BrowseBusinessViewAction
+            _name: Region
+            businessView: CorpFin.entities.Region.business_views.RegionBusinessView
+            label: Regions
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            nbRecordsBadgeVisible: false
+            # description: Browse Region records
+            image: images://mdi/map.svg
+            iconColor: md:blue      
+            
+          - _type: BrowseBusinessViewAction
+            _name: StatusCode
+            businessView: CorpFin.entities.StatusCode.business_views.StatusCodeBusinessView
+            label: Status Codes
+            imageAlign: MIDDLE_CENTER
+            imageMode: FIT
+            nbRecordsBadgeVisible: false
+            # description: Browse Status Code records
+            image: images://mdi/label.svg
+            iconColor: md:blue      
+
+      - _type: BrowseEntitiesFolderAction
+        _name: Entities 
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        lineageEnabled: true
+        label: Browse All Data
+        requiredRole: semarchyAdmin
+
+      - _type: OpenDocumentationAction
+        _name: OpenModelDoc
+        iconColor: md:black
+        label: Model Documentation
+        

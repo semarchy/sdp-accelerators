@@ -1,0 +1,89 @@
+_package: RetailCustomer360.entities.Promotion.business_views
+_type: BusinessView
+_name: PromotionBusinessView
+label: Promotions
+description: "Browse and steward Promotions."
+entity: RetailCustomer360.entities.Promotion.Promotion
+rootLabel: Promotions
+rootPluralLabel: Promotions
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Promotion
+  displayCard: RetailCustomer360.entities.Promotion.display_cards.PromotionDisplayCard
+  entity: RetailCustomer360.entities.Promotion.Promotion
+  actionSet: RetailCustomer360.entities.Promotion.action_sets.PromotionActionSet
+  collection: RetailCustomer360.entities.Promotion.collection_views.PromotionCollectionView
+  form: RetailCustomer360.entities.Promotion.forms.PromotionForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AssociatedVoucher
+      transitionPath: BelongsToPromotionFromVoucher
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/ticket-percent-outline.svg?color=%230D1B2A&width=64
+      label: Voucher
+      pluralLabel: Vouchers
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToPromotionFromVoucher has (1 = 1)
+      businessViewEntity:
+        _name: VoucherRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Voucher.collection_views.VoucherCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Voucher.Voucher
+        form: RetailCustomer360.entities.Voucher.forms.VoucherForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.Voucher.action_sets.VoucherActionSet
+        displayCard: RetailCustomer360.entities.Voucher.display_cards.VoucherDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+enableHierarchyView: false
+useHierarchyOnOpen: false

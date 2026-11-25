@@ -1,0 +1,117 @@
+﻿_package: LifeAndAnnuityInsurance.model_diagrams
+_name: Annuity
+_type: ModelDiagram
+label: Annuity Subject Area
+attributeNameFormat: NAME
+description: Annuity product and contract subject area diagram for Life and Annuity model.
+entityNameFormat: LABEL
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    _name: TaxQualification
+    entity: LifeAndAnnuityInsurance.entities.TaxQualification.TaxQualification
+    borderColor: "#6adbee"
+    fontTitleColor: ""
+    position:
+      x: 0
+      y: 0
+    height: 260
+    width: 280
+  - _type: EntityShape
+    _name: AnnuityPayoutOption
+    entity: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.AnnuityPayoutOption
+    borderColor: "#6adbee"
+    fontTitleColor: ""
+    position:
+      x: 360
+      y: 0
+    height: 350
+    width: 280
+  - _type: EntityShape
+    _name: Fund
+    entity: LifeAndAnnuityInsurance.entities.Fund.Fund
+    borderColor: "#6adbee"
+    fontTitleColor: ""
+    position:
+      x: 720
+      y: 0
+    height: 390
+    width: 280
+  - _type: EntityShape
+    _name: InsurancePlan
+    entity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan
+    borderColor: "#6a8dee"
+    fontTitleColor: ""
+    position:
+      x: 0
+      y: 470
+    height: 520
+    width: 280
+  - _type: EntityShape
+    _name: Policy
+    entity: LifeAndAnnuityInsurance.entities.Policy.Policy
+    borderColor: "#6aeea5"
+    fontTitleColor: ""
+    position:
+      x: 360
+      y: 470
+    height: 820
+    width: 280
+  - _type: EntityShape
+    _name: AnnuityContract
+    entity: LifeAndAnnuityInsurance.entities.AnnuityContract.AnnuityContract
+    borderColor: "#6adbee"
+    fontTitleColor: ""
+    position:
+      x: 720
+      y: 470
+    height: 650
+    width: 280
+  - _type: EntityShape
+    _name: InvestmentAllocation
+    entity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+    borderColor: "#6adbee"
+    fontTitleColor: ""
+    position:
+      x: 1080
+      y: 470
+    height: 390
+    width: 280
+referenceLinks:
+  - reference: LifeAndAnnuityInsurance.references.AnnuityContractHasPayoutOption
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.AnnuityContract
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.AnnuityPayoutOption
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.AnnuityContractHasPolicy
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.AnnuityContract
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.Policy
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.AnnuityContractHasTaxQualification
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.AnnuityContract
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.TaxQualification
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.InvestmentAllocationHasPolicy
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.InvestmentAllocation
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.Policy
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.InvestmentAllocationHasFund
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.InvestmentAllocation
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.Fund
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.PolicyHasInsurancePlan
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.Policy
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.InsurancePlan
+    bendPoints: []
+  - reference: LifeAndAnnuityInsurance.references.PolicyHasTaxQualification
+    fromEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.Policy
+    toEntityShape: LifeAndAnnuityInsurance.model_diagrams.Annuity.TaxQualification
+    bendPoints: []
+inheritLinks: []

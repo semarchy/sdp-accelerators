@@ -1,0 +1,22 @@
+_type: JavaPluginEnricher
+_package: PrivateEquity.entities.Contact.enrichers
+_name: CleanseEmail
+entity: PrivateEquity.entities.Contact.Contact
+label: Cleanse Email
+description: "Validates and standardizes contact email values using the Semarchy email convergence plugin."
+pluginId: com.semarchy.engine.plugins.convergence.email
+batchUpdateSize: 1000
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_EMAIL_ADDRESS
+    expression: Email
+pluginOutputs:
+  - outputName: OUT_CLEANSED_EMAIL
+    attributeName: CleansedEmail
+  - outputName: OUT_CLEANSED_HOST_VALID
+    attributeName: ValidEmailDomain
+afterEnrichers: PrivateEquity.entities.Contact.enrichers.AutopopulateOfficePhone

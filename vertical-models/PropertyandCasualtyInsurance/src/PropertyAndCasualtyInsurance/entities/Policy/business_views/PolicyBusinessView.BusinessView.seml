@@ -1,0 +1,158 @@
+_package: PropertyAndCasualtyInsurance.entities.Policy.business_views
+_type: BusinessView
+_name: PolicyBusinessView
+label: Policy
+entity: PropertyAndCasualtyInsurance.entities.Policy.Policy
+rootLabel: Policies
+rootPluralLabel: Policies
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Policy
+  displayCard: PropertyAndCasualtyInsurance.entities.Policy.display_cards.PolicyDisplayCard
+  entity: PropertyAndCasualtyInsurance.entities.Policy.Policy
+  actionSet: PropertyAndCasualtyInsurance.entities.Policy.action_sets.PolicyActionSet
+  collection: PropertyAndCasualtyInsurance.entities.Policy.collection_views.PolicyCollectionView
+  form: PropertyAndCasualtyInsurance.entities.Policy.forms.PolicyForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: LineOfCoverage
+      label: Line Of Coverage
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: Lines Of Coverage
+      iconUrl: images://mdi/shield-outline.svg
+      transitionPath: LineOfCoverage
+      useCustomLabel: true
+      description: Transition from Policy to related Lines Of Coverage.
+      visibleInFormTabCondition: any LineOfCoverage has (1=1)
+      enableHierarchy: any LineOfCoverage has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: true
+      transitionVisible: '1'
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: LineOfCoverage
+        displayCard: PropertyAndCasualtyInsurance.entities.LineOfCoverage.display_cards.LineOfCoverageDisplayCard
+        entity: PropertyAndCasualtyInsurance.entities.LineOfCoverage.LineOfCoverage
+        actionSet: PropertyAndCasualtyInsurance.entities.LineOfCoverage.action_sets.LineOfCoverageActionSet
+        collection: PropertyAndCasualtyInsurance.entities.LineOfCoverage.collection_views.LineOfCoverageCollectionView
+        form: PropertyAndCasualtyInsurance.entities.LineOfCoverage.forms.LineOfCoverageForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+
+    - _type: BusinessViewTransition
+      _name: InsurableAsset
+      label: Insured Assets
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: Insured Assets
+      iconUrl: images://mdi/shield-home-outline.svg
+      transitionPath: InsurableAsset
+      useCustomLabel: true
+      description: Transition from Policy to related Insurable Assets.
+      visibleInFormTabCondition: any InsurableAsset has (1=1)
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: InsurableAsset
+        displayCard: PropertyAndCasualtyInsurance.entities.InsurableAsset.display_cards.InsurableAssetDisplayCard
+        entity: PropertyAndCasualtyInsurance.entities.InsurableAsset.InsurableAsset
+        actionSet: PropertyAndCasualtyInsurance.entities.InsurableAsset.action_sets.InsurableAssetActionSet
+        collection: PropertyAndCasualtyInsurance.entities.InsurableAsset.collection_views.InsurableAssetCollectionView
+        form: PropertyAndCasualtyInsurance.entities.InsurableAsset.forms.InsurableAssetForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Policies
+        _type: BusinessViewEntity
+        displayCard: PropertyAndCasualtyInsurance.entities.Policy.display_cards.PolicyDisplayCard
+        collection: PropertyAndCasualtyInsurance.entities.Policy.collection_views.PolicyCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PropertyAndCasualtyInsurance.entities.Policy.Policy
+        form: PropertyAndCasualtyInsurance.entities.Policy.forms.PolicyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: PropertyAndCasualtyInsurance.entities.Policy.action_sets.PolicyActionSet
+    
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: Transition from Policy to related Golden History Records.
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PropertyAndCasualtyInsurance.entities.Policy.business_views.PolicyBusinessView.Policy
+
+    
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/page-next-outline.svg

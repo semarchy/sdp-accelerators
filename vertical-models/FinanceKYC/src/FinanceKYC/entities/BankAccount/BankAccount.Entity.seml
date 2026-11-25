@@ -1,0 +1,111 @@
+_package: FinanceKYC.entities.BankAccount
+_type: Entity
+_name: BankAccount
+label: Bank Account
+pluralLabel: Bank Account
+entityType: BASIC
+physicalTableName: BANK_ACCOUNT
+iconUrl: images://mdi/book.svg
+description: 'Captures bank account details associated with customers for financial relationship and due diligence processes.'
+documentation: 'Captures bank account details associated with customers for financial relationship and due diligence processes.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: BankAccountID
+    _type: EntityAttribute
+    label: Bank Account ID
+    description: 'Bank Account ID value captured for the bank account record.'
+    documentation: 'Bank Account ID value captured for the bank account record.'
+    physicalName: BANK_ACCOUNT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: BankName
+    _type: EntityAttribute
+    label: Bank Name
+    description: 'Bank Name value captured for the bank account record.'
+    documentation: 'Bank Name value captured for the bank account record.'
+    physicalName: BANK_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: AccountNumber
+    _type: EntityAttribute
+    label: Account Number
+    description: 'Account Number value captured for the bank account record.'
+    documentation: 'Account Number value captured for the bank account record.'
+    physicalName: ACCOUNT_NUMBER
+    dataType: String
+    length: 30
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: IBAN
+    _type: EntityAttribute
+    label: IBAN
+    description: 'IBAN value captured for the bank account record.'
+    documentation: 'IBAN value captured for the bank account record.'
+    physicalName: IBAN
+    dataType: String
+    length: 34
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: AccountType
+    _type: EntityAttribute
+    label: Account Type
+    description: 'Account Type value captured for the bank account record.'
+    documentation: 'Account Type value captured for the bank account record.'
+    physicalName: ACCOUNT_TYPE
+    dataType: String
+    length: 20
+    mandatory: false
+
+  - _name: Currency
+    _type: EntityAttribute
+    label: Currency
+    description: 'Currency value captured for the bank account record.'
+    documentation: 'Currency value captured for the bank account record.'
+    physicalName: CURRENCY
+    dataType: String
+    length: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: OpenDate
+    label: Open Date
+    description: 'Date on which the account or contract was opened.'
+    documentation: 'Date on which the account or contract was opened.'
+    physicalName: OPEN_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: CloseDate
+    label: Close Date
+    description: 'Date on which the account or contract was closed.'
+    documentation: 'Date on which the account or contract was closed.'
+    physicalName: CLOSE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    description: 'Indicates whether the record is currently active.'
+    documentation: 'Indicates whether the record is currently active.'
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    
+primaryKey: FinanceKYC.entities.BankAccount.BankAccount.BankAccountID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

@@ -1,0 +1,936 @@
+_package: RestaurantMaster.applications
+_type: Application
+_name: RestaurantMaster
+label: Restaurant Master
+description: Restaurant Master
+visibility: VISIBLE
+applicationTitle: Restaurant Master
+avatarImageUrl: images://restaurantmaster/avatar.svg
+logoUrl: images://restaurantmaster/logo.svg
+coverImageUrl: images://restaurantmaster/cover.svg
+favIcon: images://default/dm-favicon.svg
+sortStrategy: POSITION
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ''
+defaultAction: RestaurantMaster.applications.RestaurantMaster.Root.GeneralActions.GlobalSearch
+documentationConfig:
+  documentation: Master data application for the group's restaurants, their operators and organization.
+  documentationConfigDiagrams:
+  - _type: DocumentationConfigDiagram
+    _name: Main
+    modelDiagram: RestaurantMaster.model_diagrams.MasterEntities
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+  - _type: GlobalSearchBoView
+    _name: Restaurants
+    viewType: GD
+    businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+    searchTypeConfig: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView.Restaurant.TextConfig
+    maxResults: 10
+    label: Restaurants
+  - _type: GlobalSearchBoView
+    _name: RestaurantHourss
+    viewType: GD
+    businessView: RestaurantMaster.entities.RestaurantHours.business_views.RestaurantHoursBusinessView
+    searchTypeConfig: RestaurantMaster.entities.RestaurantHours.business_views.RestaurantHoursBusinessView.RestaurantHours.TextConfig
+    maxResults: 10
+    label: Opening hours
+  - _type: GlobalSearchBoView
+    _name: RestaurantServices
+    viewType: GD
+    businessView: RestaurantMaster.entities.RestaurantService.business_views.RestaurantServiceBusinessView
+    searchTypeConfig: RestaurantMaster.entities.RestaurantService.business_views.RestaurantServiceBusinessView.RestaurantService.TextConfig
+    maxResults: 10
+    label: Services
+  - _type: GlobalSearchBoView
+    _name: RestaurantContactPoints
+    viewType: GD
+    businessView: RestaurantMaster.entities.RestaurantContactPoint.business_views.RestaurantContactPointBusinessView
+    searchTypeConfig: RestaurantMaster.entities.RestaurantContactPoint.business_views.RestaurantContactPointBusinessView.RestaurantContactPoint.TextConfig
+    maxResults: 10
+    label: Contact points
+  - _type: GlobalSearchBoView
+    _name: RestaurantLocalizedNames
+    viewType: GD
+    businessView: RestaurantMaster.entities.RestaurantLocalizedName.business_views.RestaurantLocalizedNameBusinessView
+    searchTypeConfig: RestaurantMaster.entities.RestaurantLocalizedName.business_views.RestaurantLocalizedNameBusinessView.RestaurantLocalizedName.TextConfig
+    maxResults: 10
+    label: Localized names
+  - _type: GlobalSearchBoView
+    _name: RestaurantStatusHistorys
+    viewType: GD
+    businessView: RestaurantMaster.entities.RestaurantStatusHistory.business_views.RestaurantStatusHistoryBusinessView
+    searchTypeConfig: RestaurantMaster.entities.RestaurantStatusHistory.business_views.RestaurantStatusHistoryBusinessView.RestaurantStatusHistory.TextConfig
+    maxResults: 10
+    label: Status history
+  - _type: GlobalSearchBoView
+    _name: RestaurantOperators
+    viewType: GD
+    businessView: RestaurantMaster.entities.RestaurantOperator.business_views.RestaurantOperatorBusinessView
+    searchTypeConfig: RestaurantMaster.entities.RestaurantOperator.business_views.RestaurantOperatorBusinessView.RestaurantOperator.TextConfig
+    maxResults: 10
+    label: Operators
+  - _type: GlobalSearchBoView
+    _name: RestaurantOrgAssignments
+    viewType: GD
+    businessView: RestaurantMaster.entities.RestaurantOrgAssignment.business_views.RestaurantOrgAssignmentBusinessView
+    searchTypeConfig: RestaurantMaster.entities.RestaurantOrgAssignment.business_views.RestaurantOrgAssignmentBusinessView.RestaurantOrgAssignment.TextConfig
+    maxResults: 10
+    label: Organization assignments
+  - _type: GlobalSearchBoView
+    _name: RestaurantIdentifiers
+    viewType: GD
+    businessView: RestaurantMaster.entities.RestaurantIdentifier.business_views.RestaurantIdentifierBusinessView
+    searchTypeConfig: RestaurantMaster.entities.RestaurantIdentifier.business_views.RestaurantIdentifierBusinessView.RestaurantIdentifier.TextConfig
+    maxResults: 10
+    label: Restaurant identifiers
+  - _type: GlobalSearchBoView
+    _name: LegalEntitys
+    viewType: GD
+    businessView: RestaurantMaster.entities.LegalEntity.business_views.LegalEntityBusinessView
+    searchTypeConfig: RestaurantMaster.entities.LegalEntity.business_views.LegalEntityBusinessView.LegalEntity.TextConfig
+    maxResults: 10
+    label: Legal entities
+  - _type: GlobalSearchBoView
+    _name: Franchisees
+    viewType: GD
+    businessView: RestaurantMaster.entities.Franchisee.business_views.FranchiseeBusinessView
+    searchTypeConfig: RestaurantMaster.entities.Franchisee.business_views.FranchiseeBusinessView.Franchisee.TextConfig
+    maxResults: 10
+    label: Franchisees
+  - _type: GlobalSearchBoView
+    _name: OrganizationUnits
+    viewType: GD
+    businessView: RestaurantMaster.entities.OrganizationUnit.business_views.OrganizationUnitBusinessView
+    searchTypeConfig: RestaurantMaster.entities.OrganizationUnit.business_views.OrganizationUnitBusinessView.OrganizationUnit.TextConfig
+    maxResults: 10
+    label: Organization units
+navDrawer:
+- _type: FolderNavGroup
+  _name: GeneralActions
+  dividerVisible: true
+  labelVisible: false
+  linkedFolder: RestaurantMaster.applications.RestaurantMaster.Root.GeneralActions
+- _type: FolderNavGroup
+  _name: RestaurantsDomain
+  dividerVisible: true
+  labelVisible: true
+  linkedFolder: RestaurantMaster.applications.RestaurantMaster.Root.RestaurantsDomain
+- _type: FolderNavGroup
+  _name: OperatorsDomain
+  dividerVisible: true
+  labelVisible: true
+  linkedFolder: RestaurantMaster.applications.RestaurantMaster.Root.OperatorsDomain
+- _type: FolderNavGroup
+  _name: OrganizationDomain
+  dividerVisible: true
+  labelVisible: true
+  linkedFolder: RestaurantMaster.applications.RestaurantMaster.Root.OrganizationDomain
+- _type: FolderNavGroup
+  _name: ReferenceDataDomain
+  dividerVisible: true
+  labelVisible: false
+  linkedFolder: RestaurantMaster.applications.RestaurantMaster.Root.ReferenceDataDomain
+- _type: FolderNavGroup
+  _name: Stewardship
+  dividerVisible: true
+  labelVisible: true
+  linkedFolder: RestaurantMaster.applications.RestaurantMaster.Root.Stewardship
+- _type: FolderNavGroup
+  _name: Administration
+  dividerVisible: true
+  labelVisible: true
+  linkedFolder: RestaurantMaster.applications.RestaurantMaster.Root.Administration
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  label: Root folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+  - _type: FolderAction
+    _name: GeneralActions
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    label: Quick access
+    appActions:
+    - _type: GlobalSearchAction
+      _name: GlobalSearch
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Search restaurants, operators and organization
+      iconColor: md:green
+    - _type: MyTasksAction
+      _name: MyTasks
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: true
+      description: My tasks
+      iconColor: md:green
+      icon: images://mdi/inbox-multiple.svg
+  - _type: FolderAction
+    _name: RestaurantsDomain
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    label: Restaurants
+    iconColor: md:teal
+    appActions:
+    - _type: BrowseBusinessViewAction
+      _name: BrowseRestaurant
+      businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+      label: Restaurants
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Browse Restaurants
+      iconColor: md:teal
+      icon: images://mdi/storefront.svg
+      image: images://restaurantmaster/restaurants.png
+    - _type: FolderAction
+      _name: RestaurantDetails
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Restaurant details
+      iconColor: md:cyan
+      appActions:
+      - _type: BrowseBusinessViewAction
+        _name: BrowseRestaurantHours
+        businessView: RestaurantMaster.entities.RestaurantHours.business_views.RestaurantHoursBusinessView
+        label: Opening hours
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Opening hours
+        iconColor: md:cyan
+        icon: images://mdi/clock-outline.svg
+        image: images://restaurantmaster/opening-hours.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseRestaurantService
+        businessView: RestaurantMaster.entities.RestaurantService.business_views.RestaurantServiceBusinessView
+        label: Services
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Services
+        iconColor: md:cyan
+        icon: images://mdi/room-service-outline.svg
+        image: images://restaurantmaster/services.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseRestaurantContactPoint
+        businessView: RestaurantMaster.entities.RestaurantContactPoint.business_views.RestaurantContactPointBusinessView
+        label: Contact points
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Contact points
+        iconColor: md:cyan
+        icon: images://mdi/card-account-phone.svg
+        image: images://restaurantmaster/contact-points.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseRestaurantLocalizedName
+        businessView: RestaurantMaster.entities.RestaurantLocalizedName.business_views.RestaurantLocalizedNameBusinessView
+        label: Localized names
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Localized names
+        iconColor: md:cyan
+        icon: images://mdi/translate.svg
+        image: images://restaurantmaster/localized-names.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseRestaurantStatusHistory
+        businessView: RestaurantMaster.entities.RestaurantStatusHistory.business_views.RestaurantStatusHistoryBusinessView
+        label: Status history
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Status history
+        iconColor: md:cyan
+        icon: images://mdi/timeline-clock-outline.svg
+        image: images://restaurantmaster/status-history.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseRestaurantOperator
+        businessView: RestaurantMaster.entities.RestaurantOperator.business_views.RestaurantOperatorBusinessView
+        label: Operators
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Operators
+        iconColor: md:cyan
+        icon: images://mdi/account-tie.svg
+        image: images://restaurantmaster/operators.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseRestaurantOrgAssignment
+        businessView: RestaurantMaster.entities.RestaurantOrgAssignment.business_views.RestaurantOrgAssignmentBusinessView
+        label: Organization assignments
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Organization assignments
+        iconColor: md:cyan
+        icon: images://mdi/file-tree-outline.svg
+        image: images://restaurantmaster/organization-assignments.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseRestaurantIdentifier
+        businessView: RestaurantMaster.entities.RestaurantIdentifier.business_views.RestaurantIdentifierBusinessView
+        label: Restaurant identifiers
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Restaurant identifiers
+        iconColor: md:cyan
+        icon: images://mdi/identifier.svg
+        image: images://restaurantmaster/restaurant-identifiers.png
+      icon: images://mdi/folder.svg
+    description: The restaurants, with their hours, services, contacts, lifecycle, operators and system identifiers.
+    icon: images://mdi/storefront.svg
+  - _type: FolderAction
+    _name: OperatorsDomain
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    label: Operators
+    iconColor: md:indigo
+    appActions:
+    - _type: BrowseBusinessViewAction
+      _name: BrowseFranchisee
+      businessView: RestaurantMaster.entities.Franchisee.business_views.FranchiseeBusinessView
+      label: Franchisees
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Browse Franchisees
+      iconColor: md:indigo
+      icon: images://mdi/account-group.svg
+      image: images://restaurantmaster/franchisees.png
+    - _type: BrowseBusinessViewAction
+      _name: BrowseLegalEntity
+      businessView: RestaurantMaster.entities.LegalEntity.business_views.LegalEntityBusinessView
+      label: Legal entities
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Browse Legal entities
+      iconColor: md:indigo
+      icon: images://mdi/domain.svg
+      image: images://restaurantmaster/legal-entities.png
+    description: Franchisees and the legal entities that operate and are billed for restaurants.
+    icon: images://mdi/account-group.svg
+  - _type: FolderAction
+    _name: OrganizationDomain
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    label: Organization
+    iconColor: md:brown
+    appActions:
+    - _type: BrowseBusinessViewAction
+      _name: BrowseOrganizationUnit
+      businessView: RestaurantMaster.entities.OrganizationUnit.business_views.OrganizationUnitBusinessView
+      label: Organization units
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Browse Organization units
+      iconColor: md:brown
+      icon: images://mdi/sitemap.svg
+      image: images://restaurantmaster/organization-units.png
+    description: Finance, Operations and Marketing hierarchies.
+    icon: images://mdi/sitemap.svg
+  - _type: FolderAction
+    _name: ReferenceDataDomain
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    label: Reference data
+    iconColor: md:blue grey
+    appActions:
+    - _type: FolderAction
+      _name: ReferenceData
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Reference data
+      iconColor: md:blue grey
+      appActions:
+      - _type: BrowseBusinessViewAction
+        _name: BrowseCountry
+        businessView: RestaurantMaster.entities.Country.business_views.CountryBusinessView
+        label: Countries
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Countries
+        iconColor: md:blue grey
+        icon: images://mdi/earth.svg
+        image: images://restaurantmaster/countries.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseStateProvince
+        businessView: RestaurantMaster.entities.StateProvince.business_views.StateProvinceBusinessView
+        label: States and provinces
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse States and provinces
+        iconColor: md:blue grey
+        icon: images://mdi/map-outline.svg
+        image: images://restaurantmaster/states-and-provinces.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseBrand
+        businessView: RestaurantMaster.entities.Brand.business_views.BrandBusinessView
+        label: Brands
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Brands
+        iconColor: md:blue grey
+        icon: images://mdi/tag-heart-outline.svg
+        image: images://restaurantmaster/brands.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseLifecycleStatus
+        businessView: RestaurantMaster.entities.LifecycleStatus.business_views.LifecycleStatusBusinessView
+        label: Lifecycle statuses
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Lifecycle statuses
+        iconColor: md:blue grey
+        icon: images://mdi/progress-check.svg
+        image: images://restaurantmaster/lifecycle-statuses.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseLifecycleStatusReason
+        businessView: RestaurantMaster.entities.LifecycleStatusReason.business_views.LifecycleStatusReasonBusinessView
+        label: Status reasons
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Status reasons
+        iconColor: md:blue grey
+        icon: images://mdi/comment-question-outline.svg
+        image: images://restaurantmaster/status-reasons.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseIdentifierType
+        businessView: RestaurantMaster.entities.IdentifierType.business_views.IdentifierTypeBusinessView
+        label: Identifier types
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Identifier types
+        iconColor: md:blue grey
+        icon: images://mdi/card-text-outline.svg
+        image: images://restaurantmaster/identifier-types.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseSourceSystem
+        businessView: RestaurantMaster.entities.SourceSystem.business_views.SourceSystemBusinessView
+        label: Source systems
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Source systems
+        iconColor: md:blue grey
+        icon: images://mdi/server-network.svg
+        image: images://restaurantmaster/source-systems.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseServiceType
+        businessView: RestaurantMaster.entities.ServiceType.business_views.ServiceTypeBusinessView
+        label: Service types
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Service types
+        iconColor: md:blue grey
+        icon: images://mdi/silverware-fork-knife.svg
+        image: images://restaurantmaster/service-types.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseBuildingType
+        businessView: RestaurantMaster.entities.BuildingType.business_views.BuildingTypeBusinessView
+        label: Building types
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Building types
+        iconColor: md:blue grey
+        icon: images://mdi/office-building-outline.svg
+        image: images://restaurantmaster/building-types.png
+      - _type: BrowseBusinessViewAction
+        _name: BrowseLocationType
+        businessView: RestaurantMaster.entities.LocationType.business_views.LocationTypeBusinessView
+        label: Location types
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Browse Location types
+        iconColor: md:blue grey
+        icon: images://mdi/map-marker-radius-outline.svg
+        image: images://restaurantmaster/location-types.png
+      icon: images://mdi/folder-cog-outline.svg
+    description: Lists maintained by the data administrator.
+    icon: images://mdi/folder-cog-outline.svg
+  - _type: FolderAction
+    _name: Stewardship
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    label: Data stewardship
+    iconColor: md:deep-orange
+    description: Records in error and data-quality queues
+    appActions:
+    - _type: FolderAction
+      _name: Errors
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Records in error
+      iconColor: md:red
+      appActions:
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurant
+        businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+        viewType: GDWE
+        label: Restaurants in error
+        businessViewLabelOverride: Restaurants in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Restaurants whose consolidated record breaks a rule checked after consolidation (golden records).
+        iconColor: md:red
+        icon: images://mdi/storefront.svg
+        image: images://restaurantmaster/restaurants.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantSrc
+        businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+        viewType: SDWE
+        label: Restaurants rejected at load
+        businessViewLabelOverride: Restaurants rejected at load
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Restaurants rejected by a validation rule before consolidation (source records).
+        iconColor: md:red
+        icon: images://mdi/storefront.svg
+        image: images://restaurantmaster/restaurants.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrLegalEntity
+        businessView: RestaurantMaster.entities.LegalEntity.business_views.LegalEntityBusinessView
+        viewType: GDWE
+        label: Legal entities in error
+        businessViewLabelOverride: Legal entities in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Legal entities whose consolidated record breaks a rule checked after consolidation (golden records).
+        iconColor: md:red
+        icon: images://mdi/domain.svg
+        image: images://restaurantmaster/legal-entities.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrLegalEntitySrc
+        businessView: RestaurantMaster.entities.LegalEntity.business_views.LegalEntityBusinessView
+        viewType: SDWE
+        label: Legal entities rejected at load
+        businessViewLabelOverride: Legal entities rejected at load
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Legal entities rejected by a validation rule before consolidation (source records).
+        iconColor: md:red
+        icon: images://mdi/domain.svg
+        image: images://restaurantmaster/legal-entities.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrFranchisee
+        businessView: RestaurantMaster.entities.Franchisee.business_views.FranchiseeBusinessView
+        viewType: SAWE
+        label: Franchisees in error
+        businessViewLabelOverride: Franchisees in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Franchisees rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/account-group.svg
+        image: images://restaurantmaster/franchisees.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrOrganizationUnit
+        businessView: RestaurantMaster.entities.OrganizationUnit.business_views.OrganizationUnitWorklistBusinessView
+        viewType: SAWE
+        label: Organization units in error
+        businessViewLabelOverride: Organization units in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Organization units rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/sitemap.svg
+        image: images://restaurantmaster/organization-units.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantHours
+        businessView: RestaurantMaster.entities.RestaurantHours.business_views.RestaurantHoursBusinessView
+        viewType: SAWE
+        label: Opening hours in error
+        businessViewLabelOverride: Opening hours in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Opening hours rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/clock-outline.svg
+        image: images://restaurantmaster/opening-hours.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantService
+        businessView: RestaurantMaster.entities.RestaurantService.business_views.RestaurantServiceBusinessView
+        viewType: SAWE
+        label: Services in error
+        businessViewLabelOverride: Services in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Services rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/room-service-outline.svg
+        image: images://restaurantmaster/services.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantContactPoint
+        businessView: RestaurantMaster.entities.RestaurantContactPoint.business_views.RestaurantContactPointBusinessView
+        viewType: SAWE
+        label: Contact points in error
+        businessViewLabelOverride: Contact points in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Contact points rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/card-account-phone.svg
+        image: images://restaurantmaster/contact-points.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantLocalizedName
+        businessView: RestaurantMaster.entities.RestaurantLocalizedName.business_views.RestaurantLocalizedNameBusinessView
+        viewType: SAWE
+        label: Localized names in error
+        businessViewLabelOverride: Localized names in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Localized names rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/translate.svg
+        image: images://restaurantmaster/localized-names.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantStatusHistory
+        businessView: RestaurantMaster.entities.RestaurantStatusHistory.business_views.RestaurantStatusHistoryBusinessView
+        viewType: SAWE
+        label: Status history in error
+        businessViewLabelOverride: Status history in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Status history rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/timeline-clock-outline.svg
+        image: images://restaurantmaster/status-history.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantOperator
+        businessView: RestaurantMaster.entities.RestaurantOperator.business_views.RestaurantOperatorBusinessView
+        viewType: SAWE
+        label: Operators in error
+        businessViewLabelOverride: Operators in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Operators rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/account-tie.svg
+        image: images://restaurantmaster/operators.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantOrgAssignment
+        businessView: RestaurantMaster.entities.RestaurantOrgAssignment.business_views.RestaurantOrgAssignmentBusinessView
+        viewType: SAWE
+        label: Organization assignments in error
+        businessViewLabelOverride: Organization assignments in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Organization assignments rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/file-tree-outline.svg
+        image: images://restaurantmaster/organization-assignments.png
+      - _type: BrowseBusinessViewAction
+        _name: ErrRestaurantIdentifier
+        businessView: RestaurantMaster.entities.RestaurantIdentifier.business_views.RestaurantIdentifierBusinessView
+        viewType: SAWE
+        label: Restaurant identifiers in error
+        businessViewLabelOverride: Restaurant identifiers in error
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Restaurant identifiers rejected by a validation rule when they were authored.
+        iconColor: md:red
+        icon: images://mdi/identifier.svg
+        image: images://restaurantmaster/restaurant-identifiers.png
+      icon: images://mdi/alert-circle.svg
+    - _type: FolderAction
+      _name: Worklists
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Worklists
+      iconColor: md:amber
+      appActions:
+      - _type: BrowseBusinessViewAction
+        _name: WLAwaitingOnboarding
+        businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+        viewType: GD
+        appliedFilter: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView.Restaurant.AwaitingOnboarding
+        label: Awaiting onboarding
+        businessViewLabelOverride: Awaiting onboarding
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Restaurants published by Real Estate that a steward has not onboarded yet (no brand).
+        iconColor: md:teal
+        icon: images://mdi/store-plus.svg
+        image: images://restaurantmaster/awaiting-onboarding.png
+      - _type: BrowseBusinessViewAction
+        _name: WLListingIncomplete
+        businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+        viewType: GD
+        appliedFilter: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView.Restaurant.ListingIncomplete
+        label: Listed but incomplete
+        businessViewLabelOverride: Listed but incomplete
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Restaurants shown on public channels without a name, full address, coordinates or main phone.
+        iconColor: md:orange
+        icon: images://mdi/map-marker-alert-outline.svg
+        image: images://restaurantmaster/listed-but-incomplete.png
+      - _type: BrowseBusinessViewAction
+        _name: WLAddressInconsistent
+        businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+        viewType: GD
+        appliedFilter: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView.Restaurant.AddressInconsistent
+        label: Address to check
+        businessViewLabelOverride: Address to check
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: State outside the country, or coordinates outside the US and Canada.
+        iconColor: md:orange
+        icon: images://mdi/map-search-outline.svg
+        image: images://restaurantmaster/address-to-check.png
+      - _type: BrowseBusinessViewAction
+        _name: WLUnknownToSystems
+        businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+        viewType: GD
+        appliedFilter: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView.Restaurant.UnknownToSystems
+        label: Open but unknown to ERP or POS
+        businessViewLabelOverride: Open but unknown to ERP or POS
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: 'Open restaurants that ERP or the POS never published: a broken integration or a mistyped restaurant ID.'
+        iconColor: md:red
+        icon: images://mdi/lan-disconnect.svg
+        image: images://restaurantmaster/open-but-unknown-to-erp-or-pos.png
+      - _type: BrowseBusinessViewAction
+        _name: WLMissingOperatorOrStatus
+        businessView: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView
+        viewType: GD
+        appliedFilter: RestaurantMaster.entities.Restaurant.business_views.RestaurantBusinessView.Restaurant.MissingOperatorOrStatus
+        label: Missing operator or status history
+        businessViewLabelOverride: Missing operator or status history
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Restaurants beyond the pipeline without a started operator or status-history row.
+        iconColor: md:amber
+        icon: images://mdi/account-question-outline.svg
+        image: images://restaurantmaster/missing-operator-or-status-history.png
+      - _type: BrowseBusinessViewAction
+        _name: WLLegalEntityWithoutFranchisee
+        businessView: RestaurantMaster.entities.LegalEntity.business_views.LegalEntityBusinessView
+        viewType: GD
+        appliedFilter: RestaurantMaster.entities.LegalEntity.business_views.LegalEntityBusinessView.LegalEntity.LegalEntityWithoutFranchisee
+        label: Franchisee companies without a group
+        businessViewLabelOverride: Franchisee companies without a group
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        description: Franchisee companies not yet attached to their franchisee group.
+        iconColor: md:amber
+        icon: images://mdi/link-off.svg
+        image: images://restaurantmaster/franchisee-companies-without-a-group.png
+      icon: images://mdi/clipboard-list-outline.svg
+    icon: images://mdi/account-check.svg
+  - _type: FolderAction
+    _name: Administration
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    label: Administration
+    description: Administrative tasks
+    appActions:
+    - _type: OpenDocumentationAction
+      _name: OpenModelDoc
+      iconColor: md:grey
+      label: Model documentation
+    - _type: BrowseEntitiesFolderAction
+      _name: Entities
+      lineageEnabled: true
+    - _type: FolderAction
+      _name: ImportData
+      icon: images://mdi/database-import.svg
+      image: images://restaurantmaster/data-import.png
+      iconColor: md:grey
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      label: Data import
+      appActions:
+      - _type: ImportDataAppAction
+        _name: ImportRestaurant
+        label: Import Restaurant
+        image: images://restaurantmaster/import-restaurants.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.Restaurant.action_sets.RestaurantActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportRestaurantIdentifier
+        label: Import RestaurantIdentifier
+        image: images://restaurantmaster/import-restaurant-identifiers.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.RestaurantIdentifier.action_sets.RestaurantIdentifierActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportRestaurantContactPoint
+        label: Import RestaurantContactPoint
+        image: images://restaurantmaster/import-contact-points.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.RestaurantContactPoint.action_sets.RestaurantContactPointActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportRestaurantStatusHistory
+        label: Import RestaurantStatusHistory
+        image: images://restaurantmaster/import-status-history.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.RestaurantStatusHistory.action_sets.RestaurantStatusHistoryActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportRestaurantHours
+        label: Import RestaurantHours
+        image: images://restaurantmaster/import-opening-hours.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.RestaurantHours.action_sets.RestaurantHoursActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportRestaurantService
+        label: Import RestaurantService
+        image: images://restaurantmaster/import-services.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.RestaurantService.action_sets.RestaurantServiceActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportRestaurantLocalizedName
+        label: Import RestaurantLocalizedName
+        image: images://restaurantmaster/import-localized-names.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.RestaurantLocalizedName.action_sets.RestaurantLocalizedNameActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportRestaurantOrgAssignment
+        label: Import RestaurantOrgAssignment
+        image: images://restaurantmaster/import-organization-assignments.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.RestaurantOrgAssignment.action_sets.RestaurantOrgAssignmentActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportRestaurantOperator
+        label: Import RestaurantOperator
+        image: images://restaurantmaster/import-operators.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.RestaurantOperator.action_sets.RestaurantOperatorActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportLegalEntity
+        label: Import LegalEntity
+        image: images://restaurantmaster/import-legal-entities.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.LegalEntity.action_sets.LegalEntityActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportFranchisee
+        label: Import Franchisee
+        image: images://restaurantmaster/import-franchisees.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.Franchisee.action_sets.FranchiseeActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportOrganizationUnit
+        label: Import OrganizationUnit
+        image: images://restaurantmaster/import-organization-units.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.OrganizationUnit.action_sets.OrganizationUnitActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportCountry
+        label: Import Country
+        image: images://restaurantmaster/import-countries.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.Country.action_sets.CountryActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportStateProvince
+        label: Import StateProvince
+        image: images://restaurantmaster/import-states-and-provinces.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.StateProvince.action_sets.StateProvinceActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportBrand
+        label: Import Brand
+        image: images://restaurantmaster/import-brands.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.Brand.action_sets.BrandActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportLifecycleStatus
+        label: Import LifecycleStatus
+        image: images://restaurantmaster/import-lifecycle-statuses.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.LifecycleStatus.action_sets.LifecycleStatusActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportLifecycleStatusReason
+        label: Import LifecycleStatusReason
+        image: images://restaurantmaster/import-status-reasons.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.LifecycleStatusReason.action_sets.LifecycleStatusReasonActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportIdentifierType
+        label: Import IdentifierType
+        image: images://restaurantmaster/import-identifier-types.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.IdentifierType.action_sets.IdentifierTypeActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportSourceSystem
+        label: Import SourceSystem
+        image: images://restaurantmaster/import-source-systems.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.SourceSystem.action_sets.SourceSystemActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportServiceType
+        label: Import ServiceType
+        image: images://restaurantmaster/import-service-types.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.ServiceType.action_sets.ServiceTypeActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportBuildingType
+        label: Import BuildingType
+        image: images://restaurantmaster/import-building-types.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.BuildingType.action_sets.BuildingTypeActionSet.Import
+      - _type: ImportDataAppAction
+        _name: ImportLocationType
+        label: Import LocationType
+        image: images://restaurantmaster/import-location-types.png
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        importAction: RestaurantMaster.entities.LocationType.action_sets.LocationTypeActionSet.Import
+    icon: images://mdi/bookshelf.svg
+  icon: images://mdi/folder.svg

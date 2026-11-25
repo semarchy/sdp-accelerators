@@ -1,0 +1,112 @@
+_package: CTMDM.entities.Protocol
+_type: Entity
+_name: Protocol
+label: Protocol
+pluralLabel: Protocols
+entityType: ID_MATCHED
+physicalTableName: PROTOCOL
+iconUrl: images://mdi/file-document-edit-outline.svg
+description: "Governed protocol version associated with a clinical study."
+documentation: "Governed protocol version associated with a clinical study."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: ProtocolID
+    label: Protocol ID
+    description: Business identifier for the protocol.
+    documentation: Business identifier for the protocol.
+    physicalName: PROTOCOL_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: ProtocolNumber
+    label: Protocol Number
+    description: Official protocol number.
+    documentation: Official protocol number.
+    physicalName: PROTOCOL_NUMBER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedProtocolNumber
+    label: Normalized Protocol Number
+    description: Trimmed and uppercased protocol number.
+    documentation: Trimmed and uppercased protocol number.
+    physicalName: NORM_PROTOCOL_NUMBER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: ProtocolTitle
+    label: Protocol Title
+    description: Official protocol title.
+    documentation: Official protocol title.
+    physicalName: PROTOCOL_TITLE
+    dataType: String
+    length: 500
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: VersionNumber
+    label: Version Number
+    description: Protocol version number.
+    documentation: Protocol version number.
+    physicalName: VERSION_NUMBER
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: Effective Date
+    description: Date the protocol version becomes effective.
+    documentation: Date the protocol version becomes effective.
+    physicalName: EFFECTIVE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ApprovalDate
+    label: Approval Date
+    description: Date the protocol version was approved.
+    documentation: Date the protocol version was approved.
+    physicalName: APPROVAL_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    description: Current protocol lifecycle status.
+    documentation: Current protocol lifecycle status.
+    physicalName: STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ProtocolSynopsis
+    label: Protocol Synopsis
+    description: Short synopsis for operational use.
+    documentation: Short synopsis for operational use.
+    physicalName: PROTOCOL_SYNOPSIS
+    dataType: String
+    length: 1000
+    mandatory: false
+
+primaryKey: CTMDM.entities.Protocol.Protocol.ProtocolID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

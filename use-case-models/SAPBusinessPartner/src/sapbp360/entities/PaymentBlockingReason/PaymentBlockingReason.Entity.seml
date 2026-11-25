@@ -1,0 +1,85 @@
+# Payment Blocking Reason entity for the SAP Business Partner 360 accelerator.
+_name: PaymentBlockingReason
+_package: sapbp360.entities.PaymentBlockingReason
+_type: Entity
+primaryKey: sapbp360.entities.PaymentBlockingReason.PaymentBlockingReason.PaymentBlockingReasonID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: PaymentBlockingReasonCode
+label: Payment Blocking Reason
+documentation: Payment Blocking Reason reference data used by the SAP Business Partner 360 model.
+description: Payment Blocking Reason reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/PaymentBlockingReason.svg
+pluralLabel: Payment Blocking Reasons
+historizeGolden: true
+historizeMaster: false
+physicalTableName: PMT_BLK_REASON
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PaymentBlockingReasonID
+    physicalName: PMT_BLK_REASON_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Blocking Reason ID
+    documentation: Unique identifier for the payment blocking reason.
+    description: Unique identifier for the payment blocking reason.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Payment Blocking Reason ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PaymentBlockingReasonCode
+    physicalName: PMT_BLK_REASON_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Blocking Reason Code
+    documentation: Code for the payment blocking reason.
+    description: Code for the payment blocking reason.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Payment Blocking Reason Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PaymentBlockingReasonName
+    physicalName: PMT_BLK_REASON_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Blocking Reason Name
+    documentation: Name of the payment blocking reason.
+    description: Name of the payment blocking reason.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Payment Blocking Reason Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the payment blocking reason.
+    description: Description for the payment blocking reason.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the payment blocking reason is active.
+    description: Indicates whether the payment blocking reason is active.
+    mandatory: false
+    length: 1
+    searchable: true

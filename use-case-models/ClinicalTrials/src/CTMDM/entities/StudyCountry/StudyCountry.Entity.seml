@@ -1,0 +1,77 @@
+_package: CTMDM.entities.StudyCountry
+_type: Entity
+_name: StudyCountry
+label: Study Country
+pluralLabel: Study Countries
+entityType: ID_MATCHED
+physicalTableName: STUDY_CTRY
+iconUrl: images://mdi/earth.svg
+description: "Associates studies with participating countries and country-level regulatory status."
+documentation: "Associates studies with participating countries and country-level regulatory status."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: StudyCountryID
+    label: Study Country ID
+    description: Business identifier for the study-country association.
+    documentation: Business identifier for the study-country association.
+    physicalName: STUDY_CTRY_ID
+    dataType: String
+    length: 60
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CountryStatus
+    label: Country Status
+    description: Study status in the country.
+    documentation: Study status in the country.
+    physicalName: CTRY_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RegulatorySubmissionDate
+    label: Regulatory Submission Date
+    description: Date of country regulatory submission.
+    documentation: Date of country regulatory submission.
+    physicalName: REG_SUBMISSION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: RegulatoryApprovalDate
+    label: Regulatory Approval Date
+    description: Date of country regulatory approval.
+    documentation: Date of country regulatory approval.
+    physicalName: REG_APPROVAL_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: FirstSiteActivatedDate
+    label: First Site Activated Date
+    description: Date the first site was activated in the country.
+    documentation: Date the first site was activated in the country.
+    physicalName: FIRST_SITE_ACTIVATED_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: EnrollmentTarget
+    label: Enrollment Target
+    description: Country-level enrollment target.
+    documentation: Country-level enrollment target.
+    physicalName: ENRL_TARGET
+    dataType: Integer
+    precision: 10
+    mandatory: false
+
+primaryKey: CTMDM.entities.StudyCountry.StudyCountry.StudyCountryID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

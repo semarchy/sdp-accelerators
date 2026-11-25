@@ -1,0 +1,93 @@
+_name: AuthorBPTaxNumbers
+_package: sapbp360.entities.BPTaxNumber.steppers
+_type: Stepper
+entity: sapbp360.entities.BPTaxNumber.BPTaxNumber
+description: Stepper for authoring BP Tax Numbers.
+rootStep:
+  _name: BPTaxNumbers
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPTaxNumber.collection_views.BPTaxNumberCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Tax Numbers
+  description: Manage BP Tax Number data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPTaxNumber_BPTaxType.BPTaxType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPTaxNumber_TaxNumberCategory.TaxNumberCategory
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPTaxNumber_BusinessPartner.BusinessPartner
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Tax Number.
+      formTab: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_BPTaxType
+          referencePickerCollectionView: sapbp360.entities.BPTaxType.collection_views.BPTaxTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_TaxNumberCategory
+          referencePickerCollectionView: sapbp360.entities.TaxNumberCategory.collection_views.TaxNumberCategoryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPTaxNumber.forms.BPTaxNumberDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPTaxNumber_BPTaxType.BPTaxType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPTaxNumber_TaxNumberCategory.TaxNumberCategory
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPTaxNumber_BusinessPartner.BusinessPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Tax Numbers
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPTaxNumber_BPTaxType.BPTaxType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPTaxNumber_TaxNumberCategory.TaxNumberCategory
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPTaxNumber_BusinessPartner.BusinessPartner
+triggers: []

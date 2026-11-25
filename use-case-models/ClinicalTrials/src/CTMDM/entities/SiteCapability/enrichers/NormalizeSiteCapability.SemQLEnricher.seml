@@ -1,0 +1,13 @@
+_package: CTMDM.entities.SiteCapability.enrichers
+_name: NormalizeSiteCapability
+_type: SemQLEnricher
+entity: CTMDM.entities.SiteCapability.SiteCapability
+label: Normalize Site Capability
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Site Capability values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedCapabilityCode
+    expression: "RTRIM(LTRIM(UPPER(CapabilityCode)))"
+  - attributeName: NormalizedCapabilityName
+    expression: "RTRIM(LTRIM(UPPER(CapabilityName)))"

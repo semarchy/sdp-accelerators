@@ -1,0 +1,139 @@
+_package: LifeAndAnnuityInsurance.entities.Rider
+_type: Entity
+_name: Rider
+label: "Rider"
+pluralLabel: "Riders"
+physicalTableName: RIDER
+iconUrl: images://mdi/plus-box-multiple-outline.svg
+description: "Represents a rider or supplemental benefit attached to a policy or coverage."
+documentation: "Represents a rider or supplemental benefit attached to a policy or coverage."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: RiderID
+    label: "Rider ID"
+    physicalName: RIDER_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the rider."
+    documentation: "Unique identifier for the rider."
+  - _type: EntityAttribute
+    _name: RiderNumber
+    label: "Rider Number"
+    physicalName: RIDER_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Carrier or administration rider number."
+    documentation: "Carrier or administration rider number."
+  - _type: EntityAttribute
+    _name: RiderName
+    label: "Rider Name"
+    physicalName: RIDER_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Business name of the rider."
+    documentation: "Business name of the rider."
+  - _type: EntityAttribute
+    _name: RiderStatus
+    label: "Rider Status"
+    physicalName: RIDER_STAT
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Current status of the rider."
+    documentation: "Current status of the rider."
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: "Effective Date"
+    physicalName: EFF_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the rider became effective."
+    documentation: "Date the rider became effective."
+  - _type: EntityAttribute
+    _name: TerminationDate
+    label: "Termination Date"
+    physicalName: TERMINATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the rider terminated, if applicable."
+    documentation: "Date the rider terminated, if applicable."
+  - _type: EntityAttribute
+    _name: BenefitAmount
+    label: "Benefit Amount"
+    physicalName: BENEFIT_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Benefit amount provided by the rider."
+    documentation: "Benefit amount provided by the rider."
+  - _type: EntityAttribute
+    _name: RiderPremium
+    label: "Rider Premium"
+    physicalName: RIDER_PREM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Premium charged for the rider."
+    documentation: "Premium charged for the rider."
+  - _type: EntityAttribute
+    _name: WaiverIndicator
+    label: "Waiver Indicator"
+    physicalName: WAIVER_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the rider includes premium waiver functionality."
+    documentation: "Indicates whether the rider includes premium waiver functionality."
+  - _type: EntityAttribute
+    _name: Description
+    label: "Description"
+    physicalName: DESC_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Description of rider terms."
+    documentation: "Description of rider terms."
+  - _type: EntityAttribute
+    _name: WaitingPeriodDays
+    label: "Waiting Period Days"
+    physicalName: WAITING_PERIOD_DAYS
+    dataType: Decimal
+    precision: 9
+    scale: 0
+    mandatory: false
+    searchable: true
+    description: "Waiting period in days before rider benefits apply."
+    documentation: "Waiting period in days before rider benefits apply."
+  - _type: EntityAttribute
+    _name: EliminationPeriodDays
+    label: "Elimination Period Days"
+    physicalName: ELIM_PERIOD_DAYS
+    dataType: Decimal
+    precision: 9
+    scale: 0
+    mandatory: false
+    searchable: true
+    description: "Elimination period in days before rider benefits become payable."
+    documentation: "Elimination period in days before rider benefits become payable."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.Rider.Rider.RiderID
+entityType: ID_MATCHED

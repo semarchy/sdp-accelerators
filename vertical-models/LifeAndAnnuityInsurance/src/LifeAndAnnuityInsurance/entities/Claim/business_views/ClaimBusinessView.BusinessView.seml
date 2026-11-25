@@ -1,0 +1,121 @@
+_package: LifeAndAnnuityInsurance.entities.Claim.business_views
+_type: BusinessView
+_name: ClaimBusinessView
+label: "Claim"
+entity: LifeAndAnnuityInsurance.entities.Claim.Claim
+rootLabel: "Claims"
+rootPluralLabel: "Claims"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Claim
+  displayCard: LifeAndAnnuityInsurance.entities.Claim.display_cards.ClaimDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.Claim.Claim
+  actionSet: LifeAndAnnuityInsurance.entities.Claim.action_sets.ClaimActionSet
+  collection: LifeAndAnnuityInsurance.entities.Claim.collection_views.ClaimCollectionView
+  form: LifeAndAnnuityInsurance.entities.Claim.forms.ClaimForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: ClaimBenefitPayment
+      label: "Claim Benefit Payment"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Claim Benefit Payments"
+      iconUrl: images://mdi/cash-check.svg
+      transitionPath: ClaimBenefitPayment
+      useCustomLabel: true
+      description: "Transition from Claim to related Claim Benefit Payments."
+      visibleInFormTabCondition: any ClaimBenefitPayment has (1=1)
+      enableHierarchy: any ClaimBenefitPayment has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: ClaimBenefitPayment
+        displayCard: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.display_cards.ClaimBenefitPaymentDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.ClaimBenefitPayment
+        actionSet: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.action_sets.ClaimBenefitPaymentActionSet
+        collection: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.collection_views.ClaimBenefitPaymentCollectionView
+        form: LifeAndAnnuityInsurance.entities.ClaimBenefitPayment.forms.ClaimBenefitPaymentForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Records
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ClaimMasterRecords
+        _type: BusinessViewEntity
+        displayCard: LifeAndAnnuityInsurance.entities.Claim.display_cards.ClaimDisplayCard
+        collection: LifeAndAnnuityInsurance.entities.Claim.collection_views.ClaimCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: LifeAndAnnuityInsurance.entities.Claim.Claim
+        form: LifeAndAnnuityInsurance.entities.Claim.forms.ClaimForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: LifeAndAnnuityInsurance.entities.Claim.action_sets.ClaimActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: "Transition from Claim to related golden history records."
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: LifeAndAnnuityInsurance.entities.Claim.business_views.ClaimBusinessView.Claim
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/file-alert-outline.svg

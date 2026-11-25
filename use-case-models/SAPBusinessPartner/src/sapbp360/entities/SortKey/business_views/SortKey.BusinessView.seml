@@ -1,0 +1,67 @@
+_name: SortKey
+_package: sapbp360.entities.SortKey.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.SortKey.SortKey
+rootLabel: Sort Key
+rootPluralLabel: Sort Keys
+useHierarchyOnOpen: false
+label: Sort Key
+description: Business view for Sort Key.
+rootBusinessViewEntity:
+  _name: SortKey
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.SortKey.collection_views.SortKeyCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.SortKey.SortKey
+  form: sapbp360.entities.SortKey.forms.SortKeyBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.SortKey.action_sets.SortKeyActionSet
+  displayCard: sapbp360.entities.SortKey.display_cards.SortKeyDisplayCard
+  sortExpression: SortKeyName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.SortKey.business_views.SortKey.SortKey
+rootIconUrl: images://mdi/book-open-page-variant-outline.svg

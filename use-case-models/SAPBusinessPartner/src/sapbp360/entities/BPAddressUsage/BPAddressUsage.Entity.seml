@@ -1,0 +1,53 @@
+# BP Address Usage entity for the SAP Business Partner 360 accelerator.
+_name: BPAddressUsage
+_package: sapbp360.entities.BPAddressUsage
+_type: Entity
+primaryKey: sapbp360.entities.BPAddressUsage.BPAddressUsage.AddressUsageID
+sourceIdGeneration:
+  mode: MANUAL
+label: BP Address Usage
+documentation: Usage assignment for an address such as default, billing, or ship-to.
+description: Usage assignment for an address such as default, billing, or ship-to.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/BPAddressUsage.svg
+pluralLabel: BP Address Usages
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BP_ADDR_USAGE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AddressUsageID
+    physicalName: ADDR_USAGE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Address Usage ID
+    documentation: Unique identifier for the address usage assignment.
+    description: Unique identifier for the address usage assignment.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Address Usage ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: ValidFrom
+    physicalName: VALID_FROM
+    dataType: Date
+    goldenAttribute: true
+    label: Valid From
+    documentation: Usage validity start date.
+    description: Usage validity start date.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: ValidTo
+    physicalName: VALID_TO
+    dataType: Date
+    goldenAttribute: true
+    label: Valid To
+    documentation: Usage validity end date.
+    description: Usage validity end date.
+    mandatory: false
+    searchable: true

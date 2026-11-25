@@ -1,0 +1,69 @@
+_package: RestaurantMaster.entities.Franchisee.business_views
+_type: BusinessView
+_name: FranchiseeBusinessView
+entity: RestaurantMaster.entities.Franchisee.Franchisee
+rootLabel: Franchisees
+rootPluralLabel: Franchisees
+displayRootNodeAs: ICON_LABEL
+label: Franchisee
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Franchisee
+  entity: RestaurantMaster.entities.Franchisee.Franchisee
+  actionSet: RestaurantMaster.entities.Franchisee.action_sets.FranchiseeActionSet
+  collection: RestaurantMaster.entities.Franchisee.collection_views.FranchiseeCollectionView
+  form: RestaurantMaster.entities.Franchisee.forms.FranchiseeForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  displayCard: RestaurantMaster.entities.Franchisee.display_cards.FranchiseeDisplayCard
+  businessEntitySearchConfigs:
+  - _name: TextConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: TEXT
+  - _name: FormConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: BY_FORM
+  - _name: AdvancedConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: ADVANCED
+  - _name: SemqlConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+  - _type: BusinessViewTransition
+    _name: LegalEntitiesTab
+    label: Legal entities
+    useCustomLabel: true
+    transitionPath: LegalEntities
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: LegalEntitiesTabEnt
+      entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+      actionSet: RestaurantMaster.entities.LegalEntity.action_sets.LegalEntityActionSet
+      collection: RestaurantMaster.entities.LegalEntity.collection_views.LegalEntityCollectionView
+      form: RestaurantMaster.entities.LegalEntity.forms.LegalEntityForm
+      displayCard: RestaurantMaster.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Legal entities
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/domain.svg
+    visibleInFormTabCondition: any LegalEntities has (1=1)
+enableHierarchyView: false
+useHierarchyOnOpen: false

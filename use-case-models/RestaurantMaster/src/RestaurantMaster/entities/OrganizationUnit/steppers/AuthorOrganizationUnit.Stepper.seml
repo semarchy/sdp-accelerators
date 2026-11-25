@@ -1,0 +1,93 @@
+_package: RestaurantMaster.entities.OrganizationUnit.steppers
+_type: Stepper
+_name: AuthorOrganizationUnit
+entity: RestaurantMaster.entities.OrganizationUnit.OrganizationUnit
+label: Organization units
+rootStep:
+  _type: CollectionStep
+  _name: OrganizationUnitCollection
+  label: Organization units
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: RestaurantMaster.entities.OrganizationUnit.collection_views.OrganizationUnitCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+  - _type: FormStep
+    _name: OrganizationUnit
+    label: Organization unit
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    enableMasterValuePicking: false
+    formTab: RestaurantMaster.entities.OrganizationUnit.forms.OrganizationUnitForm.OrganizationUnit
+    formStepValidations:
+    - validationType: CHECK
+      validator: RestaurantMaster.entities.OrganizationUnit.validations.UnitIntegrity
+      executedOnDataChange: true
+      executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: ChildUnitCollection
+    label: Child units
+    oneToManyReference: RestaurantMaster.references.OrganizationUnitHasParent
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.OrganizationUnit.collection_views.OrganizationUnitCollectionView
+    displayCard: RestaurantMaster.entities.OrganizationUnit.display_cards.OrganizationUnitDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: ChildOrganizationUnit
+      label: Organization unit
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.OrganizationUnit.forms.OrganizationUnitForm.OrganizationUnit
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.OrganizationUnit.validations.UnitIntegrity
+        executedOnDataChange: true
+        executedOnFormOpen: true

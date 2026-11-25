@@ -1,0 +1,287 @@
+﻿_package: RetailCustomer360.entities.Campaign
+_type: Entity
+_name: Campaign
+label: Campaign
+pluralLabel: Campaigns
+entityType: BASIC
+physicalTableName: CAMPAIGN
+iconUrl: https://api.iconify.design/mdi/bullseye-arrow.svg?color=%232563EB&width=64
+
+description: "Marketing campaigns representing promotional activities and initiatives."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CampaignId
+    label: Campaign Id
+    physicalName: CAMPAIGN_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: CampaignCode
+    label: Campaign Code
+    physicalName: CAMPAIGN_CODE
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Business campaign code"
+
+  - _type: EntityAttribute
+    _name: CampaignName
+    label: Campaign Name
+    physicalName: CAMPAIGN_NAME
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Campaign name"
+
+  - _type: EntityAttribute
+    _name: CampaignType
+    label: Campaign Type
+    physicalName: CAMPAIGN_TYPE
+    dataType: RetailCustomer360.list_of_values.CampaignType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Acquisition, Retention, Winback, Loyalty, Cross-sell"
+
+  - _type: EntityAttribute
+    _name: Channel
+    label: Channel
+    physicalName: CHANNEL
+    dataType: RetailCustomer360.list_of_values.CampaignChannel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Email, SMS, Push, Web, Social, Store"
+
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    physicalName: START_DATE
+    dataType: Date
+    searchable: true
+    description: "Campaign start date"
+
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    physicalName: END_DATE
+    dataType: Date
+    searchable: true
+    description: "Campaign end date"
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    physicalName: STATUS
+    dataType: RetailCustomer360.list_of_values.CampaignStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Planned, Active, Paused, Completed, Cancelled"
+
+  - _type: EntityAttribute
+    _name: Objective
+    label: Objective
+    physicalName: OBJECTIVE
+    dataType: RetailCustomer360.list_of_values.CampaignObjective
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Awareness, Conversion, Retention, Reactivation"
+
+  - _type: EntityAttribute
+    _name: TargetSegment
+    label: Target Segment
+    physicalName: TARGET_SEGMENT
+    dataType: RetailCustomer360.list_of_values.TargetSegment
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Target customer segment"
+
+  - _type: EntityAttribute
+    _name: Budget
+    label: Budget
+    physicalName: BUDGET
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Campaign budget"
+
+  - _type: EntityAttribute
+    _name: ActualSpend
+    label: Actual Spend
+    physicalName: ACTUAL_SPEND
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Actual campaign spend"
+
+  - _type: EntityAttribute
+    _name: PlannedAudienceSize
+    label: Planned Audience Size
+    physicalName: PLANNED_AUDIENCE_SIZE
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Expected audience size targeted by the campaign"
+
+  - _type: EntityAttribute
+    _name: ActualReach
+    label: Actual Reach
+    physicalName: ACTUAL_REACH
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Number of unique customers reached"
+
+  - _type: EntityAttribute
+    _name: Impressions
+    label: Impressions
+    physicalName: IMPRESSIONS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Total campaign impressions"
+
+  - _type: EntityAttribute
+    _name: Clicks
+    label: Clicks
+    physicalName: CLICKS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Total number of clicks generated"
+
+  - _type: EntityAttribute
+    _name: Conversions
+    label: Conversions
+    physicalName: CONVERSIONS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Total number of conversions generated"
+
+  - _type: EntityAttribute
+    _name: AttributedRevenue
+    label: Attributed Revenue
+    physicalName: ATTRIBUTED_REVENUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Revenue attributed to this campaign"
+
+  - _type: EntityAttribute
+    _name: OwnerName
+    label: Owner Name
+    physicalName: OWNER_NAME
+    dataType: String
+    length: 128
+    searchable: true
+    description: "Campaign owner or manager"
+
+  - _type: EntityAttribute
+    _name: Notes
+    label: Notes
+    physicalName: NOTES
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Additional campaign notes"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: SourceCampaignKey
+    label: Source Campaign Key
+    physicalName: SOURCE_CAMPAIGN_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source campaign identifier"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+
+  - _type: EntityAttribute
+    _name: EnrichmentPerformanceScore
+    label: Enrichment Performance Score
+    physicalName: ENRICH_PERF_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived 0-100 score based on campaign performance indicators"
+
+  - _type: EntityAttribute
+    _name: EnrichmentPacingStatus
+    label: Enrichment Pacing Status
+    physicalName: ENRICH_PACING_STATUS
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived pacing status based on spend progression and schedule"
+
+  - _type: EntityAttribute
+    _name: EnrichmentROIBand
+    label: Enrichment ROI Band
+    physicalName: ENRICH_ROI_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived ROI classification based on attributed revenue versus spend"
+
+  - _type: EntityAttribute
+    _name: EnrichmentHealthStatus
+    label: Enrichment Health Status
+    physicalName: ENRICH_HEALTH_STATUS
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived campaign health indicator"
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.Campaign.Campaign.CampaignId
+

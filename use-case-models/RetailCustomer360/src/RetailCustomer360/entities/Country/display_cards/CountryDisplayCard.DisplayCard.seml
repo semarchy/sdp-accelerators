@@ -1,0 +1,24 @@
+﻿ # Description: Display card for `Country` entity used in lists and tiles.
+ # Contains: Primary text and image expressions for country display with flag icons.
+ # Role: Provides a compact visual summary of a Country record in UIs.
+_package: RetailCustomer360.entities.Country.display_cards
+_type: DisplayCard
+_name: CountryDisplayCard
+entity: RetailCustomer360.entities.Country.Country
+default: true
+primaryTextExpression: EnglishShortName
+secondaryTextExpression: "CASE WHEN CountryCode IS NOT NULL THEN CountryCode ELSE '' END || CASE WHEN Alpha3Code IS NOT NULL THEN ' • ' || Alpha3Code ELSE '' END"
+primaryImageValueInterpreter: SEMQL
+primaryImageValue: "'https://flagicons.lipis.dev/flags/4x3/' || LOWER(CountryCode) || '.svg'"
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackValue: https://api.iconify.design/mdi/earth.svg?color=%230D1B2A&width=256
+primaryImageSourceType: URL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: SEMQL
+avatarImageValue: "'https://flagicons.lipis.dev/flags/4x3/' || LOWER(CountryCode) || '.svg'"
+avatarImageAlign: MIDDLE_CENTER
+avatarImageSourceType: URL
+avatarImageMode: FIT
+

@@ -1,0 +1,29 @@
+_name: SupplierReviewSuggestionsActionSet
+_package: sapbp360.entities.Supplier.action_sets
+_type: ActionSet
+entity: sapbp360.entities.Supplier.Supplier
+label: Supplier Review Suggestions Action Set
+description: Action set for reviewing Supplier duplicate suggestions.
+defaultActionSet: false
+actions:
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicates.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnSupplier
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sapbp360.entities.Supplier.dups_managers.ManageDuplicatesOnSupplier
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

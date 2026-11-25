@@ -1,0 +1,38 @@
+_package: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.steppers
+_type: Stepper
+_name: AuthorBeneficiaryDesignations
+entity: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.BeneficiaryDesignation
+label: "Beneficiary Designations"
+rootStep:
+  _type: CollectionStep
+  _name: BeneficiaryDesignations
+  label: "Beneficiary Designations"
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.collection_views.BeneficiaryDesignationImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: BeneficiaryDesignation
+      label: "Beneficiary Designation"
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.forms.BeneficiaryDesignationForm.BeneficiaryDesignation
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.BeneficiaryDesignation.validations.BeneficiaryDesignationPercentageCheck

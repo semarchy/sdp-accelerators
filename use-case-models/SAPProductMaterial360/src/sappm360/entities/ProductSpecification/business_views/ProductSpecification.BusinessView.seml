@@ -1,0 +1,71 @@
+_name: ProductSpecification
+_package: sappm360.entities.ProductSpecification.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.ProductSpecification.ProductSpecification
+rootLabel: Product Specification
+rootPluralLabel: Product Specifications
+useHierarchyOnOpen: false
+label: Product Specification
+description: Business view for Product Specification.
+rootBusinessViewEntity:
+  _name: ProductSpecification
+  _type: BusinessViewEntity
+  collection: sappm360.entities.ProductSpecification.collection_views.ProductSpecificationCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.ProductSpecification.ProductSpecification
+  form: sappm360.entities.ProductSpecification.forms.ProductSpecificationBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.ProductSpecification.action_sets.ProductSpecificationActionSet
+  displayCard: sappm360.entities.ProductSpecification.display_cards.ProductSpecificationDisplayCard
+  sortExpression: SpecificationName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.ProductSpecification.forms.ProductSpecificationBrowsingForm.Main.Details.DetailsContainer.Container3.FDN_Product
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.ProductSpecification.forms.ProductSpecificationBrowsingForm.Main.Details.DetailsContainer.Container4.FDN_UnitOfMeasure
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.ProductSpecification.business_views.ProductSpecification.ProductSpecification
+rootIconUrl: images://mdi/file-document-outline.svg

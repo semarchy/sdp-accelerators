@@ -1,0 +1,30 @@
+﻿_package: RetailCustomer360.entities.Country.enrichers
+_name: CountryDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Country.Country
+label: Country Data Quality Enricher
+description: "Computes standard completeness enrichment fields for Country."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN CountryCode IS NULL AND Alpha3Code IS NULL AND NumericCode IS NULL THEN 0
+        ELSE (
+          CASE WHEN CountryCode IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN Alpha3Code IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN NumericCode IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN CountryCode IS NULL AND Alpha3Code IS NULL AND NumericCode IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN CountryCode IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN Alpha3Code IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN NumericCode IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()

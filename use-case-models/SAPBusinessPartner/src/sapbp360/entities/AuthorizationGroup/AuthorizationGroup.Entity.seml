@@ -1,0 +1,85 @@
+# Authorization Group entity for the SAP Business Partner 360 accelerator.
+_name: AuthorizationGroup
+_package: sapbp360.entities.AuthorizationGroup
+_type: Entity
+primaryKey: sapbp360.entities.AuthorizationGroup.AuthorizationGroup.AuthorizationGroupID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: AuthorizationGroupCode
+label: Authorization Group
+documentation: Authorization Group reference data used by the SAP Business Partner 360 model.
+description: Authorization Group reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/AuthorizationGroup.svg
+pluralLabel: Authorization Groups
+historizeGolden: true
+historizeMaster: false
+physicalTableName: AUTH_GROUP
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AuthorizationGroupID
+    physicalName: AUTH_GROUP_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Authorization Group ID
+    documentation: Unique identifier for the authorization group.
+    description: Unique identifier for the authorization group.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Authorization Group ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: AuthorizationGroupCode
+    physicalName: AUTH_GROUP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Authorization Group Code
+    documentation: Code for the authorization group.
+    description: Code for the authorization group.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Authorization Group Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: AuthorizationGroupName
+    physicalName: AUTH_GROUP_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Authorization Group Name
+    documentation: Name of the authorization group.
+    description: Name of the authorization group.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Authorization Group Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the authorization group.
+    description: Description for the authorization group.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the authorization group is active.
+    description: Indicates whether the authorization group is active.
+    mandatory: false
+    length: 1
+    searchable: true

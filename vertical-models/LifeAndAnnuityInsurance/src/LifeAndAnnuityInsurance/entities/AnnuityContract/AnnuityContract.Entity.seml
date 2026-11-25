@@ -1,0 +1,168 @@
+_package: LifeAndAnnuityInsurance.entities.AnnuityContract
+_type: Entity
+_name: AnnuityContract
+label: "Annuity Contract"
+pluralLabel: "Annuity Contracts"
+physicalTableName: ANN_CONT
+iconUrl: images://mdi/calendar-star.svg
+description: "Represents annuity-specific contract details, including accumulation values, surrender values, qualification, and payout timing."
+documentation: "Represents annuity-specific contract details, including accumulation values, surrender values, qualification, and payout timing."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: AnnuityContractID
+    label: "Annuity Contract ID"
+    physicalName: ANN_CONT_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the annuity contract details."
+    documentation: "Unique identifier for the annuity contract details."
+  - _type: EntityAttribute
+    _name: ContractNumber
+    label: "Contract Number"
+    physicalName: CONT_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Annuity contract number."
+    documentation: "Annuity contract number."
+  - _type: EntityAttribute
+    _name: ContractType
+    label: "Contract Type"
+    physicalName: CONT_TYPE
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Type of annuity contract."
+    documentation: "Type of annuity contract."
+  - _type: EntityAttribute
+    _name: IssueDate
+    label: "Issue Date"
+    physicalName: ISSUE_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the annuity contract was issued."
+    documentation: "Date the annuity contract was issued."
+  - _type: EntityAttribute
+    _name: AnnuitizationDate
+    label: "Annuitization Date"
+    physicalName: ANNUITIZATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the contract annuitized, if applicable."
+    documentation: "Date the contract annuitized, if applicable."
+  - _type: EntityAttribute
+    _name: PayoutStartDate
+    label: "Payout Start Date"
+    physicalName: PAYOUT_START_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date payout payments begin."
+    documentation: "Date payout payments begin."
+  - _type: EntityAttribute
+    _name: AccumulationValue
+    label: "Accumulation Value"
+    physicalName: ACCUMULATION_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Current accumulation value of the contract."
+    documentation: "Current accumulation value of the contract."
+  - _type: EntityAttribute
+    _name: SurrenderValue
+    label: "Surrender Value"
+    physicalName: SURR_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Current surrender value after charges and adjustments."
+    documentation: "Current surrender value after charges and adjustments."
+  - _type: EntityAttribute
+    _name: GuaranteedMinimumValue
+    label: "Guaranteed Minimum Value"
+    physicalName: GTY_MIN_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Guaranteed minimum value associated with the contract."
+    documentation: "Guaranteed minimum value associated with the contract."
+  - _type: EntityAttribute
+    _name: IncomeBaseValue
+    label: "Income Base Value"
+    physicalName: INCOME_BASE_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Income base value used for guaranteed income riders."
+    documentation: "Income base value used for guaranteed income riders."
+  - _type: EntityAttribute
+    _name: RMDRequiredIndicator
+    label: "RMDRequired Indicator"
+    physicalName: RMD_REQ_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether required minimum distributions apply."
+    documentation: "Indicates whether required minimum distributions apply."
+  - _type: EntityAttribute
+    _name: QualifiedIndicator
+    label: "Qualified Indicator"
+    physicalName: QUALIFIED_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the contract is tax qualified."
+    documentation: "Indicates whether the contract is tax qualified."
+  - _type: EntityAttribute
+    _name: FreeWithdrawalPercentage
+    label: "Free Withdrawal Percentage"
+    physicalName: FREE_WD_PCT
+    dataType: Decimal
+    precision: 9
+    scale: 4
+    mandatory: false
+    searchable: true
+    description: "Free withdrawal percentage allowed without surrender charge."
+    documentation: "Free withdrawal percentage allowed without surrender charge."
+  - _type: EntityAttribute
+    _name: MaturityDate
+    label: "Maturity Date"
+    physicalName: MATURITY_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Scheduled maturity date of the contract."
+    documentation: "Scheduled maturity date of the contract."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional annuity contract notes."
+    documentation: "Additional annuity contract notes."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.AnnuityContract.AnnuityContract.AnnuityContractID
+entityType: ID_MATCHED

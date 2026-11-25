@@ -1,0 +1,9 @@
+_package: CTMDM.entities.MedicalLicense.validations
+_name: LicenseDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.MedicalLicense.MedicalLicense
+label: License expiration must not be before issue date
+validationScope: PRE_CONSO
+description: "License expiration must not be before issue date before consolidation."
+
+condition: ExpirationDate IS NULL OR IssueDate IS NULL OR ExpirationDate >= IssueDate

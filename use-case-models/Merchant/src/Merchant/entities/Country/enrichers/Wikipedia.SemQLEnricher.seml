@@ -1,0 +1,12 @@
+ # Description: Wikipedia enricher for Country (fetches metadata from Wikipedia).
+ # Contains: SemQL enrichment rules to populate URL and descriptive fields.
+ # Role: Enhances Country records with external reference data from Wikipedia.
+_package: Merchant.entities.Country.enrichers
+_name: Wikipedia
+_type: SemQLEnricher
+entity: Merchant.entities.Country.Country
+label: Wikipedia URL Enricher
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: URLWikipedia
+    expression: CONCAT('https://en.wikipedia.org/wiki/',REPLACE(EnglishShortName, ' ', '_'))

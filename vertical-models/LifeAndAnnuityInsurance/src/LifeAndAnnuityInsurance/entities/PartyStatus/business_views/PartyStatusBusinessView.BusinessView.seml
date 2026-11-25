@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.PartyStatus.business_views
+_type: BusinessView
+_name: PartyStatusBusinessView
+label: "Party Status"
+entity: LifeAndAnnuityInsurance.entities.PartyStatus.PartyStatus
+rootLabel: "Party Statuses"
+rootPluralLabel: "Party Statuses"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PartyStatus
+  displayCard: LifeAndAnnuityInsurance.entities.PartyStatus.display_cards.PartyStatusDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.PartyStatus.PartyStatus
+  actionSet: LifeAndAnnuityInsurance.entities.PartyStatus.action_sets.PartyStatusActionSet
+  collection: LifeAndAnnuityInsurance.entities.PartyStatus.collection_views.PartyStatusCollectionView
+  form: LifeAndAnnuityInsurance.entities.PartyStatus.forms.PartyStatusForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Party
+      label: "Party"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Parties"
+      iconUrl: images://mdi/account-multiple-outline.svg
+      transitionPath: Party
+      useCustomLabel: true
+      description: "Transition from Party Status to related Parties."
+      visibleInFormTabCondition: any Party has (1=1)
+      enableHierarchy: any Party has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Party
+        displayCard: LifeAndAnnuityInsurance.entities.Party.display_cards.PartyDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Party.Party
+        actionSet: LifeAndAnnuityInsurance.entities.Party.action_sets.PartyActionSet
+        collection: LifeAndAnnuityInsurance.entities.Party.collection_views.PartyCollectionView
+        form: LifeAndAnnuityInsurance.entities.Party.forms.PartyForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/account-check-outline.svg

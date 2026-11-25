@@ -1,0 +1,144 @@
+﻿_package: RetailCustomer360.entities.Product.business_views
+_type: BusinessView
+_name: ProductBusinessView
+label: Products
+entity: RetailCustomer360.entities.Product.Product
+
+rootLabel: Products
+rootPluralLabel: Products
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Product
+  displayCard: RetailCustomer360.entities.Product.display_cards.ProductDisplayCard
+  entity: RetailCustomer360.entities.Product.Product
+  actionSet: RetailCustomer360.entities.Product.action_sets.ProductActionSet
+  collection: RetailCustomer360.entities.Product.collection_views.ProductCollectionView
+  form: RetailCustomer360.entities.Product.forms.ProductForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: ProductQuickFilterConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: RetailCustomer360.entities.Product.search_forms.ProductQuickFilters
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AssociatedCase
+      transitionPath: BelongsToProductFromCase
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/lifebuoy.svg?color=%230D1B2A&width=64
+      label: Case
+      pluralLabel: Cases
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToProductFromCase has (1 = 1)
+      businessViewEntity:
+        _name: CaseRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Case.collection_views.CaseCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Case.Case
+        form: RetailCustomer360.entities.Case.forms.CaseForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.Case.action_sets.CaseActionSet
+        displayCard: RetailCustomer360.entities.Case.display_cards.CaseDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedSalesOrderItem
+      transitionPath: BelongsToProduct
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/format-list-numbered.svg?color=%230D1B2A&width=64
+      label: Order Item
+      pluralLabel: Order Items
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToProduct has (1 = 1)
+      businessViewEntity:
+        _name: SalesOrderItemRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.SalesOrderItem.collection_views.SalesOrderItemCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.SalesOrderItem.SalesOrderItem
+        form: RetailCustomer360.entities.SalesOrderItem.forms.SalesOrderItemForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.SalesOrderItem.action_sets.SalesOrderItemActionSet
+        displayCard: RetailCustomer360.entities.SalesOrderItem.display_cards.SalesOrderItemDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+enableHierarchyView: false
+useHierarchyOnOpen: false

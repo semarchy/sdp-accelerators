@@ -1,0 +1,144 @@
+﻿_package: RetailCustomer360.entities.Campaign.business_views
+_type: BusinessView
+_name: CampaignBusinessView
+label: Campaigns
+entity: RetailCustomer360.entities.Campaign.Campaign
+
+rootLabel: Campaigns
+rootPluralLabel: Campaigns
+displayRootNodeAs: ICON_LABEL
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Campaign
+  displayCard: RetailCustomer360.entities.Campaign.display_cards.CampaignDisplayCard
+  entity: RetailCustomer360.entities.Campaign.Campaign
+  actionSet: RetailCustomer360.entities.Campaign.action_sets.CampaignActionSet
+  collection: RetailCustomer360.entities.Campaign.collection_views.CampaignCollectionView
+  form: RetailCustomer360.entities.Campaign.forms.CampaignForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: CampaignHealthQuickFilterConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: RetailCustomer360.entities.Campaign.search_forms.CampaignHealthQuickFilters
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _type: BusinessViewTransition
+      _name: AssociatedLead
+      transitionPath: BelongsToCampaignFromLead
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/account-star-outline.svg?color=%230D1B2A&width=64
+      label: Lead
+      pluralLabel: Leads
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCampaignFromLead has (1 = 1)
+      businessViewEntity:
+        _name: LeadRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Lead.collection_views.LeadCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Lead.Lead
+        form: RetailCustomer360.entities.Lead.forms.LeadForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.Lead.action_sets.LeadActionSet
+        displayCard: RetailCustomer360.entities.Lead.display_cards.LeadDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _type: BusinessViewTransition
+      _name: AssociatedPromotion
+      transitionPath: BelongsToCampaignFromPromotion
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/sale.svg?color=%230D1B2A&width=64
+      label: Promotion
+      pluralLabel: Promotions
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToCampaignFromPromotion has (1 = 1)
+      businessViewEntity:
+        _name: PromotionRecords
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.Promotion.collection_views.PromotionCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.Promotion.Promotion
+        form: RetailCustomer360.entities.Promotion.forms.PromotionForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: RetailCustomer360.entities.Promotion.action_sets.PromotionActionSet
+        displayCard: RetailCustomer360.entities.Promotion.display_cards.PromotionDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+enableHierarchyView: false

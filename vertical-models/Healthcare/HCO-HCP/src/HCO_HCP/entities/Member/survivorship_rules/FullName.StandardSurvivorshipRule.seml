@@ -1,0 +1,22 @@
+_type: StandardSurvivorshipRule
+entity: HCO_HCP.entities.Member.Member
+_package: HCO_HCP.entities.Member.survivorship_rules
+defaultRule: false
+_name: FullName
+consolidationOrderByExpression: LPAD( SourceID, 5, '0' )
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Full Name
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.MemberXLS
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.Encounters
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: LastName
+  - attributeName: MiddleName
+  - attributeName: Suffix
+  - attributeName: FirstName

@@ -1,0 +1,11 @@
+_package: CTMDM.entities.Protocol.enrichers
+_name: NormalizeProtocol
+_type: SemQLEnricher
+entity: CTMDM.entities.Protocol.Protocol
+label: Normalize Protocol
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Protocol values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedProtocolNumber
+    expression: "RTRIM(LTRIM(UPPER(ProtocolNumber)))"

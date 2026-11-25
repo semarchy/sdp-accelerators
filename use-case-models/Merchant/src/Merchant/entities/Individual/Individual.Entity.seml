@@ -1,0 +1,132 @@
+_package: Merchant.entities.Individual
+_type: Entity
+_name: Individual
+label: Individual
+pluralLabel: Individual
+entityType: FUZZY_MATCHED
+physicalTableName: INDIVIDUAL
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: IndividualID
+    label: Individual ID
+    physicalName: INDIVIDUAL_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+    description: "Surrogate key for Individual (existing)"
+
+  - _type: EntityAttribute
+    _name: FirstName
+    label: First Name
+    physicalName: FIRST_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Given name"
+
+  - _type: EntityAttribute
+    _name: MiddleName
+    label: Middle Name
+    physicalName: MIDDLE_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Optional middle name"
+
+  - _type: EntityAttribute
+    _name: LastName
+    label: Last Name
+    physicalName: LAST_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Family name"
+
+  - _type: EntityAttribute
+    _name: DateOfBirth
+    label: Date Of Birth
+    physicalName: DATE_OF_BIRTH
+    dataType: Date
+    mandatory: false
+    searchable: false
+    description: "DOB"
+
+  - _type: EntityAttribute
+    _name: Gender
+    label: Gender
+    physicalName: GENDER
+    dataType: Merchant.list_of_values.Gender
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Gender LOV: MALE, FEMALE, OTHER"
+
+  - _type: EntityAttribute
+    _name: IdentificationNumber
+    label: Identification Number
+    physicalName: IDENTIFICATION_NUMBER
+    dataType: String
+    length: 64
+    mandatory: false
+    searchable: true
+    description: "Aadhaar / Passport / SSN"
+
+  - _type: EntityAttribute
+    _name: FirstNameEnriched
+    label: First Name (Enriched)
+    physicalName: FIRST_NAME_ENRICHED
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Enriched/normalized first name"
+
+  - _type: EntityAttribute
+    _name: LastNameEnriched
+    label: Last Name (Enriched)
+    physicalName: LAST_NAME_ENRICHED
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Enriched/normalized last name"
+
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+primaryKey: Merchant.entities.Individual.Individual.IndividualID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: IndividualSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactNameAndDOB
+      label: Exact Name and DOB
+      condition: Record1.FirstNameEnriched = Record2.FirstNameEnriched AND Record1.LastNameEnriched = Record2.LastNameEnriched AND Record1.DateOfBirth = Record2.DateOfBirth
+      matchScore: 100
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 0
+  mergeThresholdMergingUnconfirmed: 0
+  mergeThresholdMergingConfirmed: 0
+  mergeThresholdMergingConfirmedWithUnconfirmed: 0
+  mergeThresholdMergingUnconfirmedWithNewMasters: 0
+  mergeThresholdMergingConfirmedWithNewMasters: 0
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false

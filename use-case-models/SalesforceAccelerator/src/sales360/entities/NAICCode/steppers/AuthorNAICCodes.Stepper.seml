@@ -1,0 +1,47 @@
+# This is the AuthorNAICCodes Stepper configuration for the Salesforce Accelerator application.
+# It defines the structure and steps for managing NAIC codes within the Salesforce context.
+_name: AuthorNAICCodes
+_package: sales360.entities.NAICCode.steppers
+_type: Stepper
+entity: sales360.entities.NAICCode.NAICCode
+description: Stepper for managing NAIC Code records in the Salesforce Accelerator application.
+rootStep:
+  _name: NAICCodes
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sales360.entities.NAICCode.collection_views.NAICCodeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: NAIC Codes
+  description: Collection of NAIC Code records
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for NAIC Code
+      formTab: sales360.entities.NAICCode.forms.NAICCodeForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+label: Author NAIC Codes
+stepperFinishValidations: []
+triggers: []

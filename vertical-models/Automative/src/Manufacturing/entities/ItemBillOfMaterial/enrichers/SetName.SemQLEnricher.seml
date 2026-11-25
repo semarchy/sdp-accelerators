@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: Manufacturing.entities.ItemBillOfMaterial.enrichers
+_name: SetName
+entity: Manufacturing.entities.ItemBillOfMaterial.ItemBillOfMaterial
+label: Set Name
+description: "Sets a missing bill of material name from the parent item display name."
+enricherExecutionScope: NONE
+condition: Name is null
+semQlEnricherExpressions:
+  - attributeName: Name
+    expression: FDN_ParentItem

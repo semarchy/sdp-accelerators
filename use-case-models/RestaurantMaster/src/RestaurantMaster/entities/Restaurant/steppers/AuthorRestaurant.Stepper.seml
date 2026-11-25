@@ -1,0 +1,1061 @@
+_package: RestaurantMaster.entities.Restaurant.steppers
+_type: Stepper
+_name: AuthorRestaurant
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Restaurants
+rootStep:
+  _type: CollectionStep
+  _name: RestaurantCollection
+  label: Restaurants
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+  - _type: FormStep
+    _name: Restaurant
+    label: Restaurant
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    enableMasterValuePicking: false
+    formTab: RestaurantMaster.entities.Restaurant.forms.RestaurantForm.Restaurant
+    formStepEnrichers:
+    - enricher: RestaurantMaster.entities.Restaurant.enrichers.StandardizeAddress
+      executedOnDataChange: true
+    - enricher: RestaurantMaster.entities.Restaurant.enrichers.NormalizeMainPhone
+      executedOnDataChange: true
+    formStepValidations:
+    - validationType: CHECK
+      validator: RestaurantMaster.entities.Restaurant.validations.RestaurantIdFormat
+      executedOnDataChange: true
+      executedOnFormOpen: true
+    - validationType: CHECK
+      validator: RestaurantMaster.entities.Restaurant.validations.BrandRequired
+      executedOnDataChange: true
+      executedOnFormOpen: true
+    - validationType: CHECK
+      validator: RestaurantMaster.entities.Restaurant.validations.LifecycleCoherence
+      executedOnDataChange: true
+      executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RestaurantIdentifierCollection
+    label: Restaurant identifiers
+    oneToManyReference: RestaurantMaster.references.RestaurantIdentifierHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantIdentifier.collection_views.RestaurantIdentifierCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantIdentifier.display_cards.RestaurantIdentifierDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantIdentifier
+      label: Restaurant identifier
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantIdentifier.forms.RestaurantIdentifierForm.RestaurantIdentifier
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantIdentifier.validations.KeyConvention
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantIdentifier.validations.ValidityOrder
+        executedOnDataChange: true
+        executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RestaurantContactPointCollection
+    label: Contact points
+    oneToManyReference: RestaurantMaster.references.RestaurantContactPointHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantContactPoint.collection_views.RestaurantContactPointCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantContactPoint.display_cards.RestaurantContactPointDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantContactPoint
+      label: Contact point
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantContactPoint.forms.RestaurantContactPointForm.RestaurantContactPoint
+      formStepEnrichers:
+      - enricher: RestaurantMaster.entities.RestaurantContactPoint.enrichers.NormalizePhone
+        executedOnDataChange: true
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantContactPoint.validations.KeyConvention
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantContactPoint.validations.ContactFormat
+        executedOnDataChange: true
+        executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RestaurantStatusHistoryCollection
+    label: Status history
+    oneToManyReference: RestaurantMaster.references.RestaurantStatusHistoryHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantStatusHistory.collection_views.RestaurantStatusHistoryCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantStatusHistory.display_cards.RestaurantStatusHistoryDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantStatusHistory
+      label: Status history
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantStatusHistory.forms.RestaurantStatusHistoryForm.RestaurantStatusHistory
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantStatusHistory.validations.KeyConvention
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantStatusHistory.validations.ReasonFitsStatus
+        executedOnDataChange: true
+        executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RestaurantHoursCollection
+    label: Opening hours
+    oneToManyReference: RestaurantMaster.references.RestaurantHoursHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantHours.collection_views.RestaurantHoursCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantHours.display_cards.RestaurantHoursDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantHours
+      label: Opening hours
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantHours.forms.RestaurantHoursForm.RestaurantHours
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantHours.validations.KeyConvention
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantHours.validations.HoursComplete
+        executedOnDataChange: true
+        executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RestaurantServiceCollection
+    label: Services
+    oneToManyReference: RestaurantMaster.references.RestaurantServiceHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantService.collection_views.RestaurantServiceCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantService.display_cards.RestaurantServiceDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantService
+      label: Service
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantService.forms.RestaurantServiceForm.RestaurantService
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantService.validations.KeyConvention
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantService.validations.DeliveryPartnerRule
+        executedOnDataChange: true
+        executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RestaurantLocalizedNameCollection
+    label: Localized names
+    oneToManyReference: RestaurantMaster.references.RestaurantLocalizedNameHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantLocalizedName.collection_views.RestaurantLocalizedNameCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantLocalizedName.display_cards.RestaurantLocalizedNameDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantLocalizedName
+      label: Localized name
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantLocalizedName.forms.RestaurantLocalizedNameForm.RestaurantLocalizedName
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantLocalizedName.validations.KeyConvention
+        executedOnDataChange: true
+        executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RestaurantOrgAssignmentCollection
+    label: Organization assignments
+    oneToManyReference: RestaurantMaster.references.RestaurantOrgAssignmentHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantOrgAssignment.collection_views.RestaurantOrgAssignmentCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantOrgAssignment.display_cards.RestaurantOrgAssignmentDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantOrgAssignment
+      label: Organization assignment
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantOrgAssignment.forms.RestaurantOrgAssignmentForm.RestaurantOrgAssignment
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantOrgAssignment.validations.KeyConvention
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantOrgAssignment.validations.UnitFitsHierarchy
+        executedOnDataChange: true
+        executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RestaurantOperatorCollection
+    label: Operators
+    oneToManyReference: RestaurantMaster.references.RestaurantOperatorHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantOperator.collection_views.RestaurantOperatorCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantOperator.display_cards.RestaurantOperatorDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantOperator
+      label: Operator
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantOperator.forms.RestaurantOperatorForm.RestaurantOperator
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantOperator.validations.KeyConvention
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.RestaurantOperator.validations.AgreementRequired
+        executedOnDataChange: true
+        executedOnFormOpen: true
+  - _type: CollectionStep
+    _name: RelocationSuccessorCollection
+    label: Relocated to
+    oneToManyReference: RestaurantMaster.references.RestaurantRelocatedFrom
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+    displayCard: RestaurantMaster.entities.Restaurant.display_cards.RestaurantDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: ChildRestaurant
+      label: Restaurant
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.Restaurant.forms.RestaurantForm.Restaurant
+      formStepEnrichers:
+      - enricher: RestaurantMaster.entities.Restaurant.enrichers.StandardizeAddress
+        executedOnDataChange: true
+      - enricher: RestaurantMaster.entities.Restaurant.enrichers.NormalizeMainPhone
+        executedOnDataChange: true
+      formStepValidations:
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.Restaurant.validations.RestaurantIdFormat
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.Restaurant.validations.BrandRequired
+        executedOnDataChange: true
+        executedOnFormOpen: true
+      - validationType: CHECK
+        validator: RestaurantMaster.entities.Restaurant.validations.LifecycleCoherence
+        executedOnDataChange: true
+        executedOnFormOpen: true
+    - _type: CollectionStep
+      _name: RestaurantIdentifierCollection2
+      label: Restaurant identifiers
+      oneToManyReference: RestaurantMaster.references.RestaurantIdentifierHasRestaurant
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      userDefinedSortEnabled: true
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyCustomSortEnabled: false
+      manyToManyUserDefinedSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      collectionView: RestaurantMaster.entities.RestaurantIdentifier.collection_views.RestaurantIdentifierCollectionView
+      displayCard: RestaurantMaster.entities.RestaurantIdentifier.display_cards.RestaurantIdentifierDisplayCard
+      childSteps:
+      - _type: FormStep
+        _name: RestaurantIdentifier2
+        label: Restaurant identifier
+        canFinishSubLevel: true
+        enabledOnParentCreate: true
+        enabledOnParentEdit: true
+        formFieldsMode: AUTO
+        enableMasterValuePicking: false
+        formTab: RestaurantMaster.entities.RestaurantIdentifier.forms.RestaurantIdentifierForm.RestaurantIdentifier
+        formStepValidations:
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantIdentifier.validations.KeyConvention
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantIdentifier.validations.ValidityOrder
+          executedOnDataChange: true
+          executedOnFormOpen: true
+    - _type: CollectionStep
+      _name: RestaurantContactPointCollection2
+      label: Contact points
+      oneToManyReference: RestaurantMaster.references.RestaurantContactPointHasRestaurant
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      userDefinedSortEnabled: true
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyCustomSortEnabled: false
+      manyToManyUserDefinedSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      collectionView: RestaurantMaster.entities.RestaurantContactPoint.collection_views.RestaurantContactPointCollectionView
+      displayCard: RestaurantMaster.entities.RestaurantContactPoint.display_cards.RestaurantContactPointDisplayCard
+      childSteps:
+      - _type: FormStep
+        _name: RestaurantContactPoint2
+        label: Contact point
+        canFinishSubLevel: true
+        enabledOnParentCreate: true
+        enabledOnParentEdit: true
+        formFieldsMode: AUTO
+        enableMasterValuePicking: false
+        formTab: RestaurantMaster.entities.RestaurantContactPoint.forms.RestaurantContactPointForm.RestaurantContactPoint
+        formStepEnrichers:
+        - enricher: RestaurantMaster.entities.RestaurantContactPoint.enrichers.NormalizePhone
+          executedOnDataChange: true
+        formStepValidations:
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantContactPoint.validations.KeyConvention
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantContactPoint.validations.ContactFormat
+          executedOnDataChange: true
+          executedOnFormOpen: true
+    - _type: CollectionStep
+      _name: RestaurantStatusHistoryCollection2
+      label: Status history
+      oneToManyReference: RestaurantMaster.references.RestaurantStatusHistoryHasRestaurant
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      userDefinedSortEnabled: true
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyCustomSortEnabled: false
+      manyToManyUserDefinedSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      collectionView: RestaurantMaster.entities.RestaurantStatusHistory.collection_views.RestaurantStatusHistoryCollectionView
+      displayCard: RestaurantMaster.entities.RestaurantStatusHistory.display_cards.RestaurantStatusHistoryDisplayCard
+      childSteps:
+      - _type: FormStep
+        _name: RestaurantStatusHistory2
+        label: Status history
+        canFinishSubLevel: true
+        enabledOnParentCreate: true
+        enabledOnParentEdit: true
+        formFieldsMode: AUTO
+        enableMasterValuePicking: false
+        formTab: RestaurantMaster.entities.RestaurantStatusHistory.forms.RestaurantStatusHistoryForm.RestaurantStatusHistory
+        formStepValidations:
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantStatusHistory.validations.KeyConvention
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantStatusHistory.validations.ReasonFitsStatus
+          executedOnDataChange: true
+          executedOnFormOpen: true
+    - _type: CollectionStep
+      _name: RestaurantHoursCollection2
+      label: Opening hours
+      oneToManyReference: RestaurantMaster.references.RestaurantHoursHasRestaurant
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      userDefinedSortEnabled: true
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyCustomSortEnabled: false
+      manyToManyUserDefinedSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      collectionView: RestaurantMaster.entities.RestaurantHours.collection_views.RestaurantHoursCollectionView
+      displayCard: RestaurantMaster.entities.RestaurantHours.display_cards.RestaurantHoursDisplayCard
+      childSteps:
+      - _type: FormStep
+        _name: RestaurantHours2
+        label: Opening hours
+        canFinishSubLevel: true
+        enabledOnParentCreate: true
+        enabledOnParentEdit: true
+        formFieldsMode: AUTO
+        enableMasterValuePicking: false
+        formTab: RestaurantMaster.entities.RestaurantHours.forms.RestaurantHoursForm.RestaurantHours
+        formStepValidations:
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantHours.validations.KeyConvention
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantHours.validations.HoursComplete
+          executedOnDataChange: true
+          executedOnFormOpen: true
+    - _type: CollectionStep
+      _name: RestaurantServiceCollection2
+      label: Services
+      oneToManyReference: RestaurantMaster.references.RestaurantServiceHasRestaurant
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      userDefinedSortEnabled: true
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyCustomSortEnabled: false
+      manyToManyUserDefinedSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      collectionView: RestaurantMaster.entities.RestaurantService.collection_views.RestaurantServiceCollectionView
+      displayCard: RestaurantMaster.entities.RestaurantService.display_cards.RestaurantServiceDisplayCard
+      childSteps:
+      - _type: FormStep
+        _name: RestaurantService2
+        label: Service
+        canFinishSubLevel: true
+        enabledOnParentCreate: true
+        enabledOnParentEdit: true
+        formFieldsMode: AUTO
+        enableMasterValuePicking: false
+        formTab: RestaurantMaster.entities.RestaurantService.forms.RestaurantServiceForm.RestaurantService
+        formStepValidations:
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantService.validations.KeyConvention
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantService.validations.DeliveryPartnerRule
+          executedOnDataChange: true
+          executedOnFormOpen: true
+    - _type: CollectionStep
+      _name: RestaurantLocalizedNameCollection2
+      label: Localized names
+      oneToManyReference: RestaurantMaster.references.RestaurantLocalizedNameHasRestaurant
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      userDefinedSortEnabled: true
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyCustomSortEnabled: false
+      manyToManyUserDefinedSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      collectionView: RestaurantMaster.entities.RestaurantLocalizedName.collection_views.RestaurantLocalizedNameCollectionView
+      displayCard: RestaurantMaster.entities.RestaurantLocalizedName.display_cards.RestaurantLocalizedNameDisplayCard
+      childSteps:
+      - _type: FormStep
+        _name: RestaurantLocalizedName2
+        label: Localized name
+        canFinishSubLevel: true
+        enabledOnParentCreate: true
+        enabledOnParentEdit: true
+        formFieldsMode: AUTO
+        enableMasterValuePicking: false
+        formTab: RestaurantMaster.entities.RestaurantLocalizedName.forms.RestaurantLocalizedNameForm.RestaurantLocalizedName
+        formStepValidations:
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantLocalizedName.validations.KeyConvention
+          executedOnDataChange: true
+          executedOnFormOpen: true
+    - _type: CollectionStep
+      _name: RestaurantOrgAssignmentCollection2
+      label: Organization assignments
+      oneToManyReference: RestaurantMaster.references.RestaurantOrgAssignmentHasRestaurant
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      userDefinedSortEnabled: true
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyCustomSortEnabled: false
+      manyToManyUserDefinedSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      collectionView: RestaurantMaster.entities.RestaurantOrgAssignment.collection_views.RestaurantOrgAssignmentCollectionView
+      displayCard: RestaurantMaster.entities.RestaurantOrgAssignment.display_cards.RestaurantOrgAssignmentDisplayCard
+      childSteps:
+      - _type: FormStep
+        _name: RestaurantOrgAssignment2
+        label: Organization assignment
+        canFinishSubLevel: true
+        enabledOnParentCreate: true
+        enabledOnParentEdit: true
+        formFieldsMode: AUTO
+        enableMasterValuePicking: false
+        formTab: RestaurantMaster.entities.RestaurantOrgAssignment.forms.RestaurantOrgAssignmentForm.RestaurantOrgAssignment
+        formStepValidations:
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantOrgAssignment.validations.KeyConvention
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantOrgAssignment.validations.UnitFitsHierarchy
+          executedOnDataChange: true
+          executedOnFormOpen: true
+    - _type: CollectionStep
+      _name: RestaurantOperatorCollection2
+      label: Operators
+      oneToManyReference: RestaurantMaster.references.RestaurantOperatorHasRestaurant
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      createChildUsingManyToManyPicker: false
+      customSortEnabled: false
+      userDefinedSortEnabled: true
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: true
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      manyToManyCustomSortEnabled: false
+      manyToManyUserDefinedSortEnabled: false
+      manyToManyDefaultDisplayType: TABLE
+      manyToManyDisplayGridAllowed: false
+      manyToManyDisplayListAllowed: false
+      manyToManyDisplayTableAllowed: false
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      collectionView: RestaurantMaster.entities.RestaurantOperator.collection_views.RestaurantOperatorCollectionView
+      displayCard: RestaurantMaster.entities.RestaurantOperator.display_cards.RestaurantOperatorDisplayCard
+      childSteps:
+      - _type: FormStep
+        _name: RestaurantOperator2
+        label: Operator
+        canFinishSubLevel: true
+        enabledOnParentCreate: true
+        enabledOnParentEdit: true
+        formFieldsMode: AUTO
+        enableMasterValuePicking: false
+        formTab: RestaurantMaster.entities.RestaurantOperator.forms.RestaurantOperatorForm.RestaurantOperator
+        formStepValidations:
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantOperator.validations.KeyConvention
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          validator: RestaurantMaster.entities.RestaurantOperator.validations.AgreementRequired
+          executedOnDataChange: true
+          executedOnFormOpen: true

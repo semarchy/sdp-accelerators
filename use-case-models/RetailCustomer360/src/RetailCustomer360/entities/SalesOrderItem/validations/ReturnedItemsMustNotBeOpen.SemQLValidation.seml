@@ -1,0 +1,9 @@
+﻿_package: RetailCustomer360.entities.SalesOrderItem.validations
+_name: ReturnedItemsMustNotBeOpen
+_type: SemQLValidation
+entity: RetailCustomer360.entities.SalesOrderItem.SalesOrderItem
+label: Returned Items Must Not Be Open
+validationScope: PRE_CONSO
+description: "Ensures a returned item is not simultaneously marked as pending fulfillment."
+condition: ReturnStatus NOT IN ('Returned', 'Refunded') OR FulfillmentStatus <> 'Pending'
+

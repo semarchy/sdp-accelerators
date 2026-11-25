@@ -1,0 +1,275 @@
+_package: CTMDM.workflows
+_type: Workflow
+_name: OnboardInvestigator
+label: Onboard New Investigator
+workflowAdminRole: SemarchyAdmin
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+  - entity: CTMDM.entities.Investigator.Investigator
+    _type: RootEntity
+    _name: Investigator
+    cardinality: SINGLE_RECORD
+    displayCard: CTMDM.entities.Investigator.display_cards.InvestigatorDisplayCard
+    childEntities:
+      - ref: CTMDM.references.MedicalLicenseHasInvestigator
+      - ref: CTMDM.references.GcpCertificationHasInvestigator
+steps:
+  - _type: StartFromSelectionEvent
+    _name: StartFromExistingInvestigator
+    position:
+      x: -520
+      y: -30
+    label: Start From Investigator (Edit)
+    initiatorRequiredRole: ''
+    defaultPriority: NORMAL
+    authoredEntity: CTMDM.entities.Investigator.Investigator
+    selectionSourceType: GOLDEN_DATA
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: CTMDM.workflows.OnboardInvestigator.CreateInvestigatorRequest
+      bendPoints: []
+  - _type: StartFromEmptySelectionEvent
+    _name: StartFromScratch
+    position:
+      x: -520
+      y: -100
+    label: Start From Scratch
+    initiatorRequiredRole: ''
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: CTMDM.workflows.OnboardInvestigator.CreateInvestigatorRequest
+      bendPoints: []
+  - _type: UserTask
+    _name: CreateInvestigatorRequest
+    label: Create Investigator Request
+    icon: images://mdi/account-edit.svg
+    position:
+      x: -340
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: StudyCoordinator
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.Investigator.Investigator
+    stepper: CTMDM.entities.Investigator.steppers.AuthorInvestigators
+    myTasksConfiguration:
+      collection: CTMDM.entities.Investigator.collection_views.InvestigatorCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToMedicalAffairsReview
+        label: Proceed
+        toStep: CTMDM.workflows.OnboardInvestigator.MedicalAffairsReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: MedicalAffairsReview
+    label: Medical Affairs Review
+    icon: images://mdi/account-edit.svg
+    position:
+      x: -120
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: MedicalAffairs
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.Investigator.Investigator
+    stepper: CTMDM.entities.Investigator.steppers.AuthorInvestigators
+    myTasksConfiguration:
+      collection: CTMDM.entities.Investigator.collection_views.InvestigatorCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToComplianceReview
+        label: Proceed
+        toStep: CTMDM.workflows.OnboardInvestigator.ComplianceReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: ComplianceReview
+    label: Compliance Review
+    icon: images://mdi/account-edit.svg
+    position:
+      x: 100
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: ComplianceOfficer
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.Investigator.Investigator
+    stepper: CTMDM.entities.Investigator.steppers.AuthorInvestigators
+    myTasksConfiguration:
+      collection: CTMDM.entities.Investigator.collection_views.InvestigatorCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToDataStewardApproval
+        label: Proceed
+        toStep: CTMDM.workflows.OnboardInvestigator.DataStewardApproval
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: DataStewardApproval
+    label: Data Steward Approval
+    icon: images://mdi/account-edit.svg
+    position:
+      x: 320
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: DataSteward
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.Investigator.Investigator
+    stepper: CTMDM.entities.Investigator.steppers.AuthorInvestigators
+    myTasksConfiguration:
+      collection: CTMDM.entities.Investigator.collection_views.InvestigatorCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToSubmitData
+        label: Approve and Submit
+        toStep: CTMDM.workflows.OnboardInvestigator.SubmitData
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 540
+      y: -75
+    integrationJob: CTMDM.certification_jobs.INGEST_INVESTIGATOR
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: CTMDM.workflows.OnboardInvestigator.End
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 760
+      y: -70

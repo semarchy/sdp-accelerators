@@ -1,0 +1,50 @@
+﻿_package: RetailCustomer360.entities.Campaign.enrichers
+_name: CampaignPerformanceEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Campaign.Campaign
+label: Campaign Performance Enricher
+description: "Computes campaign pacing, ROI band, performance score, and health status."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentPerformanceScore
+    expression: CASE
+        WHEN ActualReach IS NULL OR ActualReach = 0 OR Conversions IS NULL THEN NULL
+        WHEN (Conversions * 100.0 / ActualReach) >= 10 THEN 95
+        WHEN (Conversions * 100.0 / ActualReach) >= 5 THEN 80
+        WHEN (Conversions * 100.0 / ActualReach) >= 2 THEN 65
+        WHEN (Conversions * 100.0 / ActualReach) >= 1 THEN 50
+        ELSE 30
+      END
+  - attributeName: EnrichmentPacingStatus
+    expression: CASE
+        WHEN Budget IS NULL OR Budget = 0 OR ActualSpend IS NULL THEN 'Unknown'
+        WHEN EndDate IS NOT NULL AND EndDate < CURRENT_DATE() THEN
+          CASE
+            WHEN ActualSpend >= Budget * 0.9 AND ActualSpend <= Budget * 1.1 THEN 'OnTrack'
+            WHEN ActualSpend < Budget * 0.9 THEN 'UnderPaced'
+            ELSE 'OverPaced'
+          END
+        WHEN ActualSpend > Budget THEN 'OverPaced'
+        WHEN ActualSpend >= Budget * 0.6 THEN 'OnTrack'
+        ELSE 'UnderPaced'
+      END
+  - attributeName: EnrichmentROIBand
+    expression: CASE
+        WHEN ActualSpend IS NULL OR ActualSpend <= 0 OR AttributedRevenue IS NULL THEN 'Unknown'
+        WHEN AttributedRevenue / ActualSpend >= 3 THEN 'Excellent'
+        WHEN AttributedRevenue / ActualSpend >= 1.5 THEN 'Strong'
+        WHEN AttributedRevenue / ActualSpend >= 1 THEN 'Neutral'
+        WHEN AttributedRevenue / ActualSpend >= 0.5 THEN 'Weak'
+        ELSE 'Poor'
+      END
+  - attributeName: EnrichmentHealthStatus
+    expression: CASE
+        WHEN Status = 'Cancelled' THEN 'At Risk'
+        WHEN EnrichmentPacingStatus = 'OverPaced' AND EnrichmentROIBand IN ('Weak', 'Poor') THEN 'At Risk'
+        WHEN EnrichmentPacingStatus = 'OnTrack' AND EnrichmentROIBand IN ('Strong', 'Excellent') THEN 'Healthy'
+        WHEN EnrichmentPerformanceScore >= 80 THEN 'Healthy'
+        WHEN EnrichmentPerformanceScore >= 50 THEN 'Monitor'
+        ELSE 'At Risk'
+      END
+

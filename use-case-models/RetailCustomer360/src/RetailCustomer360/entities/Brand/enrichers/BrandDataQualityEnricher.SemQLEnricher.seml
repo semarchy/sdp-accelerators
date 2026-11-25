@@ -1,0 +1,30 @@
+_package: RetailCustomer360.entities.Brand.enrichers
+_name: BrandDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Brand.Brand
+label: Brand Data Quality Enricher
+description: "Computes standard completeness enrichment fields for Brand."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN BrandId IS NULL AND BrandName IS NULL AND BrandCode IS NULL THEN 0
+        ELSE (
+          CASE WHEN BrandId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN BrandName IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN BrandCode IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN BrandId IS NULL AND BrandName IS NULL AND BrandCode IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN BrandId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN BrandName IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN BrandCode IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()

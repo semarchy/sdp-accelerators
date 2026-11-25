@@ -1,0 +1,44 @@
+﻿_package: RetailCustomer360.entities.Customer.business_views
+_type: BusinessView
+_name: CustomerReviewSuggestedMatches
+label: Customers - Suggested Matches
+entity: RetailCustomer360.entities.Customer.Customer
+
+rootLabel: Customer
+rootPluralLabel: Customers
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: https://api.iconify.design/mdi/account-group.svg?color=%230D1B2A&width=64
+
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Customer
+  entity: RetailCustomer360.entities.Customer.Customer
+  actionSet: RetailCustomer360.entities.Customer.action_sets.CustomerReviewSuggestedMatchesActionSet
+  collection: RetailCustomer360.entities.Customer.collection_views.CustomerCollectionView
+  form: RetailCustomer360.entities.Customer.forms.CustomerForm
+  displayCard: RetailCustomer360.entities.Customer.display_cards.Customer
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

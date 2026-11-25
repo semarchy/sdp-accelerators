@@ -1,0 +1,200 @@
+_type: ModelDiagram
+_package: sales360.model_diagrams
+_name: CoreEntities
+attributeNameFormat: NAME
+description: Model diagram for all the core entities
+entityNameFormat: NAME
+label: Core Entities
+referenceRoleNameFormat: NAME
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: true
+showReferenceCardinality: true
+showReferenceName: true
+showReferenceRoles: false
+entityShapes:
+  - _name: Campaign
+    _type: EntityShape
+    entity: sales360.entities.Campaign.Campaign
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: 185
+    height: 198
+    position:
+      x: 876
+      y: 75
+  - _name: CampaignMember
+    _type: EntityShape
+    entity: sales360.entities.CampaignMember.CampaignMember
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: 198
+    position:
+      x: 882
+      y: 483
+  - _name: Opportunity
+    _type: EntityShape
+    entity: sales360.entities.Opportunity.Opportunity
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: 198
+    position:
+      x: 501
+      y: 357
+  - _name: Account
+    _type: EntityShape
+    entity: sales360.entities.Account.Account
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: 183
+    height: 198
+    position:
+      x: 137
+      y: 46
+  - _name: Contact
+    _type: EntityShape
+    entity: sales360.entities.Contact.Contact
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: 161
+    height: 198
+    position:
+      x: 158
+      y: 534
+  - _name: Leads
+    _type: EntityShape
+    entity: sales360.entities.Leads.Leads
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: 198
+    position:
+      x: 520
+      y: 48
+  - _name: OpportunityContactRole
+    _type: EntityShape
+    entity: sales360.entities.OpportunityContactRole.OpportunityContactRole
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 638
+      y: 679
+  - _name: AccountContactRelation
+    _type: EntityShape
+    entity: sales360.entities.AccountContactRelation.AccountContactRelation
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 15
+      y: 327
+referenceLinks:
+  - reference: sales360.references.AccountContactRelationsContact
+    fromEntityShape: sales360.model_diagrams.CoreEntities.AccountContactRelation
+    toEntityShape: sales360.model_diagrams.CoreEntities.Contact
+    bendPoints:
+      - x: 32
+        y: 122
+  - reference: sales360.references.ReportsToContact
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Contact
+    toEntityShape: sales360.model_diagrams.CoreEntities.Contact
+    bendPoints:
+      - x: 179
+        y: 1
+      - x: 166
+        y: -175
+      - x: 11
+        y: -176
+  - reference: sales360.references.CampaignMemberAsLead
+    fromEntityShape: sales360.model_diagrams.CoreEntities.CampaignMember
+    toEntityShape: sales360.model_diagrams.CoreEntities.Leads
+    bendPoints:
+      - x: -194
+        y: -195
+  - reference: sales360.references.ParentCompany
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Account
+    toEntityShape: sales360.model_diagrams.CoreEntities.Account
+    bendPoints:
+      - x: 132
+        y: 0
+      - x: 128
+        y: -58
+      - x: 127
+        y: -124
+      - x: -1
+        y: -123
+  - reference: sales360.references.ConvertedContact
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Leads
+    toEntityShape: sales360.model_diagrams.CoreEntities.Contact
+    bendPoints: []
+  - reference: sales360.references.ContactAssociatedToOpportunity
+    fromEntityShape: sales360.model_diagrams.CoreEntities.OpportunityContactRole
+    toEntityShape: sales360.model_diagrams.CoreEntities.Contact
+    bendPoints:
+      - x: -344
+        y: -7
+  - reference: sales360.references.OpportunitiesAccount
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Opportunity
+    toEntityShape: sales360.model_diagrams.CoreEntities.Account
+    bendPoints:
+      - x: -324
+        y: -83
+  - reference: sales360.references.ContactsAccount
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Contact
+    toEntityShape: sales360.model_diagrams.CoreEntities.Account
+    bendPoints: []
+  - reference: sales360.references.CampaignMemberAsContact
+    fromEntityShape: sales360.model_diagrams.CoreEntities.CampaignMember
+    toEntityShape: sales360.model_diagrams.CoreEntities.Contact
+    bendPoints:
+      - x: -326
+        y: 56
+      - x: -550
+        y: 72
+  - reference: sales360.references.ConvertedAccount
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Leads
+    toEntityShape: sales360.model_diagrams.CoreEntities.Account
+    bendPoints: []
+  - reference: sales360.references.ParentCampaign
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Campaign
+    toEntityShape: sales360.model_diagrams.CoreEntities.Campaign
+    bendPoints:
+      - x: 100
+        y: 0
+      - x: 112
+        y: -107
+      - x: -4
+        y: -120
+      - x: 0
+        y: -110
+  - reference: sales360.references.CampaignMembersCampaign
+    fromEntityShape: sales360.model_diagrams.CoreEntities.CampaignMember
+    toEntityShape: sales360.model_diagrams.CoreEntities.Campaign
+    bendPoints: []
+  - reference: sales360.references.OpportunitiesCampaign
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Opportunity
+    toEntityShape: sales360.model_diagrams.CoreEntities.Campaign
+    bendPoints:
+      - x: 237
+        y: -312
+  - reference: sales360.references.ConvertedOpportunity
+    fromEntityShape: sales360.model_diagrams.CoreEntities.Leads
+    toEntityShape: sales360.model_diagrams.CoreEntities.Opportunity
+    bendPoints: []
+  - reference: sales360.references.OpportunityRelatedContact
+    fromEntityShape: sales360.model_diagrams.CoreEntities.OpportunityContactRole
+    toEntityShape: sales360.model_diagrams.CoreEntities.Opportunity
+    bendPoints:
+      - x: 54
+        y: -141
+  - reference: sales360.references.AccountContactRelations
+    fromEntityShape: sales360.model_diagrams.CoreEntities.AccountContactRelation
+    toEntityShape: sales360.model_diagrams.CoreEntities.Account
+    bendPoints: []

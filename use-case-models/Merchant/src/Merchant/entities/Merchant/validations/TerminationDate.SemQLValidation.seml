@@ -1,0 +1,9 @@
+_package: Merchant.entities.Merchant.validations
+_name: TerminationDate
+_type: SemQLValidation
+entity: Merchant.entities.Merchant.Merchant
+label: Validate Termination Date vs Activation Date
+# If TerminationDate is provided, ActivationDate must be present and TerminationDate must be >= ActivationDate
+condition: TerminationDate IS NULL OR (ActivationDate IS NOT NULL AND TerminationDate >= ActivationDate)
+validationScope: PRE_CONSO
+validationLabel: Termination date cannot be earlier than activation date

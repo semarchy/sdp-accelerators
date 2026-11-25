@@ -1,0 +1,19 @@
+_package: RetailCustomer360.entities.ContactPointApp.enrichers
+_name: ContactPointAppActivityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.ContactPointApp.ContactPointApp
+label: ContactPointApp Activity Enricher
+description: "Derives recency metrics from install and last-open timestamps."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: DaysSinceLastOpen
+    # computes whole days elapsed; LastActivityDate is a Timestamp so date-part arithmetic operates on the date portion
+    expression: CASE
+        WHEN LastOpenDate IS NULL THEN NULL
+        ELSE FLOOR(
+          (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', EnrichmentUpdatedOn)) * 365
+          + (DATE_PART('month', CURRENT_DATE()) - DATE_PART('month', EnrichmentUpdatedOn)) * 30
+          + (DATE_PART('day', CURRENT_DATE()) - DATE_PART('day', EnrichmentUpdatedOn))
+        )
+      END

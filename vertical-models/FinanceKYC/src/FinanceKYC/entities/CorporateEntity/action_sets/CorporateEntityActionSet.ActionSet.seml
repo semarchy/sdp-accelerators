@@ -1,0 +1,112 @@
+_package: FinanceKYC.entities.CorporateEntity.action_sets
+_type: ActionSet
+_name: CorporateEntityActionSet
+
+entity: FinanceKYC.entities.CorporateEntity.CorporateEntity
+label: Corporate Entity Action Set
+defaultActionSet: true
+
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorCorporateEntities
+    label: Create
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.CorporateEntity.steppers.AuthorCorporateEntities
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+
+  - _type: EditAction
+    _name: EditAuthorCorporateEntities
+    label: Edit
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.CorporateEntity.steppers.AuthorCorporateEntities
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorCorporateEntities
+    label: Mass Update
+    useCustomLabel: true
+    stepper: FinanceKYC.entities.CorporateEntity.steppers.AuthorCorporateEntities
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+
+  - _type: ImportAction
+    _name: ImportAuthorCorporateEntities
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: FinanceKYC.entities.CorporateEntity.steppers.AuthorCorporateEntities
+    importedRecordType: MASTER
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+
+  - _type: DirectConfirmDupsAction
+    _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: false
+    waitDialogEnabled: false
+
+  - _type: ReviewAndConfirm
+    _name: ReviewAndConfirmDuplicatesManageDuplicatesOnCorporateEntity
+    label: Review and Confirm Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.CorporateEntity.dups_managers.ReviewSuggestionsOnCorporateEntity
+    enableEdit: true
+    mandateConfirmAll: false
+    waitDialogEnabled: false
+
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnCorporateEntity
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.CorporateEntity.dups_managers.ReviewSuggestionsOnCorporateEntity
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnCorporateEntity
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: FinanceKYC.entities.CorporateEntity.dups_managers.ReviewSuggestionsOnCorporateEntity
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false
+
+  - _type: ExplainRecordAction
+    _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    displayCard: FinanceKYC.entities.CorporateEntity.display_cards.CorporateEntityDisplayCard
+    formTab: FinanceKYC.entities.CorporateEntity.forms.CorporateEntityForm.CorporateEntity
+    waitDialogEnabled: false

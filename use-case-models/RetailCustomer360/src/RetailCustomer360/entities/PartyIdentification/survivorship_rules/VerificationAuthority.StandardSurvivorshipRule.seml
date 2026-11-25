@@ -1,0 +1,28 @@
+_package: RetailCustomer360.entities.PartyIdentification.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: VerificationAuthority
+entity: RetailCustomer360.entities.PartyIdentification.PartyIdentification
+label: Verification Authority Rule - Trust Verified Records
+description: "When merging party identification records, prefer values from sources where the document has been positively verified. A verified identification document (IsVerified = true) is more authoritative than an unverified one from any source. This protects against unverified or stale identity data overwriting validated government-issued identification."
+documentation: "KYC and AML compliance require that verified identity documents are not degraded by unverified data from lower-trust systems. This rule ensures that once an identification document has been verified, its status, expiry, and issuing authority information is sourced from the system that performed the verification. CRM and MANUAL sources are ranked highest as they typically reflect outcomes of physical document checks."
+defaultRule: false
+consolidationStrategy: PREFERRED_PUBLISHER
+consolidationSkipNulls: false
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: IsVerified
+  - attributeName: VerificationDate
+  - attributeName: IdentificationStatus
+  - attributeName: IssuingAuthority
+  - attributeName: ExpiryDate
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.CRM
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.MANUAL
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.ECOMMERCE
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.API
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.POS

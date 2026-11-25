@@ -1,0 +1,140 @@
+_package: RetailCustomer360.entities.ContactPointConsent
+_type: Entity
+_name: ContactPointConsent
+label: Contact Point Consent
+pluralLabel: Contact Point Consents
+entityType: BASIC
+physicalTableName: CP_CONSENT
+iconUrl: https://api.iconify.design/mdi/shield-account.svg?color=%230D1B2A&width=64
+
+description: "Consent preference recorded for a customer on one specific contact point and channel."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CPConsentId
+    label: Contact Point Consent Id
+    physicalName: CP_CONSENT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the contact point consent."
+
+  - _type: EntityAttribute
+    _name: EngagementChannelType
+    label: Engagement Channel
+    physicalName: ENGAGEMENT_CHANNEL
+    dataType: RetailCustomer360.list_of_values.EngagementChannelType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Channel the preference applies to."
+
+  - _type: EntityAttribute
+    _name: ConsentStatus
+    label: Consent Status
+    physicalName: CONSENT_STATUS
+    dataType: RetailCustomer360.list_of_values.ConsentStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Whether the customer opted in or out for this contact point."
+
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: Effective Date
+    physicalName: EFFECTIVE_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the preference took effect."
+
+  - _type: EntityAttribute
+    _name: ExpiryDate
+    label: Expiry Date
+    physicalName: EXPIRY_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the preference expires."
+
+  - _type: EntityAttribute
+    _name: CaptureMethod
+    label: Capture Method
+    physicalName: CAPTURE_METHOD
+    dataType: RetailCustomer360.list_of_values.ConsentCaptureMethod
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "How the preference was captured from the customer."
+
+  - _type: EntityAttribute
+    _name: DoubleOptInConfirmed
+    label: Double Opt In Confirmed
+    physicalName: DOUBLE_OPT_IN_CONF
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the customer confirmed the opt-in a second time."
+
+  - _type: EntityAttribute
+    _name: OptOutReason
+    label: Opt Out Reason
+    physicalName: OPT_OUT_REASON
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Reason the customer gave for opting out."
+
+  - _type: EntityAttribute
+    _name: Jurisdiction
+    label: Jurisdiction
+    physicalName: JURISDICTION
+    dataType: RetailCustomer360.list_of_values.Jurisdiction
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Privacy regime governing the preference."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the preference originates from."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)."
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated."
+
+primaryKey: RetailCustomer360.entities.ContactPointConsent.ContactPointConsent.CPConsentId
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1

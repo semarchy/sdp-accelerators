@@ -1,0 +1,9 @@
+﻿_package: RetailCustomer360.entities.LoyaltyProgramMember.validations
+_name: PointsExpiryDateMustNotBeBeforeJoinDate
+_type: SemQLValidation
+entity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+label: Points Expiry Date Must Not Be Before Join Date
+validationScope: PRE_CONSO
+description: "Ensures points expiry date is on or after join date when both dates are provided."
+condition: JoinDate IS NULL OR PointsExpiryDate IS NULL OR PointsExpiryDate >= JoinDate
+

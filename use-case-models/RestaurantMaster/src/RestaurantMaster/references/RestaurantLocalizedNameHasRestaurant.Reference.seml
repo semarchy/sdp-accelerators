@@ -1,0 +1,25 @@
+_package: RestaurantMaster.references
+_type: Reference
+label: Localized name - Restaurant
+_name: RestaurantLocalizedNameHasRestaurant
+description: Attaches each localized name to its restaurant; deleted with the restaurant.
+documentation: Attaches each localized name to its restaurant; deleted with the restaurant.
+deletePropagation: CASCADE
+fromEntity: RestaurantMaster.entities.RestaurantLocalizedName.RestaurantLocalizedName
+fromRoleName: LocalizedNames
+fromRoleLabel: Localized name
+fromRolePluralLabel: Localized names
+physicalName: LOCNAME_RESTAURANT
+toEntity: RestaurantMaster.entities.Restaurant.Restaurant
+toRoleName: Restaurant
+toRolePhysicalName: RESTAURANT_ID
+toRoleLabel: Restaurant
+validationScope: PRE_CONSO
+oneToMany: true
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Restaurant
+  entity: RestaurantMaster.entities.Restaurant.Restaurant
+  label: Restaurant
+  physicalName: RESTAURANT_ID
+  searchable: true

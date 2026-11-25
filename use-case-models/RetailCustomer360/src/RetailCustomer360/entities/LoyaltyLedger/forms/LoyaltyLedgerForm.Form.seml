@@ -1,0 +1,250 @@
+_package: RetailCustomer360.entities.LoyaltyLedger.forms
+_type: Form
+_name: LoyaltyLedgerForm
+entity: RetailCustomer360.entities.LoyaltyLedger.LoyaltyLedger
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: Overview
+    label: Overview
+    iconUrl: https://api.iconify.design/mdi/view-dashboard-outline.svg?color=%230D1B2A&width=64
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: OverviewRow
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: OverviewCol1
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: OvrTransaction
+                label: Transaction
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrTransactionRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: DateField
+                        _name: OvrTransactionDate
+                        value: TransactionDate
+                        useCustomLabel: false
+                        dataType: DATE
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: MenuField
+                        _name: OvrTransactionType
+                        value: TransactionType
+                        useCustomLabel: false
+                        dataType: STRING
+                        componentProperties:
+                          textAlign: left
+                          useAvatarInMenu: '1'
+                          useAvatarInMenuValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrReferenceNumber
+                        value: ReferenceNumber
+                        useCustomLabel: false
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrDescription
+                        value: Description
+                        useCustomLabel: false
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: CheckboxField
+                        _name: OvrIsReversed
+                        value: IsReversed
+                        useCustomLabel: false
+                        dataType: BOOLEAN
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+          - _type: FormContainer
+            _name: OverviewCol2
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: OvrPoints
+                label: Points
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrPointsRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: MenuField
+                        _name: OvrPointsType
+                        value: PointsType
+                        useCustomLabel: false
+                        dataType: STRING
+                        componentProperties:
+                          textAlign: left
+                          useAvatarInMenu: '1'
+                          useAvatarInMenuValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrPoints
+                        value: Points
+                        useCustomLabel: false
+                        dataType: LONG_INTEGER
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrPointsBalanceAfter
+                        value: PointsBalanceAfter
+                        useCustomLabel: false
+                        dataType: LONG_INTEGER
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrMonetaryValue
+                        value: MonetaryValue
+                        useCustomLabel: false
+                        dataType: DECIMAL
+                        componentProperties:
+                          textAlign: left
+                          displayFormat: '$ #,###,###.##'
+                          displayFormatValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: DateField
+                        _name: OvrExpirationDate
+                        value: ExpirationDate
+                        useCustomLabel: false
+                        dataType: DATE
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+          - _type: FormContainer
+            _name: OverviewCol3
+            layoutDirection: COLUMN
+            content:
+              - _type: FormSection
+                _name: OvrRelatedRecords
+                label: Related Records
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrRelatedRecordsRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: ReferenceField
+                        _name: OvrFDN_LoyaltyProgramMember
+                        value: FDN_LoyaltyProgramMember
+                        useCustomLabel: true
+                        label: Loyalty Member
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                        referencedEntity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+                        componentProperties:
+                          displayType: chip
+                          useAvatarInChip: '1'
+                          useSecondaryTextInChip: '1'
+                      - _type: ReferenceField
+                        _name: OvrFDN_SalesOrder
+                        value: FDN_SalesOrder
+                        useCustomLabel: true
+                        label: Sales Order
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                        referencedEntity: RetailCustomer360.entities.SalesOrder.SalesOrder
+                        componentProperties:
+                          displayType: chip
+                          useAvatarInChip: '1'
+                          useSecondaryTextInChip: '1'
+              - _type: FormSection
+                _name: OvrSource
+                label: Source
+                layoutDirection: COLUMN
+                documentationInterpreter: LITERAL
+                content:
+                  - _type: FormContainer
+                    _name: OvrSourceRow
+                    layoutDirection: COLUMN
+                    content:
+                      - _type: MenuField
+                        _name: OvrSourceSystem
+                        value: SourceSystem
+                        useCustomLabel: false
+                        dataType: STRING
+                        componentProperties:
+                          textAlign: left
+                          useAvatarInMenu: '1'
+                          useAvatarInMenuValueInterpreter: LITERAL
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrSourceLedgerKey
+                        value: SourceLedgerKey
+                        useCustomLabel: false
+                        dataType: STRING
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'
+                      - _type: TextField
+                        _name: OvrLedgerEntryId
+                        value: LedgerEntryId
+                        useCustomLabel: false
+                        dataType: LONG_INTEGER
+                        labelProperties:
+                          alignment: left
+                          position: top
+                          typography: caption
+                          isVisible: '1'

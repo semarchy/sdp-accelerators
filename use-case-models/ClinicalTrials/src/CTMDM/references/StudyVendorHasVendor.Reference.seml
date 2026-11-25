@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: StudyVendorHasVendor
+_type: Reference
+label: Study Vendor Has Vendor
+description: "Links vendor assignments to the vendor master."
+documentation: "Links vendor assignments to the vendor master."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.StudyVendor.StudyVendor
+fromRoleLabel: Study Vendor
+fromRoleName: studyVendor
+fromRolePluralLabel: Study Vendors
+physicalName: STUDY_VENDOR_HAS_VENDOR
+fromNavigable: true
+
+toEntity: CTMDM.entities.Vendor.Vendor
+toRoleLabel: CRO / Vendor
+toRoleName: vendor
+toRolePhysicalName: VENDOR
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: vendor
+  label: CRO / Vendor
+  physicalName: VENDOR
+  searchable: true
+  entity: CTMDM.entities.Vendor.Vendor

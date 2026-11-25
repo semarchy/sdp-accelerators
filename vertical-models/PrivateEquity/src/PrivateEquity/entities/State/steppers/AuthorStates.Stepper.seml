@@ -1,0 +1,68 @@
+_name: AuthorStates
+_package: PrivateEquity.entities.State.steppers
+_type: Stepper
+entity: PrivateEquity.entities.State.State
+rootStep:
+  _name: States
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.State.collection_views.StateCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: States
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.entities.State.State.Name
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.StatesCountry.Country
+  stepTriggers: []
+  childSteps:
+    - _name: State
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: State
+      formTab: PrivateEquity.entities.State.forms.StateForm.State
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: PrivateEquity.entities.State.State.Name
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.StatesCountry.Country
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.entities.State.State.Name
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.StatesCountry.Country
+      stepTriggers: []
+label: Author States
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.StatesCountry.Country
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.entities.State.State.Name
+triggers: []

@@ -1,0 +1,186 @@
+﻿_package: RetailCustomer360.entities.LoyaltyProgramMember
+_type: Entity
+_name: LoyaltyProgramMember
+label: Loyalty Program Member
+pluralLabel: Loyalty Program Members
+entityType: BASIC
+physicalTableName: LOYALTY_PROGRAM_MEMBER
+iconUrl: https://api.iconify.design/mdi/card-account-details.svg?color=%230D1B2A&width=64
+
+description: "Represents a customer's membership in a loyalty program."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: LoyaltyMemberId
+    label: Loyalty Member Id
+    physicalName: LOYALTY_MEMBER_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: LoyaltyMemberNumber
+    label: Loyalty Member Number
+    physicalName: LOYALTY_MEMBER_NUMBER
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Membership number"
+
+  - _type: EntityAttribute
+    _name: MembershipStatus
+    label: Membership Status
+    physicalName: MEMBERSHIP_STATUS
+    dataType: RetailCustomer360.list_of_values.MembershipStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Active, Inactive, Suspended, Closed"
+
+  - _type: EntityAttribute
+    _name: Tier
+    label: Tier
+    physicalName: TIER
+    dataType: RetailCustomer360.list_of_values.Tier
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Bronze, Silver, Gold, Platinum, Diamond"
+
+  - _type: EntityAttribute
+    _name: JoinDate
+    label: Join Date
+    physicalName: JOIN_DATE
+    dataType: Date
+    searchable: true
+    description: "Membership join date"
+
+  - _type: EntityAttribute
+    _name: EnrollmentChannel
+    label: Enrollment Channel
+    physicalName: ENROLLMENT_CHANNEL
+    dataType: RetailCustomer360.list_of_values.EnrollmentChannel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Store, Web, Mobile App, Call Center"
+
+  - _type: EntityAttribute
+    _name: AvailablePointsBalance
+    label: Available Points Balance
+    physicalName: AVAILABLE_POINTS_BAL
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Available points"
+
+  - _type: EntityAttribute
+    _name: LifetimePointsEarned
+    label: Lifetime Points Earned
+    physicalName: LIFETIME_POINTS_EARNED
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Total points earned"
+
+  - _type: EntityAttribute
+    _name: LifetimePointsRedeemed
+    label: Lifetime Points Redeemed
+    physicalName: LIFETIME_POINTS_REDEEMED
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Total points redeemed"
+
+  - _type: EntityAttribute
+    _name: PointsExpiryDate
+    label: Points Expiry Date
+    physicalName: POINTS_EXPIRY_DATE
+    dataType: Date
+    searchable: true
+    description: "Next points expiry date"
+
+  - _type: EntityAttribute
+    _name: LastActivityDate
+    label: Last Activity Date
+    physicalName: LAST_ACTIVITY_DATE
+    dataType: Date
+    searchable: true
+    description: "Last loyalty activity date"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: SourceLoyaltyMemberKey
+    label: Source Loyalty Member Key
+    physicalName: SOURCE_LOYALTY_MEMBER_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source member identifier"
+
+  - _type: EntityAttribute
+    _name: MemberHealthStatus
+    label: Member Health Status
+    physicalName: MEMBER_HEALTH_STATUS
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived membership health indicator"
+
+  - _type: EntityAttribute
+    _name: ActivityRecencyBand
+    label: Activity Recency Band
+    physicalName: ACTIVITY_RECENCY_BAND
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived activity recency category"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+    
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember.LoyaltyMemberId
+

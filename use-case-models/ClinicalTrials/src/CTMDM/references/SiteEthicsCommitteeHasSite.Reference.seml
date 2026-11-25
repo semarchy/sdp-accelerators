@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: SiteEthicsCommitteeHasSite
+_type: Reference
+label: Site Ethics Committee Has Site
+description: "Links site ethics oversight records to the clinical site."
+documentation: "Links site ethics oversight records to the clinical site."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.SiteEthicsCommittee.SiteEthicsCommittee
+fromRoleLabel: Site Ethics Committee
+fromRoleName: siteEthicsCommittee
+fromRolePluralLabel: Site Ethics Committees
+physicalName: SITE_ETHICS_COMM_HAS_SITE
+fromNavigable: true
+
+toEntity: CTMDM.entities.ClinicalSite.ClinicalSite
+toRoleLabel: Clinical Site
+toRoleName: clinicalSite
+toRolePhysicalName: CLINICAL_SITE
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: clinicalSite
+  label: Clinical Site
+  physicalName: CLINICAL_SITE
+  searchable: true
+  entity: CTMDM.entities.ClinicalSite.ClinicalSite

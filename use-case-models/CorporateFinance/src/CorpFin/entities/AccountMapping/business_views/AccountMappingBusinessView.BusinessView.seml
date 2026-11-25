@@ -1,0 +1,73 @@
+_package: CorpFin.entities.AccountMapping.business_views
+_type: BusinessView
+_name: AccountMappingBusinessView
+
+entity: CorpFin.entities.AccountMapping.AccountMapping
+rootLabel: Account Mappings
+rootPluralLabel: Account Mappings
+rootIconUrl: images://mdi/arrow-right-bold.svg
+displayRootNodeAs: ICON_LABEL
+label: Account Mappings
+
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: AccountMapping
+  entity: CorpFin.entities.AccountMapping.AccountMapping
+  actionSet: CorpFin.entities.AccountMapping.action_sets.AccountMappingActionSet
+  collection: CorpFin.entities.AccountMapping.collection_views.AccountMappingCollectionView
+  form: CorpFin.entities.AccountMapping.forms.AccountMappingForm
+  displayCard: CorpFin.entities.AccountMapping.display_cards.AccountMappingDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+
+  transitions:
+    - _name: ToSplitAllocations
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/call-split.svg
+      useCustomLabel: false
+
+      transitionPath: splitAllocation
+      visibleInFormTabCondition: any splitAllocation has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToSplitAllocations
+        _type: BusinessViewEntity
+
+        collection: CorpFin.entities.SplitAllocation.collection_views.SplitAllocationCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: CorpFin.entities.SplitAllocation.SplitAllocation
+        form: CorpFin.entities.SplitAllocation.forms.SplitAllocationForm
+        displayCard: CorpFin.entities.SplitAllocation.display_cards.SplitAllocationDisplayCard
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        # sortExpression: ''
+        tableAllowed: true

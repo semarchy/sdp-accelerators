@@ -1,0 +1,63 @@
+_package: CorpFin.entities.StatusCode.action_sets
+_type: ActionSet
+_name: StatusCodeActionSet
+entity: CorpFin.entities.StatusCode.StatusCode
+label: Status Code Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorStatusCodes
+    label: Create
+    useCustomLabel: true
+    stepper: CorpFin.entities.StatusCode.steppers.AuthorStatusCodes
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorStatusCodes
+    label: Edit
+    useCustomLabel: true
+    stepper: CorpFin.entities.StatusCode.steppers.AuthorStatusCodes
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorStatusCodes
+    label: Mass Update
+    useCustomLabel: true
+    stepper: CorpFin.entities.StatusCode.steppers.AuthorStatusCodes
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorStatusCodes
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: CorpFin.entities.StatusCode.steppers.AuthorStatusCodes
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

@@ -1,0 +1,182 @@
+_name: AuthorSuppliers
+_package: sapbp360.entities.Supplier.steppers
+_type: Stepper
+entity: sapbp360.entities.Supplier.Supplier
+description: Stepper for authoring Suppliers.
+rootStep:
+  _name: Suppliers
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.Supplier.collection_views.SupplierCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Suppliers
+  description: Manage Supplier data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.Supplier_SupplierAccountGroup.SupplierAccountGroup
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.Supplier_SupplierCorporateGroup.SupplierCorporateGroup
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.Supplier_AlternativePayeeAccountNumber.AlternativePayeeAccountNumber
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.Supplier_Industry.Industry
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.Supplier_AuthorizationGroup.AuthorizationGroup
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.Supplier_TradingPartner.TradingPartner
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.Supplier_ResponsibleType.ResponsibleType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.Supplier_BusinessPartner.BusinessPartner
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sapbp360.entities.Supplier.Supplier.SemQLMatcherSUPPLIER
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Supplier.
+      formTab: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main
+      formStepEnrichers:
+        - enricher: sapbp360.entities.Supplier.enrichers.NormalizedSupplierName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main.Classification.ClassificationRow.ClassificationCol1.FDN_SupplierAccountGroup
+          referencePickerCollectionView: sapbp360.entities.SupplierAccountGroup.collection_views.SupplierAccountGroupCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main.Classification.ClassificationRow.ClassificationCol2.FDN_SupplierCorporateGroup
+          referencePickerCollectionView: sapbp360.entities.SupplierCorporateGroup.collection_views.SupplierCorporateGroupCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main.Classification.ClassificationRow.ClassificationCol1.FDN_AlternativePayeeAccountNumber
+          referencePickerCollectionView: sapbp360.entities.AlternativePayee.collection_views.AlternativePayeeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main.Classification.ClassificationRow.ClassificationCol3.FDN_Industry
+          referencePickerCollectionView: sapbp360.entities.Industry.collection_views.IndustryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main.Classification.ClassificationRow.ClassificationCol2.FDN_AuthorizationGroup
+          referencePickerCollectionView: sapbp360.entities.AuthorizationGroup.collection_views.AuthorizationGroupCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main.Classification.ClassificationRow.ClassificationCol3.FDN_TradingPartner
+          referencePickerCollectionView: sapbp360.entities.TradingPartner.collection_views.TradingPartnerCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main.Classification.ClassificationRow.ClassificationCol1.FDN_ResponsibleType
+          referencePickerCollectionView: sapbp360.entities.ResponsibleType.collection_views.ResponsibleTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.Supplier.forms.SupplierDataEntryForm.Main.Identification.IdentificationRow.IdentificationCol3.FDN_BusinessPartner
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.Supplier_SupplierAccountGroup.SupplierAccountGroup
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.Supplier_SupplierCorporateGroup.SupplierCorporateGroup
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.Supplier_AlternativePayeeAccountNumber.AlternativePayeeAccountNumber
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.Supplier_Industry.Industry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.Supplier_AuthorizationGroup.AuthorizationGroup
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.Supplier_TradingPartner.TradingPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.Supplier_ResponsibleType.ResponsibleType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.Supplier_BusinessPartner.BusinessPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author Suppliers
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.Supplier_SupplierAccountGroup.SupplierAccountGroup
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.Supplier_SupplierCorporateGroup.SupplierCorporateGroup
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.Supplier_AlternativePayeeAccountNumber.AlternativePayeeAccountNumber
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.Supplier_Industry.Industry
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.Supplier_AuthorizationGroup.AuthorizationGroup
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.Supplier_TradingPartner.TradingPartner
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.Supplier_ResponsibleType.ResponsibleType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.Supplier_BusinessPartner.BusinessPartner
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

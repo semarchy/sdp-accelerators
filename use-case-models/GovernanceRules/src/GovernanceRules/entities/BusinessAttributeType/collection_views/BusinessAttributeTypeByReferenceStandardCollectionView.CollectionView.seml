@@ -1,0 +1,69 @@
+# BusinessAttributeTypeByReferenceStandardCollectionView: collection view on BusinessAttributeType of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.BusinessAttributeType.collection_views
+_type: CollectionView
+_name: BusinessAttributeTypeByReferenceStandardCollectionView
+description: 'Attribute types listed under a regulation or standard, the attribute types whose format it governs.'
+entity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+default: false
+displayCard: GovernanceRules.entities.BusinessAttributeType.display_cards.BusinessAttributeTypeDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: '1:1'
+gridTileLines: 2
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Attribute type
+tableRowLines: 2
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: Code
+    value: Code
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FDN_DefaultClassification
+    value: FDN_DefaultClassification
+    useCustomLabel: true
+    label: Default classification
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: GovernanceRules.entities.DataClassification.DataClassification
+    componentProperties:
+      hideIfReferenceToParent: '1'
+      hideIfReferenceToParentValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Name
+    value: Name
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Description
+    value: Description
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: FormatPattern
+    value: FormatPattern
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Example
+    value: Example
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false

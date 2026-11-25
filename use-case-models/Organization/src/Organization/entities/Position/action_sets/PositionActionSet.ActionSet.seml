@@ -1,0 +1,70 @@
+_package: Organization.entities.Position.action_sets
+_type: ActionSet
+_name: PositionActionSet
+entity: Organization.entities.Position.Position
+label: Position Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorPositions
+    label: Create
+    useCustomLabel: true
+    stepper: Organization.entities.Position.steppers.AuthorPositions
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorPositions
+    label: Edit
+    useCustomLabel: true
+    stepper: Organization.entities.Position.steppers.AuthorPositions
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorPositions
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Organization.entities.Position.steppers.AuthorPositions
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorPositions
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Organization.entities.Position.steppers.AuthorPositions
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: CopyAction
+    _name: CopyAuthorPositions
+    label: Copy
+    useCustomLabel: true
+    stepper: Organization.entities.Position.steppers.AuthorPositions
+    multipleSelectionAllowed: true
+    waitDialogEnabled: false

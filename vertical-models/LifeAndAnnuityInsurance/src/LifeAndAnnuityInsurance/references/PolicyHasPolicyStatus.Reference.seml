@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: PolicyHasPolicyStatus
+description: "Indicates the Policy Status associated with a Policy."
+_type: Reference
+label: "Policy Has Policy Status"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+fromRoleLabel: "Policy"
+fromRoleName: Policy
+fromRolePluralLabel: "Policies"
+physicalName: POL_HAS_POL_STAT
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.PolicyStatus.PolicyStatus
+toRoleLabel: "Policy Status"
+toRoleName: PolicyStatus
+toRolePhysicalName: POL_STAT
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PolicyStatus
+  label: "Policy Status ID"
+  description: "The identifier of the Policy Status associated with the Policy."
+  physicalName: POL_STAT_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.PolicyStatus.PolicyStatus

@@ -1,0 +1,3348 @@
+{
+  "action": "CREATE_LOAD_AND_SUBMIT",
+  "programName": "curl",
+  "loadDescription": "GovernanceRules demo data, publisher SEED (GovernanceBody 5, DataDomain 11, DataClassification 6, Regulation 26, BusinessAttributeType 27, GovernancePolicy 6, GovernanceRule 74, RuleScope 133, RuleCitation 146; GovernanceRule includes 3 deliberate validation failures DQ-BAD1..3)",
+  "jobName": "INTEGRATE_ALL",
+  "persistOptions": {
+    "responsePayload": "SUMMARY",
+    "persistMode": "ALWAYS",
+    "defaultPublisherId": "SEED",
+    "optionsPerEntity": {
+      "GovernanceBody": {
+        "enrichers": [],
+        "validations": []
+      },
+      "DataDomain": {
+        "enrichers": [],
+        "validations": []
+      },
+      "DataClassification": {
+        "enrichers": [],
+        "validations": []
+      },
+      "Regulation": {
+        "enrichers": [],
+        "validations": []
+      },
+      "BusinessAttributeType": {
+        "enrichers": [],
+        "validations": []
+      },
+      "GovernancePolicy": {
+        "enrichers": [],
+        "validations": []
+      },
+      "GovernanceRule": {
+        "enrichers": [],
+        "validations": []
+      },
+      "RuleScope": {
+        "enrichers": [],
+        "validations": []
+      },
+      "RuleCitation": {
+        "enrichers": [],
+        "validations": []
+      }
+    },
+    "missingIdBehavior": "GENERATE"
+  },
+  "persistRecords": {
+    "GovernanceBody": [
+      {
+        "Code": "DGC",
+        "Name": "Data Governance Council",
+        "Type": "COUNCIL",
+        "ContactEmail": "data-governance-council@example.com",
+        "Description": "Cross-functional council chaired by the Chief Data Officer. Owns the governance framework, approves policies and arbitrates cross-domain rules."
+      },
+      {
+        "Code": "DPO",
+        "Name": "Data Protection Office",
+        "Type": "OFFICE",
+        "ContactEmail": "dpo@example.com",
+        "Description": "Office of the Data Protection Officer. Owns privacy and personal data retention rules (GDPR, CCPA/CPRA, HIPAA where applicable)."
+      },
+      {
+        "Code": "DQO",
+        "Name": "Data Quality Office",
+        "Type": "OFFICE",
+        "ContactEmail": "data-quality@example.com",
+        "Description": "Owns data quality, reference data, identity and matching, and stewardship rules for all master data domains."
+      },
+      {
+        "Code": "ISEC",
+        "Name": "Information Security Office",
+        "Type": "OFFICE",
+        "ContactEmail": "infosec@example.com",
+        "Description": "Office of the Chief Information Security Officer. Owns access control, segregation of duties and data security rules aligned with ISO/IEC 27001."
+      },
+      {
+        "Code": "GXPQA",
+        "Name": "GxP Quality Assurance",
+        "Type": "OFFICE",
+        "ContactEmail": "gxp-qa@example.com",
+        "Description": "Quality assurance for GxP-regulated data and computerised systems (21 CFR Part 11, EU GMP Annex 11). Owns the pharma extension rules."
+      }
+    ],
+    "DataDomain": [
+      {
+        "Code": "CUSTOMER",
+        "Name": "Customer",
+        "Description": "Individual consumers and B2B customer accounts, their contacts, addresses, consents and account hierarchy."
+      },
+      {
+        "Code": "PRODUCT",
+        "Name": "Product",
+        "Description": "Products and trade items sold to customers: identification, classification, descriptions, packaging and market availability."
+      },
+      {
+        "Code": "SUPPLIER",
+        "Name": "Supplier",
+        "Description": "Suppliers and vendors: legal entity, sites, bank details, qualification and status."
+      },
+      {
+        "Code": "EMPLOYEE",
+        "Name": "Employee",
+        "Description": "Employees and contingent workers: identity, organisation assignment, contact data."
+      },
+      {
+        "Code": "LOCATION",
+        "Name": "Location",
+        "Description": "Sites, addresses and geographic hierarchies (country, region, city)."
+      },
+      {
+        "Code": "FINANCE",
+        "Name": "Finance",
+        "Description": "Financial master data: legal entities of the group, cost centres, chart of accounts, bank accounts."
+      },
+      {
+        "Code": "ASSET",
+        "Name": "Asset",
+        "Description": "Physical and technical assets: equipment, installed base, serial numbers."
+      },
+      {
+        "Code": "REFERENCE",
+        "Name": "Reference data",
+        "Description": "Shared code lists and reference entities used across domains: countries, currencies, languages, units, statuses."
+      },
+      {
+        "Code": "MEDICINAL_PRODUCT",
+        "Name": "Medicinal product",
+        "Description": "Pharma extension. Regulated medicinal and pharmaceutical products, packages, marketing authorisations, IDMP and NDC identification."
+      },
+      {
+        "Code": "HCP",
+        "Name": "Healthcare professional",
+        "Description": "Pharma extension. Healthcare professionals and organisations (prescribers, teaching hospitals): identity, licences, NPI, specialties, transfers of value."
+      },
+      {
+        "Code": "CLINICAL_SITE",
+        "Name": "Clinical site",
+        "Description": "Pharma extension. Clinical trial sites and investigators: site identity, address, qualification and GxP-relevant status."
+      }
+    ],
+    "DataClassification": [
+      {
+        "Code": "PUBLIC",
+        "Name": "Public",
+        "Description": "Information intended for or harmless if publicly disclosed (e.g. product descriptions, country codes, LEI).",
+        "SensitivityRank": 1
+      },
+      {
+        "Code": "INTERNAL",
+        "Name": "Internal",
+        "Description": "Business information for internal use, with limited impact if disclosed (e.g. internal codes, source identifiers).",
+        "SensitivityRank": 2
+      },
+      {
+        "Code": "CONFIDENTIAL",
+        "Name": "Confidential",
+        "Description": "Commercially sensitive information restricted to roles with a business need (e.g. prices, bank account numbers of companies, contract terms).",
+        "SensitivityRank": 3
+      },
+      {
+        "Code": "PERSONAL",
+        "Name": "Personal data",
+        "Description": "Any information relating to an identified or identifiable natural person (GDPR Art. 4(1); personal information under CCPA/CPRA).",
+        "SensitivityRank": 4
+      },
+      {
+        "Code": "SENSITIVE_PERSONAL",
+        "Name": "Sensitive personal data",
+        "Description": "Special categories of personal data (GDPR Art. 9), data on criminal convictions (Art. 10), and sensitive personal information under CCPA/CPRA (e.g. government identifiers, health, precise geolocation).",
+        "SensitivityRank": 5
+      },
+      {
+        "Code": "PHI",
+        "Name": "Protected health information",
+        "Description": "Individually identifiable health information held by a HIPAA covered entity or business associate (45 CFR 160.103). Used by the pharma extension.",
+        "SensitivityRank": 5
+      }
+    ],
+    "Regulation": [
+      {
+        "Code": "GDPR",
+        "Name": "General Data Protection Regulation (Regulation (EU) 2016/679)",
+        "Type": "REGULATION",
+        "Issuer": "European Parliament and Council of the European Union",
+        "Jurisdiction": "European Union / EEA",
+        "URL": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+        "Description": "EU regulation on the protection of natural persons with regard to the processing of personal data and on the free movement of such data."
+      },
+      {
+        "Code": "CCPA-CPRA",
+        "Name": "California Consumer Privacy Act, as amended by the California Privacy Rights Act",
+        "Type": "REGULATION",
+        "Issuer": "State of California",
+        "Jurisdiction": "United States - California",
+        "URL": "https://oag.ca.gov/privacy/ccpa",
+        "Description": "California Civil Code, Title 1.81.5, sections 1798.100 et seq. Consumer rights to know, delete, correct, opt out of sale or sharing and limit the use of sensitive personal information."
+      },
+      {
+        "Code": "EU-AI-ACT",
+        "Name": "Artificial Intelligence Act (Regulation (EU) 2024/1689)",
+        "Type": "REGULATION",
+        "Issuer": "European Parliament and Council of the European Union",
+        "Jurisdiction": "European Union",
+        "URL": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+        "Description": "EU regulation laying down harmonised rules on artificial intelligence, including data governance, transparency and human oversight requirements for high-risk AI systems."
+      },
+      {
+        "Code": "ISO-3166-1",
+        "Name": "ISO 3166-1 Codes for the representation of names of countries and their subdivisions - Part 1: Country code",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/iso-3166-country-codes.html",
+        "Description": "Alpha-2, alpha-3 and numeric country codes, maintained by the ISO 3166 Maintenance Agency."
+      },
+      {
+        "Code": "ISO-4217",
+        "Name": "ISO 4217 Codes for the representation of currencies",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/iso-4217-currency-codes.html",
+        "Description": "Three-letter alphabetic and three-digit numeric currency codes, with the number of minor units."
+      },
+      {
+        "Code": "ISO-639",
+        "Name": "ISO 639 Codes for individual languages and language groups",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/iso-639-language-code",
+        "Description": "Language identifiers, including the two-letter set (formerly ISO 639-1) used for major languages such as en and fr."
+      },
+      {
+        "Code": "ISO-8601",
+        "Name": "ISO 8601 Date and time - Representations for information interchange",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/iso-8601-date-and-time-format.html",
+        "Description": "Unambiguous representation of dates, times, durations and time zone offsets (e.g. 2026-12-11, 2026-12-11T14:30:00Z)."
+      },
+      {
+        "Code": "ITU-T-E164",
+        "Name": "ITU-T Recommendation E.164 The international public telecommunication numbering plan",
+        "Type": "STANDARD",
+        "Issuer": "ITU-T",
+        "Jurisdiction": "International",
+        "URL": "https://www.itu.int/rec/T-REC-E.164",
+        "Description": "International telephone numbering plan: country code followed by the national significant number, maximum 15 digits."
+      },
+      {
+        "Code": "ISO-13616",
+        "Name": "ISO 13616-1 Financial services - International bank account number (IBAN)",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.swift.com/standards/data-standards/iban-international-bank-account-number",
+        "Description": "Structure of the IBAN: ISO 3166-1 alpha-2 country code, two check digits (MOD 97-10) and a country-specific basic bank account number. SWIFT is the registration authority."
+      },
+      {
+        "Code": "ISO-17442",
+        "Name": "ISO 17442 Financial services - Legal entity identifier (LEI)",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.gleif.org/en/about-lei/iso-17442-the-lei-code-structure",
+        "Description": "20-character alphanumeric identifier of legal entities, with two check digits (ISO/IEC 7064 MOD 97-10). Operated by GLEIF."
+      },
+      {
+        "Code": "GS1-GTIN",
+        "Name": "GS1 Global Trade Item Number (GTIN)",
+        "Type": "STANDARD",
+        "Issuer": "GS1",
+        "Jurisdiction": "International",
+        "URL": "https://www.gs1.org/standards/id-keys/gtin",
+        "Description": "Identifier of trade items (GTIN-8, GTIN-12, GTIN-13, GTIN-14) defined by the GS1 General Specifications, ending with a modulo-10 check digit."
+      },
+      {
+        "Code": "ISO-8000",
+        "Name": "ISO 8000 Data quality (series)",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/search.html?q=ISO%208000",
+        "Description": "Series of standards on data quality and master data quality, including ISO 8000-8 (quality concepts and measurement), ISO 8000-61 (data quality management process reference model) and ISO 8000-110 (master data exchange and conformance to a data specification)."
+      },
+      {
+        "Code": "ISO-IEC-11179",
+        "Name": "ISO/IEC 11179 Metadata registries (MDR) (series)",
+        "Type": "STANDARD",
+        "Issuer": "ISO/IEC",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/search.html?q=ISO%2FIEC%2011179",
+        "Description": "Metadata registry framework: registry metamodel (Part 3), formulation of data definitions (Part 4) and naming principles (Part 5)."
+      },
+      {
+        "Code": "ISO-IEC-27001",
+        "Name": "ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection - Information security management systems - Requirements",
+        "Type": "STANDARD",
+        "Issuer": "ISO/IEC",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/standard/27001",
+        "Description": "Requirements for an information security management system; Annex A lists 93 information security controls."
+      },
+      {
+        "Code": "BCBS-239",
+        "Name": "BCBS 239 Principles for effective risk data aggregation and risk reporting",
+        "Type": "FRAMEWORK",
+        "Issuer": "Basel Committee on Banking Supervision",
+        "Jurisdiction": "International (banking)",
+        "URL": "https://www.bis.org/publ/bcbs239.htm",
+        "Description": "Fourteen principles (January 2013) on governance, data architecture, accuracy, completeness, timeliness and adaptability of risk data. Used here as good practice for reporting-grade master data."
+      },
+      {
+        "Code": "CA-CPLA",
+        "Name": "Consumer Packaging and Labelling Act (R.S.C. 1985, c. C-38) and Consumer Packaging and Labelling Regulations (C.R.C., c. 417)",
+        "Type": "REGULATION",
+        "Issuer": "Government of Canada",
+        "Jurisdiction": "Canada",
+        "URL": "https://laws-lois.justice.gc.ca/eng/acts/C-38/",
+        "Description": "Federal law governing the labelling of prepackaged consumer products in Canada, including the requirement to show mandatory label information in both official languages (English and French)."
+      },
+      {
+        "Code": "QC-CFL",
+        "Name": "Charter of the French Language (CQLR c. C-11), as amended by Bill 96 (S.Q. 2022, c. 14)",
+        "Type": "REGULATION",
+        "Issuer": "Government of Quebec",
+        "Jurisdiction": "Canada - Quebec",
+        "URL": "https://www.legisquebec.gouv.qc.ca/en/document/cs/C-11",
+        "Description": "Quebec law making French the official language; requires French on product inscriptions, packaging, instructions, catalogues and brochures. Strengthened by Bill 96, An Act respecting French, the official and common language of Quebec."
+      },
+      {
+        "Code": "DAMA-DMBOK",
+        "Name": "DAMA-DMBOK: Data Management Body of Knowledge, 2nd edition",
+        "Type": "FRAMEWORK",
+        "Issuer": "DAMA International",
+        "Jurisdiction": "International",
+        "URL": "https://www.dama.org/cpages/body-of-knowledge",
+        "Description": "Reference framework for data management knowledge areas: governance, modeling, security, reference and master data, metadata, data quality."
+      },
+      {
+        "Code": "21-CFR-11",
+        "Name": "21 CFR Part 11 Electronic Records; Electronic Signatures",
+        "Type": "REGULATION",
+        "Issuer": "U.S. Food and Drug Administration",
+        "Jurisdiction": "United States",
+        "URL": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11",
+        "Description": "FDA criteria under which electronic records and electronic signatures are considered trustworthy, reliable and equivalent to paper records."
+      },
+      {
+        "Code": "EU-GMP-ANNEX-11",
+        "Name": "EudraLex Volume 4, EU GMP Annex 11: Computerised Systems",
+        "Type": "REGULATION",
+        "Issuer": "European Commission",
+        "Jurisdiction": "European Union",
+        "URL": "https://health.ec.europa.eu/medicinal-products/eudralex/eudralex-volume-4_en",
+        "Description": "EU Good Manufacturing Practice guidance for computerised systems used in GMP-regulated activities (revision in force since 30 June 2011)."
+      },
+      {
+        "Code": "ISO-11615",
+        "Name": "ISO 11615 Health informatics - Identification of medicinal products (IDMP) - Data elements and structures for the unique identification and exchange of regulated medicinal product information",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/search.html?q=ISO%2011615",
+        "Description": "IDMP standard defining the Medicinal Product Identifier (MPID) and the data elements describing a regulated medicinal product."
+      },
+      {
+        "Code": "ISO-11616",
+        "Name": "ISO 11616 Health informatics - Identification of medicinal products (IDMP) - Data elements and structures for the unique identification and exchange of regulated pharmaceutical product information",
+        "Type": "STANDARD",
+        "Issuer": "ISO",
+        "Jurisdiction": "International",
+        "URL": "https://www.iso.org/search.html?q=ISO%2011616",
+        "Description": "IDMP standard defining the Pharmaceutical Product Identifier (PhPID), based on substances, strength and dose form."
+      },
+      {
+        "Code": "HIPAA",
+        "Name": "HIPAA Privacy and Security Rules (45 CFR Parts 160 and 164)",
+        "Type": "REGULATION",
+        "Issuer": "U.S. Department of Health and Human Services",
+        "Jurisdiction": "United States",
+        "URL": "https://www.hhs.gov/hipaa/index.html",
+        "Description": "Health Insurance Portability and Accountability Act rules protecting individually identifiable health information (PHI) held by covered entities and business associates."
+      },
+      {
+        "Code": "HIPAA-NPI",
+        "Name": "HIPAA Administrative Simplification: Standard Unique Health Identifier for Health Care Providers (45 CFR Part 162, Subpart D)",
+        "Type": "REGULATION",
+        "Issuer": "U.S. Department of Health and Human Services",
+        "Jurisdiction": "United States",
+        "URL": "https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-162",
+        "Description": "Adopts the National Provider Identifier (NPI), a 10-digit identifier with a Luhn check digit, as the standard identifier of health care providers."
+      },
+      {
+        "Code": "SUNSHINE-ACT",
+        "Name": "Physician Payments Sunshine Act (42 U.S.C. 1320a-7h) and Open Payments regulations (42 CFR Part 403, Subpart I)",
+        "Type": "REGULATION",
+        "Issuer": "U.S. Congress / Centers for Medicare & Medicaid Services",
+        "Jurisdiction": "United States",
+        "URL": "https://www.cms.gov/openpayments",
+        "Description": "Section 6002 of the Affordable Care Act. Applicable manufacturers report payments and other transfers of value to covered recipients (physicians, teaching hospitals and other practitioners) to CMS Open Payments."
+      },
+      {
+        "Code": "FDA-NDC",
+        "Name": "21 CFR Part 207 Establishment registration and drug listing, National Drug Code",
+        "Type": "REGULATION",
+        "Issuer": "U.S. Food and Drug Administration",
+        "Jurisdiction": "United States",
+        "URL": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-207",
+        "Description": "Drug listing requirements and the National Drug Code (NDC): labeler, product and package code segments, currently 10 digits in a 4-4-2, 5-3-2 or 5-4-1 configuration."
+      }
+    ],
+    "BusinessAttributeType": [
+      {
+        "Code": "COUNTRY_CODE",
+        "Name": "Country code",
+        "Description": "Country as an ISO 3166-1 alpha-2 code, referencing the managed Country reference entity.",
+        "FormatPattern": "^[A-Z]{2}$",
+        "Example": "CA",
+        "FID_DefaultClassification": "PUBLIC",
+        "FID_ReferenceStandard": "ISO-3166-1"
+      },
+      {
+        "Code": "CURRENCY_CODE",
+        "Name": "Currency code",
+        "Description": "Currency as an ISO 4217 alphabetic code, referencing the managed Currency reference entity.",
+        "FormatPattern": "^[A-Z]{3}$",
+        "Example": "CAD",
+        "FID_DefaultClassification": "PUBLIC",
+        "FID_ReferenceStandard": "ISO-4217"
+      },
+      {
+        "Code": "LANGUAGE_CODE",
+        "Name": "Language code",
+        "Description": "Language as a two-letter ISO 639 code (formerly ISO 639-1), referencing the managed Language reference entity.",
+        "FormatPattern": "^[a-z]{2}$",
+        "Example": "fr",
+        "FID_DefaultClassification": "PUBLIC",
+        "FID_ReferenceStandard": "ISO-639"
+      },
+      {
+        "Code": "DATE",
+        "Name": "Date",
+        "Description": "Calendar date in ISO 8601 extended format (YYYY-MM-DD) when exchanged as text.",
+        "FormatPattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+        "Example": "2026-12-11",
+        "FID_DefaultClassification": "INTERNAL",
+        "FID_ReferenceStandard": "ISO-8601"
+      },
+      {
+        "Code": "TIMESTAMP",
+        "Name": "Timestamp",
+        "Description": "Date and time with explicit UTC offset, ISO 8601 extended format.",
+        "FormatPattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$",
+        "Example": "2026-12-11T14:30:00Z",
+        "FID_DefaultClassification": "INTERNAL",
+        "FID_ReferenceStandard": "ISO-8601"
+      },
+      {
+        "Code": "PHONE_NUMBER",
+        "Name": "Phone number",
+        "Description": "Telephone number normalised to E.164 (plus sign, country code, national number, max 15 digits). Personal when it belongs to a natural person.",
+        "FormatPattern": "^\\+[1-9][0-9]{1,14}$",
+        "Example": "+15145550123",
+        "FID_DefaultClassification": "PERSONAL",
+        "FID_ReferenceStandard": "ITU-T-E164"
+      },
+      {
+        "Code": "EMAIL",
+        "Name": "Email address",
+        "Description": "Email address. Personal when it identifies a natural person, including professional addresses such as firstname.lastname@example.com.",
+        "FormatPattern": "^[^@\\s]+@[^@\\s]+\\.[A-Za-z]{2,}$",
+        "Example": "jane.doe@example.com",
+        "FID_DefaultClassification": "PERSONAL"
+      },
+      {
+        "Code": "PERSON_NAME",
+        "Name": "Person name",
+        "Description": "Given name, family name or full name of a natural person.",
+        "Example": "Jane Doe",
+        "FID_DefaultClassification": "PERSONAL"
+      },
+      {
+        "Code": "POSTAL_ADDRESS",
+        "Name": "Postal address",
+        "Description": "Postal address lines, city, postal code and country (country as COUNTRY_CODE). Personal when it is the address of a natural person.",
+        "Example": "1000 Rue Sherbrooke O, Montreal QC H3A 3G4, CA",
+        "FID_DefaultClassification": "PERSONAL"
+      },
+      {
+        "Code": "DATE_OF_BIRTH",
+        "Name": "Date of birth",
+        "Description": "Date of birth of a natural person.",
+        "FormatPattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+        "Example": "1980-04-23",
+        "FID_DefaultClassification": "PERSONAL",
+        "FID_ReferenceStandard": "ISO-8601"
+      },
+      {
+        "Code": "NATIONAL_ID",
+        "Name": "Government identifier",
+        "Description": "Government-issued personal identifier (social security, national ID, passport, driver's licence number). Sensitive personal information under CCPA/CPRA.",
+        "Example": "123-45-6789",
+        "FID_DefaultClassification": "SENSITIVE_PERSONAL"
+      },
+      {
+        "Code": "HEALTH_DATA",
+        "Name": "Health data",
+        "Description": "Data concerning the physical or mental health of a natural person (GDPR Art. 4(15), special category under Art. 9).",
+        "Example": "Allergy: penicillin",
+        "FID_DefaultClassification": "SENSITIVE_PERSONAL",
+        "FID_ReferenceStandard": "GDPR"
+      },
+      {
+        "Code": "IBAN",
+        "Name": "IBAN",
+        "Description": "International bank account number. Personal data when the account holder is a natural person.",
+        "FormatPattern": "^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$",
+        "Example": "FR7630006000011234567890189",
+        "FID_DefaultClassification": "CONFIDENTIAL",
+        "FID_ReferenceStandard": "ISO-13616"
+      },
+      {
+        "Code": "LEI",
+        "Name": "Legal entity identifier",
+        "Description": "20-character legal entity identifier of an organisation, issued by an LEI issuer accredited by GLEIF.",
+        "FormatPattern": "^[A-Z0-9]{18}[0-9]{2}$",
+        "Example": "5493001KJTIIGC8Y1R12",
+        "FID_DefaultClassification": "PUBLIC",
+        "FID_ReferenceStandard": "ISO-17442"
+      },
+      {
+        "Code": "VAT_NUMBER",
+        "Name": "VAT or tax registration number",
+        "Description": "Tax registration number of an organisation (VAT, GST/HST, EIN), stored without spaces, with its issuing country.",
+        "FormatPattern": "^[A-Z0-9]{4,15}$",
+        "Example": "FR40303265045",
+        "FID_DefaultClassification": "INTERNAL"
+      },
+      {
+        "Code": "ORGANIZATION_NAME",
+        "Name": "Organisation name",
+        "Description": "Registered legal name or trading name of an organisation.",
+        "Example": "Northwind Distribution Inc.",
+        "FID_DefaultClassification": "PUBLIC"
+      },
+      {
+        "Code": "GTIN",
+        "Name": "GTIN",
+        "Description": "GS1 Global Trade Item Number (8, 12, 13 or 14 digits) identifying a trade item.",
+        "FormatPattern": "^([0-9]{8}|[0-9]{12,14})$",
+        "Example": "00012345600012",
+        "FID_DefaultClassification": "PUBLIC",
+        "FID_ReferenceStandard": "GS1-GTIN"
+      },
+      {
+        "Code": "PRODUCT_DESCRIPTION",
+        "Name": "Product description",
+        "Description": "Consumer-facing product name or description, held per language (ISO 639) and used on labels, catalogues and e-commerce.",
+        "Example": "en: Organic oat drink 1 L / fr: Boisson d'avoine biologique 1 L",
+        "FID_DefaultClassification": "PUBLIC"
+      },
+      {
+        "Code": "MONETARY_AMOUNT",
+        "Name": "Monetary amount",
+        "Description": "Amount with its ISO 4217 currency held in a separate CURRENCY_CODE attribute.",
+        "FormatPattern": "^-?[0-9]+(\\.[0-9]{1,4})?$",
+        "Example": "1250.00",
+        "FID_DefaultClassification": "CONFIDENTIAL",
+        "FID_ReferenceStandard": "ISO-4217"
+      },
+      {
+        "Code": "SOURCE_ID",
+        "Name": "Source record identifier",
+        "Description": "Identifier of a record in its source system, kept for lineage and cross-referencing.",
+        "Example": "SAP-ECC:0000104521",
+        "FID_DefaultClassification": "INTERNAL"
+      },
+      {
+        "Code": "FREE_TEXT",
+        "Name": "Free-text comment",
+        "Description": "Unstructured comment entered by a user. Must not be used to store personal or sensitive data that has its own attribute.",
+        "Example": "Customer asked to be called after 5 pm",
+        "FID_DefaultClassification": "INTERNAL"
+      },
+      {
+        "Code": "NDC",
+        "Name": "National Drug Code",
+        "Description": "Pharma extension. FDA National Drug Code in its 10-digit hyphenated 4-4-2, 5-3-2 or 5-4-1 form.",
+        "FormatPattern": "^([0-9]{4}-[0-9]{4}-[0-9]{2}|[0-9]{5}-[0-9]{3}-[0-9]{2}|[0-9]{5}-[0-9]{4}-[0-9])$",
+        "Example": "50242-040-62",
+        "FID_DefaultClassification": "PUBLIC",
+        "FID_ReferenceStandard": "FDA-NDC"
+      },
+      {
+        "Code": "NPI",
+        "Name": "National Provider Identifier",
+        "Description": "Pharma extension. 10-digit NPI of a US health care provider; the last digit is a Luhn check digit computed with the 80840 prefix. Personal data when the provider is an individual.",
+        "FormatPattern": "^[0-9]{10}$",
+        "Example": "1234567893",
+        "FID_DefaultClassification": "PERSONAL",
+        "FID_ReferenceStandard": "HIPAA-NPI"
+      },
+      {
+        "Code": "HCP_LICENSE_NUMBER",
+        "Name": "HCP state licence number",
+        "Description": "Pharma extension. Licence number of a healthcare professional with its issuing state or authority.",
+        "Example": "MD-123456 (NY)",
+        "FID_DefaultClassification": "PERSONAL",
+        "FID_ReferenceStandard": "SUNSHINE-ACT"
+      },
+      {
+        "Code": "MPID",
+        "Name": "Medicinal Product Identifier",
+        "Description": "Pharma extension. IDMP Medicinal Product Identifier (ISO 11615) assigned by the regulatory authority of the jurisdiction.",
+        "Example": "EU-100001234-PRD",
+        "FID_DefaultClassification": "PUBLIC",
+        "FID_ReferenceStandard": "ISO-11615"
+      },
+      {
+        "Code": "PHPID",
+        "Name": "Pharmaceutical Product Identifier",
+        "Description": "Pharma extension. IDMP Pharmaceutical Product Identifier (ISO 11616) derived from substance(s), strength and dose form.",
+        "Example": "PHPID-L1-0042",
+        "FID_DefaultClassification": "PUBLIC",
+        "FID_ReferenceStandard": "ISO-11616"
+      },
+      {
+        "Code": "TRANSFER_OF_VALUE",
+        "Name": "Transfer of value",
+        "Description": "Pharma extension. Payment or other transfer of value to a covered recipient, reportable to CMS Open Payments.",
+        "Example": "Consulting fee, 1500.00 USD, 2026-03-02",
+        "FID_DefaultClassification": "CONFIDENTIAL",
+        "FID_ReferenceStandard": "SUNSHINE-ACT"
+      }
+    ],
+    "GovernancePolicy": [
+      {
+        "Code": "POL-DQ",
+        "Name": "Data Quality and Reference Data Policy",
+        "Description": "Rules ensuring master data is complete, valid, consistent and identified once: data quality, reference data, identity and matching.",
+        "Purpose": "Make golden data fit for operations, reporting and AI by validating it against standards (ISO 8000, ISO 3166, ISO 4217, GS1) at the point of entry.",
+        "LifecycleStatus": "APPROVED",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "POL-PRIV",
+        "Name": "Personal Data Protection Policy",
+        "Description": "Rules for collecting, classifying, exposing and retaining personal data in master data products.",
+        "Purpose": "Implement data protection by design and by default (GDPR Art. 25) and the consumer rights of CCPA/CPRA in every data product.",
+        "LifecycleStatus": "APPROVED",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "POL-SEC",
+        "Name": "Data Security and Records Retention Policy",
+        "Description": "Rules for roles, privileges, segregation of duties, masking, historization and retention of master data.",
+        "Purpose": "Apply ISO/IEC 27001 controls (access control, data masking, information deletion, protection of records) to data products.",
+        "LifecycleStatus": "APPROVED",
+        "FID_OwnerBody": "ISEC"
+      },
+      {
+        "Code": "POL-META",
+        "Name": "Metadata, Modeling and Stewardship Policy",
+        "Description": "Rules for naming, documenting and stewarding data products so that people and AI agents understand and trust them.",
+        "Purpose": "Make every data product self-describing (ISO/IEC 11179) with named owners and stewardship processes.",
+        "LifecycleStatus": "APPROVED",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "POL-AI",
+        "Name": "Responsible AI Data Usage Policy",
+        "Description": "Rules for how AI agents and AI systems access, use and change master data and governance content.",
+        "Purpose": "Keep AI agents on governed, approved and minimised data, with human oversight of changes (EU AI Act, GDPR).",
+        "LifecycleStatus": "APPROVED",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "POL-GXP",
+        "Name": "GxP and Health Data Extension Policy",
+        "Description": "Pharma extension: rules for medicinal product, healthcare professional and clinical site master data.",
+        "Purpose": "Meet 21 CFR Part 11, EU GMP Annex 11, IDMP, HIPAA and Sunshine Act obligations. Scoped only to pharma domains and attribute types.",
+        "LifecycleStatus": "APPROVED",
+        "FID_OwnerBody": "GXPQA"
+      }
+    ],
+    "GovernanceRule": [
+      {
+        "Code": "DQ-001",
+        "Title": "Completeness rules enforced at certification",
+        "Statement": "Attributes required for a record to be used MUST be enforced by validations that run before the record is certified, and the validation message MUST name the missing attribute in business terms.",
+        "Rationale": "Incomplete golden records propagate to every consuming system. ISO 8000-8 treats completeness as a measurable quality characteristic; it can only be measured if it is checked where data enters.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Use a mandatory attribute when the attribute is always required. When the requirement depends on the record type or status, write a SemQL validation (e.g. `CustomerType <> 'B2B' or VATNumber is not null`) on the entity, executed in the pre-consolidation scope, and reuse it as a stepper check. Write the message as an instruction to the user ('Enter the VAT number of a B2B customer').",
+        "Example": "A B2B customer submitted without a VAT number is rejected with 'Enter the VAT number of a B2B customer'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-002",
+        "Title": "Active records require their mandatory relationships",
+        "Statement": "A master record MUST NOT reach an active, released or approved status unless every relationship that this status requires references an existing golden record (for example the billing organisation of an active B2B account, the supplier of an active purchased item).",
+        "Rationale": "Operational processes (invoicing, ordering, shipping) start as soon as a record becomes active. A missing or dangling relationship at that point causes failed transactions and manual rework, and breaks the accuracy and integrity of reporting.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Write a SemQL validation on the entity that combines the status and the reference, e.g. `Status <> 'ACTIVE' or BillingOrganization is not null`, and make it blocking in the stepper and in the activation workflow transition. Name the reference with its business role (see MOD-002). Document the rule code in the validation description.",
+        "Example": "Account ACC-1042 cannot be set to ACTIVE: 'An active B2B account needs a billing organisation'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-003",
+        "Title": "Typed attributes conform to their format",
+        "Statement": "Every attribute bound to a business attribute type that defines a format pattern MUST be validated against that pattern, after normalisation by enrichers and before certification.",
+        "Rationale": "Format errors are the cheapest defects to prevent and the most expensive to fix downstream. Conformance to a data specification is the core of ISO 8000-110 for master data exchange.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Look up the attribute type in the AttributeTypeCatalog named query and copy its FormatPattern into a SemQL validation using `REGEXP_LIKE(Attribute, '<pattern>')`. Run normalising enrichers (trim, upper case, remove spaces) before the validation so that only real errors are reported.",
+        "Example": "An email 'jane.doe@example' fails the EMAIL pattern and is rejected before certification.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-004",
+        "Title": "Check digits of standard identifiers are verified",
+        "Statement": "Identifiers that carry a check digit defined by their standard (GTIN, IBAN, LEI) MUST have the check digit verified before the record is certified.",
+        "Rationale": "A format pattern does not detect a mistyped digit; the check digit does. Invalid identifiers break matching, payments and trade-item exchange with partners.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Implement the check digit algorithm in a SemQL validation or a plugin validation: GS1 modulo-10 for GTIN; ISO/IEC 7064 MOD 97-10 for IBAN and LEI (result must equal 1). Keep the algorithm in a shared database function or plugin so that every data product uses the same implementation.",
+        "Example": "GTIN 00012345600013 is rejected: expected check digit 2.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-005",
+        "Title": "Phone numbers normalised to E.164",
+        "Statement": "Telephone numbers SHOULD be normalised to the E.164 international format by an enricher, keeping the original value as entered only when a consuming process needs it.",
+        "Rationale": "A single international format makes phone numbers comparable for matching and usable by telephony and messaging systems in every country.",
+        "RequirementLevel": "SHOULD",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "ENRICHER",
+        "ImplementationGuidance": "Add an enricher (phone normalisation plugin or REST enricher) that takes the raw number and the country of the record and returns +<country code><national number>. Run DQ-003 validation on the result (pattern ^\\+[1-9][0-9]{1,14}$).",
+        "Example": "'(514) 555-0123' for a customer in CA becomes '+15145550123'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-006",
+        "Title": "Product descriptions in the official languages of each market",
+        "Statement": "A consumer-facing product description MUST be provided in every official language required in each market where the product is sold; for Canada the description MUST exist in both English and French, and for Quebec no other language MAY be given greater prominence than French.",
+        "Rationale": "Product master data feeds labels, packaging, catalogues and e-commerce. Canadian federal law requires mandatory label information in both official languages, and the Quebec Charter of the French Language, as amended by Bill 96, requires French on product inscriptions, catalogues and brochures. A missing translation blocks the product launch in that market.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Model descriptions as a child entity (Product, LanguageCode referencing the managed Language reference per REF-003, Text) rather than one attribute per language. Hold the required languages per market on the managed market or Country reference (e.g. CA requires en and fr). Write a SemQL validation on Product: for each market where the product is sold, a description exists for each required language. Make it blocking before the product status becomes ACTIVE in a market (DQ-002).",
+        "Example": "Product P-2210 sold in CA with only an English description fails: 'Add the French description required for market CA'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-007",
+        "Title": "Phone numbers stored in national format",
+        "Statement": "Telephone numbers SHOULD be stored in the national format of the country of the record, without the international prefix.",
+        "Rationale": "Original rule from the first MDM programme, when telephony systems were country-specific.",
+        "RequirementLevel": "SHOULD",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Retired: superseded by DQ-005 (E.164 normalisation). Do not apply to new designs.",
+        "Example": "'(514) 555-0123' stored as entered.",
+        "LifecycleStatus": "RETIRED",
+        "EffectiveDate": "2021-01-01",
+        "RetirementDate": "2025-06-01",
+        "RetirementReason": "Superseded by DQ-005: phone numbers are now normalised to the E.164 international format, which national formats cannot represent unambiguously across countries.",
+        "ApprovedOn": "2020-12-10",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-008",
+        "Title": "Dates and timestamps exchanged in ISO 8601",
+        "Statement": "Dates and timestamps MUST be stored in date or timestamp datatypes and, when exchanged as text through APIs, files or named queries, MUST use the ISO 8601 extended format with an explicit UTC offset for timestamps.",
+        "Rationale": "Locale-dependent date formats (03/04/2026) are ambiguous between markets and are a frequent cause of silent data corruption in integrations.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Use Date or Timestamp datatypes, never String, for date attributes. For text inputs (staging files), convert with an enricher and validate with the DATE or TIMESTAMP pattern of the AttributeTypeCatalog. Named query parameters take ISO 8601 values.",
+        "Example": "'2026-12-11T14:30:00Z', not '12/11/2026 2:30 PM'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "PRIV-001",
+        "Title": "Every attribute is classified",
+        "Statement": "Every attribute of a data product MUST be assigned a data classification before deployment, and any attribute that relates to an identified or identifiable natural person MUST be classified PERSONAL or higher.",
+        "Rationale": "Classification drives access control, masking, retention and AI exposure. Unclassified personal data cannot be protected or listed in the records of processing.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Classify each new attribute from its attribute type (AttributeTypeCatalog gives the default classification) and raise it if the context makes it more sensitive. State it in the attribute description ('Classification: PERSONAL.'). The classification is then used by PRIV-002 (privileges) and RET-001 (retention).",
+        "Example": "Contact.MobilePhone: 'Mobile phone of the contact person, E.164. Classification: PERSONAL.'",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-PRIV",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "PRIV-002",
+        "Title": "Personal data hidden from roles without a need to know",
+        "Statement": "Attributes classified PERSONAL or SENSITIVE_PERSONAL MUST NOT be readable by roles without a documented need to know; by default business, integration and AI agent roles MUST receive no privilege on these attributes, and access MUST be granted explicitly per role.",
+        "Rationale": "Data protection by default requires that personal data are not made accessible to an indefinite number of persons. Most consumers of master data (analytics, AI agents, partner integrations) need the organisation or product, not the person.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "In the model privileges, grant entity-level read to business roles and add attribute-level privileges set to none on every PERSONAL or SENSITIVE_PERSONAL attribute; create a dedicated role (e.g. CustomerContactReader) for the users who need them. Use row filters when the need to know is limited to a country or business unit (SEC-003). Check the integration role and the AI agent (MCP) role the same way. Cite PRIV-002 in the role description.",
+        "Example": "Role SalesAnalyst reads Customer and Account but not Contact.Email, Contact.MobilePhone or Contact.DateOfBirth.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-PRIV",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "PRIV-003",
+        "Title": "Personal attributes have a documented purpose",
+        "Statement": "A personal data attribute MUST only be added to a data product when its purpose is documented, and it MUST be limited to what is necessary for that purpose.",
+        "Rationale": "Purpose limitation and data minimisation are core GDPR principles; CPRA introduced the same requirement for California consumers. Attributes added 'in case' increase breach exposure and retention obligations.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Write the purpose in the attribute description ('Purpose: delivery notifications.'). The design agent asks the user for the purpose before adding any PERSONAL attribute and does not add it if no purpose is given. Prefer less identifying alternatives (year of birth instead of date of birth, region instead of full address) when they satisfy the purpose.",
+        "Example": "Customer.DateOfBirth rejected at design review: purpose 'age check' satisfied by IsAdult flag.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-PRIV",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "PRIV-004",
+        "Title": "Sensitive personal data require DPO approval",
+        "Statement": "Sensitive personal data (special categories, government identifiers, health data) MUST NOT be added to a master data product unless a data protection impact assessment has been approved by the Data Protection Office.",
+        "Rationale": "Processing special categories is prohibited unless an Article 9(2) exception applies, and high-risk processing requires a DPIA. CPRA gives consumers the right to limit the use of sensitive personal information.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "When a design touches a SENSITIVE_PERSONAL attribute type, stop and record the DPIA reference in the entity description ('DPIA: DPIA-2026-014'). Apply PRIV-002 with a dedicated role and RET-001 with the shortest retention. Do not expose the attribute through named queries or to AI agent roles.",
+        "Example": "Employee.NationalId added only after DPIA-2025-007 approval; hidden from all roles except PayrollAdministrator.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-PRIV",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "PRIV-005",
+        "Title": "Data subject requests are executable on golden records",
+        "Statement": "Data products holding personal data of customers or employees MUST support access, rectification and erasure requests on the golden record and all its source records, through a traceable process.",
+        "Rationale": "Data subject rights apply to all copies of the data. MDM is where all copies of a person are linked, which makes it the natural place to execute these requests consistently.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Provide a named query returning the golden record with its source records (access request). Provide a workflow 'Data subject request' started from the golden record, with request type, reference and due date, that a steward completes (rectification) or ends with a delete automation applied to golden and master records (erasure). Keep the request log without the erased personal data.",
+        "Example": "Erasure request DSR-2026-0311 deletes the golden customer and its 3 source records; the log keeps the request reference and date only.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-01-15",
+        "ApprovedOn": "2025-01-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-PRIV",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "PRIV-006",
+        "Title": "Consents and opt-outs are recorded with evidence",
+        "Statement": "Marketing consents and opt-outs MUST be recorded per person, purpose and channel with their source, date and status, so that the consent in force can be demonstrated at any time.",
+        "Rationale": "The controller must be able to demonstrate consent, and consumers can opt out of the sale or sharing of their personal information. A single 'OptIn' flag cannot prove when and how consent was given.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Model a child entity Consent (Person, Purpose LOV, Channel LOV, Status, Source, CapturedAt timestamp). Validations: Source and CapturedAt mandatory; one current consent per person, purpose and channel. Historize the entity. Expose the current consent through a named query for marketing systems.",
+        "Example": "Consent(Jane Doe, NEWSLETTER, EMAIL, GRANTED, web form, 2026-02-03T10:12:00Z).",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-01-15",
+        "ApprovedOn": "2025-01-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-PRIV",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "PRIV-007",
+        "Title": "No real personal data in non-production data locations",
+        "Statement": "Personal data loaded into development, test or demo data locations MUST be synthetic or pseudonymised; production extracts of personal data MUST NOT be loaded unchanged.",
+        "Rationale": "Non-production environments have wider access and weaker controls. Pseudonymisation is named by the GDPR as an appropriate technical measure.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "ENRICHER",
+        "ImplementationGuidance": "Load generated demo data into sandbox data locations. When production-like data is needed, apply a masking enricher (hash or substitute PERSONAL attributes) in the non-production load pipeline, keeping formats valid so that DQ-003 validations still pass.",
+        "Example": "The UAT data location holds customers with generated names and +1555 phone numbers.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-01-15",
+        "ApprovedOn": "2025-01-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-PRIV",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "PRIV-008",
+        "Title": "Hosting region of personal data documented",
+        "Statement": "Data products holding personal data SHOULD document the region where the data are hosted and every consuming system located outside the European Economic Area, with the transfer mechanism used.",
+        "Rationale": "Transfers of personal data to third countries require an adequacy decision or appropriate safeguards. The data product is the right place to record where its consumers are.",
+        "RequirementLevel": "SHOULD",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Add a 'Hosting and transfers:' paragraph to the data product description listing the hosting region and each external consumer with its transfer mechanism (adequacy decision, standard contractual clauses).",
+        "Example": "Hosting and transfers: EU (Frankfurt). Consumer CRM-US under SCCs 2021/914.",
+        "LifecycleStatus": "DRAFT",
+        "EffectiveDate": "2027-01-01",
+        "FID_Policy": "POL-PRIV",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "SEC-001",
+        "Title": "Least privilege for every role",
+        "Statement": "Every role of a data product MUST be granted only the privileges its persona needs; no business role MAY hold full update and delete privileges on all entities.",
+        "Rationale": "Least privilege limits the impact of mistakes and compromised accounts. Access rights must be provisioned and reviewed according to policy.",
+        "RequirementLevel": "MUST",
+        "Category": "SECURITY_ACCESS",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Derive privileges from the persona table of the design brief (CRUD column). Grant read at model level only to reader roles, update per entity to stewards, delete only through a controlled deletion workflow. Describe the persona and need of each role in its description.",
+        "Example": "CustomerSteward: create and update Customer and Contact, no delete; deletion through the 'Delete customer' workflow.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "ISEC"
+      },
+      {
+        "Code": "SEC-002",
+        "Title": "Dedicated technical roles for integrations and AI agents",
+        "Statement": "Integrations and AI agents MUST connect with dedicated technical roles distinct from human roles, read-only unless they publish data, and limited to the entities and attributes their use case needs.",
+        "Rationale": "Shared or human credentials in integrations make access unreviewable and untraceable. A dedicated role can be scoped, monitored and revoked independently.",
+        "RequirementLevel": "MUST",
+        "Category": "SECURITY_ACCESS",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Create one role per integration or agent family (e.g. CustomerIntegration, CustomerAgent). Grant read on golden data only; grant publish only to publishing integrations. Apply PRIV-002 to these roles. For MCP access, expose named queries rather than full entity access where possible (AI-001).",
+        "Example": "Role ProductCatalogAgent: read on Product, ProductDescription and Country golden data; no access to prices.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "ISEC"
+      },
+      {
+        "Code": "SEC-003",
+        "Title": "Row filters for country or business-unit segregation",
+        "Statement": "When users only need the records of their country, region or business unit, their role SHOULD be restricted with a row filter rather than given access to all records.",
+        "Rationale": "Row-level restriction implements need to know for personal and confidential data spread across legal entities and countries.",
+        "RequirementLevel": "SHOULD",
+        "Category": "SECURITY_ACCESS",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Add a SemQL row filter on the role privilege grant, e.g. `CountryCode in ('CA','US')` or a filter on the business unit referenced by the user's role. Prefer filters on reference attributes (managed Country, BusinessUnit) over free text.",
+        "Example": "Role CustomerSteward_CA sees only customers with CountryCode = 'CA'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "ISEC"
+      },
+      {
+        "Code": "SEC-004",
+        "Title": "Segregation of duties in approval workflows",
+        "Statement": "The person who submits a change requiring approval MUST NOT be the person who approves it.",
+        "Rationale": "Segregation of duties prevents unchecked changes to critical master data (bank details, legal names, governance rules).",
+        "RequirementLevel": "MUST",
+        "Category": "SECURITY_ACCESS",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "In approval workflows, assign the approval task to a different role from the submitting role and add a transition condition rejecting approval when the approver is the initiator. Document the rule code in the workflow description.",
+        "Example": "A steward who changes a supplier IBAN cannot approve the change; the task goes to FinanceApprover.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "ISEC"
+      },
+      {
+        "Code": "SEC-005",
+        "Title": "Bank account and government identifiers masked by default",
+        "Statement": "Bank account numbers and government identifiers MUST be hidden from every role except the roles that execute payments, payroll or regulatory reporting.",
+        "Rationale": "These identifiers enable fraud and identity theft. They are rarely needed outside finance and HR processes.",
+        "RequirementLevel": "MUST",
+        "Category": "SECURITY_ACCESS",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Set attribute-level privileges to none on IBAN and NATIONAL_ID attributes for all roles but the dedicated finance or HR roles. Do not include them in display cards, search forms or named queries for other roles.",
+        "Example": "Supplier.IBAN is visible to AccountsPayable only; other roles see the supplier without bank details.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "ISEC"
+      },
+      {
+        "Code": "RET-001",
+        "Title": "Retention period defined for personal data",
+        "Statement": "Every entity holding personal data MUST have a defined retention period and an end-of-retention action (deletion or anonymisation), documented with its legal or business basis.",
+        "Rationale": "Personal data may not be kept longer than necessary for their purpose; CPRA requires the retention period to be disclosed. Without a defined period, data are kept forever by default.",
+        "RequirementLevel": "MUST",
+        "Category": "RETENTION",
+        "ImplementationPattern": "RETENTION_POLICY",
+        "ImplementationGuidance": "Configure a retention policy on the entities (golden and master data, and history) and a purge job aligned with the documented period. Write the period and basis in the entity description ('Retention: 3 years after the end of the customer relationship, basis: limitation period.').",
+        "Example": "Prospect contacts without activity are anonymised 24 months after their last interaction.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "RET-002",
+        "Title": "Reporting master data historized",
+        "Statement": "Master data used in financial or regulatory reporting MUST be historized so that any reported figure can be traced to the version of the golden record in force at the reporting date.",
+        "Rationale": "Reporting must be reproducible and reconcilable. Overwriting master data without history makes past reports unexplainable.",
+        "RequirementLevel": "MUST",
+        "Category": "RETENTION",
+        "ImplementationPattern": "RETENTION_POLICY",
+        "ImplementationGuidance": "Enable golden data historization on the entities used by reporting (legal entity, customer account, supplier, chart of accounts) and set a retention policy at least as long as the reporting retention requirement. Expose a history tab in the business view.",
+        "Example": "The 2025 annual report uses the customer segment in force on 2025-12-31, read from history.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "ISEC"
+      },
+      {
+        "Code": "RET-003",
+        "Title": "Source, staging and error records follow golden retention",
+        "Statement": "Source records, load history and rejected records containing personal data MUST be purged on the same schedule as the corresponding golden records.",
+        "Rationale": "Erased golden data that survive in staging, error or source tables are still personal data and still subject to storage limitation.",
+        "RequirementLevel": "MUST",
+        "Category": "RETENTION",
+        "ImplementationPattern": "RETENTION_POLICY",
+        "ImplementationGuidance": "Set the retention policy on master data, source errors and load history, not only on golden data. Verify after a purge that no source record of the erased person remains.",
+        "Example": "Erasing customer C-77 also purges its 2 source records and its rejected load lines.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-01-15",
+        "ApprovedOn": "2025-01-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "RET-004",
+        "Title": "Erasure covers history",
+        "Statement": "When personal data must be erased, the erasure MUST also remove or anonymise the data in the history of the golden record, unless a legal obligation requires keeping it.",
+        "Rationale": "Historization is required for traceability (RET-002) but would otherwise defeat erasure obligations.",
+        "RequirementLevel": "MUST",
+        "Category": "RETENTION",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "In the erasure workflow, add an automation that anonymises the PERSONAL attributes in history records, or document the legal retention obligation that justifies keeping them, citing it in the workflow description.",
+        "Example": "After erasure, history keeps the account status changes but the contact name is replaced by 'ERASED'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "RET-005",
+        "Title": "Archive golden records after ten years",
+        "Statement": "Golden records inactive for ten years MAY be archived to the data lake and removed from the data product.",
+        "Rationale": "Original archiving guideline, written before personal data retention periods were defined per entity.",
+        "RequirementLevel": "MAY",
+        "Category": "RETENTION",
+        "ImplementationPattern": "RETENTION_POLICY",
+        "ImplementationGuidance": "Retired: superseded by RET-001 (retention per entity with legal basis). Do not apply to new designs.",
+        "Example": "Customer inactive since 2014 archived in 2024.",
+        "LifecycleStatus": "RETIRED",
+        "EffectiveDate": "2020-01-01",
+        "RetirementDate": "2024-09-01",
+        "RetirementReason": "Replaced by the purpose-bound retention periods of RET-001 and RET-003: a blanket ten-year archive kept personal data longer than its purpose required (GDPR Art. 5(1)(e)).",
+        "ApprovedOn": "2019-11-20",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-SEC",
+        "FID_OwnerBody": "ISEC"
+      },
+      {
+        "Code": "REF-001",
+        "Title": "Country codes validated against the managed ISO 3166-1 reference",
+        "Statement": "Every country attribute MUST hold an ISO 3166-1 alpha-2 code and MUST be a reference to the managed Country reference entity; free-text countries and local lists of values MUST NOT be used.",
+        "Rationale": "Countries drive tax, legal, language, sanctions and logistics rules. A single managed reference prevents 'UK', 'U.K.', 'Great Britain' and 'GB' coexisting, and lets country-level attributes (official languages, approval for business) be governed once.",
+        "RequirementLevel": "MUST",
+        "Category": "REFERENCE_DATA",
+        "ImplementationPattern": "REFERENCE_ENTITY",
+        "ImplementationGuidance": "Reference the Country entity (key: alpha-2 code; name, alpha-3, numeric code, official languages, ApprovedForBusiness) instead of a String or LOV attribute. Add an enricher that maps source values to alpha-2 (upper case, alpha-3 to alpha-2, known aliases such as UK to GB) before the reference is resolved, and let the reference validation reject unknown codes.",
+        "Example": "Source value 'UK' is enriched to 'GB'; 'XX' is rejected as an unknown country.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "REF-002",
+        "Title": "Currencies as ISO 4217 codes",
+        "Statement": "Every currency attribute MUST hold an ISO 4217 alphabetic code referencing the managed Currency reference entity, and every monetary amount MUST be stored with its currency.",
+        "Rationale": "An amount without a currency is meaningless across markets; minor units differ by currency (e.g. JPY has none).",
+        "RequirementLevel": "MUST",
+        "Category": "REFERENCE_DATA",
+        "ImplementationPattern": "REFERENCE_ENTITY",
+        "ImplementationGuidance": "Reference the Currency entity (alphabetic code, numeric code, minor units). Pair each MONETARY_AMOUNT attribute with a CURRENCY_CODE reference, in a complex type when the pair is reused.",
+        "Example": "CreditLimit = 50000.00, CreditLimitCurrency = CAD.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "REF-003",
+        "Title": "Languages as ISO 639 codes",
+        "Statement": "Every language attribute, including the language of multilingual texts, MUST hold a two-letter ISO 639 code referencing the managed Language reference entity.",
+        "Rationale": "Multilingual product data (DQ-006) and customer communication preferences need a common language key across systems.",
+        "RequirementLevel": "MUST",
+        "Category": "REFERENCE_DATA",
+        "ImplementationPattern": "REFERENCE_ENTITY",
+        "ImplementationGuidance": "Reference the Language entity (two-letter code, English name, native name). Use it as part of the key of description child entities (Product, Language).",
+        "Example": "ProductDescription(P-2210, fr, 'Boisson d'avoine biologique 1 L').",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "REF-004",
+        "Title": "Country eligibility governed in the Country reference",
+        "Statement": "The list of countries approved for doing business MUST be maintained as governed reference data, as an approval attribute of the managed Country reference; any rule that depends on country eligibility MUST read it from there and MUST NOT hard-code country lists.",
+        "Rationale": "Country eligibility changes with sanctions, export controls and commercial decisions. Hard-coded lists in validations drift apart across data products; one governed flag changes every dependent rule at once.",
+        "RequirementLevel": "MUST",
+        "Category": "REFERENCE_DATA",
+        "ImplementationPattern": "REFERENCE_ENTITY",
+        "ImplementationGuidance": "Add ApprovedForBusiness (boolean) and its effective date to the Country reference entity, maintained by the reference data steward with approval (REF-006). Validations that need eligibility use the reference, e.g. `BillingOrganization.Country.ApprovedForBusiness = 1`, combined with the status condition of DQ-002.",
+        "Example": "Country XY loses its approval: active accounts billed to XY now fail validation and appear in the steward's task list.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "REF-005",
+        "Title": "Reference entities rather than lists of values for shared code sets",
+        "Statement": "Code sets that carry attributes, are shared by several data products or change outside release cycles SHOULD be modelled as reference entities; lists of values MAY be used for small, stable, internal code sets.",
+        "Rationale": "A list of value change requires a model release; a reference entity is maintained as data, can carry descriptions and relationships, and can be governed and audited.",
+        "RequirementLevel": "SHOULD",
+        "Category": "REFERENCE_DATA",
+        "ImplementationPattern": "REFERENCE_ENTITY",
+        "ImplementationGuidance": "Use a reference entity for countries, currencies, languages, units, markets, business units and status lists with rules attached. Use a list of values for internal enumerations such as a record type with three stable values. Document in the description which external standard maintains the codes.",
+        "Example": "Market is a reference entity (with required languages); ContactRole is a list of values.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-01-15",
+        "ApprovedOn": "2025-01-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "REF-006",
+        "Title": "Changes to shared reference data are approved and historized",
+        "Statement": "Changes to reference data shared across data products MUST be approved by the reference data owner before they take effect and MUST be historized.",
+        "Rationale": "A single reference value change (a country approval, a currency minor unit) can invalidate thousands of records in many data products.",
+        "RequirementLevel": "MUST",
+        "Category": "REFERENCE_DATA",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Edit shared reference entities through a stepper and an approval workflow assigned to the owner role; enable historization; communicate the change in the workflow notification.",
+        "Example": "Setting ApprovedForBusiness = false on a country requires DGC approval.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-01-15",
+        "ApprovedOn": "2025-01-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "MDM-001",
+        "Title": "Golden records keep their source cross-references",
+        "Statement": "Every golden record MUST keep the identifiers of all the source records it consolidates, so that any value can be traced to its source and returned to the source systems.",
+        "Rationale": "Lineage from golden to source is the basis of trust, of data subject requests (PRIV-005) and of the synchronisation of consuming systems.",
+        "RequirementLevel": "MUST",
+        "Category": "IDENTITY_MATCHING",
+        "ImplementationPattern": "MATCHING_SURVIVORSHIP",
+        "ImplementationGuidance": "Load each source with its publisher code and source ID; use fuzzy-matched or ID-matched entities so that the master records stay linked to the golden record; expose the cross-reference in a named query and a lineage tab.",
+        "Example": "Golden customer 1042 lists CRM:0081 and ERP:0000104521.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "MDM-002",
+        "Title": "Organisations matched on registered identifiers first",
+        "Statement": "Organisations SHOULD be matched first on registered identifiers (LEI, then tax registration number with its country) and only then on fuzzy name and address rules.",
+        "Rationale": "Registered identifiers are unambiguous; fuzzy matching on names over-merges subsidiaries and under-merges renamed entities.",
+        "RequirementLevel": "SHOULD",
+        "Category": "IDENTITY_MATCHING",
+        "ImplementationPattern": "MATCHING_SURVIVORSHIP",
+        "ImplementationGuidance": "Write a first match rule on exact LEI, a second on exact VATNumber and Country, then fuzzy rules on normalised name and address with a higher review threshold. Validate LEI and VAT with DQ-003 and DQ-004 first.",
+        "Example": "Two records with LEI 5493001KJTIIGC8Y1R12 merge automatically despite different trading names.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "MDM-003",
+        "Title": "B2B accounts reference their organisation and billing organisation",
+        "Statement": "Every B2B customer account MUST reference the organisation golden record of its legal entity, and its billing organisation MUST be held as an explicit reference with a business role name, not inferred from addresses.",
+        "Rationale": "Invoicing, credit, tax and sanctions checks apply to the legal entity that is billed. When the billing organisation is implicit, it cannot be validated, governed or reported.",
+        "RequirementLevel": "MUST",
+        "Category": "IDENTITY_MATCHING",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Model Organization as a matched entity and add references from Account with role names such as SoldToOrganization and BillingOrganization (MOD-002). Make the billing reference mandatory for active accounts with DQ-002, and validate the billing organisation country against REF-004.",
+        "Example": "Account ACC-1042 -> BillingOrganization = Northwind Distribution Inc. (CA).",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "MDM-004",
+        "Title": "Survivorship rules documented per attribute",
+        "Statement": "Survivorship SHOULD be defined per attribute or attribute group with a documented source ranking or recency rule, and personal contact data SHOULD survive from the most recently verified source.",
+        "Rationale": "Undocumented survivorship produces golden values nobody can explain; outdated contact data violate the accuracy principle.",
+        "RequirementLevel": "SHOULD",
+        "Category": "IDENTITY_MATCHING",
+        "ImplementationPattern": "MATCHING_SURVIVORSHIP",
+        "ImplementationGuidance": "Define survivorship rules by attribute group (identity, address, contact, commercial) with explicit publisher ranking or most-recent rules; write the reasoning and rule code in the survivorship rule description.",
+        "Example": "Email survives from the source with the latest VerifiedAt; legal name survives from the ERP.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "MDM-005",
+        "Title": "Person merges below the confidence threshold are reviewed",
+        "Statement": "Merges of records describing natural persons SHOULD be confirmed automatically only above a high match score; lower-score suggestions SHOULD be reviewed by a steward, and every merge MUST be reversible.",
+        "Rationale": "A wrong merge of two people discloses one person's data to the other and corrupts consents and rights requests.",
+        "RequirementLevel": "SHOULD",
+        "Category": "IDENTITY_MATCHING",
+        "ImplementationPattern": "MATCHING_SURVIVORSHIP",
+        "ImplementationGuidance": "Set the auto-confirm threshold above the merge threshold for person entities, route suggestions to the duplicate management screen of the steward role, and keep unmerge enabled.",
+        "Example": "Score 92: merged automatically. Score 78: sent to CustomerSteward for review.",
+        "LifecycleStatus": "IN_REVIEW",
+        "EffectiveDate": "2027-01-01",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "META-001",
+        "Title": "Every new object documented for people and AI agents",
+        "Statement": "Every entity, attribute, reference, validation and named query added to a data product MUST carry a business description written for both people and AI agents, stating meaning, format or unit, and classification; when correct use is not obvious, the description MUST include an 'AI agent instructions:' paragraph.",
+        "Rationale": "Descriptions are the semantic layer that AI agents read through MCP; an undocumented attribute is either ignored or misused. Precise data definitions are the basis of ISO/IEC 11179.",
+        "RequirementLevel": "MUST",
+        "Category": "METADATA_DOCUMENTATION",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Write the description when the object is created, not afterwards: first sentence = what it is (ISO/IEC 11179-4 style), then format, unit, classification, source. Add 'AI agent instructions:' for filters to apply, values to exclude or how to join (e.g. 'use only records with Status = ACTIVE'). Cite the governance rule codes implemented (META-002).",
+        "Example": "Account.BillingOrganization: 'Organisation invoiced for this account. Classification: INTERNAL. AI agent instructions: use this reference, not the account address, to determine the billing country. Rules: MDM-003, REF-004.'",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "META-002",
+        "Title": "Implemented rule codes cited in the design",
+        "Statement": "Every model object that implements a governance rule MUST cite the rule code in its description.",
+        "Rationale": "Citations make the design auditable: reviewers and agents can see which rule an object implements and find every implementation of a rule when it changes or is retired.",
+        "RequirementLevel": "MUST",
+        "Category": "METADATA_DOCUMENTATION",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Append 'Rules: <codes>.' to the description of the validation, enricher, role, workflow or attribute implementing the rule. When a rule is retired, search descriptions for its code.",
+        "Example": "Validation ActiveAccountBillingCountry: '... Rules: DQ-002, MDM-003, REF-001, REF-004.'",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "META-003",
+        "Title": "Definitions follow the business glossary",
+        "Statement": "Labels and definitions SHOULD use the terms of the business glossary and SHOULD state what the object is, not how it is used or computed.",
+        "Rationale": "Consistent terms across data products let people and agents join and compare data correctly.",
+        "RequirementLevel": "SHOULD",
+        "Category": "METADATA_DOCUMENTATION",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Reuse glossary labels for entities and attributes; write definitions as a noun phrase ('Organisation invoiced for ...'), and put usage and computation in separate sentences.",
+        "Example": "'Customer lifetime value: estimated gross margin over the relationship', not 'Computed by the CLV job'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "META-004",
+        "Title": "Source and transformation of loaded attributes documented",
+        "Statement": "Attributes fed by integrations SHOULD document their source systems and any transformation applied by enrichers.",
+        "Rationale": "Lineage is needed to explain values, assess the impact of source changes and support regulatory traceability.",
+        "RequirementLevel": "SHOULD",
+        "Category": "METADATA_DOCUMENTATION",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Add 'Source: <systems>. Transformation: <enricher>.' to the attribute description, consistent with the publishers and enrichers of the model.",
+        "Example": "Customer.PhoneNumber: 'Source: CRM, ERP. Transformation: E.164 normalisation (DQ-005).'",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "META-005",
+        "Title": "Business owner and steward named for each entity",
+        "Statement": "Every master entity MUST name its accountable business owner and its steward role in its description or in the data product documentation.",
+        "Rationale": "Rules, quality issues and access requests need an accountable owner; unowned data degrades.",
+        "RequirementLevel": "MUST",
+        "Category": "METADATA_DOCUMENTATION",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Add 'Owner: <body or role>. Steward: <role>.' to the entity description; the steward role is the one receiving data quality tasks (STW-001).",
+        "Example": "Product: 'Owner: Product Management. Steward: ProductSteward.'",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "AI-001",
+        "Title": "AI agents use governed interfaces only",
+        "Statement": "AI agents MUST access master data only through governed interfaces (data product MCP server, named queries, REST API) with a dedicated role, and MUST NOT receive database credentials or human user accounts.",
+        "Rationale": "Governed interfaces apply privileges, row filters and logging; direct access bypasses them.",
+        "RequirementLevel": "MUST",
+        "Category": "AI_USAGE",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Create an agent role per SEC-002, expose named queries with 'AI agent instructions:' descriptions, and grant read on the entities the agent needs. Do not configure agents with personal user credentials.",
+        "Example": "The design agent reads governance rules through the ApplicableRules named query with role GovernanceAgent.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-09-01",
+        "ApprovedOn": "2025-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-AI",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "AI-002",
+        "Title": "AI agents read only approved, in-force content",
+        "Statement": "AI agent roles MUST be restricted by row filters to approved, in-force records (golden data, approved rules, active reference values); drafts, rejected and retired records MUST NOT reach an agent.",
+        "Rationale": "An agent cannot tell a draft from an approved rule unless the data tell it; filtering at the source prevents drafts from entering designs or answers.",
+        "RequirementLevel": "MUST",
+        "Category": "AI_USAGE",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Add a row filter on the agent role privileges (e.g. `InForce = 1`, `Status = 'ACTIVE'`), and state it in the named query description ('AI agent instructions: only in-force rules are returned').",
+        "Example": "Draft rule PRIV-008 is invisible to the GovernanceAgent role.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-09-01",
+        "ApprovedOn": "2025-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-AI",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "AI-003",
+        "Title": "Human approval of AI-proposed changes",
+        "Statement": "Changes to a data product model or to golden data proposed by an AI agent MUST be reviewed and approved by an accountable person before deployment or certification.",
+        "Rationale": "Human oversight keeps accountability with people and catches plausible but wrong changes.",
+        "RequirementLevel": "MUST",
+        "Category": "AI_USAGE",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "AI design agents work in a branch and submit changes for review; AI data changes go through a stepper or workflow with a human approval task, never through direct publish with auto-certification. Record in the change which rule codes the agent applied (META-002).",
+        "Example": "The design agent adds the BillingOrganization rule to the Customer model; the data architect approves the pull request before deployment.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-09-01",
+        "ApprovedOn": "2025-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-AI",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "AI-004",
+        "Title": "No personal data exposed to AI agents without approval",
+        "Statement": "Attributes classified PERSONAL or higher MUST NOT be exposed to AI agent roles unless the purpose is documented and approved by the Data Protection Office.",
+        "Rationale": "AI agents can copy data into prompts, logs and external services; personal data must stay limited to approved purposes.",
+        "RequirementLevel": "MUST",
+        "Category": "AI_USAGE",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Apply PRIV-002 to agent roles with no exception by default. When an approved use case requires personal data, create a dedicated agent role, document the purpose and approval reference in its description, and expose only the needed attributes through a named query.",
+        "Example": "The customer service agent role reads Contact.Email under approval DPO-AI-2026-03; the analytics agent does not.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-09-01",
+        "ApprovedOn": "2025-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-AI",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "AI-005",
+        "Title": "Quality of master data used to train or evaluate AI documented",
+        "Statement": "Master data sets used to train, validate or test AI systems SHOULD be documented with their origin, preparation steps, known gaps and data quality measures.",
+        "Rationale": "The EU AI Act requires data governance practices for training, validation and testing data of high-risk AI systems; the same documentation helps any AI use case.",
+        "RequirementLevel": "SHOULD",
+        "Category": "AI_USAGE",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Add an 'AI training use:' paragraph to the data product description listing the AI systems using the data, the extraction named query and the data quality dashboard to consult.",
+        "Example": "Customer data product: 'AI training use: churn model v3, extract CustomerFeatures, DQ dashboard Customer quality.'",
+        "LifecycleStatus": "IN_REVIEW",
+        "EffectiveDate": "2027-01-01",
+        "FID_Policy": "POL-AI",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "STW-001",
+        "Title": "Data quality errors routed to a steward",
+        "Statement": "Every master entity MUST have a steward role that receives its data quality errors and duplicate suggestions as tasks.",
+        "Rationale": "Errors that nobody owns are never fixed; routing them to a named role makes resolution measurable.",
+        "RequirementLevel": "MUST",
+        "Category": "STEWARDSHIP",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Give the steward role privileges on the error records and duplicate management, and add the stewardship folder and My tasks entries to the application for that role.",
+        "Example": "Rejected supplier records appear in SupplierSteward's 'Records in error' folder.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "STW-002",
+        "Title": "High-impact changes approved through a workflow",
+        "Statement": "Changes with high business impact (deactivation of a customer or supplier, change of legal name, bank details or tax identifiers) MUST be approved through a workflow before they take effect.",
+        "Rationale": "These changes affect invoicing, payments and compliance; a second pair of eyes prevents fraud and errors.",
+        "RequirementLevel": "MUST",
+        "Category": "STEWARDSHIP",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Create an approval workflow started from the record with the change submitted at the end; assign approval per SEC-004. Use steppers with validations for the edit itself.",
+        "Example": "Changing Supplier.IBAN starts 'Approve bank details change' assigned to FinanceApprover.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-01-15",
+        "ApprovedOn": "2025-01-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "STW-003",
+        "Title": "Duplicate suggestions resolved within ten business days",
+        "Statement": "Duplicate suggestions SHOULD be confirmed or rejected by the steward within ten business days.",
+        "Rationale": "Unresolved duplicates keep consuming systems on split records and degrade trust in the golden data.",
+        "RequirementLevel": "SHOULD",
+        "Category": "STEWARDSHIP",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Show open duplicate suggestions with their age in the steward dashboard; sort the duplicate management collection by suggestion date.",
+        "Example": "Dashboard tile 'Duplicates older than 10 days: 4'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "STW-004",
+        "Title": "Data quality reviewed monthly",
+        "Statement": "The data quality of each master entity SHOULD be reviewed monthly by its owner and the Data Quality Office, based on validation errors and completeness measures.",
+        "Rationale": "Regular review turns data quality from incidents into a managed process with targets.",
+        "RequirementLevel": "SHOULD",
+        "Category": "STEWARDSHIP",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Provide a data quality dashboard (errors by validation, completeness by attribute, open duplicates) for the owner and steward roles.",
+        "Example": "Monthly review: Product completeness of French descriptions 87%, target 100% for CA.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "MOD-001",
+        "Title": "Entity and attribute naming",
+        "Statement": "Entity and attribute names MUST be English, singular, in PascalCase without abbreviations or source-system prefixes, and labels MUST use business language.",
+        "Rationale": "Consistent names make models readable by people and agents and let rules refer to objects predictably.",
+        "RequirementLevel": "MUST",
+        "Category": "MODELING_CONVENTIONS",
+        "ImplementationPattern": "NAMING_CONVENTION",
+        "ImplementationGuidance": "Name entities as singular nouns (Customer, ProductDescription), attributes as noun phrases (BillingOrganization, CountryCode); avoid technical prefixes (T_, SAP_) and abbreviations except standard ones (ISO, VAT, IBAN, LEI).",
+        "Example": "CustomerAccount.CreditLimitAmount, not CUST_ACC.CR_LIM.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "MOD-002",
+        "Title": "Codes and references named by their business role",
+        "Statement": "Attributes holding codes MUST end with 'Code', and references MUST be named after the business role of the referenced record (e.g. BillingOrganization, ShipToLocation), never after the target entity with a number.",
+        "Rationale": "Role names say why two records are related; numbered or generic names (Organization2) are ambiguous for people and agents.",
+        "RequirementLevel": "MUST",
+        "Category": "MODELING_CONVENTIONS",
+        "ImplementationPattern": "NAMING_CONVENTION",
+        "ImplementationGuidance": "Use the role name pattern <Role><TargetEntity> for references and <Concept>Code for code attributes; describe the role in the reference description (META-001).",
+        "Example": "Account.BillingOrganization and Account.SoldToOrganization, not Account.Organization1 and Account.Organization2.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2024-09-01",
+        "ApprovedOn": "2024-09-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "MOD-003",
+        "Title": "Boolean attributes named as predicates",
+        "Statement": "Boolean attributes SHOULD be named as predicates (Is..., Has..., Can...) and SHOULD NOT allow a third, undefined state unless 'unknown' is meaningful.",
+        "Rationale": "Predicate names make filters self-explanatory in SemQL and in agent queries.",
+        "RequirementLevel": "SHOULD",
+        "Category": "MODELING_CONVENTIONS",
+        "ImplementationPattern": "NAMING_CONVENTION",
+        "ImplementationGuidance": "Name booleans IsActive, HasConsent, ApprovedForBusiness; set a default value; describe what false means.",
+        "Example": "Country.ApprovedForBusiness (default false).",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-01-15",
+        "ApprovedOn": "2025-01-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "MOD-004",
+        "Title": "New attributes bound to a business attribute type",
+        "Statement": "A new attribute SHOULD be bound to a business attribute type of the governance catalogue, from which it inherits its default classification, format and reference standard.",
+        "Rationale": "Attribute types carry the rules: binding an attribute to EMAIL or COUNTRY_CODE makes its classification, validation and reference requirements explicit before design.",
+        "RequirementLevel": "SHOULD",
+        "Category": "MODELING_CONVENTIONS",
+        "ImplementationPattern": "NAMING_CONVENTION",
+        "ImplementationGuidance": "Query AttributeTypeCatalog, pick the type, then query ApplicableRules with the domain, classification and type. Use a user-defined type or complex type in the model when the type is reused, and state the type in the description ('Attribute type: COUNTRY_CODE').",
+        "Example": "Organization.CountryCode bound to COUNTRY_CODE -> REF-001 and REF-004 apply.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "MOD-005",
+        "Title": "Status attributes with a documented lifecycle",
+        "Statement": "Status attributes SHOULD use a governed list of values or reference entity whose allowed transitions are documented, and the meaning of each status SHOULD be described.",
+        "Rationale": "Status drives validations (DQ-002), agent filters (AI-002) and integrations; undocumented statuses are interpreted differently by each consumer.",
+        "RequirementLevel": "SHOULD",
+        "Category": "MODELING_CONVENTIONS",
+        "ImplementationPattern": "REFERENCE_ENTITY",
+        "ImplementationGuidance": "Define the status values as a list of values with descriptions; enforce allowed transitions with workflows or validations comparing old and new values.",
+        "Example": "Account status: PROSPECT -> ACTIVE -> SUSPENDED -> CLOSED.",
+        "LifecycleStatus": "DRAFT",
+        "EffectiveDate": "2027-01-01",
+        "FID_Policy": "POL-META",
+        "FID_OwnerBody": "DGC"
+      },
+      {
+        "Code": "DQ-101",
+        "Title": "National Drug Codes valid and listed",
+        "Statement": "Every National Drug Code MUST be stored in its hyphenated 10-digit form with a valid 4-4-2, 5-3-2 or 5-4-1 segment configuration and MUST correspond to a drug listing of the labeler.",
+        "Rationale": "The NDC identifies the labeler, product and package of a drug in the US. A wrong segment configuration changes the meaning of the code.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Validate the NDC pattern from the AttributeTypeCatalog and check it against a reference entity loaded from the FDA NDC directory. Keep the 11-digit billing form (5-4-2) as a computed attribute if billing systems need it; do not use it as the key.",
+        "Example": "50242-040-62 accepted; 5024204062 without hyphens rejected (configuration ambiguous).",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "DQ-102",
+        "Title": "National Provider Identifiers verified",
+        "Statement": "Every NPI MUST be a 10-digit number whose check digit is valid (Luhn formula with the 80840 prefix) and SHOULD be verified against the NPPES registry.",
+        "Rationale": "The NPI is the standard identifier of US health care providers and the key used in Open Payments reporting.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Write a validation computing the Luhn check digit on '80840' + the first 9 digits. Add a REST client enricher to the NPPES NPI Registry API to retrieve the provider name and status for verification.",
+        "Example": "NPI 1234567893 is valid; 1234567890 fails the check digit.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "DQ-103",
+        "Title": "Covered recipient data complete for Open Payments",
+        "Statement": "A healthcare professional or teaching hospital that receives a transfer of value MUST have the identification data required for Open Payments reporting: name, business address, specialty, NPI and state licence number(s) for physicians and other covered practitioners.",
+        "Rationale": "Incomplete recipient data cause rejected or incorrect submissions to CMS and penalties for applicable manufacturers.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Write a validation on HCP that applies when the HCP has at least one transfer of value: NPI, specialty, primary business address and at least one licence (number and state) are mandatory.",
+        "Example": "HCP Dr. A. Rivera has a consulting fee but no licence state: 'Add the state of licence required for Open Payments'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "DQ-104",
+        "Title": "Built-in checks on manual entry of critical GxP data",
+        "Statement": "Manual entry of critical GxP master data (product strength, dose form, site status) SHOULD be protected by built-in checks for correct and secure entry.",
+        "Rationale": "EU GMP Annex 11 expects additional checks on the accuracy of critical data entered manually.",
+        "RequirementLevel": "SHOULD",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "ImplementationGuidance": "Use steppers with validations triggered on each step, lists of values or references for controlled values, and a second-person verification task for critical attributes.",
+        "Example": "Strength '500 mg' must be entered as value 500 and unit 'mg' from the Unit reference.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "REF-101",
+        "Title": "Medicinal products identified with IDMP identifiers",
+        "Statement": "Medicinal products MUST carry their IDMP Medicinal Product Identifier and the Pharmaceutical Product Identifier(s) of their pharmaceutical products when assigned by the competent authority.",
+        "Rationale": "IDMP identifiers enable unambiguous exchange of product information with regulators and across markets.",
+        "RequirementLevel": "MUST",
+        "Category": "REFERENCE_DATA",
+        "ImplementationPattern": "REFERENCE_ENTITY",
+        "ImplementationGuidance": "Model MedicinalProduct with MPID (ISO 11615) and a child PharmaceuticalProduct with PhPID (ISO 11616); validate uniqueness of each identifier; document the assigning authority.",
+        "Example": "MedicinalProduct with MPID EU-100001234-PRD and PhPID PHPID-L1-0042.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "REF-102",
+        "Title": "IDMP controlled vocabularies as managed references",
+        "Statement": "Medicinal product attributes that IDMP describes with controlled vocabularies (dose form, route of administration, units, packaging) MUST reference managed reference entities synchronised with the authority's referentials, not free text.",
+        "Rationale": "Free-text dose forms and routes cannot be exchanged with regulators or compared across markets.",
+        "RequirementLevel": "MUST",
+        "Category": "REFERENCE_DATA",
+        "ImplementationPattern": "REFERENCE_ENTITY",
+        "ImplementationGuidance": "Create reference entities (DoseForm, RouteOfAdministration, UnitOfPresentation) loaded from the EMA SPOR Referentials Management Service or the applicable authority list; apply REF-006 to their changes.",
+        "Example": "Dose form 'film-coated tablet' referenced by its controlled term identifier.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "SEC-101",
+        "Title": "Access and authority checks for GxP master data",
+        "Statement": "Data products holding GxP master data MUST limit access to authorised individuals and MUST check that a user is authorised before allowing them to create, change, approve or sign a record.",
+        "Rationale": "Part 11 and Annex 11 require system access limited to authorised individuals and authority checks on record operations.",
+        "RequirementLevel": "MUST",
+        "Category": "SECURITY_ACCESS",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Define roles per GxP function (author, reviewer, approver) with privileges per SEC-001; enforce authority in workflows by assigning tasks to the authorised role only; review role membership periodically.",
+        "Example": "Only GxPApprover can complete the approval task of a medicinal product change.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "SEC-102",
+        "Title": "Audit trail with reason for change on GxP master data",
+        "Statement": "Creation, change and deletion of GxP master data MUST be recorded in a secure, computer-generated, time-stamped audit trail that keeps previous values, and the reason for each change MUST be documented.",
+        "Rationale": "Audit trails are required to reconstruct who changed what, when and why; they must not obscure previously recorded information.",
+        "RequirementLevel": "MUST",
+        "Category": "SECURITY_ACCESS",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Enable historization of golden and master data on GxP entities, capture changes through workflows with a mandatory 'Reason for change' field, and keep history for the retention of RET-101. Do not allow updates outside workflows.",
+        "Example": "Change of shelf life from 24 to 36 months recorded with user, timestamp, old value and reason 'stability study ST-118'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "SEC-103",
+        "Title": "Electronic signature of GxP approvals",
+        "Statement": "Approvals of GxP master data that replace a handwritten signature MUST be electronic signatures showing the signer's printed name, the date and time and the meaning of the signature, permanently linked to the record.",
+        "Rationale": "Electronic signatures must be as trustworthy as handwritten ones and cannot be excised or copied to falsify a record.",
+        "RequirementLevel": "MUST",
+        "Category": "SECURITY_ACCESS",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Implement approval as a workflow task requiring re-authentication, record signer, timestamp and meaning (e.g. 'Approved for release') in the record history, and link them to the approved version.",
+        "Example": "Medicinal product change approved: 'J. Smith, 2026-10-02T09:14:00Z, Approved for release'.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-03-01",
+        "ApprovedOn": "2025-03-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "PRIV-101",
+        "Title": "No protected health information in HCP and site master data",
+        "Statement": "Healthcare professional and clinical site master data MUST NOT store protected health information; when a use case covered by HIPAA requires it, only the minimum necessary PHI MAY be stored and it MUST be restricted to the roles that need it.",
+        "Rationale": "HCP and site master data are widely shared with commercial and medical teams; PHI there would be disclosed beyond the minimum necessary. Applies when the company acts as a covered entity or business associate.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "PRIVILEGE_ROW_FILTER",
+        "ImplementationGuidance": "Do not add patient-level attributes to HCP or ClinicalSite entities. If unavoidable, classify them PHI, apply PRIV-002 with a dedicated role, exclude them from named queries and agent roles (AI-004), and record the HIPAA basis in the entity description.",
+        "Example": "Patient counts per site are allowed; patient names or record numbers are not.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "PRIV-102",
+        "Title": "HCP data processed as personal data",
+        "Statement": "Data about individual healthcare professionals MUST be classified as personal data, with a documented lawful basis and information of the HCP when the data are obtained from third parties.",
+        "Rationale": "Professional data about an identifiable person are personal data under the GDPR, including when obtained from commercial HCP databases.",
+        "RequirementLevel": "MUST",
+        "Category": "PRIVACY",
+        "ImplementationPattern": "DESCRIPTION_AI_INSTRUCTION",
+        "ImplementationGuidance": "Classify HCP name, contact, licence and NPI attributes PERSONAL (PRIV-001), state the lawful basis and source in the entity description, and apply PRIV-002 and RET-001.",
+        "Example": "HCP entity description: 'Lawful basis: legitimate interest (Art. 6(1)(f)). Sources: third-party HCP database, events.'",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "DPO"
+      },
+      {
+        "Code": "MDM-101",
+        "Title": "HCPs matched on NPI and licence first",
+        "Statement": "Healthcare professionals MUST be matched first on NPI (United States) or licence number with its issuing authority, and only then on fuzzy name and address rules with steward review.",
+        "Rationale": "A wrong HCP merge misattributes transfers of value in Open Payments reports and in transparency disclosures.",
+        "RequirementLevel": "MUST",
+        "Category": "IDENTITY_MATCHING",
+        "ImplementationPattern": "MATCHING_SURVIVORSHIP",
+        "ImplementationGuidance": "First match rule on exact NPI, second on licence number plus state, then fuzzy rules routed to review (MDM-005 thresholds). Survive NPI and licences from the verified registry source.",
+        "Example": "Two HCP records with NPI 1234567893 merge; same name without NPI goes to review.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "RET-101",
+        "Title": "GxP master data and audit trail retained and readable",
+        "Statement": "GxP master data and their audit trail MUST be retained for the retention period of the GMP or GCP records that depend on them and MUST remain accessible and readable throughout that period.",
+        "Rationale": "Inspectors must be able to retrieve the master data in force when a batch was released or a trial was conducted.",
+        "RequirementLevel": "MUST",
+        "Category": "RETENTION",
+        "ImplementationPattern": "RETENTION_POLICY",
+        "ImplementationGuidance": "Set retention policies on GxP entities and their history to the longest dependent record retention, exclude them from automatic purge, and validate that archived data can be restored and read.",
+        "Example": "Product master data of a released batch kept at least as long as the batch documentation.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "RET-102",
+        "Title": "Open Payments records retained",
+        "Statement": "Transfers of value and the HCP master data used to report them MUST be retained for at least the record retention period required by the Open Payments regulations (five years from publication).",
+        "Rationale": "CMS may audit the data supporting submitted reports.",
+        "RequirementLevel": "MUST",
+        "Category": "RETENTION",
+        "ImplementationPattern": "RETENTION_POLICY",
+        "ImplementationGuidance": "Historize HCP and transfer-of-value entities and configure a retention policy of at least five years after the publication of the reporting year; exclude reported records from erasure workflows while the obligation lasts (RET-004 exception).",
+        "Example": "Transfers reported for 2025 (published 2026) kept until at least 2031.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "STW-101",
+        "Title": "GxP data product validated and under change control",
+        "Statement": "The configuration of a data product holding GxP master data (model, validations, enrichers, workflows, roles) MUST be validated for its intended use and every change MUST go through documented change control.",
+        "Rationale": "Computerised systems used in GxP activities must be validated, and changes made in a controlled manner.",
+        "RequirementLevel": "MUST",
+        "Category": "STEWARDSHIP",
+        "ImplementationPattern": "WORKFLOW",
+        "ImplementationGuidance": "Keep the data product in Git with reviewed pull requests, maintain a validation plan and test evidence per release (risk-based), deploy only validated versions to the GxP data location, and record the change request in the deployment description.",
+        "Example": "Release 1.4 of the MedicinalProduct data product deployed with change request CR-2026-031 and its test report.",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2025-06-01",
+        "ApprovedOn": "2025-06-01",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-GXP",
+        "FID_OwnerBody": "GXPQA"
+      },
+      {
+        "Code": "DQ-BAD1",
+        "Title": "[DELIBERATE FAILURE] Retired before it took effect",
+        "Statement": "This deliberate test record MUST be rejected: its retirement date (2025-01-01) is before its effective date (2026-01-01).",
+        "Rationale": "Demonstrates the RetirementAfterEffective validation.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "LifecycleStatus": "RETIRED",
+        "EffectiveDate": "2026-01-01",
+        "RetirementDate": "2025-01-01",
+        "RetirementReason": "Deliberate test record.",
+        "ApprovedOn": "2025-12-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-BAD2",
+        "Title": "[DELIBERATE FAILURE] Approved rule without any scope",
+        "Statement": "This deliberate test record MUST be rejected: it is APPROVED but has no scope row, so no design agent could ever find it.",
+        "Rationale": "Demonstrates the ApprovedRuleHasScope validation.",
+        "RequirementLevel": "MUST",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "LifecycleStatus": "APPROVED",
+        "EffectiveDate": "2026-01-01",
+        "ApprovedOn": "2025-12-15",
+        "ApprovedBy": "governance.owner",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      },
+      {
+        "Code": "DQ-BAD3",
+        "Title": "[DELIBERATE FAILURE] Rule without a statement",
+        "Rationale": "Demonstrates the mandatory check on Statement.",
+        "RequirementLevel": "SHOULD",
+        "Category": "DATA_QUALITY",
+        "ImplementationPattern": "VALIDATION",
+        "LifecycleStatus": "DRAFT",
+        "EffectiveDate": "2027-01-01",
+        "FID_Policy": "POL-DQ",
+        "FID_OwnerBody": "DQO"
+      }
+    ],
+    "RuleScope": [
+      {
+        "FID_Rule": "DQ-001"
+      },
+      {
+        "FID_Rule": "DQ-002",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "DQ-002",
+        "FID_DataDomain": "SUPPLIER"
+      },
+      {
+        "FID_Rule": "DQ-002",
+        "FID_DataDomain": "PRODUCT"
+      },
+      {
+        "FID_Rule": "DQ-003"
+      },
+      {
+        "FID_Rule": "DQ-004",
+        "FID_AttributeType": "GTIN"
+      },
+      {
+        "FID_Rule": "DQ-004",
+        "FID_AttributeType": "IBAN"
+      },
+      {
+        "FID_Rule": "DQ-004",
+        "FID_AttributeType": "LEI"
+      },
+      {
+        "FID_Rule": "DQ-005",
+        "FID_AttributeType": "PHONE_NUMBER"
+      },
+      {
+        "FID_Rule": "DQ-006",
+        "FID_DataDomain": "PRODUCT"
+      },
+      {
+        "FID_Rule": "DQ-006",
+        "FID_AttributeType": "PRODUCT_DESCRIPTION"
+      },
+      {
+        "FID_Rule": "DQ-007",
+        "FID_AttributeType": "PHONE_NUMBER"
+      },
+      {
+        "FID_Rule": "DQ-008",
+        "FID_AttributeType": "DATE"
+      },
+      {
+        "FID_Rule": "DQ-008",
+        "FID_AttributeType": "TIMESTAMP"
+      },
+      {
+        "FID_Rule": "DQ-008",
+        "FID_AttributeType": "DATE_OF_BIRTH"
+      },
+      {
+        "FID_Rule": "PRIV-001"
+      },
+      {
+        "FID_Rule": "PRIV-002",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-002",
+        "FID_DataClassification": "SENSITIVE_PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-002",
+        "FID_DataClassification": "PHI"
+      },
+      {
+        "FID_Rule": "PRIV-003",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-003",
+        "FID_DataClassification": "SENSITIVE_PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-004",
+        "FID_DataClassification": "SENSITIVE_PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-005",
+        "FID_DataDomain": "CUSTOMER",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-005",
+        "FID_DataDomain": "EMPLOYEE",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-006",
+        "FID_DataDomain": "CUSTOMER",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-007",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-007",
+        "FID_DataClassification": "SENSITIVE_PERSONAL"
+      },
+      {
+        "FID_Rule": "PRIV-008",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "SEC-001"
+      },
+      {
+        "FID_Rule": "SEC-002"
+      },
+      {
+        "FID_Rule": "SEC-003",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "SEC-003",
+        "FID_DataDomain": "EMPLOYEE"
+      },
+      {
+        "FID_Rule": "SEC-003",
+        "FID_DataDomain": "FINANCE"
+      },
+      {
+        "FID_Rule": "SEC-004"
+      },
+      {
+        "FID_Rule": "SEC-005",
+        "FID_AttributeType": "IBAN"
+      },
+      {
+        "FID_Rule": "SEC-005",
+        "FID_AttributeType": "NATIONAL_ID"
+      },
+      {
+        "FID_Rule": "RET-001",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "RET-001",
+        "FID_DataClassification": "SENSITIVE_PERSONAL"
+      },
+      {
+        "FID_Rule": "RET-002",
+        "FID_DataDomain": "FINANCE"
+      },
+      {
+        "FID_Rule": "RET-002",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "RET-002",
+        "FID_DataDomain": "SUPPLIER"
+      },
+      {
+        "FID_Rule": "RET-003",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "RET-003",
+        "FID_DataClassification": "SENSITIVE_PERSONAL"
+      },
+      {
+        "FID_Rule": "RET-004",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "RET-005"
+      },
+      {
+        "FID_Rule": "REF-001",
+        "FID_AttributeType": "COUNTRY_CODE"
+      },
+      {
+        "FID_Rule": "REF-001",
+        "FID_DataDomain": "LOCATION"
+      },
+      {
+        "FID_Rule": "REF-001",
+        "FID_DataDomain": "REFERENCE"
+      },
+      {
+        "FID_Rule": "REF-002",
+        "FID_AttributeType": "CURRENCY_CODE"
+      },
+      {
+        "FID_Rule": "REF-002",
+        "FID_AttributeType": "MONETARY_AMOUNT"
+      },
+      {
+        "FID_Rule": "REF-003",
+        "FID_AttributeType": "LANGUAGE_CODE"
+      },
+      {
+        "FID_Rule": "REF-003",
+        "FID_AttributeType": "PRODUCT_DESCRIPTION"
+      },
+      {
+        "FID_Rule": "REF-004",
+        "FID_AttributeType": "COUNTRY_CODE"
+      },
+      {
+        "FID_Rule": "REF-004",
+        "FID_DataDomain": "REFERENCE"
+      },
+      {
+        "FID_Rule": "REF-004",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "REF-004",
+        "FID_DataDomain": "SUPPLIER"
+      },
+      {
+        "FID_Rule": "REF-005",
+        "FID_DataDomain": "REFERENCE"
+      },
+      {
+        "FID_Rule": "REF-005"
+      },
+      {
+        "FID_Rule": "REF-006",
+        "FID_DataDomain": "REFERENCE"
+      },
+      {
+        "FID_Rule": "MDM-001",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "MDM-001",
+        "FID_DataDomain": "SUPPLIER"
+      },
+      {
+        "FID_Rule": "MDM-001",
+        "FID_DataDomain": "PRODUCT"
+      },
+      {
+        "FID_Rule": "MDM-001",
+        "FID_DataDomain": "EMPLOYEE"
+      },
+      {
+        "FID_Rule": "MDM-001",
+        "FID_AttributeType": "SOURCE_ID"
+      },
+      {
+        "FID_Rule": "MDM-002",
+        "FID_DataDomain": "CUSTOMER",
+        "FID_AttributeType": "LEI"
+      },
+      {
+        "FID_Rule": "MDM-002",
+        "FID_DataDomain": "SUPPLIER",
+        "FID_AttributeType": "LEI"
+      },
+      {
+        "FID_Rule": "MDM-002",
+        "FID_DataDomain": "CUSTOMER",
+        "FID_AttributeType": "VAT_NUMBER"
+      },
+      {
+        "FID_Rule": "MDM-002",
+        "FID_DataDomain": "SUPPLIER",
+        "FID_AttributeType": "VAT_NUMBER"
+      },
+      {
+        "FID_Rule": "MDM-002",
+        "FID_DataDomain": "FINANCE",
+        "FID_AttributeType": "LEI"
+      },
+      {
+        "FID_Rule": "MDM-003",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "MDM-004",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "MDM-004",
+        "FID_DataDomain": "SUPPLIER"
+      },
+      {
+        "FID_Rule": "MDM-004",
+        "FID_DataDomain": "PRODUCT"
+      },
+      {
+        "FID_Rule": "MDM-004",
+        "FID_DataDomain": "EMPLOYEE"
+      },
+      {
+        "FID_Rule": "MDM-005",
+        "FID_DataDomain": "CUSTOMER",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "MDM-005",
+        "FID_DataDomain": "EMPLOYEE",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "META-001"
+      },
+      {
+        "FID_Rule": "META-002"
+      },
+      {
+        "FID_Rule": "META-003"
+      },
+      {
+        "FID_Rule": "META-004"
+      },
+      {
+        "FID_Rule": "META-005"
+      },
+      {
+        "FID_Rule": "AI-001"
+      },
+      {
+        "FID_Rule": "AI-002"
+      },
+      {
+        "FID_Rule": "AI-003"
+      },
+      {
+        "FID_Rule": "AI-004",
+        "FID_DataClassification": "PERSONAL"
+      },
+      {
+        "FID_Rule": "AI-004",
+        "FID_DataClassification": "SENSITIVE_PERSONAL"
+      },
+      {
+        "FID_Rule": "AI-004",
+        "FID_DataClassification": "PHI"
+      },
+      {
+        "FID_Rule": "AI-005"
+      },
+      {
+        "FID_Rule": "STW-001"
+      },
+      {
+        "FID_Rule": "STW-002",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "STW-002",
+        "FID_DataDomain": "SUPPLIER"
+      },
+      {
+        "FID_Rule": "STW-002",
+        "FID_DataDomain": "FINANCE"
+      },
+      {
+        "FID_Rule": "STW-003",
+        "FID_DataDomain": "CUSTOMER"
+      },
+      {
+        "FID_Rule": "STW-003",
+        "FID_DataDomain": "SUPPLIER"
+      },
+      {
+        "FID_Rule": "STW-003",
+        "FID_DataDomain": "PRODUCT"
+      },
+      {
+        "FID_Rule": "STW-004"
+      },
+      {
+        "FID_Rule": "MOD-001"
+      },
+      {
+        "FID_Rule": "MOD-002"
+      },
+      {
+        "FID_Rule": "MOD-003"
+      },
+      {
+        "FID_Rule": "MOD-004"
+      },
+      {
+        "FID_Rule": "MOD-005"
+      },
+      {
+        "FID_Rule": "DQ-101",
+        "FID_DataDomain": "MEDICINAL_PRODUCT",
+        "FID_AttributeType": "NDC"
+      },
+      {
+        "FID_Rule": "DQ-101",
+        "FID_AttributeType": "NDC"
+      },
+      {
+        "FID_Rule": "DQ-102",
+        "FID_DataDomain": "HCP",
+        "FID_AttributeType": "NPI"
+      },
+      {
+        "FID_Rule": "DQ-102",
+        "FID_AttributeType": "NPI"
+      },
+      {
+        "FID_Rule": "DQ-103",
+        "FID_DataDomain": "HCP",
+        "FID_AttributeType": "TRANSFER_OF_VALUE"
+      },
+      {
+        "FID_Rule": "DQ-103",
+        "FID_DataDomain": "HCP",
+        "FID_AttributeType": "HCP_LICENSE_NUMBER"
+      },
+      {
+        "FID_Rule": "DQ-104",
+        "FID_DataDomain": "MEDICINAL_PRODUCT"
+      },
+      {
+        "FID_Rule": "DQ-104",
+        "FID_DataDomain": "CLINICAL_SITE"
+      },
+      {
+        "FID_Rule": "REF-101",
+        "FID_DataDomain": "MEDICINAL_PRODUCT"
+      },
+      {
+        "FID_Rule": "REF-101",
+        "FID_AttributeType": "MPID"
+      },
+      {
+        "FID_Rule": "REF-101",
+        "FID_AttributeType": "PHPID"
+      },
+      {
+        "FID_Rule": "REF-102",
+        "FID_DataDomain": "MEDICINAL_PRODUCT"
+      },
+      {
+        "FID_Rule": "SEC-101",
+        "FID_DataDomain": "MEDICINAL_PRODUCT"
+      },
+      {
+        "FID_Rule": "SEC-101",
+        "FID_DataDomain": "CLINICAL_SITE"
+      },
+      {
+        "FID_Rule": "SEC-102",
+        "FID_DataDomain": "MEDICINAL_PRODUCT"
+      },
+      {
+        "FID_Rule": "SEC-102",
+        "FID_DataDomain": "CLINICAL_SITE"
+      },
+      {
+        "FID_Rule": "SEC-103",
+        "FID_DataDomain": "MEDICINAL_PRODUCT"
+      },
+      {
+        "FID_Rule": "SEC-103",
+        "FID_DataDomain": "CLINICAL_SITE"
+      },
+      {
+        "FID_Rule": "PRIV-101",
+        "FID_DataDomain": "HCP",
+        "FID_DataClassification": "PHI"
+      },
+      {
+        "FID_Rule": "PRIV-101",
+        "FID_DataDomain": "CLINICAL_SITE",
+        "FID_DataClassification": "PHI"
+      },
+      {
+        "FID_Rule": "PRIV-101",
+        "FID_DataDomain": "HCP"
+      },
+      {
+        "FID_Rule": "PRIV-101",
+        "FID_DataDomain": "CLINICAL_SITE"
+      },
+      {
+        "FID_Rule": "PRIV-102",
+        "FID_DataDomain": "HCP"
+      },
+      {
+        "FID_Rule": "MDM-101",
+        "FID_DataDomain": "HCP"
+      },
+      {
+        "FID_Rule": "MDM-101",
+        "FID_AttributeType": "NPI"
+      },
+      {
+        "FID_Rule": "MDM-101",
+        "FID_AttributeType": "HCP_LICENSE_NUMBER"
+      },
+      {
+        "FID_Rule": "RET-101",
+        "FID_DataDomain": "MEDICINAL_PRODUCT"
+      },
+      {
+        "FID_Rule": "RET-101",
+        "FID_DataDomain": "CLINICAL_SITE"
+      },
+      {
+        "FID_Rule": "RET-102",
+        "FID_DataDomain": "HCP",
+        "FID_AttributeType": "TRANSFER_OF_VALUE"
+      },
+      {
+        "FID_Rule": "RET-102",
+        "FID_AttributeType": "TRANSFER_OF_VALUE"
+      },
+      {
+        "FID_Rule": "STW-101",
+        "FID_DataDomain": "MEDICINAL_PRODUCT"
+      },
+      {
+        "FID_Rule": "STW-101",
+        "FID_DataDomain": "CLINICAL_SITE"
+      }
+    ],
+    "RuleCitation": [
+      {
+        "Clause": "ISO 8000-8",
+        "Note": "Data quality concepts and measurement, including completeness.",
+        "FID_Rule": "DQ-001",
+        "FID_Regulation": "ISO-8000"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 13 Data Quality",
+        "Note": "Data quality dimensions and preventive controls.",
+        "FID_Rule": "DQ-001",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "ISO 8000-8",
+        "Note": "Completeness and consistency as measurable data quality characteristics.",
+        "FID_Rule": "DQ-002",
+        "FID_Regulation": "ISO-8000"
+      },
+      {
+        "Clause": "Principle 3 - Accuracy and integrity",
+        "Note": "Applied as good practice to master data used in reporting.",
+        "FID_Rule": "DQ-002",
+        "FID_Regulation": "BCBS-239"
+      },
+      {
+        "Clause": "Principle 4 - Completeness",
+        "Note": "Applied as good practice to master data used in reporting.",
+        "FID_Rule": "DQ-002",
+        "FID_Regulation": "BCBS-239"
+      },
+      {
+        "Clause": "ISO 8000-110",
+        "Note": "Master data: exchange of characteristic data, conformance to a data specification.",
+        "FID_Rule": "DQ-003",
+        "FID_Regulation": "ISO-8000"
+      },
+      {
+        "Clause": "GS1 General Specifications - GTIN check digit calculation",
+        "Note": "Standard modulo-10 check digit.",
+        "FID_Rule": "DQ-004",
+        "FID_Regulation": "GS1-GTIN"
+      },
+      {
+        "Clause": "ISO 13616-1 - IBAN check digits",
+        "Note": "Check digits computed with ISO/IEC 7064 MOD 97-10.",
+        "FID_Rule": "DQ-004",
+        "FID_Regulation": "ISO-13616"
+      },
+      {
+        "Clause": "ISO 17442-1 - LEI check digits",
+        "Note": "Characters 19-20 are check digits computed with ISO/IEC 7064 MOD 97-10.",
+        "FID_Rule": "DQ-004",
+        "FID_Regulation": "ISO-17442"
+      },
+      {
+        "Clause": "E.164 number structure",
+        "Note": "International number: country code and national significant number, at most 15 digits.",
+        "FID_Rule": "DQ-005",
+        "FID_Regulation": "ITU-T-E164"
+      },
+      {
+        "Clause": "Consumer Packaging and Labelling Regulations, C.R.C., c. 417, s. 6(2)",
+        "Note": "Information required on the label of a prepackaged product shown in both official languages, with limited exceptions.",
+        "FID_Rule": "DQ-006",
+        "FID_Regulation": "CA-CPLA"
+      },
+      {
+        "Clause": "s. 51",
+        "Note": "Inscriptions on a product, its container or wrapping and accompanying documents must be in French; another language may not be given greater prominence.",
+        "FID_Rule": "DQ-006",
+        "FID_Regulation": "QC-CFL"
+      },
+      {
+        "Clause": "s. 52",
+        "Note": "Catalogues, brochures, commercial directories and similar publications must be in French.",
+        "FID_Rule": "DQ-006",
+        "FID_Regulation": "QC-CFL"
+      },
+      {
+        "Clause": "Two-letter language identifiers (ISO 639 Set 1)",
+        "Note": "Languages identified as en and fr.",
+        "FID_Rule": "DQ-006",
+        "FID_Regulation": "ISO-639"
+      },
+      {
+        "Clause": "E.164 number structure",
+        "Note": "Superseding rule DQ-005 uses the international format.",
+        "FID_Rule": "DQ-007",
+        "FID_Regulation": "ITU-T-E164"
+      },
+      {
+        "Clause": "ISO 8601-1:2019, extended format",
+        "Note": "Calendar date, time of day and UTC offset representations.",
+        "FID_Rule": "DQ-008",
+        "FID_Regulation": "ISO-8601"
+      },
+      {
+        "Clause": "Art. 4(1)",
+        "Note": "Definition of personal data.",
+        "FID_Rule": "PRIV-001",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 30",
+        "Note": "Records of processing activities require knowing which personal data are processed.",
+        "FID_Rule": "PRIV-001",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Annex A 5.12",
+        "Note": "Classification of information.",
+        "FID_Rule": "PRIV-001",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Art. 25(2)",
+        "Note": "Data protection by default: by default personal data are not made accessible to an indefinite number of natural persons.",
+        "FID_Rule": "PRIV-002",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 32(1)(b) and 32(4)",
+        "Note": "Ongoing confidentiality; persons with access process personal data only on instructions.",
+        "FID_Rule": "PRIV-002",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Annex A 8.3",
+        "Note": "Information access restriction.",
+        "FID_Rule": "PRIV-002",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Cal. Civ. Code 1798.100(e); 1798.81.5",
+        "Note": "Duty to implement reasonable security procedures appropriate to the nature of the personal information.",
+        "FID_Rule": "PRIV-002",
+        "FID_Regulation": "CCPA-CPRA"
+      },
+      {
+        "Clause": "Art. 5(1)(b)",
+        "Note": "Purpose limitation.",
+        "FID_Rule": "PRIV-003",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 5(1)(c)",
+        "Note": "Data minimisation.",
+        "FID_Rule": "PRIV-003",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Cal. Civ. Code 1798.100(c)",
+        "Note": "Collection, use and retention reasonably necessary and proportionate to the disclosed purposes (as amended by CPRA).",
+        "FID_Rule": "PRIV-003",
+        "FID_Regulation": "CCPA-CPRA"
+      },
+      {
+        "Clause": "Art. 9",
+        "Note": "Processing of special categories of personal data.",
+        "FID_Rule": "PRIV-004",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 35",
+        "Note": "Data protection impact assessment.",
+        "FID_Rule": "PRIV-004",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Cal. Civ. Code 1798.121",
+        "Note": "Right to limit use and disclosure of sensitive personal information.",
+        "FID_Rule": "PRIV-004",
+        "FID_Regulation": "CCPA-CPRA"
+      },
+      {
+        "Clause": "Art. 15",
+        "Note": "Right of access.",
+        "FID_Rule": "PRIV-005",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 16",
+        "Note": "Right to rectification.",
+        "FID_Rule": "PRIV-005",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 17",
+        "Note": "Right to erasure.",
+        "FID_Rule": "PRIV-005",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Cal. Civ. Code 1798.105, 1798.106, 1798.110",
+        "Note": "Rights to delete, to correct and to know.",
+        "FID_Rule": "PRIV-005",
+        "FID_Regulation": "CCPA-CPRA"
+      },
+      {
+        "Clause": "Art. 7(1)",
+        "Note": "Controller able to demonstrate that the data subject has consented.",
+        "FID_Rule": "PRIV-006",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Cal. Civ. Code 1798.120",
+        "Note": "Right to opt out of sale or sharing of personal information.",
+        "FID_Rule": "PRIV-006",
+        "FID_Regulation": "CCPA-CPRA"
+      },
+      {
+        "Clause": "Art. 25(1)",
+        "Note": "Data protection by design, including pseudonymisation.",
+        "FID_Rule": "PRIV-007",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 32(1)(a)",
+        "Note": "Pseudonymisation and encryption of personal data.",
+        "FID_Rule": "PRIV-007",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Annex A 8.11",
+        "Note": "Data masking.",
+        "FID_Rule": "PRIV-007",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Annex A 8.33",
+        "Note": "Test information.",
+        "FID_Rule": "PRIV-007",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Arts. 44-50 (Chapter V)",
+        "Note": "Transfers of personal data to third countries or international organisations.",
+        "FID_Rule": "PRIV-008",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Annex A 5.15",
+        "Note": "Access control.",
+        "FID_Rule": "SEC-001",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Annex A 5.18",
+        "Note": "Access rights.",
+        "FID_Rule": "SEC-001",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Art. 32(1)",
+        "Note": "Appropriate technical and organisational measures.",
+        "FID_Rule": "SEC-001",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Annex A 5.16",
+        "Note": "Identity management.",
+        "FID_Rule": "SEC-002",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Annex A 8.2",
+        "Note": "Privileged access rights.",
+        "FID_Rule": "SEC-002",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Annex A 8.3",
+        "Note": "Information access restriction.",
+        "FID_Rule": "SEC-002",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Annex A 8.3",
+        "Note": "Information access restriction.",
+        "FID_Rule": "SEC-003",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Art. 25(2)",
+        "Note": "Data protection by default.",
+        "FID_Rule": "SEC-003",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Annex A 5.3",
+        "Note": "Segregation of duties.",
+        "FID_Rule": "SEC-004",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Annex A 8.11",
+        "Note": "Data masking.",
+        "FID_Rule": "SEC-005",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Art. 32(1)",
+        "Note": "Security of processing.",
+        "FID_Rule": "SEC-005",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 5(1)(e)",
+        "Note": "Storage limitation.",
+        "FID_Rule": "RET-001",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Cal. Civ. Code 1798.100(a)(3)",
+        "Note": "Disclosure at collection of the retention period for each category of personal information, and no retention longer than reasonably necessary for the disclosed purpose (as amended by CPRA).",
+        "FID_Rule": "RET-001",
+        "FID_Regulation": "CCPA-CPRA"
+      },
+      {
+        "Clause": "Annex A 8.10",
+        "Note": "Information deletion.",
+        "FID_Rule": "RET-001",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Principle 3 - Accuracy and integrity",
+        "Note": "Reconciliation and traceability of reported data (good practice).",
+        "FID_Rule": "RET-002",
+        "FID_Regulation": "BCBS-239"
+      },
+      {
+        "Clause": "Annex A 5.33",
+        "Note": "Protection of records.",
+        "FID_Rule": "RET-002",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Art. 5(1)(e)",
+        "Note": "Storage limitation.",
+        "FID_Rule": "RET-003",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 17",
+        "Note": "Right to erasure.",
+        "FID_Rule": "RET-003",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 17(1) and 17(3)(b)",
+        "Note": "Right to erasure and the exception for compliance with a legal obligation.",
+        "FID_Rule": "RET-004",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Annex A 8.10",
+        "Note": "Information deletion.",
+        "FID_Rule": "RET-004",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 9 Document and Content Management",
+        "Note": "Records retention and disposition.",
+        "FID_Rule": "RET-005",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Alpha-2 code elements",
+        "Note": "Two-letter country codes maintained by the ISO 3166 Maintenance Agency.",
+        "FID_Rule": "REF-001",
+        "FID_Regulation": "ISO-3166-1"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 10 Reference and Master Data",
+        "Note": "Reference data managed as shared, governed code sets.",
+        "FID_Rule": "REF-001",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Alphabetic code and minor unit",
+        "Note": "Three-letter currency codes and number of decimal places.",
+        "FID_Rule": "REF-002",
+        "FID_Regulation": "ISO-4217"
+      },
+      {
+        "Clause": "Two-letter language identifiers (ISO 639 Set 1, formerly ISO 639-1)",
+        "Note": "Language codes such as en and fr.",
+        "FID_Rule": "REF-003",
+        "FID_Regulation": "ISO-639"
+      },
+      {
+        "Clause": "Alpha-2 code elements",
+        "Note": "Key of the Country reference.",
+        "FID_Rule": "REF-004",
+        "FID_Regulation": "ISO-3166-1"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 10 Reference and Master Data",
+        "Note": "Reference data governance and change management.",
+        "FID_Rule": "REF-004",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 10 Reference and Master Data",
+        "Note": "Reference data management.",
+        "FID_Rule": "REF-005",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "ISO/IEC 11179-3",
+        "Note": "Value domains as registered metadata items.",
+        "FID_Rule": "REF-005",
+        "FID_Regulation": "ISO-IEC-11179"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 10 Reference and Master Data",
+        "Note": "Reference data change control.",
+        "FID_Rule": "REF-006",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Annex A 8.32",
+        "Note": "Change management.",
+        "FID_Rule": "REF-006",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Principle 2 - Data architecture and IT infrastructure, para. 33",
+        "Note": "Integrated data taxonomies and single identifiers (good practice).",
+        "FID_Rule": "MDM-001",
+        "FID_Regulation": "BCBS-239"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 10 Reference and Master Data",
+        "Note": "Cross-referencing master data across systems.",
+        "FID_Rule": "MDM-001",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "ISO 17442-1",
+        "Note": "Unique identification of legal entities.",
+        "FID_Rule": "MDM-002",
+        "FID_Regulation": "ISO-17442"
+      },
+      {
+        "Clause": "ISO 8000-115",
+        "Note": "Quality identifiers.",
+        "FID_Rule": "MDM-002",
+        "FID_Regulation": "ISO-8000"
+      },
+      {
+        "Clause": "Principle 2 - Data architecture and IT infrastructure, para. 33",
+        "Note": "Single identifiers for legal entities, counterparties, customers and accounts (good practice).",
+        "FID_Rule": "MDM-003",
+        "FID_Regulation": "BCBS-239"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 10 Reference and Master Data",
+        "Note": "Party master data and relationships.",
+        "FID_Rule": "MDM-003",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Art. 5(1)(d)",
+        "Note": "Accuracy: personal data kept accurate and up to date.",
+        "FID_Rule": "MDM-004",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 10 Reference and Master Data",
+        "Note": "Match and survivorship.",
+        "FID_Rule": "MDM-004",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Art. 5(1)(d)",
+        "Note": "Accuracy.",
+        "FID_Rule": "MDM-005",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 5(1)(f)",
+        "Note": "Integrity and confidentiality.",
+        "FID_Rule": "MDM-005",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "ISO/IEC 11179-4",
+        "Note": "Formulation of data definitions.",
+        "FID_Rule": "META-001",
+        "FID_Regulation": "ISO-IEC-11179"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 12 Metadata Management",
+        "Note": "Business metadata.",
+        "FID_Rule": "META-001",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Art. 5(2)",
+        "Note": "Accountability: the controller is able to demonstrate compliance.",
+        "FID_Rule": "META-002",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 3 Data Governance",
+        "Note": "Policy implementation and compliance.",
+        "FID_Rule": "META-002",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "ISO/IEC 11179-4",
+        "Note": "Requirements and recommendations for data definitions.",
+        "FID_Rule": "META-003",
+        "FID_Regulation": "ISO-IEC-11179"
+      },
+      {
+        "Clause": "Principle 2 - Data architecture and IT infrastructure, para. 33",
+        "Note": "Metadata on data characteristics (good practice).",
+        "FID_Rule": "META-004",
+        "FID_Regulation": "BCBS-239"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 12 Metadata Management",
+        "Note": "Data lineage.",
+        "FID_Rule": "META-004",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 3 Data Governance",
+        "Note": "Data ownership and stewardship roles.",
+        "FID_Rule": "META-005",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Annex A 5.9",
+        "Note": "Inventory of information and other associated assets, including owners.",
+        "FID_Rule": "META-005",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Annex A 5.15",
+        "Note": "Access control.",
+        "FID_Rule": "AI-001",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Annex A 8.2",
+        "Note": "Privileged access rights.",
+        "FID_Rule": "AI-001",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "Art. 10(2)-(3)",
+        "Note": "Data governance and quality criteria for data sets of high-risk AI systems (applied as good practice).",
+        "FID_Rule": "AI-002",
+        "FID_Regulation": "EU-AI-ACT"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 3 Data Governance",
+        "Note": "Approved policies and standards.",
+        "FID_Rule": "AI-002",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Art. 14",
+        "Note": "Human oversight of high-risk AI systems (applied as company practice beyond the high-risk scope).",
+        "FID_Rule": "AI-003",
+        "FID_Regulation": "EU-AI-ACT"
+      },
+      {
+        "Clause": "Art. 5(1)(b)",
+        "Note": "Purpose limitation.",
+        "FID_Rule": "AI-004",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 25",
+        "Note": "Data protection by design and by default.",
+        "FID_Rule": "AI-004",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 35",
+        "Note": "Data protection impact assessment for high-risk processing.",
+        "FID_Rule": "AI-004",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 10(2)-(3)",
+        "Note": "Data governance and management practices; relevant, representative and as far as possible error-free data sets.",
+        "FID_Rule": "AI-005",
+        "FID_Regulation": "EU-AI-ACT"
+      },
+      {
+        "Clause": "ISO 8000-61",
+        "Note": "Data quality management: process reference model.",
+        "FID_Rule": "STW-001",
+        "FID_Regulation": "ISO-8000"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 16 Data Management Organization and Role Expectations",
+        "Note": "Data stewardship roles.",
+        "FID_Rule": "STW-001",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "Annex A 8.32",
+        "Note": "Change management.",
+        "FID_Rule": "STW-002",
+        "FID_Regulation": "ISO-IEC-27001"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 10 Reference and Master Data",
+        "Note": "Master data change control.",
+        "FID_Rule": "STW-002",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "ISO 8000-61",
+        "Note": "Data quality control and improvement processes.",
+        "FID_Rule": "STW-003",
+        "FID_Regulation": "ISO-8000"
+      },
+      {
+        "Clause": "ISO 8000-61",
+        "Note": "Data quality planning, control, assurance and improvement.",
+        "FID_Rule": "STW-004",
+        "FID_Regulation": "ISO-8000"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 13 Data Quality",
+        "Note": "Data quality monitoring and reporting.",
+        "FID_Rule": "STW-004",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "ISO/IEC 11179-5",
+        "Note": "Naming principles.",
+        "FID_Rule": "MOD-001",
+        "FID_Regulation": "ISO-IEC-11179"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 5 Data Modeling and Design",
+        "Note": "Naming conventions.",
+        "FID_Rule": "MOD-001",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "ISO/IEC 11179-5",
+        "Note": "Naming principles.",
+        "FID_Rule": "MOD-002",
+        "FID_Regulation": "ISO-IEC-11179"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 5 Data Modeling and Design",
+        "Note": "Relationship naming.",
+        "FID_Rule": "MOD-002",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "ISO/IEC 11179-5",
+        "Note": "Naming principles.",
+        "FID_Rule": "MOD-003",
+        "FID_Regulation": "ISO-IEC-11179"
+      },
+      {
+        "Clause": "ISO/IEC 11179-3",
+        "Note": "Data element concepts and value domains.",
+        "FID_Rule": "MOD-004",
+        "FID_Regulation": "ISO-IEC-11179"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 5 Data Modeling and Design",
+        "Note": "Domains and data standards.",
+        "FID_Rule": "MOD-004",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "DMBOK2, Ch. 5 Data Modeling and Design",
+        "Note": "Lifecycle modelling.",
+        "FID_Rule": "MOD-005",
+        "FID_Regulation": "DAMA-DMBOK"
+      },
+      {
+        "Clause": "21 CFR 207.33",
+        "Note": "The National Drug Code, its assignment and its segments.",
+        "FID_Rule": "DQ-101",
+        "FID_Regulation": "FDA-NDC"
+      },
+      {
+        "Clause": "45 CFR 162.406",
+        "Note": "Standard unique health identifier for health care providers.",
+        "FID_Rule": "DQ-102",
+        "FID_Regulation": "HIPAA-NPI"
+      },
+      {
+        "Clause": "42 U.S.C. 1320a-7h(a)",
+        "Note": "Transparency reports on payments or other transfers of value.",
+        "FID_Rule": "DQ-103",
+        "FID_Regulation": "SUNSHINE-ACT"
+      },
+      {
+        "Clause": "42 CFR 403.904",
+        "Note": "Reports of payments or other transfers of value: recipient identification content.",
+        "FID_Rule": "DQ-103",
+        "FID_Regulation": "SUNSHINE-ACT"
+      },
+      {
+        "Clause": "Section 6 - Accuracy checks",
+        "Note": "Additional check on the accuracy of critical data entered manually (second person or validated electronic means).",
+        "FID_Rule": "DQ-104",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      },
+      {
+        "Clause": "Section 5 - Data",
+        "Note": "Built-in checks for correct and secure data exchange.",
+        "FID_Rule": "DQ-104",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      },
+      {
+        "Clause": "ISO 11615",
+        "Note": "Identification of regulated medicinal products (MPID).",
+        "FID_Rule": "REF-101",
+        "FID_Regulation": "ISO-11615"
+      },
+      {
+        "Clause": "ISO 11616",
+        "Note": "Identification of pharmaceutical products (PhPID).",
+        "FID_Rule": "REF-101",
+        "FID_Regulation": "ISO-11616"
+      },
+      {
+        "Clause": "ISO 11615",
+        "Note": "Medicinal product data elements described with controlled vocabularies.",
+        "FID_Rule": "REF-102",
+        "FID_Regulation": "ISO-11615"
+      },
+      {
+        "Clause": "ISO 11616",
+        "Note": "Pharmaceutical product data elements (dose form, route of administration).",
+        "FID_Rule": "REF-102",
+        "FID_Regulation": "ISO-11616"
+      },
+      {
+        "Clause": "21 CFR 11.10(d)",
+        "Note": "Limiting system access to authorised individuals.",
+        "FID_Rule": "SEC-101",
+        "FID_Regulation": "21-CFR-11"
+      },
+      {
+        "Clause": "21 CFR 11.10(g)",
+        "Note": "Authority checks.",
+        "FID_Rule": "SEC-101",
+        "FID_Regulation": "21-CFR-11"
+      },
+      {
+        "Clause": "Section 12 - Security",
+        "Note": "Physical and logical controls restricting access to authorised persons.",
+        "FID_Rule": "SEC-101",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      },
+      {
+        "Clause": "21 CFR 11.10(e)",
+        "Note": "Secure, computer-generated, time-stamped audit trails.",
+        "FID_Rule": "SEC-102",
+        "FID_Regulation": "21-CFR-11"
+      },
+      {
+        "Clause": "Section 9 - Audit trails",
+        "Note": "Record of GMP-relevant changes and deletions, with the reason documented.",
+        "FID_Rule": "SEC-102",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      },
+      {
+        "Clause": "21 CFR 11.50",
+        "Note": "Signature manifestations.",
+        "FID_Rule": "SEC-103",
+        "FID_Regulation": "21-CFR-11"
+      },
+      {
+        "Clause": "21 CFR 11.70",
+        "Note": "Signature/record linking.",
+        "FID_Rule": "SEC-103",
+        "FID_Regulation": "21-CFR-11"
+      },
+      {
+        "Clause": "Section 14 - Electronic signature",
+        "Note": "Electronic signatures permanently linked to their record, with time and date.",
+        "FID_Rule": "SEC-103",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      },
+      {
+        "Clause": "45 CFR 164.502(b)",
+        "Note": "Minimum necessary standard.",
+        "FID_Rule": "PRIV-101",
+        "FID_Regulation": "HIPAA"
+      },
+      {
+        "Clause": "45 CFR 164.514(d)",
+        "Note": "Minimum necessary requirements.",
+        "FID_Rule": "PRIV-101",
+        "FID_Regulation": "HIPAA"
+      },
+      {
+        "Clause": "45 CFR 164.312(a)(1)",
+        "Note": "Access control (Security Rule).",
+        "FID_Rule": "PRIV-101",
+        "FID_Regulation": "HIPAA"
+      },
+      {
+        "Clause": "Art. 6(1)(f)",
+        "Note": "Lawfulness of processing: legitimate interests.",
+        "FID_Rule": "PRIV-102",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "Art. 14",
+        "Note": "Information to be provided where personal data have not been obtained from the data subject.",
+        "FID_Rule": "PRIV-102",
+        "FID_Regulation": "GDPR"
+      },
+      {
+        "Clause": "45 CFR 162.406",
+        "Note": "NPI as the standard unique identifier of health care providers.",
+        "FID_Rule": "MDM-101",
+        "FID_Regulation": "HIPAA-NPI"
+      },
+      {
+        "Clause": "42 CFR 403.904",
+        "Note": "Recipient identification in Open Payments reports.",
+        "FID_Rule": "MDM-101",
+        "FID_Regulation": "SUNSHINE-ACT"
+      },
+      {
+        "Clause": "21 CFR 11.10(c)",
+        "Note": "Protection of records to enable accurate and ready retrieval throughout the records retention period.",
+        "FID_Rule": "RET-101",
+        "FID_Regulation": "21-CFR-11"
+      },
+      {
+        "Clause": "Section 7 - Data storage",
+        "Note": "Data secured and accessible throughout the retention period.",
+        "FID_Rule": "RET-101",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      },
+      {
+        "Clause": "Section 17 - Archiving",
+        "Note": "Archived data checked for accessibility, readability and integrity.",
+        "FID_Rule": "RET-101",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      },
+      {
+        "Clause": "42 CFR 403.912(e)",
+        "Note": "Manufacturers and GPOs keep books, contracts, records and other evidence for at least 5 years from the date the payment, transfer of value or ownership interest is published on the Open Payments website; HHS, CMS and OIG may audit.",
+        "FID_Rule": "RET-102",
+        "FID_Regulation": "SUNSHINE-ACT"
+      },
+      {
+        "Clause": "21 CFR 11.10(a)",
+        "Note": "Validation of systems.",
+        "FID_Rule": "STW-101",
+        "FID_Regulation": "21-CFR-11"
+      },
+      {
+        "Clause": "Section 4 - Validation",
+        "Note": "Validation of computerised systems.",
+        "FID_Rule": "STW-101",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      },
+      {
+        "Clause": "Section 10 - Change and configuration management",
+        "Note": "Changes made in a controlled manner.",
+        "FID_Rule": "STW-101",
+        "FID_Regulation": "EU-GMP-ANNEX-11"
+      }
+    ]
+  }
+}

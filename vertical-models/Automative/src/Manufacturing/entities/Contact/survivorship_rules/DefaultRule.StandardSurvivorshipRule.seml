@@ -1,0 +1,18 @@
+_type: StandardSurvivorshipRule
+entity: Manufacturing.entities.Contact.Contact
+_package: Manufacturing.entities.Contact.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Default Rule
+description: "Selects surviving contact attribute values using the default survivorship strategy during consolidation."
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: Manufacturing.publishers.CRM
+  - _type: ConsoPublisherRanking
+    publisher: Manufacturing.publishers.ERP
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes: []

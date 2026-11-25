@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: ClaimHasClaimantParty
+description: "Indicates the Claimant Party associated with a Claim."
+_type: Reference
+label: "Claim Has Claimant Party"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Claim.Claim
+fromRoleLabel: "Claim as Claimant"
+fromRoleName: ClaimsAsClaimant
+fromRolePluralLabel: "Claims as Claimant"
+physicalName: CLM_HAS_CLAIMANT_PARTY
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Party.Party
+toRoleLabel: "Claimant Party"
+toRoleName: ClaimantParty
+toRolePhysicalName: CLAIMANT_PARTY
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: ClaimantParty
+  label: "Claimant Party ID"
+  description: "The identifier of the Claimant Party associated with the Claim."
+  physicalName: CLAIMANT_PARTY_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Party.Party

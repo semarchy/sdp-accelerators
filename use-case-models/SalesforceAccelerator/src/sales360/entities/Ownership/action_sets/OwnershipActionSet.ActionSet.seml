@@ -1,0 +1,52 @@
+# This is the OwnershipActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on ownerships, such as creating, editing,
+# deleting,exporting,importing ownerships.
+_name: OwnershipActionSet
+_package: sales360.entities.Ownership.action_sets
+_type: ActionSet
+entity: sales360.entities.Ownership.Ownership
+label: Ownership Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorOwnerships
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.Ownership.steppers.AuthorOwnerships
+  - _name: EditAuthorOwnerships
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.Ownership.steppers.AuthorOwnerships
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorOwnerships
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.Ownership.steppers.AuthorOwnerships

@@ -1,0 +1,29 @@
+_type: StandardSurvivorshipRule
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+_package: PrivateEquity.entities.LegalEntity.survivorship_rules
+defaultRule: false
+_name: TAX
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: TAX
+description: "Selects surviving tax workflow attributes from preferred publishers, prioritizing TAX before other source systems."
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.TAX
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.EntityHub
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.GENEVA
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.Investran
+  - _type: ConsoPublisherRanking
+    publisher: PrivateEquity.publishers.Salesforce
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: K1DueJune30
+  - attributeName: EnableTaxSoftware
+  - attributeName: NewInTY22
+  - attributeName: FinalInTY22
+  - attributeName: FormADVPF

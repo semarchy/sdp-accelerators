@@ -1,0 +1,57 @@
+﻿_package: RetailCustomer360.entities.Product.enrichers
+_name: ProductDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Product.Product
+label: Product Data Quality Enricher
+description: "Computes standard completeness enrichment fields for Product."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN ProductId IS NULL AND ProductCode IS NULL AND ProductName IS NULL THEN 0
+        ELSE (
+          CASE WHEN ProductId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN ProductCode IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN ProductName IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN ProductId IS NULL AND ProductCode IS NULL AND ProductName IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN ProductId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN ProductCode IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN ProductName IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()
+  - attributeName: MarginAmount
+    expression: CASE
+        WHEN Price IS NOT NULL AND CostPrice IS NOT NULL THEN Price - CostPrice
+        ELSE NULL
+      END
+  - attributeName: MarginPercent
+    expression: CASE
+        WHEN Price IS NOT NULL AND CostPrice IS NOT NULL AND Price <> 0 THEN ((Price - CostPrice) / Price) * 100
+        ELSE NULL
+      END
+  - attributeName: ProductLifecycleStatus
+    expression: CASE
+        WHEN ProductStatus = 'Discontinued' THEN 'Discontinued'
+        WHEN DiscontinueDate IS NOT NULL AND DiscontinueDate < CURRENT_DATE() THEN 'Discontinued'
+        WHEN LaunchDate IS NOT NULL AND LaunchDate > CURRENT_DATE() THEN 'Planned'
+        WHEN ProductStatus = 'Active' THEN 'Active'
+        WHEN ProductStatus = 'Inactive' THEN 'Inactive'
+        ELSE 'Review'
+      END
+  - attributeName: PricingHealthStatus
+    expression: CASE
+        WHEN Price IS NULL OR ListPrice IS NULL THEN 'Incomplete'
+        WHEN Price < 0 OR ListPrice < 0 OR (CostPrice IS NOT NULL AND CostPrice < 0) THEN 'Invalid'
+        WHEN ListPrice < Price THEN 'Review Discounting'
+        WHEN CostPrice IS NOT NULL AND Price < CostPrice THEN 'Below Cost'
+        ELSE 'Healthy'
+      END

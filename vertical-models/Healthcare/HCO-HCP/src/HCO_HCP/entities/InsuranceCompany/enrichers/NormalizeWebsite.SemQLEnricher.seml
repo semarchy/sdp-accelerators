@@ -1,0 +1,26 @@
+_type: SemQLEnricher
+_package: HCO_HCP.entities.InsuranceCompany.enrichers
+_name: NormalizeWebsite
+entity: HCO_HCP.entities.InsuranceCompany.InsuranceCompany
+label: Normalize Websie
+enricherExecutionScope: PRE_CONSO
+condition: URL IS NOT NULL
+semQlEnricherExpressions:
+  - attributeName: NormalizedWebsite
+    expression: >-
+      CASE WHEN URL = '(none)' THEN NULL ELSE
+
+      RTRIM(
+        REGEXP_REPLACE(
+          LOWER(URL)
+          , '^(https?://)?(www\.)?'
+          ,''
+        )
+        , '/'
+      )
+
+      END
+
+      /* Regex notes: get rid of http or https and get rid of leading www and
+      get rid of trailing slash. */
+afterEnrichers: HCO_HCP.entities.InsuranceCompany.enrichers.AddressEnricher

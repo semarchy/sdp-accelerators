@@ -1,0 +1,596 @@
+_name: CreateOrEditLegalEntity
+_package: PrivateEquity.workflows
+_type: Workflow
+label: Legal Entity Workflow
+generalProperties:
+  attachmentMimeTypes: "*"
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+notifications:
+  workflowAdminOnDueDate: false
+dataScope:
+  - _name: LegalEntity
+    _type: RootEntity
+    cardinality: SINGLE_RECORD
+    displayCard: PrivateEquity.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+    entity: PrivateEquity.entities.LegalEntity.LegalEntity
+    childEntities:
+      - ref: PrivateEquity.references.NamesNameType
+      - ref: PrivateEquity.references.DocumentsLegalEntity
+      - ref: PrivateEquity.references.ToRelationship
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+steps:
+  - _name: StartCreate
+    _type: StartFromEmptySelectionEvent
+    defaultPriority: NORMAL
+    position:
+      x: -400
+      y: -110
+    label: Start Create
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.NewLegalEntity
+      bendPoints: []
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: true
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+  - _name: StartEdit
+    _type: StartFromSelectionEvent
+    defaultPriority: NORMAL
+    position:
+      x: -390
+      y: 50
+    label: Start Edit
+    selectionSourceType: GOLDEN_DATA
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.EditLegalEntity
+      bendPoints: []
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: true
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+    authoredEntity: PrivateEquity.entities.LegalEntity.LegalEntity
+    conditionOnSelection: FDN_Status='Active'
+  - _name: NewLegalEntity
+    _type: UserTask
+    label: New Legal Entity
+    position:
+      x: -260
+      y: -110
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: PrivateEquity.applications.PrivateEquity
+    assigneeCondition: Username = StepInstance.WorkflowInstance.InitiatorName
+    assigneeRequiredRole: Legal
+    entity: PrivateEquity.entities.LegalEntity.LegalEntity
+    stepper: PrivateEquity.entities.LegalEntity.steppers.Workflowstep1Legal
+    transitions:
+      - _name: PublishDraft
+        _type: UserTaskTransition
+        label: Publish Draft
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.SubmitDraft
+        transitionValidations: []
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: -60
+            y: 20
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Cancel
+        transitionValidations: []
+  - _name: EditLegalEntity
+    _type: UserTask
+    label: Edit Legal Entity
+    position:
+      x: -260
+      y: 50
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: PrivateEquity.applications.PrivateEquity
+    assigneeCondition: Username = StepInstance.WorkflowInstance.InitiatorName
+    entity: PrivateEquity.entities.LegalEntity.LegalEntity
+    stepper: PrivateEquity.entities.LegalEntity.steppers.AuthorLegalEntities
+    transitions:
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: -60
+            y: 0
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Cancel
+        transitionValidations: []
+      - _name: SendForApproval
+        _type: UserTaskTransition
+        label: Send For Approval
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: 0
+            y: 70
+          - x: 600
+            y: 70
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.ApproveEdits
+        transitionValidations: []
+  - _name: SubmitDraft
+    _type: SubmitAutomation
+    label: Submit Draft
+    position:
+      x: -260
+      y: -210
+    submitUserExpression: PreviousStep.WorkflowInstance.InitiatorName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints:
+        - x: 0
+          y: -70.35000000000002
+      label: Outgoing
+      toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.CriticalCreation
+  - _name: ParallelActions
+    _type: ParallelBlock
+    label: Parallel Actions
+    position:
+      x: 20
+      y: -130
+    transition:
+      _name: outgoing
+      _type: ParallelBlockTransition
+      bendPoints: []
+      toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.SubmitPendingValidation
+    branches:
+      - _name: Accounting
+        _type: Branch
+        index: 1
+        label: Accounting
+        steps:
+          - _name: StartAccounting
+            _type: BranchStartEvent
+            position:
+              x: -170
+              y: -40
+            transition:
+              _name: outgoing
+              _type: StartEventTransition
+              toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.ParallelActions.Accounting.Accounting
+              bendPoints: []
+          - _name: Accounting
+            _type: UserTask
+            label: Accounting
+            position:
+              x: 10
+              y: -40
+            assigneeCanRelease: true
+            myTasksConfiguration: {}
+            notificationsOnTaskAssignment:
+              toAssignee: true
+              toCandidates: true
+            notificationsOnTaskExpiration:
+              toAdmin: false
+              toCandidatesOrAssignee: false
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            taskType: DATA_AUTHORING
+            application: PrivateEquity.applications.PrivateEquity
+            entity: PrivateEquity.entities.LegalEntity.LegalEntity
+            stepper: PrivateEquity.entities.LegalEntity.steppers.Workflowstep2Accounting
+            transitions:
+              - _name: SubmitAccounting
+                _type: UserTaskTransition
+                label: Submit Accounting
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  attachmentParamRequired: false
+                  attachmentParamSupported: true
+                  commentParamRequired: false
+                  commentParamSupported: true
+                  descriptionParamSupported: false
+                  dueDateParamRequired: false
+                  dueDateParamSupported: false
+                  nextTaskAssigneeRequired: false
+                  nextTaskAssigneeSupported: false
+                  priorityParamSupported: false
+                userTaskCompletionRequired: true
+                bendPoints: []
+                toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.ParallelActions.Accounting.EndAccounting
+                transitionValidations: []
+          - _name: EndAccounting
+            _type: BranchEndEvent
+            position:
+              x: 270
+              y: -40
+      - _name: Tax
+        _type: Branch
+        index: 2
+        label: Tax
+        steps:
+          - _name: StartTax
+            _type: BranchStartEvent
+            position:
+              x: -400
+              y: -60
+            transition:
+              _name: outgoing
+              _type: StartEventTransition
+              toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.ParallelActions.Tax.Tax
+              bendPoints: []
+          - _name: Tax
+            _type: UserTask
+            label: Tax
+            position:
+              x: -210
+              y: -60
+            assigneeCanRelease: true
+            myTasksConfiguration: {}
+            notificationsOnTaskAssignment:
+              toAssignee: true
+              toCandidates: true
+            notificationsOnTaskExpiration:
+              toAdmin: false
+              toCandidatesOrAssignee: false
+            notificationsOnWorkflowDueDate:
+              toCandidatesOrAssignee: false
+            taskType: DATA_AUTHORING
+            application: PrivateEquity.applications.PrivateEquity
+            entity: PrivateEquity.entities.LegalEntity.LegalEntity
+            stepper: PrivateEquity.entities.LegalEntity.steppers.Workflowstep3Tax
+            transitions:
+              - _name: SubmitTax
+                _type: UserTaskTransition
+                label: Submit Tax
+                behaviorOnTransition: KEEP_DATA
+                showWaitDialog: true
+                transitionParameters:
+                  attachmentParamRequired: false
+                  attachmentParamSupported: true
+                  commentParamRequired: false
+                  commentParamSupported: true
+                  descriptionParamSupported: false
+                  dueDateParamRequired: false
+                  dueDateParamSupported: false
+                  nextTaskAssigneeRequired: false
+                  nextTaskAssigneeSupported: false
+                  priorityParamSupported: false
+                userTaskCompletionRequired: true
+                bendPoints: []
+                toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.ParallelActions.Tax.SubmitTax
+                transitionValidations: []
+          - _name: SubmitTax
+            _type: BranchEndEvent
+            position:
+              x: 30
+              y: -60
+  - _name: Approve
+    _type: UserTask
+    label: Approve
+    position:
+      x: 340
+      y: -120
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: PrivateEquity.applications.PrivateEquity
+    entity: PrivateEquity.entities.LegalEntity.LegalEntity
+    stepper: PrivateEquity.entities.LegalEntity.steppers.AuthorLegalEntities
+    transitions:
+      - _name: AskForAFix
+        _type: UserTaskTransition
+        label: Ask For A Fix
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: -70
+            y: 20
+          - x: -70
+            y: 79.65
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Return
+        transitionValidations: []
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Cancel2
+        transitionValidations: []
+      - _name: Submit
+        _type: UserTaskTransition
+        label: Submit
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Active
+        transitionValidations: []
+  - _name: CriticalCreation
+    _type: Router
+    label: Critical Creation
+    position:
+      x: -120
+      y: -280
+    routes:
+      - _name: Critical
+        _type: Route
+        index: 1
+        label: Critical
+        bendPoints:
+          - x: 460
+            y: -0.35000000000002274
+        condition: WorkflowInstance.Priority='CRITICAL'
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Approve
+      - _name: NotCritical
+        _type: Route
+        index: 2
+        label: Not Critical
+        bendPoints: []
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.ParallelActions
+  - _name: SubmitPendingValidation
+    _type: SubmitAutomation
+    label: Pending Validation
+    position:
+      x: 160
+      y: -220
+    submitUserExpression: "'semadmin'"
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints:
+        - x: 50
+          y: 0
+        - x: 50
+          y: 100
+      label: Outgoing
+      toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Approve
+  - _name: Cancel
+    _type: EndEvent
+    position:
+      x: -320
+      y: -30
+  - _name: Return
+    _type: Router
+    label: Fix
+    position:
+      x: 70
+      y: -40
+    routes:
+      - _name: Active
+        _type: Route
+        index: 1
+        label: Active
+        bendPoints:
+          - x: -0.3499999999999943
+            y: 90
+        condition: CurrentDataSet.LegalEntity.FDN_Status = 'Active'
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.EditLegalEntity
+      - _name: NotActive
+        _type: Route
+        index: 2
+        label: Not Active
+        bendPoints:
+          - x: -330
+            y: -0.3500000000000014
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.NewLegalEntity
+  - _name: Active
+    _type: SubmitAutomation
+    label: Active
+    position:
+      x: 520
+      y: -120
+    submitUserExpression: PreviousStep.UserTaskInstance.AssigneeName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.FinishTheCreation
+  - _name: Cancel2
+    _type: EndEvent
+    position:
+      x: 340
+      y: -40
+  - _name: FinishTheCreation
+    _type: EndEvent
+    position:
+      x: 570
+      y: -120
+  - _name: ApproveEdits
+    _type: UserTask
+    label: Approve Edits
+    position:
+      x: 340
+      y: 40
+    assigneeCanRelease: true
+    myTasksConfiguration: {}
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    application: PrivateEquity.applications.PrivateEquity
+    entity: PrivateEquity.entities.LegalEntity.LegalEntity
+    stepper: PrivateEquity.entities.LegalEntity.steppers.ApproveEdits
+    transitions:
+      - _name: Cancel
+        _type: UserTaskTransition
+        label: Cancel
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Cancel2
+        transitionValidations: []
+      - _name: Approve
+        _type: UserTaskTransition
+        label: Approve
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          attachmentParamRequired: false
+          attachmentParamSupported: true
+          commentParamRequired: false
+          commentParamSupported: true
+          descriptionParamSupported: false
+          dueDateParamRequired: false
+          dueDateParamSupported: false
+          nextTaskAssigneeRequired: false
+          nextTaskAssigneeSupported: false
+          priorityParamSupported: false
+        userTaskCompletionRequired: true
+        bendPoints:
+          - x: 180
+            y: 0
+        toStep: PrivateEquity.workflows.CreateOrEditLegalEntity.Active
+        transitionValidations: []

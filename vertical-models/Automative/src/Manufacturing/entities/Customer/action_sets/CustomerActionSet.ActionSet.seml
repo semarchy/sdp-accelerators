@@ -1,0 +1,121 @@
+_name: CustomerActionSet
+_package: Manufacturing.entities.Customer.action_sets
+_type: ActionSet
+entity: Manufacturing.entities.Customer.Customer
+label: Customer Action Set
+defaultActionSet: true
+actions:
+  - _name: StartWorkflow
+    _type: StartWorkflowEntityAction
+    label: Create (Workflow)
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: Manufacturing.workflows.OnboardCustomer.CreateCustomer
+  - _name: CreateAuthorCustomers
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.Customer.steppers.AuthorCustomers
+  - _name: EditAuthorCustomers
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.Customer.steppers.AuthorCustomers
+  - _name: MassUpdateAuthorCustomers
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: Manufacturing.entities.Customer.steppers.AuthorCustomers
+  - _name: CopyAuthorCustomers
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: Manufacturing.entities.Customer.steppers.AuthorCustomers
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorCustomers
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.Customer.steppers.AuthorCustomers
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnCustomer
+    label: Review And Confirm Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: Manufacturing.entities.Customer.dups_managers.ManageDuplicatesOnCustomer
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnCustomer
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: Manufacturing.entities.Customer.dups_managers.ManageDuplicatesOnCustomer
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnCustomer
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: Manufacturing.entities.Customer.dups_managers.ManageDuplicatesOnCustomer
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: Manufacturing.entities.Customer.display_cards.CustomerDisplayCard
+    formTab: Manufacturing.entities.Customer.forms.CustomerForm.Customer
+  - _name: ImportMasterRecords
+    label: Import Master Records
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: Manufacturing.entities.Customer.steppers.AuthorCustomers

@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: StudySiteHasClinicalSite
+_type: Reference
+label: Study Site Has Clinical Site
+description: "Links study-site assignments to the clinical site."
+documentation: "Links study-site assignments to the clinical site."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.StudySite.StudySite
+fromRoleLabel: Study Site
+fromRoleName: studySite
+fromRolePluralLabel: Study Sites
+physicalName: STUDY_SITE_HAS_CLINICAL_S
+fromNavigable: true
+
+toEntity: CTMDM.entities.ClinicalSite.ClinicalSite
+toRoleLabel: Clinical Site
+toRoleName: clinicalSite
+toRolePhysicalName: CLINICAL_SITE
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: clinicalSite
+  label: Clinical Site
+  physicalName: CLINICAL_SITE
+  searchable: true
+  entity: CTMDM.entities.ClinicalSite.ClinicalSite

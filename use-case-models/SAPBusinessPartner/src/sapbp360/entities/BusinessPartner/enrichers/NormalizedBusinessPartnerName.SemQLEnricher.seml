@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: sapbp360.entities.BusinessPartner.enrichers
+_name: NormalizedBusinessPartnerName
+entity: sapbp360.entities.BusinessPartner.BusinessPartner
+label: Normalized business partner name for matching.
+description: Normalized business partner name for matching.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedName
+    expression: LTRIM(RTRIM(UPPER(BusinessPartnerFullName)))

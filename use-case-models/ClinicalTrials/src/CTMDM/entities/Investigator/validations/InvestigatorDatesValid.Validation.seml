@@ -1,0 +1,9 @@
+_package: CTMDM.entities.Investigator.validations
+_name: InvestigatorDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.Investigator.Investigator
+label: Updated date must not be before created date
+validationScope: PRE_CONSO
+description: "Updated date must not be before created date before consolidation."
+
+condition: UpdatedDate IS NULL OR CreatedDate IS NULL OR UpdatedDate >= CreatedDate

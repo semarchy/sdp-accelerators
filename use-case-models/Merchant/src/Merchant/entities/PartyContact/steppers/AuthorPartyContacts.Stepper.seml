@@ -1,0 +1,43 @@
+ # Description: Stepper used by PartyContact create/edit/import actions.
+ # Contains: Wizard steps and UI panels for authoring contact records.
+ # Role: Drives multi-step flows for creating and maintaining PartyContact entries.
+_package: Merchant.entities.PartyContact.steppers
+_type: Stepper
+_name: AuthorPartyContacts
+entity: Merchant.entities.PartyContact.PartyContact
+label: Party Contacts
+rootStep:
+  _type: CollectionStep
+  _name: PartyContacts
+  label: Party Contacts
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.PartyContact.collection_views.PartyContactCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: PartyContact
+      label: Party Contact
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.PartyContact.forms.PartyContactForm.PartyContact
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: false
+          validationType: PLUGIN
+          validator: Merchant.entities.PartyContact.validations.ValidEmail
+          attribute: Merchant.entities.PartyContact.PartyContact.Email
+

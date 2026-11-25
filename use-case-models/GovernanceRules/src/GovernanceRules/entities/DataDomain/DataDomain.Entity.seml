@@ -1,0 +1,42 @@
+# DataDomain: entity of the GovernanceRules accelerator. A business data domain that a data product covers (for example CUSTOMER, PRODUCT, HCP).
+_package: GovernanceRules.entities.DataDomain
+_type: Entity
+_name: DataDomain
+label: Data domain
+pluralLabel: Data domains
+physicalTableName: GOV_DATA_DOMAIN
+entityType: BASIC
+description: A business data domain that a data product covers (for example CUSTOMER, PRODUCT, HCP). Used to scope rules.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+primaryKey: GovernanceRules.entities.DataDomain.DataDomain.Code
+sourceIdGeneration:
+  mode: MANUAL
+attributes:
+- _type: EntityAttribute
+  _name: Code
+  label: Code
+  physicalName: DD_CODE
+  dataType: String
+  length: 40
+  mandatory: true
+  description: Natural key of the data domain, entered by the author and never changed (for example CUSTOMER).
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Name
+  label: Name
+  physicalName: DD_NAME
+  dataType: String
+  length: 200
+  mandatory: true
+  description: Name of the domain.
+  mandatoryValidationScope: PRE_CONSO
+- _type: EntityAttribute
+  _name: Description
+  label: Description
+  physicalName: DD_DESCRIPTION
+  dataType: String
+  length: 4000
+  mandatory: false
+  description: What the domain covers.

@@ -1,0 +1,88 @@
+_package: CTMDM.entities.StudySite
+_type: Entity
+_name: StudySite
+label: Study Site
+pluralLabel: Study Sites
+entityType: ID_MATCHED
+physicalTableName: STUDY_SITE
+iconUrl: images://mdi/hospital-marker.svg
+description: "Associates studies with participating clinical sites and startup/enrollment status."
+documentation: "Associates studies with participating clinical sites and startup/enrollment status."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: StudySiteID
+    label: Study Site ID
+    description: Business identifier for the study-site association.
+    documentation: Business identifier for the study-site association.
+    physicalName: STUDY_SITE_ID
+    dataType: String
+    length: 60
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: SiteActivationDate
+    label: Site Activation Date
+    description: Date the site was activated for the study.
+    documentation: Date the site was activated for the study.
+    physicalName: SITE_ACTIVATION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SiteCloseDate
+    label: Site Close Date
+    description: Date the site was closed for the study.
+    documentation: Date the site was closed for the study.
+    physicalName: SITE_CLOSE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SiteStatus
+    label: Site Status
+    description: Study-specific site status.
+    documentation: Study-specific site status.
+    physicalName: SITE_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: EnrollmentTarget
+    label: Enrollment Target
+    description: Enrollment target for this site.
+    documentation: Enrollment target for this site.
+    physicalName: ENRL_TARGET
+    dataType: Integer
+    precision: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SubjectsEnrolled
+    label: Subjects Enrolled
+    description: Number of subjects enrolled at the site.
+    documentation: Number of subjects enrolled at the site.
+    physicalName: SUBJECTS_ENROLLED
+    dataType: Integer
+    precision: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: StartupRiskLevel
+    label: Startup Risk Level
+    description: Operational startup risk assessment.
+    documentation: Operational startup risk assessment.
+    physicalName: STARTUP_RISK_LEVEL
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CTMDM.entities.StudySite.StudySite.StudySiteID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

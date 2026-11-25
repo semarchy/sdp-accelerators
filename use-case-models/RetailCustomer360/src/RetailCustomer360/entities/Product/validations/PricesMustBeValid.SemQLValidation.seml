@@ -1,0 +1,12 @@
+﻿_package: RetailCustomer360.entities.Product.validations
+_name: PricesMustBeValid
+_type: SemQLValidation
+entity: RetailCustomer360.entities.Product.Product
+label: Prices Must Be Valid
+validationScope: PRE_CONSO
+description: "Ensures prices are non-negative and list price is not below selling price when both are present."
+condition: (Price IS NULL OR Price >= 0)
+  AND (ListPrice IS NULL OR ListPrice >= 0)
+  AND (CostPrice IS NULL OR CostPrice >= 0)
+  AND (Price IS NULL OR ListPrice IS NULL OR ListPrice >= Price)
+

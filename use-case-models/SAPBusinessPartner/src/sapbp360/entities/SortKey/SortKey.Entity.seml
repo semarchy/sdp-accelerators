@@ -1,0 +1,85 @@
+# Sort Key entity for the SAP Business Partner 360 accelerator.
+_name: SortKey
+_package: sapbp360.entities.SortKey
+_type: Entity
+primaryKey: sapbp360.entities.SortKey.SortKey.SortKeyID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: SortKeyCode
+label: Sort Key
+documentation: Sort Key reference data used by the SAP Business Partner 360 model.
+description: Sort Key reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/SortKey.svg
+pluralLabel: Sort Keys
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SORT_KEY
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SortKeyID
+    physicalName: SORT_KEY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Sort Key ID
+    documentation: Unique identifier for the sort key.
+    description: Unique identifier for the sort key.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Sort Key ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: SortKeyCode
+    physicalName: SORT_KEY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Sort Key Code
+    documentation: Code for the sort key.
+    description: Code for the sort key.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Sort Key Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: SortKeyName
+    physicalName: SORT_KEY_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Sort Key Name
+    documentation: Name of the sort key.
+    description: Name of the sort key.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Sort Key Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the sort key.
+    description: Description for the sort key.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the sort key is active.
+    description: Indicates whether the sort key is active.
+    mandatory: false
+    length: 1
+    searchable: true

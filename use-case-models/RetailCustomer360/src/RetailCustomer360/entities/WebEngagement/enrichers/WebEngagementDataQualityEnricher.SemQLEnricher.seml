@@ -1,0 +1,49 @@
+﻿_package: RetailCustomer360.entities.WebEngagement.enrichers
+_name: WebEngagementDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.WebEngagement.WebEngagement
+label: WebEngagement Data Quality Enricher
+description: "Computes standard completeness enrichment fields for WebEngagement."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN EventId IS NULL AND SessionId IS NULL AND EventType IS NULL THEN 0
+        ELSE (
+          CASE WHEN EventId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN SessionId IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN EventType IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN EventId IS NULL AND SessionId IS NULL AND EventType IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN EventId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN SessionId IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN EventType IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()
+  - attributeName: EngagementRecencyBand
+    expression: CASE
+        WHEN EventTimestamp IS NULL THEN 'Unknown'
+        WHEN EventTimestamp >= CURRENT_DATE() THEN 'Current'
+        ELSE 'Historical'
+      END
+  - attributeName: TrafficAttributionStatus
+    expression: CASE
+        WHEN UtmSource IS NOT NULL OR UtmMedium IS NOT NULL OR UtmCampaign IS NOT NULL THEN 'Tagged Campaign'
+        WHEN ReferrerUrl IS NOT NULL THEN 'Organic/Referral'
+        ELSE 'Direct/Unknown'
+      END
+  - attributeName: ChannelIntentSignal
+    expression: CASE
+        WHEN EventType IN ('Checkout', 'Add to Cart') THEN 'Purchase Intent'
+        WHEN EventType IN ('Product View', 'Search') THEN 'Browse Intent'
+        WHEN EventType IS NULL THEN 'Unknown'
+        ELSE 'Awareness'
+      END

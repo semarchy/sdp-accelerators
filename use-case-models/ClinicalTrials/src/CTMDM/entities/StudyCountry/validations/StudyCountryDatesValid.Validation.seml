@@ -1,0 +1,9 @@
+_package: CTMDM.entities.StudyCountry.validations
+_name: StudyCountryDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.StudyCountry.StudyCountry
+label: Regulatory approval must not be before submission
+validationScope: PRE_CONSO
+description: "Regulatory approval must not be before submission before consolidation."
+
+condition: RegulatoryApprovalDate IS NULL OR RegulatorySubmissionDate IS NULL OR RegulatoryApprovalDate >= RegulatorySubmissionDate

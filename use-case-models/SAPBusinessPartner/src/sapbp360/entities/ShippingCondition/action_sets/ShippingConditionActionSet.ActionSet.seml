@@ -1,0 +1,70 @@
+_name: ShippingConditionActionSet
+_package: sapbp360.entities.ShippingCondition.action_sets
+_type: ActionSet
+entity: sapbp360.entities.ShippingCondition.ShippingCondition
+label: Shipping Condition Action Set
+description: Action set for managing Shipping Conditions in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorShippingConditions
+    label: Create
+    description: Create a new Shipping Condition record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.ShippingCondition.steppers.AuthorShippingConditions
+  - _name: EditAuthorShippingConditions
+    label: Edit
+    description: Edit Shipping Condition records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.ShippingCondition.steppers.AuthorShippingConditions
+  - _name: MassUpdateAuthorShippingConditions
+    label: Mass Update
+    description: Mass update Shipping Condition records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.ShippingCondition.steppers.AuthorShippingConditions
+  - _name: Delete
+    label: Delete
+    description: Delete selected Shipping Condition records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorShippingConditions
+    label: Import
+    description: Import Shipping Condition records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.ShippingCondition.steppers.ShippingConditionImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

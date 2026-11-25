@@ -1,0 +1,105 @@
+_name: AuthorAddresses
+_package: Manufacturing.entities.Address.steppers
+_type: Stepper
+entity: Manufacturing.entities.Address.Address
+rootStep:
+  _name: Addresss
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.Address.collection_views.AddressCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Addresses
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierAddressesHaveCountry.InputCountry
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.AddressInputState.InputState
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: Manufacturing.entities.Address.Address.SemlQLMatcherAddress
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.SupplierAddressesHaveCountry.InputCountry
+  stepTriggers: []
+  childSteps:
+    - _name: Address
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Address
+      formTab: Manufacturing.entities.Address.forms.AddressForm.Address
+      formStepEnrichers:
+        - enricher: Manufacturing.entities.Address.enrichers.GeocodeUsingGoogle
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierAddressesHaveCountry.InputCountry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.AddressInputState.InputState
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierAddressesHaveCountry.InputCountry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: DETECT_DUPS
+          matcher: Manufacturing.entities.Address.Address.SemlQLMatcherAddress
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierAddressesHaveCountry.InputCountry
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierAddressesHaveCountry.InputCountry
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.AddressInputState.InputState
+      stepTriggers: []
+label: Author Addresses
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierAddressesHaveCountry.InputCountry
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.SupplierAddressesHaveCountry.InputCountry
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.entities.Customer.Customer.LastName
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.CustomersHousehold.Household
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: Manufacturing.entities.Customer.Customer.MDPersonator
+    definitionAttribute: Manufacturing.complex_types.MelissaDataPersonatorType.Results
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.AddressInputState.InputState
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

@@ -1,0 +1,92 @@
+_package: CorpFin.entities.AccountMapping.collection_views
+_type: CollectionView
+_name: AccountMappingCollectionView
+entity: CorpFin.entities.AccountMapping.AccountMapping
+default: true
+displayCard: CorpFin.entities.AccountMapping.display_cards.AccountMappingDisplayCard
+
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Account Mapping ID
+tableDisplayCardColumnWidth: 400
+tableRowLines: 1
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: IdColumn
+    _name: AccountMappingID
+    value: AccountMappingID
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+    
+  - _type: ReferenceColumn
+    _name: FDN_sourceAccount
+    value: FDN_sourceAccount
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CorpFin.entities.Account.Account
+
+  - _type: ReferenceColumn
+    _name: FDN_targetAccount
+    value: FDN_targetAccount
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CorpFin.entities.Account.Account
+
+  - _type: ReferenceColumn
+    _name: FDN_mappingType
+    value: FDN_mappingType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CorpFin.entities.MappingType.MappingType
+
+  - _type: TextColumn
+    _name: Justification
+    value: Justification
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: ReportingPnLCategoryCode
+    value: ReportingPnLCategoryCode
+    label: P&L Category
+    useCustomLabel: true
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: ReferenceColumn
+    _name: FDN_mappingSet
+    value: FDN_mappingSet
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+    referencedEntity: CorpFin.entities.MappingSet.MappingSet
+    
+  - _type: ReferenceColumn
+    _name: FDN_mappingRule
+    value: FDN_mappingRule
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CorpFin.entities.MappingRule.MappingRule

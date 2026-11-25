@@ -1,0 +1,69 @@
+_package: CorpFin.entities.Account.business_views
+_type: BusinessView
+_name: AccountBusinessView
+entity: CorpFin.entities.Account.Account
+rootLabel: Accounts
+rootPluralLabel: Accounts
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+useHierarchyOnOpen: true
+label: Accounts
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: Account
+  entity: CorpFin.entities.Account.Account
+  displayCard: CorpFin.entities.Account.display_cards.AccountDisplayCard
+  actionSet: CorpFin.entities.Account.action_sets.AccountActionSet
+  collection: CorpFin.entities.Account.collection_views.AccountCollectionView
+  form: CorpFin.entities.Account.forms.AccountForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  
+  transitions:
+    - _name: ToAccountMappings
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: images://mdi/arrow-right-bold.svg
+      useCustomLabel: false
+
+      transitionPath: accountMappingOrigSRC
+      visibleInFormTabCondition: any accountMappingOrigSRC has (1 = 1)
+      
+      businessViewEntity:
+        _name: ToAccountMappings
+        _type: BusinessViewEntity
+
+        entity: CorpFin.entities.AccountMapping.AccountMapping
+        form: CorpFin.entities.AccountMapping.forms.AccountMappingForm
+        displayCard: CorpFin.entities.AccountMapping.display_cards.AccountMappingDisplayCard
+        collection: CorpFin.entities.AccountMapping.collection_views.AccountMappingCollectionView        
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        # sortExpression: ''
+        tableAllowed: true

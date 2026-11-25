@@ -1,0 +1,32 @@
+﻿_package: PropertyAndCasualtyInsurance.references
+_name: ProductHasInsuranceTypes
+description: Indicates the relationship between Insurance Types and Insurance Products in the Property and Casualty Insurance domain. This reference establishes a link between the InsuranceType entity and the InsuranceProduct entity, allowing for better organization and categorization of insurance products based on their respective insurance types.
+_type: Reference
+label: Insurance Type Has Product
+
+
+fromEntity: PropertyAndCasualtyInsurance.entities.InsuranceType.InsuranceType
+fromRoleLabel: Insurance Type
+fromRoleName: InsuranceType
+fromRolePluralLabel: Insurance Types
+physicalName: INS_TYPE_HAS_PRODUCT
+fromNavigable: true
+
+toEntity: PropertyAndCasualtyInsurance.entities.InsuranceProduct.InsuranceProduct
+toRoleLabel: Insurance Product
+toRoleName: InsuranceProduct
+documentation: Indicates the relationship between Insurance Types and Insurance Products in the Property and Casualty Insurance domain. This reference establishes a link between the InsuranceType entity and the InsuranceProduct entity, allowing for better organization and categorization of insurance products based on their respective insurance types.
+toRolePhysicalName: INS_PRODUCT_ID
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: InsuranceProduct
+  label: Insurance Product Code
+  physicalName: INS_PRODUCT_CODE
+  description: The code of the insurance product associated with the insurance type. This attribute serves as a foreign key linking the InsuranceTypeHasProduct reference to the InsuranceProduct entity, allowing for easy retrieval of product information based on the insurance type.
+  searchable: true
+  entity: PropertyAndCasualtyInsurance.entities.InsuranceProduct.InsuranceProduct

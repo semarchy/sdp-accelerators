@@ -1,0 +1,24 @@
+# GovernanceBodySearchForm: search form on GovernanceBody of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceBody.search_forms
+_type: SearchForm
+_name: GovernanceBodySearchForm
+entity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+label: Find governance bodies
+searchTip: Every criterion is optional.
+semQlCondition: (:SEARCH_TEXT IS NULL OR UPPER(Code) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Name) LIKE '%' || UPPER(:SEARCH_TEXT) || '%') AND (:TYPE IS NULL OR Type = :TYPE)
+searchParameters:
+  - _type: SearchParameter
+    _name: SearchText
+    label: Search text
+    bindVariableName: SEARCH_TEXT
+    dataType: String
+    length: 200
+    displayType: TEXT_FIELD
+  - _type: SearchParameter
+    _name: Type
+    label: Type
+    bindVariableName: TYPE
+    dataType: GovernanceRules.list_of_values.GovernanceBodyType
+    displayType: DROP_DOWN
+    lovDisplayMode: LABEL
+    lovSortMode: LABEL

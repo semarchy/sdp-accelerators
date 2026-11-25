@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: UnderwritingRequirementHasRequirementType
+description: "Indicates the Requirement Type associated with a Underwriting Requirement."
+_type: Reference
+label: "Underwriting Requirement Has Requirement Type"
+
+fromEntity: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.UnderwritingRequirement
+fromRoleLabel: "Underwriting Requirement"
+fromRoleName: UnderwritingRequirement
+fromRolePluralLabel: "Underwriting Requirements"
+physicalName: UW_REQ_HAS_REQ_TYPE
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.RequirementType.RequirementType
+toRoleLabel: "Requirement Type"
+toRoleName: RequirementType
+toRolePhysicalName: REQ_TYPE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: RequirementType
+  label: "Requirement Type ID"
+  description: "The identifier of the Requirement Type associated with the Underwriting Requirement."
+  physicalName: REQ_TYPE_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.RequirementType.RequirementType

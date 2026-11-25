@@ -1,0 +1,62 @@
+_package: CTMDM.entities.SiteCapability.business_views
+_type: BusinessView
+_name: SiteCapabilityBusinessView
+
+entity: CTMDM.entities.SiteCapability.SiteCapability
+rootLabel: Site Capability
+rootPluralLabel: Site Capabilities
+rootIconUrl: images://mdi/clipboard-pulse-outline.svg
+displayRootNodeAs: ICON_LABEL
+label: Site Capabilities
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: SiteCapability
+  entity: CTMDM.entities.SiteCapability.SiteCapability
+  actionSet: CTMDM.entities.SiteCapability.action_sets.SiteCapabilityActionSet
+  collection: CTMDM.entities.SiteCapability.collection_views.SiteCapabilityCollectionView
+  form: CTMDM.entities.SiteCapability.forms.SiteCapabilityForm
+  displayCard: CTMDM.entities.SiteCapability.display_cards.SiteCapabilityDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: SourceAuthoringRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.SiteCapability.business_views.SiteCapabilityBusinessView.SiteCapability
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

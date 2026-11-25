@@ -1,0 +1,125 @@
+_name: BusinessPartnerActionSet
+_package: sapbp360.entities.BusinessPartner.action_sets
+_type: ActionSet
+entity: sapbp360.entities.BusinessPartner.BusinessPartner
+label: Business Partner Action Set
+description: Action set for managing Business Partners in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: StartNewBusinessPartnerOnboardingWorkflow
+    _type: StartWorkflowEntityAction
+    label: Start Business Partner Onboarding
+    description: Start Business Partner Onboarding
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: sapbp360.workflows.NewBusinessPartnerOnboarding.StartFromScratch
+  - _name: StartSelectedBusinessPartnerOnboardingWorkflow
+    _type: StartWorkflowEntityAction
+    label: Review Selected Business Partner
+    description: Start Business Partner Onboarding for the selected business partner.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    startEvent: sapbp360.workflows.NewBusinessPartnerOnboarding.StartFromSelection
+  - _name: CreateAuthorBusinessPartners
+    label: Create
+    description: Create a new Business Partner record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.BusinessPartner.steppers.AuthorBusinessPartners
+  - _name: EditAuthorBusinessPartners
+    label: Edit
+    description: Edit Business Partner records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.BusinessPartner.steppers.AuthorBusinessPartners
+  - _name: MassUpdateAuthorBusinessPartners
+    label: Mass Update
+    description: Mass update Business Partner records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sapbp360.entities.BusinessPartner.steppers.AuthorBusinessPartners
+  - _name: Delete
+    label: Delete
+    description: Delete selected Business Partner records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorBusinessPartners
+    label: Import
+    description: Import Business Partner records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.BusinessPartner.steppers.BusinessPartnerImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicates.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnBusinessPartner
+    label: Review And Confirm Duplicates
+    description: Review and confirm duplicate records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: sapbp360.entities.BusinessPartner.dups_managers.ManageDuplicatesOnBusinessPartner
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnBusinessPartner
+    label: Merge Or Split Duplicates
+    description: Merge or split duplicate records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: sapbp360.entities.BusinessPartner.dups_managers.ManageDuplicatesOnBusinessPartner
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnBusinessPartner
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sapbp360.entities.BusinessPartner.dups_managers.ManageDuplicatesOnBusinessPartner
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    description: Explain record details.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: sapbp360.entities.BusinessPartner.display_cards.BusinessPartnerDisplayCard
+    formTab: sapbp360.entities.BusinessPartner.forms.BusinessPartnerDataEntryForm.PartnerDetails

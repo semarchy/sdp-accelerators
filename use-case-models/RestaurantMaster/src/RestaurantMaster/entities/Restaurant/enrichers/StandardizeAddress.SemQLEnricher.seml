@@ -1,0 +1,16 @@
+_package: RestaurantMaster.entities.Restaurant.enrichers
+_name: StandardizeAddress
+_type: SemQLEnricher
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Standardize address
+description: Removes stray spaces in the address and formats Canadian postal codes as A1A 1A1.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+- attributeName: AddressLine1
+  expression: REGEXP_REPLACE(BTRIM(AddressLine1), ' +', ' ', 'g')
+- attributeName: AddressLine2
+  expression: REGEXP_REPLACE(BTRIM(AddressLine2), ' +', ' ', 'g')
+- attributeName: City
+  expression: REGEXP_REPLACE(BTRIM(City), ' +', ' ', 'g')
+- attributeName: PostalCode
+  expression: CASE WHEN FID_Country = 'CA' THEN REGEXP_REPLACE(UPPER(REPLACE(PostalCode, ' ', '')), '^([A-Z][0-9][A-Z])([0-9][A-Z][0-9])$', '\1 \2') ELSE BTRIM(PostalCode) END

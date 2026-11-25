@@ -1,0 +1,13 @@
+_package: RetailCustomer360.entities.AccountContact.enrichers
+_name: AccountContactNameEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.AccountContact.AccountContact
+label: Account Contact Name Enricher
+description: "Computes FullName and FullNameNormalized from first and last name."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: FullName
+    expression: BTRIM(CONCAT_WS(' ', INITCAP(FirstName), INITCAP(LastName)))
+  - attributeName: FullNameNormalized
+    expression: UPPER(BTRIM(CONCAT_WS(' ', FirstName, LastName)))

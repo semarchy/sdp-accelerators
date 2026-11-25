@@ -1,0 +1,70 @@
+_name: PricingDateControlActionSet
+_package: sapbp360.entities.PricingDateControl.action_sets
+_type: ActionSet
+entity: sapbp360.entities.PricingDateControl.PricingDateControl
+label: Pricing Date Control Action Set
+description: Action set for managing Pricing Date Controls in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorPricingDateControls
+    label: Create
+    description: Create a new Pricing Date Control record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.PricingDateControl.steppers.AuthorPricingDateControls
+  - _name: EditAuthorPricingDateControls
+    label: Edit
+    description: Edit Pricing Date Control records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.PricingDateControl.steppers.AuthorPricingDateControls
+  - _name: MassUpdateAuthorPricingDateControls
+    label: Mass Update
+    description: Mass update Pricing Date Control records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.PricingDateControl.steppers.AuthorPricingDateControls
+  - _name: Delete
+    label: Delete
+    description: Delete selected Pricing Date Control records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorPricingDateControls
+    label: Import
+    description: Import Pricing Date Control records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.PricingDateControl.steppers.PricingDateControlImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

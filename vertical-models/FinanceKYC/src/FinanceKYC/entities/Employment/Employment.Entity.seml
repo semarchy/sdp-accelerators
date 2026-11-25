@@ -1,0 +1,91 @@
+_package: FinanceKYC.entities.Employment
+_type: Entity
+_name: Employment
+label: Employment
+pluralLabel: Employment
+entityType: BASIC
+physicalTableName: EMPLOYMENT
+iconUrl: images://mdi/book.svg
+description: 'Stores employment details used to support individual customer due diligence and risk assessment.'
+documentation: 'Stores employment details used to support individual customer due diligence and risk assessment.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _name: EmploymentID
+    _type: EntityAttribute
+    label: Employment ID
+    description: 'Employment ID value captured for the employment record.'
+    documentation: 'Employment ID value captured for the employment record.'
+    physicalName: EMPLOYMENT_ID
+    dataType: String
+    length: 36
+    mandatory: true
+    searchable: true
+
+  - _name: EmployerName
+    _type: EntityAttribute
+    label: Employer Name
+    description: 'Employer Name value captured for the employment record.'
+    documentation: 'Employer Name value captured for the employment record.'
+    physicalName: EMPLOYER_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: JobTitle
+    _type: EntityAttribute
+    label: Job Title
+    description: 'Job Title value captured for the employment record.'
+    documentation: 'Job Title value captured for the employment record.'
+    physicalName: JOB_TITLE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: EmploymentType
+    _type: EntityAttribute
+    label: Employment Type
+    description: 'Employment Type value captured for the employment record.'
+    documentation: 'Employment Type value captured for the employment record.'
+    physicalName: EMPLOYMENT_TYPE
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _name: StartDate
+    _type: EntityAttribute
+    label: Start Date
+    description: 'Start Date value captured for the employment record.'
+    documentation: 'Start Date value captured for the employment record.'
+    physicalName: START_DATE
+    dataType: Date
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+
+  - _name: EndDate
+    _type: EntityAttribute
+    label: End Date
+    description: 'End Date value captured for the employment record.'
+    documentation: 'End Date value captured for the employment record.'
+    physicalName: END_DATE
+    dataType: Date
+    mandatory: false
+
+  - _name: IsCurrent
+    _type: EntityAttribute
+    label: Is Current
+    description: 'Is Current value captured for the employment record.'
+    documentation: 'Is Current value captured for the employment record.'
+    physicalName: IS_CURRENT
+    dataType: Boolean
+    length: 1
+    mandatory: false
+
+primaryKey: FinanceKYC.entities.Employment.Employment.EmploymentID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

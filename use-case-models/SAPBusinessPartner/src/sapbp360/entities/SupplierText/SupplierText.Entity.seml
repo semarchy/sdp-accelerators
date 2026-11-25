@@ -1,0 +1,45 @@
+# Supplier Text entity for the SAP Business Partner 360 accelerator.
+_name: SupplierText
+_package: sapbp360.entities.SupplierText
+_type: Entity
+primaryKey: sapbp360.entities.SupplierText.SupplierText.TextID
+sourceIdGeneration:
+  mode: MANUAL
+label: Supplier Text
+documentation: Long text notes associated with a supplier.
+description: Long text notes associated with a supplier.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/SupplierText.svg
+pluralLabel: Supplier Texts
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SUP_TEXT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: TextID
+    physicalName: TEXT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Text ID
+    documentation: Unique identifier for the supplier text.
+    description: Unique identifier for the supplier text.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Text ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: LongText
+    physicalName: LONG_TEXT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Long Text
+    documentation: Long text content.
+    description: Long text content.
+    mandatory: false
+    length: 2000
+    searchable: true

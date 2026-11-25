@@ -1,0 +1,229 @@
+_package: CTMDM.entities.ClinicalSite
+_type: Entity
+_name: ClinicalSite
+label: Clinical Site
+pluralLabel: Clinical Sites
+entityType: FUZZY_MATCHED
+physicalTableName: CLINICAL_SITE
+iconUrl: images://mdi/domain.svg
+description: "Golden record for clinical research sites that activate, enroll, and manage trial subjects."
+documentation: "Golden record for clinical research sites that activate, enroll, and manage trial subjects."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SiteID
+    label: Site ID
+    description: Surrogate identifier for the clinical site master.
+    documentation: Surrogate identifier for the clinical site master.
+    physicalName: SITE_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: SiteName
+    label: Site Name
+    description: Operational name of the clinical research site.
+    documentation: Operational name of the clinical research site.
+    physicalName: SITE_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedSiteName
+    label: Normalized Site Name
+    description: Trimmed and uppercased site name.
+    documentation: Trimmed and uppercased site name.
+    physicalName: NORM_SITE_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhonetizedSiteName
+    label: Phonetized Site Name
+    description: Phonetic key derived from site name.
+    documentation: Phonetic key derived from site name.
+    physicalName: PHON_SITE_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AddressLine1
+    label: Address Line 1
+    description: Primary street address.
+    documentation: Primary street address.
+    physicalName: ADDRESS_LINE_1
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: NormalizedAddressLine1
+    label: Normalized Address Line 1
+    description: Trimmed and uppercased primary street address.
+    documentation: Trimmed and uppercased primary street address.
+    physicalName: NORM_ADDRESS_LINE_1
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AddressLine2
+    label: Address Line 2
+    description: Secondary address details.
+    documentation: Secondary address details.
+    physicalName: ADDRESS_LINE_2
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: City
+    label: City
+    description: City where the site is located.
+    documentation: City where the site is located.
+    physicalName: CITY
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedCity
+    label: Normalized City
+    description: Trimmed and uppercased city.
+    documentation: Trimmed and uppercased city.
+    physicalName: NORM_CITY
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: StateProvince
+    label: State Province
+    description: State, province, or region.
+    documentation: State, province, or region.
+    physicalName: STATE_PROVINCE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: PostalCode
+    label: Postal Code
+    description: Postal or ZIP code.
+    documentation: Postal or ZIP code.
+    physicalName: POSTAL_CODE
+    dataType: String
+    length: 30
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: SiteStatus
+    label: Site Status
+    description: Activation and operational status.
+    documentation: Activation and operational status.
+    physicalName: SITE_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ActivationDate
+    label: Activation Date
+    description: Date the site became active.
+    documentation: Date the site became active.
+    physicalName: ACTIVATION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: DeactivationDate
+    label: Deactivation Date
+    description: Date the site was deactivated.
+    documentation: Date the site was deactivated.
+    physicalName: DEACTIVATION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: EnrollmentCapacity
+    label: Enrollment Capacity
+    description: Estimated maximum enrollment capacity.
+    documentation: Estimated maximum enrollment capacity.
+    physicalName: ENRL_CAPACITY
+    dataType: Integer
+    precision: 10
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: TimeZone
+    label: Time Zone
+    description: Primary operating time zone.
+    documentation: Primary operating time zone.
+    physicalName: TIME_ZONE
+    dataType: String
+    length: 80
+    mandatory: false
+
+primaryKey: CTMDM.entities.ClinicalSite.ClinicalSite.SiteID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: ClinicalSiteMatcher
+  description: Strategies for matching Clinical Sites
+
+  matchRules:
+    - _name: ClinicalSiteStrongMatch
+      _type: SemQLMatchRule
+      label: Strong Clinical Site Match
+      documentation: "Matches records using normalized identity attributes and business identifiers."
+      color: md:purple 900
+      condition: Record1.NormalizedSiteName = Record2.NormalizedSiteName AND Record1.PhonetizedSiteName = Record2.PhonetizedSiteName AND Record1.NormalizedAddressLine1 = Record2.NormalizedAddressLine1
+      matchScore: 95
+
+    - _name: ClinicalSitePhoneticMatch
+      _type: SemQLMatchRule
+      label: Phonetic Clinical Site Match
+      documentation: "Matches records using phonetic and normalized attributes for likely duplicates."
+      color: md:purple 700
+      condition: Record1.PhonetizedSiteName = Record2.PhonetizedSiteName AND Record1.NormalizedCity = Record2.NormalizedCity
+      matchScore: 88
+
+    - _name: ClinicalSiteCandidateMatch
+      _type: SemQLMatchRule
+      label: Candidate Clinical Site Match
+      documentation: "Suggests candidate duplicates for steward review using a reduced attribute set."
+      color: md:purple 400
+      condition: Record1.NormalizedSiteName = Record2.NormalizedSiteName AND Record1.PhonetizedSiteName = Record2.PhonetizedSiteName
+      matchScore: 65
+      
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 87
+  autoConfirmSingletons: false

@@ -1,0 +1,141 @@
+# Description: Entity definition for `PartyAddress`.
+# Contains address attributes, foreign keys and configuration for address records.
+# Role: Stores addresses related to `Party` and is used by reference and validation rules.
+ # Description: Entity definition for `PartyAddress` (addresses attached to Parties).
+ # Contains: Address fields (street, city, postal code, country) and type metadata.
+ # Role: Stores address records used by Parties, Merchants, and for validation/lookups.
+_package: Merchant.entities.PartyAddress
+_type: Entity
+_name: PartyAddress
+label: Party Address
+pluralLabel: Party Addresses
+entityType: BASIC
+physicalTableName: PARTY_ADDRESS
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+
+historizeGolden: false
+historizeMaster: false
+
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AddressID
+    label: Address ID
+    physicalName: MERCHANT_ADDRESS_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary key for the MerchantAddress entity"
+  - _type: EntityAttribute
+    _name: AddressType
+    label: Address Type
+    dataType: Merchant.list_of_values.AddressType
+    physicalName: ADDRESS_TYPE
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Classification of address (e.g., billing, shipping)"
+  - _type: EntityAttribute
+    _name: Street
+    label: Street
+    physicalName: STREET
+    dataType: String
+    length: 128
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "First line of street address"
+  - _type: EntityAttribute
+    _name: City
+    label: City
+    physicalName: CITY
+    dataType: String
+    length: 64
+    mandatory: false
+    searchable: true
+    description: "City or locality name for the address"
+  - _type: EntityAttribute
+    _name: State
+    label: State
+    physicalName: STATE
+    dataType: String
+    length: 64
+    mandatory: false
+    searchable: true
+    description: "State, province or region for the address"
+  - _type: EntityAttribute
+    _name: PostalCode
+    label: Postal Code
+    physicalName: POSTAL_CODE
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+    description: "Postal or ZIP code for the address"
+  - _type: EntityAttribute
+    _name: EnrichedStreet
+    label: Enriched Street
+    physicalName: ENRICHED_STREET
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Standardized/enriched street value produced by geocoding or normalization"
+  - _type: EntityAttribute
+    _name: EnrichedCity
+    label: Enriched City
+    physicalName: ENRICHED_CITY
+    dataType: String
+    length: 64
+    mandatory: false
+    searchable: true
+    description: "Standardized/enriched city value"
+  - _type: EntityAttribute
+    _name: EnrichedState
+    label: Enriched State
+    physicalName: ENRICHED_STATE
+    dataType: String
+    length: 64
+    mandatory: false
+    searchable: true
+    description: "Standardized/enriched state or region value"
+  - _type: EntityAttribute
+    _name: EnrichedPostalCode
+    label: Enriched Postal Code
+    physicalName: ENRICHED_POSTAL_CODE
+    dataType: String
+    length: 20
+    mandatory: false
+    searchable: true
+    description: "Standardized/enriched postal code"
+  - _type: EntityAttribute
+    _name: EnrichedLatitude
+    label: Enriched Latitude
+    physicalName: ENRICHED_LATITUDE
+    dataType: Decimal
+    precision: 10
+    scale: 6
+    mandatory: false
+    searchable: true
+    description: "Geocoded latitude coordinate for the address"
+  - _type: EntityAttribute
+    _name: EnrichedLongitude
+    label: Enriched Longitude
+    physicalName: ENRICHED_LONGITUDE
+    dataType: Decimal
+    precision: 10
+    scale: 6
+    mandatory: false
+    searchable: true
+    description: "Geocoded longitude coordinate for the address"
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: Merchant.entities.PartyAddress.PartyAddress.AddressID

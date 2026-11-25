@@ -1,0 +1,104 @@
+_package: CTMDM.entities.SiteCapability
+_type: Entity
+_name: SiteCapability
+label: Site Capability
+pluralLabel: Site Capabilities
+entityType: BASIC
+physicalTableName: SITE_CAP
+iconUrl: images://mdi/clipboard-pulse-outline.svg
+description: "Reference list of site capabilities used for feasibility, startup, and enrollment planning."
+documentation: "Reference list of site capabilities used for feasibility, startup, and enrollment planning."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CapabilityID
+    label: Capability ID
+    description: Business identifier for the capability.
+    documentation: Business identifier for the capability.
+    physicalName: CAP_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CapabilityCode
+    label: Capability Code
+    description: Short code for the capability.
+    documentation: Short code for the capability.
+    physicalName: CAP_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedCapabilityCode
+    label: Normalized Capability Code
+    description: Trimmed and uppercased capability code.
+    documentation: Trimmed and uppercased capability code.
+    physicalName: NORM_CAP_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CapabilityName
+    label: Capability Name
+    description: Business-friendly capability name.
+    documentation: Business-friendly capability name.
+    physicalName: CAP_NAME
+    dataType: String
+    length: 150
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedCapabilityName
+    label: Normalized Capability Name
+    description: Trimmed and uppercased capability name.
+    documentation: Trimmed and uppercased capability name.
+    physicalName: NORM_CAP_NAME
+    dataType: String
+    length: 150
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CapabilityType
+    label: Capability Type
+    description: Type such as therapeutic, diagnostic, imaging, or operational.
+    documentation: Type such as therapeutic, diagnostic, imaging, or operational.
+    physicalName: CAP_TYPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    description: Description of the capability.
+    documentation: Description of the capability.
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ActiveFlag
+    label: Active Flag
+    description: Indicates whether the capability is active.
+    documentation: Indicates whether the capability is active.
+    physicalName: ACTIVE_FLAG
+    dataType: Boolean
+    mandatory: false
+    length: 1
+
+primaryKey: CTMDM.entities.SiteCapability.SiteCapability.CapabilityID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

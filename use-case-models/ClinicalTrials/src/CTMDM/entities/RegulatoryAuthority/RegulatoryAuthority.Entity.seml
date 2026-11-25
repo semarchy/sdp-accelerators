@@ -1,0 +1,93 @@
+_package: CTMDM.entities.RegulatoryAuthority
+_type: Entity
+_name: RegulatoryAuthority
+label: Regulatory Authority
+pluralLabel: Regulatory Authorities
+entityType: BASIC
+physicalTableName: REG_AUTH
+iconUrl: images://mdi/gavel.svg
+description: "Reference list of regulatory authorities involved in clinical trial submissions and approvals."
+documentation: "Reference list of regulatory authorities involved in clinical trial submissions and approvals."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: RegulatoryAuthorityID
+    label: Regulatory Authority ID
+    description: Business identifier for the regulatory authority.
+    documentation: Business identifier for the regulatory authority.
+    physicalName: REG_AUTH_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AuthorityCode
+    label: Authority Code
+    description: Short code for the authority.
+    documentation: Short code for the authority.
+    physicalName: AUTH_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AuthorityName
+    label: Authority Name
+    description: Official regulatory authority name.
+    documentation: Official regulatory authority name.
+    physicalName: AUTH_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedAuthorityName
+    label: Normalized Authority Name
+    description: Trimmed and uppercased authority name.
+    documentation: Trimmed and uppercased authority name.
+    physicalName: NORM_AUTH_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: AuthorityType
+    label: Authority Type
+    description: Authority type such as national, regional, or ministry.
+    documentation: Authority type such as national, regional, or ministry.
+    physicalName: AUTH_TYPE
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Website
+    label: Website
+    description: Public website for the authority.
+    documentation: Public website for the authority.
+    physicalName: WEBSITE
+    dataType: String
+    length: 255
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ActiveFlag
+    label: Active Flag
+    description: Indicates whether this reference value is active.
+    documentation: Indicates whether this reference value is active.
+    physicalName: ACTIVE_FLAG
+    dataType: Boolean
+    mandatory: false
+    length: 1
+
+primaryKey: CTMDM.entities.RegulatoryAuthority.RegulatoryAuthority.RegulatoryAuthorityID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

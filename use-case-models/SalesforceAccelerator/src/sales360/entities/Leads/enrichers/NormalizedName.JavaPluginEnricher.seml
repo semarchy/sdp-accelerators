@@ -1,0 +1,32 @@
+# It is an enricher for the lead entity in the Salesforce Accelerator application.
+# It is a JavaPluginEnricher that normalizes first and last names using a Semarchy person name enricher plugin.
+# This enricher is executed before the consumption of the entity data
+_type: JavaPluginEnricher
+_package: sales360.entities.Leads.enrichers
+_name: NormalizedName
+entity: sales360.entities.Leads.Leads
+label: Normalized Name
+description: Enricher to normalize first and last names using a Semarchy person name enricher plugin.
+pluginId: com.semarchy.engine.plugins.convergence.personname.personNameEnricher
+batchUpdateSize: 1
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 100
+threadPoolSize: 1
+pluginParams:
+  - paramName: CASE_TRANSFORMATION
+    value: UPPER_CASE
+  - paramName: SURNAME_POSITION
+    value: SURNAME_LAST
+pluginInputs:
+  - inputName: COUNTRY_CODE
+    expression: COALESCE(Address.InpCountry, 'US')
+  - inputName: PERSON_NAME
+    expression: SEM_CONCAT(' ','1', FirstName, LastName)
+pluginOutputs:
+  - outputName: GIVEN_NAME
+    attributeName: NormalizedFirstName
+  - outputName: SURNAME
+    attributeName: NormalizedLastName
+afterEnrichers: sales360.entities.Leads.enrichers.PhoneticCompanyName

@@ -1,0 +1,94 @@
+_name: AuthorProductTrimOptionOrFeatures
+_package: Manufacturing.entities.ProductTrimOptionOrFeature.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductTrimOptionOrFeature.ProductTrimOptionOrFeature
+rootStep:
+  _name: ProductTrimOptionOrFeatures
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductTrimOptionOrFeature.collection_views.ProductTrimOptionOrFeatureCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Trim Option Or Features
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimOptionOrFeaturesOptionOrFeature.OptionOrFeature
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.TrimOptionOrFeaturesTrim.Trim
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.TrimOptionOrFeaturesTrim.Trim
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.TrimOptionOrFeaturesOptionOrFeature.OptionOrFeature
+  stepTriggers: []
+  childSteps:
+    - _name: ProductTrimOptionOrFeature
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Trim Option Or Feature
+      formTab: Manufacturing.entities.ProductTrimOptionOrFeature.forms.ProductTrimOptionOrFeatureForm.ProductTrimOptionOrFeature
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimOptionOrFeaturesOptionOrFeature.OptionOrFeature
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.TrimOptionOrFeaturesTrim.Trim
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.TrimOptionOrFeaturesOptionOrFeature.OptionOrFeature
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.TrimOptionOrFeaturesTrim.Trim
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimOptionOrFeaturesTrim.Trim
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.TrimOptionOrFeaturesOptionOrFeature.OptionOrFeature
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.TrimOptionOrFeaturesOptionOrFeature.OptionOrFeature
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.TrimOptionOrFeaturesTrim.Trim
+      stepTriggers: []
+label: Author Trim Option Or Features
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimOptionOrFeaturesTrim.Trim
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.TrimOptionOrFeaturesTrim.Trim
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.TrimOptionOrFeaturesOptionOrFeature.OptionOrFeature
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.TrimOptionOrFeaturesOptionOrFeature.OptionOrFeature
+triggers: []

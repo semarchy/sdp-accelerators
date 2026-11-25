@@ -1,0 +1,619 @@
+_package: PropertyAndCasualtyInsurance.entities.Policy.forms
+_type: Form
+_name: PolicyForm
+entity: PropertyAndCasualtyInsurance.entities.Policy.Policy
+default: true
+formTabs:
+  
+  - _type: FormTab
+    _name: PolicySummary
+    iconUrl: images://mdi/file-document-box.svg
+    label: Summary
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: Summary01
+        content:
+          - _type: MarkdownField
+            _name: PolicySummaryOverview
+            label: Overview
+            value: >-
+              SEM_CONCAT('', '1',
+                '# Policy ', COALESCE(PolicyNumber, 'Unnumbered policy'), CHR(10), CHR(10),
+                '**Status:** ', COALESCE(PolicyStatus.PolicyStatusName, 'Not recorded'), CHR(10),CHR(10),
+                '**Version:** ', COALESCE(PolicyVersion, 'Not recorded'), CHR(10),CHR(10),
+                '**Jurisdiction:** ', COALESCE(JurisdictionState, 'Not recorded'), CHR(10),CHR(10),
+                '**Distribution:** ', COALESCE(DistributionChannel.ChannelName, 'Not recorded'), CHR(10),CHR(10),
+                '**Currency:** ', COALESCE(CurrencyCode, 'Not recorded'), CHR(10),CHR(10),
+                CASE
+                  WHEN CancelDate IS NOT NULL THEN 'This policy has a cancellation date on file and should be reviewed before servicing.'
+                  WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(PolicyLapseIndicator), 'false') = 'true' THEN CONCAT('This policy is marked as lapsed. Billing and reinstatement details should be checked before servicing.', PolicyStatus.Description)
+                  ELSE CONCAT('No cancellation date is recorded. ', PolicyStatus.Description)
+                END
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: title
+              typographyValueInterpreter: LITERAL
+              icon: images://mdi/file-document-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:blue 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+      - _type: FormContainer
+        _name: Summary02
+        content:  
+          - _type: MarkdownField
+            _name: PolicySummaryLifecycle
+            label: Lifecycle
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Coverage timeline', CHR(10), CHR(10),
+                '| Milestone | Date |', CHR(10),
+                '| --- | --- |', CHR(10),
+                '| Issued | ', CASE WHEN IssueDate IS NOT NULL THEN SEM_TO_CHAR2(IssueDate) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Effective | ', CASE WHEN EffectiveDate IS NOT NULL THEN SEM_TO_CHAR2(EffectiveDate) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Expires | ', CASE WHEN ExpirationDate IS NOT NULL THEN SEM_TO_CHAR2(ExpirationDate) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Grace period ends | ', CASE WHEN GracePeriodEndDate IS NOT NULL THEN SEM_TO_CHAR2(GracePeriodEndDate) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Reinstated | ', CASE WHEN ReinstatementDate IS NOT NULL THEN SEM_TO_CHAR2(ReinstatementDate) ELSE 'Not applicable' END, ' |'
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: title
+              typographyValueInterpreter: LITERAL
+              icon: images://mdi/calendar-clock.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:indigo 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+
+          - _type: MarkdownField
+            _name: PolicySummaryPremium
+            label: Billing and premium
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Premium snapshot', CHR(10), CHR(10),
+                '| Measure | Value |', CHR(10),
+                '| --- | ---: |', CHR(10),
+                '| Payment plan | ', COALESCE(PaymentPlan.PlanName, 'Not recorded'), ' |', CHR(10),
+                '| Payment status | ', COALESCE(CONCAT(PaymentStatus.StatusCategory, ' - ', PaymentStatus.StatusName), 'Not recorded'), ' |', CHR(10),
+                '| Written premium | ', CASE WHEN WrittenPremium IS NOT NULL THEN SEM_CONCAT(' ', '1', COALESCE(CurrencyCode, ''), SEM_NUMBER_TO_CHAR(WrittenPremium)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Total premium | ', CASE WHEN TotalPremium IS NOT NULL THEN SEM_CONCAT(' ', '1', COALESCE(CurrencyCode, ''), SEM_NUMBER_TO_CHAR(TotalPremium)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Outstanding premium | ', CASE WHEN OutstandingPremiumAmount IS NOT NULL THEN SEM_CONCAT(' ', '1', COALESCE(CurrencyCode, ''), SEM_NUMBER_TO_CHAR(OutstandingPremiumAmount)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Last payment amount | ', CASE WHEN LastPremiumPaidAmount IS NOT NULL THEN SEM_CONCAT(' ', '1', COALESCE(CurrencyCode, ''), SEM_NUMBER_TO_CHAR(LastPremiumPaidAmount)) ELSE 'Not recorded' END, ' |'
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: title
+              typographyValueInterpreter: LITERAL
+              icon: images://mdi/cash-multiple.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:green 500
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+
+        layoutDirection: ROW
+
+      - _type: FormContainer
+        _name: Summary03
+        content:
+          - _type: MarkdownField
+            _name: PolicySummaryStatus
+            label: Status intelligence
+            value: >-
+              CASE
+                WHEN CancelDate IS NOT NULL THEN SEM_CONCAT('', '1',
+                  '## Cancellation review', CHR(10), CHR(10),
+                  '**Cancellation date:** ', SEM_TO_CHAR2(CancelDate), CHR(10),CHR(10),
+                  '**Cancellation reason:** ', COALESCE(CancellationReason, 'No reason recorded'), CHR(10), CHR(10),
+                  'Treat this policy as requiring cancellation-aware service handling. Confirm downstream billing, claims, and reinstatement implications before making changes.'
+                )
+                WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(PolicyLapseIndicator), 'false') = 'true' THEN SEM_CONCAT('', '1',
+                  '## Lapse review', CHR(10), CHR(10),
+                  '**Policy lapse indicator:** Yes', CHR(10),
+                  '**Grace period end:** ', CASE WHEN GracePeriodEndDate IS NOT NULL THEN SEM_TO_CHAR2(GracePeriodEndDate) ELSE 'Not recorded' END, CHR(10), CHR(10),
+                  'Review collection status and reinstatement eligibility before normal servicing.'
+                )
+                ELSE SEM_CONCAT('', '1',
+                  '## Continuity note', CHR(10), CHR(10),
+                  'No cancellation date or lapse flag is currently recorded. Review premium status and expiration timing for the next operational action.'
+                )
+              END
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: title
+              typographyValueInterpreter: LITERAL
+              icon: images://mdi/shield-alert.svg
+              iconValueInterpreter: LITERAL
+              iconColor: CASE WHEN CancelDate IS NOT NULL OR COALESCE(SEM_BOOLEAN_TO_CHAR(PolicyLapseIndicator), 'false') = 'true' THEN 'md:red 800' ELSE 'md:green 600' END
+              iconColorValueInterpreter: SEMQL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+
+          - _type: MarkdownField
+            _name: PolicySummaryNextAction
+            label: Recommended focus
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Recommended focus', CHR(10), CHR(10),
+                CASE
+                  WHEN CancelDate IS NOT NULL THEN '- Validate cancellation handling and reason coding.'
+                  WHEN OutstandingPremiumAmount IS NOT NULL AND OutstandingPremiumAmount > 0 THEN '- Follow up on the outstanding premium balance.'
+                  WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(AutoPayIndicator), 'false') = 'true' THEN '- Auto pay is enabled. Confirm the next scheduled payment date.'
+                  ELSE '- Continue standard servicing and monitor the next payment due date.'
+                END, CHR(10),
+                '- Last paid date: ', CASE WHEN LastPremiumPaidDate IS NOT NULL THEN SEM_TO_CHAR2(LastPremiumPaidDate) ELSE 'Not recorded' END, CHR(10),
+                '- Payment due date: ', CASE WHEN PaymentDueDate IS NOT NULL THEN SEM_TO_CHAR2(PaymentDueDate) ELSE 'Not recorded' END
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: title
+              typographyValueInterpreter: LITERAL
+              icon: images://mdi/clipboard-check-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:orange 600
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+
+        layoutDirection: ROW
+
+  - _type: FormTab
+    _name: Policy
+    label: Policy
+    iconUrl: images://mdi/file-document.svg
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: PolicyGeneralSection
+        label: Policy General
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PolicyGeneralRow
+            content:
+              - _type: FormContainer
+                _name: PolicyGeneralColA
+                content:
+                  - _type: TextField
+                    _name: PolicyNumber
+                    value: PolicyNumber
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_PolicyStatus
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.PolicyStatus.PolicyStatus
+                    useCustomLabel: false
+                    value: FDN_PolicyStatus
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '250'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyGeneralColB
+                content:
+                  - _type: TextField
+                    _name: PolicyVersion
+                    value: PolicyVersion
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: JurisdictionState
+                    value: JurisdictionState
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyGeneralColC
+                content:
+                  - _type: TextField
+                    _name: CurrencyCode
+                    value: CurrencyCode
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_DistributionChannel
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.DistributionChannel.DistributionChannel
+                    useCustomLabel: false
+                    value: FDN_DistributionChannel
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '250'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+
+      - _type: FormSection
+        _name: PolicyLifecycleSection
+        label: Lifecycle Dates
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PolicyLifecycleRow
+            content:
+              - _type: FormContainer
+                _name: PolicyLifecycleColA
+                content:
+                  - _type: TextField
+                    _name: EffectiveDate
+                    value: EffectiveDate
+                    useCustomLabel: false
+                    dataType: DATE
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: ExpirationDate
+                    value: ExpirationDate
+                    useCustomLabel: false
+                    dataType: DATE
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: IssueDate
+                    value: IssueDate
+                    useCustomLabel: false
+                    dataType: DATE
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyLifecycleColB
+                content:
+                  - _type: TextField
+                    _name: CancelDate
+                    value: CancelDate
+                    useCustomLabel: false
+                    dataType: DATE
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: ReinstatementDate
+                    value: ReinstatementDate
+                    useCustomLabel: false
+                    dataType: DATE
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: GracePeriodEndDate
+                    value: GracePeriodEndDate
+                    useCustomLabel: false
+                    dataType: DATE
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyLifecycleColC
+                content:
+                  - _type: TextField
+                    _name: CancellationReason
+                    value: CancellationReason
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: CheckboxField
+                    _name: PolicyLapseIndicator
+                    value: PolicyLapseIndicator
+                    useCustomLabel: false
+                    dataType: BOOLEAN
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: PolicyBillingSection
+        label: Billing and Premium
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PolicyBillingRow
+            content:
+              - _type: FormContainer
+                _name: PolicyBillingColA
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_PaymentPlan
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.PaymentPlan.PaymentPlan
+                    useCustomLabel: false
+                    value: FDN_PaymentPlan
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '220'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_PaymentStatus
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.PaymentStatus.PaymentStatus
+                    useCustomLabel: false
+                    value: FDN_PaymentStatus
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '220'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: CheckboxField
+                    _name: AutoPayIndicator
+                    value: AutoPayIndicator
+                    useCustomLabel: false
+                    dataType: BOOLEAN
+
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyBillingColB
+                content:
+                  - _type: TextField
+                    _name: WrittenPremium
+                    value: WrittenPremium
+                    useCustomLabel: false
+                    dataType: DECIMAL
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: TotalPremium
+                    value: TotalPremium
+                    useCustomLabel: false
+                    dataType: DECIMAL
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: OutstandingPremiumAmount
+                    value: OutstandingPremiumAmount
+                    useCustomLabel: false
+                    dataType: DECIMAL
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: PolicyBillingColC
+                content:
+                  - _type: TextField
+                    _name: LastPremiumPaidDate
+                    value: LastPremiumPaidDate
+                    useCustomLabel: false
+                    dataType: DATE
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      
+                  - _type: TextField
+                    _name: LastPremiumPaidAmount
+                    value: LastPremiumPaidAmount
+                    useCustomLabel: false
+                    dataType: DECIMAL
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: PaymentDueDate
+                    value: PaymentDueDate
+                    useCustomLabel: false
+                    dataType: DATE
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN

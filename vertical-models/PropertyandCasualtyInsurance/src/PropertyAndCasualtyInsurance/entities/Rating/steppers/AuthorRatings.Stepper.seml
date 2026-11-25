@@ -1,0 +1,38 @@
+_package: PropertyAndCasualtyInsurance.entities.Rating.steppers
+_type: Stepper
+_name: AuthorRatings
+entity: PropertyAndCasualtyInsurance.entities.Rating.Rating
+label: Ratings
+rootStep:
+  _type: CollectionStep
+  _name: Ratings
+  label: Ratings
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.Rating.collection_views.RatingImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: Rating
+      label: Rating
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.Rating.forms.RatingDEForm.General
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.Rating.validations.DateRangeCheck

@@ -1,0 +1,64 @@
+_package: CTMDM.entities.ClinicalSite.business_views
+_type: BusinessView
+_name: ClinicalSiteReviewSuggestions
+
+entity: CTMDM.entities.ClinicalSite.ClinicalSite
+label: Clinical Sites Review Suggestions
+rootLabel: Clinical Site
+rootPluralLabel: Clinical Sites
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: images://mdi/account-alert.svg
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ClinicalSite
+  entity: CTMDM.entities.ClinicalSite.ClinicalSite
+
+  actionSet: CTMDM.entities.ClinicalSite.action_sets.ClinicalSiteReviewSuggestionsActionSet
+  collection: CTMDM.entities.ClinicalSite.collection_views.ClinicalSiteReviewSuggestionsCollectionView
+  form: CTMDM.entities.ClinicalSite.forms.ClinicalSiteForm
+  displayCard: CTMDM.entities.ClinicalSite.display_cards.ClinicalSiteDisplayCard
+
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.ClinicalSite.business_views.ClinicalSiteReviewSuggestions.ClinicalSite
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

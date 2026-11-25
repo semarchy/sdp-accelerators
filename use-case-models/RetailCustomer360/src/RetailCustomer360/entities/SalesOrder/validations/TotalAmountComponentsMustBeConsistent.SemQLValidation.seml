@@ -1,0 +1,14 @@
+﻿_package: RetailCustomer360.entities.SalesOrder.validations
+_name: TotalAmountComponentsMustBeConsistent
+_type: SemQLValidation
+entity: RetailCustomer360.entities.SalesOrder.SalesOrder
+label: Total Amount Components Must Be Consistent
+validationScope: PRE_CONSO
+description: "Ensures amount components are non-negative when provided and discount does not exceed subtotal."
+condition: (SubtotalAmount IS NULL OR SubtotalAmount >= 0)
+  AND (DiscountAmount IS NULL OR DiscountAmount >= 0)
+  AND (TaxAmount IS NULL OR TaxAmount >= 0)
+  AND (ShippingAmount IS NULL OR ShippingAmount >= 0)
+  AND (TotalAmount IS NULL OR TotalAmount >= 0)
+  AND (SubtotalAmount IS NULL OR DiscountAmount IS NULL OR DiscountAmount <= SubtotalAmount)
+

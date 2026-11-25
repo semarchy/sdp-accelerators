@@ -1,0 +1,72 @@
+# GovernancePolicyCollectionView: collection view on GovernancePolicy of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernancePolicy.collection_views
+_type: CollectionView
+_name: GovernancePolicyCollectionView
+description: 'Default list of policies, with their owner body and status.'
+entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+default: true
+displayCard: GovernanceRules.entities.GovernancePolicy.display_cards.GovernancePolicyDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: '1:1'
+gridTileLines: 2
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Policy
+tableRowLines: 2
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: Code
+    value: Code
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: MenuColumn
+    _name: LifecycleStatus
+    value: LifecycleStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: label
+      displayFormatValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_OwnerBody
+    value: FDN_OwnerBody
+    useCustomLabel: true
+    label: Owner
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+    componentProperties:
+      hideIfReferenceToParent: '1'
+      hideIfReferenceToParentValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Name
+    value: Name
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Description
+    value: Description
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Purpose
+    value: Purpose
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false

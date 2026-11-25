@@ -1,0 +1,56 @@
+# This is the CampaignActionSet action set used in the Salesforce Accelerator application.
+# It defines various actions that can be performed on campaigns, such as creating, editing,
+# mass updating, deleting,exporting,importing campaigns.
+_name: CampaignActionSet
+_package: sales360.entities.Campaign.action_sets
+_type: ActionSet
+entity: sales360.entities.Campaign.Campaign
+label: Campaign Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorCampaigns
+    label: Create
+    description: Create a new Author Campaign
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sales360.entities.Campaign.steppers.AuthorCampaigns
+  - _name: EditAuthorCampaigns
+    label: Edit
+    description: Edit Author Campaigns
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sales360.entities.Campaign.steppers.AuthorCampaigns
+  - _name: Delete
+    label: Delete
+    description: Delete Campaigns
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorCampaigns
+    label: Import
+    description: Import Author Campaigns
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sales360.entities.Campaign.steppers.CampaignImportStepper

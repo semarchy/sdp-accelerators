@@ -1,0 +1,21 @@
+﻿_name: PartyIdentification
+_package: RetailCustomer360.entities.PartyIdentification.display_cards
+_type: DisplayCard
+entity: RetailCustomer360.entities.PartyIdentification.PartyIdentification
+default: true
+primaryTextExpression: "CASE WHEN FDN_Customer IS NOT NULL THEN FDN_Customer || ' • ' ELSE '' END || CASE WHEN IdentificationType IS NOT NULL THEN IdentificationType ELSE 'Identification' END || CASE WHEN MaskedIdentificationNumber IS NOT NULL THEN ' - ' || MaskedIdentificationNumber ELSE '' END"
+secondaryTextExpression: "CASE WHEN IdentificationStatus IS NOT NULL THEN IdentificationStatus ELSE 'Unknown' END || CASE WHEN IdentificationLifecycleStatus IS NOT NULL THEN ' • ' || IdentificationLifecycleStatus ELSE '' END || CASE WHEN FDN_Country IS NOT NULL THEN ' • ' || FDN_Country ELSE '' END"
+primaryImageValueInterpreter: SEMQL
+primaryImageValue: "CASE WHEN IdentificationLifecycleStatus = 'Active' THEN 'https://api.iconify.design/mdi/shield-check.svg?color=%230D1B2A&width=128' WHEN IdentificationLifecycleStatus IN ('Expired', 'Restricted') THEN 'https://api.iconify.design/mdi/shield-alert.svg?color=%230D1B2A&width=128' ELSE 'https://api.iconify.design/mdi/shield-outline.svg?color=%230D1B2A&width=128' END"
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackValue: https://api.iconify.design/mdi/shield-outline.svg?color=%230D1B2A&width=128
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: SEMQL
+avatarImageValue: "CASE WHEN IdentificationLifecycleStatus = 'Active' THEN 'https://api.iconify.design/mdi/shield-check.svg?color=%230D1B2A&width=128' WHEN IdentificationLifecycleStatus IN ('Expired', 'Restricted') THEN 'https://api.iconify.design/mdi/shield-alert.svg?color=%230D1B2A&width=128' ELSE 'https://api.iconify.design/mdi/shield-outline.svg?color=%230D1B2A&width=128' END"
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT
+

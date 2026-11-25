@@ -1,0 +1,169 @@
+_package: RetailCustomer360.entities.Voucher
+_type: Entity
+_name: Voucher
+label: Voucher
+pluralLabel: Vouchers
+entityType: ID_MATCHED
+physicalTableName: VOUCHER
+iconUrl: https://api.iconify.design/mdi/ticket-percent.svg?color=%230D1B2A&width=64
+
+description: "Individually issued instrument a customer can redeem for a discount or benefit."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: VoucherCode
+    label: Voucher Code
+    physicalName: VOUCHER_CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Universal identifier of the voucher across systems."
+
+  - _type: EntityAttribute
+    _name: VoucherType
+    label: Voucher Type
+    physicalName: VOUCHER_TYPE
+    dataType: RetailCustomer360.list_of_values.VoucherType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Kind of benefit the voucher grants."
+
+  - _type: EntityAttribute
+    _name: VoucherStatus
+    label: Voucher Status
+    physicalName: VOUCHER_STATUS
+    dataType: RetailCustomer360.list_of_values.VoucherStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Redemption state of the voucher."
+
+  - _type: EntityAttribute
+    _name: FaceValue
+    label: Face Value
+    physicalName: FACE_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Original value of the voucher when issued."
+
+  - _type: EntityAttribute
+    _name: RemainingValue
+    label: Remaining Value
+    physicalName: REMAINING_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Value still available on the voucher."
+
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: Currency Code
+    physicalName: CURRENCY_CODE
+    dataType: String
+    length: 3
+    searchable: true
+    description: "Currency the voucher value is expressed in."
+
+  - _type: EntityAttribute
+    _name: IssuedDate
+    label: Issued Date
+    physicalName: ISSUED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the voucher was issued."
+
+  - _type: EntityAttribute
+    _name: ExpirationDate
+    label: Expiration Date
+    physicalName: EXPIRATION_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the voucher expires."
+
+  - _type: EntityAttribute
+    _name: RedeemedDate
+    label: Redeemed Date
+    physicalName: REDEEMED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the voucher was redeemed."
+
+  - _type: EntityAttribute
+    _name: MinimumSpend
+    label: Minimum Spend
+    physicalName: MINIMUM_SPEND
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Spend required before the voucher can be used."
+
+  - _type: EntityAttribute
+    _name: IsTransferable
+    label: Is Transferable
+    physicalName: IS_TRANSFERABLE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the voucher can be passed to another person."
+
+  - _type: EntityAttribute
+    _name: IsPartialRedeemAllowed
+    label: Is Partial Redeem Allowed
+    physicalName: IS_PARTIAL_REDEEM
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the voucher can be redeemed across several transactions."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the voucher originates from."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes."
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)."
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated."
+
+primaryKey: RetailCustomer360.entities.Voucher.Voucher.VoucherCode
+
+sourceIdGeneration:
+  mode: MANUAL

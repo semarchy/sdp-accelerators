@@ -1,0 +1,35 @@
+# AuthorDataDomains: stepper on DataDomain of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.DataDomain.steppers
+_type: Stepper
+_name: AuthorDataDomains
+description: 'Creates and edits data domains (Create, Edit, Mass update and Import actions). Used by the governance steward, without workflow.'
+entity: GovernanceRules.entities.DataDomain.DataDomain
+label: Enter data domains
+rootStep:
+  _type: CollectionStep
+  _name: DataDomains
+  label: Data domains
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.DataDomain.collection_views.DataDomainCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: DataDomain
+      label: Data domain
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.DataDomain.forms.DataDomainForm.DataDomain

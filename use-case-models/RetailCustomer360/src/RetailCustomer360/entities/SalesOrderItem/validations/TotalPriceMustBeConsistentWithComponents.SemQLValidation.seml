@@ -1,0 +1,15 @@
+﻿_package: RetailCustomer360.entities.SalesOrderItem.validations
+_name: TotalPriceMustBeConsistentWithComponents
+_type: SemQLValidation
+entity: RetailCustomer360.entities.SalesOrderItem.SalesOrderItem
+label: Total Price Must Be Consistent With Components
+validationScope: PRE_CONSO
+description: "Ensures pricing components are non-negative and discount does not exceed gross amount."
+condition: (Quantity IS NULL OR Quantity >= 0)
+  AND (UnitPrice IS NULL OR UnitPrice >= 0)
+  AND (ListPrice IS NULL OR ListPrice >= 0)
+  AND (DiscountAmount IS NULL OR DiscountAmount >= 0)
+  AND (TaxAmount IS NULL OR TaxAmount >= 0)
+  AND (TotalPrice IS NULL OR TotalPrice >= 0)
+  AND (Quantity IS NULL OR UnitPrice IS NULL OR DiscountAmount IS NULL OR DiscountAmount <= (Quantity * UnitPrice))
+

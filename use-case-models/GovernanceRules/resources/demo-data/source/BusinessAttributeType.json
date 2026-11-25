@@ -1,0 +1,245 @@
+[
+  {
+    "Code": "COUNTRY_CODE",
+    "Name": "Country code",
+    "Description": "Country as an ISO 3166-1 alpha-2 code, referencing the managed Country reference entity.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": "ISO-3166-1",
+    "FormatPattern": "^[A-Z]{2}$",
+    "Example": "CA"
+  },
+  {
+    "Code": "CURRENCY_CODE",
+    "Name": "Currency code",
+    "Description": "Currency as an ISO 4217 alphabetic code, referencing the managed Currency reference entity.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": "ISO-4217",
+    "FormatPattern": "^[A-Z]{3}$",
+    "Example": "CAD"
+  },
+  {
+    "Code": "LANGUAGE_CODE",
+    "Name": "Language code",
+    "Description": "Language as a two-letter ISO 639 code (formerly ISO 639-1), referencing the managed Language reference entity.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": "ISO-639",
+    "FormatPattern": "^[a-z]{2}$",
+    "Example": "fr"
+  },
+  {
+    "Code": "DATE",
+    "Name": "Date",
+    "Description": "Calendar date in ISO 8601 extended format (YYYY-MM-DD) when exchanged as text.",
+    "DefaultClassification": "INTERNAL",
+    "ReferenceStandard": "ISO-8601",
+    "FormatPattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+    "Example": "2026-12-11"
+  },
+  {
+    "Code": "TIMESTAMP",
+    "Name": "Timestamp",
+    "Description": "Date and time with explicit UTC offset, ISO 8601 extended format.",
+    "DefaultClassification": "INTERNAL",
+    "ReferenceStandard": "ISO-8601",
+    "FormatPattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$",
+    "Example": "2026-12-11T14:30:00Z"
+  },
+  {
+    "Code": "PHONE_NUMBER",
+    "Name": "Phone number",
+    "Description": "Telephone number normalised to E.164 (plus sign, country code, national number, max 15 digits). Personal when it belongs to a natural person.",
+    "DefaultClassification": "PERSONAL",
+    "ReferenceStandard": "ITU-T-E164",
+    "FormatPattern": "^\\+[1-9][0-9]{1,14}$",
+    "Example": "+15145550123"
+  },
+  {
+    "Code": "EMAIL",
+    "Name": "Email address",
+    "Description": "Email address. Personal when it identifies a natural person, including professional addresses such as firstname.lastname@example.com.",
+    "DefaultClassification": "PERSONAL",
+    "ReferenceStandard": null,
+    "FormatPattern": "^[^@\\s]+@[^@\\s]+\\.[A-Za-z]{2,}$",
+    "Example": "jane.doe@example.com"
+  },
+  {
+    "Code": "PERSON_NAME",
+    "Name": "Person name",
+    "Description": "Given name, family name or full name of a natural person.",
+    "DefaultClassification": "PERSONAL",
+    "ReferenceStandard": null,
+    "FormatPattern": null,
+    "Example": "Jane Doe"
+  },
+  {
+    "Code": "POSTAL_ADDRESS",
+    "Name": "Postal address",
+    "Description": "Postal address lines, city, postal code and country (country as COUNTRY_CODE). Personal when it is the address of a natural person.",
+    "DefaultClassification": "PERSONAL",
+    "ReferenceStandard": null,
+    "FormatPattern": null,
+    "Example": "1000 Rue Sherbrooke O, Montreal QC H3A 3G4, CA"
+  },
+  {
+    "Code": "DATE_OF_BIRTH",
+    "Name": "Date of birth",
+    "Description": "Date of birth of a natural person.",
+    "DefaultClassification": "PERSONAL",
+    "ReferenceStandard": "ISO-8601",
+    "FormatPattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+    "Example": "1980-04-23"
+  },
+  {
+    "Code": "NATIONAL_ID",
+    "Name": "Government identifier",
+    "Description": "Government-issued personal identifier (social security, national ID, passport, driver's licence number). Sensitive personal information under CCPA/CPRA.",
+    "DefaultClassification": "SENSITIVE_PERSONAL",
+    "ReferenceStandard": null,
+    "FormatPattern": null,
+    "Example": "123-45-6789"
+  },
+  {
+    "Code": "HEALTH_DATA",
+    "Name": "Health data",
+    "Description": "Data concerning the physical or mental health of a natural person (GDPR Art. 4(15), special category under Art. 9).",
+    "DefaultClassification": "SENSITIVE_PERSONAL",
+    "ReferenceStandard": "GDPR",
+    "FormatPattern": null,
+    "Example": "Allergy: penicillin"
+  },
+  {
+    "Code": "IBAN",
+    "Name": "IBAN",
+    "Description": "International bank account number. Personal data when the account holder is a natural person.",
+    "DefaultClassification": "CONFIDENTIAL",
+    "ReferenceStandard": "ISO-13616",
+    "FormatPattern": "^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$",
+    "Example": "FR7630006000011234567890189"
+  },
+  {
+    "Code": "LEI",
+    "Name": "Legal entity identifier",
+    "Description": "20-character legal entity identifier of an organisation, issued by an LEI issuer accredited by GLEIF.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": "ISO-17442",
+    "FormatPattern": "^[A-Z0-9]{18}[0-9]{2}$",
+    "Example": "5493001KJTIIGC8Y1R12"
+  },
+  {
+    "Code": "VAT_NUMBER",
+    "Name": "VAT or tax registration number",
+    "Description": "Tax registration number of an organisation (VAT, GST/HST, EIN), stored without spaces, with its issuing country.",
+    "DefaultClassification": "INTERNAL",
+    "ReferenceStandard": null,
+    "FormatPattern": "^[A-Z0-9]{4,15}$",
+    "Example": "FR40303265045"
+  },
+  {
+    "Code": "ORGANIZATION_NAME",
+    "Name": "Organisation name",
+    "Description": "Registered legal name or trading name of an organisation.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": null,
+    "FormatPattern": null,
+    "Example": "Northwind Distribution Inc."
+  },
+  {
+    "Code": "GTIN",
+    "Name": "GTIN",
+    "Description": "GS1 Global Trade Item Number (8, 12, 13 or 14 digits) identifying a trade item.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": "GS1-GTIN",
+    "FormatPattern": "^([0-9]{8}|[0-9]{12,14})$",
+    "Example": "00012345600012"
+  },
+  {
+    "Code": "PRODUCT_DESCRIPTION",
+    "Name": "Product description",
+    "Description": "Consumer-facing product name or description, held per language (ISO 639) and used on labels, catalogues and e-commerce.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": null,
+    "FormatPattern": null,
+    "Example": "en: Organic oat drink 1 L / fr: Boisson d'avoine biologique 1 L"
+  },
+  {
+    "Code": "MONETARY_AMOUNT",
+    "Name": "Monetary amount",
+    "Description": "Amount with its ISO 4217 currency held in a separate CURRENCY_CODE attribute.",
+    "DefaultClassification": "CONFIDENTIAL",
+    "ReferenceStandard": "ISO-4217",
+    "FormatPattern": "^-?[0-9]+(\\.[0-9]{1,4})?$",
+    "Example": "1250.00"
+  },
+  {
+    "Code": "SOURCE_ID",
+    "Name": "Source record identifier",
+    "Description": "Identifier of a record in its source system, kept for lineage and cross-referencing.",
+    "DefaultClassification": "INTERNAL",
+    "ReferenceStandard": null,
+    "FormatPattern": null,
+    "Example": "SAP-ECC:0000104521"
+  },
+  {
+    "Code": "FREE_TEXT",
+    "Name": "Free-text comment",
+    "Description": "Unstructured comment entered by a user. Must not be used to store personal or sensitive data that has its own attribute.",
+    "DefaultClassification": "INTERNAL",
+    "ReferenceStandard": null,
+    "FormatPattern": null,
+    "Example": "Customer asked to be called after 5 pm"
+  },
+  {
+    "Code": "NDC",
+    "Name": "National Drug Code",
+    "Description": "Pharma extension. FDA National Drug Code in its 10-digit hyphenated 4-4-2, 5-3-2 or 5-4-1 form.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": "FDA-NDC",
+    "FormatPattern": "^([0-9]{4}-[0-9]{4}-[0-9]{2}|[0-9]{5}-[0-9]{3}-[0-9]{2}|[0-9]{5}-[0-9]{4}-[0-9])$",
+    "Example": "50242-040-62"
+  },
+  {
+    "Code": "NPI",
+    "Name": "National Provider Identifier",
+    "Description": "Pharma extension. 10-digit NPI of a US health care provider; the last digit is a Luhn check digit computed with the 80840 prefix. Personal data when the provider is an individual.",
+    "DefaultClassification": "PERSONAL",
+    "ReferenceStandard": "HIPAA-NPI",
+    "FormatPattern": "^[0-9]{10}$",
+    "Example": "1234567893"
+  },
+  {
+    "Code": "HCP_LICENSE_NUMBER",
+    "Name": "HCP state licence number",
+    "Description": "Pharma extension. Licence number of a healthcare professional with its issuing state or authority.",
+    "DefaultClassification": "PERSONAL",
+    "ReferenceStandard": "SUNSHINE-ACT",
+    "FormatPattern": null,
+    "Example": "MD-123456 (NY)"
+  },
+  {
+    "Code": "MPID",
+    "Name": "Medicinal Product Identifier",
+    "Description": "Pharma extension. IDMP Medicinal Product Identifier (ISO 11615) assigned by the regulatory authority of the jurisdiction.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": "ISO-11615",
+    "FormatPattern": null,
+    "Example": "EU-100001234-PRD"
+  },
+  {
+    "Code": "PHPID",
+    "Name": "Pharmaceutical Product Identifier",
+    "Description": "Pharma extension. IDMP Pharmaceutical Product Identifier (ISO 11616) derived from substance(s), strength and dose form.",
+    "DefaultClassification": "PUBLIC",
+    "ReferenceStandard": "ISO-11616",
+    "FormatPattern": null,
+    "Example": "PHPID-L1-0042"
+  },
+  {
+    "Code": "TRANSFER_OF_VALUE",
+    "Name": "Transfer of value",
+    "Description": "Pharma extension. Payment or other transfer of value to a covered recipient, reportable to CMS Open Payments.",
+    "DefaultClassification": "CONFIDENTIAL",
+    "ReferenceStandard": "SUNSHINE-ACT",
+    "FormatPattern": null,
+    "Example": "Consulting fee, 1500.00 USD, 2026-03-02"
+  }
+]

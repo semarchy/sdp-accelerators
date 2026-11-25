@@ -1,0 +1,24 @@
+﻿# Description: Tenure enrichments for the Customer entity.
+# Contains: SemQL expressions to compute TenureYears and TenureSegment from CustomerSinceDate.
+# Role: Provides derived loyalty/lifecycle attributes for segmentation.
+_package: RetailCustomer360.entities.Customer.enrichers
+_name: TenureEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.Customer.Customer
+label: Customer Tenure Enricher
+description: "Computes TenureYears and TenureSegment from CustomerSinceDate."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: TenureYears
+    expression: FLOOR(DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', CustomerSinceDate))
+  - attributeName: TenureSegment
+    expression: CASE
+        WHEN CustomerSinceDate IS NULL THEN 'Unknown'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', CustomerSinceDate)) < 1 THEN 'New'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', CustomerSinceDate)) < 3 THEN 'Established'
+        WHEN (DATE_PART('year', CURRENT_DATE()) - DATE_PART('year', CustomerSinceDate)) < 7 THEN 'Loyal'
+        ELSE 'Veteran'
+      END
+
+

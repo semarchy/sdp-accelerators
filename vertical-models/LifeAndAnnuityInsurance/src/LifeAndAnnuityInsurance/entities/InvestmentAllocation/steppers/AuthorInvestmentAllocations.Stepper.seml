@@ -1,0 +1,42 @@
+_package: LifeAndAnnuityInsurance.entities.InvestmentAllocation.steppers
+_type: Stepper
+_name: AuthorInvestmentAllocations
+entity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+label: "Investment Allocations"
+rootStep:
+  _type: CollectionStep
+  _name: InvestmentAllocations
+  label: "Investment Allocations"
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: LifeAndAnnuityInsurance.entities.InvestmentAllocation.collection_views.InvestmentAllocationImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: InvestmentAllocation
+      label: "Investment Allocation"
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: LifeAndAnnuityInsurance.entities.InvestmentAllocation.forms.InvestmentAllocationForm.InvestmentAllocation
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.InvestmentAllocation.validations.InvestmentAllocationPercentageCheck
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: LifeAndAnnuityInsurance.entities.InvestmentAllocation.validations.InvestmentAllocationDateRangeCheck

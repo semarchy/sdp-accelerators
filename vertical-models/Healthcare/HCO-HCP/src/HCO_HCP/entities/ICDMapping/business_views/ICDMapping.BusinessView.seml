@@ -1,0 +1,51 @@
+_name: ICDMapping
+_package: HCO_HCP.entities.ICDMapping.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: HCO_HCP.entities.ICDMapping.ICDMapping
+rootLabel: ICD Mapping
+rootPluralLabel: ICD Mappings
+useHierarchyOnOpen: false
+label: ICD Mappings
+rootBusinessViewEntity:
+  _name: ICDMappingEO
+  _type: BusinessViewEntity
+  collection: HCO_HCP.entities.ICDMapping.collection_views.ICDMappingCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: HCO_HCP.entities.ICDMapping.ICDMapping
+  displayCard: HCO_HCP.entities.ICDMapping.display_cards.ICDMappingDisplayCard
+  form: HCO_HCP.entities.ICDMapping.forms.ICDMappingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: HCO_HCP.entities.ICDMapping.action_sets.ICDMappingActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: HCO_HCP.entities.ICDMapping.forms.ICDMappingForm.ICDMapping.FDN_ICD10
+      navigationMode: MODAL_FORM
+    - formField: HCO_HCP.entities.ICDMapping.forms.ICDMappingForm.ICDMapping.FDN_ICD9
+      navigationMode: MODAL_FORM
+  transitions: []
+rootIconUrl: images://HCO_HCP/ICDCodes.png

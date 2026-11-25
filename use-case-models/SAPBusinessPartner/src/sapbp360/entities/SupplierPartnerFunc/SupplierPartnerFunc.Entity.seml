@@ -1,0 +1,56 @@
+# Supplier Partner Function entity for the SAP Business Partner 360 accelerator.
+_name: SupplierPartnerFunc
+_package: sapbp360.entities.SupplierPartnerFunc
+_type: Entity
+primaryKey: sapbp360.entities.SupplierPartnerFunc.SupplierPartnerFunc.PartnerFuncID
+sourceIdGeneration:
+  mode: MANUAL
+label: Supplier Partner Function
+documentation: Partner functions assigned within a supplier purchasing organization.
+description: Partner functions assigned within a supplier purchasing organization.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/SupplierPartnerFunc.svg
+pluralLabel: Supplier Partner Functions
+historizeGolden: true
+historizeMaster: false
+physicalTableName: SUP_PARTNER_FUNC
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PartnerFuncID
+    physicalName: PTNR_FUNC_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Partner Func ID
+    documentation: Unique identifier for the partner function assignment.
+    description: Unique identifier for the partner function assignment.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Partner Func ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: PartnerCounter
+    physicalName: PTNR_CTR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Partner Counter
+    documentation: Partner counter.
+    description: Partner counter.
+    mandatory: false
+    length: 3
+    searchable: true
+  - _type: EntityAttribute
+    _name: DefaultPartner
+    physicalName: DEF_PTNR
+    dataType: Boolean
+    goldenAttribute: true
+    label: Default Partner
+    documentation: Indicates whether this is the default partner.
+    description: Indicates whether this is the default partner.
+    mandatory: false
+    length: 1
+    searchable: true

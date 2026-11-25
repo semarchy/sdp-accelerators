@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: VendorHasCountry
+_type: Reference
+label: Vendor Has Country
+description: "Links vendors to country reference data."
+documentation: "Links vendors to country reference data."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.Vendor.Vendor
+fromRoleLabel: CRO / Vendor
+fromRoleName: vendor
+fromRolePluralLabel: CROs / Vendors
+physicalName: VENDOR_HAS_CTRY
+fromNavigable: true
+
+toEntity: CTMDM.entities.Country.Country
+toRoleLabel: Country
+toRoleName: country
+toRolePhysicalName: CTRY
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: country
+  label: Country Code
+  physicalName: CTRY
+  searchable: true
+  entity: CTMDM.entities.Country.Country

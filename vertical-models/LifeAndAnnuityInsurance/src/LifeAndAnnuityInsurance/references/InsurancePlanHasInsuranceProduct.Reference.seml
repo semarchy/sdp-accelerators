@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: InsurancePlanHasInsuranceProduct
+description: "Indicates the Insurance Product associated with a Insurance Plan."
+_type: Reference
+label: "Insurance Plan Has Insurance Product"
+
+fromEntity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan
+fromRoleLabel: "Insurance Plan"
+fromRoleName: InsurancePlan
+fromRolePluralLabel: "Insurance Plans"
+physicalName: INS_PLAN_HAS_INS_PROD
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.InsuranceProduct.InsuranceProduct
+toRoleLabel: "Insurance Product"
+toRoleName: InsuranceProduct
+toRolePhysicalName: INS_PROD
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: InsuranceProduct
+  label: "Insurance Product ID"
+  description: "The identifier of the Insurance Product associated with the Insurance Plan."
+  physicalName: INS_PROD_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.InsuranceProduct.InsuranceProduct

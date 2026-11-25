@@ -1,0 +1,25 @@
+_package: RestaurantMaster.references
+_type: Reference
+label: Status history - Restaurant
+_name: RestaurantStatusHistoryHasRestaurant
+description: Attaches each status history to its restaurant; deleted with the restaurant.
+documentation: Attaches each status history to its restaurant; deleted with the restaurant.
+deletePropagation: CASCADE
+fromEntity: RestaurantMaster.entities.RestaurantStatusHistory.RestaurantStatusHistory
+fromRoleName: StatusHistory
+fromRoleLabel: Status history
+fromRolePluralLabel: Status history
+physicalName: STATUSHIST_RESTAURANT
+toEntity: RestaurantMaster.entities.Restaurant.Restaurant
+toRoleName: Restaurant
+toRolePhysicalName: RESTAURANT_ID
+toRoleLabel: Restaurant
+validationScope: PRE_CONSO
+oneToMany: true
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: Restaurant
+  entity: RestaurantMaster.entities.Restaurant.Restaurant
+  label: Restaurant
+  physicalName: RESTAURANT_ID
+  searchable: true

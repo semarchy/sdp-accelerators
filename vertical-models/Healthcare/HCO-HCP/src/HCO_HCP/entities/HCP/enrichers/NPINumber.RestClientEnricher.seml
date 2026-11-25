@@ -1,0 +1,32 @@
+_type: RestClientEnricher
+_package: HCO_HCP.entities.HCP.enrichers
+_name: NPINumber
+entity: HCO_HCP.entities.HCP.HCP
+label: NPI Number
+pluginId: NPPESRestAPI
+batchUpdateSize: 1000
+condition: NPI IS NOT NULL
+numberOfRetry: 0
+onErrorBehavior: SKIP_RECORDS
+enricherExecutionScope: NONE
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: NPI
+    expression: NPI
+pluginOutputs:
+  - outputName: credential
+    attributeName: Specialties
+  - outputName: zip
+    attributeName: ZipCode
+  - outputName: city
+    attributeName: City
+  - outputName: address_1
+    attributeName: StreetAddressLine1
+  - outputName: state
+    attributeName: State
+  - outputName: first_name
+    attributeName: FirstName
+  - outputName: last_name
+    attributeName: LastName
+afterEnrichers: HCO_HCP.entities.HCP.enrichers.NPPESGetNPI

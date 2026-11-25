@@ -1,0 +1,233 @@
+_package: sapbp360.workflows
+_type: Workflow
+_name: NewBusinessPartnerOnboarding
+label: New Business Partner Onboarding
+workflowAdminRole: semarchyAdmin
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+  - entity: sapbp360.entities.BusinessPartner.BusinessPartner
+    _type: RootEntity
+    _name: BusinessPartner
+    cardinality: SINGLE_RECORD
+    displayCard: sapbp360.entities.BusinessPartner.display_cards.BusinessPartnerDisplayCard
+    childEntities:
+      - ref: sapbp360.references.BPRole_BusinessPartner
+      - ref: sapbp360.references.BPIdentification_BusinessPartner
+      - ref: sapbp360.references.BPIndustry_BusinessPartner
+      - ref: sapbp360.references.BPAddress_BusinessPartner
+      - ref: sapbp360.references.BPBank_BusinessPartner
+      - ref: sapbp360.references.BPTaxNumber_BusinessPartner
+      - ref: sapbp360.references.BPContact_BusinessPartnerCompany
+      - ref: sapbp360.references.BPRelationship_Party1
+      - ref: sapbp360.references.Supplier_BusinessPartner
+      - ref: sapbp360.references.SupplierPartnerFunc_BPPartner
+steps:
+  - _type: StartFromSelectionEvent
+    _name: StartFromSelection
+    position:
+      x: -520
+      y: -30
+    label: Start From Business Partner
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: sapbp360.workflows.NewBusinessPartnerOnboarding.CaptureRequest
+      bendPoints: []
+    authoredEntity: sapbp360.entities.BusinessPartner.BusinessPartner
+    selectionSourceType: GOLDEN_DATA
+  - _type: StartFromEmptySelectionEvent
+    _name: StartFromScratch
+    position:
+      x: -520
+      y: -100
+    label: Start From Scratch
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: sapbp360.workflows.NewBusinessPartnerOnboarding.CaptureRequest
+      bendPoints: []
+  - _type: UserTask
+    _name: CaptureRequest
+    label: Capture Business Partner Request
+    icon: images://mdi/account-plus.svg
+    position:
+      x: -320
+      y: -75
+    application: sapbp360.applications.BusinessPartner360Hub
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sapbp360.entities.BusinessPartner.BusinessPartner
+    stepper: sapbp360.entities.BusinessPartner.steppers.AuthorBusinessPartners
+    myTasksConfiguration:
+      collection: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerMasterCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: CaptureRequestNext
+        label: Proceed
+        toStep: sapbp360.workflows.NewBusinessPartnerOnboarding.DataQualityReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: DataQualityReview
+    label: Data Quality Review
+    icon: images://mdi/check-decagram.svg
+    position:
+      x: -80
+      y: -75
+    application: sapbp360.applications.BusinessPartner360Hub
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sapbp360.entities.BusinessPartner.BusinessPartner
+    stepper: sapbp360.entities.BusinessPartner.steppers.AuthorBusinessPartners
+    myTasksConfiguration:
+      collection: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerMasterCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: DataQualityReviewNext
+        label: Proceed
+        toStep: sapbp360.workflows.NewBusinessPartnerOnboarding.FinalApproval
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: FinalApproval
+    label: Final Approval
+    icon: images://mdi/check-circle.svg
+    position:
+      x: 160
+      y: -75
+    application: sapbp360.applications.BusinessPartner360Hub
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: sapbp360.entities.BusinessPartner.BusinessPartner
+    stepper: sapbp360.entities.BusinessPartner.steppers.AuthorBusinessPartners
+    myTasksConfiguration:
+      collection: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerMasterCollection
+    transitions:
+      - _type: UserTaskTransition
+        _name: FinalApprovalNext
+        label: Approve and Submit
+        toStep: sapbp360.workflows.NewBusinessPartnerOnboarding.SubmitData
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 400
+      y: -75
+    integrationJob: sapbp360.certification_jobs.INTEGRATE_ALL
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: sapbp360.workflows.NewBusinessPartnerOnboarding.End
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 620
+      y: -75

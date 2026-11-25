@@ -1,0 +1,44 @@
+# AuthorRuleCitations: stepper on RuleCitation of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleCitation.steppers
+_type: Stepper
+_name: AuthorRuleCitations
+description: 'Creates and edits citations outside the rule journeys (Create, Edit, Mass update and Import actions), with the rule and the regulation picked by name.'
+entity: GovernanceRules.entities.RuleCitation.RuleCitation
+label: Enter citations
+rootStep:
+  _type: CollectionStep
+  _name: RuleCitations
+  label: Citations
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.RuleCitation.collection_views.RuleCitationCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: RuleCitation
+      label: Citation
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.RuleCitation.forms.RuleCitationForm.RuleCitation
+      referenceFormFieldConfigs:
+        - fdnFormField: GovernanceRules.entities.RuleCitation.forms.RuleCitationForm.RuleCitation.Links.FDN_Regulation
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Name
+        - fdnFormField: GovernanceRules.entities.RuleCitation.forms.RuleCitationForm.RuleCitation.Links.FDN_Rule
+          referencePickerType: AUTO_COMPLETE
+          enableUserSort: true
+          sortExpression: Title

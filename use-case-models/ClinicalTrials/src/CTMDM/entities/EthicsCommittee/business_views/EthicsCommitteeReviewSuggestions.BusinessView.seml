@@ -1,0 +1,64 @@
+_package: CTMDM.entities.EthicsCommittee.business_views
+_type: BusinessView
+_name: EthicsCommitteeReviewSuggestions
+
+entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+label: Ethics Committees / IRBs Review Suggestions
+rootLabel: Ethics Committee / IRB
+rootPluralLabel: Ethics Committees / IRBs
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: images://mdi/account-alert.svg
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: EthicsCommittee
+  entity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+
+  actionSet: CTMDM.entities.EthicsCommittee.action_sets.EthicsCommitteeReviewSuggestionsActionSet
+  collection: CTMDM.entities.EthicsCommittee.collection_views.EthicsCommitteeReviewSuggestionsCollectionView
+  form: CTMDM.entities.EthicsCommittee.forms.EthicsCommitteeForm
+  displayCard: CTMDM.entities.EthicsCommittee.display_cards.EthicsCommitteeDisplayCard
+
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.EthicsCommittee.business_views.EthicsCommitteeReviewSuggestions.EthicsCommittee
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

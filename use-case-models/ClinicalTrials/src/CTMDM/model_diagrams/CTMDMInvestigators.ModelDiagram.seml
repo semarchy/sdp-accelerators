@@ -1,0 +1,85 @@
+_package: CTMDM.model_diagrams
+_name: CTMDMInvestigators
+_type: ModelDiagram
+attributeNameFormat: NAME
+description: Visual map of the Clinical Trial MDM data model and its relationships.
+entityNameFormat: LABEL
+label: Investigator Domain
+referenceRoleNameFormat: LABEL
+referenceNameFormat: LABEL
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritLinkName: false
+showInheritedAttributes: true
+showReferenceCardinality: true
+showReferenceName: false
+showReferenceRoles: true
+entityShapes:
+  - _type: EntityShape
+    entity: CTMDM.entities.Investigator.Investigator
+    _name: Investigator
+    borderColor: "#4DA39D"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 848
+      y: 554
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.MedicalLicense.MedicalLicense
+    _name: MedicalLicense
+    borderColor: "#1E6F8B"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 360
+      y: 0
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.GcpCertification.GcpCertification
+    _name: GcpCertification
+    borderColor: "#7AC957"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 720
+      y: 0
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.StudyInvestigator.StudyInvestigator
+    _name: StudyInvestigator
+    borderColor: "#F5B041"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1080
+      y: 0
+    width: -1
+  - _type: EntityShape
+    entity: CTMDM.entities.Country.Country
+    _name: Country
+    borderColor: "#A7C957"
+    fontTitleColor: ""
+    height: -1
+    position:
+      x: 1440
+      y: 0
+    width: -1
+referenceLinks:
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMInvestigators.Investigator
+    reference: CTMDM.references.InvestigatorHasCountry
+    toEntityShape: CTMDM.model_diagrams.CTMDMInvestigators.Country
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMInvestigators.MedicalLicense
+    reference: CTMDM.references.MedicalLicenseHasInvestigator
+    toEntityShape: CTMDM.model_diagrams.CTMDMInvestigators.Investigator
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMInvestigators.GcpCertification
+    reference: CTMDM.references.GcpCertificationHasInvestigator
+    toEntityShape: CTMDM.model_diagrams.CTMDMInvestigators.Investigator
+    bendPoints: []
+  - fromEntityShape: CTMDM.model_diagrams.CTMDMInvestigators.StudyInvestigator
+    reference: CTMDM.references.StudyInvestigatorHasInvestigator
+    toEntityShape: CTMDM.model_diagrams.CTMDMInvestigators.Investigator
+    bendPoints: []
+inheritLinks: []

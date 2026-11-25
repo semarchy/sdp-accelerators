@@ -1,0 +1,12 @@
+# SetDraftStatus: SemQL enricher on GovernanceRule of the GovernanceRules accelerator. Stepper only: a new rule starts as DRAFT.
+_package: GovernanceRules.entities.GovernanceRule.enrichers
+_type: SemQLEnricher
+_name: SetDraftStatus
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Set draft status
+description: 'Stepper only: a new rule starts as DRAFT.'
+enricherExecutionScope: NONE
+condition: LifecycleStatus IS NULL
+semQlEnricherExpressions:
+- attributeName: LifecycleStatus
+  expression: '''DRAFT'''

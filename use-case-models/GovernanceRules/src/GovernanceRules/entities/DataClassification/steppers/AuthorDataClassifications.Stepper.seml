@@ -1,0 +1,35 @@
+# AuthorDataClassifications: stepper on DataClassification of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.DataClassification.steppers
+_type: Stepper
+_name: AuthorDataClassifications
+description: 'Creates and edits data classifications (Create, Edit, Mass update and Import actions). Used by the governance steward, without workflow.'
+entity: GovernanceRules.entities.DataClassification.DataClassification
+label: Enter data classifications
+rootStep:
+  _type: CollectionStep
+  _name: DataClassifications
+  label: Data classifications
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: GovernanceRules.entities.DataClassification.collection_views.DataClassificationCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: DataClassification
+      label: Data classification
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: GovernanceRules.entities.DataClassification.forms.DataClassificationForm.DataClassification

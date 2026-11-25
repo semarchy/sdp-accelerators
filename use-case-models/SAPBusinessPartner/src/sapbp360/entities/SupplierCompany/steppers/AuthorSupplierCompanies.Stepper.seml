@@ -1,0 +1,225 @@
+_name: AuthorSupplierCompanies
+_package: sapbp360.entities.SupplierCompany.steppers
+_type: Stepper
+entity: sapbp360.entities.SupplierCompany.SupplierCompany
+description: Stepper for authoring Supplier Companies.
+rootStep:
+  _name: SupplierCompanies
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.SupplierCompany.collection_views.SupplierCompanyCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Supplier Companies
+  description: Manage Supplier Company data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_CompanyCode.CompanyCode
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_PaymentTerms.PaymentTerms
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_ReconciliationAccount.ReconciliationAccount
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_HouseBank.HouseBank
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_SortKey.SortKey
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_CashPlanningGroup.CashPlanningGroup
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_InterestCalculationCode.InterestCalculationCode
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_ToleranceGroup.ToleranceGroup
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_PaymentBlockingReason.PaymentBlockingReason
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_AlternativePayeeAccountNumber.AlternativePayeeAccountNumber
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_WithholdingTaxCountry.WithholdingTaxCountry
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierCompany_Supplier.Supplier
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Supplier Company.
+      formTab: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.Identification.IdentificationRow.IdentificationCol2.FDN_CompanyCode
+          referencePickerCollectionView: sapbp360.entities.CompanyCode.collection_views.CompanyCodeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.Payment.PaymentRow.PaymentCol1.FDN_PaymentTerms
+          referencePickerCollectionView: sapbp360.entities.PaymentTerms.collection_views.PaymentTermsCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol1.FDN_ReconciliationAccount
+          referencePickerCollectionView: sapbp360.entities.ReconciliationAccount.collection_views.ReconciliationAccountCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol1.FDN_HouseBank
+          referencePickerCollectionView: sapbp360.entities.HouseBank.collection_views.HouseBankCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol2.FDN_SortKey
+          referencePickerCollectionView: sapbp360.entities.SortKey.collection_views.SortKeyCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol2.FDN_CashPlanningGroup
+          referencePickerCollectionView: sapbp360.entities.CashPlanningGroup.collection_views.CashPlanningGroupCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol3.FDN_InterestCalculationCode
+          referencePickerCollectionView: sapbp360.entities.InterestCalculationCode.collection_views.InterestCalculationCodeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol3.FDN_ToleranceGroup
+          referencePickerCollectionView: sapbp360.entities.ToleranceGroup.collection_views.ToleranceGroupCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.Payment.PaymentRow.PaymentCol2.FDN_PaymentBlockingReason
+          referencePickerCollectionView: sapbp360.entities.PaymentBlockingReason.collection_views.PaymentBlockingReasonCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.Payment.PaymentRow.PaymentCol3.FDN_AlternativePayeeAccountNumber
+          referencePickerCollectionView: sapbp360.entities.AlternativePayee.collection_views.AlternativePayeeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.AccountAssignments.AccountAssignmentsRow.AccountAssignmentsCol1.FDN_WithholdingTaxCountry
+          referencePickerCollectionView: sapbp360.entities.Country.collection_views.CountryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierCompany.forms.SupplierCompanyDataEntryForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_Supplier
+          referencePickerCollectionView: sapbp360.entities.Supplier.collection_views.SupplierCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_CompanyCode.CompanyCode
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_PaymentTerms.PaymentTerms
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_ReconciliationAccount.ReconciliationAccount
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_HouseBank.HouseBank
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_SortKey.SortKey
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_CashPlanningGroup.CashPlanningGroup
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_InterestCalculationCode.InterestCalculationCode
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_ToleranceGroup.ToleranceGroup
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_PaymentBlockingReason.PaymentBlockingReason
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_AlternativePayeeAccountNumber.AlternativePayeeAccountNumber
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_WithholdingTaxCountry.WithholdingTaxCountry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierCompany_Supplier.Supplier
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author Supplier Companies
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_CompanyCode.CompanyCode
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_PaymentTerms.PaymentTerms
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_ReconciliationAccount.ReconciliationAccount
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_HouseBank.HouseBank
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_SortKey.SortKey
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_CashPlanningGroup.CashPlanningGroup
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_InterestCalculationCode.InterestCalculationCode
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_ToleranceGroup.ToleranceGroup
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_PaymentBlockingReason.PaymentBlockingReason
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_AlternativePayeeAccountNumber.AlternativePayeeAccountNumber
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_WithholdingTaxCountry.WithholdingTaxCountry
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierCompany_Supplier.Supplier
+triggers: []

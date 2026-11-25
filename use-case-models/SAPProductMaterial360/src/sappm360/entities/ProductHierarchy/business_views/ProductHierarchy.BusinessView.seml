@@ -1,0 +1,120 @@
+_name: ProductHierarchy
+_package: sappm360.entities.ProductHierarchy.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: sappm360.entities.ProductHierarchy.ProductHierarchy
+rootLabel: Product Hierarchy
+rootPluralLabel: Product Hierarchies
+useHierarchyOnOpen: false
+label: Product Hierarchy
+description: Business view for Product Hierarchy.
+rootBusinessViewEntity:
+  _name: ProductHierarchy
+  _type: BusinessViewEntity
+  collection: sappm360.entities.ProductHierarchy.collection_views.ProductHierarchyCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.ProductHierarchy.ProductHierarchy
+  form: sappm360.entities.ProductHierarchy.forms.ProductHierarchyBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.ProductHierarchy.action_sets.ProductHierarchyActionSet
+  displayCard: sappm360.entities.ProductHierarchy.display_cards.ProductHierarchyDisplayCard
+  sortExpression: HierarchyPath
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.ProductHierarchy.forms.ProductHierarchyBrowsingForm.Main.Details.DetailsContainer.Container3.FDN_ParentHierarchy
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: ChildHierarchyNodes
+      _type: BusinessViewTransition
+      transitionPath: ChildHierarchyNodes
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: any ChildHierarchyNodes has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: true
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Child Node
+      pluralLabel: Child Nodes
+      transitionVisible: "0"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ChildProductHierarchy
+        _type: BusinessViewEntity
+        collection: sappm360.entities.ProductHierarchy.collection_views.ProductHierarchyCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sappm360.entities.ProductHierarchy.ProductHierarchy
+        form: sappm360.entities.ProductHierarchy.forms.ProductHierarchyBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sappm360.entities.ProductHierarchy.action_sets.ProductHierarchyActionSet
+        displayCard: sappm360.entities.ProductHierarchy.display_cards.ProductHierarchyDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.ProductHierarchy.business_views.ProductHierarchy.ProductHierarchy
+rootIconUrl: images://mdi/sitemap-outline.svg

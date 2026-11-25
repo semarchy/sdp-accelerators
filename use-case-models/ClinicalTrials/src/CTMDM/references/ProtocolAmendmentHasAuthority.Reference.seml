@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: ProtocolAmendmentHasAuthority
+_type: Reference
+label: Protocol Amendment Has Authority
+description: "Links protocol amendments to the reviewing regulatory authority."
+documentation: "Links protocol amendments to the reviewing regulatory authority."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+fromRoleLabel: Protocol Amendment
+fromRoleName: protocolAmendment
+fromRolePluralLabel: Protocol Amendments
+physicalName: PROTOCOL_AMD_HAS_AUTH
+fromNavigable: true
+
+toEntity: CTMDM.entities.RegulatoryAuthority.RegulatoryAuthority
+toRoleLabel: Regulatory Authority
+toRoleName: regulatoryAuthority
+toRolePhysicalName: REG_AUTH
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: regulatoryAuthority
+  label: Regulatory Authority
+  physicalName: REG_AUTH
+  searchable: true
+  entity: CTMDM.entities.RegulatoryAuthority.RegulatoryAuthority

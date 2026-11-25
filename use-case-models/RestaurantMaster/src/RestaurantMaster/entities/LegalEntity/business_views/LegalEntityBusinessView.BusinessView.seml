@@ -1,0 +1,192 @@
+_package: RestaurantMaster.entities.LegalEntity.business_views
+_type: BusinessView
+_name: LegalEntityBusinessView
+entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+rootLabel: Legal entities
+rootPluralLabel: Legal entities
+displayRootNodeAs: ICON_LABEL
+label: Legal entity
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: LegalEntity
+  entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+  actionSet: RestaurantMaster.entities.LegalEntity.action_sets.LegalEntityActionSet
+  collection: RestaurantMaster.entities.LegalEntity.collection_views.LegalEntityCollectionView
+  form: RestaurantMaster.entities.LegalEntity.forms.LegalEntityForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  displayCard: RestaurantMaster.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+  businessEntitySearchConfigs:
+  - _name: TextConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: TEXT
+  - _name: FormConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: BY_FORM
+  - _name: AdvancedConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: ADVANCED
+  - _name: SemqlConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  businessEntityBuiltInFilters:
+  - _type: BusinessEntityBuiltInFilter
+    _name: LegalEntityWithoutFranchisee
+    label: Franchisee companies without a group
+    semQlCondition: LegalEntityType = 'FRANCHISEE' AND FID_Franchisee IS NULL
+    visible: true
+  transitions:
+  - _type: BusinessViewTransition
+    _name: OperatedRestaurantsTab
+    label: Operated restaurants
+    useCustomLabel: true
+    transitionPath: OperatedRestaurants
+    transitionType: FULLY_QUALIFIED
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: OperatedRestaurantsTabEnt
+      entity: RestaurantMaster.entities.RestaurantOperator.RestaurantOperator
+      actionSet: RestaurantMaster.entities.RestaurantOperator.action_sets.RestaurantOperatorActionSet
+      collection: RestaurantMaster.entities.RestaurantOperator.collection_views.RestaurantOperatorCollectionView
+      form: RestaurantMaster.entities.RestaurantOperator.forms.RestaurantOperatorForm
+      displayCard: RestaurantMaster.entities.RestaurantOperator.display_cards.RestaurantOperatorDisplayCard
+      outlineVisible: false
+      displayRecordCount: ALWAYS
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      overrideDefaultSort: false
+      enableUserDefinedSort: true
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+    pluralLabel: Operated restaurants
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/account-tie.svg
+    visibleInFormTabCondition: any OperatedRestaurants has (1=1)
+  - _type: BusinessViewTransition
+    _name: MasterRecords
+    transitionType: FULLY_QUALIFIED
+    transitionPath: MasterRecords
+    useCustomLabel: true
+    label: Contributing sources
+    pluralLabel: Contributing sources
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/puzzle.svg
+    filter: '1 = 1'
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: LegalEntityMaster
+      entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+      collection: RestaurantMaster.entities.LegalEntity.collection_views.LegalEntityCollectionView
+      form: RestaurantMaster.entities.LegalEntity.forms.LegalEntityForm
+      displayCard: RestaurantMaster.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      outlineVisible: false
+      overrideDefaultSort: false
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+      transitions:
+      - _type: BusinessViewTransition
+        _name: SourceRecords
+        transitionType: FULLY_QUALIFIED
+        transitionPath: SourceRecords
+        useCustomLabel: true
+        label: Source data
+        pluralLabel: Source data
+        displayFormTabAs: ICON_LABEL
+        displayTransitionNodeAs: ICON_LABEL
+        iconUrl: images://mdi/database-arrow-right.svg
+        filter: '1 = 1'
+        businessViewEntity:
+          _type: BusinessViewEntity
+          _name: LegalEntitySource
+          entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+          collection: RestaurantMaster.entities.LegalEntity.collection_views.LegalEntityCollectionView
+          form: RestaurantMaster.entities.LegalEntity.forms.LegalEntityForm
+          displayCard: RestaurantMaster.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+          displayRecordCount: ALWAYS
+          enableUserDefinedSort: true
+          outlineVisible: false
+          overrideDefaultSort: false
+          listAllowed: true
+          tableAllowed: true
+          gridAllowed: false
+          businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+      - _type: BusinessViewTransition
+        _name: MasterHistory
+        transitionType: FULLY_QUALIFIED
+        transitionPath: MasterHistoryRecords
+        useCustomLabel: true
+        label: Source history
+        pluralLabel: Source history
+        displayFormTabAs: ICON_LABEL
+        displayTransitionNodeAs: ICON_LABEL
+        iconUrl: images://mdi/history.svg
+        filter: '1 = 1'
+        businessViewEntity:
+          _type: BusinessViewEntity
+          _name: LegalEntityMasterHist
+          entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+          collection: RestaurantMaster.entities.LegalEntity.collection_views.LegalEntityCollectionView
+          form: RestaurantMaster.entities.LegalEntity.forms.LegalEntityForm
+          displayCard: RestaurantMaster.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+          displayRecordCount: ALWAYS
+          enableUserDefinedSort: true
+          outlineVisible: false
+          overrideDefaultSort: false
+          listAllowed: true
+          tableAllowed: true
+          gridAllowed: false
+          businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+  - _type: BusinessViewTransition
+    _name: GoldenHistory
+    transitionType: FULLY_QUALIFIED
+    transitionPath: GoldenHistoryRecords
+    useCustomLabel: true
+    label: Change history
+    pluralLabel: Change history
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    iconUrl: images://mdi/history.svg
+    filter: '1 = 1'
+    businessViewEntity:
+      _type: BusinessViewEntity
+      _name: LegalEntityGoldenHist
+      entity: RestaurantMaster.entities.LegalEntity.LegalEntity
+      collection: RestaurantMaster.entities.LegalEntity.collection_views.LegalEntityCollectionView
+      form: RestaurantMaster.entities.LegalEntity.forms.LegalEntityForm
+      displayCard: RestaurantMaster.entities.LegalEntity.display_cards.LegalEntityDisplayCard
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      outlineVisible: false
+      overrideDefaultSort: false
+      listAllowed: true
+      tableAllowed: true
+      gridAllowed: false
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+enableHierarchyView: false
+useHierarchyOnOpen: false

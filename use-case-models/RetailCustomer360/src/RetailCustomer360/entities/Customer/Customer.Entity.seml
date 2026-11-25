@@ -1,0 +1,282 @@
+﻿_package: RetailCustomer360.entities.Customer
+_type: Entity
+_name: Customer
+label: Customer
+pluralLabel: Customers
+entityType: FUZZY_MATCHED
+physicalTableName: CUSTOMER
+iconUrl: https://api.iconify.design/mdi/account.svg?color=%230D1B2A&width=64
+description: "Represents a uniquely identified  customer or person, including core identity, demographic, lifecycle, and audit information used for customer 360 matching and unification."
+documentation: ""
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CustomerId
+    label: Customer Id
+    physicalName: CUSTOMER_ID
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Enterprise customer identifier"
+  - _type: EntityAttribute
+    _name: FirstName
+    label: First Name
+    physicalName: FIRST_NAME
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Customer first name"
+  - _type: EntityAttribute
+    _name: LastName
+    label: Last Name
+    physicalName: LAST_NAME
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Customer last name"
+  - _type: EntityAttribute
+    _name: MiddleName
+    label: Middle Name
+    physicalName: MIDDLE_NAME
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Customer middle name"
+  - _type: EntityAttribute
+    _name: BirthDate
+    label: Birth Date
+    physicalName: BIRTH_DATE
+    dataType: Date
+    searchable: true
+    description: "Date of birth"
+  - _type: EntityAttribute
+    _name: Gender
+    label: Gender
+    physicalName: GENDER
+    dataType: RetailCustomer360.list_of_values.Gender
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Gender identity"
+  - _type: EntityAttribute
+    _name: CustomerSegment
+    label: Customer Segment
+    physicalName: CUSTOMER_SEGMENT
+    dataType: RetailCustomer360.list_of_values.CustomerSegment
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Segmentation category"
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    physicalName: STATUS
+    dataType: RetailCustomer360.list_of_values.Status
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Active, Prospect, Inactive, etc."
+  - _type: EntityAttribute
+    _name: PreferredLanguage
+    label: Preferred Language
+    physicalName: PREFERRED_LANGUAGE
+    dataType: String
+    length: 10
+    searchable: true
+    description: "ISO language code"
+  - _type: EntityAttribute
+    _name: Occupation
+    label: Occupation
+    physicalName: OCCUPATION
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Occupation"
+  - _type: EntityAttribute
+    _name: AnnualIncome
+    label: Annual Income
+    physicalName: ANNUAL_INCOME
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Estimated annual income"
+  - _type: EntityAttribute
+    _name: CustomerSinceDate
+    label: Customer Since Date
+    physicalName: CUSTOMER_SINCE_DATE
+    dataType: Date
+    searchable: true
+    description: "First known interaction date"
+  - _type: EntityAttribute
+    _name: PreferredChannel
+    label: Preferred Channel
+    physicalName: PREFERRED_CHANNEL
+    dataType: RetailCustomer360.list_of_values.PreferredChannel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Preferred engagement channel"
+  - _type: EntityAttribute
+    _name: CreatedDate
+    label: Created Date
+    physicalName: CREATED_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: false
+    description: "Timestamp when the customer record was created."
+  - _type: EntityAttribute
+    _name: SourceCustomerKey
+    label: Source Customer Key
+    physicalName: SOURCE_CUSTOMER_KEY
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Unique key from the source system"
+
+## Enrichment attributes 
+  - _type: EntityAttribute
+    _name: FullName
+    label: Full Name
+    physicalName: FULL_NAME
+    dataType: String
+    length: 320
+    searchable: true
+    description: "Computed full display name (First + Middle + Last)"
+  - _type: EntityAttribute
+    _name: FullNameNormalized
+    label: Full Name (Normalized)
+    physicalName: FULL_NAME_NORM
+    dataType: String
+    length: 320
+    searchable: true
+    description: "Uppercase, trimmed full name used for matching and search"
+  - _type: EntityAttribute
+    _name: Initials
+    label: Initials
+    physicalName: INITIALS
+    dataType: String
+    length: 8
+    searchable: true
+    description: "Customer initials derived from first and last name"
+  - _type: EntityAttribute
+    _name: Age
+    label: Age
+    physicalName: AGE
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Computed age in years from BirthDate"
+  - _type: EntityAttribute
+    _name: AgeGroup
+    label: Age Group
+    physicalName: AGE_GROUP
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Computed age bracket (e.g. 18-24, 25-34, 35-44...)"
+  - _type: EntityAttribute
+    _name: TenureYears
+    label: Tenure (Years)
+    physicalName: TENURE_YEARS
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Years since CustomerSinceDate"
+  - _type: EntityAttribute
+    _name: TenureSegment
+    label: Tenure Segment
+    physicalName: TENURE_SEGMENT
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Tenure bracket (New, Established, Loyal, Veteran)"
+
+  - _type: EntityAttribute
+    _name: CustomerType
+    label: Customer Type
+    physicalName: CUSTOMER_TYPE
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived business classification for the party record"
+
+  - _type: EntityAttribute
+    _name: CustomerValueBand
+    label: Customer Value
+    physicalName: CUSTOMER_VALUE_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived customer value band based on segment, income, and tenure"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: RetailCustomer360.entities.Customer.Customer.CustomerId
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: CustomerSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SourceCustomerKeyExact
+      label: Source Customer Key Exact Match
+      matchScore: 100
+      condition: Record1.SourceCustomerKey IS NOT NULL AND Record2.SourceCustomerKey IS NOT NULL
+                 AND UPPER(Record1.SourceCustomerKey) = UPPER(Record2.SourceCustomerKey)
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: NameAndBirthDateMatch
+      label: Name and BirthDate Match
+      matchScore: 89
+      condition: UPPER(Record1.FullNameNormalized) = UPPER(Record2.FullNameNormalized)
+                 AND Record1.BirthDate = Record2.BirthDate
+                 AND Record1.FID_Country = Record2.FID_Country
+    - _type: SemQLMatchRule
+      _name: FuzzyNameAndBirthDate
+      label: Fuzzy name with birthdate and country
+      matchScore: 72
+      condition: Record1.FullNameNormalized IS NOT NULL AND Record2.FullNameNormalized IS NOT NULL AND Record1.BirthDate IS NOT NULL AND Record2.BirthDate IS NOT NULL AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.FullNameNormalized), UPPER(Record2.FullNameNormalized)) >= 85 AND Record1.BirthDate = Record2.BirthDate AND Record1.FID_Country = Record2.FID_Country
+      usingMatchOn: false
+
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 75
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 100
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 100
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: false

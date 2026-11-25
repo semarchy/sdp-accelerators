@@ -1,0 +1,237 @@
+ # Description: Form layout for the `LegalEntity` entity (create/edit UI).
+ # Contains: Fields for legal identifiers, names and linked Party references.
+ # Role: Provides the UI for maintaining LegalEntity master records.
+_package: Merchant.entities.LegalEntity.forms
+_type: Form
+_name: LegalEntityForm
+entity: Merchant.entities.LegalEntity.LegalEntity
+default: true
+
+formTabs:
+  - _type: FormTab
+    _name: Overview
+    label: Overview
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/eye-outline.svg
+    content:
+      - _type: FormSection
+        _name: Primary
+        label: Primary
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PrimaryRow
+            layoutDirection: ROW
+            content:
+              - _type: FormContainer
+                _name: LeftCol
+                layoutDirection: COLUMN
+                content:
+                  - _type: TextField
+                    _name: LegalName
+                    value: LegalName
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: headline-6
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: TextField
+                    _name: AlternateLegalName
+                    value: AlternateLegalName
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: MenuField
+                    _name: LegalEntityType
+                    value: LegalEntityType
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      textAlign: left
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+              - _type: FormContainer
+                _name: RightCol
+                layoutDirection: COLUMN
+                content:
+                  - _type: ReferenceField
+                    _name: Party
+                    value: FDN_Party
+                    useCustomLabel: false
+                    dataType: STRING
+                    referencedEntity: Merchant.entities.Party.Party
+                    authoringMode: auto
+                    componentProperties:
+                      displayType: chip
+                      textAlign: left
+                      useAvatarInChip: '1'
+                      useSecondaryTextInChip: '1'
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+                  - _type: ReferenceField
+                    _name: RegistrationCountry
+                    value: FDN_RegistrationCountry
+                    useCustomLabel: true
+                    label: "Registration Country"
+                    dataType: STRING
+                    referencedEntity: Merchant.entities.Country.Country
+                    authoringMode: auto
+                    componentProperties:
+                      displayType: chip
+                      textAlign: left
+                      useAvatarInChip: '1'
+                      useSecondaryTextInChip: '1'
+                      textTypography: body-1
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                      isVisible: '1'
+
+      - _type: FormSection
+        _name: Identifiers
+        label: Identifiers
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: IdsCol1
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: RegistrationNumber
+                value: RegistrationNumber
+                useCustomLabel: false
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                  textTypography: body-1
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+              - _type: TextField
+                _name: TaxIdentifier
+                value: TaxIdentifier
+                useCustomLabel: false
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                  textTypography: body-1
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+          - _type: FormContainer
+            _name: IdsCol2
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: RegistrationAuthority
+                value: RegistrationAuthority
+                useCustomLabel: false
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                  textTypography: body-1
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+              - _type: MenuField
+                _name: TaxIdentifierType
+                value: TaxIdentifierType
+                useCustomLabel: false
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                  textTypography: body-1
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'
+
+      - _type: FormSection
+        _name: Dates
+        label: Dates
+        layoutDirection: ROW
+        content:
+          - _type: DateField
+            _name: IncorporationDate
+            value: IncorporationDate
+            useCustomLabel: false
+            dataType: DATE
+            componentProperties:
+              textAlign: left
+            labelProperties:
+              alignment: left
+              position: top
+              typography: caption
+              isVisible: '1'
+
+  - _type: FormTab
+    _name: Enrichment
+    label: Enrichment
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    iconUrl: images://mdi/silverware-clean.svg
+    content:
+      - _type: FormSection
+        _name: Enriched
+        label: Enriched Data
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: EnrichCol1
+            layoutDirection: COLUMN
+            content:
+              - _type: TextField
+                _name: NormalizedLegalName
+                value: NormalizedLegalName
+                useCustomLabel: false
+                dataType: STRING
+                componentProperties:
+                  textAlign: left
+                  textTypography: body-1
+                labelProperties:
+                  alignment: left
+                  position: top
+                  typography: caption
+                  isVisible: '1'

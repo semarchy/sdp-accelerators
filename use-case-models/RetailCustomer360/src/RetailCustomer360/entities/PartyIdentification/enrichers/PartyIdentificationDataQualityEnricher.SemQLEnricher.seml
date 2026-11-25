@@ -1,0 +1,49 @@
+﻿_package: RetailCustomer360.entities.PartyIdentification.enrichers
+_name: PartyIdentificationDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.PartyIdentification.PartyIdentification
+label: PartyIdentification Data Quality Enricher
+description: "Computes standard completeness enrichment fields for PartyIdentification."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN PartyIdentificationId IS NULL AND IdentificationType IS NULL AND IdentificationNumber IS NULL THEN 0
+        ELSE (
+          CASE WHEN PartyIdentificationId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN IdentificationType IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN IdentificationNumber IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN PartyIdentificationId IS NULL AND IdentificationType IS NULL AND IdentificationNumber IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN PartyIdentificationId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN IdentificationType IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN IdentificationNumber IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()
+  - attributeName: IdentificationLifecycleStatus
+    expression: CASE
+        WHEN ExpiryDate IS NOT NULL AND ExpiryDate < CURRENT_DATE() THEN 'Expired'
+        WHEN IdentificationStatus IN ('Revoked', 'Suspended') THEN 'Restricted'
+        WHEN IdentificationStatus = 'Active' THEN 'Active'
+        ELSE 'Pending'
+      END
+  - attributeName: VerificationFreshnessBand
+    expression: CASE
+        WHEN VerificationDate IS NULL THEN 'Not Verified'
+        WHEN VerificationDate >= CURRENT_DATE() THEN 'Verified Today'
+        ELSE 'Verified Earlier'
+      END
+  - attributeName: VerificationConfidenceStatus
+    expression: CASE
+        WHEN IsVerified IS NOT NULL AND VerificationDate IS NOT NULL THEN 'Documented'
+        WHEN IsVerified IS NOT NULL OR VerificationDate IS NOT NULL THEN 'Partially Documented'
+        ELSE 'Needs Review'
+      END

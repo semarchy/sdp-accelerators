@@ -1,0 +1,11 @@
+_package: CTMDM.entities.Study.enrichers
+_name: NormalizeStudy
+_type: SemQLEnricher
+entity: CTMDM.entities.Study.Study
+label: Normalize Study
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key Study values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedStudyNumber
+    expression: "RTRIM(LTRIM(UPPER(StudyNumber)))"

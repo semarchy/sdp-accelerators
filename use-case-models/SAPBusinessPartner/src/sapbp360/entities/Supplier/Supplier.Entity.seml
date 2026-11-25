@@ -1,0 +1,216 @@
+# Supplier entity for the SAP Business Partner 360 accelerator.
+_name: Supplier
+_package: sapbp360.entities.Supplier
+_type: Entity
+primaryKey: sapbp360.entities.Supplier.Supplier.SupplierGoldenID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: UUID
+label: Supplier
+documentation: Trusted supplier golden record extending a business partner in the vendor role.
+description: Trusted supplier golden record extending a business partner in the vendor role.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://sapbusinesspartner/Supplier.svg
+pluralLabel: Suppliers
+historizeGolden: true
+historizeMaster: true
+physicalTableName: SUPPLIER
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SupplierGoldenID
+    physicalName: SUP_GOLDEN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    label: Supplier Golden ID
+    documentation: System generated golden identifier for the supplier record.
+    description: System generated golden identifier for the supplier record.
+    mandatory: true
+    mandatoryValidationLabel: Supplier Golden ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    precision: 38
+    searchable: true
+  - _type: EntityAttribute
+    _name: Supplier
+    physicalName: SUP
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier
+    documentation: SAP vendor number.
+    description: SAP vendor number.
+    mandatory: false
+    length: 40
+    searchable: true
+  - _type: EntityAttribute
+    _name: SupplierFullName
+    physicalName: SUP_FULL_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Full Name
+    documentation: Full name of the supplier.
+    description: Full name of the supplier.
+    mandatory: false
+    length: 220
+    searchable: true
+  - _type: EntityAttribute
+    _name: SupplierName
+    physicalName: SUP_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Supplier Name
+    documentation: Supplier name.
+    description: Supplier name.
+    mandatory: false
+    length: 80
+    searchable: true
+  - _type: EntityAttribute
+    _name: NormalizedName
+    physicalName: NORM_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Name
+    documentation: Standardized supplier name used for matching and search.
+    description: Standardized supplier name used for matching and search.
+    mandatory: false
+    length: 220
+    searchable: true
+  - _type: EntityAttribute
+    _name: VATRegistration
+    physicalName: VAT_REG
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: VAT Registration
+    documentation: VAT registration number.
+    description: VAT registration number.
+    mandatory: false
+    length: 20
+    searchable: true
+  - _type: EntityAttribute
+    _name: BirthDate
+    physicalName: BIRTH_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: Birth Date
+    documentation: Date of birth for individual suppliers.
+    description: Date of birth for individual suppliers.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: InternationalLocationNumber1
+    physicalName: INTL_LOC_NO_1
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: International Location Number 1
+    documentation: Global location number.
+    description: Global location number.
+    mandatory: false
+    length: 15
+    searchable: true
+  - _type: EntityAttribute
+    _name: PurchasingIsBlocked
+    physicalName: PURCH_IS_BLOCKED
+    dataType: Boolean
+    goldenAttribute: true
+    label: Purchasing Is Blocked
+    documentation: Purchasing block flag.
+    description: Purchasing block flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: SupplierProcurementBlock
+    physicalName: SUP_PROC_BLOCK
+    dataType: Boolean
+    goldenAttribute: true
+    label: Supplier Procurement Block
+    documentation: Procurement block flag.
+    description: Procurement block flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: PaymentIsBlockedForSupplier
+    physicalName: PMT_IS_BLOCKED_FOR_SUP
+    dataType: Boolean
+    goldenAttribute: true
+    label: Payment Is Blocked For Supplier
+    documentation: Payment block flag.
+    description: Payment block flag.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: DeletionIndicator
+    physicalName: DELETION_IND
+    dataType: Boolean
+    goldenAttribute: true
+    label: Deletion Indicator
+    documentation: Deletion indicator.
+    description: Deletion indicator.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: ConcatenatedInternationalLocNo
+    physicalName: CONCAT_INTL_LOC_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Concatenated International Loc No
+    documentation: Concatenated international location number.
+    description: Concatenated international location number.
+    mandatory: false
+    length: 15
+    searchable: true
+matcher:
+  _name: SemQLMatcherSUPPLIER
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 94
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: Supplier matching rules for golden record consolidation.
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameVATRegistration
+      condition: Record1.VATRegistration is not null and Record1.VATRegistration = Record2.VATRegistration
+      label: Same VAT Registration
+      documentation: Same VAT Registration matching rule.
+      description: Same VAT Registration matching rule.
+      matchScore: 100
+      color: md:teal 800
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameSupplierNumber
+      condition: Record1.Supplier is not null and Record1.Supplier = Record2.Supplier
+      label: Same Supplier Number
+      documentation: Same Supplier Number matching rule.
+      description: Same Supplier Number matching rule.
+      matchScore: 96
+      color: md:teal 600
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameSupplierName
+      condition: Record1.NormalizedName is not null and Record1.NormalizedName = Record2.NormalizedName
+      label: Same Supplier Name
+      documentation: Same Supplier Name matching rule.
+      description: Same Supplier Name matching rule.
+      matchScore: 85
+      color: md:amber 700
+      usingMatchOn: false

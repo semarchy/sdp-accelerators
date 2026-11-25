@@ -1,0 +1,77 @@
+_package: LifeAndAnnuityInsurance.entities.TaxQualification
+_type: Entity
+_name: TaxQualification
+label: "Tax Qualification"
+pluralLabel: "Tax Qualifications"
+physicalTableName: TAX_QUAL
+iconUrl: images://mdi/bank-outline.svg
+description: "Defines tax qualification treatment such as non-qualified, traditional IRA, Roth IRA, 401(k), 403(b), or pension rollover."
+documentation: "Defines tax qualification treatment such as non-qualified, traditional IRA, Roth IRA, 401(k), 403(b), or pension rollover."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: TaxQualificationID
+    label: "Tax Qualification ID"
+    physicalName: TAX_QUAL_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the tax qualification."
+    documentation: "Unique identifier for the tax qualification."
+  - _type: EntityAttribute
+    _name: QualificationCode
+    label: "Qualification Code"
+    physicalName: QUAL_CODE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Tax qualification code."
+    documentation: "Tax qualification code."
+  - _type: EntityAttribute
+    _name: QualificationName
+    label: "Qualification Name"
+    physicalName: QUAL_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Business name of the tax qualification."
+    documentation: "Business name of the tax qualification."
+  - _type: EntityAttribute
+    _name: QualificationCategory
+    label: "Qualification Category"
+    physicalName: QUAL_CATEGORY
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Tax treatment category."
+    documentation: "Tax treatment category."
+  - _type: EntityAttribute
+    _name: Description
+    label: "Description"
+    physicalName: DESC_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Description of qualification rules and servicing implications."
+    documentation: "Description of qualification rules and servicing implications."
+  - _type: EntityAttribute
+    _name: ActiveIndicator
+    label: "Active Indicator"
+    physicalName: ACTIVE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the tax qualification is active."
+    documentation: "Indicates whether the tax qualification is active."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.TaxQualification.TaxQualification.TaxQualificationID
+entityType: BASIC

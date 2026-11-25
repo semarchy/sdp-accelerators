@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: InsurancePlanHasPlanStatus
+description: "Indicates the Plan Status associated with a Insurance Plan."
+_type: Reference
+label: "Insurance Plan Has Plan Status"
+
+fromEntity: LifeAndAnnuityInsurance.entities.InsurancePlan.InsurancePlan
+fromRoleLabel: "Insurance Plan"
+fromRoleName: InsurancePlan
+fromRolePluralLabel: "Insurance Plans"
+physicalName: INS_PLAN_HAS_PLAN_STAT
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.PlanStatus.PlanStatus
+toRoleLabel: "Plan Status"
+toRoleName: PlanStatus
+toRolePhysicalName: PLAN_STAT
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: PlanStatus
+  label: "Plan Status ID"
+  description: "The identifier of the Plan Status associated with the Insurance Plan."
+  physicalName: PLAN_STAT_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.PlanStatus.PlanStatus

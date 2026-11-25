@@ -1,0 +1,69 @@
+# This is the AccountTypeBusinessView business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for account types,
+# including the root entity, labels, and display options.
+_name: AccountType
+_package: sales360.entities.AccountType.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.AccountType.AccountType
+rootLabel: Account Type
+rootPluralLabel: Account Type
+useHierarchyOnOpen: false
+label: Account Type
+description: Business view for Account Type entity in Salesforce Accelerator
+rootBusinessViewEntity:
+  _name: AccountType
+  _type: BusinessViewEntity
+  collection: sales360.entities.AccountType.collection_views.AccountTypeCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.AccountType.AccountType
+  form: sales360.entities.AccountType.forms.AccountTypeForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.AccountType.action_sets.AccountTypeActionSet
+  displayCard: sales360.entities.AccountType.display_cards.AccountTypeDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sales360.entities.AccountType.business_views.AccountType.AccountType
+rootIconUrl: images://mdi/format-list-checkbox.svg

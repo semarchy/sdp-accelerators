@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: ClaimHasInsuredParty
+description: "Indicates the Insured Party associated with a Claim."
+_type: Reference
+label: "Claim Has Insured Party"
+
+fromEntity: LifeAndAnnuityInsurance.entities.Claim.Claim
+fromRoleLabel: "Claim as Insured"
+fromRoleName: ClaimsAsInsured
+fromRolePluralLabel: "Claims as Insured"
+physicalName: CLM_HAS_INSURED_PARTY
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.Party.Party
+toRoleLabel: "Insured Party"
+toRoleName: InsuredParty
+toRolePhysicalName: INSURED_PARTY
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: InsuredParty
+  label: "Insured Party ID"
+  description: "The identifier of the Insured Party associated with the Claim."
+  physicalName: INSURED_PARTY_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.Party.Party

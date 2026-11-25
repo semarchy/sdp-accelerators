@@ -1,0 +1,133 @@
+_package: Merchant.entities.Merchant
+_type: Entity
+_name: Merchant
+label: Merchant
+pluralLabel: Merchant
+entityType: FUZZY_MATCHED
+physicalTableName: MERCHANT
+iconUrl: images://mdi/book.svg
+description: "Represents the core record for any entity providing goods or services."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: MerchantID
+    label: Merchant ID
+    physicalName: MERCHANT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+    description: "Primary key for the Merchant entity"
+  - _type: EntityAttribute
+    _name: MerchantName
+    label: Merchant Name
+    physicalName: MERCHANT_NAME
+    dataType: String
+    length: 200
+    mandatory: true
+    searchable: true
+    description: "Official name of the merchant as registered in the system"
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: EnrichedMerchantName
+    label: Enriched Merchant Name
+    physicalName: ENRICHED_MERCHANT_NAME
+    dataType: String
+    length: 200
+    mandatory: false
+    searchable: true
+    description: "Enriched official name of the merchant as registered in the system"
+  - _type: EntityAttribute
+    _name: MerchantType
+    label: Merchant Type
+    physicalName: MERCHANT_TYPE
+    dataType: Merchant.list_of_values.MerchantType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Classification of merchant (business type) using a list-of-values"
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    physicalName: STATUS
+    dataType: Merchant.list_of_values.MerchantStatus
+    lovValidationScope: PRE_CONSO
+    searchable: false
+    description: "Current lifecycle or verification status of the merchant"
+  - _type: EntityAttribute
+    _name: OnboardingDate
+    label: Onboarding Date
+    physicalName: ONBOARDING_DATE
+    dataType: Date
+    mandatory: false
+    searchable: false
+    description: "Date the merchant was onboarded into the system"
+  - _type: EntityAttribute
+    _name: ActivationDate
+    label: Activation Date
+    physicalName: ACTIVATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: false
+    description: "Date the merchant record was activated in the system"
+  - _type: EntityAttribute
+    _name: TerminationDate
+    label: Termination Date
+    physicalName: TERMINATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: false
+    description: "Date the merchant was terminated from the system"
+  - _type: EntityAttribute
+    _name: MerchantCode
+    label: Merchant Code
+    physicalName: MERCHANT_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Internal merchant identifier (business key)"
+  - _type: EntityAttribute
+    _name: MerchantRelationshipType
+    label: Merchant Relationship Type
+    physicalName: MCT_RELATIONSHIP_TYPE
+    dataType: Merchant.list_of_values.MerchantRelationshipType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    description: "Type of relationship this merchant has with other merchants (e.g., Parent, Subsidiary)"
+
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+primaryKey: Merchant.entities.Merchant.Merchant.MerchantID
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: IndividualSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: ExactNameAndDOB
+      label: Exact Name and DOB
+      condition: Record1.MerchantCode = Record2.MerchantCode AND Record1.EnrichedMerchantName = Record2.EnrichedMerchantName 
+      matchScore: 100
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 0
+  mergeThresholdMergingUnconfirmed: 0
+  mergeThresholdMergingConfirmed: 0
+  mergeThresholdMergingConfirmedWithUnconfirmed: 0
+  mergeThresholdMergingUnconfirmedWithNewMasters: 0
+  mergeThresholdMergingConfirmedWithNewMasters: 0
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false

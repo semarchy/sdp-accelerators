@@ -1,0 +1,39 @@
+_package: RestaurantMaster.entities.LifecycleStatusReason
+_type: Entity
+_name: LifecycleStatusReason
+label: Status reason
+pluralLabel: Status reasons
+entityType: BASIC
+physicalTableName: REF_STATUS_REASON
+iconUrl: images://mdi/comment-question-outline.svg
+description: Reasons for a lifecycle status (remodel, weather, lease expiry...), each belonging to one status.
+documentation: Reasons for a lifecycle status (remodel, weather, lease expiry...), each belonging to one status.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: ReasonCode
+  label: Reason code
+  physicalName: REASONCODE
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Code of the reason, unique across statuses.
+  documentation: Code of the reason, unique across statuses.
+  length: 64
+- _type: EntityAttribute
+  _name: ReasonName
+  label: Reason name
+  physicalName: REASONNAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Name of the reason.
+  documentation: Name of the reason.
+primaryKey: RestaurantMaster.entities.LifecycleStatusReason.LifecycleStatusReason.ReasonCode
+sourceIdGeneration:
+  mode: MANUAL

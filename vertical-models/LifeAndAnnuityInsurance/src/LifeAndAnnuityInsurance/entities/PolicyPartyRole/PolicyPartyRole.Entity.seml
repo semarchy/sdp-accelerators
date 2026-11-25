@@ -1,0 +1,136 @@
+_package: LifeAndAnnuityInsurance.entities.PolicyPartyRole
+_type: Entity
+_name: PolicyPartyRole
+label: "Policy Party Role"
+pluralLabel: "Policy Party Roles"
+physicalTableName: POL_PARTY_ROLE
+iconUrl: images://mdi/account-switch-outline.svg
+description: "Associates a party to a policy in a specific role, enabling the same party to be an owner, insured, annuitant, beneficiary, payer, trustee, producer, assignee, or claimant."
+documentation: "Associates a party to a policy in a specific role, enabling the same party to be an owner, insured, annuitant, beneficiary, payer, trustee, producer, assignee, or claimant."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PolicyPartyRoleID
+    label: "Policy Party Role ID"
+    physicalName: POL_PARTY_ROLE_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the policy party role."
+    documentation: "Unique identifier for the policy party role."
+  - _type: EntityAttribute
+    _name: RoleEffectiveDate
+    label: "Role Effective Date"
+    physicalName: ROLE_EFF_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which the party role is effective."
+    documentation: "Date from which the party role is effective."
+  - _type: EntityAttribute
+    _name: RoleEndDate
+    label: "Role End Date"
+    physicalName: ROLE_END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which the party role ended, if applicable."
+    documentation: "Date on which the party role ended, if applicable."
+  - _type: EntityAttribute
+    _name: RoleStatus
+    label: "Role Status"
+    physicalName: ROLE_STAT
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Current status of the policy party role."
+    documentation: "Current status of the policy party role."
+  - _type: EntityAttribute
+    _name: OwnershipPercentage
+    label: "Ownership Percentage"
+    physicalName: OWNERSHIP_PCT
+    dataType: Decimal
+    precision: 9
+    scale: 4
+    mandatory: false
+    searchable: true
+    description: "Ownership percentage held by the party, if applicable."
+    documentation: "Ownership percentage held by the party, if applicable."
+  - _type: EntityAttribute
+    _name: BeneficiaryPercentage
+    label: "Beneficiary Percentage"
+    physicalName: BEN_PCT
+    dataType: Decimal
+    precision: 9
+    scale: 4
+    mandatory: false
+    searchable: true
+    description: "Beneficiary allocation percentage, if applicable."
+    documentation: "Beneficiary allocation percentage, if applicable."
+  - _type: EntityAttribute
+    _name: RevocableIndicator
+    label: "Revocable Indicator"
+    physicalName: REVOCABLE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the role or designation is revocable."
+    documentation: "Indicates whether the role or designation is revocable."
+  - _type: EntityAttribute
+    _name: PrimaryIndicator
+    label: "Primary Indicator"
+    physicalName: PRIMARY_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether this is the primary party for the role."
+    documentation: "Indicates whether this is the primary party for the role."
+  - _type: EntityAttribute
+    _name: RelationshipToInsured
+    label: "Relationship To Insured"
+    physicalName: RELATIONSHIP_TO_INSURED
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Relationship of the party to the insured or annuitant."
+    documentation: "Relationship of the party to the insured or annuitant."
+  - _type: EntityAttribute
+    _name: InsurableInterestDescription
+    label: "Insurable Interest Description"
+    physicalName: INSURABLE_INT_DESC_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Description of insurable interest evidence, when applicable."
+    documentation: "Description of insurable interest evidence, when applicable."
+  - _type: EntityAttribute
+    _name: SignatureRequiredIndicator
+    label: "Signature Required Indicator"
+    physicalName: SIGNATURE_REQ_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the role requires a party signature."
+    documentation: "Indicates whether the role requires a party signature."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional notes about the policy party role."
+    documentation: "Additional notes about the policy party role."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.PolicyPartyRole.PolicyPartyRole.PolicyPartyRoleID
+entityType: ID_MATCHED

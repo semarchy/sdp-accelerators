@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: sapbp360.entities.BPIdentification.enrichers
+_name: NormalizedIdNumber
+entity: sapbp360.entities.BPIdentification.BPIdentification
+label: Normalized identification number for search and comparison.
+description: Normalized identification number for search and comparison.
+enricherExecutionScope: PRE_CONSO
+condition: BpIdentificationNumber is not null
+semQlEnricherExpressions:
+  - attributeName: NormalizedIdNumber
+    expression: REPLACE(UPPER(BpIdentificationNumber), ' ', '')

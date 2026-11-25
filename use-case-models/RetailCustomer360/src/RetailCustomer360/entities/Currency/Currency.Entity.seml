@@ -1,0 +1,150 @@
+﻿_package: RetailCustomer360.entities.Currency
+_type: Entity
+_name: Currency
+label: Currency
+pluralLabel: Currencies
+entityType: BASIC
+physicalTableName: CURRENCY
+iconUrl: https://api.iconify.design/mdi/cash-multiple.svg?color=%230D1B2A&width=64
+
+description: "Reference data entity containing ISO currency metadata used by financial attributes across Customer 360 entities."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: Currency Code
+    physicalName: CURRENCY_CODE
+    dataType: String
+    length: 3
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "ISO 4217 currency code (e.g., USD, EUR, INR)"
+
+  - _type: EntityAttribute
+    _name: CurrencyName
+    label: Currency Name
+    physicalName: CURRENCY_NAME
+    dataType: String
+    length: 64
+    searchable: true
+    description: "Official currency name"
+
+  - _type: EntityAttribute
+    _name: CurrencySymbol
+    label: Currency Symbol
+    physicalName: CURRENCY_SYMBOL
+    dataType: String
+    length: 8
+    searchable: true
+    description: "Common symbol used to represent the currency"
+
+  - _type: EntityAttribute
+    _name: MinorUnit
+    label: Minor Unit
+    physicalName: MINOR_UNIT
+    dataType: Integer
+    precision: 10
+    searchable: true
+    description: "Number of decimal digits for the currency minor unit"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+    
+  - _type: EntityAttribute
+    _name: NumericCode
+    label: Numeric Code
+    physicalName: NUMERIC_CODE
+    dataType: String
+    length: 3
+    searchable: true
+    description: "ISO 4217 numeric code of the currency."
+
+  - _type: EntityAttribute
+    _name: SymbolPosition
+    label: Symbol Position
+    physicalName: SYMBOL_POSITION
+    dataType: String
+    length: 10
+    searchable: true
+    description: "Whether the symbol is shown before or after the amount."
+
+  - _type: EntityAttribute
+    _name: DecimalPlaces
+    label: Decimal Places
+    physicalName: DECIMAL_PLACES
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of decimal places amounts are expressed with."
+
+  - _type: EntityAttribute
+    _name: ExchangeRateToBase
+    label: Exchange Rate To Base
+    physicalName: EXCH_RATE_TO_BASE
+    dataType: Decimal
+    precision: 18
+    scale: 6
+    searchable: true
+    description: "Rate converting this currency into the reporting base currency."
+
+  - _type: EntityAttribute
+    _name: ExchangeRateDate
+    label: Exchange Rate Date
+    physicalName: EXCH_RATE_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the exchange rate was captured."
+
+  - _type: EntityAttribute
+    _name: IsBaseCurrency
+    label: Is Base Currency
+    physicalName: IS_BASE_CURRENCY
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether this is the group reporting currency."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the currency is currently accepted."
+
+sourceIdGeneration:
+  mode: MANUAL
+  idExpression: "{{CurrencyCode}}"
+
+primaryKey: RetailCustomer360.entities.Currency.Currency.CurrencyCode

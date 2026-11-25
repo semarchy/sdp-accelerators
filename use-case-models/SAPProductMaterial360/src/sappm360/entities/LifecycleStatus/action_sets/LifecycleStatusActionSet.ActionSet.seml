@@ -1,0 +1,69 @@
+_name: LifecycleStatusActionSet
+_package: sappm360.entities.LifecycleStatus.action_sets
+_type: ActionSet
+entity: sappm360.entities.LifecycleStatus.LifecycleStatus
+label: Lifecycle Status Action Set
+description: Action set for managing lifecycle statuses in SAP Product / Material 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorLifecycleStatuses
+    label: Create
+    description: Create a new Lifecycle Status record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sappm360.entities.LifecycleStatus.steppers.AuthorLifecycleStatuses
+  - _name: EditAuthorLifecycleStatuses
+    label: Edit
+    description: Edit Lifecycle Status records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sappm360.entities.LifecycleStatus.steppers.AuthorLifecycleStatuses
+  - _name: MassUpdateAuthorLifecycleStatuses
+    label: Mass Update
+    description: Mass update Lifecycle Status records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sappm360.entities.LifecycleStatus.steppers.AuthorLifecycleStatuses
+  - _name: Delete
+    label: Delete
+    description: Delete selected Lifecycle Status records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorLifecycleStatuses
+    label: Import
+    description: Import Lifecycle Status records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sappm360.entities.LifecycleStatus.steppers.LifecycleStatusImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

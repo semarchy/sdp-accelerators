@@ -1,0 +1,27 @@
+_package: CTMDM.entities.HealthcareOrganization.enrichers
+_name: PhonetizeHealthcareOrganization
+_type: JavaPluginEnricher
+entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+label: Phonetize Healthcare Organization
+enricherExecutionScope: PRE_CONSO
+description: "Generates a phonetic key for Healthcare Organization duplicate detection."
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+afterEnrichers: 
+  CTMDM.entities.HealthcareOrganization.enrichers.NormalizeHealthcareOrganization
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedOrganizationName
+
+pluginOutputs:
+  - attributeName: PhonetizedOrganizationName
+    outputName: OUT_TRANSFORMED_TEXT

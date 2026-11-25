@@ -1,0 +1,891 @@
+_package: PropertyAndCasualtyInsurance.entities.HomeAsset.forms
+_type: Form
+_name: HomeAssetForm
+entity: PropertyAndCasualtyInsurance.entities.HomeAsset.HomeAsset
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Summary
+    iconUrl: images://mdi/home-edit-outline.svg
+    label: Summary
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormContainer
+        _name: SummaryContainer01
+        content:
+          - _type: MarkdownField
+            _name: HomeSummaryOverview
+            label: Overview
+            value: >-
+              SEM_CONCAT('', '1',
+                '# Home Asset ', COALESCE(SEM_NUMBER_TO_CHAR(HomeAssetId), 'Unidentified'), CHR(10), CHR(10),
+                '**Address:** ', COALESCE(PropertyAddressLine1, 'Not recorded'),
+                CASE WHEN PropertyCity IS NOT NULL THEN CONCAT(', ', PropertyCity) ELSE '' END,
+                CASE WHEN PropertyState IS NOT NULL THEN CONCAT(', ', PropertyState) ELSE '' END,
+                CASE WHEN PropertyPostalCode IS NOT NULL THEN CONCAT(' ', PropertyPostalCode) ELSE '' END, CHR(10), CHR(10),
+                '**Occupancy:** ', COALESCE(OccupancyType, 'Not recorded'), CHR(10), CHR(10),
+                '**Primary residence:** ', CASE WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(PrimaryResidenceFlag), 'false') = 'true' THEN 'Yes' ELSE 'No / not recorded' END, CHR(10), CHR(10),
+                CASE
+                  WHEN EndDate IS NOT NULL AND EndDate <= CURRENT_DATE() THEN CONCAT('Coverage ended on ', SEM_TO_CHAR2(EndDate), '. Validate if this home should remain on active servicing workflows.')
+                  WHEN EndDate IS NOT NULL THEN CONCAT('Coverage is active and scheduled to end on ', SEM_TO_CHAR2(EndDate), '.')
+                  WHEN StartDate IS NULL THEN 'Coverage start date is not recorded. Confirm effective coverage alignment with policy lifecycle.'
+                  ELSE CONCAT('Coverage is active since ', SEM_TO_CHAR2(StartDate), '.')
+                END
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/home-city-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:blue 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+
+      - _type: FormContainer
+        _name: SummaryContainer02
+        content:
+          - _type: MarkdownField
+            _name: HomeSummaryLocation
+            label: Location and occupancy
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Location and occupancy', CHR(10), CHR(10),
+                '| Item | Value |', CHR(10),
+                '| --- | --- |', CHR(10),
+                '| Address line 2 | ', COALESCE(PropertyAddressLine2, 'Not recorded'), ' |', CHR(10),
+                '| Country | ', COALESCE(PropertyCountry, 'Not recorded'), ' |', CHR(10),
+                '| Occupancy type | ', COALESCE(OccupancyType, 'Not recorded'), ' |', CHR(10),
+                '| Year built | ', CASE WHEN YearBuilt IS NOT NULL THEN SEM_NUMBER_TO_CHAR(YearBuilt) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Square footage | ', CASE WHEN SquareFootage IS NOT NULL THEN SEM_NUMBER_TO_CHAR(SquareFootage) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Stories | ', CASE WHEN NumberOfStories IS NOT NULL THEN SEM_NUMBER_TO_CHAR(NumberOfStories) ELSE 'Not recorded' END, ' |'
+                
+                
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/map-marker-radius-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:indigo 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+
+          - _type: MarkdownField
+            _name: HomeSummaryConstruction
+            label: Construction profile
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Construction profile', CHR(10), CHR(10),
+                '| Attribute | Value |', CHR(10),
+                '| --- | --- |', CHR(10),
+                '| Construction type | ', COALESCE(ConstructionType.ConstructionTypeName, 'Not recorded'), ' |', CHR(10),
+                '| Construction quality | ', COALESCE(ConstructionQuality, 'Not recorded'), ' |', CHR(10),
+                '| Roof type | ', COALESCE(RoofType.RoofTypeName, 'Not recorded'), ' |', CHR(10),
+                '| Roof year | ', CASE WHEN RoofYear IS NOT NULL THEN SEM_NUMBER_TO_CHAR(RoofYear) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Basement type | ', COALESCE(BasementType.BasementTypeName, 'Not recorded'), ' |', CHR(10),
+                '| Foundation type | ', COALESCE(FoundationType.FoundationTypeName, 'Not recorded'), ' |'
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/home-analytics.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:teal 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+
+      - _type: FormContainer
+        _name: SummaryContainer03
+        content:
+          - _type: MarkdownField
+            _name: HomeSummaryProtectionLiability
+            label: Protection and liability
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Protection and liability', CHR(10), CHR(10),
+                '| Signal | Value |', CHR(10),
+                '| --- | --- |', CHR(10),
+                '| Sprinkler system | ', CASE WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(SprinklerSystemFlag), 'false') = 'true' THEN 'Yes' ELSE 'No / not recorded' END, ' |', CHR(10),
+                '| Burglar alarm | ', CASE WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(BurglarAlarmFlag), 'false') = 'true' THEN 'Yes' ELSE 'No / not recorded' END, ' |', CHR(10),
+                '| Smoke detector | ', CASE WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(SmokeDetectorFlag), 'false') = 'true' THEN 'Yes' ELSE 'No / not recorded' END, ' |', CHR(10),
+                '| Swimming pool | ', CASE WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(SwimmingPoolFlag), 'false') = 'true' THEN 'Yes' ELSE 'No' END, ' |', CHR(10),
+                '| Flood / Earthquake zone | ', COALESCE(FloodZone, 'Not recorded'), ' / ', COALESCE(EarthquakeZone, 'Not recorded'), ' |'
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/shield-home-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:blue 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+
+          - _type: MarkdownField
+            _name: HomeSummaryValuation
+            label: Valuation and limits
+            value: >-
+              SEM_CONCAT('', '1',
+                '## Valuation and limits', CHR(10), CHR(10),
+                '| Measure | Value |', CHR(10),
+                '| --- | ---: |', CHR(10),
+                '| Replacement cost | ', CASE WHEN ReplacementCost IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(ReplacementCost)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Market value | ', CASE WHEN MarketValue IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(MarketValue)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Personal property limit | ', CASE WHEN PersonalPropertyLimit IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(PersonalPropertyLimit)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Loss use limit | ', CASE WHEN LossUseLimit IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(LossUseLimit)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Liability limit | ', CASE WHEN LiabilityLimit IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(LiabilityLimit)) ELSE 'Not recorded' END, ' |', CHR(10),
+                '| Deductible amount | ', CASE WHEN DeductibleAmount IS NOT NULL THEN CONCAT('$ ', SEM_NUMBER_TO_CHAR(DeductibleAmount)) ELSE 'Not recorded' END, ' |'
+              )
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/cash-multiple.svg
+              iconValueInterpreter: LITERAL
+              iconColor: md:green 700
+              iconColorValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+
+      - _type: FormContainer
+        _name: SummaryContainer04
+        content:
+          - _type: MarkdownField
+            _name: HomeSummaryLifecycle
+            label: Lifecycle guidance
+            value: >-
+              CASE
+                WHEN EndDate IS NOT NULL AND EndDate <= CURRENT_DATE() THEN SEM_CONCAT('', '1',
+                  '## Lifecycle guidance', CHR(10), CHR(10),
+                  '**Coverage start:** ', CASE WHEN StartDate IS NOT NULL THEN SEM_TO_CHAR2(StartDate) ELSE 'Not recorded' END, CHR(10), CHR(10),
+                  '**Coverage end:** ', SEM_TO_CHAR2(EndDate), CHR(10), CHR(10),
+                  'This home is marked as out of coverage. Confirm endorsement timing and any downstream billing or claims implications.'
+                )
+                ELSE SEM_CONCAT('', '1',
+                  '## Lifecycle guidance', CHR(10), CHR(10),
+                  '**Coverage start:** ', CASE WHEN StartDate IS NOT NULL THEN SEM_TO_CHAR2(StartDate) ELSE 'Not recorded' END, CHR(10), CHR(10),
+                  '**Coverage end:** ', CASE WHEN EndDate IS NOT NULL THEN CONCAT('Active until ', SEM_TO_CHAR2(EndDate)) ELSE 'Active / not recorded' END, CHR(10), CHR(10),
+                  CASE
+                    WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(WindHailExclusionFlag), 'false') = 'true' THEN 'Wind/hail exclusion is active. Ensure customer communications and quote displays reflect this restriction.'
+                    WHEN COALESCE(SEM_BOOLEAN_TO_CHAR(SwimmingPoolFlag), 'false') = 'true' OR COALESCE(SEM_BOOLEAN_TO_CHAR(TrampolineFlag), 'false') = 'true' THEN 'Elevated liability exposure detected. Reconfirm liability limit adequacy and underwriting appetite.'
+                    ELSE 'Coverage appears active. Monitor valuation limits and catastrophe-zone attributes during renewal servicing.'
+                  END
+                )
+              END
+            useCustomLabel: true
+            dataType: STRING
+            relativeWidth: 100
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textColor: md:blue-grey 900
+              textColorValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: top
+              alignment: left
+              typography: title
+              icon: images://mdi/clipboard-check-outline.svg
+              iconValueInterpreter: LITERAL
+              iconColor: CASE WHEN EndDate IS NOT NULL AND EndDate <= CURRENT_DATE() THEN 'md:red 700' ELSE 'md:blue 700' END
+              iconColorValueInterpreter: SEMQL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+        layoutDirection: ROW
+  - _type: FormTab
+    _name: HomeAsset
+    label: "Home Asset"
+    iconUrl: images://mdi/home-city-outline.svg
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: HomeAssetSection1
+        label: "Property Identity"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: HomeAssetSection1Row
+            content:
+              - _type: FormContainer
+                _name: HomeAssetSection1Col1
+                content:
+                  - _type: IdField
+                    _name: HomeAssetId
+                    dataType: LONG_INTEGER
+                    useCustomLabel: false
+                    value: HomeAssetId
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: PropertyAddressLine1
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: PropertyAddressLine1
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: PropertyAddressLine2
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: PropertyAddressLine2
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection1Col2
+                content:
+                  - _type: TextField
+                    _name: PropertyCity
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: PropertyCity
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: PropertyState
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: PropertyState
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: PropertyPostalCode
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: PropertyPostalCode
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection1Col3
+                content:
+                  - _type: TextField
+                    _name: PropertyCountry
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: PropertyCountry
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: MenuField
+                    _name: OccupancyType
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: OccupancyType
+                    componentProperties:
+                      textAlign: left
+                      useAvatarInMenu: '1'
+                      useAvatarInMenuValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: YearBuilt
+                    dataType: INTEGER
+                    useCustomLabel: false
+                    value: YearBuilt
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '####'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection1Col4
+                content:
+                  - _type: CheckboxField
+                    _name: PrimaryResidenceFlag
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: PrimaryResidenceFlag
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: HomeAssetSection2
+        label: "Construction and Risk"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: HomeAssetSection2Row
+            content:
+              - _type: FormContainer
+                _name: HomeAssetSection2Col1
+                content:
+                  - _type: ReferenceField
+                    _name: FDN_ConstructionType
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.ConstructionType.ConstructionType
+                    useCustomLabel: false
+                    value: FDN_ConstructionType
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: MenuField
+                    _name: ConstructionQuality
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: ConstructionQuality
+                    componentProperties:
+                      textAlign: left
+                      useAvatarInMenu: '1'
+                      useAvatarInMenuValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_RoofType
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.RoofType.RoofType
+                    useCustomLabel: false
+                    value: FDN_RoofType
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection2Col2
+                content:
+                  - _type: TextField
+                    _name: RoofYear
+                    dataType: INTEGER
+                    useCustomLabel: false
+                    value: RoofYear
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '####'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: SquareFootage
+                    dataType: INTEGER
+                    useCustomLabel: false
+                    value: SquareFootage
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: NumberOfStories
+                    dataType: INTEGER
+                    useCustomLabel: false
+                    value: NumberOfStories
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection2Col3
+                content:
+                  - _type: TextField
+                    _name: NumberOfUnits
+                    dataType: INTEGER
+                    useCustomLabel: false
+                    value: NumberOfUnits
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_BasementType
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.BasementType.BasementType
+                    useCustomLabel: false
+                    value: FDN_BasementType
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: ReferenceField
+                    _name: FDN_FoundationType
+                    dataType: STRING
+                    referencedEntity: PropertyAndCasualtyInsurance.entities.FoundationType.FoundationType
+                    useCustomLabel: false
+                    value: FDN_FoundationType
+                    componentProperties:
+                      textAlign: left
+                      displayType: chip
+                      displayTypeValueInterpreter: LITERAL
+                      chipMaxWidth: '260'
+                      chipMaxWidthValueInterpreter: LITERAL
+                      useAvatarInChip: '1'
+                      useAvatarInChipValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection2Col4
+                content:
+                  - _type: MenuField
+                    _name: GarageType
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: GarageType
+                    componentProperties:
+                      textAlign: left
+                      useAvatarInMenu: '1'
+                      useAvatarInMenuValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: ProtectionClass
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: ProtectionClass
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: DistanceToFireStation
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: DistanceToFireStation
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: HomeAssetSection3
+        label: "Protective Devices and Liability"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: HomeAssetSection3Row
+            content:
+              - _type: FormContainer
+                _name: HomeAssetSection3Col1
+                content:
+                  - _type: CheckboxField
+                    _name: SprinklerSystemFlag
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: SprinklerSystemFlag
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: CheckboxField
+                    _name: BurglarAlarmFlag
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: BurglarAlarmFlag
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection3Col2
+                content:
+                  - _type: CheckboxField
+                    _name: SmokeDetectorFlag
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: SmokeDetectorFlag
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: CheckboxField
+                    _name: SwimmingPoolFlag
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: SwimmingPoolFlag
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection3Col3
+                content:
+                  - _type: CheckboxField
+                    _name: TrampolineFlag
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: TrampolineFlag
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: DogBreed
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: DogBreed
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection3Col4
+                content:
+                  - _type: CheckboxField
+                    _name: WindHailExclusionFlag
+                    dataType: BOOLEAN
+                    useCustomLabel: false
+                    value: WindHailExclusionFlag
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: FloodZone
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: FloodZone
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: EarthquakeZone
+                    dataType: STRING
+                    useCustomLabel: false
+                    value: EarthquakeZone
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: HomeAssetSection4
+        label: "Valuation and Limits"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: HomeAssetSection4Row
+            content:
+              - _type: FormContainer
+                _name: HomeAssetSection4Col1
+                content:
+                  - _type: TextField
+                    _name: ReplacementCost
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: ReplacementCost
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: MarketValue
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: MarketValue
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection4Col2
+                content:
+                  - _type: TextField
+                    _name: PersonalPropertyLimit
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: PersonalPropertyLimit
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                  - _type: TextField
+                    _name: LossUseLimit
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: LossUseLimit
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection4Col3
+                content:
+                  - _type: TextField
+                    _name: LiabilityLimit
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: LiabilityLimit
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection4Col4
+                content:
+                  - _type: TextField
+                    _name: DeductibleAmount
+                    dataType: DECIMAL
+                    useCustomLabel: false
+                    value: DeductibleAmount
+                    componentProperties:
+                      textAlign: left
+                      displayFormat: '$ ##,###,###.##'
+                      displayFormatValueInterpreter: LITERAL
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN
+      - _type: FormSection
+        _name: HomeAssetSection5
+        label: "Lifecycle"
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: HomeAssetSection5Row
+            content:
+              - _type: FormContainer
+                _name: HomeAssetSection5Col1
+                content:
+                  - _type: TextField
+                    _name: StartDate
+                    dataType: DATE
+                    useCustomLabel: false
+                    value: StartDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection5Col2
+                content:
+                  - _type: TextField
+                    _name: EndDate
+                    dataType: DATE
+                    useCustomLabel: false
+                    value: EndDate
+                    componentProperties:
+                      textAlign: left
+                    labelProperties:
+                      alignment: left
+                      position: top
+                      typography: caption
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection5Col3
+                content: []
+                layoutDirection: COLUMN
+              - _type: FormContainer
+                _name: HomeAssetSection5Col4
+                content: []
+                layoutDirection: COLUMN
+            layoutDirection: ROW
+        layoutDirection: COLUMN

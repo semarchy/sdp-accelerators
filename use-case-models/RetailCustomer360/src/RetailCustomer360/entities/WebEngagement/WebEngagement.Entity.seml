@@ -1,0 +1,204 @@
+﻿_package: RetailCustomer360.entities.WebEngagement
+_type: Entity
+_name: WebEngagement
+label: Web Engagement
+pluralLabel: Web Engagements
+entityType: BASIC
+physicalTableName: WEB_ENGAGEMENT
+iconUrl: https://api.iconify.design/mdi/web.svg?color=%230D1B2A&width=64
+
+description: "Customer activity and interactions on the website."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: EventId
+    label: Event Id
+    physicalName: EVENT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: SessionId
+    label: Session Id
+    physicalName: SESSION_ID
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Web session identifier"
+
+  - _type: EntityAttribute
+    _name: EventType
+    label: Event Type
+    physicalName: EVENT_TYPE
+    dataType: RetailCustomer360.list_of_values.WebEventType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Page View, Product View, Search, Add to Cart, Checkout"
+
+  - _type: EntityAttribute
+    _name: PageUrl
+    label: Page URL
+    physicalName: PAGE_URL
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "URL visited"
+
+  - _type: EntityAttribute
+    _name: PageTitle
+    label: Page Title
+    physicalName: PAGE_TITLE
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Page title"
+
+  - _type: EntityAttribute
+    _name: ReferrerUrl
+    label: Referrer URL
+    physicalName: REFERRER_URL
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "Referrer URL"
+
+  - _type: EntityAttribute
+    _name: DeviceType
+    label: Device Type
+    physicalName: DEVICE_TYPE
+    dataType: RetailCustomer360.list_of_values.DeviceType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Desktop, Mobile, Tablet"
+
+  - _type: EntityAttribute
+    _name: Browser
+    label: Browser
+    physicalName: BROWSER
+    dataType: RetailCustomer360.list_of_values.WebBrowser
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Chrome, Safari, Edge, Firefox, Other"
+
+  - _type: EntityAttribute
+    _name: OperatingSystem
+    label: Operating System
+    physicalName: OPERATING_SYSTEM
+    dataType: RetailCustomer360.list_of_values.OperatingSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "iOS, Android, Windows, macOS, Linux"
+
+  - _type: EntityAttribute
+    _name: EventTimestamp
+    label: Event Timestamp
+    physicalName: EVENT_TIMESTAMP
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Event date/time"
+
+  - _type: EntityAttribute
+    _name: UtmSource
+    label: UTM Source
+    physicalName: UTM_SOURCE
+    dataType: String
+    length: 100
+    searchable: true
+    description: "UTM source"
+
+  - _type: EntityAttribute
+    _name: UtmMedium
+    label: UTM Medium
+    physicalName: UTM_MEDIUM
+    dataType: String
+    length: 100
+    searchable: true
+    description: "UTM medium"
+
+  - _type: EntityAttribute
+    _name: UtmCampaign
+    label: UTM Campaign
+    physicalName: UTM_CAMPAIGN
+    dataType: String
+    length: 150
+    searchable: true
+    description: "UTM campaign"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: EngagementRecencyBand
+    label: Engagement Recency Band
+    physicalName: WEB_RECENCY_BAND
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived recency category of the web event"
+
+  - _type: EntityAttribute
+    _name: TrafficAttributionStatus
+    label: Traffic Attribution Status
+    physicalName: TRAFFIC_ATTR_STATUS
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived attribution quality from UTM and referrer context"
+
+  - _type: EntityAttribute
+    _name: ChannelIntentSignal
+    label: Channel Intent Signal
+    physicalName: CHANNEL_INTENT_SIGNAL
+    dataType: String
+    length: 32
+    searchable: true
+    description: "Derived intent signal from event type"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.WebEngagement.WebEngagement.EventId
+

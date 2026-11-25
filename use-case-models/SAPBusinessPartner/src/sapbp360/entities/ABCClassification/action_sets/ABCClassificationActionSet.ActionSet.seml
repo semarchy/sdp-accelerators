@@ -1,0 +1,70 @@
+_name: ABCClassificationActionSet
+_package: sapbp360.entities.ABCClassification.action_sets
+_type: ActionSet
+entity: sapbp360.entities.ABCClassification.ABCClassification
+label: ABC Classification Action Set
+description: Action set for managing ABC Classifications in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorABCClassifications
+    label: Create
+    description: Create a new ABC Classification record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.ABCClassification.steppers.AuthorABCClassifications
+  - _name: EditAuthorABCClassifications
+    label: Edit
+    description: Edit ABC Classification records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.ABCClassification.steppers.AuthorABCClassifications
+  - _name: MassUpdateAuthorABCClassifications
+    label: Mass Update
+    description: Mass update ABC Classification records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.ABCClassification.steppers.AuthorABCClassifications
+  - _name: Delete
+    label: Delete
+    description: Delete selected ABC Classification records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorABCClassifications
+    label: Import
+    description: Import ABC Classification records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.ABCClassification.steppers.ABCClassificationImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

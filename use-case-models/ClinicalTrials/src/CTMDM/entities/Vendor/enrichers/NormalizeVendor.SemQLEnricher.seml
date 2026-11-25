@@ -1,0 +1,15 @@
+_package: CTMDM.entities.Vendor.enrichers
+_name: NormalizeVendor
+_type: SemQLEnricher
+entity: CTMDM.entities.Vendor.Vendor
+label: Normalize CRO / Vendor
+enricherExecutionScope: PRE_CONSO
+description: "Normalizes key CRO / Vendor values for matching, validation, and search."
+
+semQlEnricherExpressions:
+  - attributeName: NormalizedVendorName
+    expression: "RTRIM(LTRIM(UPPER(VendorName)))"
+  - attributeName: NormalizedTaxID
+    expression: "RTRIM(LTRIM(UPPER(TaxID)))"
+  - attributeName: NormalizedAddressLine1
+    expression: "RTRIM(LTRIM(UPPER(AddressLine1)))"

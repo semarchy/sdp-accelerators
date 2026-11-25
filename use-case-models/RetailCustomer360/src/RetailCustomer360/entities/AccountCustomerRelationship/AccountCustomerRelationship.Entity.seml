@@ -1,0 +1,195 @@
+﻿_package: RetailCustomer360.entities.AccountCustomerRelationship
+_type: Entity
+_name: AccountCustomerRelationship
+label: Account Customer Relationship
+pluralLabel: Account Customer Relationships
+entityType: BASIC
+physicalTableName: ACC_CUST_REL
+iconUrl: https://api.iconify.design/mdi/link-variant.svg?color=%232563EB&width=64
+
+description: "Represents the relationship between a customer and an account, without embedding reference attributes."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: AccountCustomerRelationshipId
+    label: Account Customer Relationship Id
+    physicalName: ACC_CUST_REL_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier"
+
+  - _type: EntityAttribute
+    _name: RelationshipType
+    label: Relationship Type
+    physicalName: RELATIONSHIP_TYPE
+    dataType: RetailCustomer360.list_of_values.RelationshipType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Employee, Owner, Buyer, Decision Maker, Household Member"
+
+  - _type: EntityAttribute
+    _name: RelationshipRole
+    label: Relationship Role
+    physicalName: RELATIONSHIP_ROLE
+    dataType: RetailCustomer360.list_of_values.RelationshipRole
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary Contact, Billing Contact, Authorized Buyer"
+
+  - _type: EntityAttribute
+    _name: RelationshipStatus
+    label: Relationship Status
+    physicalName: RELATIONSHIP_STATUS
+    dataType: RetailCustomer360.list_of_values.RelationshipStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Active, Inactive, Ended"
+
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    physicalName: START_DATE
+    dataType: Date
+    searchable: true
+    description: "Relationship start date"
+
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    physicalName: END_DATE
+    dataType: Date
+    searchable: true
+    description: "Relationship end date"
+
+  - _type: EntityAttribute
+    _name: OwnershipPercentage
+    label: Ownership Percentage
+    physicalName: OWNERSHIP_PERCENTAGE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Optional ownership percentage"
+
+  - _type: EntityAttribute
+    _name: IsPrimaryRelationship
+    label: Is Primary Relationship
+    physicalName: IS_PRIMARY_RELATIONSHIP
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates primary account relationship"
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system"
+
+  - _type: EntityAttribute
+    _name: SourceRelationshipKey
+    label: Source Relationship Key
+    physicalName: SOURCE_RELATIONSHIP_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source relationship identifier"
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+  - _type: EntityAttribute
+    _name: RelationshipStrength
+    label: Relationship Strength
+    physicalName: RELATIONSHIP_STRENGTH
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived score describing how strong the account-customer link is."
+
+  - _type: EntityAttribute
+    _name: AuthorityLevel
+    label: Authority Level
+    physicalName: AUTHORITY_LEVEL
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Level of authority the customer holds on the account."
+
+  - _type: EntityAttribute
+    _name: IsBillingContact
+    label: Is Billing Contact
+    physicalName: IS_BILLING_CONTACT
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the customer receives billing for the account."
+
+  - _type: EntityAttribute
+    _name: IsDecisionMaker
+    label: Is Decision Maker
+    physicalName: IS_DECISION_MAKER
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the customer can commit the account to a purchase."
+
+  - _type: EntityAttribute
+    _name: LastInteractionDate
+    label: Last Interaction Date
+    physicalName: LAST_INTERACTION_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time of the most recent interaction on this relationship."
+
+  - _type: EntityAttribute
+    _name: RelationshipDurationDays
+    label: Relationship Duration Days
+    physicalName: REL_DURATION_DAYS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Derived number of days the relationship has been active."
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+primaryKey: RetailCustomer360.entities.AccountCustomerRelationship.AccountCustomerRelationship.AccountCustomerRelationshipId
+

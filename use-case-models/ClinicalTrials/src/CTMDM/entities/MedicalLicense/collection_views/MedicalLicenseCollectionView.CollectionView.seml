@@ -1,0 +1,111 @@
+_package: CTMDM.entities.MedicalLicense.collection_views
+_type: CollectionView
+_name: MedicalLicenseCollectionView
+
+entity: CTMDM.entities.MedicalLicense.MedicalLicense
+default: true
+displayCard: CTMDM.entities.MedicalLicense.display_cards.MedicalLicenseDisplayCard
+tableDisplayCardColumnWidth: 300
+
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+
+tableAllowed: true
+tableDisplayCardColumnLabel: Medical License
+tableRowLines: 2
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: TextColumn
+    _name: LicenseNumber
+    value: LicenseNumber
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 220
+  - _type: ReferenceColumn
+    _name: FDN_investigator
+    value: FDN_investigator
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.Investigator.Investigator
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: LicenseStatus
+    value: LicenseStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: DateColumn
+    _name: IssueDate
+    value: IssueDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: DateColumn
+    _name: ExpirationDate
+    value: ExpirationDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: DateColumn
+    _name: VerificationDate
+    value: VerificationDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: TextColumn
+    _name: LicenseCountry
+    value: LicenseCountry
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: IssuingBoard
+    value: IssuingBoard
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 180
+  - _type: TextColumn
+    _name: VerificationSource
+    value: VerificationSource
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 180

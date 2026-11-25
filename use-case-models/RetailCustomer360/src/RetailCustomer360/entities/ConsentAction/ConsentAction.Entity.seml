@@ -1,0 +1,94 @@
+_package: RetailCustomer360.entities.ConsentAction
+_type: Entity
+_name: ConsentAction
+label: Consent Action
+pluralLabel: Consent Actions
+entityType: BASIC
+physicalTableName: CONSENT_ACTION
+iconUrl: https://api.iconify.design/mdi/check-decagram.svg?color=%230D1B2A&width=64
+
+description: "Specific processing action a customer can consent to or refuse."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: ConsentActionId
+    label: Consent Action Id
+    physicalName: CONSENT_ACTION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the consent action."
+
+  - _type: EntityAttribute
+    _name: ActionCode
+    label: Action Code
+    physicalName: ACTION_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the action."
+
+  - _type: EntityAttribute
+    _name: ActionName
+    label: Action Name
+    physicalName: ACTION_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the action."
+
+  - _type: EntityAttribute
+    _name: ActionType
+    label: Action Type
+    physicalName: ACTION_TYPE
+    dataType: RetailCustomer360.list_of_values.ConsentActionType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Category of processing the action represents."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Explanation of what the action permits or restricts."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the action is currently offered."
+
+  - _type: EntityAttribute
+    _name: IsRestrictive
+    label: Is Restrictive
+    physicalName: IS_RESTRICTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether refusing the action blocks downstream processing."
+
+  - _type: EntityAttribute
+    _name: DisplayOrder
+    label: Display Order
+    physicalName: DISPLAY_ORDER
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Position of the action in preference centre listings."
+
+primaryKey: RetailCustomer360.entities.ConsentAction.ConsentAction.ConsentActionId
+
+sourceIdGeneration:
+  mode: MANUAL

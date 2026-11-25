@@ -1,0 +1,38 @@
+_package: PropertyAndCasualtyInsurance.entities.FormEndorsement.steppers
+_type: Stepper
+_name: AuthorFormEndorsements
+entity: PropertyAndCasualtyInsurance.entities.FormEndorsement.FormEndorsement
+label: Form Endorsements
+rootStep:
+  _type: CollectionStep
+  _name: FormEndorsements
+  label: Form Endorsements
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: PropertyAndCasualtyInsurance.entities.FormEndorsement.collection_views.FormEndorsementImportCollection
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: FormEndorsement
+      label: Form Endorsement
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: PropertyAndCasualtyInsurance.entities.FormEndorsement.forms.FormEndorsementDEForm.General
+      formStepValidations:
+        - executedOnDataChange: true
+          executedOnFormOpen: true
+          validationType: CHECK
+          validator: PropertyAndCasualtyInsurance.entities.FormEndorsement.validations.DateRangeCheck

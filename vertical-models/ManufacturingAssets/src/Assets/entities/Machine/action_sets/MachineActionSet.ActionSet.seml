@@ -1,0 +1,69 @@
+_package: Assets.entities.Machine.action_sets
+_type: ActionSet
+_name: MachineActionSet
+entity: Assets.entities.Machine.Machine
+label: Machine Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorMachines
+    label: Create
+    useCustomLabel: true
+    stepper: Assets.entities.Machine.steppers.AuthorMachines
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorMachines
+    label: Edit
+    useCustomLabel: true
+    stepper: Assets.entities.Machine.steppers.AuthorMachines
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: StartWorkflowEntityAction
+    _name: AddMachineDetails
+    label: Add Machine Details
+    startEvent: Assets.workflows.EditMachineAssets.Start
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorMachines
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Assets.entities.Machine.steppers.AuthorMachines
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorMachines
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Assets.entities.Machine.steppers.AuthorMachines
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

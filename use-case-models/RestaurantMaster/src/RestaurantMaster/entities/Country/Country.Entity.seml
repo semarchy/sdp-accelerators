@@ -1,0 +1,39 @@
+_package: RestaurantMaster.entities.Country
+_type: Entity
+_name: Country
+label: Country
+pluralLabel: Countries
+entityType: BASIC
+physicalTableName: REF_COUNTRY
+iconUrl: images://mdi/earth.svg
+description: Countries where the group operates.
+documentation: Countries where the group operates.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: CountryCode
+  label: Country code
+  physicalName: COUNTRYCODE
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: ISO 3166-1 alpha-2 code.
+  documentation: ISO 3166-1 alpha-2 code.
+  length: 2
+- _type: EntityAttribute
+  _name: CountryName
+  label: Country name
+  physicalName: COUNTRYNAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Name of the country.
+  documentation: Name of the country.
+primaryKey: RestaurantMaster.entities.Country.Country.CountryCode
+sourceIdGeneration:
+  mode: MANUAL

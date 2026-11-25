@@ -1,0 +1,80 @@
+# BP Tax Number entity for the SAP Business Partner 360 accelerator.
+_name: BPTaxNumber
+_package: sapbp360.entities.BPTaxNumber
+_type: Entity
+primaryKey: sapbp360.entities.BPTaxNumber.BPTaxNumber.TaxID
+sourceIdGeneration:
+  mode: MANUAL
+label: BP Tax Number
+documentation: Tax registration numbers for a business partner.
+description: Tax registration numbers for a business partner.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/BPTaxNumber.svg
+pluralLabel: BP Tax Numbers
+historizeGolden: true
+historizeMaster: false
+physicalTableName: BP_TAX_NUMBER
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: TaxID
+    physicalName: TAX_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Tax ID
+    documentation: Unique identifier for the tax number record.
+    description: Unique identifier for the tax number record.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Tax ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: BPTaxNumber
+    physicalName: BP_TAX_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: BP Tax Number
+    documentation: Tax number value.
+    description: Tax number value.
+    mandatory: true
+    length: 20
+    mandatoryValidationLabel: BP Tax Number is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: TaxNumberValidityDate
+    physicalName: TAX_NO_VAL_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: Tax Number Validity Date
+    documentation: Tax number validity date.
+    description: Tax number validity date.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: TaxNumberIsCanceled
+    physicalName: TAX_NO_IS_CANCELED
+    dataType: Boolean
+    goldenAttribute: true
+    label: Tax Number Is Canceled
+    documentation: Indicates whether the tax number is canceled.
+    description: Indicates whether the tax number is canceled.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: NormalizedTaxNumber
+    physicalName: NORM_TAX_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Tax Number
+    documentation: Tax number in upper case with spaces removed used for search and comparison.
+    description: Tax number in upper case with spaces removed used for search and comparison.
+    mandatory: false
+    length: 20
+    searchable: true

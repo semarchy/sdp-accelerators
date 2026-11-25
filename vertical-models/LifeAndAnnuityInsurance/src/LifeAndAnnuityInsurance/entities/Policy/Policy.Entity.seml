@@ -1,0 +1,206 @@
+_package: LifeAndAnnuityInsurance.entities.Policy
+_type: Entity
+_name: Policy
+label: "Policy"
+pluralLabel: "Policies"
+physicalTableName: POL
+iconUrl: images://mdi/file-document-outline.svg
+description: "Represents a Life & Annuity policy or contract lifecycle record, including policy identity, dates, premium measures, values, and coverage amounts."
+documentation: "Represents a Life & Annuity policy or contract lifecycle record, including policy identity, dates, premium measures, values, and coverage amounts."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PolicyID
+    label: "Policy ID"
+    physicalName: POL_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the consolidated policy."
+    documentation: "Unique identifier for the consolidated policy."
+  - _type: EntityAttribute
+    _name: PolicyNumber
+    label: "Policy Number"
+    physicalName: POL_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Carrier-issued policy or contract number."
+    documentation: "Carrier-issued policy or contract number."
+  - _type: EntityAttribute
+    _name: PolicyVersion
+    label: "Policy Version"
+    physicalName: POL_VERSION
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Version or iteration of the policy."
+    documentation: "Version or iteration of the policy."
+  - _type: EntityAttribute
+    _name: IssueDate
+    label: "Issue Date"
+    physicalName: ISSUE_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the policy was issued."
+    documentation: "Date the policy was issued."
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: "Effective Date"
+    physicalName: EFF_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the policy became effective."
+    documentation: "Date the policy became effective."
+  - _type: EntityAttribute
+    _name: MaturityDate
+    label: "Maturity Date"
+    physicalName: MATURITY_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Scheduled maturity date of the policy or contract."
+    documentation: "Scheduled maturity date of the policy or contract."
+  - _type: EntityAttribute
+    _name: SurrenderDate
+    label: "Surrender Date"
+    physicalName: SURR_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the policy was surrendered, if applicable."
+    documentation: "Date the policy was surrendered, if applicable."
+  - _type: EntityAttribute
+    _name: TerminationDate
+    label: "Termination Date"
+    physicalName: TERMINATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the policy terminated, if applicable."
+    documentation: "Date the policy terminated, if applicable."
+  - _type: EntityAttribute
+    _name: JurisdictionState
+    label: "Jurisdiction State"
+    physicalName: JURISDICTION_STATE
+    dataType: String
+    length: 10
+    mandatory: false
+    searchable: true
+    description: "State or jurisdiction governing the contract."
+    documentation: "State or jurisdiction governing the contract."
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: "Currency Code"
+    physicalName: CURRENCY_CODE
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+    description: "Currency in which policy values are denominated."
+    documentation: "Currency in which policy values are denominated."
+  - _type: EntityAttribute
+    _name: FaceAmount
+    label: "Face Amount"
+    physicalName: FACE_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Face amount for the policy or base life coverage."
+    documentation: "Face amount for the policy or base life coverage."
+  - _type: EntityAttribute
+    _name: ModalPremium
+    label: "Modal Premium"
+    physicalName: MODAL_PREM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Premium due per billing mode."
+    documentation: "Premium due per billing mode."
+  - _type: EntityAttribute
+    _name: AnnualPremium
+    label: "Annual Premium"
+    physicalName: ANNUAL_PREM
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Annualized policy premium."
+    documentation: "Annualized policy premium."
+  - _type: EntityAttribute
+    _name: CashValue
+    label: "Cash Value"
+    physicalName: CASH_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Current policy cash value when applicable."
+    documentation: "Current policy cash value when applicable."
+  - _type: EntityAttribute
+    _name: DeathBenefitAmount
+    label: "Death Benefit Amount"
+    physicalName: DEATH_BENEFIT_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Current death benefit amount."
+    documentation: "Current death benefit amount."
+  - _type: EntityAttribute
+    _name: FreeLookEndDate
+    label: "Free Look End Date"
+    physicalName: FREE_LOOK_END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "End date of the free-look period."
+    documentation: "End date of the free-look period."
+  - _type: EntityAttribute
+    _name: GracePeriodEndDate
+    label: "Grace Period End Date"
+    physicalName: GRACE_PERIOD_END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which the premium grace period ends."
+    documentation: "Date on which the premium grace period ends."
+  - _type: EntityAttribute
+    _name: LapseIndicator
+    label: "Lapse Indicator"
+    physicalName: LAPSE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the policy is lapsed."
+    documentation: "Indicates whether the policy is lapsed."
+  - _type: EntityAttribute
+    _name: AutoPayIndicator
+    label: "Auto Pay Indicator"
+    physicalName: AUTO_PAY_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether automatic payment is enabled."
+    documentation: "Indicates whether automatic payment is enabled."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.Policy.Policy.PolicyID
+entityType: ID_MATCHED

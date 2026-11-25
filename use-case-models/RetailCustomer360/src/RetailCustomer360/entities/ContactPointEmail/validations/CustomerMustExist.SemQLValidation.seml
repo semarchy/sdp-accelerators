@@ -1,0 +1,12 @@
+﻿# This validation ensures that an email address cannot exist without a linked customer.
+# It checks that the SourceID_Customer references an existing Customer record.
+# The validation is executed before the consolidation of entity data.
+_package: RetailCustomer360.entities.ContactPointEmail.validations
+_name: CustomerMustExist
+_type: SemQLValidation
+entity: RetailCustomer360.entities.ContactPointEmail.ContactPointEmail
+label: Customer Must Exist
+validationScope: POST_CONSO
+description: "Ensures that a Contact Point Email record cannot be created or updated without an existing associated Customer record."
+condition: FID_Customer IS NOT NULL
+

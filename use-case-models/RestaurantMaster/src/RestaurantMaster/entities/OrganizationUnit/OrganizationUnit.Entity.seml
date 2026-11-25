@@ -1,0 +1,71 @@
+_package: RestaurantMaster.entities.OrganizationUnit
+_type: Entity
+_name: OrganizationUnit
+label: Organization unit
+pluralLabel: Organization units
+entityType: BASIC
+physicalTableName: ORGANIZATIONUNIT
+iconUrl: images://mdi/sitemap.svg
+description: 'A unit of the Finance, Operations or Marketing organization: region, area, district or brand-specific market, with its parent unit.'
+documentation: 'A unit of the Finance, Operations or Marketing organization: region, area, district or brand-specific market, with its parent unit.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: UnitCode
+  label: Unit code
+  physicalName: UNITCODE
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Code of the unit.
+  documentation: Code of the unit.
+  length: 64
+- _type: EntityAttribute
+  _name: UnitName
+  label: Unit name
+  physicalName: UNITNAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Name of the unit.
+  documentation: Name of the unit.
+- _type: EntityAttribute
+  _name: HierarchyType
+  label: Hierarchy
+  physicalName: HIERARCHYTYPE
+  dataType: RestaurantMaster.list_of_values.OrganizationHierarchy
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Hierarchy the unit belongs to.
+  documentation: Hierarchy the unit belongs to.
+- _type: EntityAttribute
+  _name: UnitLevel
+  label: Level
+  physicalName: UNITLEVEL
+  dataType: RestaurantMaster.list_of_values.OrganizationLevel
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Level of the unit.
+  documentation: Level of the unit.
+- _type: EntityAttribute
+  _name: ManagerName
+  label: Manager
+  physicalName: MANAGERNAME
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: '[PII] Person responsible for the unit.'
+  documentation: '[PII] Person responsible for the unit.'
+primaryKey: RestaurantMaster.entities.OrganizationUnit.OrganizationUnit.UnitCode
+sourceIdGeneration:
+  mode: MANUAL

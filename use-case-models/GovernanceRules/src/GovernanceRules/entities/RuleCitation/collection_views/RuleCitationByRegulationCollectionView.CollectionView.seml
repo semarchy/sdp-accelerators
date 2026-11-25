@@ -1,0 +1,55 @@
+# RuleCitationByRegulationCollectionView: collection view on RuleCitation of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleCitation.collection_views
+_type: CollectionView
+_name: RuleCitationByRegulationCollectionView
+description: 'Citations listed under a regulation or standard, with the rule that cites it.'
+entity: GovernanceRules.entities.RuleCitation.RuleCitation
+default: false
+displayCard: GovernanceRules.entities.RuleCitation.display_cards.RuleCitationDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: '1:1'
+gridTileLines: 2
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Citation
+tableRowLines: 2
+tableShowDisplayCard: true
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_Rule
+    value: FDN_Rule
+    useCustomLabel: true
+    label: Rule
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+    componentProperties:
+      hideIfReferenceToParent: '1'
+      hideIfReferenceToParentValueInterpreter: LITERAL
+  - _type: IdColumn
+    _name: ID
+    value: ID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: RIGHT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Clause
+    value: Clause
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Note
+    value: Note
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: false

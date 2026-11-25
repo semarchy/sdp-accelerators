@@ -1,0 +1,317 @@
+_package: CTMDM.workflows
+_type: Workflow
+_name: ProtocolAmendmentGovernance
+label: Protocol Amendment Governance
+workflowAdminRole: SemarchyAdmin
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: "*"
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+  - entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+    _type: RootEntity
+    _name: ProtocolAmendment
+    cardinality: SINGLE_RECORD
+    displayCard: CTMDM.entities.ProtocolAmendment.display_cards.ProtocolAmendmentDisplayCard
+steps:
+  - _type: StartFromSelectionEvent
+    _name: StartFromExistingProtocolAmendment
+    position:
+      x: -520
+      y: -30
+    label: Start From Protocol Amendment (Edit)
+    initiatorRequiredRole: ''
+    defaultPriority: NORMAL
+    authoredEntity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+    selectionSourceType: GOLDEN_DATA
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: CTMDM.workflows.ProtocolAmendmentGovernance.CreateAmendmentRequest
+      bendPoints: []
+  - _type: StartFromEmptySelectionEvent
+    _name: StartFromScratch
+    position:
+      x: -520
+      y: -100
+    label: Start From Scratch
+    initiatorRequiredRole: ''
+    defaultPriority: NORMAL
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: false
+      commentParamRequired: false
+      commentParamSupported: false
+      descriptionParamSupported: false
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: false
+      showWaitDialog: true
+    transition:
+      _type: StartEventTransition
+      _name: outgoing
+      toStep: CTMDM.workflows.ProtocolAmendmentGovernance.CreateAmendmentRequest
+      bendPoints: []
+  - _type: UserTask
+    _name: CreateAmendmentRequest
+    label: Create Amendment Request
+    icon: images://mdi/account-edit.svg
+    position:
+      x: -340
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: StudyManager
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+    stepper: CTMDM.entities.ProtocolAmendment.steppers.AuthorProtocolAmendments
+    myTasksConfiguration:
+      collection: CTMDM.entities.ProtocolAmendment.collection_views.ProtocolAmendmentCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToClinicalReview
+        label: Proceed
+        toStep: CTMDM.workflows.ProtocolAmendmentGovernance.ClinicalReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: ClinicalReview
+    label: Clinical Review
+    icon: images://mdi/account-edit.svg
+    position:
+      x: -120
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: ClinicalLead
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+    stepper: CTMDM.entities.ProtocolAmendment.steppers.AuthorProtocolAmendments
+    myTasksConfiguration:
+      collection: CTMDM.entities.ProtocolAmendment.collection_views.ProtocolAmendmentCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToRegulatoryReview
+        label: Proceed
+        toStep: CTMDM.workflows.ProtocolAmendmentGovernance.RegulatoryReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: RegulatoryReview
+    label: Regulatory Review
+    icon: images://mdi/account-edit.svg
+    position:
+      x: 100
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: RegulatoryAffairs
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+    stepper: CTMDM.entities.ProtocolAmendment.steppers.AuthorProtocolAmendments
+    myTasksConfiguration:
+      collection: CTMDM.entities.ProtocolAmendment.collection_views.ProtocolAmendmentCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToMedicalReview
+        label: Proceed
+        toStep: CTMDM.workflows.ProtocolAmendmentGovernance.MedicalReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: MedicalReview
+    label: Medical Review
+    icon: images://mdi/account-edit.svg
+    position:
+      x: 320
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: MedicalAffairs
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+    stepper: CTMDM.entities.ProtocolAmendment.steppers.AuthorProtocolAmendments
+    myTasksConfiguration:
+      collection: CTMDM.entities.ProtocolAmendment.collection_views.ProtocolAmendmentCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToDataStewardReview
+        label: Proceed
+        toStep: CTMDM.workflows.ProtocolAmendmentGovernance.DataStewardReview
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: UserTask
+    _name: DataStewardReview
+    label: Data Steward Review
+    icon: images://mdi/account-edit.svg
+    position:
+      x: 540
+      y: -75
+    application: CTMDM.applications.CTMDMApplication
+    assigneeRequiredRole: DataSteward
+    assigneeCanRelease: true
+    notificationsOnTaskAssignment:
+      toAssignee: true
+      toCandidates: true
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 0
+      toAdmin: false
+      toCandidatesOrAssignee: false
+      toRole: ""
+    notificationsOnWorkflowDueDate:
+      toCandidatesOrAssignee: false
+    taskType: DATA_AUTHORING
+    entity: CTMDM.entities.ProtocolAmendment.ProtocolAmendment
+    stepper: CTMDM.entities.ProtocolAmendment.steppers.AuthorProtocolAmendments
+    myTasksConfiguration:
+      collection: CTMDM.entities.ProtocolAmendment.collection_views.ProtocolAmendmentCollectionView
+    transitions:
+      - _type: UserTaskTransition
+        _name: ToSubmitData
+        label: Approve and Submit
+        toStep: CTMDM.workflows.ProtocolAmendmentGovernance.SubmitData
+        userTaskCompletionRequired: true
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters:
+          nextTaskAssigneeSupported: false
+          nextTaskAssigneeRequired: false
+          descriptionParamSupported: true
+          commentParamSupported: true
+          commentParamRequired: false
+          priorityParamSupported: true
+          dueDateParamSupported: false
+          dueDateParamRequired: false
+          attachmentParamSupported: true
+          attachmentParamRequired: false
+        bendPoints: []
+  - _type: SubmitAutomation
+    _name: SubmitData
+    label: Submit Data
+    position:
+      x: 760
+      y: -75
+    integrationJob: CTMDM.certification_jobs.INGEST_PROTOCOL_AMENDMENT
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _type: AutomationTransition
+      _name: outgoing
+      label: Outgoing
+      toStep: CTMDM.workflows.ProtocolAmendmentGovernance.End
+      bendPoints: []
+  - _type: EndEvent
+    _name: End
+    position:
+      x: 980
+      y: -70

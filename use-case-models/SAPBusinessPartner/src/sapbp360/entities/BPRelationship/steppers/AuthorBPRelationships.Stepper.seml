@@ -1,0 +1,103 @@
+_name: AuthorBPRelationships
+_package: sapbp360.entities.BPRelationship.steppers
+_type: Stepper
+entity: sapbp360.entities.BPRelationship.BPRelationship
+description: Stepper for authoring BP Relationships.
+rootStep:
+  _name: BPRelationships
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPRelationship.collection_views.BPRelationshipCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Relationships
+  description: Manage BP Relationship data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPRelationship_RelationshipCategory.RelationshipCategory
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPRelationship_Party1.Party1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPRelationship_Party2.Party2
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sapbp360.entities.BPRelationship.validations.RelationshipValidity
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Relationship.
+      formTab: sapbp360.entities.BPRelationship.forms.BPRelationshipDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPRelationship.forms.BPRelationshipDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_RelationshipCategory
+          referencePickerCollectionView: sapbp360.entities.RelationshipCategory.collection_views.RelationshipCategoryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPRelationship.forms.BPRelationshipDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_Party1
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPRelationship.forms.BPRelationshipDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_Party2
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPRelationship_RelationshipCategory.RelationshipCategory
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPRelationship_Party1.Party1
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPRelationship_Party2.Party2
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sapbp360.entities.BPRelationship.validations.RelationshipValidity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Relationships
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPRelationship_RelationshipCategory.RelationshipCategory
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPRelationship_Party1.Party1
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPRelationship_Party2.Party2
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sapbp360.entities.BPRelationship.validations.RelationshipValidity
+triggers: []

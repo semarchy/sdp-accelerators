@@ -1,0 +1,38 @@
+# RuleCitationSearchForm: search form on RuleCitation of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleCitation.search_forms
+_type: SearchForm
+_name: RuleCitationSearchForm
+entity: GovernanceRules.entities.RuleCitation.RuleCitation
+label: Find citations
+searchTip: Every criterion is optional.
+semQlCondition: (:SEARCH_TEXT IS NULL OR UPPER(Clause) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Note) LIKE '%' || UPPER(:SEARCH_TEXT) || '%') AND (:REGULATION_ID IS NULL OR FID_Regulation = :REGULATION_ID) AND (:RULE_ID IS NULL OR FID_Rule = :RULE_ID)
+searchParameters:
+  - _type: SearchParameter
+    _name: SearchText
+    label: Search text
+    bindVariableName: SEARCH_TEXT
+    dataType: String
+    length: 200
+    displayType: TEXT_FIELD
+  - _type: SearchParameter
+    _name: Regulation
+    label: Regulation
+    bindVariableName: REGULATION_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.Regulation.Regulation
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name
+  - _type: SearchParameter
+    _name: Rule
+    label: Rule
+    bindVariableName: RULE_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+    boundSelectExpression: Code
+    primaryTextExpression: Title
+    sortExpression: Title

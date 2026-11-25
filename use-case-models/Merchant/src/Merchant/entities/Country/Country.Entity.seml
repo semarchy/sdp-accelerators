@@ -1,0 +1,108 @@
+# Description: Entity definition for `Country` (ISO country codes and metadata).
+# Contains country attributes used by addresses and localization features.
+# Role: Reference data entity that supports lookups and validation of country values.
+_package: Merchant.entities.Country
+_type: Entity
+_name: Country
+label: Country
+pluralLabel: Country
+entityType: BASIC
+physicalTableName: COUNTRY
+iconUrl: images://mdi/book.svg
+
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CountryCode
+    label: ISO Alpha 2 Code
+    physicalName: COUNTRY_CODE
+    dataType: String
+    length: 2
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "ISO 3166-1 alpha-2 country code (e.g., US, GB)"
+
+  - _type: EntityAttribute
+    _name: Alpha3Code
+    label: ISO 3166-1 3-Letter Code
+    physicalName: ALPHA3_CODE
+    dataType: String
+    length: 3
+    searchable: true
+    description: "ISO 3166-1 alpha-3 country code (e.g., USA, GBR)"
+
+  - _type: EntityAttribute
+    _name: NumericCode
+    label: Numeric Code
+    physicalName: NUMERIC_CODE
+    dataType: String
+    length: 3
+    searchable: true
+    description: "ISO numeric country code"
+
+  - _type: EntityAttribute
+    _name: URLWikipedia
+    label: URL Wikipedia
+    physicalName: URL_WIKIPEDIA
+    dataType: String
+    length: 128
+    searchable: true
+    description: "Link to the country's Wikipedia page for reference"
+
+  - _type: EntityAttribute
+    _name: LocalShortName
+    label: Local Short Name
+    physicalName: LOCAL_SHORT_NAME
+    dataType: String
+    length: 128
+    searchable: true
+    description: "Short name of the country in the local language"
+
+  - _type: EntityAttribute
+    _name: EnglishShortName
+    label: English Short Name
+    physicalName: ENGLISH_SHORT_NAME
+    dataType: String
+    length: 128
+    searchable: true
+    description: "Short name of the country in English"
+
+  - _type: EntityAttribute
+    _name: EnglishShortNameCAPS
+    label: English Short Name ALLCAPS
+    physicalName: ENGLISH_SHORT_NAME_CAPS
+    dataType: String
+    length: 128
+    searchable: true
+    description: "Uppercase English short name (for legacy or matching needs)"
+
+  - _type: EntityAttribute
+    _name: EnglishFullName
+    label: English Full Name
+    physicalName: ENGLISH_FULL_NAME
+    dataType: String
+    length: 128
+    searchable: true
+    description: "Full official country name in English"
+
+  - _type: EntityAttribute
+    _name: FlagURL
+    label: Flag URL
+    physicalName: FLAG_URL
+    dataType: String
+    length: 128
+    searchable: true
+    description: "URL pointing to an image of the country's flag"
+
+
+sourceIdGeneration:
+  mode: MANUAL
+  idExpression: "{{CountryCode}}"
+
+primaryKey: Merchant.entities.Country.Country.CountryCode

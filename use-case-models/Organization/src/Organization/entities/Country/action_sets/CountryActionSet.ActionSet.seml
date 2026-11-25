@@ -1,0 +1,54 @@
+_package: Organization.entities.Country.action_sets
+_type: ActionSet
+_name: CountryActionSet
+entity: Organization.entities.Country.Country
+label: Country Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorCountries
+    label: Create
+    useCustomLabel: true
+    stepper: Organization.entities.Country.steppers.AuthorCountries
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorCountries
+    label: Edit
+    useCustomLabel: true
+    stepper: Organization.entities.Country.steppers.AuthorCountries
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorCountries
+    label: Mass Update
+    useCustomLabel: true
+    stepper: Organization.entities.Country.steppers.AuthorCountries
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorCountries
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: Organization.entities.Country.steppers.AuthorCountries
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

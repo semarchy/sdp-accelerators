@@ -1,0 +1,69 @@
+_name: IndustrySectorActionSet
+_package: sappm360.entities.IndustrySector.action_sets
+_type: ActionSet
+entity: sappm360.entities.IndustrySector.IndustrySector
+label: Industry Sector Action Set
+description: Action set for managing industry sectors in SAP Product / Material 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorIndustrySectors
+    label: Create
+    description: Create a new Industry Sector record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sappm360.entities.IndustrySector.steppers.AuthorIndustrySectors
+  - _name: EditAuthorIndustrySectors
+    label: Edit
+    description: Edit Industry Sector records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sappm360.entities.IndustrySector.steppers.AuthorIndustrySectors
+  - _name: MassUpdateAuthorIndustrySectors
+    label: Mass Update
+    description: Mass update Industry Sector records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sappm360.entities.IndustrySector.steppers.AuthorIndustrySectors
+  - _name: Delete
+    label: Delete
+    description: Delete selected Industry Sector records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorIndustrySectors
+    label: Import
+    description: Import Industry Sector records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: sappm360.entities.IndustrySector.steppers.IndustrySectorImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

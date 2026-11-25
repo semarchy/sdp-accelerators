@@ -1,0 +1,67 @@
+_name: RelationshipType
+_package: sappm360.entities.RelationshipType.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.RelationshipType.RelationshipType
+rootLabel: Relationship Type
+rootPluralLabel: Relationship Types
+useHierarchyOnOpen: false
+label: Relationship Type
+description: Business view for Relationship Type.
+rootBusinessViewEntity:
+  _name: RelationshipType
+  _type: BusinessViewEntity
+  collection: sappm360.entities.RelationshipType.collection_views.RelationshipTypeCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.RelationshipType.RelationshipType
+  form: sappm360.entities.RelationshipType.forms.RelationshipTypeBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.RelationshipType.action_sets.RelationshipTypeActionSet
+  displayCard: sappm360.entities.RelationshipType.display_cards.RelationshipTypeDisplayCard
+  sortExpression: RelationshipTypeCode
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.RelationshipType.business_views.RelationshipType.RelationshipType
+rootIconUrl: images://mdi/book-open-page-variant-outline.svg

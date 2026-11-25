@@ -1,0 +1,10 @@
+_package: RestaurantMaster.entities.Restaurant.enrichers
+_name: NormalizeMainPhone
+_type: SemQLEnricher
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Normalize main phone
+description: Writes North American phone numbers as +1 followed by 10 digits.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+- attributeName: MainPhone
+  expression: CASE WHEN LENGTH(REGEXP_REPLACE(MainPhone, '[^0-9]', '', 'g')) = 10 THEN '+1' || REGEXP_REPLACE(MainPhone, '[^0-9]', '', 'g') WHEN LENGTH(REGEXP_REPLACE(MainPhone, '[^0-9]', '', 'g')) = 11 AND SUBSTR(REGEXP_REPLACE(MainPhone, '[^0-9]', '', 'g'), 1, 1) = '1' THEN '+' || REGEXP_REPLACE(MainPhone, '[^0-9]', '', 'g') ELSE MainPhone END

@@ -1,0 +1,180 @@
+_package: RestaurantMaster.workflows
+_type: Workflow
+_name: OnboardRestaurant
+label: Onboard a restaurant
+workflowAdminRole: semarchyAdmin
+notifications:
+  workflowAdminOnDueDate: false
+generalProperties:
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+  attachmentMimeTypes: '*'
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+dataScope:
+- _type: RootEntity
+  _name: Restaurant
+  entity: RestaurantMaster.entities.Restaurant.Restaurant
+  cardinality: SINGLE_RECORD
+  displayCard: RestaurantMaster.entities.Restaurant.display_cards.RestaurantDisplayCard
+  childEntities:
+  - ref: RestaurantMaster.references.RestaurantOrgAssignmentHasRestaurant
+  - ref: RestaurantMaster.references.RestaurantOperatorHasRestaurant
+  - ref: RestaurantMaster.references.RestaurantLocalizedNameHasRestaurant
+steps:
+- _type: StartFromSelectionEvent
+  _name: Start
+  position:
+    x: -640
+    y: 0
+  label: Onboard restaurant
+  initiatorRequiredRole: ''
+  defaultPriority: NORMAL
+  authoredEntity: RestaurantMaster.entities.Restaurant.Restaurant
+  selectionSourceType: GOLDEN_DATA
+  conditionOnSelection: '1=1'
+  startupParameters:
+    attachmentParamRequired: false
+    attachmentParamSupported: false
+    commentParamRequired: false
+    commentParamSupported: true
+    descriptionParamSupported: false
+    dueDateParamRequired: false
+    dueDateParamSupported: true
+    nextTaskAssigneeRequired: false
+    nextTaskAssigneeSupported: false
+    priorityParamSupported: true
+    showWaitDialog: true
+  transition:
+    _type: StartEventTransition
+    _name: outgoing
+    toStep: RestaurantMaster.workflows.OnboardRestaurant.Author
+    bendPoints: []
+- _type: UserTask
+  _name: Author
+  label: Complete the restaurant
+  icon: images://mdi/pencil-outline.svg
+  position:
+    x: -400
+    y: 0
+  application: RestaurantMaster.applications.RestaurantMaster
+  assigneeCanRelease: true
+  taskType: DATA_AUTHORING
+  notificationsOnTaskAssignment:
+    toAssignee: true
+    toCandidates: true
+  notificationsOnTaskExpiration:
+    taskMaxDuration: 0
+    toAdmin: false
+    toCandidatesOrAssignee: false
+    toRole: ''
+  notificationsOnWorkflowDueDate:
+    toCandidatesOrAssignee: false
+  entity: RestaurantMaster.entities.Restaurant.Restaurant
+  stepper: RestaurantMaster.entities.Restaurant.steppers.OnboardRestaurant
+  myTasksConfiguration:
+    collection: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+  transitions:
+  - _type: UserTaskTransition
+    _name: SubmitForApproval
+    label: Submit for approval
+    toStep: RestaurantMaster.workflows.OnboardRestaurant.Approve
+    userTaskCompletionRequired: true
+    behaviorOnTransition: KEEP_DATA
+    showWaitDialog: true
+    transitionParameters:
+      nextTaskAssigneeSupported: false
+      nextTaskAssigneeRequired: false
+      descriptionParamSupported: false
+      commentParamSupported: true
+      commentParamRequired: false
+      priorityParamSupported: false
+      dueDateParamSupported: false
+      dueDateParamRequired: false
+      attachmentParamSupported: false
+      attachmentParamRequired: false
+    bendPoints: []
+  assigneeCondition: Username = StepInstance.WorkflowInstance.InitiatorName
+- _type: UserTask
+  _name: Approve
+  label: Review and approve
+  icon: images://mdi/clipboard-check-outline.svg
+  position:
+    x: -160
+    y: 0
+  application: RestaurantMaster.applications.RestaurantMaster
+  assigneeCanRelease: true
+  taskType: DATA_AUTHORING
+  notificationsOnTaskAssignment:
+    toAssignee: true
+    toCandidates: false
+  notificationsOnTaskExpiration:
+    taskMaxDuration: 0
+    toAdmin: false
+    toCandidatesOrAssignee: false
+    toRole: ''
+  notificationsOnWorkflowDueDate:
+    toCandidatesOrAssignee: false
+  entity: RestaurantMaster.entities.Restaurant.Restaurant
+  stepper: RestaurantMaster.entities.Restaurant.steppers.OnboardRestaurant
+  myTasksConfiguration:
+    collection: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+  transitions:
+  - _type: UserTaskTransition
+    _name: Approved
+    label: Approve and publish
+    toStep: RestaurantMaster.workflows.OnboardRestaurant.Publish
+    userTaskCompletionRequired: true
+    behaviorOnTransition: KEEP_DATA
+    showWaitDialog: true
+    transitionParameters:
+      nextTaskAssigneeSupported: false
+      nextTaskAssigneeRequired: false
+      descriptionParamSupported: false
+      commentParamSupported: true
+      commentParamRequired: false
+      priorityParamSupported: false
+      dueDateParamSupported: false
+      dueDateParamRequired: false
+      attachmentParamSupported: false
+      attachmentParamRequired: false
+    bendPoints: []
+  - _type: UserTaskTransition
+    _name: Rejected
+    label: Reject - back to the steward
+    toStep: RestaurantMaster.workflows.OnboardRestaurant.Author
+    userTaskCompletionRequired: true
+    behaviorOnTransition: KEEP_DATA
+    showWaitDialog: true
+    transitionParameters:
+      nextTaskAssigneeSupported: false
+      nextTaskAssigneeRequired: false
+      descriptionParamSupported: false
+      commentParamSupported: true
+      commentParamRequired: false
+      priorityParamSupported: false
+      dueDateParamSupported: false
+      dueDateParamRequired: false
+      attachmentParamSupported: false
+      attachmentParamRequired: false
+    bendPoints: []
+- _type: SubmitAutomation
+  _name: Publish
+  label: Certify and publish
+  position:
+    x: 80
+    y: 0
+  integrationJob: RestaurantMaster.certification_jobs.INGEST_ALL
+  submitUserExpression: WorkflowInstance.InitiatorName
+  transition:
+    _type: AutomationTransition
+    _name: outgoing
+    label: Done
+    toStep: RestaurantMaster.workflows.OnboardRestaurant.End
+    bendPoints: []
+- _type: EndEvent
+  _name: End
+  position:
+    x: 320
+    y: 0

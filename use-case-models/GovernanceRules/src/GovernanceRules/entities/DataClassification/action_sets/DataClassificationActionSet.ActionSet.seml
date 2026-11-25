@@ -1,0 +1,64 @@
+# DataClassificationActionSet: action set on DataClassification of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.DataClassification.action_sets
+_type: ActionSet
+_name: DataClassificationActionSet
+entity: GovernanceRules.entities.DataClassification.DataClassification
+label: Data classification
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorDataClassifications
+    label: Create
+    useCustomLabel: true
+    stepper: GovernanceRules.entities.DataClassification.steppers.AuthorDataClassifications
+    createMultiple: false
+    createdRecordType: GOLDEN
+    allowOtherPublishers: true
+    waitDialogEnabled: false
+  - _type: EditAction
+    _name: EditAuthorDataClassifications
+    label: Edit
+    useCustomLabel: true
+    stepper: GovernanceRules.entities.DataClassification.steppers.AuthorDataClassifications
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorDataClassifications
+    label: Mass update
+    useCustomLabel: true
+    stepper: GovernanceRules.entities.DataClassification.steppers.AuthorDataClassifications
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorDataClassifications
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: GovernanceRules.entities.DataClassification.steppers.AuthorDataClassifications
+    importedRecordType: GOLDEN
+    allowOtherPublishers: true
+    waitDialogEnabled: false
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse graph
+    useCustomLabel: true
+    waitDialogEnabled: false

@@ -1,0 +1,120 @@
+_package: RestaurantMaster.entities.LegalEntity
+_type: Entity
+_name: LegalEntity
+label: Legal entity
+pluralLabel: Legal entities
+entityType: ID_MATCHED
+physicalTableName: LEGALENTITY
+iconUrl: images://mdi/domain.svg
+description: 'A company that signs leases (Real Estate) and franchise agreements and is billed (ERP): a franchisee company or a Copperline company. Identified by its country and tax identifier, shared by ERP and Real Estate.'
+documentation: 'A company that signs leases (Real Estate) and franchise agreements and is billed (ERP): a franchisee company or a Copperline company. Identified by its country and tax identifier, shared by ERP and Real Estate.'
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: LegalEntityKey
+  label: Legal entity key
+  physicalName: LEGALENTITYKEY
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Country and tax identifier: US- followed by the 9-digit EIN, or CA- followed by the 9-digit Business Number.'
+  documentation: 'Country and tax identifier: US- followed by the 9-digit EIN, or CA- followed by the 9-digit Business Number.'
+  length: 12
+- _type: EntityAttribute
+  _name: LegalName
+  label: Legal name
+  physicalName: LEGALNAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Registered name.
+  documentation: Registered name.
+- _type: EntityAttribute
+  _name: DoingBusinessAs
+  label: Doing business as
+  physicalName: DOINGBUSINESSAS
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: Trade name, when different.
+  documentation: Trade name, when different.
+- _type: EntityAttribute
+  _name: LegalEntityType
+  label: Type
+  physicalName: LEGALENTITYTYPE
+  dataType: RestaurantMaster.list_of_values.LegalEntityType
+  mandatory: true
+  mandatoryValidationScope: POST_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Franchisee company or Copperline company.
+  documentation: Franchisee company or Copperline company.
+- _type: EntityAttribute
+  _name: BillingAccountNumber
+  label: Billing account
+  physicalName: BILLINGACCOUNTNUMBER
+  dataType: String
+  length: 64
+  mandatory: false
+  searchable: true
+  description: ERP customer account used for royalty billing.
+  documentation: ERP customer account used for royalty billing.
+- _type: EntityAttribute
+  _name: BillingAddressLine1
+  label: Billing address line 1
+  physicalName: BILLINGADDRESSLINE1
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: Billing street address.
+  documentation: Billing street address.
+- _type: EntityAttribute
+  _name: BillingAddressLine2
+  label: Billing address line 2
+  physicalName: BILLINGADDRESSLINE2
+  dataType: String
+  length: 256
+  mandatory: false
+  searchable: true
+  description: Billing suite or unit.
+  documentation: Billing suite or unit.
+- _type: EntityAttribute
+  _name: BillingCity
+  label: Billing city
+  physicalName: BILLINGCITY
+  dataType: String
+  length: 128
+  mandatory: false
+  searchable: true
+  description: Billing city.
+  documentation: Billing city.
+- _type: EntityAttribute
+  _name: BillingPostalCode
+  label: Billing postal code
+  physicalName: BILLINGPOSTALCODE
+  dataType: String
+  length: 10
+  mandatory: false
+  searchable: true
+  description: Billing ZIP or postal code.
+  documentation: Billing ZIP or postal code.
+- _type: EntityAttribute
+  _name: LegalEntityStatus
+  label: Status
+  physicalName: LEGALENTITYSTATUS
+  dataType: RestaurantMaster.list_of_values.ActiveStatus
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Whether the company is active.
+  documentation: Whether the company is active.
+primaryKey: RestaurantMaster.entities.LegalEntity.LegalEntity.LegalEntityKey
+sourceIdGeneration:
+  mode: MANUAL

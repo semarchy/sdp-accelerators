@@ -1,0 +1,120 @@
+_name: AuthorItemSpecificAttributes
+_package: Manufacturing.entities.ItemSpecificAttribute.steppers
+_type: Stepper
+entity: Manufacturing.entities.ItemSpecificAttribute.ItemSpecificAttribute
+rootStep:
+  _name: ItemSpecificAttributes
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ItemSpecificAttribute.collection_views.ItemSpecificAttributeCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Item Specific Attributes
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ItemSpecificAttributesHasAttributeValue.AttributeValue
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: Manufacturing.entities.ItemSpecificAttribute.validations.MandatoryAttribute
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+  stepTriggers: []
+  childSteps:
+    - _name: ItemSpecificAttribute
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Item Specific Attribute
+      formTab: Manufacturing.entities.ItemSpecificAttribute.forms.ItemSpecificAttributeForm.ItemSpecificAttribute
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          executedOnDataChange: false
+          executedOnFormOpen: false
+          validator: Manufacturing.entities.ItemSpecificAttribute.validations.MandatoryAttribute
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttributeValue.AttributeValue
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttributeValue.AttributeValue
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+        - onStepExit: SKIP
+          validationType: CHECK
+          validator: Manufacturing.entities.ItemSpecificAttribute.validations.MandatoryAttribute
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+      stepTriggers: []
+label: Author Item Specific Attributes
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: Manufacturing.entities.ItemSpecificAttribute.validations.MandatoryAttribute
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemSpecificAttributesHasItem.Item
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ItemSpecificAttributesHasAttributeValue.AttributeValue
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ItemSpecificAttributesHasAttribute.Attribute
+triggers: []

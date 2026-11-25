@@ -1,0 +1,29 @@
+_package: RetailCustomer360.entities.Voucher.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: IdentityPreferredPublisher
+entity: RetailCustomer360.entities.Voucher.Voucher
+label: Identity (preferred publisher)
+description: "Consolidates Voucher identity attributes by trusting the most authoritative publisher first."
+defaultRule: false
+consolidationStrategy: PREFERRED_PUBLISHER
+consolidationSkipNulls: false
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: VoucherType
+  - attributeName: VoucherStatus
+  - attributeName: FaceValue
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.CRM
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.ECOMMERCE
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.POS
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.LOYALTY
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.API
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.UI
+  - _type: ConsoPublisherRanking
+    publisher: RetailCustomer360.publishers.MANUAL

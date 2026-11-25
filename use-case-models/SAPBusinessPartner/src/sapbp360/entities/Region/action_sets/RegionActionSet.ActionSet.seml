@@ -1,0 +1,70 @@
+_name: RegionActionSet
+_package: sapbp360.entities.Region.action_sets
+_type: ActionSet
+entity: sapbp360.entities.Region.Region
+label: Region Action Set
+description: Action set for managing Regions in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorRegions
+    label: Create
+    description: Create a new Region record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.Region.steppers.AuthorRegions
+  - _name: EditAuthorRegions
+    label: Edit
+    description: Edit Region records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.Region.steppers.AuthorRegions
+  - _name: MassUpdateAuthorRegions
+    label: Mass Update
+    description: Mass update Region records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.Region.steppers.AuthorRegions
+  - _name: Delete
+    label: Delete
+    description: Delete selected Region records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorRegions
+    label: Import
+    description: Import Region records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.Region.steppers.RegionImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

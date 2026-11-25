@@ -1,0 +1,26 @@
+_package: CTMDM.entities.Vendor.action_sets
+_type: ActionSet
+_name: VendorReviewSuggestionsActionSet
+
+entity: CTMDM.entities.Vendor.Vendor
+label: CRO / Vendor Review Suggestions Action Set
+defaultActionSet: false
+
+actions:
+  - _type: MergeOrSplit
+    _name: MergeOrSplitDuplicatesManageDuplicatesOnVendor
+    label: Merge Or Split Duplicates
+    useCustomLabel: true
+    dupsManager: CTMDM.entities.Vendor.dups_managers.ReviewSuggestionsOnVendor
+    enableEdit: true
+    waitDialogEnabled: false
+
+  - _type: ReviewSuggestions
+    _name: ReviewSuggestionsDuplicatesManageDuplicatesOnVendor
+    label: Review Duplicates Suggestions
+    useCustomLabel: true
+    dupsManager: CTMDM.entities.Vendor.dups_managers.ReviewSuggestionsOnVendor
+    enableEdit: true
+    waitDialogEnabled: false
+    onAcceptPromptGoldenId: false
+    mandateResolveAllSuggestions: false

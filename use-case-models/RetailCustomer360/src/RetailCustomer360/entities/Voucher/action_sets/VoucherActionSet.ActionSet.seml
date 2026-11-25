@@ -1,0 +1,64 @@
+_package: RetailCustomer360.entities.Voucher.action_sets
+_type: ActionSet
+_name: VoucherActionSet
+entity: RetailCustomer360.entities.Voucher.Voucher
+label: Voucher Action Set
+description: "Actions available to stewards on Vouchers."
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateVoucher
+    label: Create
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Voucher.steppers.AuthorVoucher
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditVoucher
+    label: Edit
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Voucher.steppers.AuthorVoucher
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateVoucher
+    label: Mass Update
+    useCustomLabel: true
+    stepper: RetailCustomer360.entities.Voucher.steppers.AuthorVoucher
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: DeleteVoucher
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: ExportVoucher
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportVoucher
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: RetailCustomer360.entities.Voucher.steppers.ImportVoucher
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraphVoucher
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

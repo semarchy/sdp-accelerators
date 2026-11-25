@@ -1,0 +1,120 @@
+_name: AuthorManufacturerAddresses
+_package: Manufacturing.entities.ManufacturerAddress.steppers
+_type: Stepper
+entity: Manufacturing.entities.ManufacturerAddress.ManufacturerAddress
+rootStep:
+  _name: ManufacturerAddresss
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ManufacturerAddress.collection_views.ManufacturerAddressCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Manufacturer Addresses
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ManufacturerAddressesBelongsToAddress.Address
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ManufacturerAddressesHasAddressType.AddressType
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ManufacturerAddressesHasAddressType.AddressType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ManufacturerAddressesBelongsToManufacturer.Manufacturer
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.ManufacturerAddressesBelongsToAddress.Address
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.ManufacturerAddressesBelongsToManufacturer.Manufacturer
+  stepTriggers: []
+  childSteps:
+    - _name: ManufacturerAddress
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Manufacturer Address
+      formTab: Manufacturing.entities.ManufacturerAddress.forms.ManufacturerAddressForm.ManufacturerAddress
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturerAddressesBelongsToAddress.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturerAddressesHasAddressType.AddressType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturerAddressesBelongsToAddress.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturerAddressesHasAddressType.AddressType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturerAddressesBelongsToManufacturer.Manufacturer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturerAddressesBelongsToManufacturer.Manufacturer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturerAddressesHasAddressType.AddressType
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturerAddressesBelongsToAddress.Address
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturerAddressesBelongsToManufacturer.Manufacturer
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturerAddressesBelongsToAddress.Address
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.ManufacturerAddressesHasAddressType.AddressType
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.ManufacturerAddressesBelongsToManufacturer.Manufacturer
+      stepTriggers: []
+label: Author Manufacturer Addresses
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ManufacturerAddressesHasAddressType.AddressType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ManufacturerAddressesBelongsToManufacturer.Manufacturer
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ManufacturerAddressesHasAddressType.AddressType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.ManufacturerAddressesBelongsToAddress.Address
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ManufacturerAddressesBelongsToManufacturer.Manufacturer
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.ManufacturerAddressesBelongsToAddress.Address
+triggers: []

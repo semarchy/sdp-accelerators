@@ -1,0 +1,98 @@
+_package: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption
+_type: Entity
+_name: AnnuityPayoutOption
+label: "Annuity Payout Option"
+pluralLabel: "Annuity Payout Options"
+physicalTableName: ANN_PAYOUT_OPTION
+iconUrl: images://mdi/timetable.svg
+description: "Defines annuity payout options such as life only, joint life, period certain, systematic withdrawal, or lump sum."
+documentation: "Defines annuity payout options such as life only, joint life, period certain, systematic withdrawal, or lump sum."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: AnnuityPayoutOptionID
+    label: "Annuity Payout Option ID"
+    physicalName: ANN_PAYOUT_OPTION_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the annuity payout option."
+    documentation: "Unique identifier for the annuity payout option."
+  - _type: EntityAttribute
+    _name: PayoutOptionCode
+    label: "Payout Option Code"
+    physicalName: PAYOUT_OPTION_CODE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Annuity payout option code."
+    documentation: "Annuity payout option code."
+  - _type: EntityAttribute
+    _name: PayoutOptionName
+    label: "Payout Option Name"
+    physicalName: PAYOUT_OPTION_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Business name of the payout option."
+    documentation: "Business name of the payout option."
+  - _type: EntityAttribute
+    _name: PayoutCategory
+    label: "Payout Category"
+    physicalName: PAYOUT_CATEGORY
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Payout category such as life contingent or term certain."
+    documentation: "Payout category such as life contingent or term certain."
+  - _type: EntityAttribute
+    _name: Description
+    label: "Description"
+    physicalName: DESC_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Description of payout option mechanics."
+    documentation: "Description of payout option mechanics."
+  - _type: EntityAttribute
+    _name: LifeContingentIndicator
+    label: "Life Contingent Indicator"
+    physicalName: LIFE_CONTINGENT_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the option depends on a life-contingent annuitization basis."
+    documentation: "Indicates whether the option depends on a life-contingent annuitization basis."
+  - _type: EntityAttribute
+    _name: PeriodCertainMonths
+    label: "Period Certain Months"
+    physicalName: PERIOD_CERTAIN_MONTHS
+    dataType: Decimal
+    precision: 9
+    scale: 0
+    mandatory: false
+    searchable: true
+    description: "Default period certain duration in months, when applicable."
+    documentation: "Default period certain duration in months, when applicable."
+  - _type: EntityAttribute
+    _name: ActiveIndicator
+    label: "Active Indicator"
+    physicalName: ACTIVE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the payout option is active."
+    documentation: "Indicates whether the payout option is active."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.AnnuityPayoutOption.AnnuityPayoutOptionID
+entityType: BASIC

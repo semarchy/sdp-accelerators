@@ -1,0 +1,62 @@
+_package: CTMDM.entities.StudyCountry.business_views
+_type: BusinessView
+_name: StudyCountryBusinessView
+
+entity: CTMDM.entities.StudyCountry.StudyCountry
+rootLabel: Study Country
+rootPluralLabel: Study Countries
+rootIconUrl: images://mdi/earth.svg
+displayRootNodeAs: ICON_LABEL
+label: Study Countries
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: StudyCountry
+  entity: CTMDM.entities.StudyCountry.StudyCountry
+  actionSet: CTMDM.entities.StudyCountry.action_sets.StudyCountryActionSet
+  collection: CTMDM.entities.StudyCountry.collection_views.StudyCountryCollectionView
+  form: CTMDM.entities.StudyCountry.forms.StudyCountryForm
+  displayCard: CTMDM.entities.StudyCountry.display_cards.StudyCountryDisplayCard
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.StudyCountry.business_views.StudyCountryBusinessView.StudyCountry
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

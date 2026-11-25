@@ -1,0 +1,75 @@
+_name: PlantProduct
+_package: sappm360.entities.PlantProduct.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sappm360.entities.PlantProduct.PlantProduct
+rootLabel: Plant Product
+rootPluralLabel: Plant Products
+useHierarchyOnOpen: false
+label: Plant Product
+description: Business view for Plant Product.
+rootBusinessViewEntity:
+  _name: PlantProduct
+  _type: BusinessViewEntity
+  collection: sappm360.entities.PlantProduct.collection_views.PlantProductCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sappm360.entities.PlantProduct.PlantProduct
+  form: sappm360.entities.PlantProduct.forms.PlantProductBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sappm360.entities.PlantProduct.action_sets.PlantProductActionSet
+  displayCard: sappm360.entities.PlantProduct.display_cards.PlantProductDisplayCard
+  sortExpression: MRPType
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sappm360.entities.PlantProduct.forms.PlantProductBrowsingForm.Main.Details.DetailsContainer.Container2.FDN_Product
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.PlantProduct.forms.PlantProductBrowsingForm.Main.Details.DetailsContainer.Container3.FDN_Material
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.PlantProduct.forms.PlantProductBrowsingForm.Main.Details.DetailsContainer.Container4.FDN_Plant
+      navigationMode: MODAL_FORM
+    - formField: sappm360.entities.PlantProduct.forms.PlantProductBrowsingForm.Main.Details.DetailsContainer.Container2.FDN_StorageLocation
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sappm360.entities.PlantProduct.business_views.PlantProduct.PlantProduct
+rootIconUrl: images://mdi/factory.svg

@@ -1,0 +1,101 @@
+_package: CTMDM.entities.GcpCertification
+_type: Entity
+_name: GcpCertification
+label: GCP Certification
+pluralLabel: GCP Certifications
+entityType: ID_MATCHED
+physicalTableName: GCP_CERT
+iconUrl: images://mdi/certificate-outline.svg
+description: "Good Clinical Practice certification used to qualify investigators for trials."
+documentation: "Good Clinical Practice certification used to qualify investigators for trials."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CertificateID
+    label: Certificate ID
+    description: Business identifier for the GCP certification.
+    documentation: Business identifier for the GCP certification.
+    physicalName: CERTIFICATE_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CertificateNumber
+    label: Certificate Number
+    description: Issued certificate number.
+    documentation: Issued certificate number.
+    physicalName: CERTIFICATE_NUMBER
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: IssuingOrganization
+    label: Issuing Organization
+    description: Training provider or certifying body.
+    documentation: Training provider or certifying body.
+    physicalName: ISSUING_ORG
+    dataType: String
+    length: 150
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedIssuingOrganization
+    label: Normalized Issuing Organization
+    description: Trimmed and uppercased certifying organization.
+    documentation: Trimmed and uppercased certifying organization.
+    physicalName: NORM_ISSUING_ORG
+    dataType: String
+    length: 150
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: IssueDate
+    label: Issue Date
+    description: Date the certification was issued.
+    documentation: Date the certification was issued.
+    physicalName: ISSUE_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ExpirationDate
+    label: Expiration Date
+    description: Date the certification expires.
+    documentation: Date the certification expires.
+    physicalName: EXPIRATION_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: CertificationStatus
+    label: Certification Status
+    description: Current certification status.
+    documentation: Current certification status.
+    physicalName: CERT_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: TrainingVersion
+    label: Training Version
+    description: Version of GCP training completed.
+    documentation: Version of GCP training completed.
+    physicalName: TRAINING_VERSION
+    dataType: String
+    length: 50
+    mandatory: false
+
+primaryKey: CTMDM.entities.GcpCertification.GcpCertification.CertificateID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

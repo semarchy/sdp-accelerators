@@ -1,0 +1,137 @@
+# Description: Entity definition for `PartyContact` (contacts for parties).
+# Contains contact attributes (email, phone), matching rules and validations.
+# Role: Stores contact information tied to `Party` and used by forms and UI components.
+ # Description: Entity definition for `PartyContact` (contact points for Parties).
+ # Contains: Contact attributes (email, phone, role) linked to `Party` entities.
+ # Role: Stores contact methods for parties used in communication and relationships.
+_package: Merchant.entities.PartyContact
+_type: Entity
+_name: PartyContact
+label: Party Contact
+pluralLabel: Party Contacts
+entityType: FUZZY_MATCHED
+physicalTableName: MERCHANT_CONTACT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: PartyContactID
+    label: Party Contact ID
+    physicalName: PARTY_CONTACT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary key for the PartyContact entity"
+    
+  - _type: EntityAttribute
+    _name: ContactType
+    label: Contact Type
+    physicalName: CONTACT_TYPE
+    dataType: Merchant.list_of_values.PartyContactType
+    lovValidationScope: PRE_CONSO
+    mandatory: false
+    searchable: true
+    description: "Type of contact (e.g., Email, Phone)"
+    
+  - _type: EntityAttribute
+    _name: FirstName
+    label: First Name
+    physicalName: FIRST_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+    description: "Contact's first name"
+    
+  - _type: EntityAttribute
+    _name: LastName
+    label: Last Name
+    physicalName: LAST_NAME
+    dataType: String
+    length: 100
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Contact's last name"
+
+  - _type: EntityAttribute
+    _name: EnrichedFirstName
+    label: Enriched First Name
+    physicalName: ENRICHED_FIRST_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+    description: "Enriched first name, if available"
+
+  - _type: EntityAttribute
+    _name: EnrichedLastName
+    label: Enriched Last Name
+    physicalName: ENRICHED_LAST_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+    description: "Enriched last name, if available"
+    
+  - _type: EntityAttribute
+    _name: Email
+    label: Email
+    physicalName: EMAIL
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Contact's email address"
+    
+  - _type: EntityAttribute
+    _name: PhoneNumber
+    label: Phone Number
+    physicalName: PHONE_NUMBER
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Contact's phone number"
+
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+
+primaryKey: Merchant.entities.PartyContact.PartyContact.PartyContactID
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: PartyContactSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: NewRule
+      label: NewRuleLabel
+      condition: Record1.EnrichedFirstName = Record2.EnrichedFirstName AND Record1.EnrichedLastName = Record2.EnrichedLastName 
+                 AND Record1.Email = Record2.Email
+      matchScore: 100
+      usingMatchOn: false
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 0
+  mergeThresholdMergingUnconfirmed: 0
+  mergeThresholdMergingConfirmed: 0
+  mergeThresholdMergingConfirmedWithUnconfirmed: 0
+  mergeThresholdMergingUnconfirmedWithNewMasters: 0
+  mergeThresholdMergingConfirmedWithNewMasters: 0
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false

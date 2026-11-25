@@ -1,0 +1,277 @@
+_package: CTMDM.entities.Investigator
+_type: Entity
+_name: Investigator
+label: Investigator
+pluralLabel: Investigators
+entityType: FUZZY_MATCHED
+physicalTableName: INV
+iconUrl: images://mdi/account-tie.svg
+description: "Golden record for clinical investigators participating in sponsored studies."
+documentation: "Golden record for clinical investigators participating in sponsored studies."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: InvestigatorID
+    label: Investigator ID
+    description: Surrogate identifier for the investigator master.
+    documentation: Surrogate identifier for the investigator master.
+    physicalName: INV_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: FirstName
+    label: First Name
+    description: Investigator given name.
+    documentation: Investigator given name.
+    physicalName: FIRST_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedFirstName
+    label: Normalized First Name
+    description: Trimmed and uppercased first name for duplicate detection.
+    documentation: Trimmed and uppercased first name for duplicate detection.
+    physicalName: NORM_FIRST_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: LastName
+    label: Last Name
+    description: Investigator family name.
+    documentation: Investigator family name.
+    physicalName: LAST_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedLastName
+    label: Normalized Last Name
+    description: Trimmed and uppercased last name for duplicate detection.
+    documentation: Trimmed and uppercased last name for duplicate detection.
+    physicalName: NORM_LAST_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: MiddleName
+    label: Middle Name
+    description: Optional middle name or initial.
+    documentation: Optional middle name or initial.
+    physicalName: MIDDLE_NAME
+    dataType: String
+    length: 100
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Email
+    label: Email
+    description: Primary professional email address.
+    documentation: Primary professional email address.
+    physicalName: EMAIL
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedEmail
+    label: Normalized Email
+    description: Trimmed and uppercased email address for matching.
+    documentation: Trimmed and uppercased email address for matching.
+    physicalName: NORM_EMAIL
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Phone
+    label: Phone
+    description: Primary telephone number.
+    documentation: Primary telephone number.
+    physicalName: PHONE
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: MedicalLicenseNumber
+    label: Medical License Number
+    description: Primary medical license number used for identity resolution.
+    documentation: Primary medical license number used for identity resolution.
+    physicalName: MED_LIC_NUMBER
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedMedicalLicenseNumber
+    label: Normalized Medical License Number
+    description: Trimmed and uppercased primary license number.
+    documentation: Trimmed and uppercased primary license number.
+    physicalName: NORM_MED_LIC_NUMBER
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Institution
+    label: Institution
+    description: Primary institution or affiliated organization.
+    documentation: Primary institution or affiliated organization.
+    physicalName: INSTITUTION
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NormalizedInstitution
+    label: Normalized Institution
+    description: Trimmed and uppercased institution name.
+    documentation: Trimmed and uppercased institution name.
+    physicalName: NORM_INSTITUTION
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: PhonetizedInvestigatorName
+    label: Phonetized Investigator Name
+    description: Phonetic key derived from investigator name.
+    documentation: Phonetic key derived from investigator name.
+    physicalName: PHON_INV_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: Specialty
+    label: Specialty
+    description: Principal medical specialty.
+    documentation: Principal medical specialty.
+    physicalName: SPEC
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    description: Operational lifecycle status for the investigator.
+    documentation: Operational lifecycle status for the investigator.
+    physicalName: STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ORCID
+    label: ORCID
+    description: Open Researcher and Contributor identifier.
+    documentation: Open Researcher and Contributor identifier.
+    physicalName: ORCID
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: NPI
+    label: NPI
+    description: National Provider Identifier where applicable.
+    documentation: National Provider Identifier where applicable.
+    physicalName: NPI
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CreatedDate
+    label: Created Date
+    description: Date the source record was created.
+    documentation: Date the source record was created.
+    physicalName: CREATED_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: UpdatedDate
+    label: Updated Date
+    description: Date the investigator record was last updated.
+    documentation: Date the investigator record was last updated.
+    physicalName: UPDATED_DATE
+    dataType: Date
+    mandatory: false
+
+primaryKey: CTMDM.entities.Investigator.Investigator.InvestigatorID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: InvestigatorMatcher
+  description: Strategies for matching Investigators
+
+  matchRules:
+    - _name: InvestigatorStrongMatch
+      _type: SemQLMatchRule
+      label: Strong Investigator Match
+      documentation: "Matches records using normalized identity attributes and business identifiers."
+      color: md:purple 900
+      condition: Record1.NormalizedLastName = Record2.NormalizedLastName AND Record1.NormalizedFirstName = Record2.NormalizedFirstName AND Record1.NormalizedEmail = Record2.NormalizedEmail
+      matchScore: 95
+
+    - _name: InvestigatorPhoneticMatch
+      _type: SemQLMatchRule
+      label: Phonetic Investigator Match
+      documentation: "Matches records using phonetic and normalized attributes for likely duplicates."
+      color: md:purple 700
+      condition: Record1.NormalizedInstitution = Record2.NormalizedInstitution
+      matchScore: 88
+
+    - _name: InvestigatorCandidateMatch
+      _type: SemQLMatchRule
+      label: Candidate Investigator Match
+      documentation: "Suggests candidate duplicates for steward review using a reduced attribute set."
+      color: md:purple 400
+      condition: Record1.NormalizedLastName = Record2.NormalizedLastName AND Record1.NormalizedFirstName = Record2.NormalizedFirstName
+      matchScore: 65
+      
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 85
+  mergeThresholdMergingUnconfirmed: 85
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithUnconfirmed: 85
+  mergeThresholdMergingUnconfirmedWithNewMasters: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 85
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 87
+  autoConfirmSingletons: false

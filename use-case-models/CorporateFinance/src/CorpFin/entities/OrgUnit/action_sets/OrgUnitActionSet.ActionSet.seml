@@ -1,0 +1,69 @@
+_package: CorpFin.entities.OrgUnit.action_sets
+_type: ActionSet
+_name: OrgUnitActionSet
+entity: CorpFin.entities.OrgUnit.OrgUnit
+label: Org Unit Action Set
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorOrgUnits
+    label: Create
+    useCustomLabel: true
+    stepper: CorpFin.entities.OrgUnit.steppers.AuthorOrgUnits
+    createMultiple: false
+    createdRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: EditAction
+    _name: EditAuthorOrgUnits
+    label: Edit
+    useCustomLabel: true
+    stepper: CorpFin.entities.OrgUnit.steppers.AuthorOrgUnits
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: StartWorkflowEntityAction
+    _name: AddOrgUnitInHierarchy
+    label: Add Org Unit in Hierarchy
+    startEvent: CorpFin.workflows.AddOrgUnit.StartFromScratch
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorOrgUnits
+    label: Mass Update
+    useCustomLabel: true
+    stepper: CorpFin.entities.OrgUnit.steppers.AuthorOrgUnits
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    waitDialogEnabled: false
+    availableForGoldenData: true
+    availableForMasterData: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorOrgUnits
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: CorpFin.entities.OrgUnit.steppers.ImportOrgUnits
+    importedRecordType: GOLDEN
+    waitDialogEnabled: false
+    allowOtherPublishers: true
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false

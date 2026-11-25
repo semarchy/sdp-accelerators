@@ -1,0 +1,22 @@
+_type: StandardSurvivorshipRule
+entity: HCO_HCP.entities.Member.Member
+_package: HCO_HCP.entities.Member.survivorship_rules
+defaultRule: false
+_name: EncounterData
+consolidationOrderByExpression: LPAD( SourceID, 5, '0' )
+consolidationSkipNulls: false
+consolidationStrategy: PREFERRED_PUBLISHER
+label: Encounter Data
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: HCO_HCP.publishers.Encounters
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+attributes:
+  - attributeName: EmailAddress
+  - attributeName: CellPhone
+  - attributeName: WorkPhone
+  - attributeName: Gender
+  - attributeName: PlaceOfBirth
+  - attributeName: MaritalStatus

@@ -1,0 +1,60 @@
+_package: RestaurantMaster.entities.RestaurantLocalizedName
+_type: Entity
+_name: RestaurantLocalizedName
+label: Localized name
+pluralLabel: Localized names
+entityType: BASIC
+physicalTableName: REST_LOCALIZED_NAME
+iconUrl: images://mdi/translate.svg
+description: The restaurant's public name in a given language (French names for Quebec listings).
+documentation: The restaurant's public name in a given language (French names for Quebec listings).
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: RestaurantLocalizedNameID
+  label: Key
+  physicalName: REST_LOCALIZED_NAME_ID
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  documentation: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  length: 100
+- _type: EntityAttribute
+  _name: Language
+  label: Language
+  physicalName: LANGUAGE_CODE
+  dataType: RestaurantMaster.list_of_values.Language
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Language of the name.
+  documentation: Language of the name.
+- _type: EntityAttribute
+  _name: LocalizedName
+  label: Localized name
+  physicalName: LOCALIZEDNAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Public name in that language.
+  documentation: Public name in that language.
+- _type: EntityAttribute
+  _name: NaturalKey
+  label: Natural key
+  physicalName: NATURALKEY
+  dataType: String
+  length: 300
+  mandatory: false
+  searchable: false
+  description: Business key of the row, built from its restaurant and its distinguishing fields; enforces uniqueness.
+  documentation: Business key of the row, built from its restaurant and its distinguishing fields; enforces uniqueness.
+primaryKey: RestaurantMaster.entities.RestaurantLocalizedName.RestaurantLocalizedName.RestaurantLocalizedNameID
+sourceIdGeneration:
+  mode: MANUAL

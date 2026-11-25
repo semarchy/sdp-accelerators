@@ -1,0 +1,377 @@
+# GovernanceRules: application of the GovernanceRules accelerator.
+_package: GovernanceRules.applications
+_type: Application
+_name: GovernanceRules
+label: Governance Rules
+visibility: VISIBLE
+applicationTitle: Governance Rules
+avatarImageUrl: images://GovernanceRules/avatar.svg
+logoUrl: images://GovernanceRules/logo.svg
+coverImageUrl: images://GovernanceRules/cover.svg
+favIcon: images://GovernanceRules/favicon.svg
+primaryColor: md:light-blue 900
+secondaryColor: md:teal
+titleBarDefaultColor: 'css: #243B53'
+titleBarDefaultContrastColor: 'css: #FFFFFF'
+titleBarAuthoringColor: 'css: #2A9D8F'
+titleBarAuthoringContrastColor: 'css: #FFFFFF'
+sortStrategy: POSITION
+historyBrowsingEnabled: true
+historyBrowsingRequiredRole: ''
+defaultAction: GovernanceRules.applications.GovernanceRules.Root.Rules.RulesInForce
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: false
+  globalSearchBusinessViews:
+  - _type: GlobalSearchBoView
+    _name: SearchGovernanceRule
+    viewType: GD
+    businessView: GovernanceRules.entities.GovernanceRule.business_views.GovernanceRuleBusinessView
+    searchTypeConfig: GovernanceRules.entities.GovernanceRule.business_views.GovernanceRuleBusinessView.GovernanceRule.TextConfig
+    maxResults: 10
+    label: Governance rules
+  - _type: GlobalSearchBoView
+    _name: SearchGovernancePolicy
+    viewType: GD
+    businessView: GovernanceRules.entities.GovernancePolicy.business_views.GovernancePolicyBusinessView
+    searchTypeConfig: GovernanceRules.entities.GovernancePolicy.business_views.GovernancePolicyBusinessView.GovernancePolicy.TextConfig
+    maxResults: 10
+    label: Policies
+  - _type: GlobalSearchBoView
+    _name: SearchRegulation
+    viewType: GD
+    businessView: GovernanceRules.entities.Regulation.business_views.RegulationBusinessView
+    searchTypeConfig: GovernanceRules.entities.Regulation.business_views.RegulationBusinessView.Regulation.TextConfig
+    maxResults: 10
+    label: Regulations and standards
+  - _type: GlobalSearchBoView
+    _name: SearchBusinessAttributeType
+    viewType: GD
+    businessView: GovernanceRules.entities.BusinessAttributeType.business_views.BusinessAttributeTypeBusinessView
+    searchTypeConfig: GovernanceRules.entities.BusinessAttributeType.business_views.BusinessAttributeTypeBusinessView.BusinessAttributeType.TextConfig
+    maxResults: 10
+    label: Attribute types
+navDrawer:
+- _type: FolderNavGroup
+  _name: QuickAccess
+  dividerVisible: true
+  labelVisible: false
+  linkedFolder: GovernanceRules.applications.GovernanceRules.Root.QuickAccess
+- _type: FolderNavGroup
+  _name: Rules
+  dividerVisible: true
+  labelVisible: true
+  linkedFolder: GovernanceRules.applications.GovernanceRules.Root.Rules
+- _type: FolderNavGroup
+  _name: Reference
+  dividerVisible: true
+  labelVisible: true
+  linkedFolder: GovernanceRules.applications.GovernanceRules.Root.Reference
+- _type: FolderNavGroup
+  _name: Stewardship
+  dividerVisible: true
+  labelVisible: true
+  linkedFolder: GovernanceRules.applications.GovernanceRules.Root.Stewardship
+rootFolder:
+  _type: FolderAction
+  _name: Root
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  appActions:
+  - _type: FolderAction
+    _name: QuickAccess
+    label: Quick access
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    appActions:
+    - _type: MyTasksAction
+      _name: MyTasks
+      label: My tasks
+      icon: images://mdi/clipboard-check-outline.svg
+      iconColor: 'css: #243B53'
+      image: images://mdi/clipboard-check-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      badgeVisible: true
+    - _type: OpenDashboardAction
+      _name: GovernanceCoverage
+      label: Governance coverage
+      icon: images://mdi/chart-box-outline.svg
+      iconColor: 'css: #243B53'
+      image: images://GovernanceRules/tile-coverage.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      dashboardApplication: GovernanceRulesAnalytics
+      dashboard: GovernanceCoverage
+  - _type: FolderAction
+    _name: Rules
+    label: Rules
+    icon: images://mdi/scale-balance.svg
+    iconColor: 'css: #2F6690'
+    image: images://GovernanceRules/tile-rules.svg
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    appActions:
+    - _type: BrowseBusinessViewAction
+      _name: RulesInForce
+      businessView: GovernanceRules.entities.GovernanceRule.business_views.GovernanceRuleInForceBusinessView
+      label: Rules in force
+      icon: images://mdi/scale-balance.svg
+      iconColor: 'css: #2F6690'
+      image: images://GovernanceRules/tile-rules.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Approved rules whose effective date is reached and that are not retired.
+    - _type: BrowseBusinessViewAction
+      _name: RulesInReview
+      businessView: GovernanceRules.entities.GovernanceRule.business_views.GovernanceRuleInReviewBusinessView
+      label: In review
+      icon: images://mdi/progress-clock.svg
+      iconColor: 'css: #8A5700'
+      image: images://mdi/progress-clock.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      description: Rules waiting for approval or for retirement.
+    - _type: BrowseBusinessViewAction
+      _name: RuleDrafts
+      businessView: GovernanceRules.entities.GovernanceRule.business_views.GovernanceRuleDraftsBusinessView
+      label: Drafts
+      icon: images://mdi/file-document-edit-outline.svg
+      iconColor: 'css: #8A5700'
+      image: images://mdi/file-document-edit-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: true
+      description: Rules being written.
+    - _type: BrowseBusinessViewAction
+      _name: RetiredRules
+      businessView: GovernanceRules.entities.GovernanceRule.business_views.GovernanceRuleRetiredBusinessView
+      label: Retired
+      icon: images://mdi/archive-outline.svg
+      iconColor: 'css: #4B5D6E'
+      image: images://mdi/archive-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Rules no longer applied.
+    - _type: BrowseBusinessViewAction
+      _name: AllRules
+      businessView: GovernanceRules.entities.GovernanceRule.business_views.GovernanceRuleBusinessView
+      label: All rules
+      icon: images://mdi/format-list-bulleted.svg
+      iconColor: 'css: #2F6690'
+      image: images://mdi/format-list-bulleted.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Every governance rule, whatever its status. Search by category, level, pattern or status.
+  - _type: FolderAction
+    _name: Reference
+    label: Reference
+    icon: images://mdi/bookshelf.svg
+    iconColor: 'css: #2A9D8F'
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    appActions:
+    - _type: BrowseBusinessViewAction
+      _name: Policies
+      businessView: GovernanceRules.entities.GovernancePolicy.business_views.GovernancePolicyBusinessView
+      label: Policies
+      icon: images://mdi/shield-check-outline.svg
+      iconColor: 'css: #2A9D8F'
+      image: images://GovernanceRules/tile-policies.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Governance policies, with their rules.
+    - _type: BrowseBusinessViewAction
+      _name: Regulations
+      businessView: GovernanceRules.entities.Regulation.business_views.RegulationBusinessView
+      label: Regulations and standards
+      icon: images://mdi/bank-outline.svg
+      iconColor: 'css: #2A9D8F'
+      image: images://GovernanceRules/tile-regulations.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Regulations and standards, with the rules that cite them.
+    - _type: FolderAction
+      _name: Applicability
+      label: Applicability
+      icon: images://mdi/filter-variant.svg
+      iconColor: 'css: #2A9D8F'
+      image: images://GovernanceRules/tile-applicability.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      description: Data domains, data classifications and attribute types that rule scopes refer to.
+      appActions:
+      - _type: BrowseBusinessViewAction
+        _name: DataDomains
+        businessView: GovernanceRules.entities.DataDomain.business_views.DataDomainBusinessView
+        label: Data domains
+        icon: images://mdi/domain.svg
+        iconColor: 'css: #2A9D8F'
+        image: images://mdi/domain.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Business data domains, with the rule scopes that name them.
+      - _type: BrowseBusinessViewAction
+        _name: DataClassifications
+        businessView: GovernanceRules.entities.DataClassification.business_views.DataClassificationBusinessView
+        label: Data classifications
+        icon: images://mdi/lock-outline.svg
+        iconColor: 'css: #2A9D8F'
+        image: images://mdi/lock-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Sensitivity classifications, with the rule scopes that name them.
+      - _type: BrowseBusinessViewAction
+        _name: AttributeTypes
+        businessView: GovernanceRules.entities.BusinessAttributeType.business_views.BusinessAttributeTypeBusinessView
+        label: Attribute types
+        icon: images://mdi/form-textbox.svg
+        iconColor: 'css: #2A9D8F'
+        image: images://mdi/form-textbox.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: false
+        description: Business attribute types, with the rule scopes that name them.
+    - _type: BrowseBusinessViewAction
+      _name: GovernanceBodies
+      businessView: GovernanceRules.entities.GovernanceBody.business_views.GovernanceBodyBusinessView
+      label: Governance bodies
+      icon: images://mdi/account-group-outline.svg
+      iconColor: 'css: #2A9D8F'
+      image: images://GovernanceRules/tile-bodies.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      nbRecordsBadgeVisible: false
+      description: Councils, offices and roles that own rules and policies.
+  - _type: FolderAction
+    _name: Stewardship
+    label: Stewardship
+    imageAlign: MIDDLE_CENTER
+    imageMode: FIT
+    requiredRole: GovernanceSteward
+    appActions:
+    - _type: FolderAction
+      _name: StewardshipErrors
+      label: Data in error
+      icon: images://mdi/alert-circle-outline.svg
+      iconColor: 'css: #B0301F'
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      requiredRole: GovernanceSteward
+      appActions:
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsGovernanceRuleInError
+        businessView: GovernanceRules.entities.GovernanceRule.business_views.GovernanceRuleBusinessView
+        label: Governance rules in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsGovernancePolicyInError
+        businessView: GovernanceRules.entities.GovernancePolicy.business_views.GovernancePolicyBusinessView
+        label: Policies in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsRuleScopeInError
+        businessView: GovernanceRules.entities.RuleScope.business_views.RuleScopeBusinessView
+        label: Rule scopes in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsRuleCitationInError
+        businessView: GovernanceRules.entities.RuleCitation.business_views.RuleCitationBusinessView
+        label: Citations in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsRegulationInError
+        businessView: GovernanceRules.entities.Regulation.business_views.RegulationBusinessView
+        label: Regulations and standards in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsDataDomainInError
+        businessView: GovernanceRules.entities.DataDomain.business_views.DataDomainBusinessView
+        label: Data domains in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsDataClassificationInError
+        businessView: GovernanceRules.entities.DataClassification.business_views.DataClassificationBusinessView
+        label: Data classifications in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsBusinessAttributeTypeInError
+        businessView: GovernanceRules.entities.BusinessAttributeType.business_views.BusinessAttributeTypeBusinessView
+        label: Attribute types in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward
+      - _type: BrowseBusinessViewAction
+        _name: StewardshipErrorsGovernanceBodyInError
+        businessView: GovernanceRules.entities.GovernanceBody.business_views.GovernanceBodyBusinessView
+        label: Governance bodies in error
+        icon: images://mdi/alert-circle-outline.svg
+        iconColor: 'css: #B0301F'
+        image: images://mdi/alert-circle-outline.svg
+        imageAlign: MIDDLE_CENTER
+        imageMode: FIT
+        nbRecordsBadgeVisible: true
+        viewType: SAWE
+        requiredRole: GovernanceSteward

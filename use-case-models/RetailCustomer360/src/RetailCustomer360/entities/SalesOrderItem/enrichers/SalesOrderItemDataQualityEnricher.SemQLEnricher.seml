@@ -1,0 +1,55 @@
+﻿_package: RetailCustomer360.entities.SalesOrderItem.enrichers
+_name: SalesOrderItemDataQualityEnricher
+_type: SemQLEnricher
+entity: RetailCustomer360.entities.SalesOrderItem.SalesOrderItem
+label: SalesOrderItem Data Quality Enricher
+description: "Computes standard completeness enrichment fields for SalesOrderItem."
+enricherExecutionScope: PRE_CONSO
+
+semQlEnricherExpressions:
+  - attributeName: EnrichmentCompletenessScore
+    expression: CASE
+        WHEN OrderItemId IS NULL AND LineNumber IS NULL AND ItemType IS NULL THEN 0
+        ELSE (
+          CASE WHEN OrderItemId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN LineNumber IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN ItemType IS NOT NULL THEN 33 ELSE 0 END
+        )
+      END
+  - attributeName: EnrichmentCompletenessBand
+    expression: CASE
+        WHEN OrderItemId IS NULL AND LineNumber IS NULL AND ItemType IS NULL THEN 'Low'
+        WHEN (
+          CASE WHEN OrderItemId IS NOT NULL THEN 34 ELSE 0 END
+          + CASE WHEN LineNumber IS NOT NULL THEN 33 ELSE 0 END
+          + CASE WHEN ItemType IS NOT NULL THEN 33 ELSE 0 END
+        ) < 67 THEN 'Medium'
+        ELSE 'High'
+      END
+  - attributeName: EnrichmentUpdatedOn
+    expression: CURRENT_DATE()
+  - attributeName: GrossAmount
+    expression: CASE
+        WHEN Quantity IS NOT NULL AND UnitPrice IS NOT NULL THEN Quantity * UnitPrice
+        ELSE NULL
+      END
+  - attributeName: EffectiveUnitPrice
+    expression: CASE
+        WHEN Quantity IS NOT NULL AND Quantity <> 0 AND TotalPrice IS NOT NULL THEN TotalPrice / Quantity
+        ELSE NULL
+      END
+  - attributeName: ItemLifecycleStatus
+    expression: CASE
+        WHEN FulfillmentStatus IN ('Delivered') AND ReturnStatus IN ('Not Returned') THEN 'Completed'
+        WHEN FulfillmentStatus IN ('Cancelled') OR ReturnStatus IN ('Returned', 'Refunded') THEN 'Closed'
+        WHEN FulfillmentStatus IN ('Shipped', 'Packed') THEN 'In Transit'
+        WHEN FulfillmentStatus IN ('Pending') THEN 'Open'
+        ELSE 'Review'
+      END
+  - attributeName: ItemFinancialHealthStatus
+    expression: CASE
+        WHEN Quantity IS NULL OR UnitPrice IS NULL OR TotalPrice IS NULL THEN 'Incomplete'
+        WHEN Quantity < 0 OR UnitPrice < 0 OR ListPrice < 0 OR DiscountAmount < 0 OR TaxAmount < 0 OR TotalPrice < 0 THEN 'Invalid'
+        WHEN ListPrice IS NOT NULL AND UnitPrice > ListPrice THEN 'Over List Price'
+        ELSE 'Healthy'
+      END

@@ -1,0 +1,168 @@
+_package: RetailCustomer360.entities.Promotion
+_type: Entity
+_name: Promotion
+label: Promotion
+pluralLabel: Promotions
+entityType: BASIC
+physicalTableName: PROMOTION
+iconUrl: https://api.iconify.design/mdi/sale.svg?color=%230D1B2A&width=64
+
+description: "Time-bound marketing offer that changes price, points or delivery for qualifying customers."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: PromotionId
+    label: Promotion Id
+    physicalName: PROMOTION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the promotion."
+
+  - _type: EntityAttribute
+    _name: PromotionCode
+    label: Promotion Code
+    physicalName: PROMOTION_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code customers or systems use to apply the promotion."
+
+  - _type: EntityAttribute
+    _name: PromotionName
+    label: Promotion Name
+    physicalName: PROMOTION_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the promotion."
+
+  - _type: EntityAttribute
+    _name: PromotionType
+    label: Promotion Type
+    physicalName: PROMOTION_TYPE
+    dataType: RetailCustomer360.list_of_values.PromotionType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Mechanic the promotion uses."
+
+  - _type: EntityAttribute
+    _name: PromotionStatus
+    label: Promotion Status
+    physicalName: PROMOTION_STATUS
+    dataType: RetailCustomer360.list_of_values.PromotionStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Lifecycle status of the promotion."
+
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    physicalName: START_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the promotion becomes redeemable."
+
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    physicalName: END_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the promotion stops being redeemable."
+
+  - _type: EntityAttribute
+    _name: DiscountValue
+    label: Discount Value
+    physicalName: DISCOUNT_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Value of the discount or multiplier applied."
+
+  - _type: EntityAttribute
+    _name: MinimumSpend
+    label: Minimum Spend
+    physicalName: MINIMUM_SPEND
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Spend a customer must reach to qualify."
+
+  - _type: EntityAttribute
+    _name: MaxRedemptions
+    label: Max Redemptions
+    physicalName: MAX_REDEMPTIONS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Maximum number of times the promotion can be redeemed."
+
+  - _type: EntityAttribute
+    _name: RedemptionCount
+    label: Redemption Count
+    physicalName: REDEMPTION_COUNT
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of redemptions recorded so far."
+
+  - _type: EntityAttribute
+    _name: TargetSegment
+    label: Target Segment
+    physicalName: TARGET_SEGMENT
+    dataType: RetailCustomer360.list_of_values.TargetSegment
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Customer segment the promotion is aimed at."
+
+  - _type: EntityAttribute
+    _name: TermsAndConditions
+    label: Terms And Conditions
+    physicalName: TERMS_AND_CONDITIONS
+    dataType: String
+    length: 1000
+    searchable: true
+    description: "Conditions attached to the promotion."
+
+  - _type: EntityAttribute
+    _name: IsStackable
+    label: Is Stackable
+    physicalName: IS_STACKABLE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the promotion can combine with other offers."
+
+  - _type: EntityAttribute
+    _name: PromotionWindowStatus
+    label: Promotion Window Status
+    physicalName: PROMO_WINDOW_STATUS
+    dataType: String
+    length: 30
+    searchable: true
+    description: "Derived indication of whether the promotion is upcoming, live or past."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the promotion originates from."
+
+primaryKey: RetailCustomer360.entities.Promotion.Promotion.PromotionId
+
+sourceIdGeneration:
+  mode: MANUAL

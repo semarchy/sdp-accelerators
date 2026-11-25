@@ -1,0 +1,158 @@
+_package: RestaurantMaster.entities.RestaurantHours
+_type: Entity
+_name: RestaurantHours
+label: Opening hours
+pluralLabel: Opening hours
+entityType: BASIC
+physicalTableName: REST_HOURS
+iconUrl: images://mdi/clock-outline.svg
+description: 'Opening hours of a restaurant per service channel: regular weekly hours and special hours for one date.'
+documentation: 'Opening hours of a restaurant per service channel: regular weekly hours and special hours for one date.'
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: RestaurantHoursID
+  label: Key
+  physicalName: REST_HOURS_ID
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  documentation: 'Key of the row, sent by the publishing system or typed by the steward: the restaurant ID, a dash, then the row''s own business key in its source (for example R0000123-POS-4471).'
+  length: 100
+- _type: EntityAttribute
+  _name: ServiceChannel
+  label: Channel
+  physicalName: SERVICECHANNEL
+  dataType: RestaurantMaster.list_of_values.ServiceChannel
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Channel the hours apply to.
+  documentation: Channel the hours apply to.
+- _type: EntityAttribute
+  _name: HoursType
+  label: Hours type
+  physicalName: HOURSTYPE
+  dataType: RestaurantMaster.list_of_values.HoursType
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Regular weekly hours or special hours for one date.
+  documentation: Regular weekly hours or special hours for one date.
+- _type: EntityAttribute
+  _name: DayOfWeek
+  label: Day of week
+  physicalName: DAYOFWEEK
+  dataType: RestaurantMaster.list_of_values.DayOfWeek
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Day, for regular hours.
+  documentation: Day, for regular hours.
+- _type: EntityAttribute
+  _name: SpecialDate
+  label: Date
+  physicalName: SPECIALDATE
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Date, for special hours.
+  documentation: Date, for special hours.
+- _type: EntityAttribute
+  _name: Occasion
+  label: Occasion
+  physicalName: OCCASION
+  dataType: String
+  length: 128
+  mandatory: false
+  searchable: true
+  description: Holiday or event the special hours are for.
+  documentation: Holiday or event the special hours are for.
+- _type: EntityAttribute
+  _name: OpenTime
+  label: Opens at
+  physicalName: OPENTIME
+  dataType: String
+  length: 5
+  mandatory: false
+  searchable: true
+  description: Opening time, HH:MM on a 24-hour clock.
+  documentation: Opening time, HH:MM on a 24-hour clock.
+- _type: EntityAttribute
+  _name: CloseTime
+  label: Closes at
+  physicalName: CLOSETIME
+  dataType: String
+  length: 5
+  mandatory: false
+  searchable: true
+  description: Closing time, HH:MM on a 24-hour clock.
+  documentation: Closing time, HH:MM on a 24-hour clock.
+- _type: EntityAttribute
+  _name: ClosesNextDay
+  label: Closes next day
+  physicalName: CLOSESNEXTDAY
+  dataType: RestaurantMaster.list_of_values.YesNoFlag
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Yes when the closing time falls on the following day (late-night hours).
+  documentation: Yes when the closing time falls on the following day (late-night hours).
+- _type: EntityAttribute
+  _name: Closed
+  label: Closed
+  physicalName: CLOSED
+  dataType: RestaurantMaster.list_of_values.YesNoFlag
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Yes when the channel is closed all day.
+  documentation: Yes when the channel is closed all day.
+- _type: EntityAttribute
+  _name: Open24Hours
+  label: Open 24 hours
+  physicalName: OPEN24HOURS
+  dataType: RestaurantMaster.list_of_values.YesNoFlag
+  mandatory: false
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: Yes when the channel is open round the clock.
+  documentation: Yes when the channel is open round the clock.
+- _type: EntityAttribute
+  _name: EffectiveFrom
+  label: Effective from
+  physicalName: EFFECTIVEFROM
+  dataType: Date
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: First day these hours apply.
+  documentation: First day these hours apply.
+- _type: EntityAttribute
+  _name: EffectiveTo
+  label: Effective to
+  physicalName: EFFECTIVETO
+  dataType: Date
+  mandatory: false
+  searchable: true
+  description: Last day these hours apply; empty when open-ended.
+  documentation: Last day these hours apply; empty when open-ended.
+- _type: EntityAttribute
+  _name: HoursSlotKey
+  label: Slot key
+  physicalName: HOURSSLOTKEY
+  dataType: String
+  length: 160
+  mandatory: false
+  searchable: false
+  description: Channel, hours type, day or date and start date, without empty parts; enforces one row per slot.
+  documentation: Channel, hours type, day or date and start date, without empty parts; enforces one row per slot.
+primaryKey: RestaurantMaster.entities.RestaurantHours.RestaurantHours.RestaurantHoursID
+sourceIdGeneration:
+  mode: MANUAL

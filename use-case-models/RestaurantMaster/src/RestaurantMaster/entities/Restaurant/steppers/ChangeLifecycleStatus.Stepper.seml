@@ -1,0 +1,83 @@
+_package: RestaurantMaster.entities.Restaurant.steppers
+_type: Stepper
+_name: ChangeLifecycleStatus
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+label: Change lifecycle status
+rootStep:
+  _type: CollectionStep
+  _name: RestaurantCollection
+  label: Restaurants
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: RestaurantMaster.entities.Restaurant.collection_views.RestaurantCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+  - _type: FormStep
+    _name: Restaurant
+    label: Restaurant
+    canFinishSubLevel: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    formFieldsMode: AUTO
+    enableMasterValuePicking: false
+    formTab: RestaurantMaster.entities.Restaurant.forms.RestaurantForm.Restaurant
+  - _type: CollectionStep
+    _name: RestaurantStatusHistoryCollection
+    label: Status history
+    oneToManyReference: RestaurantMaster.references.RestaurantStatusHistoryHasRestaurant
+    canFinishSubLevel: true
+    childDeleteType: HARD_DELETE
+    childImportModeOnParentEdit: CREATE_AND_UPDATE
+    createChildUsingManyToManyPicker: false
+    customSortEnabled: false
+    userDefinedSortEnabled: true
+    defaultDisplayType: TABLE
+    displayGridAllowed: false
+    displayListAllowed: true
+    displayTableAllowed: true
+    enabledOnParentCreate: true
+    enabledOnParentEdit: true
+    enableChildCreationOnParentCreate: true
+    enableChildCreationOnParentEdit: true
+    enableChildEditOnParentCreate: true
+    enableChildEditOnParentEdit: true
+    enableChildDeleteOnParentEdit: true
+    enableChildCopyOnParentCreate: false
+    enableChildCopyOnParentEdit: false
+    enableChildImportOnParentCreate: false
+    enableChildImportOnParentEdit: false
+    enableChildRemoveOnParentCreate: false
+    enableChildRemoveOnParentEdit: false
+    skipToChildCreationOnParentCreate: false
+    skipToChildEditingOnParentEdit: false
+    manyToManyCustomSortEnabled: false
+    manyToManyUserDefinedSortEnabled: false
+    manyToManyDefaultDisplayType: TABLE
+    manyToManyDisplayGridAllowed: false
+    manyToManyDisplayListAllowed: false
+    manyToManyDisplayTableAllowed: false
+    formFieldsMode: AUTO
+    linear: false
+    useCustomCollectionLabel: false
+    collectionView: RestaurantMaster.entities.RestaurantStatusHistory.collection_views.RestaurantStatusHistoryCollectionView
+    displayCard: RestaurantMaster.entities.RestaurantStatusHistory.display_cards.RestaurantStatusHistoryDisplayCard
+    childSteps:
+    - _type: FormStep
+      _name: RestaurantStatusHistory
+      label: Status history
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: RestaurantMaster.entities.RestaurantStatusHistory.forms.RestaurantStatusHistoryForm.RestaurantStatusHistory

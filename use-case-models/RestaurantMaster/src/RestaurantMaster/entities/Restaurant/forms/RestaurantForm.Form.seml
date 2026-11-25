@@ -1,0 +1,416 @@
+_package: RestaurantMaster.entities.Restaurant.forms
+_type: Form
+_name: RestaurantForm
+entity: RestaurantMaster.entities.Restaurant.Restaurant
+default: true
+formTabs:
+- _type: FormTab
+  _name: Restaurant
+  label: Restaurant
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  displayFormTabAs: ICON_LABEL
+  iconUrl: images://mdi/storefront.svg
+  labelWidth: '150'
+  content:
+  - _type: FormContainer
+    _name: Main
+    layoutDirection: COLUMN
+    content:
+    - _type: FormSection
+      _name: Sec1
+      label: Overview
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S1Row1
+        layoutDirection: ROW
+        content:
+        - _type: IdField
+          _name: RestaurantID
+          value: RestaurantID
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: RestaurantName
+          value: RestaurantName
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_Brand
+          value: FDN_Brand
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.Brand.Brand
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S1Row2
+        layoutDirection: ROW
+        content:
+        - _type: ReferenceField
+          _name: FDN_LifecycleStatus
+          value: FDN_LifecycleStatus
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.LifecycleStatus.LifecycleStatus
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+        - _type: ChipsField
+          _name: PublicChannelStatus
+          value: PublicChannelStatus
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: MainPhone
+          value: MainPhone
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S1Row3
+        layoutDirection: ROW
+        content:
+        - _type: MarkdownField
+          _name: CurrentOperator
+          value: COALESCE(SUBSTR(lookup max TO_CHAR(EffectiveFrom, 'YYYYMMDD') || ' ' || COALESCE(LegalEntity.LegalName, FID_LegalEntity) || ' (' || OwnershipType || ')' from Operators where EffectiveFrom <= CURRENT_DATE() end, 10), 'No operator yet')
+          useCustomLabel: true
+          label: Current operator
+          dataType: STRING
+          componentProperties:
+            contentHeight: '48'
+            contentHeightValueInterpreter: LITERAL
+          authoringMode: force-browsing
+          relativeWidth: 66
+    - _type: FormSection
+      _name: Sec2
+      label: Location
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S2Row1
+        layoutDirection: ROW
+        content:
+        - _type: FormContainer
+          _name: S2Col1
+          layoutDirection: COLUMN
+          content:
+          - _type: TextField
+            _name: AddressLine1
+            value: AddressLine1
+            useCustomLabel: false
+            dataType: STRING
+          - _type: TextField
+            _name: AddressLine2
+            value: AddressLine2
+            useCustomLabel: false
+            dataType: STRING
+          - _type: TextField
+            _name: City
+            value: City
+            useCustomLabel: false
+            dataType: STRING
+          - _type: TextField
+            _name: PostalCode
+            value: PostalCode
+            useCustomLabel: false
+            dataType: STRING
+          - _type: TextField
+            _name: County
+            value: County
+            useCustomLabel: false
+            dataType: STRING
+          - _type: ReferenceField
+            _name: FDN_StateProvince
+            value: FDN_StateProvince
+            useCustomLabel: false
+            dataType: STRING
+            referencedEntity: RestaurantMaster.entities.StateProvince.StateProvince
+            componentProperties:
+              displayType: chip
+              displayTypeValueInterpreter: LITERAL
+              useAvatarInChip: '1'
+              useAvatarInChipValueInterpreter: LITERAL
+              chipMaxWidth: '600'
+              chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 30
+        - _type: FormContainer
+          _name: S2Col2
+          layoutDirection: COLUMN
+          content:
+          - _type: ReferenceField
+            _name: FDN_Country
+            value: FDN_Country
+            useCustomLabel: false
+            dataType: STRING
+            referencedEntity: RestaurantMaster.entities.Country.Country
+            componentProperties:
+              displayType: chip
+              displayTypeValueInterpreter: LITERAL
+              useAvatarInChip: '1'
+              useAvatarInChipValueInterpreter: LITERAL
+              chipMaxWidth: '600'
+              chipMaxWidthValueInterpreter: LITERAL
+          - _type: TextField
+            _name: Latitude
+            value: Latitude
+            useCustomLabel: false
+            dataType: DECIMAL
+          - _type: TextField
+            _name: Longitude
+            value: Longitude
+            useCustomLabel: false
+            dataType: DECIMAL
+          - _type: TextField
+            _name: CoordinateSource
+            value: CoordinateSource
+            useCustomLabel: false
+            dataType: STRING
+          - _type: TextField
+            _name: TimeZone
+            value: TimeZone
+            useCustomLabel: false
+            dataType: STRING
+          relativeWidth: 30
+        - _type: FormContainer
+          _name: S2Col3
+          layoutDirection: COLUMN
+          content:
+          - _type: ObjectField
+            _name: LocationMap
+            value: CASE WHEN Latitude IS NOT NULL AND Longitude IS NOT NULL THEN 'https://maps.google.com/maps?q=' || SEM_CAST_STRING(Latitude) || ',' || SEM_CAST_STRING(Longitude) || '&z=16&output=embed' END
+            useCustomLabel: true
+            label: Map
+            dataType: STRING
+            componentProperties:
+              sourceType: url
+              sourceTypeValueInterpreter: LITERAL
+              objectHeight: '320'
+          relativeWidth: 40
+    - _type: FormSection
+      _name: Sec3
+      label: Lifecycle
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S3Row1
+        layoutDirection: ROW
+        content:
+        - _type: ReferenceField
+          _name: FDN_LifecycleStatusReason
+          value: FDN_LifecycleStatusReason
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.LifecycleStatusReason.LifecycleStatusReason
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+        - _type: DateField
+          _name: StatusEffectiveDate
+          value: StatusEffectiveDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S3Row2
+        layoutDirection: ROW
+        content:
+        - _type: DateField
+          _name: LeaseSignedDate
+          value: LeaseSignedDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+        - _type: DateField
+          _name: ConstructionStartDate
+          value: ConstructionStartDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+        - _type: DateField
+          _name: PlannedOpenDate
+          value: PlannedOpenDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S3Row3
+        layoutDirection: ROW
+        content:
+        - _type: DateField
+          _name: OriginalOpenDate
+          value: OriginalOpenDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+        - _type: DateField
+          _name: TemporaryClosureDate
+          value: TemporaryClosureDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+        - _type: DateField
+          _name: PlannedReopenDate
+          value: PlannedReopenDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S3Row4
+        layoutDirection: ROW
+        content:
+        - _type: DateField
+          _name: PermanentClosureDate
+          value: PermanentClosureDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_RelocatedFrom
+          value: FDN_RelocatedFrom
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.Restaurant.Restaurant
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 66
+    - _type: FormSection
+      _name: Sec4
+      label: Site and facility
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S4Row1
+        layoutDirection: ROW
+        content:
+        - _type: TextField
+          _name: SiteID
+          value: SiteID
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: ProjectNumber
+          value: ProjectNumber
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: CostCenterCode
+          value: CostCenterCode
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S4Row2
+        layoutDirection: ROW
+        content:
+        - _type: ReferenceField
+          _name: FDN_BuildingType
+          value: FDN_BuildingType
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.BuildingType.BuildingType
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+        - _type: ReferenceField
+          _name: FDN_LocationType
+          value: FDN_LocationType
+          useCustomLabel: false
+          dataType: STRING
+          referencedEntity: RestaurantMaster.entities.LocationType.LocationType
+          componentProperties:
+            displayType: chip
+            displayTypeValueInterpreter: LITERAL
+            useAvatarInChip: '1'
+            useAvatarInChipValueInterpreter: LITERAL
+            chipMaxWidth: '600'
+            chipMaxWidthValueInterpreter: LITERAL
+          relativeWidth: 33
+        - _type: DateField
+          _name: LeaseExpirationDate
+          value: LeaseExpirationDate
+          useCustomLabel: false
+          dataType: DATE
+          relativeWidth: 33
+      - _type: FormContainer
+        _name: S4Row3
+        layoutDirection: ROW
+        content:
+        - _type: TextField
+          _name: SquareFootage
+          value: SquareFootage
+          useCustomLabel: false
+          dataType: INTEGER
+          relativeWidth: 33
+        - _type: TextField
+          _name: SeatingCapacity
+          value: SeatingCapacity
+          useCustomLabel: false
+          dataType: INTEGER
+          relativeWidth: 33
+        - _type: TextField
+          _name: DriveThruLaneCount
+          value: DriveThruLaneCount
+          useCustomLabel: false
+          dataType: INTEGER
+          relativeWidth: 33
+    - _type: FormSection
+      _name: Sec5
+      label: Data coverage
+      layoutDirection: COLUMN
+      content:
+      - _type: FormContainer
+        _name: S5Row1
+        layoutDirection: ROW
+        content:
+        - _type: TextField
+          _name: InRealEstate
+          value: InRealEstate
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: InERP
+          value: InERP
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33
+        - _type: TextField
+          _name: InPOS
+          value: InPOS
+          useCustomLabel: false
+          dataType: STRING
+          relativeWidth: 33

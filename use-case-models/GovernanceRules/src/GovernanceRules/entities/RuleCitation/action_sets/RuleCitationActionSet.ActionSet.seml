@@ -1,0 +1,71 @@
+# RuleCitationActionSet: action set on RuleCitation of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleCitation.action_sets
+_type: ActionSet
+_name: RuleCitationActionSet
+entity: GovernanceRules.entities.RuleCitation.RuleCitation
+label: Citation
+defaultActionSet: true
+actions:
+  - _type: CreateAction
+    _name: CreateAuthorRuleCitations
+    label: Create
+    useCustomLabel: true
+    stepper: GovernanceRules.entities.RuleCitation.steppers.AuthorRuleCitations
+    createMultiple: false
+    createdRecordType: GOLDEN
+    allowOtherPublishers: true
+    waitDialogEnabled: false
+  - _type: EditAction
+    _name: EditAuthorRuleCitations
+    label: Edit
+    useCustomLabel: true
+    stepper: GovernanceRules.entities.RuleCitation.steppers.AuthorRuleCitations
+    multipleSelectionAllowed: true
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    waitDialogEnabled: false
+  - _type: MassUpdateAction
+    _name: MassUpdateAuthorRuleCitations
+    label: Mass update
+    useCustomLabel: true
+    stepper: GovernanceRules.entities.RuleCitation.steppers.AuthorRuleCitations
+    availableForGoldenData: true
+    availableForErrorData: false
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: DeleteAction
+    _name: Delete
+    label: Delete
+    useCustomLabel: true
+    multipleSelectionAllowed: true
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    waitDialogEnabled: false
+  - _type: ExportAction
+    _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: ImportAction
+    _name: ImportAuthorRuleCitations
+    label: Import
+    useCustomLabel: true
+    importMode: CREATE_AND_UPDATE
+    stepper: GovernanceRules.entities.RuleCitation.steppers.AuthorRuleCitations
+    importedRecordType: GOLDEN
+    allowOtherPublishers: true
+    waitDialogEnabled: false
+  - _type: BrowseGraphAction
+    _name: BrowseGraph
+    label: Browse graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+  - _type: CopyAction
+    _name: CopyAuthorRuleCitations
+    label: Copy
+    useCustomLabel: true
+    stepper: GovernanceRules.entities.RuleCitation.steppers.AuthorRuleCitations
+    multipleSelectionAllowed: true
+    waitDialogEnabled: false

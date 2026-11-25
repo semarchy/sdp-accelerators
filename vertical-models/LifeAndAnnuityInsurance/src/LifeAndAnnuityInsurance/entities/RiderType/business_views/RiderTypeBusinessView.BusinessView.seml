@@ -1,0 +1,72 @@
+_package: LifeAndAnnuityInsurance.entities.RiderType.business_views
+_type: BusinessView
+_name: RiderTypeBusinessView
+label: "Rider Type"
+entity: LifeAndAnnuityInsurance.entities.RiderType.RiderType
+rootLabel: "Rider Types"
+rootPluralLabel: "Rider Types"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: RiderType
+  displayCard: LifeAndAnnuityInsurance.entities.RiderType.display_cards.RiderTypeDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.RiderType.RiderType
+  actionSet: LifeAndAnnuityInsurance.entities.RiderType.action_sets.RiderTypeActionSet
+  collection: LifeAndAnnuityInsurance.entities.RiderType.collection_views.RiderTypeCollectionView
+  form: LifeAndAnnuityInsurance.entities.RiderType.forms.RiderTypeForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _type: BusinessViewTransition
+      _name: Rider
+      label: "Rider"
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      pluralLabel: "Riders"
+      iconUrl: images://mdi/plus-box-multiple-outline.svg
+      transitionPath: Rider
+      useCustomLabel: true
+      description: "Transition from Rider Type to related Riders."
+      visibleInFormTabCondition: any Rider has (1=1)
+      enableHierarchy: any Rider has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntity
+        _name: Rider
+        displayCard: LifeAndAnnuityInsurance.entities.Rider.display_cards.RiderDisplayCard
+        entity: LifeAndAnnuityInsurance.entities.Rider.Rider
+        actionSet: LifeAndAnnuityInsurance.entities.Rider.action_sets.RiderActionSet
+        collection: LifeAndAnnuityInsurance.entities.Rider.collection_views.RiderCollectionView
+        form: LifeAndAnnuityInsurance.entities.Rider.forms.RiderForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/plus-box-outline.svg

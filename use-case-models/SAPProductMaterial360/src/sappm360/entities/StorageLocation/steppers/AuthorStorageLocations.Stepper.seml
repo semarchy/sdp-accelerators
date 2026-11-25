@@ -1,0 +1,64 @@
+_name: AuthorStorageLocations
+_package: sappm360.entities.StorageLocation.steppers
+_type: Stepper
+entity: sappm360.entities.StorageLocation.StorageLocation
+description: Stepper for authoring storage locations.
+rootStep:
+  _name: StorageLocations
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sappm360.entities.StorageLocation.collection_views.StorageLocationCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Storage Locations
+  description: Manage Storage Location data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sappm360.references.StorageLocationPlant.Plant
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Storage Location.
+      formTab: sappm360.entities.StorageLocation.forms.StorageLocationDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sappm360.entities.StorageLocation.forms.StorageLocationDataEntryForm.Main.Identity.IdentityContainer.IdentityFields.FDN_Plant
+          referencePickerCollectionView: sappm360.entities.Plant.collection_views.PlantCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sappm360.references.StorageLocationPlant.Plant
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: sappm360.references.StorageLocationPlant.Plant
+      stepTriggers: []
+label: Author Storage Locations
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sappm360.references.StorageLocationPlant.Plant
+triggers: []

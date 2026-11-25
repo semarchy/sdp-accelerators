@@ -1,0 +1,39 @@
+# Description: Stepper definition for authoring `PartyAddress` records.
+# Contains UI step configuration used when creating or editing addresses.
+# Role: Provides a multi-step form flow for managing party addresses in the application.
+ # Description: Stepper used by PartyAddress create/edit/import actions.
+ # Contains: Wizard steps and panels for address authoring workflows.
+ # Role: Drives multi-step UI flows for creating and maintaining PartyAddress records.
+_package: Merchant.entities.PartyAddress.steppers
+_type: Stepper
+_name: AuthorPartyAddresses
+entity: Merchant.entities.PartyAddress.PartyAddress
+label: Party Addresses
+rootStep:
+  _type: CollectionStep
+  _name: MerchantAddresses
+  label: Merchant Addresses
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: Merchant.entities.PartyAddress.collection_views.PartyAddressCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  childSteps:
+    - _type: FormStep
+      _name: PartyAddress
+      label: Party Address
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: Merchant.entities.PartyAddress.forms.PartyAddressForm.PartyAddress

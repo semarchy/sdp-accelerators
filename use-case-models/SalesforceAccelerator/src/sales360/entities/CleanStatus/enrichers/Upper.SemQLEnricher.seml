@@ -1,0 +1,13 @@
+# It is an enricher for the CleanStatus entity in the Salesforce Accelerator application.
+# It is a SemQL enricher that sets the CleanStatusValue attribute to uppercase and trims leading and trailing spaces.
+# This enricher is executed before the consumption of the entity data.
+_type: SemQLEnricher
+_package: sales360.entities.CleanStatus.enrichers
+_name: Upper
+entity: sales360.entities.CleanStatus.CleanStatus
+label: Upper
+description: Enricher that converts the CleanStatusValue attribute to uppercase and trims leading and trailing spaces.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: CleanStatusValue
+    expression: LTRIM(RTRIM(UPPER(CleanStatusValue)))

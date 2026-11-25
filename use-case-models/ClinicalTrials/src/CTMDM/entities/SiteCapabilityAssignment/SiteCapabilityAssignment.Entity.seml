@@ -1,0 +1,69 @@
+_package: CTMDM.entities.SiteCapabilityAssignment
+_type: Entity
+_name: SiteCapabilityAssignment
+label: Site Capability Assignment
+pluralLabel: Site Capability Assignments
+entityType: BASIC
+physicalTableName: SITE_CAP_ASSIGNMENT
+iconUrl: images://mdi/link-variant.svg
+description: "Associates clinical sites with capabilities and captures capability readiness details."
+documentation: "Associates clinical sites with capabilities and captures capability readiness details."
+historizeGolden: true
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: SiteCapabilityAssignmentID
+    label: Site Capability Assignment ID
+    description: Business identifier for the site capability assignment.
+    documentation: Business identifier for the site capability assignment.
+    physicalName: SITE_CAP_ASSIGNMENT_ID
+    dataType: String
+    length: 60
+    mandatory: true
+    searchable: true
+
+  - _type: EntityAttribute
+    _name: CapabilityStatus
+    label: Capability Status
+    description: Readiness status for the site capability.
+    documentation: Readiness status for the site capability.
+    physicalName: CAP_STATUS
+    dataType: String
+    length: 50
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ValidatedDate
+    label: Validated Date
+    description: Date the capability was validated.
+    documentation: Date the capability was validated.
+    physicalName: VALIDATED_DATE
+    dataType: Date
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: ValidatedBy
+    label: Validated By
+    description: Person or role that validated the capability.
+    documentation: Person or role that validated the capability.
+    physicalName: VALIDATED_BY
+    dataType: String
+    length: 100
+    mandatory: false
+
+  - _type: EntityAttribute
+    _name: CapacityNotes
+    label: Capacity Notes
+    description: Notes about capability capacity or constraints.
+    documentation: Notes about capability capacity or constraints.
+    physicalName: CAPACITY_NOTES
+    dataType: String
+    length: 500
+    mandatory: false
+
+primaryKey: CTMDM.entities.SiteCapabilityAssignment.SiteCapabilityAssignment.SiteCapabilityAssignmentID
+sourceIdGeneration:
+  mode: MANUAL
+  startWith: 1

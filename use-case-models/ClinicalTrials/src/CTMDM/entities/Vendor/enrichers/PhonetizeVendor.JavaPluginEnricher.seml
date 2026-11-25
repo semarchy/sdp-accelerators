@@ -1,0 +1,27 @@
+_package: CTMDM.entities.Vendor.enrichers
+_name: PhonetizeVendor
+_type: JavaPluginEnricher
+entity: CTMDM.entities.Vendor.Vendor
+label: Phonetize CRO / Vendor
+enricherExecutionScope: PRE_CONSO
+description: "Generates a phonetic key for CRO / Vendor duplicate detection."
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+afterEnrichers: 
+  CTMDM.entities.Vendor.enrichers.NormalizeVendor
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedVendorName
+
+pluginOutputs:
+  - attributeName: PhonetizedVendorName
+    outputName: OUT_TRANSFORMED_TEXT

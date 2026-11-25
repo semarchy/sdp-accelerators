@@ -1,0 +1,102 @@
+_name: AuthorBPBanks
+_package: sapbp360.entities.BPBank.steppers
+_type: Stepper
+entity: sapbp360.entities.BPBank.BPBank
+description: Stepper for authoring BP Banks.
+rootStep:
+  _name: BPBanks
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPBank.collection_views.BPBankCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Banks
+  description: Manage BP Bank data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPBank_BankCountryKey.BankCountryKey
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPBank_BusinessPartner.BusinessPartner
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sapbp360.entities.BPBank.validations.IBANLength
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: sapbp360.entities.BPBank.validations.BankValidity
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sapbp360.entities.BPBank.BPBank.SemQLMatcherBPBANK
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Bank.
+      formTab: sapbp360.entities.BPBank.forms.BPBankDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPBank.forms.BPBankDataEntryForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_BankCountryKey
+          referencePickerCollectionView: sapbp360.entities.Country.collection_views.CountryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPBank.forms.BPBankDataEntryForm.Main.Identification.IdentificationRow.IdentificationCol3.FDN_BusinessPartner
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPBank_BankCountryKey.BankCountryKey
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPBank_BusinessPartner.BusinessPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sapbp360.entities.BPBank.validations.IBANLength
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: CHECK
+          validator: sapbp360.entities.BPBank.validations.BankValidity
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Banks
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPBank_BankCountryKey.BankCountryKey
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPBank_BusinessPartner.BusinessPartner
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sapbp360.entities.BPBank.validations.IBANLength
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: sapbp360.entities.BPBank.validations.BankValidity
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

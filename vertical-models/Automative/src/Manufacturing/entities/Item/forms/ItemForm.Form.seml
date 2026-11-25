@@ -1,0 +1,965 @@
+_package: Manufacturing.entities.Item.forms
+_type: Form
+_name: ItemForm
+entity: Manufacturing.entities.Item.Item
+default: true
+formTabs:
+  - _name: Item
+    _type: FormTab
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    iconUrl: images://mdi/screw-machine-flat-top.svg
+    label: Item
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _name: ReplacedBy
+        label: Replaced By
+        value: >-
+          'This item ' || Name || '(' || SKU || ') supplied by ' || (LOOKUP
+          distinct_string_agg Name separated by ', ' FROM
+          SupplierManufacturers.Supplier END) || ' is replaced by ' ||
+
+          LOOKUP
+          	FIRST '<a href="Manufacturing/Manufacturing/browsing/Item/' || FID_ParentItem || '/ReplacedBys/' || FID_ChildItem || '" target="_blank">' || sem_concat(' ', '1', ChildItem.Name,'(' , ChildItem.SKU, ')', ' starting from ', TO_CHAR(EffectiveStartDate,'FMMon DD, YYYY')) || '</a>'
+          	FROM BillOfMaterials
+          END
+        dataType: STRING
+        useCustomLabel: true
+        documentationInterpreter: LITERAL
+        visibleValue: ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+        visibleValueInterpreter: SEMQL
+        _type: MarkdownField
+        authoringMode: auto
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          textAlign: center
+          textAlignValueInterpreter: LITERAL
+          textColor: md:white
+          textColorValueInterpreter: LITERAL
+          textTypography: body-1
+          textTypographyValueInterpreter: LITERAL
+          contentHeight: "46"
+          contentHeightValueInterpreter: LITERAL
+          contentBackgroundColor: md:amber
+          contentBackgroundColorValueInterpreter: LITERAL
+          isCharCounterVisible: "0"
+          isCharCounterVisibleValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: right
+          alignmentValueInterpreter: LITERAL
+          typography: caption
+          typographyValueInterpreter: LITERAL
+          isVisible: "0"
+          isVisibleValueInterpreter: LITERAL
+      - _type: FormContainer
+        _name: Container3
+        layoutDirection: ROW
+        labelWidth: 200px
+        content:
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _name: ItemID
+                value: ItemID
+                dataType: LONG_INTEGER
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: IdField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: SKU
+                label: SKU
+                value: COALESCE(NormalizedSKU , SKU)
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Name
+                value: Name
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OtherName
+                value: OtherName
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FDN_ItemFamily
+                value: FDN_ItemFamily
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: Manufacturing.entities.ItemFamily.ItemFamily
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FDN_ItemSubFamily
+                value: FDN_ItemSubFamily
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: Manufacturing.entities.ItemSubFamily.ItemSubFamily
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FDN_ItemType
+                value: FDN_ItemType
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: Manufacturing.entities.ItemType.ItemType
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: hyperlink
+                  displayTypeValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LeadTime
+                value: LeadTime
+                dataType: INTEGER
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FDN_ItemCondition
+                value: FDN_ItemCondition
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                referencedEntity: Manufacturing.entities.ItemCondition.ItemCondition
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "1"
+                  useAvatarInChipValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: AdditionalAttributes
+                label: Additional Attributes
+                value: >-
+                  '<!-- Hidden HeaderColumn1 -->|<!-- Hidden HeaderColumn2 -->'
+                  || chr(10)
+
+                  || '---|---' || chr(10)
+
+                  || LOOKUP
+                  	STRING_AGG '<a href="Manufacturing/Manufacturing/browsing/Item/' || FID_Item || '/ItemSpecificAttribute/' || ItemSpecificAttributeID || '" target="_blank">' || sem_concat(' ', '1', Attribute.Attribute, '|', AttributeValue.Value) || '</a>'
+                  	SEPARATED BY chr(10)
+                  	FROM ItemSpecificAttributes
+                  	ORDER BY Attribute.Attribute
+                  END
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: ANy ItemSpecificAttributes have (ItemSpecificAttributeID is not
+                  null)
+                visibleValueInterpreter: SEMQL
+                _type: MarkdownField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  contentHeight: >-
+                    /* Each row is 22 px. 
+
+                    There is padding of about 30 additional pixels.  
+
+                    * We size dynamically up to 10 contacts.   
+
+                    * But we don't let it stretch taller than that. 
+
+                    The data steward will need to scroll if there are more than
+                    10 contacts.  */ 
+
+
+                    LEAST( 252, 30 + (22 * LOOKUP COUNT ItemSpecificAttributeID
+                    FROM ItemSpecificAttributes END) )
+                  contentHeightValueInterpreter: SEMQL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else null
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container4
+            layoutDirection: COLUMN
+            content:
+              - _type: FormContainer
+                _name: Container
+                layoutDirection: ROW
+                content:
+                  - _name: Completeness
+                    label: Completeness
+                    value: >-
+                      '<!DOCTYPE html><html>
+
+                      <body>
+
+                      <meter value="'||(9 - (
+
+                      case when Description is null then 1 else 0 end
+
+                      + case when SKU is null then 1 else 0 end
+
+                      + case when Name is null then 1 else 0 end
+
+                      + case when LeadTime is null then  1 else 0 end
+
+                      + case when FDN_ItemType is null then  1 else 0 end
+
+                      + case when FDN_ItemFamily is null then  1 else 0 end
+
+                      + case when FDN_ItemSubFamily is null then  1 else 0 end
+
+                      + case when FDN_ItemCondition is null then  1 else 0 end
+
+                      + case when not any ItemImageJoins have (FID_ItemImage is
+                      not null) then  1 else 0 end
+
+                      ) ) ||'" min="0" low="6" high ="8.5" max="9"
+                      optimum="8.7"></meter>
+
+                      </body>
+
+                      </html>
+
+                      '
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: ObjectField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      objectHeight: "40"
+                      objectHeightValueInterpreter: LITERAL
+                      sourceType: content
+                      sourceTypeValueInterpreter: LITERAL
+                    labelProperties:
+                      color: >-
+                        case
+
+                        when
+
+                        ANY BillOfMaterials have (RelationshipType =
+                        'ReplacedBy') then 'md:red'
+
+                        else null
+
+                        end
+                      colorValueInterpreter: SEMQL
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+                  - _name: MissingFeild
+                    label: Quality Issue
+                    value: >-
+                      case when Description is null then  'Missing
+                      Description'||chr(13)||chr(10) else '' end
+
+                      || case when SKU is null then  'Missing SKU
+                      '||chr(13)||chr(10) else '' end
+
+                      || case when Name is null then  'Missing Name
+                      '||chr(13)||chr(10) else '' end
+
+                      || case when LeadTime is null then  'Missing Lead Time
+                      '||chr(13)||chr(10) else '' end
+
+                      || case when FID_ItemType is null then  'Missing Item Type
+                      '||chr(13)||chr(10) else '' end
+
+                      || case when FID_ItemFamily is null then  'Missing Item
+                      Family '||chr(13)||chr(10) else '' end
+
+                      || case when FID_ItemSubFamily is null then  'Missing Item
+                      Sub Family '||chr(13)||chr(10) else '' end
+
+                      || case when FID_ItemCondition is null then  'Missing Item
+                      Condition '||chr(13)||chr(10) else '' end
+
+                      || case when not any ItemImageJoins have (FID_ItemImage is
+                      not null)  then  'Missing Item Image '||chr(13)||chr(10)
+                      else '' end
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentation: Details Quality issues at product level
+                    documentationInterpreter: LITERAL
+                    visibleValue: >-
+                      (
+
+                      case when Description is null then 1 else 0 end
+
+                      + case when SKU is null then 1 else 0 end
+
+                      + case when Name is null then 1 else 0 end
+
+                      + case when LeadTime is null then  1 else 0 end
+
+                      + case when FDN_ItemType is null then  1 else 0 end
+
+                      + case when FDN_ItemFamily is null then  1 else 0 end
+
+                      + case when FDN_ItemSubFamily is null then  1 else 0 end
+
+                      + case when FDN_ItemCondition is null then  1 else 0 end
+
+                      + case when not any ItemImageJoins have (FID_ItemImage is
+                      not null) then  1 else 0 end
+
+                      ) !=0
+                    visibleValueInterpreter: SEMQL
+                    _type: TextField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textAlign: left
+                      textAlignValueInterpreter: LITERAL
+                      textColor: md:orange
+                      textColorValueInterpreter: LITERAL
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      isMultiline: "1"
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMaxLines: "5"
+                      multilineMaxLinesValueInterpreter: LITERAL
+                      multilineMinLines: "1"
+                      multilineMinLinesValueInterpreter: LITERAL
+                      isCharCounterVisible: "0"
+                      isCharCounterVisibleValueInterpreter: LITERAL
+                    labelProperties:
+                      color: >-
+                        case
+
+                        when
+
+                        ANY BillOfMaterials have (RelationshipType =
+                        'ReplacedBy') then 'md:red'
+
+                        else null
+
+                        end
+                      colorValueInterpreter: SEMQL
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "1"
+                      isVisibleValueInterpreter: LITERAL
+              - _name: Description
+                value: Description
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: center
+                  textAlignValueInterpreter: LITERAL
+                  textColor: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  textColorValueInterpreter: SEMQL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "10"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  color: >-
+                    case
+
+                    when
+
+                    ANY BillOfMaterials have (RelationshipType = 'ReplacedBy')
+                    then 'md:red'
+
+                    else 'md:black'
+
+                    end
+                  colorValueInterpreter: SEMQL
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: right
+                  alignmentValueInterpreter: LITERAL
+                  typography: caption
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "0"
+                  isVisibleValueInterpreter: LITERAL
+              - _type: FormContainer
+                _name: Container5
+                layoutDirection: COLUMN
+                content:
+                  - _name: FormField
+                    label: Item Image
+                    value: >-
+                      case when 
+
+                      (LOOKUP 	
+                      	FIRST ItemImage.URL
+                       	FROM ItemImageJoins
+                       	where ItemImage.Label not like '%Assembly%' 
+                       END) is not null then (LOOKUP 	FIRST ItemImage.URL 	FROM ItemImageJoins 	where ItemImage.Label not like '%Assembly%'  END)
+                       else (LOOKUP 	FIRST ItemImage.URL 	FROM ItemImageJoins END)
+                       end
+                    dataType: STRING
+                    useCustomLabel: true
+                    documentationInterpreter: LITERAL
+                    visibleValue: "1"
+                    visibleValueInterpreter: LITERAL
+                    _type: ImageField
+                    authoringMode: auto
+                    authoringModeValueInterpreter: LITERAL
+                    componentProperties:
+                      textTypography: body-1
+                      textTypographyValueInterpreter: LITERAL
+                      imageHeight: "330"
+                      imageHeightValueInterpreter: LITERAL
+                      imageSourceType: url
+                      imageSourceTypeValueInterpreter: LITERAL
+                      fallbackImage: images://sfix/No-Image-Available.png
+                      fallbackImageValueInterpreter: LITERAL
+                      fallbackImageType: url
+                      fallbackImageTypeValueInterpreter: LITERAL
+                      showFullSizeOnClick: "1"
+                      showFullSizeOnClickValueInterpreter: LITERAL
+                      imageAlign: middle-center
+                      imageAlignValueInterpreter: LITERAL
+                      imageMode: fit
+                      imageModeValueInterpreter: LITERAL
+                    labelProperties:
+                      color: >-
+                        case
+
+                        when
+
+                        ANY BillOfMaterials have (RelationshipType =
+                        'ReplacedBy') then 'md:red'
+
+                        else 'md:black'
+
+                        end
+                      colorValueInterpreter: SEMQL
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                      typography: caption
+                      typographyValueInterpreter: LITERAL
+                      isVisible: "0"
+                      isVisibleValueInterpreter: LITERAL
+      - _type: FormContainer
+        _name: Container6
+        layoutDirection: ROW
+        content:
+          - _name: Chart
+            _type: FormChart
+            chart: CustomerByItemsAndModels
+            dashboardApplication: ManufacturingIndustryModel
+            embeddedMode: CARD
+            showDivider: true
+            titlePlacement: TOP
+            useCustomLabel: true
+            documentationInterpreter: LITERAL
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            label: Customers using this Item
+            queryAttributes:
+              - _name: item_id
+                _type: FormChartParameter
+                value: ItemID
+                valueInterpreter: SEMQL
+          - _name: BillOfMaterial
+            _type: FormCollection
+            displayRecordCount: ALWAYS
+            enableUserDefinedSort: true
+            gridAllowed: true
+            listAllowed: true
+            tableAllowed: true
+            transitionPath: BillOfMaterials.ChildItem
+            useCustomLabel: true
+            collection: Manufacturing.entities.Item.collection_views.ItemCollection_NameOnly
+            documentationInterpreter: LITERAL
+            label: Bill of Material
+            pluralLabel: Bill of Materials
+            targetEntity: Manufacturing.entities.Item.Item
+            visibleValueInterpreter: SEMQL
+            visibleValue: ANY BillOfMaterials have (RelationshipType = 'AssemblyComponent')
+            formCollectionBuiltInFilters: []
+            formCollectionSearchConfigs:
+              - searchType: SEMQL
+                enabled: true
+              - searchType: TEXT
+                enabled: true
+              - searchType: ADVANCED
+                enabled: true
+              - searchType: BY_FORM
+                enabled: true

@@ -1,0 +1,9 @@
+_package: CTMDM.entities.StudyVendor.validations
+_name: StudyVendorDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.StudyVendor.StudyVendor
+label: Study vendor end date must not be before start date
+validationScope: PRE_CONSO
+description: "Study vendor end date must not be before start date before consolidation."
+
+condition: EndDate IS NULL OR StartDate IS NULL OR EndDate >= StartDate

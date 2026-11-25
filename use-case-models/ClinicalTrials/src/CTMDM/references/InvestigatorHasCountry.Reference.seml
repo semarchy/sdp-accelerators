@@ -1,0 +1,30 @@
+_package: CTMDM.references
+_name: InvestigatorHasCountry
+_type: Reference
+label: Investigator Has Country
+description: "Links investigators to their primary country for regulatory and reporting context."
+documentation: "Links investigators to their primary country for regulatory and reporting context."
+deletePropagation: RESTRICT
+
+fromEntity: CTMDM.entities.Investigator.Investigator
+fromRoleLabel: Investigator
+fromRoleName: investigator
+fromRolePluralLabel: Investigators
+physicalName: INV_HAS_CTRY
+fromNavigable: true
+
+toEntity: CTMDM.entities.Country.Country
+toRoleLabel: Country
+toRoleName: country
+toRolePhysicalName: CTRY
+toNavigable: true
+
+validationScope: PRE_CONSO
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: country
+  label: Country Code
+  physicalName: CTRY
+  searchable: true
+  entity: CTMDM.entities.Country.Country

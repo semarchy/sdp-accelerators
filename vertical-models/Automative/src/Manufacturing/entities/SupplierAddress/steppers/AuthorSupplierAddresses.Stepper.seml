@@ -1,0 +1,120 @@
+_name: AuthorSupplierAddresses
+_package: Manufacturing.entities.SupplierAddress.steppers
+_type: Stepper
+entity: Manufacturing.entities.SupplierAddress.SupplierAddress
+rootStep:
+  _name: SupplierAddresss
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.SupplierAddress.collection_views.SupplierAddressCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Supplier Addresses
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.SupplierAddressJoinsHasSupplier.Supplier
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.SupplierAddressJoinsHasAddress.Address
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierAddressJoinsHasAddressType.AddressType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierAddressJoinsHasSupplier.Supplier
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.SupplierAddressJoinsHasAddressType.AddressType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.SupplierAddressJoinsHasAddress.Address
+  stepTriggers: []
+  childSteps:
+    - _name: SupplierAddress
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Supplier Address
+      formTab: Manufacturing.entities.SupplierAddress.forms.SupplierAddressForm.SupplierAddress
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierAddressJoinsHasAddress.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierAddressJoinsHasSupplier.Supplier
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierAddressJoinsHasAddressType.AddressType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierAddressJoinsHasSupplier.Supplier
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierAddressJoinsHasAddressType.AddressType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierAddressJoinsHasAddress.Address
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierAddressJoinsHasAddress.Address
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierAddressJoinsHasSupplier.Supplier
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierAddressJoinsHasSupplier.Supplier
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.SupplierAddressJoinsHasAddressType.AddressType
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierAddressJoinsHasAddressType.AddressType
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.SupplierAddressJoinsHasAddress.Address
+      stepTriggers: []
+label: Author Supplier Addresses
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierAddressJoinsHasSupplier.Supplier
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.SupplierAddressJoinsHasAddressType.AddressType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierAddressJoinsHasAddressType.AddressType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.SupplierAddressJoinsHasAddress.Address
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.SupplierAddressJoinsHasSupplier.Supplier
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.SupplierAddressJoinsHasAddress.Address
+triggers: []

@@ -1,0 +1,85 @@
+# Trading Partner entity for the SAP Business Partner 360 accelerator.
+_name: TradingPartner
+_package: sapbp360.entities.TradingPartner
+_type: Entity
+primaryKey: sapbp360.entities.TradingPartner.TradingPartner.TradingPartnerID
+sourceIdGeneration:
+  mode: SEMQL
+  idExpression: TradingPartnerCode
+label: Trading Partner
+documentation: Trading Partner reference data used by the SAP Business Partner 360 model.
+description: Trading Partner reference data used by the SAP Business Partner 360 model.
+enableDelete: true
+entityType: BASIC
+iconUrl: images://sapbusinesspartner/TradingPartner.svg
+pluralLabel: Trading Partners
+historizeGolden: true
+historizeMaster: false
+physicalTableName: TRADING_PTNR
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: TradingPartnerID
+    physicalName: TRADING_PTNR_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Trading Partner ID
+    documentation: Unique identifier for the trading partner.
+    description: Unique identifier for the trading partner.
+    mandatory: true
+    length: 128
+    mandatoryValidationLabel: Trading Partner ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: TradingPartnerCode
+    physicalName: TRADING_PTNR_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Trading Partner Code
+    documentation: Code for the trading partner.
+    description: Code for the trading partner.
+    mandatory: true
+    length: 80
+    mandatoryValidationLabel: Trading Partner Code is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: TradingPartnerName
+    physicalName: TRADING_PTNR_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Trading Partner Name
+    documentation: Name of the trading partner.
+    description: Name of the trading partner.
+    mandatory: true
+    length: 255
+    mandatoryValidationLabel: Trading Partner Name is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: Description
+    physicalName: DESC_X
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Description
+    documentation: Description for the trading partner.
+    description: Description for the trading partner.
+    mandatory: false
+    length: 512
+    searchable: true
+  - _type: EntityAttribute
+    _name: Active
+    physicalName: ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    label: Active
+    documentation: Indicates whether the trading partner is active.
+    description: Indicates whether the trading partner is active.
+    mandatory: false
+    length: 1
+    searchable: true

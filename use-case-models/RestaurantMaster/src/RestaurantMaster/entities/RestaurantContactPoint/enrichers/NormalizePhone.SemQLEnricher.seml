@@ -1,0 +1,10 @@
+_package: RestaurantMaster.entities.RestaurantContactPoint.enrichers
+_name: NormalizePhone
+_type: SemQLEnricher
+entity: RestaurantMaster.entities.RestaurantContactPoint.RestaurantContactPoint
+label: Normalize phone numbers
+description: Writes phone and fax numbers as +1 followed by 10 digits.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+- attributeName: ContactValue
+  expression: CASE WHEN ContactPointType IN ('PHONE', 'FAX') THEN CASE WHEN LENGTH(REGEXP_REPLACE(ContactValue, '[^0-9]', '', 'g')) = 10 THEN '+1' || REGEXP_REPLACE(ContactValue, '[^0-9]', '', 'g') WHEN LENGTH(REGEXP_REPLACE(ContactValue, '[^0-9]', '', 'g')) = 11 AND SUBSTR(REGEXP_REPLACE(ContactValue, '[^0-9]', '', 'g'), 1, 1) = '1' THEN '+' || REGEXP_REPLACE(ContactValue, '[^0-9]', '', 'g') ELSE ContactValue END ELSE BTRIM(ContactValue) END

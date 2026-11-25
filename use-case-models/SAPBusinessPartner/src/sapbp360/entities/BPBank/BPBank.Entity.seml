@@ -1,0 +1,182 @@
+# BP Bank entity for the SAP Business Partner 360 accelerator.
+_name: BPBank
+_package: sapbp360.entities.BPBank
+_type: Entity
+primaryKey: sapbp360.entities.BPBank.BPBank.BankGoldenID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: UUID
+label: BP Bank
+documentation: Bank account golden record for a business partner.
+description: Bank account golden record for a business partner.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://sapbusinesspartner/BPBank.svg
+pluralLabel: BP Banks
+historizeGolden: true
+historizeMaster: true
+physicalTableName: BP_BANK
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: BankGoldenID
+    physicalName: BANK_GOLDEN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    label: Bank Golden ID
+    documentation: System generated golden identifier for the bank record.
+    description: System generated golden identifier for the bank record.
+    mandatory: true
+    mandatoryValidationLabel: Bank Golden ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    precision: 38
+    searchable: true
+  - _type: EntityAttribute
+    _name: BankIdentification
+    physicalName: BANK_IDENT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Bank Identification
+    documentation: SAP bank key.
+    description: SAP bank key.
+    mandatory: false
+    length: 15
+    searchable: true
+  - _type: EntityAttribute
+    _name: BankAccount
+    physicalName: BANK_ACCT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Bank Account
+    documentation: Bank account number.
+    description: Bank account number.
+    mandatory: false
+    length: 18
+    searchable: true
+  - _type: EntityAttribute
+    _name: BankControlKey
+    physicalName: BANK_CONTROL_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Bank Control Key
+    documentation: Bank routing or control key.
+    description: Bank routing or control key.
+    mandatory: false
+    length: 2
+    searchable: true
+  - _type: EntityAttribute
+    _name: IBAN
+    physicalName: IBAN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: IBAN
+    documentation: International bank account number.
+    description: International bank account number.
+    mandatory: false
+    length: 34
+    searchable: true
+  - _type: EntityAttribute
+    _name: IBANValidityStartDate
+    physicalName: IBAN_VAL_START_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: IBAN Validity Start Date
+    documentation: IBAN validity start date.
+    description: IBAN validity start date.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: SWIFTCode
+    physicalName: SWIFT_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: SWIFT Code
+    documentation: SWIFT or BIC code.
+    description: SWIFT or BIC code.
+    mandatory: false
+    length: 15
+    searchable: true
+  - _type: EntityAttribute
+    _name: BankAccountHolderName
+    physicalName: BANK_ACCT_HOLDER_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Bank Account Holder Name
+    documentation: Bank account holder name.
+    description: Bank account holder name.
+    mandatory: false
+    length: 60
+    searchable: true
+  - _type: EntityAttribute
+    _name: CollectionAuthInd
+    physicalName: COLL_AUTH_IND
+    dataType: Boolean
+    goldenAttribute: true
+    label: Collection Auth Ind
+    documentation: Direct debit collection authorization indicator.
+    description: Direct debit collection authorization indicator.
+    mandatory: false
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: ValidityStartDate
+    physicalName: VAL_START_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: Validity Start Date
+    documentation: Bank record validity start date.
+    description: Bank record validity start date.
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: ValidityEndDate
+    physicalName: VAL_END_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: Validity End Date
+    documentation: Bank record validity end date.
+    description: Bank record validity end date.
+    mandatory: false
+    searchable: true
+matcher:
+  _name: SemQLMatcherBPBANK
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 94
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: BP Bank matching rules for golden record consolidation.
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameIBAN
+      condition: Record1.IBAN is not null and Record1.IBAN = Record2.IBAN
+      label: Same IBAN
+      documentation: Same IBAN matching rule.
+      description: Same IBAN matching rule.
+      matchScore: 100
+      color: md:teal 800
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameBankAccount
+      condition: Record1.BankAccount is not null and Record1.BankAccount = Record2.BankAccount and COALESCE(Record1.BankIdentification,'') = COALESCE(Record2.BankIdentification,'')
+      label: Same Bank Account
+      documentation: Same Bank Account matching rule.
+      description: Same Bank Account matching rule.
+      matchScore: 94
+      color: md:teal 600
+      usingMatchOn: false

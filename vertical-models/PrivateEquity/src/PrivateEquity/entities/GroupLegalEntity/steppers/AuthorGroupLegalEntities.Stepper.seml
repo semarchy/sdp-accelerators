@@ -1,0 +1,94 @@
+_name: AuthorGroupLegalEntities
+_package: PrivateEquity.entities.GroupLegalEntity.steppers
+_type: Stepper
+entity: PrivateEquity.entities.GroupLegalEntity.GroupLegalEntity
+rootStep:
+  _name: GroupLegalEntitys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.GroupLegalEntity.collection_views.GroupLegalEntityCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Group Legal Entities
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+  stepTriggers: []
+  childSteps:
+    - _name: GroupLegalEntity
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Group Legal Entity
+      formTab: PrivateEquity.entities.GroupLegalEntity.forms.GroupLegalEntityForm.GroupLegalEntity
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+      stepTriggers: []
+label: Author Group Legal Entities
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.GroupLegalEntitiesLEGroup.LEGroup
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.GroupLegalEntitiesLegalEntity.LegalEntity
+triggers: []

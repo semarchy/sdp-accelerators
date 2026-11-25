@@ -1,0 +1,70 @@
+# GovernanceRuleSearchForm: search form on GovernanceRule of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.GovernanceRule.search_forms
+_type: SearchForm
+_name: GovernanceRuleSearchForm
+entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+label: Find governance rules
+searchTip: Every criterion is optional. The text searches the code, the title and the statement.
+semQlCondition: (:SEARCH_TEXT IS NULL OR UPPER(Code) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Title) LIKE '%' || UPPER(:SEARCH_TEXT) || '%' OR UPPER(Statement) LIKE '%' || UPPER(:SEARCH_TEXT) || '%') AND (:REQUIREMENTLEVEL IS NULL OR RequirementLevel = :REQUIREMENTLEVEL) AND (:CATEGORY IS NULL OR Category = :CATEGORY) AND (:IMPLEMENTATIONPATTERN IS NULL OR ImplementationPattern = :IMPLEMENTATIONPATTERN) AND (:LIFECYCLESTATUS IS NULL OR LifecycleStatus = :LIFECYCLESTATUS) AND (:OWNERBODY_ID IS NULL OR FID_OwnerBody = :OWNERBODY_ID) AND (:POLICY_ID IS NULL OR FID_Policy = :POLICY_ID)
+searchParameters:
+  - _type: SearchParameter
+    _name: SearchText
+    label: Search text
+    bindVariableName: SEARCH_TEXT
+    dataType: String
+    length: 200
+    displayType: TEXT_FIELD
+  - _type: SearchParameter
+    _name: RequirementLevel
+    label: Requirement level
+    bindVariableName: REQUIREMENTLEVEL
+    dataType: GovernanceRules.list_of_values.RequirementLevel
+    displayType: DROP_DOWN
+    lovDisplayMode: LABEL
+    lovSortMode: LABEL
+  - _type: SearchParameter
+    _name: Category
+    label: Category
+    bindVariableName: CATEGORY
+    dataType: GovernanceRules.list_of_values.RuleCategory
+    displayType: DROP_DOWN
+    lovDisplayMode: LABEL
+    lovSortMode: LABEL
+  - _type: SearchParameter
+    _name: ImplementationPattern
+    label: Implementation pattern
+    bindVariableName: IMPLEMENTATIONPATTERN
+    dataType: GovernanceRules.list_of_values.ImplementationPattern
+    displayType: DROP_DOWN
+    lovDisplayMode: LABEL
+    lovSortMode: LABEL
+  - _type: SearchParameter
+    _name: LifecycleStatus
+    label: Status
+    bindVariableName: LIFECYCLESTATUS
+    dataType: GovernanceRules.list_of_values.LifecycleStatus
+    displayType: DROP_DOWN
+    lovDisplayMode: LABEL
+    lovSortMode: LABEL
+  - _type: SearchParameter
+    _name: OwnerBody
+    label: Owner
+    bindVariableName: OWNERBODY_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name
+  - _type: SearchParameter
+    _name: Policy
+    label: Policy
+    bindVariableName: POLICY_ID
+    dataType: String
+    length: 40
+    displayType: VALUE_PICKER
+    lookupEntity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+    boundSelectExpression: Code
+    primaryTextExpression: Name
+    sortExpression: Name

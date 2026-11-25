@@ -1,0 +1,17 @@
+_package: RestaurantMaster.entities.RestaurantHours.display_cards
+_type: DisplayCard
+_name: RestaurantHoursDisplayCard
+entity: RestaurantMaster.entities.RestaurantHours.RestaurantHours
+default: true
+primaryTextExpression: ServiceChannel || ' ' || COALESCE(DayOfWeek, TO_CHAR(SpecialDate, 'YYYY-MM-DD'), '') || ' ' || CASE WHEN COALESCE(Closed, 'N') = 'Y' THEN 'closed' WHEN COALESCE(Open24Hours, 'N') = 'Y' THEN '24h' ELSE COALESCE(OpenTime, '') || '-' || COALESCE(CloseTime, '') END
+avatarImageValue: images://mdi/clock-outline.svg
+primaryImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

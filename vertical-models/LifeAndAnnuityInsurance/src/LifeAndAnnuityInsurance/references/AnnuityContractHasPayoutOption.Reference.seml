@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: AnnuityContractHasPayoutOption
+description: "Indicates the Annuity Payout Option associated with a Annuity Contract."
+_type: Reference
+label: "Annuity Contract Has Annuity Payout Option"
+
+fromEntity: LifeAndAnnuityInsurance.entities.AnnuityContract.AnnuityContract
+fromRoleLabel: "Annuity Contract"
+fromRoleName: AnnuityContract
+fromRolePluralLabel: "Annuity Contracts"
+physicalName: ANNCONTHASPAYOUTOPTION
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.AnnuityPayoutOption
+toRoleLabel: "Annuity Payout Option"
+toRoleName: AnnuityPayoutOption
+toRolePhysicalName: ANN_PAYOUT_OPTION
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: AnnuityPayoutOption
+  label: "Annuity Payout Option ID"
+  description: "The identifier of the Annuity Payout Option associated with the Annuity Contract."
+  physicalName: ANN_PAYOUT_OPTION_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.AnnuityPayoutOption.AnnuityPayoutOption

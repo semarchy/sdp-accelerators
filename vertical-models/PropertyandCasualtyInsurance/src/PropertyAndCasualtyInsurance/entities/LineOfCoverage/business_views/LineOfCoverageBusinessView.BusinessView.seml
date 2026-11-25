@@ -1,0 +1,89 @@
+_package: PropertyAndCasualtyInsurance.entities.LineOfCoverage.business_views
+_type: BusinessView
+_name: LineOfCoverageBusinessView
+label: Line Of Coverage
+entity: PropertyAndCasualtyInsurance.entities.LineOfCoverage.LineOfCoverage
+rootLabel: Lines Of Coverage
+rootPluralLabel: Lines Of Coverage
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: LineOfCoverage
+  displayCard: PropertyAndCasualtyInsurance.entities.LineOfCoverage.display_cards.LineOfCoverageDisplayCard
+  entity: PropertyAndCasualtyInsurance.entities.LineOfCoverage.LineOfCoverage
+  actionSet: PropertyAndCasualtyInsurance.entities.LineOfCoverage.action_sets.LineOfCoverageActionSet
+  collection: PropertyAndCasualtyInsurance.entities.LineOfCoverage.collection_views.LineOfCoverageCollectionView
+  form: PropertyAndCasualtyInsurance.entities.LineOfCoverage.forms.LineOfCoverageForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: LineOfCoverages
+        _type: BusinessViewEntity
+        displayCard: PropertyAndCasualtyInsurance.entities.LineOfCoverage.display_cards.LineOfCoverageDisplayCard
+        collection: PropertyAndCasualtyInsurance.entities.LineOfCoverage.collection_views.LineOfCoverageCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PropertyAndCasualtyInsurance.entities.LineOfCoverage.LineOfCoverage
+        form: PropertyAndCasualtyInsurance.entities.LineOfCoverage.forms.LineOfCoverageForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: PropertyAndCasualtyInsurance.entities.LineOfCoverage.action_sets.LineOfCoverageActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: Transition from Line Of Coverage to related Golden History Records.
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PropertyAndCasualtyInsurance.entities.LineOfCoverage.business_views.LineOfCoverageBusinessView.LineOfCoverage
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/page-next-outline.svg

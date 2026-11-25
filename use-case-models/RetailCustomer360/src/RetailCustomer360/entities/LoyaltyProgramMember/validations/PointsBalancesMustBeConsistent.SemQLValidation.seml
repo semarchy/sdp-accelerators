@@ -1,0 +1,12 @@
+﻿_package: RetailCustomer360.entities.LoyaltyProgramMember.validations
+_name: PointsBalancesMustBeConsistent
+_type: SemQLValidation
+entity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+label: Points Balances Must Be Consistent
+validationScope: PRE_CONSO
+description: "Ensures balances are non-negative and redeemed points do not exceed earned points."
+condition: (AvailablePointsBalance IS NULL OR AvailablePointsBalance >= 0)
+  AND (LifetimePointsEarned IS NULL OR LifetimePointsEarned >= 0)
+  AND (LifetimePointsRedeemed IS NULL OR LifetimePointsRedeemed >= 0)
+  AND (LifetimePointsEarned IS NULL OR LifetimePointsRedeemed IS NULL OR LifetimePointsRedeemed <= LifetimePointsEarned)
+

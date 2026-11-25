@@ -1,0 +1,89 @@
+_package: LifeAndAnnuityInsurance.entities.PolicyPartyRole.business_views
+_type: BusinessView
+_name: PolicyPartyRoleBusinessView
+label: "Policy Party Role"
+entity: LifeAndAnnuityInsurance.entities.PolicyPartyRole.PolicyPartyRole
+rootLabel: "Policy Party Roles"
+rootPluralLabel: "Policy Party Roles"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: PolicyPartyRole
+  displayCard: LifeAndAnnuityInsurance.entities.PolicyPartyRole.display_cards.PolicyPartyRoleDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.PolicyPartyRole.PolicyPartyRole
+  actionSet: LifeAndAnnuityInsurance.entities.PolicyPartyRole.action_sets.PolicyPartyRoleActionSet
+  collection: LifeAndAnnuityInsurance.entities.PolicyPartyRole.collection_views.PolicyPartyRoleCollectionView
+  form: LifeAndAnnuityInsurance.entities.PolicyPartyRole.forms.PolicyPartyRoleForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Records
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: PolicyPartyRoleMasterRecords
+        _type: BusinessViewEntity
+        displayCard: LifeAndAnnuityInsurance.entities.PolicyPartyRole.display_cards.PolicyPartyRoleDisplayCard
+        collection: LifeAndAnnuityInsurance.entities.PolicyPartyRole.collection_views.PolicyPartyRoleCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: LifeAndAnnuityInsurance.entities.PolicyPartyRole.PolicyPartyRole
+        form: LifeAndAnnuityInsurance.entities.PolicyPartyRole.forms.PolicyPartyRoleForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: LifeAndAnnuityInsurance.entities.PolicyPartyRole.action_sets.PolicyPartyRoleActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: "Transition from Policy Party Role to related golden history records."
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: LifeAndAnnuityInsurance.entities.PolicyPartyRole.business_views.PolicyPartyRoleBusinessView.PolicyPartyRole
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/account-switch-outline.svg

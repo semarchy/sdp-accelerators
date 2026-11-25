@@ -1,0 +1,65 @@
+# RuleScopeByDataClassificationCollectionView: collection view on RuleScope of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.RuleScope.collection_views
+_type: CollectionView
+_name: RuleScopeByDataClassificationCollectionView
+description: 'Rule scopes listed under a data classification, with the rule they belong to: the rules that apply to this classification.'
+entity: GovernanceRules.entities.RuleScope.RuleScope
+default: false
+displayCard: GovernanceRules.entities.RuleScope.display_cards.RuleScopeDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: '1:1'
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: Rule scope
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_AttributeType
+    value: FDN_AttributeType
+    useCustomLabel: true
+    label: Attribute type
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+    componentProperties:
+      hideIfReferenceToParent: '1'
+      hideIfReferenceToParentValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_DataDomain
+    value: FDN_DataDomain
+    useCustomLabel: true
+    label: Domain
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: GovernanceRules.entities.DataDomain.DataDomain
+    componentProperties:
+      hideIfReferenceToParent: '1'
+      hideIfReferenceToParentValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_Rule
+    value: FDN_Rule
+    useCustomLabel: true
+    label: Rule
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+    componentProperties:
+      hideIfReferenceToParent: '1'
+      hideIfReferenceToParentValueInterpreter: LITERAL
+  - _type: IdColumn
+    _name: ID
+    value: ID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: RIGHT
+    visibleByDefault: false

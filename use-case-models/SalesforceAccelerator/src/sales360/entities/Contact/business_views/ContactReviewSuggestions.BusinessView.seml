@@ -1,0 +1,53 @@
+# This is the ContactReviewSuggestions business view used in the Salesforce Accelerator application.
+# It defines the structure and properties of the business view for contacts with review suggestions,
+# including the root entity, labels, and display options.
+_name: ContactReviewSuggestions
+_package: sales360.entities.Contact.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sales360.entities.Contact.Contact
+rootLabel: Contact Review Suggestions
+rootPluralLabel: Contact Review Suggestions
+useHierarchyOnOpen: false
+label: Contact Review Suggestions
+description: Business view for reviewing contact suggestions
+rootBusinessViewEntity:
+  _name: Contact
+  _type: BusinessViewEntity
+  collection: sales360.entities.Contact.collection_views.ContactCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sales360.entities.Contact.Contact
+  form: sales360.entities.Contact.forms.ContactBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: sales360.entities.Contact.action_sets.ContactReviewSuggestionsActionSet
+  displayCard: sales360.entities.Contact.display_cards.ContactDisplayCard
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sales360.entities.Contact.forms.ContactBrowsingForm.Details.GeneralInformation.Container.Container3.FDN_Account
+      navigationMode: MODAL_FORM
+  transitions: []
+rootFilter: HasSuggestedMerge = '1'

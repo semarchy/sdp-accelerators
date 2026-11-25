@@ -1,0 +1,214 @@
+_name: AuthorSupplierPurchasingOrgs
+_package: sapbp360.entities.SupplierPurchasingOrg.steppers
+_type: Stepper
+entity: sapbp360.entities.SupplierPurchasingOrg.SupplierPurchasingOrg
+description: Stepper for authoring Supplier Purchasing Orgs.
+rootStep:
+  _name: SupplierPurchasingOrgs
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.SupplierPurchasingOrg.collection_views.SupplierPurchasingOrgCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Supplier Purchasing Orgs
+  description: Manage Supplier Purchasing Org data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_PurchasingOrganization.PurchasingOrganization
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_Currency.Currency
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_PurchPaymentTerms.PurchPaymentTerms
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_IncotermsClassification.IncotermsClassification
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_SupplierPurchasingGroup.SupplierPurchasingGroup
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_SupplierABCClassification.SupplierABCClassification
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_PlanningCycle.PlanningCycle
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_PricingDateControl.PricingDateControl
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_ShippingCondition.ShippingCondition
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.SupplierPurchasingOrg_Supplier.Supplier
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: sapbp360.entities.SupplierPurchasingOrg.SupplierPurchasingOrg.SemQLMatcherSUPPLIERPURCHASINGORG
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for Supplier Purchasing Org.
+      formTab: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main
+      formStepEnrichers:
+        - enricher: sapbp360.entities.SupplierPurchasingOrg.enrichers.NormalizedRespName
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.Identification.IdentificationRow.IdentificationCol3.FDN_PurchasingOrganization
+          referencePickerCollectionView: sapbp360.entities.PurchasingOrganization.collection_views.PurchasingOrganizationCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol1.FDN_Currency
+          referencePickerCollectionView: sapbp360.entities.Currency.collection_views.CurrencyCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol2.FDN_PurchPaymentTerms
+          referencePickerCollectionView: sapbp360.entities.PaymentTerms.collection_views.PaymentTermsCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol3.FDN_IncotermsClassification
+          referencePickerCollectionView: sapbp360.entities.IncotermsClassification.collection_views.IncotermsClassificationCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.PlanningAndClassification.PlanningAndClassificationRow.PlanningAndClassificationCol1.FDN_SupplierPurchasingGroup
+          referencePickerCollectionView: sapbp360.entities.PurchasingGroup.collection_views.PurchasingGroupCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.PlanningAndClassification.PlanningAndClassificationRow.PlanningAndClassificationCol2.FDN_SupplierABCClassification
+          referencePickerCollectionView: sapbp360.entities.ABCClassification.collection_views.ABCClassificationCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.PlanningAndClassification.PlanningAndClassificationRow.PlanningAndClassificationCol3.FDN_PlanningCycle
+          referencePickerCollectionView: sapbp360.entities.PlanningCycle.collection_views.PlanningCycleCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol1.FDN_PricingDateControl
+          referencePickerCollectionView: sapbp360.entities.PricingDateControl.collection_views.PricingDateControlCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.PurchasingTerms.PurchasingTermsRow.PurchasingTermsCol3.FDN_ShippingCondition
+          referencePickerCollectionView: sapbp360.entities.ShippingCondition.collection_views.ShippingConditionCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgDataEntryForm.Main.Identification.IdentificationRow.IdentificationCol2.FDN_Supplier
+          referencePickerCollectionView: sapbp360.entities.Supplier.collection_views.SupplierCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_PurchasingOrganization.PurchasingOrganization
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_Currency.Currency
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_PurchPaymentTerms.PurchPaymentTerms
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_IncotermsClassification.IncotermsClassification
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_SupplierPurchasingGroup.SupplierPurchasingGroup
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_SupplierABCClassification.SupplierABCClassification
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_PlanningCycle.PlanningCycle
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_PricingDateControl.PricingDateControl
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_ShippingCondition.ShippingCondition
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.SupplierPurchasingOrg_Supplier.Supplier
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author Supplier Purchasing Orgs
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_PurchasingOrganization.PurchasingOrganization
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_Currency.Currency
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_PurchPaymentTerms.PurchPaymentTerms
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_IncotermsClassification.IncotermsClassification
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_SupplierPurchasingGroup.SupplierPurchasingGroup
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_SupplierABCClassification.SupplierABCClassification
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_PlanningCycle.PlanningCycle
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_PricingDateControl.PricingDateControl
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_ShippingCondition.ShippingCondition
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.SupplierPurchasingOrg_Supplier.Supplier
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+triggers: []

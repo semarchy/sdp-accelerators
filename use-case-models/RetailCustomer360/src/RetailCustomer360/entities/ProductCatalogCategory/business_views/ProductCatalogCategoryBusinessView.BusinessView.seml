@@ -1,0 +1,59 @@
+_package: RetailCustomer360.entities.ProductCatalogCategory.business_views
+_type: BusinessView
+_name: ProductCatalogCategoryBusinessView
+label: Catalog Categories
+description: "Browse and steward Catalog Categories."
+entity: RetailCustomer360.entities.ProductCatalogCategory.ProductCatalogCategory
+rootLabel: Catalog Categories
+rootPluralLabel: Catalog Categories
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ProductCatalogCategory
+  displayCard: RetailCustomer360.entities.ProductCatalogCategory.display_cards.ProductCatalogCategoryDisplayCard
+  entity: RetailCustomer360.entities.ProductCatalogCategory.ProductCatalogCategory
+  actionSet: RetailCustomer360.entities.ProductCatalogCategory.action_sets.ProductCatalogCategoryActionSet
+  collection: RetailCustomer360.entities.ProductCatalogCategory.collection_views.ProductCatalogCategoryCollectionView
+  form: RetailCustomer360.entities.ProductCatalogCategory.forms.ProductCatalogCategoryForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: ChildCategories
+      transitionPath: BelongsToParentCatalogCategoryFromProductCatalogCategory
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/file-tree.svg?color=%230D1B2A&width=64
+      label: Child Category
+      pluralLabel: Child Categories
+      transitionVisible: "0"
+      transitionVisibleInterpreter: LITERAL
+      visibleInFormTabCondition: any BelongsToParentCatalogCategoryFromProductCatalogCategory has (1 = 1)
+      enableHierarchy: any BelongsToParentCatalogCategoryFromProductCatalogCategory has (1 = 1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: RetailCustomer360.entities.ProductCatalogCategory.business_views.ProductCatalogCategoryBusinessView.ProductCatalogCategory
+enableHierarchyView: true
+useHierarchyOnOpen: true

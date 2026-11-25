@@ -1,0 +1,290 @@
+_package: LifeAndAnnuityInsurance.entities.Individual
+_type: Entity
+_name: Individual
+label: "Individual"
+pluralLabel: "Individuals"
+physicalTableName: INDIVIDUAL
+iconUrl: images://mdi/account-outline.svg
+description: "Represents an individual person profile maintained by the insurance company, including identity, contact, address, profile, and employment details."
+documentation: "Represents an individual person profile maintained by the insurance company, including identity, contact, address, profile, and employment details."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: IndividualID
+    label: "Individual ID"
+    physicalName: INDIVIDUAL_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "System-generated golden identifier for the mastered individual profile."
+    documentation: "System-generated golden identifier for the mastered individual profile."
+  - _type: EntityAttribute
+    _name: IndividualNumber
+    label: "Individual Number"
+    physicalName: INDIVIDUAL_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Enterprise individual number assigned by the carrier or party master."
+    documentation: "Enterprise individual number assigned by the carrier or party master."
+  - _type: EntityAttribute
+    _name: FirstName
+    label: "First Name"
+    physicalName: FIRST_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "First name of the individual."
+    documentation: "First name of the individual."
+  - _type: EntityAttribute
+    _name: MiddleName
+    label: "Middle Name"
+    physicalName: MIDDLE_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Middle name or initial of the individual."
+    documentation: "Middle name or initial of the individual."
+  - _type: EntityAttribute
+    _name: LastName
+    label: "Last Name"
+    physicalName: LAST_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Last name of the individual."
+    documentation: "Last name of the individual."
+  - _type: EntityAttribute
+    _name: FullName
+    label: "Full Name"
+    physicalName: FULL_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Full display name of the individual."
+    documentation: "Full display name of the individual."
+  - _type: EntityAttribute
+    _name: DateOfBirth
+    label: "Date Of Birth"
+    physicalName: DATE_OF_BIRTH
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Birth date for the individual."
+    documentation: "Birth date for the individual."
+  - _type: EntityAttribute
+    _name: Gender
+    label: "Gender"
+    physicalName: GENDER
+    dataType: LifeAndAnnuityInsurance.list_of_values.Gender
+    mandatory: false
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Recorded gender value where permitted and relevant."
+    documentation: "Recorded gender value where permitted and relevant."
+  - _type: EntityAttribute
+    _name: TaxIdentifierLast4
+    label: "Tax Identifier Last4"
+    physicalName: TAX_IDENTIFIER_LAST4
+    dataType: String
+    length: 4
+    mandatory: false
+    searchable: true
+    description: "Last four characters of the individual tax identifier."
+    documentation: "Last four characters of the individual tax identifier."
+  - _type: EntityAttribute
+    _name: EmailAddress
+    label: "Email Address"
+    physicalName: EMAIL_ADDRESS
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Primary email address for the individual."
+    documentation: "Primary email address for the individual."
+  - _type: EntityAttribute
+    _name: PhoneNumber
+    label: "Phone Number"
+    physicalName: PHONE_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Primary phone number for the individual."
+    documentation: "Primary phone number for the individual."
+  - _type: EntityAttribute
+    _name: AddressLine1
+    label: "Address Line1"
+    physicalName: ADDRESS_LINE1
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Primary mailing or residential address line."
+    documentation: "Primary mailing or residential address line."
+  - _type: EntityAttribute
+    _name: City
+    label: "City"
+    physicalName: CITY
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "City for the primary address."
+    documentation: "City for the primary address."
+  - _type: EntityAttribute
+    _name: StateProvince
+    label: "State Province"
+    physicalName: STATE_PROVINCE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "State or province for the primary address."
+    documentation: "State or province for the primary address."
+  - _type: EntityAttribute
+    _name: PostalCode
+    label: "Postal Code"
+    physicalName: POSTAL_CODE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+    description: "Postal code for the primary address."
+    documentation: "Postal code for the primary address."
+  - _type: EntityAttribute
+    _name: CountryCode
+    label: "Country Code"
+    physicalName: COUNTRY_CODE
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+    description: "Country code for the primary address."
+    documentation: "Country code for the primary address."
+  - _type: EntityAttribute
+    _name: OccupationTitle
+    label: "Occupation Title"
+    physicalName: OCCUPATION_TITLE
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Occupation or job title recorded for underwriting, suitability, or servicing."
+    documentation: "Occupation or job title recorded for underwriting, suitability, or servicing."
+  - _type: EntityAttribute
+    _name: EmployerName
+    label: "Employer Name"
+    physicalName: EMPLOYER_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Current or most recently recorded employer name."
+    documentation: "Current or most recently recorded employer name."
+  - _type: EntityAttribute
+    _name: AnnualIncome
+    label: "Annual Income"
+    physicalName: ANNUAL_INCOME
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Annual income amount recorded for underwriting, suitability, or financial review."
+    documentation: "Annual income amount recorded for underwriting, suitability, or financial review."
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 120000
+sourceIdGeneration:
+  mode: UUID
+primaryKey: LifeAndAnnuityInsurance.entities.Individual.Individual.IndividualID
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherIndividual
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 91
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 75
+  mergeThresholdMergingConfirmedWithUnconfirmed: 75
+  mergeThresholdMergingUnconfirmed: 75
+  mergeThresholdMergingUnconfirmedWithNewMasters: 75
+  mergeThresholdNewGroup: 75
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: "Individual match rules using government identifier fragments, birth date, name, contact, and address profile."
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: TaxBirthLastName
+      condition: >-
+        Record1.TaxIdentifierLast4 IS NOT NULL
+        and Record2.TaxIdentifierLast4 IS NOT NULL
+        and Record1.TaxIdentifierLast4 = Record2.TaxIdentifierLast4
+        and Record1.DateOfBirth IS NOT NULL
+        and Record2.DateOfBirth IS NOT NULL
+        and Record1.DateOfBirth = Record2.DateOfBirth
+        and Record1.LastName IS NOT NULL
+        and Record2.LastName IS NOT NULL
+        and Record1.LastName = Record2.LastName
+      label: "Tax ID Birth Date and Last Name"
+      matchScore: 100
+      color: md:green 900
+      documentation: "Matches individuals using tax identifier last four, birth date, and last name."
+      description: "Matches individuals using tax identifier last four, birth date, and last name."
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: EmailBirthName
+      condition: >-
+        Record1.EmailAddress IS NOT NULL
+        and Record2.EmailAddress IS NOT NULL
+        and Record1.EmailAddress = Record2.EmailAddress
+        and Record1.DateOfBirth IS NOT NULL
+        and Record2.DateOfBirth IS NOT NULL
+        and Record1.DateOfBirth = Record2.DateOfBirth
+        and Record1.FirstName IS NOT NULL
+        and Record2.FirstName IS NOT NULL
+        and Record1.FirstName = Record2.FirstName
+        and Record1.LastName IS NOT NULL
+        and Record2.LastName IS NOT NULL
+        and Record1.LastName = Record2.LastName
+      label: "Email Birth Date and Name"
+      matchScore: 94
+      color: md:green 700
+      documentation: "Matches individuals using email address, birth date, first name, and last name."
+      description: "Matches individuals using email address, birth date, first name, and last name."
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: PhonePostalBirthName
+      condition: >-
+        Record1.PhoneNumber IS NOT NULL
+        and Record2.PhoneNumber IS NOT NULL
+        and Record1.PhoneNumber = Record2.PhoneNumber
+        and Record1.PostalCode IS NOT NULL
+        and Record2.PostalCode IS NOT NULL
+        and Record1.PostalCode = Record2.PostalCode
+        and Record1.DateOfBirth IS NOT NULL
+        and Record2.DateOfBirth IS NOT NULL
+        and Record1.DateOfBirth = Record2.DateOfBirth
+        and Record1.FirstName IS NOT NULL
+        and Record2.FirstName IS NOT NULL
+        and Record1.FirstName = Record2.FirstName
+        and Record1.LastName IS NOT NULL
+        and Record2.LastName IS NOT NULL
+        and Record1.LastName = Record2.LastName
+      label: "Phone Postal Birth Date and Name"
+      matchScore: 90
+      color: md:light-green 700
+      documentation: "Matches individuals using phone number, postal code, birth date, first name, and last name."
+      description: "Matches individuals using phone number, postal code, birth date, first name, and last name."
+      usingMatchOn: false

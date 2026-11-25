@@ -1,0 +1,23 @@
+_name: LoyaltyLedgerBelongsToLoyaltyProgramMember
+_type: Reference
+_package: RetailCustomer360.references
+label: LoyaltyLedger to Loyalty Member
+description: "Links a ledger entry to the member whose balance it moves."
+deletePropagation: CASCADE
+fromEntity: RetailCustomer360.entities.LoyaltyLedger.LoyaltyLedger
+fromRoleLabel: Belongs to
+fromRoleName: BelongsToLoyaltyProgramMemberFromLoyaltyLedger
+fromRolePluralLabel: Belongs to
+physicalName: LEDGER_TO_MEMBER
+toEntity: RetailCustomer360.entities.LoyaltyProgramMember.LoyaltyProgramMember
+toRoleLabel: Loyalty Member
+toRoleName: LoyaltyProgramMember
+toRolePhysicalName: LEDGER_MEMBER
+validationScope: PRE_CONSO
+foreignAttribute:
+  _type: ForeignAttribute
+  entity: RetailCustomer360.entities.LoyaltyLedger.LoyaltyLedger
+  _name: LoyaltyProgramMember
+  label: Loyalty Member
+  physicalName: LEDGER_MEMBER
+  searchable: true

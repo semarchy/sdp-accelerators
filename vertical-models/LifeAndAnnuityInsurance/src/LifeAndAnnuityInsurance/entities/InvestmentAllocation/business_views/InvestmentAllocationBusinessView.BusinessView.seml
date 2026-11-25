@@ -1,0 +1,89 @@
+_package: LifeAndAnnuityInsurance.entities.InvestmentAllocation.business_views
+_type: BusinessView
+_name: InvestmentAllocationBusinessView
+label: "Investment Allocation"
+entity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+rootLabel: "Investment Allocations"
+rootPluralLabel: "Investment Allocations"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: InvestmentAllocation
+  displayCard: LifeAndAnnuityInsurance.entities.InvestmentAllocation.display_cards.InvestmentAllocationDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+  actionSet: LifeAndAnnuityInsurance.entities.InvestmentAllocation.action_sets.InvestmentAllocationActionSet
+  collection: LifeAndAnnuityInsurance.entities.InvestmentAllocation.collection_views.InvestmentAllocationCollectionView
+  form: LifeAndAnnuityInsurance.entities.InvestmentAllocation.forms.InvestmentAllocationForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Records
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: InvestmentAllocationMasterRecords
+        _type: BusinessViewEntity
+        displayCard: LifeAndAnnuityInsurance.entities.InvestmentAllocation.display_cards.InvestmentAllocationDisplayCard
+        collection: LifeAndAnnuityInsurance.entities.InvestmentAllocation.collection_views.InvestmentAllocationCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+        form: LifeAndAnnuityInsurance.entities.InvestmentAllocation.forms.InvestmentAllocationForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: LifeAndAnnuityInsurance.entities.InvestmentAllocation.action_sets.InvestmentAllocationActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: "Transition from Investment Allocation to related golden history records."
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: LifeAndAnnuityInsurance.entities.InvestmentAllocation.business_views.InvestmentAllocationBusinessView.InvestmentAllocation
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/chart-pie.svg

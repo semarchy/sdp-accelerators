@@ -1,0 +1,68 @@
+_name: AuthorICDMappings
+_package: HCO_HCP.entities.ICDMapping.steppers
+_type: Stepper
+entity: HCO_HCP.entities.ICDMapping.ICDMapping
+rootStep:
+  _name: ICDMappings
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: HCO_HCP.entities.ICDMapping.collection_views.ICDMappingCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: ICD Mappings
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.ICD9Mapping.ICD9
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: HCO_HCP.references.ICD10Mapping.ICD10
+  stepTriggers: []
+  childSteps:
+    - _name: ICDMapping
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: ICD Mapping
+      formTab: HCO_HCP.entities.ICDMapping.forms.ICDMappingForm.ICDMapping
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.ICD10Mapping.ICD10
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: HCO_HCP.references.ICD9Mapping.ICD9
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.ICD10Mapping.ICD10
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: HCO_HCP.references.ICD9Mapping.ICD9
+      stepTriggers: []
+label: Author ICD Mappings
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.ICD9Mapping.ICD9
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: HCO_HCP.references.ICD10Mapping.ICD10
+triggers: []

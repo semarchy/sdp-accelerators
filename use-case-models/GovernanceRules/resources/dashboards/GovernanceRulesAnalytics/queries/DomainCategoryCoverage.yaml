@@ -1,0 +1,56 @@
+dataSource: GovernanceRules
+sql: "select coalesce(d.dd_name, d.dd_code) as \"Domain\",\n       c.label as \"Category\",\n       count(distinct r.gr_code) as \"Rules\",\n       count(distinct case when s.f_rs_domain = d.dd_code then r.gr_code end) as \"DomainRules\",\n       count(distinct case when s.f_rs_domain is null then r.gr_code end) as \"GenericRules\",\n       case when count(distinct case when s.f_rs_domain = d.dd_code then r.gr_code end) = 0 then 'No' else 'Yes' end as \"Covered\"\n  from gd_gov_data_domain d\n cross join (values ('DATA_QUALITY', 'Data quality'), ('PRIVACY', 'Privacy'), ('SECURITY_ACCESS', 'Security and access'), ('RETENTION', 'Retention'), ('REFERENCE_DATA', 'Reference data'), ('IDENTITY_MATCHING', 'Identity and matching'), ('METADATA_DOCUMENTATION', 'Metadata and documentation'), ('AI_USAGE', 'AI usage'), ('STEWARDSHIP', 'Stewardship'), ('MODELING_CONVENTIONS', 'Modeling conventions')) as c(code, label)\n  left join (gd_gov_rule_scope s\n             join gd_gov_rule r on r.gr_code = s.f_rs_rule\n                               and r.gr_status = 'APPROVED' and r.gr_effective <= current_date and (r.gr_retirement is null or r.gr_retirement > current_date))\n         on (s.f_rs_domain = d.dd_code or s.f_rs_domain is null) and r.gr_category = c.code\n group by coalesce(d.dd_name, d.dd_code), c.label"
+attributes:
+  Domain:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+  Category:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+  Rules:
+    dataType: NUMBER
+    usableAsMeasure: true
+    usableAsDimension: false
+    usableAsTimeDimension: false
+    showInDrilldown: false
+    sortable: true
+    format:
+      decimalPlaces: 0
+      showThousandsSeparator: true
+  DomainRules:
+    dataType: NUMBER
+    usableAsMeasure: true
+    usableAsDimension: false
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+    format:
+      decimalPlaces: 0
+      showThousandsSeparator: true
+  GenericRules:
+    dataType: NUMBER
+    usableAsMeasure: true
+    usableAsDimension: false
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+    format:
+      decimalPlaces: 0
+      showThousandsSeparator: true
+  Covered:
+    dataType: TEXT
+    usableAsMeasure: true
+    usableAsDimension: true
+    usableAsTimeDimension: false
+    showInDrilldown: true
+    sortable: true
+queryActions: []
+exportEnabled: true

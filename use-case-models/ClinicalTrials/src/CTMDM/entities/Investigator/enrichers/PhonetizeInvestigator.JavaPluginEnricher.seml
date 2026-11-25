@@ -1,0 +1,27 @@
+_package: CTMDM.entities.Investigator.enrichers
+_name: PhonetizeInvestigator
+_type: JavaPluginEnricher
+entity: CTMDM.entities.Investigator.Investigator
+label: Phonetize Investigator
+enricherExecutionScope: PRE_CONSO
+description: "Generates a phonetic key for Investigator duplicate detection."
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+afterEnrichers: 
+  CTMDM.entities.Investigator.enrichers.NormalizeInvestigator
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedLastName
+
+pluginOutputs:
+  - attributeName: PhonetizedInvestigatorName
+    outputName: OUT_TRANSFORMED_TEXT

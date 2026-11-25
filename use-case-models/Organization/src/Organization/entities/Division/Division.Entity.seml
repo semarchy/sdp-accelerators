@@ -1,0 +1,43 @@
+# This file defines the Division entity in the Organization domain.
+# It includes attributes such as DivisionID, Name, and FDN_Region,
+# each with specific configurations for data type and visibility. 
+_package: Organization.entities.Division
+_type: Entity
+_name: Division
+label: Division
+pluralLabel: Division
+entityType: BASIC
+physicalTableName: DIVISION
+iconUrl: images://hr-img-lib/network-pos.svg
+description: This entity represents the divisions within the organization, which are used for organizational structure and management.
+documentation: This entity is used to define various divisions, which can be referenced in other entities.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: DivisionID
+    label: Division ID
+    physicalName: DIVISION_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+    description: Unique identifier for the division.
+    documentation: This attribute is the primary key for the Division entity and is used to uniquely identify
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    physicalName: NAME
+    dataType: String
+    length: 255
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+    description: Name of the division.
+    documentation: This attribute holds the name of the division, which is used for display purposes.
+    
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 100
+primaryKey: Organization.entities.Division.Division.DivisionID

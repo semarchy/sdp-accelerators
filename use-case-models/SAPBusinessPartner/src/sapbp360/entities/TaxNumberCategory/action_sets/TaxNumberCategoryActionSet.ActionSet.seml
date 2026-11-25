@@ -1,0 +1,70 @@
+_name: TaxNumberCategoryActionSet
+_package: sapbp360.entities.TaxNumberCategory.action_sets
+_type: ActionSet
+entity: sapbp360.entities.TaxNumberCategory.TaxNumberCategory
+label: Tax Number Category Action Set
+description: Action set for managing Tax Number Categories in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorTaxNumberCategories
+    label: Create
+    description: Create a new Tax Number Category record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.TaxNumberCategory.steppers.AuthorTaxNumberCategories
+  - _name: EditAuthorTaxNumberCategories
+    label: Edit
+    description: Edit Tax Number Category records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.TaxNumberCategory.steppers.AuthorTaxNumberCategories
+  - _name: MassUpdateAuthorTaxNumberCategories
+    label: Mass Update
+    description: Mass update Tax Number Category records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: sapbp360.entities.TaxNumberCategory.steppers.AuthorTaxNumberCategories
+  - _name: Delete
+    label: Delete
+    description: Delete selected Tax Number Category records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorTaxNumberCategories
+    label: Import
+    description: Import Tax Number Category records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.TaxNumberCategory.steppers.TaxNumberCategoryImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

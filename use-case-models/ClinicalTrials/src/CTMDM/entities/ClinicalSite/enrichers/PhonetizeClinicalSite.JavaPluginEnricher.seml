@@ -1,0 +1,27 @@
+_package: CTMDM.entities.ClinicalSite.enrichers
+_name: PhonetizeClinicalSite
+_type: JavaPluginEnricher
+entity: CTMDM.entities.ClinicalSite.ClinicalSite
+label: Phonetize Clinical Site
+enricherExecutionScope: PRE_CONSO
+description: "Generates a phonetic key for Clinical Site duplicate detection."
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+pluginId: com.semarchy.engine.plugins.convergence.text
+processingBatchSize: 1
+threadPoolSize: 1
+
+afterEnrichers: 
+  CTMDM.entities.ClinicalSite.enrichers.NormalizeClinicalSite
+
+pluginParams:
+  - paramName: PARAM_TRANSFO_TYPE
+    value: PHONETIC METAPHONE
+
+pluginInputs:
+  - inputName: IN_TEXT
+    expression: NormalizedSiteName
+
+pluginOutputs:
+  - attributeName: PhonetizedSiteName
+    outputName: OUT_TRANSFORMED_TEXT

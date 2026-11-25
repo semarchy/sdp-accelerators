@@ -1,0 +1,140 @@
+_package: RetailCustomer360.entities.LoyaltyLedger
+_type: Entity
+_name: LoyaltyLedger
+label: Loyalty Ledger
+pluralLabel: Loyalty Ledger Entries
+entityType: BASIC
+physicalTableName: LOYALTY_LEDGER
+iconUrl: https://api.iconify.design/mdi/book-clock.svg?color=%230D1B2A&width=64
+
+description: "Individual movement of loyalty points into or out of a member's balance."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: LedgerEntryId
+    label: Ledger Entry Id
+    physicalName: LEDGER_ENTRY_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the ledger entry."
+
+  - _type: EntityAttribute
+    _name: TransactionDate
+    label: Transaction Date
+    physicalName: TRANSACTION_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date and time the points movement occurred."
+
+  - _type: EntityAttribute
+    _name: TransactionType
+    label: Transaction Type
+    physicalName: TRANSACTION_TYPE
+    dataType: RetailCustomer360.list_of_values.LedgerTransactionType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Nature of the points movement."
+
+  - _type: EntityAttribute
+    _name: PointsType
+    label: Points Type
+    physicalName: POINTS_TYPE
+    dataType: RetailCustomer360.list_of_values.PointsType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Classification of the points involved."
+
+  - _type: EntityAttribute
+    _name: Points
+    label: Points
+    physicalName: POINTS
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Number of points added or removed."
+
+  - _type: EntityAttribute
+    _name: PointsBalanceAfter
+    label: Points Balance After
+    physicalName: POINTS_BALANCE_AFTER
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Member balance immediately after the movement."
+
+  - _type: EntityAttribute
+    _name: MonetaryValue
+    label: Monetary Value
+    physicalName: MONETARY_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    searchable: true
+    description: "Cash value attributed to the points movement."
+
+  - _type: EntityAttribute
+    _name: ExpirationDate
+    label: Expiration Date
+    physicalName: EXPIRATION_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the accrued points expire."
+
+  - _type: EntityAttribute
+    _name: ReferenceNumber
+    label: Reference Number
+    physicalName: REFERENCE_NUMBER
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Order or transaction the movement relates to."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Explanation of why the movement occurred."
+
+  - _type: EntityAttribute
+    _name: IsReversed
+    label: Is Reversed
+    physicalName: IS_REVERSED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the movement has been reversed."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the ledger entry originates from."
+
+  - _type: EntityAttribute
+    _name: SourceLedgerKey
+    label: Source Ledger Key
+    physicalName: SOURCE_LEDGER_KEY
+    dataType: String
+    length: 100
+    searchable: true
+    description: "Natural key of the entry in the source system."
+
+primaryKey: RetailCustomer360.entities.LoyaltyLedger.LoyaltyLedger.LedgerEntryId
+
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1

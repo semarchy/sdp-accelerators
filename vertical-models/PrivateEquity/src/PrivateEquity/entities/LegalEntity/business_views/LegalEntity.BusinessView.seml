@@ -1,0 +1,484 @@
+_name: LegalEntity
+_package: PrivateEquity.entities.LegalEntity.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+rootLabel: Legal Entity
+rootPluralLabel: Legal Entities
+useHierarchyOnOpen: false
+label: Legal Entities
+rootBusinessViewEntity:
+  _name: LegalEntityEO
+  _type: BusinessViewEntity
+  collection: PrivateEquity.entities.LegalEntity.collection_views.LegalEntityCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: PrivateEquity.entities.LegalEntity.LegalEntity
+  form: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  sortExpression: Name ASC
+  tableAllowed: true
+  actionSet: PrivateEquity.entities.LegalEntity.action_sets.LegalEntityActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.AccountingInformation.Container4.Container5.FDN_Currency
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.AccountingInformation.Container4.Container6.FDN_Startegy
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.SystemLegalInformation.Container.Container2.FDN_EntityStructure
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.SystemLegalInformation.Container.Container2.FDN_Status
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.SystemLegalInformation.Container.Container2.FDN_EntityType
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.AccountingInformation.Container4.Container6.FDN_Subcategory
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.SystemLegalInformation.Container.Container3.FDN_Country
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.AccountingInformation.Container4.Container6.FDN_Category
+      navigationMode: MODAL_FORM
+    - formField: PrivateEquity.entities.LegalEntity.forms.LegalEntityForm.LegalEntity.SystemLegalInformation.Container.Container3.FDN_State
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/restore-clock.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PrivateEquity.entities.LegalEntity.business_views.LegalEntity.LegalEntityEO
+    - _name: Names
+      _type: BusinessViewTransition
+      transitionPath: Names
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Name
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.Name.collection_views.NameCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.Name.Name
+        form: PrivateEquity.entities.Name.forms.NameForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.Name.forms.NameForm.Name.FDN_LegalEntity
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.Name.forms.NameForm.Name.FDN_NameType
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Child
+      _type: BusinessViewTransition
+      transitionPath: Child.Child
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: any Child has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Child
+      pluralLabel: Children
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PrivateEquity.entities.LegalEntity.business_views.LegalEntity.LegalEntityEO
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/puzzle.svg
+      label: Master Data
+      pluralLabel: Master Data
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: PrivateEquity.entities.LegalEntity.business_views.LegalEntity.LegalEntityEO
+    - _name: FromRelationship
+      _type: BusinessViewTransition
+      transitionPath: FromRelationship
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/handshake.svg
+      label: Relationship
+      pluralLabel: Relationships
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: LERelationship
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.LERelationship.collection_views.LERelationshipCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.LERelationship.LERelationship
+        form: PrivateEquity.entities.LERelationship.forms.LERelationshipForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.LERelationship.forms.LERelationshipForm.LERelationship.FDN_Relationship
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.LERelationship.forms.LERelationshipForm.LERelationship.FDN_ToLE
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.LERelationship.forms.LERelationshipForm.LERelationship.FDN_FromLE
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Documents
+      _type: BusinessViewTransition
+      transitionPath: Documents
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      label: Tax Document
+      pluralLabel: Tax Documents
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      # iconUrl: images://default/DOC.svg # -- this one does not work
+      # iconUrl: images://mdi/handshake.svg -- this one works, but not the icon we want
+      # iconUrl: images://mdi/DOC.svg -- this one does not work
+      iconUrl: images://mdi/file-document-edit.svg     
+      # RM: rework and re-import image lib?
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Document
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.Document.collection_views.DocumentCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.Document.Document
+        form: PrivateEquity.entities.Document.forms.DocumentForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.Document.forms.DocumentForm.Document.FDN_Form
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.Document.forms.DocumentForm.Document.FDN_LegalEntity
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: PortfolioAssignments
+      _type: BusinessViewTransition
+      transitionPath: PortfolioLegalEntities
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: Any PortfolioLegalEntities has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/folder-open.svg
+      label: Portfolio Assignment
+      pluralLabel: Portfolio Assignments
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: PortfolioLegalEntity
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.PortfolioLegalEntity.collection_views.PortfolioLegalEntityCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.PortfolioLegalEntity.PortfolioLegalEntity
+        form: PrivateEquity.entities.PortfolioLegalEntity.forms.PortfolioLegalEntityForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        sortExpression: FDN_Portfolio ASC
+        tableAllowed: true
+        actionSet: PrivateEquity.entities.PortfolioLegalEntity.action_sets.PortfolioLegalEntityActionSet
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: Offices
+      _type: BusinessViewTransition
+      transitionPath: Offices
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: Any Offices has (1=1)
+      enableHierarchyInterpreter: SEMQL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/office-building-marker.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Office
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.Office.collection_views.OfficeCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.Office.Office
+        form: PrivateEquity.entities.Office.forms.OfficeForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.Office.forms.OfficeForm.Office.FDN_LegalEntity
+            navigationMode: MODAL_FORM
+        transitions:
+          - _name: Contacts
+            _type: BusinessViewTransition
+            transitionPath: Contacts
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: true
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: Any Contacts has (1=1)
+            enableHierarchyInterpreter: SEMQL
+            expandHierarchyByDefault: false
+            iconUrl: images://mdi/contact-phone.svg
+            label: Contact
+            pluralLabel: Contacts
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _name: Contact
+              _type: BusinessViewEntity
+              collection: PrivateEquity.entities.Contact.collection_views.ContactCollection
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: PrivateEquity.entities.Contact.Contact
+              form: PrivateEquity.entities.Contact.forms.ContactForm
+              gridAllowed: true
+              listAllowed: true
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              businessEntityBuiltInFilters: []
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                  enabled: true
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                  enabled: true
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                  enabled: true
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+                  enabled: true
+              embeddedCollectionNavigations: []
+              referenceAttributeNavigationConfigs:
+                - formField: PrivateEquity.entities.Contact.forms.ContactForm.Contact.ContactInformation.Container2.FDN_Office
+                  navigationMode: MODAL_FORM
+              transitions: []
+    - _name: Parent
+      _type: BusinessViewTransition
+      transitionPath: Parent
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Parent
+      pluralLabel: Parents
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ParentChild
+        _type: BusinessViewEntity
+        collection: PrivateEquity.entities.ParentChild.collection_views.ParentChildCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: PrivateEquity.entities.ParentChild.ParentChild
+        form: PrivateEquity.entities.ParentChild.forms.ParentChildForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: PrivateEquity.entities.ParentChild.forms.ParentChildForm.ParentChild.FDN_Child
+            navigationMode: MODAL_FORM
+          - formField: PrivateEquity.entities.ParentChild.forms.ParentChildForm.ParentChild.FDN_Parent
+            navigationMode: MODAL_FORM
+        transitions: []

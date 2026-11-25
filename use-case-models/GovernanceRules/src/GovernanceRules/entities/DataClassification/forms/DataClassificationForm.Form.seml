@@ -1,0 +1,53 @@
+# DataClassificationForm: Form on DataClassification of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.DataClassification.forms
+_type: Form
+_name: DataClassificationForm
+entity: GovernanceRules.entities.DataClassification.DataClassification
+default: true
+formTabs:
+  - _type: FormTab
+    _name: DataClassification
+    label: Data classification
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: Identity
+        label: Identification
+        layoutDirection: COLUMN
+        content:
+          - _type: IdField
+            _name: Code
+            value: Code
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Natural key of the classification, entered by the author and never changed (for example PERSONAL).
+            helperTextValueInterpreter: LITERAL
+          - _type: TextField
+            _name: Name
+            value: Name
+            useCustomLabel: false
+            dataType: STRING
+            helperText: Name of the classification.
+            helperTextValueInterpreter: LITERAL
+          - _type: TextField
+            _name: Description
+            value: Description
+            useCustomLabel: false
+            dataType: STRING
+            helperText: What data falls under the classification.
+            helperTextValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Details
+        label: Details
+        layoutDirection: COLUMN
+        content:
+          - _type: TextField
+            _name: SensitivityRank
+            value: SensitivityRank
+            useCustomLabel: false
+            dataType: INTEGER
+            helperText: Sensitivity from 1 (public) to 5 (special category).
+            helperTextValueInterpreter: LITERAL

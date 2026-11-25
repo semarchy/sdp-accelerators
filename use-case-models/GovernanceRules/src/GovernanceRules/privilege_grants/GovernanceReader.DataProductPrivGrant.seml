@@ -1,0 +1,47 @@
+# GovernanceReader: privilege grant of the GovernanceRules accelerator. Data product designer.
+_package: GovernanceRules.privilege_grants
+_type: DataProductPrivGrant
+_name: GovernanceReader
+roleName: GovernanceReader
+description: Data product designer. Browses in-force rules (approved, effective, not retired), their scopes and citations, approved policies, and the reference lists in the application. No data entry.
+entityPrivGrants:
+- _type: EntityPrivGrant
+  _name: GovernanceRule
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  defaultAccessType: READ
+  filter: LifecycleStatus = 'APPROVED' AND EffectiveDate <= CURRENT_DATE() AND (RetirementDate IS NULL OR RetirementDate > CURRENT_DATE())
+- _type: EntityPrivGrant
+  _name: RuleScope
+  entity: GovernanceRules.entities.RuleScope.RuleScope
+  defaultAccessType: READ
+  filter: Rule.LifecycleStatus = 'APPROVED' AND Rule.EffectiveDate <= CURRENT_DATE() AND (Rule.RetirementDate IS NULL OR Rule.RetirementDate > CURRENT_DATE())
+- _type: EntityPrivGrant
+  _name: RuleCitation
+  entity: GovernanceRules.entities.RuleCitation.RuleCitation
+  defaultAccessType: READ
+  filter: Rule.LifecycleStatus = 'APPROVED' AND Rule.EffectiveDate <= CURRENT_DATE() AND (Rule.RetirementDate IS NULL OR Rule.RetirementDate > CURRENT_DATE())
+- _type: EntityPrivGrant
+  _name: GovernancePolicy
+  entity: GovernanceRules.entities.GovernancePolicy.GovernancePolicy
+  defaultAccessType: READ
+  filter: LifecycleStatus = 'APPROVED'
+- _type: EntityPrivGrant
+  _name: Regulation
+  entity: GovernanceRules.entities.Regulation.Regulation
+  defaultAccessType: READ
+- _type: EntityPrivGrant
+  _name: DataDomain
+  entity: GovernanceRules.entities.DataDomain.DataDomain
+  defaultAccessType: READ
+- _type: EntityPrivGrant
+  _name: DataClassification
+  entity: GovernanceRules.entities.DataClassification.DataClassification
+  defaultAccessType: READ
+- _type: EntityPrivGrant
+  _name: BusinessAttributeType
+  entity: GovernanceRules.entities.BusinessAttributeType.BusinessAttributeType
+  defaultAccessType: READ
+- _type: EntityPrivGrant
+  _name: GovernanceBody
+  entity: GovernanceRules.entities.GovernanceBody.GovernanceBody
+  defaultAccessType: READ

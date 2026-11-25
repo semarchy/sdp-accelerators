@@ -1,0 +1,94 @@
+# BP Contact entity for the SAP Business Partner 360 accelerator.
+_name: BPContact
+_package: sapbp360.entities.BPContact
+_type: Entity
+primaryKey: sapbp360.entities.BPContact.BPContact.ContactGoldenID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1001
+sourceIdGeneration:
+  mode: UUID
+label: BP Contact
+documentation: Contact person relationship linking an organization and a person business partner.
+description: Contact person relationship linking an organization and a person business partner.
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://sapbusinesspartner/BPContact.svg
+pluralLabel: BP Contacts
+historizeGolden: true
+historizeMaster: true
+physicalTableName: BP_CONTACT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ContactGoldenID
+    physicalName: CONTACT_GOLDEN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    label: Contact Golden ID
+    documentation: System generated golden identifier for the contact record.
+    description: System generated golden identifier for the contact record.
+    mandatory: true
+    mandatoryValidationLabel: Contact Golden ID is mandatory
+    mandatoryValidationScope: PRE_CONSO
+    precision: 38
+    searchable: true
+  - _type: EntityAttribute
+    _name: ContactFullName
+    physicalName: CONTACT_FULL_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Contact Full Name
+    documentation: Full name of the contact person.
+    description: Full name of the contact person.
+    mandatory: false
+    length: 80
+    searchable: true
+  - _type: EntityAttribute
+    _name: NormalizedName
+    physicalName: NORM_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Normalized Name
+    documentation: Standardized contact name used for matching.
+    description: Standardized contact name used for matching.
+    mandatory: false
+    length: 80
+    searchable: true
+  - _type: EntityAttribute
+    _name: ValidityEndDate
+    physicalName: VAL_END_DATE
+    dataType: Date
+    goldenAttribute: true
+    label: Validity End Date
+    documentation: Contact relationship validity end date.
+    description: Contact relationship validity end date.
+    mandatory: false
+    searchable: true
+matcher:
+  _name: SemQLMatcherBPCONTACT
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 94
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 85
+  mergeThresholdMergingConfirmedWithNewMasters: 80
+  mergeThresholdMergingConfirmedWithUnconfirmed: 80
+  mergeThresholdMergingUnconfirmed: 80
+  mergeThresholdMergingUnconfirmedWithNewMasters: 80
+  mergeThresholdNewGroup: 80
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  description: BP Contact matching rules for golden record consolidation.
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameContactName
+      condition: Record1.NormalizedName is not null and Record1.NormalizedName = Record2.NormalizedName
+      label: Same Contact Name
+      documentation: Same Contact Name matching rule.
+      description: Same Contact Name matching rule.
+      matchScore: 85
+      color: md:teal 600
+      usingMatchOn: false

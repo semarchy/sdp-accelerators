@@ -1,0 +1,304 @@
+_name: BPAddress
+_package: sapbp360.entities.BPAddress.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: sapbp360.entities.BPAddress.BPAddress
+rootLabel: BP Address
+rootPluralLabel: BP Addresses
+useHierarchyOnOpen: false
+label: BP Address
+description: Business view for BP Address.
+rootBusinessViewEntity:
+  _name: BPAddress
+  _type: BusinessViewEntity
+  collection: sapbp360.entities.BPAddress.collection_views.BPAddressCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: sapbp360.entities.BPAddress.BPAddress
+  form: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: true
+  tableAllowed: true
+  actionSet: sapbp360.entities.BPAddress.action_sets.BPAddressActionSet
+  displayCard: sapbp360.entities.BPAddress.display_cards.BPAddressDisplayCard
+  sortExpression: CityName
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs:
+    - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol2.FDN_Region
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol1.FDN_Country
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol2.FDN_AddressLanguage
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol3.FDN_TaxJurisdiction
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol1.FDN_TransportZone
+      navigationMode: MODAL_FORM
+    - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_BusinessPartner
+      navigationMode: MODAL_FORM
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: BPAddressMaster
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPAddress.collection_views.BPAddressMasterCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPAddress.BPAddress
+        form: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPAddress.action_sets.BPAddressActionSet
+        displayCard: sapbp360.entities.BPAddress.display_cards.BPAddressDisplayCard
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol2.FDN_Region
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol1.FDN_Country
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol2.FDN_AddressLanguage
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol3.FDN_TaxJurisdiction
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.GeographyReferences.GeographyReferencesRow.GeographyReferencesCol1.FDN_TransportZone
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddress.forms.BPAddressBrowsingForm.Main.Identification.IdentificationRow.IdentificationCol1.FDN_BusinessPartner
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: AddressUsages
+      _type: BusinessViewTransition
+      transitionPath: AddressUsages
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/map-marker-multiple-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: BPAddressUsage
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPAddressUsage.collection_views.BPAddressUsageCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPAddressUsage.BPAddressUsage
+        form: sapbp360.entities.BPAddressUsage.forms.BPAddressUsageBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPAddressUsage.action_sets.BPAddressUsageActionSet
+        displayCard: sapbp360.entities.BPAddressUsage.display_cards.BPAddressUsageDisplayCard
+        sortExpression: AddressUsageID
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPAddressUsage.forms.BPAddressUsageBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_AddressUsage
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddressUsage.forms.BPAddressUsageBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Address
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Emails
+      _type: BusinessViewTransition
+      transitionPath: Emails
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/email-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: BPAddressEmail
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPAddressEmail.collection_views.BPAddressEmailCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPAddressEmail.BPAddressEmail
+        form: sapbp360.entities.BPAddressEmail.forms.BPAddressEmailBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPAddressEmail.action_sets.BPAddressEmailActionSet
+        displayCard: sapbp360.entities.BPAddressEmail.display_cards.BPAddressEmailDisplayCard
+        sortExpression: EmailAddress
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPAddressEmail.forms.BPAddressEmailBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Address
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: Phones
+      _type: BusinessViewTransition
+      transitionPath: Phones
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/phone-outline.svg
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: BPAddressPhone
+        _type: BusinessViewEntity
+        collection: sapbp360.entities.BPAddressPhone.collection_views.BPAddressPhoneCollection
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: sapbp360.entities.BPAddressPhone.BPAddressPhone
+        form: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneBrowsingForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: true
+        tableAllowed: true
+        actionSet: sapbp360.entities.BPAddressPhone.action_sets.BPAddressPhoneActionSet
+        displayCard: sapbp360.entities.BPAddressPhone.display_cards.BPAddressPhoneDisplayCard
+        sortExpression: PhoneNumber
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs:
+          - formField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_PhoneNumberType
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_DestinationLocationCountry
+            navigationMode: MODAL_FORM
+          - formField: sapbp360.entities.BPAddressPhone.forms.BPAddressPhoneBrowsingForm.Main.MainRow.Col2.Col2Body.FDN_Address
+            navigationMode: MODAL_FORM
+        transitions: []
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/av-timer.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: sapbp360.entities.BPAddress.business_views.BPAddress.BPAddress
+rootIconUrl: images://mdi/map-marker-outline.svg

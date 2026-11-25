@@ -1,0 +1,89 @@
+_package: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.business_views
+_type: BusinessView
+_name: UnderwritingRequirementBusinessView
+label: "Underwriting Requirement"
+entity: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.UnderwritingRequirement
+rootLabel: "Underwriting Requirements"
+rootPluralLabel: "Underwriting Requirements"
+displayRootNodeAs: ICON_LABEL
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: UnderwritingRequirement
+  displayCard: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.display_cards.UnderwritingRequirementDisplayCard
+  entity: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.UnderwritingRequirement
+  actionSet: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.action_sets.UnderwritingRequirementActionSet
+  collection: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.collection_views.UnderwritingRequirementCollectionView
+  form: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.forms.UnderwritingRequirementForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/file-tree-outline.svg
+      label: Master Records
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: UnderwritingRequirementMasterRecords
+        _type: BusinessViewEntity
+        displayCard: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.display_cards.UnderwritingRequirementDisplayCard
+        collection: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.collection_views.UnderwritingRequirementCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.UnderwritingRequirement
+        form: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.forms.UnderwritingRequirementForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        actionSet: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.action_sets.UnderwritingRequirementActionSet
+    - _name: GoldenHistoryRecords
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      description: "Transition from Underwriting Requirement to related golden history records."
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/history.svg
+      label: History
+      pluralLabel: History
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.business_views.UnderwritingRequirementBusinessView.UnderwritingRequirement
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+enableHierarchyView: false
+useHierarchyOnOpen: false
+rootIconUrl: images://mdi/clipboard-check.svg

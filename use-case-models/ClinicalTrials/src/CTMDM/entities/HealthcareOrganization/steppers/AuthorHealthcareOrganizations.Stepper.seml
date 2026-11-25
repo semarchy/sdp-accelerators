@@ -1,0 +1,36 @@
+_package: CTMDM.entities.HealthcareOrganization.steppers
+_type: Stepper
+_name: AuthorHealthcareOrganizations
+
+entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+label: Healthcare Organizations
+
+rootStep:
+  _type: CollectionStep
+  _name: HealthcareOrganizations
+  label: Healthcare Organizations
+  canFinishSubLevel: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  childDeleteType: HARD_DELETE
+  collectionView: CTMDM.entities.HealthcareOrganization.collection_views.HealthcareOrganizationImportMasterCollectionView
+  defaultDisplayType: TABLE
+  customSortEnabled: false
+  userDefinedSortEnabled: true
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  useCustomCollectionLabel: false
+  
+  childSteps:
+    - _type: FormStep
+      _name: HealthcareOrganization
+      label: Healthcare Organization
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      enableMasterValuePicking: false
+      formTab: CTMDM.entities.HealthcareOrganization.forms.HealthcareOrganizationForm.General

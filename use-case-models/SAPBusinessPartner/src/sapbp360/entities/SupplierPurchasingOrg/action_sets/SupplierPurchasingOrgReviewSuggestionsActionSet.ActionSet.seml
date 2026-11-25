@@ -1,0 +1,29 @@
+_name: SupplierPurchasingOrgReviewSuggestionsActionSet
+_package: sapbp360.entities.SupplierPurchasingOrg.action_sets
+_type: ActionSet
+entity: sapbp360.entities.SupplierPurchasingOrg.SupplierPurchasingOrg
+label: Supplier Purchasing Org Review Suggestions Action Set
+description: Action set for reviewing Supplier Purchasing Org duplicate suggestions.
+defaultActionSet: false
+actions:
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicates.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnSupplierPurchasingOrg
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sapbp360.entities.SupplierPurchasingOrg.dups_managers.ManageDuplicatesOnSupplierPurchasingOrg
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

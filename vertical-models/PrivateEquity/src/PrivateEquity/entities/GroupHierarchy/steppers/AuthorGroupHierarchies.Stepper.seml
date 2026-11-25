@@ -1,0 +1,107 @@
+_name: AuthorGroupHierarchies
+_package: PrivateEquity.entities.GroupHierarchy.steppers
+_type: Stepper
+entity: PrivateEquity.entities.GroupHierarchy.GroupHierarchy
+rootStep:
+  _name: GroupHierarchys
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: PrivateEquity.entities.GroupHierarchy.collection_views.GroupHierarchyCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: true
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Group Hierarchies
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.ParentGroup.Parent
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.GroupChild.Child
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.GroupChild.Child
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: PrivateEquity.references.GroupHierarchiesCurrency.Currency
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: PrivateEquity.references.ParentGroup.Parent
+  stepTriggers: []
+  childSteps:
+    - _name: GroupHierarchy
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Group Hierarchy
+      formTab: PrivateEquity.entities.GroupHierarchy.forms.GroupHierarchyForm.GroupHierarchy
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupHierarchiesCurrency.Currency
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.ParentGroup.Parent
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupChild.Child
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: PrivateEquity.references.ParentGroup.Parent
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: PrivateEquity.references.GroupChild.Child
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.ParentGroup.Parent
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupHierarchiesCurrency.Currency
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: PrivateEquity.references.GroupChild.Child
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.GroupChild.Child
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: PrivateEquity.references.ParentGroup.Parent
+      stepTriggers: []
+label: Author Group Hierarchies
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.GroupChild.Child
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.ParentGroup.Parent
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: PrivateEquity.references.ParentGroup.Parent
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.GroupHierarchiesCurrency.Currency
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: PrivateEquity.references.GroupChild.Child
+triggers: []

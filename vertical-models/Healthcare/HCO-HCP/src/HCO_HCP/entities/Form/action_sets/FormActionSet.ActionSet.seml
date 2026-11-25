@@ -1,0 +1,70 @@
+_name: FormActionSet
+_package: HCO_HCP.entities.Form.action_sets
+_type: ActionSet
+entity: HCO_HCP.entities.Form.Form
+label: Form Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorForms
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.Form.steppers.AuthorForms
+  - _name: EditAuthorForms
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: HCO_HCP.entities.Form.steppers.AuthorForms
+  - _name: MassUpdateAuthorForms
+    label: Mass Update
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: false
+    availableForGoldenData: true
+    availableForMasterData: false
+    stepper: HCO_HCP.entities.Form.steppers.AuthorForms
+  - _name: CopyAuthorForms
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: HCO_HCP.entities.Form.steppers.AuthorForms
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorForms
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: HCO_HCP.entities.Form.steppers.AuthorForms
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction

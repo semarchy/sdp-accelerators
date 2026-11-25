@@ -1,0 +1,61 @@
+_package: RestaurantMaster.entities.LifecycleStatus
+_type: Entity
+_name: LifecycleStatus
+label: Lifecycle status
+pluralLabel: Lifecycle statuses
+entityType: BASIC
+physicalTableName: REF_LIFECYCLE_STATUS
+iconUrl: images://mdi/progress-check.svg
+description: Lifecycle stages of a restaurant, from pipeline to closure.
+documentation: Lifecycle stages of a restaurant, from pipeline to closure.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+- _type: EntityAttribute
+  _name: StatusCode
+  label: Status code
+  physicalName: STATUSCODE
+  dataType: String
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Code of the status.
+  documentation: Code of the status.
+  length: 64
+- _type: EntityAttribute
+  _name: StatusName
+  label: Status name
+  physicalName: STATUSNAME
+  dataType: String
+  length: 256
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Name of the status.
+  documentation: Name of the status.
+- _type: EntityAttribute
+  _name: PublicChannelStatus
+  label: Public channel status
+  physicalName: PUBLICCHANNELSTATUS
+  dataType: RestaurantMaster.list_of_values.PublicChannelStatus
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  lovValidationScope: PRE_CONSO
+  searchable: true
+  description: What public channels show for a restaurant in this status.
+  documentation: What public channels show for a restaurant in this status.
+- _type: EntityAttribute
+  _name: Sequence
+  label: Sequence
+  physicalName: SEQUENCE
+  dataType: Integer
+  precision: 10
+  mandatory: true
+  mandatoryValidationScope: PRE_CONSO
+  searchable: true
+  description: Order of the status in the lifecycle.
+  documentation: Order of the status in the lifecycle.
+primaryKey: RestaurantMaster.entities.LifecycleStatus.LifecycleStatus.StatusCode
+sourceIdGeneration:
+  mode: MANUAL

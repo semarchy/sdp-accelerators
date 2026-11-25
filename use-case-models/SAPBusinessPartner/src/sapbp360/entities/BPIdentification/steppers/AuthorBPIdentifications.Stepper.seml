@@ -1,0 +1,93 @@
+_name: AuthorBPIdentifications
+_package: sapbp360.entities.BPIdentification.steppers
+_type: Stepper
+entity: sapbp360.entities.BPIdentification.BPIdentification
+description: Stepper for authoring BP Identifications.
+rootStep:
+  _name: BPIdentifications
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: sapbp360.entities.BPIdentification.collection_views.BPIdentificationCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: BP Identifications
+  description: Manage BP Identification data.
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: &a1
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPIdentification_BpIdentificationType.BpIdentificationType
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPIdentification_IssuingCountry.IssuingCountry
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: sapbp360.references.BPIdentification_BusinessPartner.BusinessPartner
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Main
+      description: Main form for BP Identification.
+      formTab: sapbp360.entities.BPIdentification.forms.BPIdentificationDataEntryForm.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs:
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPIdentification.forms.BPIdentificationDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_BpIdentificationType
+          referencePickerCollectionView: sapbp360.entities.BpIdentificationType.collection_views.BpIdentificationTypeCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPIdentification.forms.BPIdentificationDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_IssuingCountry
+          referencePickerCollectionView: sapbp360.entities.Country.collection_views.CountryCollection
+          referencePickerSearchTypeConfigs: []
+        - enableCreateReference: false
+          enableUserSort: true
+          referencePickerType: AUTO_COMPLETE
+          fdnFormField: sapbp360.entities.BPIdentification.forms.BPIdentificationDataEntryForm.Main.MainRow.Col2.Col2Body.FDN_BusinessPartner
+          referencePickerCollectionView: sapbp360.entities.BusinessPartner.collection_views.BusinessPartnerCollection
+          referencePickerSearchTypeConfigs: []
+      formStepValidations:
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPIdentification_BpIdentificationType.BpIdentificationType
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPIdentification_IssuingCountry.IssuingCountry
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: sapbp360.references.BPIdentification_BusinessPartner.BusinessPartner
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations: *a1
+      stepTriggers: []
+label: Author BP Identifications
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPIdentification_BpIdentificationType.BpIdentificationType
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPIdentification_IssuingCountry.IssuingCountry
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: sapbp360.references.BPIdentification_BusinessPartner.BusinessPartner
+triggers: []

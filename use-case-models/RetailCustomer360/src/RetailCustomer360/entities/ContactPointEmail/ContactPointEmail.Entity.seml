@@ -1,0 +1,182 @@
+﻿_package: RetailCustomer360.entities.ContactPointEmail
+_type: Entity
+_name: ContactPointEmail
+label: Contact Point Email
+pluralLabel: Contact Point Emails
+entityType: FUZZY_MATCHED
+physicalTableName: CONTACT_POINT_EMAIL
+iconUrl: https://api.iconify.design/mdi/email.svg?color=%230D1B2A&width=64
+description: "Stores customer email contact points with primary and verification indicators."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: EmailId
+    label: Email Id
+    physicalName: EMAIL_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier for the email contact point record."
+
+  - _type: EntityAttribute
+    _name: EmailAddress
+    label: Email Address
+    physicalName: EMAIL_ADDRESS
+    dataType: String
+    length: 320
+    searchable: true
+    description: "Email address."
+
+  - _type: EntityAttribute
+    _name: EmailType
+    label: Email Type
+    physicalName: EMAIL_TYPE
+    dataType: RetailCustomer360.list_of_values.EmailType
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Email type classification (Personal, Work, Billing, Shipping, Other)."
+
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates primary email."
+
+  - _type: EntityAttribute
+    _name: IsVerified
+    label: Is Verified
+    physicalName: IS_VERIFIED
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Indicates verified email address."
+
+  - _type: EntityAttribute
+    _name: VerificationDate
+    label: Verification Date
+    physicalName: VERIFICATION_DATE
+    dataType: Timestamp
+    precision: 0
+    searchable: true
+    description: "Date/time email was verified."
+
+  - _type: EntityAttribute
+    _name: ConsentStatus
+    label: Consent Status
+    physicalName: CONSENT_STATUS
+    dataType: RetailCustomer360.list_of_values.ConsentStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Consent status (Opted In, Opted Out, Pending, Unknown)."
+
+  - _type: EntityAttribute
+    _name: EmailDeliverabilityStatus
+    label: Email Deliverability Status
+    physicalName: EMAIL_DELIVER_STATUS
+    dataType: RetailCustomer360.list_of_values.EmailDeliverabilityStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Email deliverability status (Deliverable, Bounced, Invalid, Suppressed)."
+
+  - _type: EntityAttribute
+    _name: BounceReason
+    label: Bounce Reason
+    physicalName: BOUNCE_REASON
+    dataType: String
+    length: 255
+    searchable: true
+    description: "Reason for bounce, if applicable."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Source system."
+
+  - _type: EntityAttribute
+    _name: SourceEmailKey
+    label: Source Email Key
+    physicalName: SOURCE_EMAIL_KEY
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Source email identifier."
+
+## Standard enrichment attributes
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessScore
+    label: Enrichment Completeness Score
+    physicalName: ENRICH_COMPLETENESS_SCORE
+    dataType: Decimal
+    precision: 5
+    scale: 2
+    searchable: true
+    description: "Derived completeness score based on key business attributes"
+
+  - _type: EntityAttribute
+    _name: EnrichmentCompletenessBand
+    label: Enrichment Completeness Band
+    physicalName: ENRICH_COMPLETENESS_BAND
+    dataType: String
+    length: 16
+    searchable: true
+    description: "Derived completeness band (Low, Medium, High)"
+
+  - _type: EntityAttribute
+    _name: EnrichmentUpdatedOn
+    label: Enrichment Updated On
+    physicalName: ENRICH_UPDATED_ON
+    dataType: Date
+    searchable: true
+    description: "Date when enrichment was last calculated"
+sourceIdGeneration:
+  mode: MANUAL
+
+primaryKey: RetailCustomer360.entities.ContactPointEmail.ContactPointEmail.EmailId
+
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+
+matcher:
+  _type: SemQLMatcher
+  _name: Matcher
+  description: ContactPointEmailSemQLMatcher
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: EmailExact
+      label: Email exact match
+      matchScore: 100
+      condition: Record1.EmailAddress IS NOT NULL AND Record2.EmailAddress IS NOT NULL AND LOWER(Record1.EmailAddress) = LOWER(Record2.EmailAddress)
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameCustomerSimilarEmail
+      label: Same customer with similar email address
+      matchScore: 70
+      condition: Record1.FID_Customer IS NOT NULL AND Record2.FID_Customer IS NOT NULL AND Record1.FID_Customer = Record2.FID_Customer AND SEM_EDIT_DISTANCE_SIMILARITY(LOWER(Record1.EmailAddress), LOWER(Record2.EmailAddress)) >= 82
+      usingMatchOn: false
+      
+  useTransitiveMatchScore: true
+  useMultiIterationGrouping: true
+  mergeThresholdNewGroup: 50
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingConfirmed: 98
+  mergeThresholdMergingConfirmedWithUnconfirmed: 99
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 99
+  mergeThresholdRemergingPreviouslySplit: 100
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: false
+

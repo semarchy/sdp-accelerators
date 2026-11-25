@@ -1,0 +1,156 @@
+_package: LifeAndAnnuityInsurance.entities.Coverage
+_type: Entity
+_name: Coverage
+label: "Coverage"
+pluralLabel: "Coverages"
+physicalTableName: COV
+iconUrl: images://mdi/shield-outline.svg
+description: "Represents base coverage or coverage segments for a Life & Annuity policy, including amount, status, and benefit option details."
+documentation: "Represents base coverage or coverage segments for a Life & Annuity policy, including amount, status, and benefit option details."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CoverageID
+    label: "Coverage ID"
+    physicalName: COV_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the coverage."
+    documentation: "Unique identifier for the coverage."
+  - _type: EntityAttribute
+    _name: CoverageNumber
+    label: "Coverage Number"
+    physicalName: COV_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Carrier or administration coverage number."
+    documentation: "Carrier or administration coverage number."
+  - _type: EntityAttribute
+    _name: CoverageName
+    label: "Coverage Name"
+    physicalName: COV_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Business name of the coverage."
+    documentation: "Business name of the coverage."
+  - _type: EntityAttribute
+    _name: CoverageType
+    label: "Coverage Type"
+    physicalName: COV_TYPE
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Coverage type such as base, term, permanent, supplemental, or annuity benefit."
+    documentation: "Coverage type such as base, term, permanent, supplemental, or annuity benefit."
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: "Effective Date"
+    physicalName: EFF_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the coverage became effective."
+    documentation: "Date the coverage became effective."
+  - _type: EntityAttribute
+    _name: TerminationDate
+    label: "Termination Date"
+    physicalName: TERMINATION_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the coverage terminated, if applicable."
+    documentation: "Date the coverage terminated, if applicable."
+  - _type: EntityAttribute
+    _name: FaceAmount
+    label: "Face Amount"
+    physicalName: FACE_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Face amount or benefit amount for the coverage."
+    documentation: "Face amount or benefit amount for the coverage."
+  - _type: EntityAttribute
+    _name: DeathBenefitOption
+    label: "Death Benefit Option"
+    physicalName: DEATH_BENEFIT_OPTION
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Death benefit option such as level, increasing, or return of premium."
+    documentation: "Death benefit option such as level, increasing, or return of premium."
+  - _type: EntityAttribute
+    _name: IssueAge
+    label: "Issue Age"
+    physicalName: ISSUE_AGE
+    dataType: Decimal
+    precision: 9
+    scale: 0
+    mandatory: false
+    searchable: true
+    description: "Issue age associated with the coverage."
+    documentation: "Issue age associated with the coverage."
+  - _type: EntityAttribute
+    _name: PremiumBasis
+    label: "Premium Basis"
+    physicalName: PREM_BASIS
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Premium basis for the coverage."
+    documentation: "Premium basis for the coverage."
+  - _type: EntityAttribute
+    _name: ConversionExpiryDate
+    label: "Conversion Expiry Date"
+    physicalName: CONVERSION_EXPIRY_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Conversion privilege expiration date, if applicable."
+    documentation: "Conversion privilege expiration date, if applicable."
+  - _type: EntityAttribute
+    _name: EvidenceOfInsurabilityIndicator
+    label: "Evidence Of Insurability Indicator"
+    physicalName: EVID_OF_INSUR_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether evidence of insurability is required."
+    documentation: "Indicates whether evidence of insurability is required."
+  - _type: EntityAttribute
+    _name: ReinsuranceIndicator
+    label: "Reinsurance Indicator"
+    physicalName: REINS_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether coverage is reinsured."
+    documentation: "Indicates whether coverage is reinsured."
+  - _type: EntityAttribute
+    _name: Description
+    label: "Description"
+    physicalName: DESC_TEXT
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Description of coverage terms and servicing context."
+    documentation: "Description of coverage terms and servicing context."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.Coverage.Coverage.CoverageID
+entityType: ID_MATCHED

@@ -1,0 +1,14 @@
+_name: DetectSpecialCharacter
+_package: PrivateEquity.entities.LegalEntity.validations
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+label: Detect Special Character
+description: "Ensures legal entity names do not start with configured special characters before consolidation."
+validationScope: PRE_CONSO
+validationLabel: Legal Entity Name cannot start with a Special Character
+_type: SemQLValidation
+condition: SUBSTR(Name, 1, 1) != '?' AND SUBSTR(Name, 1, 1) != '!' AND
+  SUBSTR(Name, 1, 1) != '@' AND SUBSTR(Name, 1, 1) != '#' AND SUBSTR(Name, 1, 1)
+  != '$' AND SUBSTR(Name, 1, 1) != '%' AND SUBSTR(Name, 1, 1) != '^' AND
+  SUBSTR(Name, 1, 1) != '&' AND SUBSTR(Name, 1, 1) != '*' AND SUBSTR(Name, 1, 1)
+  != ')' AND SUBSTR(Name, 1, 1) != '+' AND SUBSTR(Name, 1, 1) != '=' AND
+  SUBSTR(Name, 1, 1) != '\' AND SUBSTR(Name, 1, 1) != '~'

@@ -1,0 +1,92 @@
+_package: CTMDM.entities.SiteEthicsCommittee.collection_views
+_type: CollectionView
+_name: SiteEthicsCommitteeCollectionView
+
+entity: CTMDM.entities.SiteEthicsCommittee.SiteEthicsCommittee
+default: true
+displayCard: CTMDM.entities.SiteEthicsCommittee.display_cards.SiteEthicsCommitteeDisplayCard
+tableDisplayCardColumnWidth: 300
+
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+
+listAllowed: true
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: true
+
+tableAllowed: true
+tableDisplayCardColumnLabel: Site Ethics Committee
+tableRowLines: 2
+tableShowDisplayCard: true
+
+tableColumns:
+  - _type: ReferenceColumn
+    _name: FDN_clinicalSite
+    value: FDN_clinicalSite
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.ClinicalSite.ClinicalSite
+
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FDN_ethicsCommittee
+    value: FDN_ethicsCommittee
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+    referencedEntity: CTMDM.entities.EthicsCommittee.EthicsCommittee
+    defaultWidth: 350
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '350'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: OversightType
+    value: OversightType
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: TextColumn
+    _name: OversightStatus
+    value: OversightStatus
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+
+    defaultWidth: 200
+  - _type: DateColumn
+    _name: ApprovalDate
+    value: ApprovalDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+
+  - _type: DateColumn
+    _name: ExpirationDate
+    value: ExpirationDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true

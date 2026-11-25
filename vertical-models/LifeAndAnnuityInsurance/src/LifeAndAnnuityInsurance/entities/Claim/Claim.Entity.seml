@@ -1,0 +1,145 @@
+_package: LifeAndAnnuityInsurance.entities.Claim
+_type: Entity
+_name: Claim
+label: "Claim"
+pluralLabel: "Claims"
+physicalTableName: CLM
+iconUrl: images://mdi/file-alert-outline.svg
+description: "Represents a Life & Annuity claim event and adjudication status for death, living benefit, surrender, maturity, or annuity income claims."
+documentation: "Represents a Life & Annuity claim event and adjudication status for death, living benefit, surrender, maturity, or annuity income claims."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: ClaimID
+    label: "Claim ID"
+    physicalName: CLM_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the claim."
+    documentation: "Unique identifier for the claim."
+  - _type: EntityAttribute
+    _name: ClaimNumber
+    label: "Claim Number"
+    physicalName: CLM_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Carrier claim number."
+    documentation: "Carrier claim number."
+  - _type: EntityAttribute
+    _name: ClaimType
+    label: "Claim Type"
+    physicalName: CLM_TYPE
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Type of claim or benefit request."
+    documentation: "Type of claim or benefit request."
+  - _type: EntityAttribute
+    _name: ClaimStatus
+    label: "Claim Status"
+    physicalName: CLM_STAT
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Current claim status."
+    documentation: "Current claim status."
+  - _type: EntityAttribute
+    _name: LossDate
+    label: "Loss Date"
+    physicalName: LOSS_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date of death, disability, maturity, or other claim event."
+    documentation: "Date of death, disability, maturity, or other claim event."
+  - _type: EntityAttribute
+    _name: ReportedDate
+    label: "Reported Date"
+    physicalName: REPORTED_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the claim was reported."
+    documentation: "Date the claim was reported."
+  - _type: EntityAttribute
+    _name: ApprovedDate
+    label: "Approved Date"
+    physicalName: APPROVED_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the claim was approved."
+    documentation: "Date the claim was approved."
+  - _type: EntityAttribute
+    _name: ClosedDate
+    label: "Closed Date"
+    physicalName: CLOSED_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the claim was closed."
+    documentation: "Date the claim was closed."
+  - _type: EntityAttribute
+    _name: ClaimAmount
+    label: "Claim Amount"
+    physicalName: CLM_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Claimed amount."
+    documentation: "Claimed amount."
+  - _type: EntityAttribute
+    _name: ApprovedAmount
+    label: "Approved Amount"
+    physicalName: APPROVED_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Approved amount payable for the claim."
+    documentation: "Approved amount payable for the claim."
+  - _type: EntityAttribute
+    _name: DenialReason
+    label: "Denial Reason"
+    physicalName: DENIAL_REASON
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+    description: "Reason for denial when claim is denied."
+    documentation: "Reason for denial when claim is denied."
+  - _type: EntityAttribute
+    _name: ContestabilityReviewIndicator
+    label: "Contestability Review Indicator"
+    physicalName: CONTST_REV_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether contestability review is required."
+    documentation: "Indicates whether contestability review is required."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional claim notes."
+    documentation: "Additional claim notes."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.Claim.Claim.ClaimID
+entityType: ID_MATCHED

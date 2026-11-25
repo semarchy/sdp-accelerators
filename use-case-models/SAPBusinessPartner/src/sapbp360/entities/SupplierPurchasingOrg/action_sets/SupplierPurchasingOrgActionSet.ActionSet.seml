@@ -1,0 +1,111 @@
+_name: SupplierPurchasingOrgActionSet
+_package: sapbp360.entities.SupplierPurchasingOrg.action_sets
+_type: ActionSet
+entity: sapbp360.entities.SupplierPurchasingOrg.SupplierPurchasingOrg
+label: Supplier Purchasing Org Action Set
+description: Action set for managing Supplier Purchasing Orgs in SAP Business Partner 360.
+defaultActionSet: true
+actions:
+  - _name: CreateAuthorSupplierPurchasingOrgs
+    label: Create
+    description: Create a new Supplier Purchasing Org record.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: sapbp360.entities.SupplierPurchasingOrg.steppers.AuthorSupplierPurchasingOrgs
+  - _name: EditAuthorSupplierPurchasingOrgs
+    label: Edit
+    description: Edit Supplier Purchasing Org records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: true
+    availableForErrorData: true
+    multipleSelectionAllowed: true
+    stepper: sapbp360.entities.SupplierPurchasingOrg.steppers.AuthorSupplierPurchasingOrgs
+  - _name: MassUpdateAuthorSupplierPurchasingOrgs
+    label: Mass Update
+    description: Mass update Supplier Purchasing Org records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MassUpdateAction
+    availableForErrorData: true
+    availableForGoldenData: true
+    availableForMasterData: true
+    stepper: sapbp360.entities.SupplierPurchasingOrg.steppers.AuthorSupplierPurchasingOrgs
+  - _name: Delete
+    label: Delete
+    description: Delete selected Supplier Purchasing Org records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAuthorSupplierPurchasingOrgs
+    label: Import
+    description: Import Supplier Purchasing Org records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: MASTER
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    defaultPublisher: sapbp360.publishers.DataEntry
+    stepper: sapbp360.entities.SupplierPurchasingOrg.steppers.SupplierPurchasingOrgImportStepper
+  - _name: BrowseGraph
+    label: Browse Graph
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: BrowseGraphAction
+  - _name: DirectConfirmDuplicates
+    label: Direct Confirm Duplicates
+    description: Directly confirm duplicates.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DirectConfirmDupsAction
+  - _name: ReviewAndConfirmDuplicatesManageDuplicatesOnSupplierPurchasingOrg
+    label: Review And Confirm Duplicates
+    description: Review and confirm duplicate records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewAndConfirm
+    dupsManager: sapbp360.entities.SupplierPurchasingOrg.dups_managers.ManageDuplicatesOnSupplierPurchasingOrg
+    enableEdit: true
+    mandateConfirmAll: false
+  - _name: MergeOrSplitDuplicatesManageDuplicatesOnSupplierPurchasingOrg
+    label: Merge Or Split Duplicates
+    description: Merge or split duplicate records.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: MergeOrSplit
+    dupsManager: sapbp360.entities.SupplierPurchasingOrg.dups_managers.ManageDuplicatesOnSupplierPurchasingOrg
+    enableEdit: true
+  - _name: ReviewSuggestionsDuplicatesManageDuplicatesOnSupplierPurchasingOrg
+    label: Review Duplicate Suggestions
+    description: Review duplicate suggestions.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ReviewSuggestions
+    dupsManager: sapbp360.entities.SupplierPurchasingOrg.dups_managers.ManageDuplicatesOnSupplierPurchasingOrg
+    enableEdit: true
+    mandateResolveAllSuggestions: false
+    onAcceptPromptGoldenId: false
+  - _name: ExplainRecord
+    label: Explain Record
+    description: Explain record details.
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: sapbp360.entities.SupplierPurchasingOrg.display_cards.SupplierPurchasingOrgDisplayCard
+    formTab: sapbp360.entities.SupplierPurchasingOrg.forms.SupplierPurchasingOrgBrowsingForm.Main

@@ -1,0 +1,64 @@
+_package: CTMDM.entities.HealthcareOrganization.business_views
+_type: BusinessView
+_name: HealthcareOrganizationReviewSuggestions
+
+entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+label: Healthcare Organizations Review Suggestions
+rootLabel: Healthcare Organization
+rootPluralLabel: Healthcare Organizations
+displayRootNodeAs: ICON_LABEL
+
+rootFilter: HasSuggestedMerge = '1'
+rootIconUrl: images://mdi/account-alert.svg
+        
+enableHierarchyView: false
+useHierarchyOnOpen: false
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: HealthcareOrganization
+  entity: CTMDM.entities.HealthcareOrganization.HealthcareOrganization
+
+  actionSet: CTMDM.entities.HealthcareOrganization.action_sets.HealthcareOrganizationReviewSuggestionsActionSet
+  collection: CTMDM.entities.HealthcareOrganization.collection_views.HealthcareOrganizationReviewSuggestionsCollectionView
+  form: CTMDM.entities.HealthcareOrganization.forms.HealthcareOrganizationForm
+  displayCard: CTMDM.entities.HealthcareOrganization.display_cards.HealthcareOrganizationDisplayCard
+
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  
+  transitions:
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionType: FULLY_QUALIFIED
+      displayFormTabAs: ICON_LABEL
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      filter: 1 = 1
+      iconUrl: images://mdi/puzzle.svg
+      transitionPath: MasterRecords
+      useCustomLabel: false
+
+      businessViewEntity: 
+        _type: BusinessViewEntityReference
+        ref: CTMDM.entities.HealthcareOrganization.business_views.HealthcareOrganizationReviewSuggestions.HealthcareOrganization
+
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true

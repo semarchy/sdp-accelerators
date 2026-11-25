@@ -1,0 +1,138 @@
+# RegulationForm: Form on Regulation of the GovernanceRules accelerator.
+_package: GovernanceRules.entities.Regulation.forms
+_type: Form
+_name: RegulationForm
+entity: GovernanceRules.entities.Regulation.Regulation
+default: true
+formTabs:
+  - _type: FormTab
+    _name: Regulation
+    label: Regulation or standard
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormContainer
+        _name: Columns
+        layoutDirection: ROW
+        content:
+          - _type: FormContainer
+            _name: LeftColumn
+            layoutDirection: COLUMN
+            relativeWidth: 50
+            content:
+              - _type: FormSection
+                _name: Identity
+                label: Identification
+                layoutDirection: COLUMN
+                content:
+                  - _type: IdField
+                    _name: Code
+                    value: Code
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: Natural key of the regulation or standard, entered by the author and never changed (for example GDPR or ISO-3166-1).
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                  - _type: TextField
+                    _name: Name
+                    value: Name
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: Official name.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                  - _type: TextField
+                    _name: Issuer
+                    value: Issuer
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: Body that issues the regulation or standard (for example European Union, ISO).
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: RightColumn
+            layoutDirection: COLUMN
+            relativeWidth: 50
+            content:
+              - _type: FormSection
+                _name: Details
+                label: Details
+                layoutDirection: COLUMN
+                content:
+                  - _type: TextField
+                    _name: Jurisdiction
+                    value: Jurisdiction
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: Where it applies (for example EU, US, Canada, Global).
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+                  - _type: TextField
+                    _name: Description
+                    value: Description
+                    useCustomLabel: false
+                    dataType: STRING
+                    componentProperties:
+                      isMultiline: '1'
+                      isMultilineValueInterpreter: LITERAL
+                      multilineMinLines: '3'
+                      multilineMinLinesValueInterpreter: LITERAL
+                    helperText: What the regulation or standard covers.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+              - _type: FormSection
+                _name: Contact
+                label: Contact details
+                layoutDirection: COLUMN
+                content:
+                  - _type: TextField
+                    _name: URL
+                    value: URL
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: Link to the official text.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL
+              - _type: FormSection
+                _name: Preferences
+                label: Classification
+                layoutDirection: COLUMN
+                content:
+                  - _type: MenuField
+                    _name: Type
+                    value: Type
+                    useCustomLabel: false
+                    dataType: STRING
+                    helperText: Kind, code REGULATION, STANDARD, FRAMEWORK or INTERNAL.
+                    helperTextValueInterpreter: LITERAL
+                    labelProperties:
+                      position: top
+                      positionValueInterpreter: LITERAL
+                      alignment: left
+                      alignmentValueInterpreter: LITERAL

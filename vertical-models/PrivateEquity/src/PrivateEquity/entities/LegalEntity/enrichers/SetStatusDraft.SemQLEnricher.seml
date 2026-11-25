@@ -1,0 +1,11 @@
+_type: SemQLEnricher
+_package: PrivateEquity.entities.LegalEntity.enrichers
+_name: SetStatusDraft
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+label: Set Status Draft
+description: "Sets the legal entity status to Draft during pre-consolidation processing."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_Status
+    expression: "'Draft'"
+afterEnrichers: PrivateEquity.entities.LegalEntity.enrichers.AutoPopulateCurrency

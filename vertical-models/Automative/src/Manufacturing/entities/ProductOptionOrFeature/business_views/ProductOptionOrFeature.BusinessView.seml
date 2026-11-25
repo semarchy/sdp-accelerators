@@ -1,0 +1,63 @@
+_name: ProductOptionOrFeature
+_package: Manufacturing.entities.ProductOptionOrFeature.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: Manufacturing.entities.ProductOptionOrFeature.ProductOptionOrFeature
+rootLabel: Option Or Feature
+rootPluralLabel: Option Or Features
+useHierarchyOnOpen: false
+label: Option Or Features
+rootBusinessViewEntity:
+  _name: ProductOptionOrFeatureEO
+  _type: BusinessViewEntity
+  collection: Manufacturing.entities.ProductOptionOrFeature.collection_views.ProductOptionOrFeatureCollection
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: Manufacturing.entities.ProductOptionOrFeature.ProductOptionOrFeature
+  form: Manufacturing.entities.ProductOptionOrFeature.forms.ProductOptionOrFeatureForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: Manufacturing.entities.ProductOptionOrFeature.action_sets.ProductOptionOrFeatureActionSet
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: Child
+      _type: BusinessViewTransition
+      transitionPath: RelationshipsParent.Child
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      iconUrl: images://mdi/group.svg
+      label: Included
+      pluralLabel: Included
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: Manufacturing.entities.ProductOptionOrFeature.business_views.ProductOptionOrFeature.ProductOptionOrFeatureEO

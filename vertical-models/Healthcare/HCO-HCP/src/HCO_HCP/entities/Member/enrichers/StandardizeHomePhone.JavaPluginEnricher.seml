@@ -1,0 +1,26 @@
+_type: JavaPluginEnricher
+_package: HCO_HCP.entities.Member.enrichers
+_name: StandardizeHomePhone
+entity: HCO_HCP.entities.Member.Member
+label: Standardize Home Phone
+pluginId: com.semarchy.engine.plugins.convergence.phone
+batchUpdateSize: 1000
+condition: HomePhone IS NOT NULL
+numberOfRetry: 0
+onErrorBehavior: FAIL_JOB
+enricherExecutionScope: PRE_CONSO
+processingBatchSize: 1
+threadPoolSize: 1
+pluginInputs:
+  - inputName: IN_PHONE
+    expression: HomePhone
+  - inputName: IN_PHONE_FORMAT
+    expression: "'NATIONAL'"
+  - inputName: IN_COUNTRY_CODE
+    expression: COALESCE(Country , 'US')
+  - inputName: IN_REGION_CALLING_FROM
+    expression: "'US'"
+pluginOutputs:
+  - outputName: ENRICHED_PHONE
+    attributeName: StandardizedHomePhone
+afterEnrichers: HCO_HCP.entities.Member.enrichers.CleanseEmail

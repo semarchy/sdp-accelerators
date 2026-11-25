@@ -1,0 +1,140 @@
+# RulesByCategory: named query of the GovernanceRules accelerator. Returns the in-force governance rules of one category (parameter category, STRING, mandatory): a code among DATA_QUALITY, PRIVACY, SECURITY_ACCESS,...
+_package: GovernanceRules.named_queries
+_type: NamedQuery
+_name: RulesByCategory
+active: true
+description: 'Returns the in-force governance rules of one category (parameter category, STRING, mandatory): a code among DATA_QUALITY, PRIVACY,
+  SECURITY_ACCESS, RETENTION, REFERENCE_DATA, IDENTITY_MATCHING, METADATA_DOCUMENTATION, AI_USAGE, STEWARDSHIP, MODELING_CONVENTIONS. Each rule
+  comes with its statement, level, pattern, guidance, citations and scope rows. Sorted by code.
+
+
+  AI agent instructions: Use it to browse a whole topic (for example every PRIVACY rule) when a design question is not tied to one attribute;
+  it ignores scopes, so it also returns rules of other domains and industries. To find what applies to a design change, use RuleChecklist
+  instead (or ApplicableRules for one attribute type). Pass the category code, not its label.'
+defaultLimit: 200
+rootQueryObject: GovernanceRules.named_queries.RulesByCategory.Rule
+filter: LifecycleStatus = 'APPROVED' AND EffectiveDate <= CURRENT_DATE() AND (RetirementDate IS NULL OR RetirementDate > CURRENT_DATE()) AND Category
+  = :CATEGORY
+sort: Code
+queryParameters:
+- _type: QueryParameter
+  _name: category
+  bindingName: CATEGORY
+  dataType: STRING
+  mandatory: true
+queryObjects:
+- _type: QueryObject
+  _name: Rule
+  entity: GovernanceRules.entities.GovernanceRule.GovernanceRule
+  description: Governance rule with its citations and scopes.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: Code
+    type: VALUE
+    semQlExpression: Code
+  - _type: ObjectProperty
+    _name: Title
+    type: VALUE
+    semQlExpression: Title
+  - _type: ObjectProperty
+    _name: Statement
+    type: VALUE
+    semQlExpression: Statement
+  - _type: ObjectProperty
+    _name: RequirementLevel
+    type: VALUE
+    semQlExpression: RequirementLevel
+  - _type: ObjectProperty
+    _name: Category
+    type: VALUE
+    semQlExpression: Category
+  - _type: ObjectProperty
+    _name: ImplementationPattern
+    type: VALUE
+    semQlExpression: ImplementationPattern
+  - _type: ObjectProperty
+    _name: ImplementationGuidance
+    type: VALUE
+    semQlExpression: ImplementationGuidance
+  - _type: ObjectProperty
+    _name: Example
+    type: VALUE
+    semQlExpression: Example
+  - _type: ObjectProperty
+    _name: EffectiveDate
+    type: VALUE
+    semQlExpression: EffectiveDate
+  - _type: ObjectProperty
+    _name: PolicyCode
+    type: VALUE
+    semQlExpression: Policy.Code
+  - _type: ObjectProperty
+    _name: PolicyName
+    type: VALUE
+    semQlExpression: Policy.Name
+  - _type: ObjectProperty
+    _name: OwnerCode
+    type: VALUE
+    semQlExpression: OwnerBody.Code
+  - _type: ObjectProperty
+    _name: OwnerName
+    type: VALUE
+    semQlExpression: OwnerBody.Name
+  - _type: ObjectProperty
+    _name: Citations
+    type: MULTI_RECORDS
+    semQlExpression: Citations
+    targetObject: GovernanceRules.named_queries.RulesByCategory.Citation
+    sort: Regulation.Code
+  - _type: ObjectProperty
+    _name: Scopes
+    type: MULTI_RECORDS
+    semQlExpression: Scopes
+    targetObject: GovernanceRules.named_queries.RulesByCategory.Scope
+    sort: ID
+- _type: QueryObject
+  _name: Citation
+  entity: GovernanceRules.entities.RuleCitation.RuleCitation
+  description: A regulation or standard cited by the rule, with the article or clause.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: RegulationCode
+    type: VALUE
+    semQlExpression: Regulation.Code
+  - _type: ObjectProperty
+    _name: RegulationName
+    type: VALUE
+    semQlExpression: Regulation.Name
+  - _type: ObjectProperty
+    _name: RegulationType
+    type: VALUE
+    semQlExpression: Regulation.Type
+  - _type: ObjectProperty
+    _name: Clause
+    type: VALUE
+    semQlExpression: Clause
+  - _type: ObjectProperty
+    _name: Note
+    type: VALUE
+    semQlExpression: Note
+  - _type: ObjectProperty
+    _name: URL
+    type: VALUE
+    semQlExpression: Regulation.URL
+- _type: QueryObject
+  _name: Scope
+  entity: GovernanceRules.entities.RuleScope.RuleScope
+  description: One applicability row of the rule; an empty code means any value of that dimension.
+  objectProperties:
+  - _type: ObjectProperty
+    _name: DataDomainCode
+    type: VALUE
+    semQlExpression: DataDomain.Code
+  - _type: ObjectProperty
+    _name: DataClassificationCode
+    type: VALUE
+    semQlExpression: DataClassification.Code
+  - _type: ObjectProperty
+    _name: AttributeTypeCode
+    type: VALUE
+    semQlExpression: AttributeType.Code

@@ -1,0 +1,90 @@
+﻿_package: RetailCustomer360.entities.ContactPointEmail.business_views
+_type: BusinessView
+_name: ContactPointEmailBusinessView
+label: Contact Point Emails
+entity: RetailCustomer360.entities.ContactPointEmail.ContactPointEmail
+
+rootLabel: Contact Point Emails
+rootPluralLabel: Contact Point Emails
+displayRootNodeAs: ICON_LABEL
+
+rootBusinessViewEntity:
+  _type: BusinessViewEntity
+  _name: ContactPointEmail
+  displayCard: RetailCustomer360.entities.ContactPointEmail.display_cards.ContactPointEmail
+  entity: RetailCustomer360.entities.ContactPointEmail.ContactPointEmail
+  actionSet: RetailCustomer360.entities.ContactPointEmail.action_sets.ContactPointEmailActionSet
+  collection: RetailCustomer360.entities.ContactPointEmail.collection_views.ContactPointEmailCollectionView
+  form: RetailCustomer360.entities.ContactPointEmail.forms.ContactPointEmailForm
+  outlineVisible: false
+  displayRecordCount: ALWAYS
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+  overrideDefaultSort: false
+  enableUserDefinedSort: true
+  listAllowed: true
+  tableAllowed: true
+  gridAllowed: true
+  transitions:
+    - _type: BusinessViewTransition
+      _name: MasterRecords
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      iconUrl: https://api.iconify.design/mdi/file-tree-outline.svg?color=%230D1B2A&width=64
+      label: Master Record
+      pluralLabel: Master Records
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: ContactPointEmailMaster
+        _type: BusinessViewEntity
+        collection: RetailCustomer360.entities.ContactPointEmail.collection_views.ContactPointEmailCollectionView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: RetailCustomer360.entities.ContactPointEmail.ContactPointEmail
+        form: RetailCustomer360.entities.ContactPointEmail.forms.ContactPointEmailForm
+        gridAllowed: true
+        listAllowed: true
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+        displayCard: RetailCustomer360.entities.ContactPointEmail.display_cards.ContactPointEmail
+
+enableHierarchyView: false
+useHierarchyOnOpen: false
+

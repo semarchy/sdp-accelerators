@@ -1,0 +1,107 @@
+_package: LifeAndAnnuityInsurance.entities.InvestmentAllocation
+_type: Entity
+_name: InvestmentAllocation
+label: "Investment Allocation"
+pluralLabel: "Investment Allocations"
+physicalTableName: INV_ALLOC
+iconUrl: images://mdi/chart-pie.svg
+description: "Represents a policy or annuity allocation to a fund or investment option."
+documentation: "Represents a policy or annuity allocation to a fund or investment option."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: InvestmentAllocationID
+    label: "Investment Allocation ID"
+    physicalName: INV_ALLOC_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the investment allocation."
+    documentation: "Unique identifier for the investment allocation."
+  - _type: EntityAttribute
+    _name: AllocationEffectiveDate
+    label: "Allocation Effective Date"
+    physicalName: ALLOC_EFF_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date from which the allocation is effective."
+    documentation: "Date from which the allocation is effective."
+  - _type: EntityAttribute
+    _name: AllocationEndDate
+    label: "Allocation End Date"
+    physicalName: ALLOC_END_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date on which the allocation ended, if applicable."
+    documentation: "Date on which the allocation ended, if applicable."
+  - _type: EntityAttribute
+    _name: AllocationPercentage
+    label: "Allocation Percentage"
+    physicalName: ALLOC_PCT
+    dataType: Decimal
+    precision: 9
+    scale: 4
+    mandatory: false
+    searchable: true
+    description: "Percentage allocated to the investment option."
+    documentation: "Percentage allocated to the investment option."
+  - _type: EntityAttribute
+    _name: AccountValue
+    label: "Account Value"
+    physicalName: ACCT_VALUE
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Current account value assigned to the allocation."
+    documentation: "Current account value assigned to the allocation."
+  - _type: EntityAttribute
+    _name: TransferRestrictionIndicator
+    label: "Transfer Restriction Indicator"
+    physicalName: XFER_RESTR_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether transfers are restricted for this allocation."
+    documentation: "Indicates whether transfers are restricted for this allocation."
+  - _type: EntityAttribute
+    _name: ModelPortfolioName
+    label: "Model Portfolio Name"
+    physicalName: MODEL_PORTFOLIO_NAME
+    dataType: String
+    length: 128
+    mandatory: false
+    searchable: true
+    description: "Model portfolio name when allocation is part of a model portfolio."
+    documentation: "Model portfolio name when allocation is part of a model portfolio."
+  - _type: EntityAttribute
+    _name: RebalanceIndicator
+    label: "Rebalance Indicator"
+    physicalName: REBALANCE_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether automatic rebalancing is enabled."
+    documentation: "Indicates whether automatic rebalancing is enabled."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional allocation notes."
+    documentation: "Additional allocation notes."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation.InvestmentAllocationID
+entityType: ID_MATCHED

@@ -1,0 +1,26 @@
+_package: CTMDM.entities.StudyVendor.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DefaultRule
+entity: CTMDM.entities.StudyVendor.StudyVendor
+label: Default Rule
+description: "Selects surviving Study Vendor values using the configured preferred publisher ranking."
+documentation: "Selects surviving Study Vendor values using the configured preferred publisher ranking."
+defaultRule: true
+consolidationStrategy: PREFERRED_PUBLISHER
+consolidationSkipNulls: false
+overrideStrategy: UNTIL_CONSOLIDATED_VAL_CHANGE
+
+attributes:
+  - attributeName: ServiceScope
+  - attributeName: ContractStatus
+  - attributeName: OversightOwner
+  
+publisherRankings:
+  - _type: ConsoPublisherRanking
+    publisher: CTMDM.publishers.CTMS
+  - _type: ConsoPublisherRanking
+    publisher: CTMDM.publishers.ERP
+  - _type: ConsoPublisherRanking
+    publisher: CTMDM.publishers.CROSource
+  - _type: ConsoPublisherRanking
+    publisher: CTMDM.publishers.ManualEntry

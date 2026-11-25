@@ -1,0 +1,9 @@
+_package: CTMDM.entities.ClinicalSite.validations
+_name: SiteDatesValid
+_type: SemQLValidation
+entity: CTMDM.entities.ClinicalSite.ClinicalSite
+label: Site deactivation must not be before activation
+validationScope: PRE_CONSO
+description: "Site deactivation must not be before activation before consolidation."
+
+condition: DeactivationDate IS NULL OR ActivationDate IS NULL OR DeactivationDate >= ActivationDate

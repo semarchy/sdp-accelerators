@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: sapbp360.entities.Supplier.enrichers
+_name: NormalizedSupplierName
+entity: sapbp360.entities.Supplier.Supplier
+label: Normalized supplier name for matching.
+description: Normalized supplier name for matching.
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NormalizedName
+    expression: LTRIM(RTRIM(UPPER(SupplierName)))

@@ -1,0 +1,30 @@
+_package: LifeAndAnnuityInsurance.references
+_name: UnderwritingRequirementHasUnderwritingCase
+description: "Indicates the Underwriting Case associated with a Underwriting Requirement."
+_type: Reference
+label: "Underwriting Requirement Has Underwriting Case"
+
+fromEntity: LifeAndAnnuityInsurance.entities.UnderwritingRequirement.UnderwritingRequirement
+fromRoleLabel: "Underwriting Requirement"
+fromRoleName: UnderwritingRequirement
+fromRolePluralLabel: "Underwriting Requirements"
+physicalName: UW_REQ_HAS_UW_CASE
+fromNavigable: true
+
+toEntity: LifeAndAnnuityInsurance.entities.UnderwritingCase.UnderwritingCase
+toRoleLabel: "Underwriting Case"
+toRoleName: UnderwritingCase
+toRolePhysicalName: UW_CASE
+toNavigable: true
+
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+
+foreignAttribute:
+  _type: ForeignAttribute
+  _name: UnderwritingCase
+  label: "Underwriting Case ID"
+  description: "The identifier of the Underwriting Case associated with the Underwriting Requirement."
+  physicalName: UW_CASE_ID
+  searchable: true
+  entity: LifeAndAnnuityInsurance.entities.UnderwritingCase.UnderwritingCase

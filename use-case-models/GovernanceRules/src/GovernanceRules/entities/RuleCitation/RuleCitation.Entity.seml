@@ -1,0 +1,41 @@
+# RuleCitation: entity of the GovernanceRules accelerator. A regulation or standard cited by a rule, with the article or clause that anchors it.
+_package: GovernanceRules.entities.RuleCitation
+_type: Entity
+_name: RuleCitation
+label: Citation
+pluralLabel: Citations
+physicalTableName: GOV_RULE_CITATION
+entityType: BASIC
+description: A regulation or standard cited by a rule, with the article or clause that anchors it.
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+primaryKey: GovernanceRules.entities.RuleCitation.RuleCitation.ID
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+attributes:
+- _type: EntityAttribute
+  _name: ID
+  label: ID
+  physicalName: RC_ID
+  dataType: LongInteger
+  mandatory: false
+  description: Generated identifier of the citation.
+  precision: 38
+- _type: EntityAttribute
+  _name: Clause
+  label: Article or clause
+  physicalName: RC_CLAUSE
+  dataType: String
+  length: 200
+  mandatory: false
+  description: Article or clause cited, for example Art. 5(1)(e).
+- _type: EntityAttribute
+  _name: Note
+  label: Note
+  physicalName: RC_NOTE
+  dataType: String
+  length: 2000
+  mandatory: false
+  description: How the cited text supports the rule.

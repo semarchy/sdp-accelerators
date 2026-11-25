@@ -1,0 +1,119 @@
+_package: RetailCustomer360.entities.ProductCatalog
+_type: Entity
+_name: ProductCatalog
+label: Product Catalog
+pluralLabel: Product Catalogs
+entityType: BASIC
+physicalTableName: PRODUCT_CATALOG
+iconUrl: https://api.iconify.design/mdi/book-open-variant.svg?color=%230D1B2A&width=64
+
+description: "Curated set of products offered to a market or channel for a period of time."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: CatalogId
+    label: Catalog Id
+    physicalName: CATALOG_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the catalog."
+
+  - _type: EntityAttribute
+    _name: CatalogCode
+    label: Catalog Code
+    physicalName: CATALOG_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the catalog."
+
+  - _type: EntityAttribute
+    _name: CatalogName
+    label: Catalog Name
+    physicalName: CATALOG_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the catalog."
+
+  - _type: EntityAttribute
+    _name: CatalogStatus
+    label: Catalog Status
+    physicalName: CATALOG_STATUS
+    dataType: RetailCustomer360.list_of_values.CatalogStatus
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Publication state of the catalog."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Purpose and audience of the catalog."
+
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    searchable: true
+    description: "Date the catalog becomes available."
+
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    searchable: true
+    description: "Date the catalog is withdrawn."
+
+  - _type: EntityAttribute
+    _name: SalesChannel
+    label: Sales Channel
+    physicalName: SALES_CHANNEL
+    dataType: RetailCustomer360.list_of_values.SalesChannel
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Channel the catalog is published to."
+
+  - _type: EntityAttribute
+    _name: IsDefault
+    label: Is Default
+    physicalName: IS_DEFAULT
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether this is the fallback catalog for its channel."
+
+  - _type: EntityAttribute
+    _name: DisplayOrder
+    label: Display Order
+    physicalName: DISPLAY_ORDER
+    dataType: LongInteger
+    precision: 38
+    searchable: true
+    description: "Position of the catalog in listings."
+
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: Source System
+    physicalName: SOURCE_SYSTEM
+    dataType: RetailCustomer360.list_of_values.SourceSystem
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "System the catalog originates from."
+
+primaryKey: RetailCustomer360.entities.ProductCatalog.ProductCatalog.CatalogId
+
+sourceIdGeneration:
+  mode: MANUAL

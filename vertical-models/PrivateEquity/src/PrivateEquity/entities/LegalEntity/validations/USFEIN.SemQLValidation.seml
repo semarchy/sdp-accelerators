@@ -1,0 +1,9 @@
+_name: USFEIN
+_package: PrivateEquity.entities.LegalEntity.validations
+entity: PrivateEquity.entities.LegalEntity.LegalEntity
+label: USFEIN
+description: "Ensures US FEIN values follow the 12-1234567 format before consolidation."
+validationScope: PRE_CONSO
+validationLabel: "US FEIN Format Error (Ex: 12-1234567)"
+_type: SemQLValidation
+condition: REGEXP_LIKE(USFEIN, '[0-9]{2}[-]{1}[0-9]{7}')

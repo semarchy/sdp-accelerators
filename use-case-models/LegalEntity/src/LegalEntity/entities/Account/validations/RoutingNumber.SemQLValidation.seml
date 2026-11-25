@@ -1,0 +1,11 @@
+#This is the RoutingNumber validation for the Legal Entity application.
+# It ensures that the Routing Number adheres to a specific format, which is between 8 and 12 digits.
+# The validation is executed before the consumption of the entity data.
+_package: LegalEntity.entities.Account.validations
+_name: RoutingNumber
+_type: SemQLValidation
+entity: LegalEntity.entities.Account.Account
+label: Routing Numner
+condition: "REGEXP_LIKE(RoutingNumber, '^[0-9]{8,12}$')"
+validationScope: PRE_CONSO
+validationLabel: Routing Number must be between 8 and 12 digits

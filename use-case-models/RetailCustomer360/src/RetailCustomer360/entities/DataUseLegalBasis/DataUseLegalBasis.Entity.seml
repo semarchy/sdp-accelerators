@@ -1,0 +1,101 @@
+_package: RetailCustomer360.entities.DataUseLegalBasis
+_type: Entity
+_name: DataUseLegalBasis
+label: Data Use Legal Basis
+pluralLabel: Data Use Legal Bases
+entityType: BASIC
+physicalTableName: DATA_LEGAL_BASIS
+iconUrl: https://api.iconify.design/mdi/gavel.svg?color=%230D1B2A&width=64
+
+description: "Legal ground relied upon to process customer personal data in a given jurisdiction."
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+
+attributes:
+  - _type: EntityAttribute
+    _name: LegalBasisId
+    label: Legal Basis Id
+    physicalName: LEGAL_BASIS_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Primary identifier of the legal basis."
+
+  - _type: EntityAttribute
+    _name: LegalBasisCode
+    label: Legal Basis Code
+    physicalName: LEGAL_BASIS_CODE
+    dataType: String
+    length: 50
+    searchable: true
+    description: "Short code identifying the legal basis."
+
+  - _type: EntityAttribute
+    _name: LegalBasisName
+    label: Legal Basis Name
+    physicalName: LEGAL_BASIS_NAME
+    dataType: String
+    length: 150
+    searchable: true
+    description: "Business name of the legal basis."
+
+  - _type: EntityAttribute
+    _name: LegalBasisType
+    label: Legal Basis Type
+    physicalName: LEGAL_BASIS_TYPE
+    dataType: RetailCustomer360.list_of_values.LegalBasis
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Category of legal ground being relied upon."
+
+  - _type: EntityAttribute
+    _name: Jurisdiction
+    label: Jurisdiction
+    physicalName: JURISDICTION
+    dataType: RetailCustomer360.list_of_values.Jurisdiction
+    lovValidationScope: PRE_CONSO
+    searchable: true
+    description: "Privacy regime the legal basis applies under."
+
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    length: 500
+    searchable: true
+    description: "Explanation of when the legal basis may be relied upon."
+
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    length: 1
+    searchable: true
+    description: "Whether the legal basis is currently in use."
+
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: Effective Date
+    physicalName: EFFECTIVE_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the legal basis became applicable."
+
+  - _type: EntityAttribute
+    _name: ExpiryDate
+    label: Expiry Date
+    physicalName: EXPIRY_DATE
+    dataType: Date
+    searchable: true
+    description: "Date the legal basis ceased to be applicable."
+
+primaryKey: RetailCustomer360.entities.DataUseLegalBasis.DataUseLegalBasis.LegalBasisId
+
+sourceIdGeneration:
+  mode: MANUAL

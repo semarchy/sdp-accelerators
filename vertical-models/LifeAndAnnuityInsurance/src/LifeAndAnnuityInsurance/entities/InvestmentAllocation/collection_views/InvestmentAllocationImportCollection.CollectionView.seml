@@ -1,0 +1,120 @@
+_package: LifeAndAnnuityInsurance.entities.InvestmentAllocation.collection_views
+_type: CollectionView
+_name: InvestmentAllocationImportCollection
+entity: LifeAndAnnuityInsurance.entities.InvestmentAllocation.InvestmentAllocation
+default: false
+displayCard: LifeAndAnnuityInsurance.entities.InvestmentAllocation.display_cards.InvestmentAllocationDisplayCard
+gridAllowed: false
+gridColumns: 4
+gridTextPosition: BOTTOM
+gridTileHeight: 1:1
+gridTileLines: 1
+listAllowed: true
+listItemLines: 1
+listShowDisplayCardAvatar: false
+listShowDivider: true
+tableAllowed: true
+tableDisplayCardColumnLabel: "Investment Allocation"
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: IdColumn
+    _name: InvestmentAllocationID
+    value: InvestmentAllocationID
+    useCustomLabel: false
+    dataType: LONG_INTEGER
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AllocationEffectiveDate
+    value: AllocationEffectiveDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AllocationEndDate
+    value: AllocationEndDate
+    useCustomLabel: false
+    dataType: DATE
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AllocationPercentage
+    value: AllocationPercentage
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountValue
+    value: AccountValue
+    useCustomLabel: false
+    dataType: DECIMAL
+    columnAlign: LEFT
+    visibleByDefault: true
+    componentProperties:
+      displayFormat: '$ ##,###,###.##'
+      displayFormatValueInterpreter: LITERAL
+  - _type: CheckboxColumn
+    _name: TransferRestrictionIndicator
+    value: TransferRestrictionIndicator
+    useCustomLabel: false
+    dataType: BOOLEAN
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ModelPortfolioName
+    value: ModelPortfolioName
+    useCustomLabel: false
+    dataType: STRING
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: RebalanceIndicator
+    value: RebalanceIndicator
+    useCustomLabel: false
+    dataType: BOOLEAN
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Notes
+    value: Notes
+    useCustomLabel: false
+    dataType: LONG_TEXT
+    columnAlign: LEFT
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: FID_Policy
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Policy"
+    referencedEntity: LifeAndAnnuityInsurance.entities.Policy.Policy
+    useCustomLabel: true
+    value: FDN_Policy
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: FID_Fund
+    columnAlign: LEFT
+    dataType: STRING
+    label: "Fund"
+    referencedEntity: LifeAndAnnuityInsurance.entities.Fund.Fund
+    useCustomLabel: true
+    value: FDN_Fund
+    visibleByDefault: true
+    defaultWidth: 240
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      chipMaxWidth: '240'
+      chipMaxWidthValueInterpreter: LITERAL
+      useAvatarInChip: '1'
+      useAvatarInChipValueInterpreter: LITERAL

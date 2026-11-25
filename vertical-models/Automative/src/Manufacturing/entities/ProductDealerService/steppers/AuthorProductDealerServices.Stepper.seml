@@ -1,0 +1,94 @@
+_name: AuthorProductDealerServices
+_package: Manufacturing.entities.ProductDealerService.steppers
+_type: Stepper
+entity: Manufacturing.entities.ProductDealerService.ProductDealerService
+rootStep:
+  _name: ProductDealerServices
+  _type: CollectionStep
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: Manufacturing.entities.ProductDealerService.collection_views.ProductDealerServiceCollection
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: true
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  label: Dealer Services
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.DealerServicesService.Service
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.DealerServicesService.Service
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: Manufacturing.references.DealerServicesDealer.Dealer
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: Manufacturing.references.DealerServicesDealer.Dealer
+  stepTriggers: []
+  childSteps:
+    - _name: ProductDealerService
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Dealer Service
+      formTab: Manufacturing.entities.ProductDealerService.forms.ProductDealerServiceForm.ProductDealerService
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.DealerServicesDealer.Dealer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.DealerServicesService.Service
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: MANDATORY
+          attribute: Manufacturing.references.DealerServicesService.Service
+          executedOnDataChange: false
+          executedOnFormOpen: false
+        - validationType: FOREIGN
+          attribute: Manufacturing.references.DealerServicesDealer.Dealer
+          executedOnDataChange: false
+          executedOnFormOpen: false
+      stepTransitionValidations:
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.DealerServicesDealer.Dealer
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.DealerServicesService.Service
+        - onStepExit: SKIP
+          validationType: MANDATORY
+          attribute: Manufacturing.references.DealerServicesService.Service
+        - onStepExit: SKIP
+          validationType: FOREIGN
+          attribute: Manufacturing.references.DealerServicesDealer.Dealer
+      stepTriggers: []
+label: Author Dealer Services
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.DealerServicesService.Service
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.DealerServicesDealer.Dealer
+  - onStepperFinish: SKIP
+    validationType: MANDATORY
+    attribute: Manufacturing.references.DealerServicesDealer.Dealer
+  - onStepperFinish: SKIP
+    validationType: FOREIGN
+    attribute: Manufacturing.references.DealerServicesService.Service
+triggers: []

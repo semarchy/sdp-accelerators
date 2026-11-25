@@ -1,0 +1,147 @@
+_package: LifeAndAnnuityInsurance.entities.PremiumTransaction
+_type: Entity
+_name: PremiumTransaction
+label: "Premium Transaction"
+pluralLabel: "Premium Transactions"
+physicalTableName: PREM_TXN
+iconUrl: images://mdi/cash-multiple.svg
+description: "Represents premium, payment, fee, reversal, or posting transactions associated with a policy."
+documentation: "Represents premium, payment, fee, reversal, or posting transactions associated with a policy."
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PremiumTransactionID
+    label: "Premium Transaction ID"
+    physicalName: PREM_TXN_ID
+    dataType: String
+    length: 50
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+    description: "Unique identifier for the premium transaction."
+    documentation: "Unique identifier for the premium transaction."
+  - _type: EntityAttribute
+    _name: TransactionNumber
+    label: "Transaction Number"
+    physicalName: TXN_NUM
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+    description: "Transaction number assigned by the payment or administration system."
+    documentation: "Transaction number assigned by the payment or administration system."
+  - _type: EntityAttribute
+    _name: TransactionDate
+    label: "Transaction Date"
+    physicalName: TXN_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the transaction occurred."
+    documentation: "Date the transaction occurred."
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: "Effective Date"
+    physicalName: EFF_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Accounting or policy effective date of the transaction."
+    documentation: "Accounting or policy effective date of the transaction."
+  - _type: EntityAttribute
+    _name: TransactionType
+    label: "Transaction Type"
+    physicalName: TXN_TYPE
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "Transaction type such as premium, fee, reversal, or refund."
+    documentation: "Transaction type such as premium, fee, reversal, or refund."
+  - _type: EntityAttribute
+    _name: PaymentAmount
+    label: "Payment Amount"
+    physicalName: PAY_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Amount received or disbursed as payment."
+    documentation: "Amount received or disbursed as payment."
+  - _type: EntityAttribute
+    _name: PremiumAmount
+    label: "Premium Amount"
+    physicalName: PREM_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Premium amount represented by the transaction."
+    documentation: "Premium amount represented by the transaction."
+  - _type: EntityAttribute
+    _name: FeeAmount
+    label: "Fee Amount"
+    physicalName: FEE_AMT
+    dataType: Decimal
+    precision: 18
+    scale: 2
+    mandatory: false
+    searchable: true
+    description: "Fee amount associated with the transaction."
+    documentation: "Fee amount associated with the transaction."
+  - _type: EntityAttribute
+    _name: CurrencyCode
+    label: "Currency Code"
+    physicalName: CURRENCY_CODE
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+    description: "Currency code for transaction amounts."
+    documentation: "Currency code for transaction amounts."
+  - _type: EntityAttribute
+    _name: PostedDate
+    label: "Posted Date"
+    physicalName: POSTED_DATE
+    dataType: Date
+    mandatory: false
+    searchable: true
+    description: "Date the transaction posted."
+    documentation: "Date the transaction posted."
+  - _type: EntityAttribute
+    _name: ReversalIndicator
+    label: "Reversal Indicator"
+    physicalName: REVERSAL_IND
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    searchable: true
+    description: "Indicates whether the transaction reverses a prior transaction."
+    documentation: "Indicates whether the transaction reverses a prior transaction."
+  - _type: EntityAttribute
+    _name: SourceSystem
+    label: "Source System"
+    physicalName: SOURCE_SYSTEM
+    dataType: String
+    length: 80
+    mandatory: false
+    searchable: true
+    description: "System that originated the transaction."
+    documentation: "System that originated the transaction."
+  - _type: EntityAttribute
+    _name: Notes
+    label: "Notes"
+    physicalName: NOTES
+    dataType: LongText
+    mandatory: false
+    searchable: true
+    description: "Additional transaction notes."
+    documentation: "Additional transaction notes."
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: LifeAndAnnuityInsurance.entities.PremiumTransaction.PremiumTransaction.PremiumTransactionID
+entityType: ID_MATCHED
